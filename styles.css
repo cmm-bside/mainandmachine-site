@@ -653,11 +653,11 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 .hero__build{
   list-style:none; display:flex; flex-wrap:wrap; align-items:center;
   row-gap:6px; margin:0 0 12px;
-  font-family:var(--mono); font-size:12.5px; font-weight:700;
-  letter-spacing:.1em; text-transform:uppercase; color:var(--tx);
+  font-family:var(--mono); font-size:11px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; color:var(--tx);
 }
 .hero__build li{ display:inline-flex; align-items:center; }
-.hero__build li::before{ content:"·"; margin:0 11px; color:var(--accent); font-weight:700; }
+.hero__build li::before{ content:"·"; margin:0 7px; color:var(--accent); font-weight:700; }
 .hero__build li:first-child::before{ content:none; }
 .hero__build__lead{ color:var(--tx-faint); }
 

@@ -165,7 +165,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
   white-space: nowrap; line-height: 1;
 }
 .logo__plate .amp { color: var(--accent-ink); }
-.logo__word { font-weight: 800; font-size: 19px; letter-spacing: -0.03em; }
+.logo__word { font-weight: 800; font-size: 19px; letter-spacing: -0.03em; white-space: nowrap; }
 .logo__word .amp { color: var(--accent); font-weight: 700; padding-inline: 1px; }
 .ink .logo__word .amp { color: var(--accent-ink); }
 .ink .logo__plate { background: var(--paper); color: var(--ink); }
@@ -625,8 +625,11 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 /* =========================================================
    HERO ANIMATION — word rise + breathing ampersand
    ========================================================= */
-.hero__title .w{ display:inline-block; overflow:hidden; vertical-align:top; padding:.04em 0 .14em; margin:-.04em .22em -.14em 0; }
-.hero__title .w:last-child{ margin-right:0; }
+/* real whitespace lives between the word spans (for screen readers + crawlers);
+   the negative top/bottom margins give ascenders/descenders room inside overflow:hidden,
+   and word-spacing carries the visual gap so the gap stays consistent. */
+.hero__title{ word-spacing: .04em; }
+.hero__title .w{ display:inline-block; overflow:hidden; vertical-align:top; padding:.04em 0 .14em; margin:-.04em 0 -.14em; }
 .hero__title .wi{ display:inline-block; }
 @media (prefers-reduced-motion: no-preference){
   .hero__title .wi{ transform: translateY(120%); transition: transform .9s cubic-bezier(.16,.84,.3,1); }
@@ -642,4 +645,87 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 @keyframes ampDrift{
   0%, 100% { transform: translateY(0) scale(1); }
   50%      { transform: translateY(-16px) scale(1.035); }
+}
+
+/* =========================================================
+   HERO — "We build" fast-scan row
+   ========================================================= */
+.hero__build{
+  list-style:none; display:flex; flex-wrap:wrap; align-items:center;
+  row-gap:6px; margin:22px 0 26px;
+  font-family:var(--mono); font-size:12.5px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--tx);
+}
+.hero__build li{ display:inline-flex; align-items:center; }
+.hero__build li::before{ content:"·"; margin:0 11px; color:var(--accent); font-weight:700; }
+.hero__build li:first-child::before{ content:none; }
+.hero__build__lead{ color:var(--tx-faint); }
+
+/* =========================================================
+   EXAMPLE BUILDS — concrete proof module (section 03)
+   ========================================================= */
+.builds{ border:1px solid var(--line); margin-top:48px; background:var(--paper-card); }
+.builds__bar{
+  display:flex; justify-content:space-between; align-items:center; gap:18px;
+  padding:14px 22px; border-bottom:1px solid var(--line);
+  background:linear-gradient(var(--paper-2), var(--paper-card));
+}
+.builds__bar .tick-lbl:first-child{ color:var(--accent); }
+.builds__grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media (max-width:860px){ .builds__grid{ grid-template-columns:1fr; } }
+.build{ padding:30px 26px 32px; border-right:1px solid var(--line); transition:background .18s ease; }
+.build:last-child{ border-right:0; }
+.build:hover{ background:#fff; box-shadow:inset 0 3px 0 var(--accent); }
+@media (max-width:860px){ .build{ border-right:0; border-bottom:1px solid var(--line);} .build:last-child{ border-bottom:0; } }
+.build__no{ font-family:var(--mono); font-size:12px; color:var(--tx-faint); letter-spacing:.12em; }
+.build .tick-lbl{ display:block; color:var(--accent); margin:10px 0 12px; }
+.build h3{ font-size:19px; line-height:1.18; margin-bottom:10px; }
+.build p{ font-size:14.5px; color:var(--tx-mute); line-height:1.5; }
+.build__win{
+  display:block; margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);
+  font-family:var(--mono); font-size:12px; letter-spacing:.02em; line-height:1.5; color:var(--tx);
+}
+.builds__note{
+  padding:16px 22px; border-top:1px solid var(--line);
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; line-height:1.6; color:var(--tx-faint);
+}
+
+/* =========================================================
+   MOBILE TIGHTENING PASS
+   Scoped to small screens — desktop layout is untouched.
+   ========================================================= */
+@media (max-width: 640px){
+  /* shorter operator chrome + sticky header */
+  .topbar__in{ height:32px; font-size:10px; letter-spacing:.08em; }
+  .nav__inner{ height:56px; gap:14px; }
+
+  /* keep the nav CTA obvious but less dominant on small screens */
+  .nav__inner{ gap:10px; }
+  .logo__word{ font-size:16.5px; }
+  .nav__right .btn--accent{ padding:9px 13px; font-size:12.5px; box-shadow:none; white-space:nowrap; }
+
+  /* hero: more breathing room around headline + CTAs */
+  .hero h1{ margin:18px 0 20px; }
+  .hero__build{ margin:18px 0 22px; font-size:11.5px; letter-spacing:.07em; }
+  .hero__build li::before{ margin:0 9px; }
+  .hero__cta{ gap:12px; margin-top:26px; }
+  .hero__cta .btn{ flex:1 1 100%; justify-content:center; }
+  .hero__note{ margin-top:16px; }
+
+  /* large value blocks: keep interior padding generous, not cramped */
+  .arg__key{ padding:24px 22px; }
+  .arg__body{ padding:24px 22px; }
+  .build{ padding:26px 22px 28px; }
+  .svc__meta{ padding:26px 22px; }
+  .svc__main{ padding:26px 22px; }
+  .svc__list{ padding:26px 22px; }
+  .math__fig{ padding:30px 24px; }
+}
+
+/* very small phones (~360–390px): guard against tight chrome text */
+@media (max-width: 430px){
+  .topbar__in{ letter-spacing:.06em; gap:10px; }
+  .topbar__in .right{ gap:0; }
+  .topbar__in .right .hide-sm{ display:none; }
+  .hero__build{ letter-spacing:.06em; }
 }

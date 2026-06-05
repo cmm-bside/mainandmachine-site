@@ -26,7 +26,7 @@
 <meta name="twitter:image" content="https://www.mainandmachine.com/og-image.svg" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
 
-<link rel="stylesheet" href="styles.css?v=10" />
+<link rel="stylesheet" href="styles.css?v=11" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 
 <!-- Structured data -->
@@ -631,19 +631,22 @@
         <div class="tick-lbl"><span>The Ampersand / free</span><span>Weekly</span></div>
         <h3>Read before you ever pick up the phone.</h3>
         <p class="lead" style="font-size:15px;">Free weekly essays. One field. No sales pitches.</p>
-        <div class="subform">
-          <input type="email" placeholder="Email address" aria-label="Email address" />
-          <button class="btn btn--accent">Subscribe</button>
-        </div>
+        <form class="subform" action="https://mainandmachine.substack.com/api/v1/free?nojs=true" method="post" target="_blank">
+          <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
+          <button class="btn btn--accent" type="submit">Subscribe</button>
+        </form>
         <p style="font-family:var(--mono);font-size:11px;color:var(--dtx-faint);margin-top:14px;line-height:1.6;">By subscribing, you agree to Substack's Terms, Collection Notice, and Privacy Policy.</p>
       </div>
       <div class="posts">
         <div class="posts__bar"><span>Recent posts</span><span>RSS / live</span></div>
-        <a class="post" href="#"><span class="post__no">01</span><span class="post__title">The Curator's Era</span></a>
-        <a class="post" href="#"><span class="post__no">02</span><span class="post__title">Leaving Power on the Table</span></a>
-        <a class="post" href="#"><span class="post__no">03</span><span class="post__title">The Proximity Paradox</span></a>
-        <a class="post" href="#"><span class="post__no">04</span><span class="post__title">The Trap That Builds Itself</span></a>
-        <a class="post" href="#"><span class="post__no">05</span><span class="post__title">The Market That Can't Be Talked Down</span></a>
+        <div id="amp-posts">
+          <a class="post" href="https://mainandmachine.substack.com" target="_blank" rel="noopener"><span class="post__no">01</span><span class="post__title">The Curator's Era</span></a>
+          <a class="post" href="https://mainandmachine.substack.com" target="_blank" rel="noopener"><span class="post__no">02</span><span class="post__title">Leaving Power on the Table</span></a>
+          <a class="post" href="https://mainandmachine.substack.com" target="_blank" rel="noopener"><span class="post__no">03</span><span class="post__title">The Proximity Paradox</span></a>
+          <a class="post" href="https://mainandmachine.substack.com" target="_blank" rel="noopener"><span class="post__no">04</span><span class="post__title">The Trap That Builds Itself</span></a>
+          <a class="post" href="https://mainandmachine.substack.com" target="_blank" rel="noopener"><span class="post__no">05</span><span class="post__title">The Market That Can't Be Talked Down</span></a>
+        </div>
+        <a class="post post--all" href="/blog"><span class="post__no">→</span><span class="post__title">Read The Ampersand</span><span class="post__date">All posts</span></a>
       </div>
     </div>
   </div>
@@ -856,6 +859,8 @@
   update();
 })();
 </script>
+
+<script src="/blog.js?v=11"></script>
 
 </body>
 </html>

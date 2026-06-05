@@ -26,7 +26,7 @@
 <meta name="twitter:image" content="https://www.mainandmachine.com/og-image.svg" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
 
-<link rel="stylesheet" href="styles.css?v=8" />
+<link rel="stylesheet" href="styles.css?v=10" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 
 <!-- Structured data -->
@@ -513,16 +513,81 @@
         <span class="kicker">10 / The math</span>
         <h2 class="h2 mt-s">What this is worth, <span class="accent-tx">roughly.</span></h2>
       </div>
-      <p class="lead">Numbers depend on your business, so treat this as illustration, not a promise. We will run your real numbers in the assessment.</p>
+      <p class="lead">Pick your industry. Move the team-size slider. See what automating the right handful of workflows could return in year one. Ranges, not promises — we run your real numbers in the assessment.</p>
     </div>
-    <div class="math">
-      <div class="math__fig crop">
-        <div class="math__big">+$132K</div>
-        <div class="math__cap">Illustrative first-year net · 25-person firm · after our fee</div>
+
+    <div class="roi crop" aria-label="ROI estimate calculator">
+      <div class="roi__bar">
+        <span class="roi__id"><span class="roi__dot" aria-hidden="true"></span>Estimate.v1</span>
+        <span class="roi__id roi__id--mute">Illustrative / ranges vary</span>
       </div>
-      <div class="math__side">
-        <p>A twenty-five-person firm that automates the right handful of workflows commonly recovers enough hours and prevents enough error to net somewhere around a hundred and thirty-two thousand dollars in the first year, after our fee. We will run your real numbers in the assessment. <b style="color:var(--tx);">If they do not work, we will tell you.</b></p>
+
+      <div class="roi__grid">
+        <!-- inputs -->
+        <div class="roi__inputs">
+          <div class="roi__field">
+            <label class="tick-lbl" for="calcIndustry">01 / Industry</label>
+            <div class="roi__selectwrap">
+              <select id="calcIndustry" class="roi__select">
+                <option value="professional-services">Professional services</option>
+                <option value="retail">Retail &amp; e-commerce</option>
+                <option value="healthcare">Healthcare &amp; wellness</option>
+                <option value="construction">Construction &amp; trades</option>
+                <option value="hospitality">Hospitality &amp; food service</option>
+              </select>
+              <span class="roi__caret" aria-hidden="true">▾</span>
+            </div>
+            <p class="roi__note" id="calcNote">Law, accounting, insurance, consulting, financial advisory.</p>
+          </div>
+
+          <div class="roi__field">
+            <div class="roi__sliderhead">
+              <label class="tick-lbl" for="calcRange">02 / Team size</label>
+              <span class="roi__count mono" id="calcCount">25</span>
+            </div>
+            <input type="range" id="calcRange" class="roi__range" min="5" max="100" value="25"
+              aria-label="Team size" aria-valuemin="5" aria-valuemax="100" aria-valuenow="25" />
+            <div class="roi__scale"><span>5</span><span>50</span><span>100</span></div>
+          </div>
+
+          <div class="roi__assume">
+            <span class="tick-lbl">Assumptions</span>
+            <ul>
+              <li><span>Manual work / employee</span><span class="mono tab" id="calcAManual">$4,000/yr</span></li>
+              <li><span>Lost revenue / employee</span><span class="mono tab" id="calcARevenue">$2,000/yr</span></li>
+              <li><span>Sprint investment</span><span class="mono tab" id="calcAImpl">$18,000</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- output -->
+        <div class="roi__output">
+          <span class="tick-lbl">Output / Year one</span>
+          <ul class="roi__rows">
+            <li><span>Repetitive manual work</span><span class="mono tab roi__pos" id="calcManual">+$100,000</span></li>
+            <li><span>Lost revenue (capacity)</span><span class="mono tab roi__pos" id="calcRevenue">+$50,000</span></li>
+            <li><span>Sprint investment</span><span class="mono tab roi__neg" id="calcImpl">-$18,000</span></li>
+          </ul>
+          <div class="roi__net">
+            <div class="roi__nethead">
+              <span class="accent-tx">Net ROI / Year 1</span>
+              <span id="calcFor">For 25 people</span>
+            </div>
+            <div class="roi__big tab" id="calcRoi">+$132,000</div>
+          </div>
+          <p class="roi__disclaim">Your exact numbers are different. The calculator gives a signal, not a guarantee. We quote ranges in the assessment and commit to fixed scope at engagement.</p>
+        </div>
       </div>
+
+      <div class="roi__foot">
+        <span>Total opportunity: <b class="tab" id="calcTotal">$150,000</b></span>
+        <span>Method: MM-ROI-v1 / 2026</span>
+      </div>
+    </div>
+
+    <div class="roi__cta">
+      <a class="btn btn--accent btn--lg" href="#assessment">See what we'd automate for you <span class="arr">→</span></a>
+      <p>A twenty-five-person firm that automates the right handful of workflows commonly nets around this in year one, after our fee. <b style="color:var(--tx);">If your numbers don't work, we'll tell you.</b></p>
     </div>
   </div>
 </section>
@@ -679,7 +744,7 @@
 
 <script>
 (function(){
-  var sels = ['.hero__grid > *','.argument > .arg','.head-block','.datagrid > div','.prose-2 > p','.diffs > .diff','.svc__item','.phases > .phase','.closer','.why > div','.profile > div','.industries .ind','.math > *','.bio > *','.news > *','.paths > .path','.foot__top > *'];
+  var sels = ['.hero__grid > *','.argument > .arg','.head-block','.datagrid > div','.prose-2 > p','.diffs > .diff','.svc__item','.phases > .phase','.closer','.why > div','.profile > div','.industries .ind','.math > *','.roi','.roi__cta','.bio > *','.news > *','.paths > .path','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
   document.querySelectorAll('.rv').forEach(function(el){
@@ -692,6 +757,103 @@
   var hTitle = document.querySelector('.hero__title');
   if(hTitle){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ hTitle.classList.add('in'); }); }); }
   setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); if(hTitle){ hTitle.classList.add('in'); } }, 1400);
+})();
+</script>
+
+<!-- ============ ROI CALCULATOR ============ -->
+<script>
+(function(){
+  var industry = document.getElementById('calcIndustry');
+  if(!industry) return;
+  var range   = document.getElementById('calcRange');
+  var count   = document.getElementById('calcCount');
+  var note    = document.getElementById('calcNote');
+  var forEl   = document.getElementById('calcFor');
+
+  var rates = {
+    'professional-services': { manual: 4000, revenue: 2000, note: 'Law, accounting, insurance, consulting, financial advisory.' },
+    'retail':               { manual: 3200, revenue: 2400, note: 'Physical, online, and omnichannel operators.' },
+    'healthcare':           { manual: 3600, revenue: 2800, note: 'Practices, clinics, wellness businesses.' },
+    'construction':         { manual: 3000, revenue: 1800, note: 'HVAC, plumbing, electrical, general contracting.' },
+    'hospitality':          { manual: 2400, revenue: 2200, note: 'Restaurants, hotels, catering, venues.' }
+  };
+
+  var usd = new Intl.NumberFormat('en-US', { style:'currency', currency:'USD', maximumFractionDigits:0 });
+  function fmt(n){ return usd.format(Math.round(n)); }
+  function signed(n){ return (n < 0 ? '-' : '+') + fmt(Math.abs(n)); }
+
+  var els = {
+    aManual:  document.getElementById('calcAManual'),
+    aRevenue: document.getElementById('calcARevenue'),
+    aImpl:    document.getElementById('calcAImpl'),
+    manual:   document.getElementById('calcManual'),
+    revenue:  document.getElementById('calcRevenue'),
+    impl:     document.getElementById('calcImpl'),
+    roi:      document.getElementById('calcRoi'),
+    total:    document.getElementById('calcTotal')
+  };
+
+  function compute(){
+    var r = rates[industry.value];
+    var emp = Number(range.value);
+    var manual = emp * r.manual;
+    var revenue = emp * r.revenue;
+    var total = manual + revenue;
+    var implementation = Math.min(45000, Math.max(12000, 720 * emp));
+    var roi = total - implementation;
+    return { r:r, emp:emp, manual:manual, revenue:revenue, total:total, implementation:implementation, roi:roi };
+  }
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var prev = null, frame = 0;
+
+  function paintStatic(m){
+    note.textContent = m.r.note;
+    count.textContent = m.emp;
+    range.setAttribute('aria-valuenow', m.emp);
+    forEl.textContent = 'For ' + m.emp + (m.emp === 1 ? ' person' : ' people');
+    els.aManual.textContent  = fmt(m.r.manual) + '/yr';
+    els.aRevenue.textContent = fmt(m.r.revenue) + '/yr';
+  }
+
+  function paintNumbers(v){
+    els.aImpl.textContent   = fmt(v.implementation);
+    els.manual.textContent  = signed(v.manual);
+    els.revenue.textContent = signed(v.revenue);
+    els.impl.textContent    = signed(-v.implementation);
+    els.roi.textContent     = (v.roi >= 0 ? '+' : '') + fmt(v.roi);
+    els.total.textContent   = fmt(v.total);
+  }
+
+  function lerp(a, b, t){
+    return {
+      manual: a.manual + (b.manual - a.manual) * t,
+      revenue: a.revenue + (b.revenue - a.revenue) * t,
+      total: a.total + (b.total - a.total) * t,
+      implementation: a.implementation + (b.implementation - a.implementation) * t,
+      roi: a.roi + (b.roi - a.roi) * t
+    };
+  }
+
+  function update(){
+    var m = compute();
+    paintStatic(m);
+    if(reduce || !prev){ paintNumbers(m); prev = m; return; }
+    cancelAnimationFrame(frame);
+    var from = prev, start = performance.now(), dur = 400;
+    (function tick(now){
+      var t = Math.min(1, (now - start) / dur);
+      var eased = 1 - Math.pow(1 - t, 3);
+      var cur = lerp(from, m, eased);
+      paintNumbers(cur);
+      prev = cur;
+      if(t < 1){ frame = requestAnimationFrame(tick); } else { prev = m; }
+    })(start);
+  }
+
+  industry.addEventListener('change', update);
+  range.addEventListener('input', update);
+  update();
 })();
 </script>
 

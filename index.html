@@ -78,7 +78,7 @@
       <a href="#pricing">Pricing</a>
       <a href="#method">Method</a>
       <a href="#about">Who We Are</a>
-      <a href="/blog">Blog</a>
+      <a href="/blog" data-spy="writing">Blog</a>
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="#assessment">Book an assessment</a>
@@ -870,10 +870,14 @@
   var nav = document.querySelector('.nav__links');
   if(!nav) return;
   var header = document.querySelector('.nav');
-  // Only in-page anchor links participate — excludes Blog (/blog) and the CTA (outside .nav__links).
-  var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+  // Participating links: in-page anchors, plus any link with data-spy="<section-id>"
+  // (lets the Blog link — which routes to /blog — still light up over the homepage #writing section).
+  // The CTA and logo sit outside .nav__links, so they never participate.
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
   var targets = links.map(function(a){
-    var id = a.getAttribute('href').slice(1);
+    var spy = a.getAttribute('data-spy');
+    var href = a.getAttribute('href') || '';
+    var id = spy || (href.charAt(0) === '#' ? href.slice(1) : '');
     var sec = id ? document.getElementById(id) : null;
     return sec ? { link: a, sec: sec } : null;
   }).filter(Boolean);

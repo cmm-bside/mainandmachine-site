@@ -7,7 +7,7 @@
      - client-side search (#blog-search over title + excerpt + searchText)
      - archive tabs (.archtab)
      - beehiiv subscribe forms/links ([data-beehiiv-subscribe])
-     - copy-link buttons (.post__copy) */
+     - copy-link buttons (.essay__copy) */
 (function () {
 	"use strict";
 
@@ -144,7 +144,7 @@
 
 	/* ---------- copy link ---------- */
 	function wireCopy() {
-		var btns = document.querySelectorAll(".post__copy");
+		var btns = document.querySelectorAll(".essay__copy");
 		Array.prototype.forEach.call(btns, function (btn) {
 			btn.addEventListener("click", function () {
 				var url = btn.getAttribute("data-copy") || location.href;

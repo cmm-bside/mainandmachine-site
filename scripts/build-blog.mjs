@@ -357,7 +357,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	const readNext = allPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
 	const heroBlock = post.heroImage
-		? `<figure class="post__hero"><img src="${attr(post.heroImage.assetUrl)}" alt="${attr(post.heroImage.alt || post.title)}" /></figure>`
+		? `<figure class="essay__hero"><img src="${attr(post.heroImage.assetUrl)}" alt="${attr(post.heroImage.alt || post.title)}" /></figure>`
 		: "";
 
 	const shareUrl = encodeURIComponent(canonical);
@@ -366,13 +366,13 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	const body = `${topbar()}
 ${nav()}
 <article class="section paper" data-screen-label="${esc(BLOG_NAME)}">
-  <div class="wrap post">
-    <a class="post__back" href="/blog">← ${esc(BLOG_NAME)}</a>
-    <header class="post__head">
+  <div class="wrap essay">
+    <a class="essay__back" href="/blog">← ${esc(BLOG_NAME)}</a>
+    <header class="essay__head">
       <span class="kicker">Writing / ${esc(BLOG_NAME)}</span>
-      <h1 class="post__title">${esc(post.title)}</h1>
-      ${post.excerpt ? `<p class="post__dek">${esc(post.excerpt)}</p>` : ""}
-      <div class="post__meta">
+      <h1 class="essay__title">${esc(post.title)}</h1>
+      ${post.excerpt ? `<p class="essay__dek">${esc(post.excerpt)}</p>` : ""}
+      <div class="essay__meta">
         <span>${esc(AUTHOR)}</span>
         <span>${esc(formatDate(post.publishedAt))}</span>
         <span>${minutes} min read</span>
@@ -382,12 +382,12 @@ ${nav()}
     <div class="prose">
 ${bodyHtml || `<p>This essay is being mirrored from beehiiv. <a href="${attr(post.webUrl || "/blog")}">Read it here</a>.</p>`}
     </div>
-    <div class="post__share">
+    <div class="essay__share">
       <span class="tick-lbl">Share</span>
       <a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}" target="_blank" rel="noopener noreferrer">X</a>
       <a href="https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="mailto:?subject=${shareText}&body=${shareUrl}">Email</a>
-      <button type="button" class="post__copy" data-copy="${attr(canonical)}">Copy link</button>
+      <button type="button" class="essay__copy" data-copy="${attr(canonical)}">Copy link</button>
     </div>
   </div>
 </article>
@@ -403,7 +403,7 @@ ${readNext.length
 
 <section class="section ink" data-screen-label="Work with us">
   <div class="wrap">
-    <div class="post__cta crop">
+    <div class="essay__cta crop">
       <span class="kicker kicker--plain">Main &amp; Machine</span>
       <h2 class="h2 mt-s">Like how we think? Put it to work.</h2>
       <p class="lead">Book a free thirty-minute assessment. A senior advisor walks your workflows and tells you where AI actually pays — and where it doesn't.</p>

@@ -34,4 +34,4 @@ export const SITEMAP_PATH = path.join(ROOT, "sitemap.xml");
 export const STATIC_ROUTES = ["/"];
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "12";
+export const ASSET_VERSION = "13";

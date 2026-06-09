@@ -105,7 +105,7 @@ export function nav() {
       <a href="/#pricing">Pricing</a>
       <a href="/#method">Method</a>
       <a href="/#about">Who We Are</a>
-      <a href="/blog" aria-current="page">Writing</a>
+      <a href="/blog" aria-current="page">Blog</a>
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="/#assessment">Book an assessment</a>

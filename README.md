@@ -1,10 +1,17 @@
 # Main & Machine — website
 
-The **production website** for Main & Machine. It is a static site (no build step, no
-framework, no server code). The plan this README sets up:
+The **production website** for Main & Machine. The marketing site is plain static
+HTML/CSS/JS (no framework). The one build step is the blog, **The Ampersand**, which is
+sourced from beehiiv at build time and prerendered to static pages — see
+[`BLOG_SETUP.md`](./BLOG_SETUP.md).
 
-> **Source code lives on GitHub → Cloudflare Pages auto-deploys it to
-> www.mainandmachine.com on every push.**
+> **Source code lives on GitHub → Cloudflare Pages runs `npm run build:static`
+> and deploys to www.mainandmachine.com on every push.**
+
+> **Cloudflare Pages build settings:** Build command `npm run build:static`,
+> output directory `/`. Set `BEEHIIV_API_KEY` (secret) and `BEEHIIV_PUBLICATION_ID`
+> in the project's environment variables. Without them the build still succeeds and
+> ships an empty blog. Details in [`BLOG_SETUP.md`](./BLOG_SETUP.md).
 
 ```
 mainandmachine-site/

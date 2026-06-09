@@ -8,3 +8,11 @@ node_modules/
 .wrangler/
 .vercel/
 .netlify/
+
+# generated at build from beehiiv (npm run build:static) — never committed
+src/data/blog-posts.js
+blog-data/
+blog/index.html
+blog/rss.xml
+blog/*/
+sitemap.xml

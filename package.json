@@ -1,0 +1,18 @@
+{
+  "name": "mainandmachine-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Main & Machine — static site with a build-time blog (The Ampersand) sourced from beehiiv.",
+  "scripts": {
+    "blog:fetch": "node scripts/fetch-blog-posts.mjs",
+    "blog:build": "node scripts/build-blog.mjs",
+    "seo:check": "node scripts/check-seo.mjs",
+    "build:static": "npm run blog:fetch && npm run blog:build && npm run seo:check",
+    "postinstall": "node scripts/build-blog.mjs",
+    "preview": "python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "sanitize-html": "^2.13.0"
+  }
+}

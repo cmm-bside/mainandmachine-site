@@ -1,149 +1,178 @@
-/* The Ampersand — pulls posts from /api/posts (Substack mirror) and renders
-   the homepage teaser and the /blog feed. Progressive enhancement: if the feed
-   is empty or unreachable, the homepage keeps its static fallback list and the
-   blog page shows a tasteful "coming soon" state. */
+/* The Ampersand — client glue for a build-time blog.
+   Everything is sourced from /blog-data/index.json, which is generated at
+   build from beehiiv. NO runtime newsletter API calls.
+
+   Wires up, only where the relevant elements exist:
+     - homepage teaser (#amp-posts)
+     - client-side search (#blog-search over title + excerpt + searchText)
+     - archive tabs (.archtab)
+     - beehiiv subscribe forms/links ([data-beehiiv-subscribe])
+     - copy-link buttons (.post__copy) */
 (function () {
 	"use strict";
 
-	var SUBSTACK = "https://mainandmachine.substack.com";
+	var INDEX_URL = "/blog-data/index.json";
+	var dataPromise = null;
 
-	function fmtDate(iso, fallback) {
-		var d = iso ? new Date(iso) : null;
-		if (!d || isNaN(d.getTime())) return fallback || "";
+	function loadIndex() {
+		if (!dataPromise) {
+			dataPromise = fetch(INDEX_URL, { headers: { Accept: "application/json" } })
+				.then(function (r) { return r.ok ? r.json() : { posts: [], meta: {} }; })
+				.catch(function () { return { posts: [], meta: {} }; });
+		}
+		return dataPromise;
+	}
+
+	function esc(s) {
+		return String(s == null ? "" : s)
+			.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+			.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+	}
+
+	function fmtDate(iso) {
+		if (!iso) return "";
+		var d = new Date(iso);
+		if (isNaN(d.getTime())) return "";
 		try {
-			return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-		} catch (e) {
-			return fallback || "";
-		}
+			return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+		} catch (e) { return ""; }
 	}
 
-	function el(tag, cls, text) {
-		var n = document.createElement(tag);
-		if (cls) n.className = cls;
-		if (text != null) n.textContent = text;
-		return n;
+	function cardHTML(post) {
+		var img = post.heroImage && post.heroImage.assetUrl;
+		var thumb = img
+			? '<div class="feed__card-img"><img loading="lazy" decoding="async" alt="' + esc((post.heroImage && post.heroImage.alt) || post.title) + '" src="' + esc(img) + '" /></div>'
+			: '<div class="feed__card-img is-empty"></div>';
+		return '<a class="feed__card" href="' + esc(post.url) + '">' + thumb +
+			'<div class="feed__card-body">' +
+			'<span class="feed__date">' + esc(fmtDate(post.publishedAt)) + '</span>' +
+			'<h3 class="feed__card-title">' + esc(post.title) + '</h3>' +
+			(post.excerpt ? '<p class="feed__card-excerpt">' + esc(post.excerpt) + '</p>' : '') +
+			'</div></a>';
 	}
 
-	function thumb(post, cls) {
-		var box = el("div", cls);
-		if (post.image) {
-			var img = el("img");
-			img.loading = "lazy";
-			img.alt = "";
-			img.src = post.image;
-			img.addEventListener("error", function () {
-				box.classList.add("is-empty");
-				if (img.parentNode) box.removeChild(img);
-			});
-			box.appendChild(img);
-		} else {
-			box.classList.add("is-empty");
-		}
-		return box;
-	}
-
-	function fetchPosts() {
-		return fetch("/api/posts", { headers: { Accept: "application/json" } })
-			.then(function (r) { return r.ok ? r.json() : { posts: [] }; })
-			.catch(function () { return { posts: [] }; });
-	}
-
-	/* ---------- homepage teaser (section 12) ---------- */
+	/* ---------- homepage teaser ---------- */
 	function renderTeaser(posts) {
 		var list = document.getElementById("amp-posts");
 		if (!list || !posts.length) return; // keep static fallback
 		list.innerHTML = "";
 		posts.slice(0, 5).forEach(function (post, i) {
-			var a = el("a", "post");
+			var a = document.createElement("a");
+			a.className = "post";
 			a.href = post.url;
-			a.target = "_blank";
-			a.rel = "noopener";
-			a.appendChild(el("span", "post__no", ("0" + (i + 1)).slice(-2)));
-			a.appendChild(el("span", "post__title", post.title));
-			a.appendChild(el("span", "post__date", fmtDate(post.iso, post.date)));
+			a.innerHTML =
+				'<span class="post__no">' + ("0" + (i + 1)).slice(-2) + '</span>' +
+				'<span class="post__title">' + esc(post.title) + '</span>' +
+				'<span class="post__date">' + esc(fmtDate(post.publishedAt)) + '</span>';
 			list.appendChild(a);
 		});
 	}
 
-	/* ---------- /blog feed ---------- */
-	function renderFeed(payload) {
-		var root = document.getElementById("feed-root");
-		if (!root) return;
-		var posts = payload.posts || [];
-		root.classList.remove("is-loading");
+	/* ---------- subscribe wiring ---------- */
+	function wireSubscribe(meta) {
+		var url = meta && meta.subscribeUrl;
+		if (!url) return;
+		var nodes = document.querySelectorAll("[data-beehiiv-subscribe]");
+		Array.prototype.forEach.call(nodes, function (node) {
+			if (node.tagName === "FORM") {
+				node.setAttribute("action", url);
+				node.setAttribute("method", "get");
+				node.setAttribute("target", "_blank");
+			} else if (node.tagName === "A") {
+				node.setAttribute("href", url);
+			}
+		});
+	}
 
-		if (!posts.length) {
-			root.innerHTML = "";
-			var empty = el("div", "feed__empty crop");
-			empty.appendChild(el("span", "kicker kicker--plain", "The Ampersand"));
-			empty.appendChild(el("h2", "h2 mt-s", "The first dispatch is on its way."));
-			var p = el("p", "lead");
-			p.textContent = "Free weekly essays on building durable things in a noisy time — no hype, no funnels. Subscribe and you'll get the first one the moment it's out.";
-			empty.appendChild(p);
-			var cta = el("a", "btn btn--accent btn--lg");
-			cta.href = SUBSTACK + "/subscribe";
-			cta.target = "_blank";
-			cta.rel = "noopener";
-			cta.textContent = "Subscribe on Substack →";
-			empty.appendChild(cta);
-			root.appendChild(empty);
-			return;
+	/* ---------- client search ---------- */
+	function tokenize(q) { return q.toLowerCase().split(/\s+/).filter(Boolean); }
+
+	function matches(post, tokens) {
+		var hay = (post.title + " " + (post.excerpt || "") + " " + (post.searchText || "")).toLowerCase();
+		return tokens.every(function (t) { return hay.indexOf(t) !== -1; });
+	}
+
+	function wireSearch(posts) {
+		var input = document.getElementById("blog-search");
+		var results = document.getElementById("blog-results");
+		var feed = document.getElementById("blog-feed");
+		if (!input || !results || !feed) return;
+
+		function run() {
+			var q = input.value.trim();
+			if (!q) {
+				results.hidden = true;
+				results.innerHTML = "";
+				feed.hidden = false;
+				return;
+			}
+			var tokens = tokenize(q);
+			var hits = posts.filter(function (p) { return matches(p, tokens); });
+			feed.hidden = true;
+			results.hidden = false;
+			if (!hits.length) {
+				results.innerHTML = '<div class="feed__empty"><span class="kicker kicker--plain">No matches</span><h2 class="h2 mt-s">Nothing for “' + esc(q) + '.”</h2><p class="lead">Try a different word — search runs across every essay\'s full text.</p></div>';
+				return;
+			}
+			results.innerHTML =
+				'<div class="feed__bar"><span class="tick-lbl">' + hits.length + ' result' + (hits.length === 1 ? '' : 's') + '</span><span class="tick-lbl">“' + esc(q) + '”</span></div>' +
+				'<div class="feed__grid">' + hits.map(cardHTML).join("") + '</div>';
 		}
 
-		root.innerHTML = "";
+		input.addEventListener("input", run);
+	}
 
-		// Featured — latest post
-		var f = posts[0];
-		var feat = el("a", "feed__featured crop");
-		feat.href = f.url; feat.target = "_blank"; feat.rel = "noopener";
-		feat.appendChild(thumb(f, "feed__featured-img"));
-		var fbody = el("div", "feed__featured-body");
-		fbody.appendChild(el("span", "tick-lbl", "Latest dispatch · " + fmtDate(f.iso, f.date)));
-		fbody.appendChild(el("h2", "feed__featured-title", f.title));
-		if (f.excerpt) fbody.appendChild(el("p", "feed__excerpt", f.excerpt));
-		var read = el("span", "feed__read");
-		read.textContent = "Read the essay →";
-		fbody.appendChild(read);
-		feat.appendChild(fbody);
-		root.appendChild(feat);
-
-		// Recent grid
-		var rest = posts.slice(1);
-		if (rest.length) {
-			var bar = el("div", "feed__bar");
-			bar.appendChild(el("span", "tick-lbl", "Recent dispatches"));
-			bar.appendChild(el("span", "tick-lbl", "RSS / live from Substack"));
-			root.appendChild(bar);
-
-			var grid = el("div", "feed__grid");
-			rest.forEach(function (post) {
-				var card = el("a", "feed__card");
-				card.href = post.url; card.target = "_blank"; card.rel = "noopener";
-				card.appendChild(thumb(post, "feed__card-img"));
-				var body = el("div", "feed__card-body");
-				body.appendChild(el("span", "feed__date", fmtDate(post.iso, post.date)));
-				body.appendChild(el("h3", "feed__card-title", post.title));
-				if (post.excerpt) body.appendChild(el("p", "feed__card-excerpt", post.excerpt));
-				card.appendChild(body);
-				grid.appendChild(card);
+	/* ---------- archive tabs ---------- */
+	function wireTabs() {
+		var tabs = document.querySelectorAll(".archtab");
+		if (!tabs.length) return;
+		Array.prototype.forEach.call(tabs, function (tab) {
+			tab.addEventListener("click", function () {
+				var name = tab.getAttribute("data-tab");
+				Array.prototype.forEach.call(tabs, function (t) {
+					var on = t === tab;
+					t.classList.toggle("is-active", on);
+					t.setAttribute("aria-selected", on ? "true" : "false");
+				});
+				["latest", "top"].forEach(function (key) {
+					var pane = document.getElementById("tab-" + key);
+					if (pane) pane.hidden = key !== name;
+				});
 			});
-			root.appendChild(grid);
-		}
+		});
+	}
 
-		var archive = el("a", "feed__archive");
-		archive.href = SUBSTACK + "/archive";
-		archive.target = "_blank"; archive.rel = "noopener";
-		archive.textContent = "View the full archive →";
-		root.appendChild(archive);
+	/* ---------- copy link ---------- */
+	function wireCopy() {
+		var btns = document.querySelectorAll(".post__copy");
+		Array.prototype.forEach.call(btns, function (btn) {
+			btn.addEventListener("click", function () {
+				var url = btn.getAttribute("data-copy") || location.href;
+				var done = function () {
+					var label = btn.textContent;
+					btn.textContent = "Copied ✓";
+					setTimeout(function () { btn.textContent = label; }, 1600);
+				};
+				if (navigator.clipboard && navigator.clipboard.writeText) {
+					navigator.clipboard.writeText(url).then(done, done);
+				} else { done(); }
+			});
+		});
 	}
 
 	function init() {
-		var needsTeaser = document.getElementById("amp-posts");
-		var needsFeed = document.getElementById("feed-root");
-		if (!needsTeaser && !needsFeed) return;
-		fetchPosts().then(function (payload) {
-			renderTeaser(payload.posts || []);
-			renderFeed(payload);
+		wireTabs();
+		wireCopy();
+		var needsData =
+			document.getElementById("amp-posts") ||
+			document.getElementById("blog-search") ||
+			document.querySelector("[data-beehiiv-subscribe]");
+		if (!needsData) return;
+		loadIndex().then(function (payload) {
+			var posts = payload.posts || [];
+			renderTeaser(posts);
+			wireSearch(posts);
+			wireSubscribe(payload.meta || {});
 		});
 	}
 

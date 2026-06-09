@@ -7,3 +7,12 @@
 # styles.css is cache-busted via ?v=N in index.html, so it can cache for a while
 /styles.css
   Cache-Control: public, max-age=86400
+
+# Blog search/teaser data — short cache, refreshed on every deploy
+/blog-data/*
+  Cache-Control: public, max-age=300
+  Content-Type: application/json; charset=utf-8
+
+/blog/rss.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Cache-Control: public, max-age=1800

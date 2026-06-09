@@ -369,7 +369,7 @@
 </section>
 
 <!-- ============ 06 WHY US ============ -->
-<section class="section paper" data-screen-label="Why us">
+<section class="section paper" id="why" data-screen-label="Why us">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -599,20 +599,21 @@
     <div class="head-block">
       <div>
         <span class="kicker">11 / Who builds this</span>
-        <h2 class="h2 mt-s">Christopher Myers, and the bench behind him.</h2>
+        <h2 class="h2 mt-s">Christopher Myers.</h2>
       </div>
-      <p class="lead">One question built the career. A second one built the team.</p>
+      <p class="lead">A professor, an investor, and an operator — twenty-six years in service of Main Street.</p>
     </div>
     <div class="bio">
-      <div class="bio__card crop">
-        <div class="bio__name">Christopher Myers</div>
-        <div class="bio__role">Founder &amp; Chairman, Main &amp; Machine · Professor of Management &amp; Entrepreneurship, ASU W. P. Carey School of Business · CEO, B:Side Capital + Fund · Author</div>
-      </div>
+      <figure class="bio__portrait crop">
+        <img src="/images/christopher-myers-hedcut.png" alt="Engraved portrait of Christopher Myers" width="1254" height="1254" />
+        <figcaption>
+          <span class="bio__name">Christopher Myers</span>
+          <span class="bio__role">CEO, B:Side Capital + Fund · Founder &amp; Chairman, Main &amp; Machine · Professor, ASU W.P. Carey · Author</span>
+        </figcaption>
+      </figure>
       <div class="bio__prose">
-        <p>Main &amp; Machine was founded by Christopher Myers, a professor of management and entrepreneurship at Arizona State University's W. P. Carey School of Business, CEO of B:Side Capital and Fund, and the author of several books on leadership and small business. He brings <b>26 years of small business experience</b> to the work.</p>
-        <p>He has spent his career on one question. <b>How do you build something durable, on Main Street, without losing the part that made it worth building in the first place.</b></p>
-        <p>Lately he has been answering a second one. The bottom rung of the career ladder is disappearing. The entry-level work that used to turn sharp graduates into seasoned operators is the first thing AI erases, and most people are content to just lament that. He decided to build the rung instead.</p>
-        <p>So the people who deliver your work are native to this technology. They did not pick it up in a weekend bootcamp or bolt it onto an older way of working. They grew up with it. Paired with senior judgment on every engagement, they are the living proof of what we tell every client: the future does not belong to the people who can do what AI does. It belongs to the people who can take what the machine produces and be accountable for it. We hire for that. We train for that. And we put both in the room when we build for you.</p>
+        <p>Christopher has spent twenty-six years backing Main Street — today as <b>CEO of B:Side Capital and Fund</b>, a professor of entrepreneurship at ASU's W.P. Carey School, and the author of several books on small business. Main &amp; Machine grew out of that same work: how do you build something durable without losing the part that made it worth building.</p>
+        <p>As founder and chairman, he cultivated a team of <b>AI-native talent</b> built to help Main Street navigate the age of machine intelligence. The future doesn't belong to the people who can do what AI does — it belongs to the people who can take what the machine produces and <b>be accountable for it.</b> We hire for that, train for that, and put senior judgment in the room on every build.</p>
         <div class="bio__press">Featured in — Forbes · The Wall Street Journal · The New York Times · Inc. · TechCrunch · MSNBC · Fox Business</div>
       </div>
     </div>
@@ -726,7 +727,7 @@
         <h5>More</h5>
         <ul>
           <li><a href="#industries">Who this is for</a></li>
-          <li><a href="#about">Why us</a></li>
+          <li><a href="#why">Why us</a></li>
           <li><a href="#writing">The Ampersand</a></li>
           <li><a href="#paths">Where are you?</a></li>
         </ul>
@@ -863,6 +864,43 @@
 })();
 </script>
 
+<script>
+/* Nav scroll-spy: highlight the deepest in-page section whose top has passed the sticky header. */
+(function(){
+  var nav = document.querySelector('.nav__links');
+  if(!nav) return;
+  var header = document.querySelector('.nav');
+  // Only in-page anchor links participate — excludes Blog (/blog) and the CTA (outside .nav__links).
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+  var targets = links.map(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var sec = id ? document.getElementById(id) : null;
+    return sec ? { link: a, sec: sec } : null;
+  }).filter(Boolean);
+  if(!targets.length) return;
+  // Order by document position so "deepest passed" is correct regardless of nav order.
+  targets.sort(function(a,b){
+    return (a.sec.compareDocumentPosition(b.sec) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+  });
+
+  var ticking = false;
+  function update(){
+    ticking = false;
+    var hb = header ? header.getBoundingClientRect().height : 0; // real header height, not hardcoded
+    var line = hb + 1; // activate when a section top reaches just below the header
+    var active = null;
+    for(var i=0;i<targets.length;i++){
+      if(targets[i].sec.getBoundingClientRect().top <= line){ active = targets[i].link; }
+    }
+    links.forEach(function(a){ a.classList.toggle('is-active', a === active); });
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
 <script src="/blog.js?v=13"></script>
 
 </body>

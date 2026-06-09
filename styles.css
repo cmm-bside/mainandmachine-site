@@ -152,6 +152,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .nav__links { display: flex; gap: 24px; margin-left: 8px; }
 .nav__links a { font-size: 14.5px; font-weight: 500; color: var(--tx-mute); transition: color .15s; }
 .nav__links a:hover { color: var(--tx); }
+.nav__links a.is-active { color: var(--tx); }
 .nav__right { margin-left: auto; display: flex; align-items: center; gap: 18px; }
 .nav__pricing { font-size: 14.5px; font-weight: 600; }
 @media (max-width: 920px) { .nav__links { display: none; } }
@@ -658,9 +659,11 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 
 /* ---- bio ---- */
 .bio{ display:grid; grid-template-columns: 320px 1fr; gap: clamp(28px,4vw,60px); align-items:start; }
-.bio__card{ border:1px solid var(--line); background:var(--paper-card); padding:30px; }
-.bio__name{ font-weight:800; font-size:27px; letter-spacing:-.02em; }
-.bio__role{ font-family:var(--mono); font-size:12px; color:var(--tx-mute); letter-spacing:.04em; margin-top:12px; line-height:1.7; }
+.bio__portrait{ margin:0; border:1px solid var(--line); background:var(--paper-card); }
+.bio__portrait img{ display:block; width:100%; height:auto; filter:saturate(0); mix-blend-mode:multiply; }
+.bio__portrait figcaption{ display:block; padding:18px 22px 20px; border-top:1px solid var(--line); }
+.bio__name{ display:block; font-weight:800; font-size:21px; letter-spacing:-.02em; }
+.bio__role{ display:block; font-family:var(--mono); font-size:11px; color:var(--tx-mute); letter-spacing:.04em; margin-top:10px; line-height:1.7; }
 .bio__prose p{ font-size:18px; line-height:1.6; color:var(--tx-mute); max-width:60ch; }
 .bio__prose p b{ color: var(--tx); font-weight:700; }
 .bio__prose p + p{ margin-top:20px; }

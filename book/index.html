@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book an Assessment — Main &amp; Machine</title>
+<meta name="description" content="Book a free 30-minute AI Opportunity Assessment. A senior advisor walks your workflows and shows you where AI pays, where it doesn't, and what it's worth." />
+<link rel="canonical" href="https://www.mainandmachine.com/book/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="Book an Assessment — Main &amp; Machine" />
+<meta property="og:description" content="Book a free 30-minute AI Opportunity Assessment. A senior advisor walks your workflows and shows you where AI pays, where it doesn't, and what it's worth." />
+<meta property="og:url" content="https://www.mainandmachine.com/book/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="/styles.css?v=14" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<style>
+/* =========================================================
+   BOOK AN ASSESSMENT — page-scoped system
+   Built on the Main & Machine tokens in styles.css
+   ========================================================= */
+
+/* page header */
+.bookhero { padding-bottom: clamp(40px, 5vw, 64px); }
+.bookhero__crumb {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--tx-faint); display: flex; gap: 10px; align-items: center; margin-bottom: 26px;
+}
+.bookhero__crumb a { color: var(--tx-mute); }
+.bookhero__crumb a:hover { color: var(--tx); }
+.bookhero__crumb .sep { opacity: .5; }
+.bookhero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+@media (max-width: 940px) { .bookhero__grid { grid-template-columns: 1fr; gap: 36px; } }
+.bookhero h1 { margin: 22px 0 24px; }
+.bookhero .lead { font-size: clamp(17px, 1.5vw, 20px); }
+
+/* ---- the two-column booking layout ---- */
+.book { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: clamp(28px, 4vw, 52px); align-items: start; }
+@media (max-width: 940px) { .book { grid-template-columns: 1fr; } }
+
+/* ---- form card ---- */
+.formcard { border: 1px solid var(--line); background: var(--paper-card); }
+.formcard__bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 20px; border-bottom: 1px solid var(--line);
+  background: linear-gradient(var(--paper-2), var(--paper-card));
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute);
+}
+.formcard__bar b { color: var(--accent); font-weight: 700; }
+.formcard__body { padding: clamp(22px, 3vw, 36px); }
+
+.fgroup { border-top: 1px dashed var(--line); padding-top: 26px; margin-top: 26px; }
+.fgroup:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.fgroup__head { display: flex; align-items: baseline; gap: 11px; margin-bottom: 20px; }
+.fgroup__no { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .1em; }
+.fgroup__t { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); }
+
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.frow + .frow { margin-top: 16px; }
+.frow--1 { grid-template-columns: 1fr; }
+@media (max-width: 560px) { .frow { grid-template-columns: 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.field > label { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--tx-mute); display: flex; gap: 6px; align-items: baseline; }
+.field .req { color: var(--accent); font-weight: 700; }
+.field .opt { color: var(--tx-faint); text-transform: none; letter-spacing: .03em; font-size: 10.5px; }
+
+.input {
+  font-family: var(--sans); font-size: 15px; color: var(--tx); background: #fff;
+  border: 1px solid var(--line); padding: 14px 15px; width: 100%;
+  transition: border-color .15s ease, box-shadow .15s ease; border-radius: 0;
+}
+.input::placeholder { color: var(--tx-faint); }
+.input:hover { border-color: rgba(29,24,18,0.30); }
+.input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+textarea.input { min-height: 120px; resize: vertical; line-height: 1.55; }
+select.input {
+  appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 42px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%236f675c' stroke-width='1.6'/></svg>");
+  background-repeat: no-repeat; background-position: right 15px center;
+}
+select.input:invalid { color: var(--tx-faint); }
+.field.err .input { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.field__err { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: .02em; display: none; }
+.field.err .field__err { display: block; }
+
+/* honeypot — visually & a11y hidden, still submitted if a bot fills it */
+.hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* segmented control — preferred contact */
+.seg { display: flex; border: 1px solid var(--line); background: #fff; }
+.seg__opt { flex: 1; position: relative; }
+.seg__opt input { position: absolute; opacity: 0; pointer-events: none; }
+.seg__opt span {
+  display: block; text-align: center; padding: 13px 8px; font-size: 14px; font-weight: 600;
+  color: var(--tx-mute); cursor: pointer; border-right: 1px solid var(--line); transition: background .15s ease, color .15s ease;
+}
+.seg__opt:last-child span { border-right: 0; }
+.seg__opt:hover span { background: var(--paper-2); }
+.seg__opt:has(input:checked) span { background: var(--ink); color: var(--paper); }
+.seg__opt input:focus-visible + span { box-shadow: inset 0 0 0 2px var(--accent); }
+
+/* form footer / submit */
+.formfoot { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.submitrow { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.formfoot .note { font-family: var(--mono); font-size: 12px; color: var(--tx-mute); line-height: 1.6; max-width: 50ch; }
+.formfoot .note b { color: var(--accent); font-weight: 700; }
+.formfoot__error {
+  margin: 16px 0 0; font-family: var(--mono); font-size: 12.5px; line-height: 1.5;
+  color: var(--accent); background: var(--accent-soft); border-left: 3px solid var(--accent);
+  padding: 11px 14px;
+}
+.btn[disabled] { opacity: .55; cursor: not-allowed; }
+.btn[disabled]:hover { transform: none; background: var(--accent); }
+
+/* ---- reassurance rail ---- */
+.rail { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 92px; }
+@media (max-width: 940px) { .rail { position: static; } }
+
+.panel { border: 1px solid var(--line); background: var(--paper-card); padding: 26px 24px 28px; }
+.panel--ink { background: var(--ink); color: var(--dtx); border-color: var(--ink); background-image: var(--grain); }
+.panel__t { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); margin-bottom: 20px; display: flex; align-items: center; gap: 9px; }
+.panel__t::before { content: ""; width: 14px; height: 2px; background: var(--accent); flex: none; }
+.panel--ink .panel__t { color: var(--dtx-mute); }
+.panel--ink .panel__t::before { background: var(--accent-ink); }
+
+/* agenda */
+.agenda { display: flex; flex-direction: column; }
+.astep { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 15px 0; border-top: 1px solid var(--line-soft); }
+.astep:first-child { border-top: 0; padding-top: 0; }
+.astep:last-child { padding-bottom: 0; }
+.astep__no { font-family: var(--mono); font-size: 12px; color: var(--accent); padding-top: 1px; }
+.astep h4 { font-size: 15.5px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+.astep p { font-size: 13.5px; color: var(--tx-mute); line-height: 1.5; }
+
+/* leave-with checklist */
+.leave { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+.leave li { font-size: 14.5px; padding-left: 24px; position: relative; line-height: 1.45; }
+.leave li::before { content: "+"; position: absolute; left: 0; top: -1px; color: var(--accent); font-weight: 800; font-size: 16px; }
+
+/* advisor */
+.advisor { display: flex; gap: 14px; align-items: flex-start; }
+.advisor__plate { width: 48px; height: 48px; flex: none; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 700; font-size: 15px; letter-spacing: -0.03em; }
+.advisor__plate .amp { color: var(--accent-ink); }
+.advisor__tx h4 { font-size: 15.5px; font-weight: 800; letter-spacing: -0.01em; }
+.advisor__tx p { font-size: 13px; color: var(--tx-mute); margin-top: 5px; line-height: 1.55; }
+
+.panel--ink p { color: var(--dtx-mute); font-size: 14.5px; line-height: 1.6; }
+.panel--ink p b { color: var(--dtx); font-weight: 700; }
+
+/* ---- confirmation state ---- */
+.confirm { display: none; border: 1px solid var(--dline); background: var(--ink); color: var(--dtx); background-image: var(--grain); }
+.confirm__bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 22px; border-bottom: 1px solid var(--dline); font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--dtx-mute); }
+.confirm__bar .ok { color: var(--accent-ink); display: flex; align-items: center; gap: 9px; }
+.confirm__bar .ok::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-ink); }
+.confirm__body { padding: clamp(30px, 4vw, 56px); }
+.confirm__id { font-family: var(--mono); font-size: 12px; color: var(--dtx-faint); letter-spacing: .12em; }
+.confirm__id b { color: var(--accent-ink); }
+.confirm h2 { margin: 16px 0 16px; }
+.confirm .lead { color: var(--dtx-mute); }
+.confirm__recap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--dline); margin: 30px 0 4px; }
+@media (max-width: 620px) { .confirm__recap { grid-template-columns: 1fr; } }
+.confirm__recap div { padding: 16px 22px; border-right: 1px solid var(--dline); min-width: 0; }
+.confirm__recap div:last-child { border-right: 0; }
+@media (max-width: 620px) { .confirm__recap div { border-right: 0; border-bottom: 1px solid var(--dline); } .confirm__recap div:last-child { border-bottom: 0; } }
+.confirm__recap .tick-lbl { display: block; margin-bottom: 6px; }
+.confirm__recap b { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; word-break: break-word; }
+.confirm__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+/* faq tweak: this page only */
+.faq--book .faq__aside { background: var(--ink); }
+.faq--book .faq__aside h3 { font-size: 20px; }
+</style>
+</head>
+<body>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="left"><span class="dot"></span>Booking Q3 engagements — limited slots</span>
+    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span>Denver · Phoenix · Remote</span></span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main and Machine home">
+      <span class="logo__plate">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links">
+      <a href="/#work">The Work</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#method">Method</a>
+      <a href="/#about">Who We Are</a>
+      <a href="/blog">Blog</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--accent" href="#request" aria-current="page">Book an assessment</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="section paper bookhero" data-screen-label="Book header">
+  <div class="wrap">
+    <div class="bookhero__crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <span>Book an assessment</span>
+    </div>
+    <div class="bookhero__grid">
+      <div>
+        <span class="kicker">The AI Opportunity Assessment</span>
+        <h1 class="h2 mt-s">Thirty minutes. No pitch. <span class="accent-tx">An honest verdict.</span></h1>
+        <p class="lead mt-s">Tell us a little about your business and we will set up a free thirty-minute assessment. A senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth — including when the smart move is to wait a quarter.</p>
+      </div>
+      <div class="statrail crop" aria-label="What the assessment is">
+        <div class="statrail__bar"><span>Assessment</span><span><b>Free</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Cost</span><span class="statrail__v accent-tx">$0</span></div>
+        <div class="statrail__row"><span class="statrail__k">Length</span><span class="statrail__v">30 minutes</span></div>
+        <div class="statrail__row"><span class="statrail__k">Format</span><span class="statrail__v">Call · remote</span></div>
+        <div class="statrail__row"><span class="statrail__k">You hear back</span><span class="statrail__v">Within 24 hours</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="section paper-2" id="request" data-screen-label="Request form">
+  <div class="wrap">
+
+    <!-- the form + rail -->
+    <div class="book" id="book">
+
+      <!-- FORM -->
+      <div class="formcard crop">
+        <div class="formcard__bar"><span>Assessment request</span><span><b>*</b> required</span></div>
+        <div class="formcard__body">
+          <form id="assessForm" novalidate>
+
+            <!-- honeypot — must stay empty (bots fill it; humans never see it) -->
+            <div class="hp" aria-hidden="true">
+              <label for="company_url">Company URL</label>
+              <input type="text" id="company_url" name="company_url" tabindex="-1" autocomplete="off" />
+            </div>
+            <input type="hidden" id="ts" name="ts" value="" />
+
+            <!-- A — You -->
+            <div class="fgroup">
+              <div class="fgroup__head"><span class="fgroup__no">A</span><span class="fgroup__t">You</span></div>
+              <div class="frow">
+                <div class="field">
+                  <label for="name">Name <span class="req">*</span></label>
+                  <input class="input" type="text" id="name" name="name" autocomplete="name" placeholder="Jordan Rivera" required />
+                  <span class="field__err">Please enter your name.</span>
+                </div>
+                <div class="field">
+                  <label for="email">Work email <span class="req">*</span></label>
+                  <input class="input" type="email" id="email" name="email" autocomplete="email" placeholder="jordan@yourcompany.com" required />
+                  <span class="field__err">Enter a valid email address.</span>
+                </div>
+              </div>
+              <div class="frow">
+                <div class="field">
+                  <label for="phone">Phone <span class="req">*</span></label>
+                  <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(480) 360-5128" required />
+                  <span class="field__err">Please enter a phone number.</span>
+                </div>
+                <div class="field">
+                  <label for="contact" id="contactLabel">Preferred contact <span class="req">*</span></label>
+                  <div class="seg" role="radiogroup" aria-labelledby="contactLabel">
+                    <label class="seg__opt"><input type="radio" name="contact" value="Email" checked /><span>Email</span></label>
+                    <label class="seg__opt"><input type="radio" name="contact" value="Phone" /><span>Phone</span></label>
+                    <label class="seg__opt"><input type="radio" name="contact" value="Either" /><span>Either</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- B — Your business -->
+            <div class="fgroup">
+              <div class="fgroup__head"><span class="fgroup__no">B</span><span class="fgroup__t">Your business</span></div>
+              <div class="frow">
+                <div class="field">
+                  <label for="company">Company name <span class="req">*</span></label>
+                  <input class="input" type="text" id="company" name="company" autocomplete="organization" placeholder="Rivera &amp; Co." required />
+                  <span class="field__err">Please enter your company name.</span>
+                </div>
+                <div class="field">
+                  <label for="website">Website <span class="opt">optional</span></label>
+                  <input class="input" type="text" id="website" name="website" autocomplete="url" placeholder="yourcompany.com" />
+                </div>
+              </div>
+              <div class="frow">
+                <div class="field">
+                  <label for="industry">Industry <span class="req">*</span></label>
+                  <select class="input" id="industry" name="industry" required>
+                    <option value="" disabled selected>Select one…</option>
+                    <option>Professional services</option>
+                    <option>Retail &amp; e-commerce</option>
+                    <option>Healthcare &amp; wellness</option>
+                    <option>Construction &amp; trades</option>
+                    <option>Hospitality &amp; food service</option>
+                    <option>Something else</option>
+                  </select>
+                  <span class="field__err">Please choose an industry.</span>
+                </div>
+                <div class="field">
+                  <label for="team">Team size <span class="req">*</span></label>
+                  <select class="input" id="team" name="team" required>
+                    <option value="" disabled selected>Headcount…</option>
+                    <option>1 – 10</option>
+                    <option>11 – 25</option>
+                    <option>26 – 50</option>
+                    <option>51 – 100</option>
+                    <option>100+</option>
+                  </select>
+                  <span class="field__err">Please choose a team size.</span>
+                </div>
+              </div>
+              <div class="frow frow--1">
+                <div class="field">
+                  <label for="revenue">Annual revenue <span class="opt">helps us prep — optional</span></label>
+                  <select class="input" id="revenue" name="revenue">
+                    <option value="" disabled selected>Select a range…</option>
+                    <option>Under $1M</option>
+                    <option>$1M – $5M</option>
+                    <option>$5M – $15M</option>
+                    <option>$15M – $50M</option>
+                    <option>$50M+</option>
+                    <option>Prefer not to say</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- C — The work -->
+            <div class="fgroup">
+              <div class="fgroup__head"><span class="fgroup__no">C</span><span class="fgroup__t">The work</span></div>
+              <div class="frow frow--1">
+                <div class="field">
+                  <label for="workflows">What is eating your team's time? <span class="req">*</span></label>
+                  <textarea class="input" id="workflows" name="workflows" placeholder="The repetitive, manual, or slow workflows you'd most love to hand off. Intake, billing, scheduling, data entry, quoting — whatever quietly costs you the most. A sentence or two is plenty." required></textarea>
+                  <span class="field__err">Tell us a little about the work — even one line helps.</span>
+                </div>
+              </div>
+              <div class="frow frow--1">
+                <div class="field">
+                  <label for="heard">How did you hear about us? <span class="opt">optional</span></label>
+                  <select class="input" id="heard" name="heard">
+                    <option value="" disabled selected>Select one…</option>
+                    <option>A search</option>
+                    <option>A referral</option>
+                    <option>The Ampersand newsletter</option>
+                    <option>Social media</option>
+                    <option>Press or an article</option>
+                    <option>An event or talk</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- submit -->
+            <div class="formfoot">
+              <div class="submitrow">
+                <button class="btn btn--accent btn--lg" type="submit" id="submitBtn">Request my assessment <span class="arr">→</span></button>
+              </div>
+              <p class="formfoot__error" id="formError" role="alert" hidden></p>
+              <p class="note">No calendar tag, no instant-booking funnel. <b>We email you within 24 hours</b> to find a time that actually works. Your details go to us — not a drip campaign.</p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- RAIL -->
+      <aside class="rail" aria-label="What to expect">
+        <div class="panel">
+          <div class="panel__t">What happens · 30 minutes</div>
+          <div class="agenda">
+            <div class="astep"><span class="astep__no">01</span><div><h4>We listen</h4><p>You walk us through how the work actually flows today — in plain language, no prep needed.</p></div></div>
+            <div class="astep"><span class="astep__no">02</span><div><h4>We map</h4><p>A senior advisor finds the handful of workflows quietly costing you the most.</p></div></div>
+            <div class="astep"><span class="astep__no">03</span><div><h4>We level with you</h4><p>Where AI pays, where it doesn't, and a rough sense of what it's worth.</p></div></div>
+            <div class="astep"><span class="astep__no">04</span><div><h4>You decide</h4><p>No deck, no follow-up funnel. You leave with a clear read — that's where it ends unless you want more.</p></div></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__t">What you leave with</div>
+          <ul class="leave">
+            <li>A plain-language read on where AI would actually pay in your business</li>
+            <li>A rough dollar range on the opportunity, run against your real numbers</li>
+            <li>A clear "not yet" if that's the call — said out loud, for free</li>
+            <li>Zero obligation to build anything with us</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <div class="panel__t">Who you'll talk to</div>
+          <div class="advisor">
+            <div class="advisor__plate">M<span class="amp">&amp;</span>M</div>
+            <div class="advisor__tx">
+              <h4>A senior advisor</h4>
+              <p>The person who scopes your work is the one who would build it — a senior advisor with deep small-business experience. Never a junior account rep.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel--ink">
+          <div class="panel__t">The promise</div>
+          <p>Free, with no obligation. You'll leave knowing what's worth doing and what isn't — and we'll never pad the list to win the work. <b>Substance over sales.</b></p>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- CONFIRMATION (revealed on submit) -->
+    <div class="confirm crop" id="confirm" tabindex="-1" aria-live="polite">
+      <div class="confirm__bar"><span class="ok">Request received</span><span id="confirmStamp">Logged</span></div>
+      <div class="confirm__body">
+        <div class="confirm__id">Reference <b id="refId">MM-2026-0000</b></div>
+        <h2 class="h2" id="confirmTitle">Thanks — you're in the queue.</h2>
+        <p class="lead" id="confirmLede">We've got your request. A senior advisor will email you within 24 hours to set a time for your free thirty-minute assessment.</p>
+
+        <div class="confirm__recap">
+          <div><span class="tick-lbl">Reaching out to</span><b id="recapName">—</b></div>
+          <div><span class="tick-lbl">Via</span><b id="recapContact">—</b></div>
+          <div><span class="tick-lbl">For</span><b id="recapCompany">—</b></div>
+        </div>
+
+        <div class="timeline" style="margin-top:30px;">
+          <div class="tl"><span class="tl__t">Now</span><h4>Request logged</h4><p>Your details are with a senior advisor — not a CRM funnel.</p></div>
+          <div class="tl"><span class="tl__t">Within 24 hours</span><h4>We email you</h4><p>A short note proposing a few times that work, in your preferred channel.</p></div>
+          <div class="tl"><span class="tl__t">The call</span><h4>30 focused minutes</h4><p>We walk your workflows and show you where AI pays.</p></div>
+          <div class="tl"><span class="tl__t">After</span><h4>You decide</h4><p>Build with us, sit tight, or walk away — your call, no follow-up funnel.</p></div>
+        </div>
+
+        <div class="confirm__cta">
+          <a class="btn btn--accent btn--lg" href="/blog">Read The Ampersand while you wait <span class="arr">→</span></a>
+          <a class="btn btn--ghost btn--lg" href="/">Back to the site</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section paper" data-screen-label="FAQ">
+  <div class="wrap">
+    <div class="faq faq--book">
+      <div>
+        <span class="kicker">Before you book</span>
+        <h2 class="h2 mt-s">Fair questions.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Still deciding?</h3>
+          <p>You don't have to be sure about AI to book. The whole point of the assessment is to find out — in thirty minutes, for free.</p>
+          <a class="btn btn--accent" href="#request">Book an assessment <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details open>
+          <summary><span class="q-no">01</span><span class="q-tx">Is it really free?</span><span class="q-pm">+</span></summary>
+          <p>Yes. No card, no catch, no trial that flips to a charge. Thirty minutes with a senior advisor, a clear read on your business, and that's it. We do this because the businesses worth building with tend to start here.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">What if AI isn't right for my business?</span><span class="q-pm">+</span></summary>
+          <p>Then we'll tell you. Sometimes the answer is "wait a quarter," or "you don't need us for this." You'll leave with thirty minutes back and a clear answer, which is more than most firms hand out for free.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Do I need to prepare anything?</span><span class="q-pm">+</span></summary>
+          <p>No. Come as you are. It helps if you can speak to how the work moves day to day — where the time goes, where things pile up — but there's no homework, no data export, nothing to install before we talk.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Who actually shows up to the call?</span><span class="q-pm">+</span></summary>
+          <p>A senior advisor — the person who would scope and build your project. Not a junior rep reading off a script, and not someone who hands you to a different team the moment you sign.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">05</span><span class="q-tx">What happens to the details I submit?</span><span class="q-pm">+</span></summary>
+          <p>They go to us so we can prepare for your call — that's all. No drip campaign, no reselling, no list. If we never end up working together, your information doesn't go anywhere either.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main and Machine home" style="background:transparent;">
+          <span class="logo__plate">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats" style="border:0;padding:0;margin:0;">
+          <div><span class="tick-lbl">Scope</span><b style="color:var(--dtx);">Fixed</b></div>
+          <div><span class="tick-lbl">Delivery</span><b style="color:var(--dtx);">~90 days</b></div>
+          <div><span class="tick-lbl">Audits</span><b style="color:var(--dtx);">$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="/#work">The work</a></li>
+          <li><a href="/#method">The method</a></li>
+          <li><a href="/#about">Who we are</a></li>
+          <li><a href="#request">Book an assessment</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>The work</h5>
+        <ul>
+          <li><a href="/#pricing">AI Readiness Audit</a></li>
+          <li><a href="/#pricing">Implementation Sprint</a></li>
+          <li><a href="/#pricing">Managed Services</a></li>
+          <li><a href="/#method">The method</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>More</h5>
+        <ul>
+          <li><a href="/#industries">Who this is for</a></li>
+          <li><a href="/#about">Why us</a></li>
+          <li><a href="/blog">The Ampersand</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#request">Book an assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14803605128">480-360-5128</a></li>
+          <li><a href="/">Denver and Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2026 mainandmachine.com · Human-centric AI for small and mid-size business</span>
+      <span class="links"><a href="/#">Privacy</a><a href="/#">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FORM SUBMIT ============ -->
+<script>
+(function(){
+  var form = document.getElementById('assessForm');
+  if(!form) return;
+
+  // stamp page-load time for the server-side min-fill-time spam check
+  var tsEl = document.getElementById('ts');
+  if(tsEl) tsEl.value = String(Date.now());
+
+  var submitBtn = document.getElementById('submitBtn');
+  var formError = document.getElementById('formError');
+
+  function fieldOf(el){ return el.closest('.field'); }
+  function setErr(el, on){ var f = fieldOf(el); if(f){ f.classList.toggle('err', !!on); } }
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+
+  var required = [
+    {id:'name',  test:function(v){ return v.trim().length > 0; }},
+    {id:'email', test:function(v){ return validEmail(v); }},
+    {id:'phone', test:function(v){ return v.replace(/[^0-9]/g,'').length >= 7; }},
+    {id:'company', test:function(v){ return v.trim().length > 0; }},
+    {id:'industry', test:function(v){ return v !== ''; }},
+    {id:'team', test:function(v){ return v !== ''; }},
+    {id:'workflows', test:function(v){ return v.trim().length > 0; }}
+  ];
+
+  // clear error as the user fixes a field
+  required.forEach(function(r){
+    var el = document.getElementById(r.id);
+    if(!el) return;
+    var ev = (el.tagName === 'SELECT') ? 'change' : 'input';
+    el.addEventListener(ev, function(){ if(fieldOf(el).classList.contains('err') && r.test(el.value)){ setErr(el, false); } });
+  });
+
+  function showFormError(msg){
+    if(!formError) return;
+    formError.textContent = msg;
+    formError.hidden = false;
+  }
+  function clearFormError(){ if(formError){ formError.hidden = true; formError.textContent = ''; } }
+
+  function val(id){ var el = document.getElementById(id); return el ? el.value : ''; }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    clearFormError();
+
+    var firstBad = null, ok = true;
+    required.forEach(function(r){
+      var el = document.getElementById(r.id);
+      var good = r.test(el.value);
+      setErr(el, !good);
+      if(!good){ ok = false; if(!firstBad) firstBad = el; }
+    });
+    if(!ok){ if(firstBad){ firstBad.focus({preventScroll:false}); } return; }
+
+    var contactSel = form.querySelector('input[name="contact"]:checked');
+    var payload = {
+      name: val('name').trim(),
+      email: val('email').trim(),
+      phone: val('phone').trim(),
+      contact: contactSel ? contactSel.value : 'Email',
+      company: val('company').trim(),
+      website: val('website').trim(),
+      industry: val('industry'),
+      team: val('team'),
+      revenue: val('revenue'),
+      workflows: val('workflows').trim(),
+      heard: val('heard'),
+      company_url: val('company_url'),
+      ts: val('ts')
+    };
+
+    var origLabel = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending…';
+
+    fetch('/api/book-assessment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res){ return res.json().then(function(body){ return { status: res.status, body: body }; }); })
+    .then(function(r){
+      if(!r.body || !r.body.ok){
+        // surface field-level errors if the server returned them
+        if(r.body && r.body.errors){
+          Object.keys(r.body.errors).forEach(function(k){
+            var el = document.getElementById(k); if(el) setErr(el, true);
+          });
+        }
+        throw new Error((r.body && r.body.error) || 'Something went wrong. Please try again.');
+      }
+      reveal(r.body, payload);
+    })
+    .catch(function(err){
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = origLabel;
+      showFormError(err.message || 'We couldn’t submit that just now. Please try again.');
+      submitBtn.focus();
+    });
+  });
+
+  function reveal(server, payload){
+    var first = (payload.name.split(/\s+/)[0]) || payload.name;
+    var recap = server.recap || {};
+    document.getElementById('refId').textContent = server.referenceId || '';
+    document.getElementById('confirmTitle').textContent = 'Thanks, ' + first + ' — you’re in the queue.';
+    document.getElementById('recapName').textContent = recap.name || payload.name;
+    document.getElementById('recapContact').textContent = recap.via || payload.email;
+    document.getElementById('recapCompany').textContent = recap.company || payload.company;
+    document.getElementById('confirmStamp').textContent = server.stamp ? ('Logged · ' + server.stamp) : 'Logged';
+
+    document.getElementById('book').style.display = 'none';
+    var confirm = document.getElementById('confirm');
+    confirm.style.display = 'block';
+    var top = confirm.getBoundingClientRect().top + window.pageYOffset - 90;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    confirm.focus({preventScroll:true});
+  }
+})();
+</script>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script>
+(function(){
+  var sels = ['.bookhero__grid > *','.formcard','.rail > .panel','.faq > *','.faq__list details','.foot__top > *'];
+  var set = new Set();
+  sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
+  document.querySelectorAll('.rv').forEach(function(el){
+    var sibs = Array.prototype.filter.call(el.parentElement.children, function(c){ return c.classList.contains('rv'); });
+    el.style.transitionDelay = Math.min(sibs.indexOf(el),6)*55 + 'ms';
+  });
+  if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

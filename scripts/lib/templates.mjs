@@ -94,6 +94,9 @@ ${imgIsDefault ? `<meta property="og:image:width" content="1200" />
 <link rel="alternate" type="application/rss+xml" title="${esc(BLOG_NAME)}" href="${SITE_ORIGIN}/blog/rss.xml" />
 <link rel="stylesheet" href="/styles.css?v=${ASSET_VERSION}" />
 <link rel="icon" href="${FAVICON}" />
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 ${extraHead}
 ${ld}
 </head>`;

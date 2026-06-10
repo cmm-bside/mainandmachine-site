@@ -16,3 +16,19 @@
 /blog/rss.xml
   Content-Type: application/rss+xml; charset=utf-8
   Cache-Control: public, max-age=1800
+
+# Force classic favicon MIME (Cloudflare defaults .ico to image/vnd.microsoft.icon)
+/favicon.ico
+  Content-Type: image/x-icon
+  Cache-Control: public, max-age=604800
+
+# llms.txt — plain text for LLM/agent consumption
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+# App icons
+/apple-touch-icon.png
+  Cache-Control: public, max-age=604800
+/icon-512.png
+  Cache-Control: public, max-age=604800

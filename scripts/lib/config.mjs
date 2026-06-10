@@ -12,8 +12,9 @@ export const BLOG_NAME = "The Ampersand";
 export const AUTHOR = "Christopher Myers";
 export const BLOG_DESCRIPTION =
 	"Free weekly essays from Christopher Myers on building durable things in a noisy time.";
-// Fallback social image when a post has no usable cover.
-export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.svg`;
+// Fallback social image when a post has no usable cover. PNG (1200x630) —
+// SVG og:images are not rendered by LinkedIn/X/Facebook/iMessage previews.
+export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
 
 // --- Beehiiv (read from env only; never commit the key) ---
 export const BEEHIIV_API_KEY = process.env.BEEHIIV_API_KEY || "";

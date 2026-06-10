@@ -5,6 +5,7 @@ import {
 	BRAND,
 	BLOG_NAME,
 	ASSET_VERSION,
+	DEFAULT_OG_IMAGE,
 } from "./config.mjs";
 
 const FAVICON =
@@ -48,7 +49,16 @@ export function monthLabel(iso) {
 
 // --- document shell -------------------------------------------------------
 export function head({ title, description, canonical, ogImage, ogType = "website", jsonLd = [], extraHead = "" }) {
-	const img = ogImage || `${SITE_ORIGIN}/og-image.svg`;
+	const img = ogImage || DEFAULT_OG_IMAGE;
+	// Derive the MIME type from the extension so social scrapers get it right
+	// (the brand default is PNG; beehiiv hero covers are usually JPEG).
+	const imgType = /\.png(\?|$)/i.test(img) ? "image/png"
+		: /\.webp(\?|$)/i.test(img) ? "image/webp"
+		: /\.svg(\?|$)/i.test(img) ? "image/svg+xml"
+		: "image/jpeg";
+	// We only know the dimensions of the brand default (1200x630).
+	const imgIsDefault = img === DEFAULT_OG_IMAGE;
+	const imgAlt = imgIsDefault ? `${BRAND} — The machine belongs to Main Street.` : title;
 	const ld = jsonLd
 		.filter(Boolean)
 		.map((obj) => `<script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n</script>`)
@@ -69,12 +79,17 @@ export function head({ title, description, canonical, ogImage, ogType = "website
 <meta property="og:description" content="${attr(description)}" />
 <meta property="og:url" content="${attr(canonical)}" />
 <meta property="og:image" content="${attr(img)}" />
+<meta property="og:image:type" content="${imgType}" />
+${imgIsDefault ? `<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+` : ""}<meta property="og:image:alt" content="${attr(imgAlt)}" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="${attr(title)}" />
 <meta name="twitter:description" content="${attr(description)}" />
 <meta name="twitter:image" content="${attr(img)}" />
+<meta name="twitter:image:alt" content="${attr(imgAlt)}" />
 
 <link rel="alternate" type="application/rss+xml" title="${esc(BLOG_NAME)}" href="${SITE_ORIGIN}/blog/rss.xml" />
 <link rel="stylesheet" href="/styles.css?v=${ASSET_VERSION}" />

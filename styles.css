@@ -972,3 +972,12 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
   .prose{ font-size:17px; }
   .essay__share{ gap:10px; }
 }
+
+/* ============ MEDIA BAR (ambient credibility under hero) ============ */
+.mediabar { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.mediabar__in { display: flex; align-items: baseline; gap: 13px 20px; padding: 13px 0; flex-wrap: wrap; }
+.mediabar__lbl { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--tx-faint); white-space: nowrap; }
+.mediabar__list { font-size: 13px; line-height: 1.5; color: var(--tx-mute); opacity: .72; }
+@media (max-width:560px){
+  .mediabar__list { font-size: 12px; }
+}

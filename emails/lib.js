@@ -17,6 +17,7 @@ export const FIELDS = [
   { key: "revenue",   label: "Annual revenue",    required: false },
   { key: "workflows", label: "What's eating the team's time", required: true },
   { key: "heard",     label: "How they heard",    required: false },
+  { key: "interest",  label: "Interest (from CTA)", required: false },
 ];
 
 const CONTACT_VALUES = ["Email", "Phone", "Either"];

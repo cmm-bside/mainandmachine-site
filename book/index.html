@@ -250,6 +250,8 @@ select.input:invalid { color: var(--tx-faint); }
               <input type="text" id="company_url" name="company_url" tabindex="-1" autocomplete="off" />
             </div>
             <input type="hidden" id="ts" name="ts" value="" />
+            <!-- interest: prefilled from homepage CTA query params (service / industry) -->
+            <input type="hidden" id="interest" name="interest" value="" />
 
             <!-- A — You -->
             <div class="fgroup">
@@ -561,6 +563,31 @@ select.input:invalid { color: var(--tx-faint); }
   var tsEl = document.getElementById('ts');
   if(tsEl) tsEl.value = String(Date.now());
 
+  // Prefill from homepage CTA context (/book/?service=audit, /book/?industry=construction):
+  // preselect the industry dropdown and record the context in a hidden "interest" field.
+  try {
+    var qp = new URLSearchParams(window.location.search);
+    var svc = (qp.get('service') || '').trim().toLowerCase();
+    var ind = (qp.get('industry') || '').trim().toLowerCase();
+    var SVC = { audit: 'AI Readiness Audit', sprint: 'Implementation Sprint', managed: 'Managed Services' };
+    var IND = {
+      'professional-services': 'Professional services',
+      'retail': 'Retail & e-commerce',
+      'healthcare': 'Healthcare & wellness',
+      'construction': 'Construction & trades',
+      'hospitality': 'Hospitality & food service'
+    };
+    if (ind && IND[ind]) {
+      var isel = document.getElementById('industry');
+      if (isel) isel.value = IND[ind];
+    }
+    var parts = [];
+    if (svc) parts.push('Service: ' + (SVC[svc] || svc));
+    if (ind) parts.push('Industry: ' + (IND[ind] || ind));
+    var interestEl = document.getElementById('interest');
+    if (interestEl) interestEl.value = parts.join(' · ');
+  } catch (e) { /* query parsing is best-effort */ }
+
   var submitBtn = document.getElementById('submitBtn');
   var formError = document.getElementById('formError');
 
@@ -622,6 +649,7 @@ select.input:invalid { color: var(--tx-faint); }
       workflows: val('workflows').trim(),
       heard: val('heard'),
       company_url: val('company_url'),
+      interest: val('interest'),
       ts: val('ts')
     };
 

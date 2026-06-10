@@ -18,9 +18,9 @@
         letter-spacing="4" fill="#ec6c3d">HUMAN-CENTRIC AI FOR SMALL BUSINESS</text>
 
   <!-- headline -->
-  <text x="80" y="300" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="112"
+  <text x="80" y="300" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="100"
         letter-spacing="-4" fill="#f3ede0">The machine belongs</text>
-  <text x="80" y="420" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="112"
+  <text x="80" y="420" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="100"
         letter-spacing="-4"><tspan fill="#f3ede0">to </tspan><tspan fill="#ec6c3d">Main Street.</tspan></text>
 
   <!-- footer line -->

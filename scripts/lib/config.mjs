@@ -32,7 +32,7 @@ export const RSS_PATH = path.join(BLOG_DIR, "rss.xml");
 export const SITEMAP_PATH = path.join(ROOT, "sitemap.xml");
 
 // Static routes that exist outside the blog pipeline (for the sitemap).
-export const STATIC_ROUTES = ["/"];
+export const STATIC_ROUTES = ["/", "/book/", "/privacy/", "/terms/"];
 
 // Cache-buster shared with index.html's <link>/<script> tags.
 export const ASSET_VERSION = "13";

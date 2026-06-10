@@ -463,22 +463,35 @@ ${items}
 `;
 }
 
+// changefreq + priority per route. Home and /book/ (the conversion page)
+// are highest; legal pages lowest. Posts sit in the middle.
+function seoMeta(route, isPost) {
+	if (route === "/") return { changefreq: "weekly", priority: "1.0" };
+	if (route === "/book/") return { changefreq: "monthly", priority: "1.0" };
+	if (route === "/blog") return { changefreq: "weekly", priority: "0.8" };
+	if (route === "/blog/archive") return { changefreq: "monthly", priority: "0.5" };
+	if (route === "/privacy/" || route === "/terms/") return { changefreq: "yearly", priority: "0.3" };
+	if (isPost) return { changefreq: "monthly", priority: "0.7" };
+	return { changefreq: "monthly", priority: "0.5" };
+}
+
 function renderSitemap(posts) {
-	const urls = [
-		...STATIC_ROUTES,
-		"/blog",
-		"/blog/archive",
-		...posts.map((p) => p.url),
+	// Only real, published posts reach here (loadPosts/fetch exclude drafts and
+	// the beehiiv test post), so the sitemap never lists a non-public URL.
+	const entries = [
+		...STATIC_ROUTES.map((route) => ({ route, isPost: false, lastmod: null })),
+		{ route: "/blog", isPost: false, lastmod: null },
+		{ route: "/blog/archive", isPost: false, lastmod: null },
+		...posts.map((p) => ({ route: p.url, isPost: true, lastmod: p.updatedAt || p.publishedAt || null })),
 	];
-	const lastmodFor = (route) => {
-		const post = posts.find((p) => p.url === route);
-		return post ? (post.updatedAt || post.publishedAt) : null;
-	};
-	const body = urls
-		.map((route) => {
-			const lm = lastmodFor(route);
+	const body = entries
+		.map(({ route, isPost, lastmod }) => {
+			const { changefreq, priority } = seoMeta(route, isPost);
+			const lm = lastmod ? `\n    <lastmod>${lastmod.slice(0, 10)}</lastmod>` : "";
 			return `  <url>
-    <loc>${SITE_ORIGIN}${route === "/" ? "/" : route}</loc>${lm ? `\n    <lastmod>${lm.slice(0, 10)}</lastmod>` : ""}
+    <loc>${SITE_ORIGIN}${route === "/" ? "/" : route}</loc>${lm}
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
   </url>`;
 		})
 		.join("\n");

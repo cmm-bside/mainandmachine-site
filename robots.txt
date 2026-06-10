@@ -1,0 +1,10 @@
+# robots.txt — mainandmachine.com
+# Canonical host is www; apex 301-redirects to www at the edge.
+
+User-agent: *
+Allow: /
+
+# The booking API is POST-only and has nothing to index.
+Disallow: /api/
+
+Sitemap: https://www.mainandmachine.com/sitemap.xml

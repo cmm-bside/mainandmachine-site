@@ -29,6 +29,7 @@ import {
 	RSS_PATH,
 	SITEMAP_PATH,
 	STATIC_ROUTES,
+	EXCLUDED_POST_SLUGS,
 } from "./lib/config.mjs";
 import {
 	esc,
@@ -85,7 +86,13 @@ async function main() {
 async function loadData() {
 	try {
 		const mod = await import(`${pathToFileURL(DATA_MODULE_PATH).href}?t=${Date.now()}`);
-		return { posts: mod.posts || [], meta: mod.meta || {} };
+		const excluded = new Set(EXCLUDED_POST_SLUGS.map((s) => s.toLowerCase()));
+		const posts = (mod.posts || []).filter(
+			(p) => p && p.slug && !excluded.has(String(p.slug).toLowerCase()),
+		);
+		const dropped = (mod.posts || []).length - posts.length;
+		if (dropped > 0) console.log(`[blog:build] Excluded ${dropped} post(s) by slug denylist.`);
+		return { posts, meta: mod.meta || {} };
 	} catch {
 		console.warn("[blog:build] No data module yet — building an empty blog.");
 		return { posts: [], meta: { name: BLOG_NAME, description: BLOG_DESCRIPTION } };

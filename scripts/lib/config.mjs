@@ -34,5 +34,9 @@ export const SITEMAP_PATH = path.join(ROOT, "sitemap.xml");
 // Static routes that exist outside the blog pipeline (for the sitemap).
 export const STATIC_ROUTES = ["/", "/book/", "/privacy/", "/terms/"];
 
+// Post slugs to exclude from the build entirely (test/placeholder posts that
+// exist in beehiiv but should never be indexed, linked, or sitemapped).
+export const EXCLUDED_POST_SLUGS = ["test"];
+
 // Cache-buster shared with index.html's <link>/<script> tags.
 export const ASSET_VERSION = "13";

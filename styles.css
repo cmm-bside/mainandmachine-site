@@ -831,6 +831,14 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
   font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; line-height:1.6; color:var(--tx-faint);
 }
 
+/* citation under the 22%/78% stat pair (dark section) */
+.stat-source{
+  margin-top:16px;
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; line-height:1.6;
+  color:var(--dtx-mute); opacity:.7;
+}
+.stat-source em{ font-style:italic; }
+
 /* =========================================================
    MOBILE TIGHTENING PASS
    Scoped to small screens — desktop layout is untouched.

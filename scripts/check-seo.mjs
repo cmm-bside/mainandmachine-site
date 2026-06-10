@@ -10,6 +10,7 @@ import {
 	RSS_PATH,
 	SITEMAP_PATH,
 	BLOG_INDEX_JSON,
+	EXCLUDED_POST_SLUGS,
 } from "./lib/config.mjs";
 
 const errors = [];
@@ -25,7 +26,10 @@ function read(file) {
 
 function loadIndex() {
 	try {
-		return JSON.parse(fs.readFileSync(BLOG_INDEX_JSON, "utf8")).posts || [];
+		const all = JSON.parse(fs.readFileSync(BLOG_INDEX_JSON, "utf8")).posts || [];
+		// Mirror the build's exclusion so expectations match the generated output.
+		const excluded = new Set(EXCLUDED_POST_SLUGS.map((s) => s.toLowerCase()));
+		return all.filter((p) => p && p.slug && !excluded.has(String(p.slug).toLowerCase()));
 	} catch {
 		return [];
 	}

@@ -1,0 +1,49 @@
+name: Rebuild site (pull latest beehiiv posts)
+
+# The site bakes beehiiv posts in at BUILD time, so a new beehiiv post only
+# appears once a deploy runs. Publishing in beehiiv does not trigger a deploy
+# on its own, so this workflow pings a Cloudflare Pages deploy hook to rebuild:
+#
+#   - on a schedule, so newly published posts go live without any manual step
+#   - on demand (workflow_dispatch), so you can force a rebuild from the
+#     GitHub "Actions" tab — or with:  gh workflow run rebuild.yml
+#
+# The Cloudflare build itself re-runs `npm run build:static`, which re-fetches
+# from beehiiv using the BEEHIIV_API_KEY already configured in Cloudflare Pages.
+#
+# Setup (one time):
+#   1. Cloudflare dashboard -> Pages -> your project -> Settings -> Builds &
+#      deployments -> Deploy hooks -> "Add deploy hook" (branch: main).
+#      Copy the generated URL.
+#   2. GitHub repo -> Settings -> Secrets and variables -> Actions ->
+#      "New repository secret": name CF_DEPLOY_HOOK_URL, value = that URL.
+
+on:
+  schedule:
+    # Every 3 hours, on the hour (UTC). New posts go live within ~3h, hands-off.
+    - cron: "0 */3 * * *"
+  workflow_dispatch: {}
+
+# Never run two rebuilds at once.
+concurrency:
+  group: rebuild-site
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages deploy hook
+        env:
+          HOOK: ${{ secrets.CF_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::CF_DEPLOY_HOOK_URL secret is not set. See setup steps in this workflow file."
+            exit 1
+          fi
+          echo "Triggering Cloudflare Pages rebuild..."
+          code=$(curl -s -o /tmp/resp.json -w "%{http_code}" -X POST "$HOOK")
+          echo "HTTP $code"
+          cat /tmp/resp.json || true
+          # Cloudflare returns 200 with a JSON body on success.
+          [ "$code" = "200" ]

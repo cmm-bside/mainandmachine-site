@@ -27,6 +27,7 @@ import {
 	DATA_MODULE_PATH,
 	BLOG_DATA_DIR,
 	BLOG_INDEX_JSON,
+	POST_DATE_OVERRIDES,
 } from "./lib/config.mjs";
 
 const API_BASE = "https://api.beehiiv.com/v2";
@@ -124,8 +125,15 @@ function normalizePost(p) {
 	const previewText = (p.preview_text || "").trim();
 	const excerpt = subtitle || previewText || clip(plain, 220);
 
-	const publishedAt = unixToIso(p.publish_date || p.displayed_date);
-	const updatedAt = unixToIso(p.displayed_date || p.publish_date);
+	let publishedAt = unixToIso(p.publish_date || p.displayed_date);
+	let updatedAt = unixToIso(p.displayed_date || p.publish_date);
+	// Editorial date override (config) wins over beehiiv's publish_date — drives
+	// display, sort order, sitemap/RSS/JSON-LD. Noon UTC keeps the day stable.
+	const dateOverride = POST_DATE_OVERRIDES[slug];
+	if (dateOverride) {
+		publishedAt = `${dateOverride}T12:00:00.000Z`;
+		updatedAt = publishedAt;
+	}
 
 	const heroUrl = usableThumb(p.thumbnail_url);
 	const heroImage = heroUrl ? { assetUrl: heroUrl, alt: title } : null;

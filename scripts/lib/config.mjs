@@ -38,5 +38,28 @@ export const STATIC_ROUTES = ["/", "/book/", "/privacy/", "/terms/"];
 // exist in beehiiv but should never be indexed, linked, or sitemapped).
 export const EXCLUDED_POST_SLUGS = ["test"];
 
+// Display-date overrides keyed by slug. Beehiiv's publish_date drives dates by
+// default; an entry here overrides BOTH the shown date and the sort key (and
+// the sitemap/RSS/JSON-LD dates that derive from it), so the public timeline
+// matches the intended editorial schedule. Date-only (YYYY-MM-DD) — rendered at
+// noon UTC so the calendar day is identical in every timezone.
+export const POST_DATE_OVERRIDES = {
+	"how-to-smell-the-hype": "2026-02-27",
+	"the-prediction-engine": "2026-03-06",
+	"how-the-machine-learns": "2026-03-13",
+	"the-currency-of-the-machine": "2026-03-20",
+	"why-everything-happened-at-once": "2026-03-27",
+	"the-buildings-behind-the-intelligence": "2026-04-03",
+	"sorting-the-vocabulary": "2026-04-10",
+	"why-the-machine-makes-things-up": "2026-04-17",
+	"how-to-talk-to-the-machine": "2026-04-24",
+	"what-an-agent-actually-is": "2026-05-01",
+	"teaching-the-machine-your-business": "2026-05-08",
+	"open-models-closed-models": "2026-05-15",
+	"where-your-data-goes": "2026-05-22",
+	"what-the-machine-cannot-do": "2026-05-29",
+	"seventy-years-of-overnight-success": "2026-06-05",
+};
+
 // Cache-buster shared with index.html's <link>/<script> tags.
 export const ASSET_VERSION = "13";

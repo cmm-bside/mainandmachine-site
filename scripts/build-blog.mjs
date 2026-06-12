@@ -46,6 +46,7 @@ import {
 } from "./lib/templates.mjs";
 
 const RECENT_ON_HOME = 6;
+const ARCHIVE_BATCH = 12;
 
 async function main() {
 	const { posts, meta } = await loadData();
@@ -272,27 +273,60 @@ function renderArchive(posts, { subscribeUrl, publicationUrl }) {
 			}
 			current.items.push(p);
 		}
-		const latest = groups
-			.map(
-				(g) => `<div class="arch__month">
+		const monthBlock = (g) => `<div class="arch__month">
   <h3 class="arch__month-label">${esc(g.label)}</h3>
   <div class="feed__grid">${g.items.map(card).join("\n")}</div>
-</div>`,
-			)
+</div>`;
+
+		// Batch the archive so the page doesn't render every cover up front.
+		// Latest batches by WHOLE month groups (~ARCHIVE_BATCH cards each) so a
+		// month header is never split; later batches ship as inert <template>s
+		// that blog.js reveals via "Load more". Search is unaffected — it runs
+		// over /blog-data/index.json, not the DOM.
+		const latestBatches = [];
+		let bucket = [];
+		let bucketCount = 0;
+		for (const g of groups) {
+			bucket.push(g);
+			bucketCount += g.items.length;
+			if (bucketCount >= ARCHIVE_BATCH) {
+				latestBatches.push(bucket);
+				bucket = [];
+				bucketCount = 0;
+			}
+		}
+		if (bucket.length) latestBatches.push(bucket);
+		const latestFirst = (latestBatches[0] || []).map(monthBlock).join("\n");
+		const latestRest = latestBatches
+			.slice(1)
+			.map((b) => `<template class="archmore-batch" data-pane="latest">${b.map(monthBlock).join("\n")}</template>`)
 			.join("\n");
 
-		// Top — by popularity.
-		const top = [...posts]
-			.sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
-			.map(card)
+		// Top — by popularity, plain batches of ARCHIVE_BATCH cards. The first
+		// batch also ships as a template; blog.js fills the grid when the tab
+		// is first opened, so the hidden pane costs no initial DOM.
+		const sortedTop = [...posts].sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+		const topBatches = [];
+		for (let i = 0; i < sortedTop.length; i += ARCHIVE_BATCH) {
+			topBatches.push(sortedTop.slice(i, i + ARCHIVE_BATCH));
+		}
+		const topTemplates = topBatches
+			.map((b) => `<template class="archmore-batch" data-pane="top">${b.map(card).join("\n")}</template>`)
 			.join("\n");
+
+		const moreBtn = (pane) =>
+			`<button type="button" class="feed__archive archmore" data-pane="${pane}">Load more →</button>`;
 
 		content = `<div class="archtabs" role="tablist">
   <button class="archtab is-active" role="tab" aria-selected="true" data-tab="latest">Latest</button>
   <button class="archtab" role="tab" aria-selected="false" data-tab="top">Top</button>
 </div>
-<div id="tab-latest" class="archpane">${latest}</div>
-<div id="tab-top" class="archpane" hidden><div class="feed__grid">${top}</div></div>`;
+<div id="tab-latest" class="archpane">${latestFirst}
+${latestRest}
+${latestBatches.length > 1 ? moreBtn("latest") : ""}</div>
+<div id="tab-top" class="archpane" hidden><div class="feed__grid"></div>
+${topTemplates}
+${topBatches.length > 1 ? moreBtn("top") : ""}</div>`;
 	}
 
 	const body = `${topbar()}

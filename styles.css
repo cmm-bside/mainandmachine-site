@@ -970,6 +970,10 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 }
 .archtab:last-child{ border-right:0; }
 .archtab.is-active{ background:var(--ink); color:var(--paper); }
+
+/* "Load more" — a button wearing the mono text-link style */
+.archmore{ display:inline-block; background:none; border:0; cursor:pointer; margin-top:30px; }
+.archmore:hover{ color:var(--accent-deep); }
 .archpane{ display:flex; flex-direction:column; gap:40px; }
 .arch__month{ display:flex; flex-direction:column; gap:18px; }
 .arch__month-label{

@@ -138,6 +138,41 @@
 					var pane = document.getElementById("tab-" + key);
 					if (pane) pane.hidden = key !== name;
 				});
+				// The Top pane ships empty (its batches are inert templates) —
+				// fill it the first time the tab opens.
+				if (name === "top") {
+					var grid = document.querySelector("#tab-top .feed__grid");
+					if (grid && !grid.children.length) loadArchiveBatch("top");
+				}
+			});
+		});
+	}
+
+	/* ---------- archive "Load more" batches ---------- */
+	function loadArchiveBatch(pane) {
+		var paneEl = document.getElementById("tab-" + pane);
+		if (!paneEl) return;
+		var tpl = paneEl.querySelector("template.archmore-batch");
+		if (tpl) {
+			var frag = tpl.content.cloneNode(true);
+			if (pane === "top") {
+				// Top is one continuous grid — append cards into it.
+				paneEl.querySelector(".feed__grid").appendChild(frag);
+			} else {
+				// Latest appends whole month groups where the template sat.
+				tpl.parentNode.insertBefore(frag, tpl);
+			}
+			tpl.parentNode.removeChild(tpl);
+		}
+		var btn = paneEl.querySelector(".archmore");
+		if (btn && !paneEl.querySelector("template.archmore-batch")) btn.hidden = true;
+	}
+
+	function wireLoadMore() {
+		var btns = document.querySelectorAll(".archmore");
+		Array.prototype.forEach.call(btns, function (btn) {
+			btn.addEventListener("click", function () {
+				loadArchiveBatch(btn.getAttribute("data-pane"));
 			});
 		});
 	}
@@ -162,6 +197,7 @@
 
 	function init() {
 		wireTabs();
+		wireLoadMore();
 		wireCopy();
 		var needsData =
 			document.getElementById("amp-posts") ||

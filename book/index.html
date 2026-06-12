@@ -143,7 +143,7 @@
 .input::placeholder { color: var(--tx-faint); }
 .input:hover { border-color: rgba(29,24,18,0.30); }
 .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-textarea.input { min-height: 120px; resize: vertical; line-height: 1.55; }
+textarea.input { min-height: 132px; resize: vertical; line-height: 1.55; }
 select.input {
   appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 42px;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%236f675c' stroke-width='1.6'/></svg>");
@@ -151,6 +151,7 @@ select.input {
 }
 select.input:invalid { color: var(--tx-faint); }
 .field.err .input { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.field__hint { font-family: var(--mono); font-size: 11px; color: var(--tx-faint); letter-spacing: .02em; line-height: 1.6; }
 .field__err { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: .02em; display: none; }
 .field.err .field__err { display: block; }
 
@@ -390,7 +391,8 @@ select.input:invalid { color: var(--tx-faint); }
               <div class="frow frow--1">
                 <div class="field">
                   <label for="workflows">What is eating your team's time? <span class="req">*</span></label>
-                  <textarea class="input" id="workflows" name="workflows" placeholder="The repetitive, manual, or slow workflows you'd most love to hand off. Intake, billing, scheduling, data entry, quoting — whatever quietly costs you the most. A sentence or two is plenty." required></textarea>
+                  <textarea class="input" id="workflows" name="workflows" placeholder="The repetitive, manual, or slow workflows you'd most love to hand off." aria-describedby="workflows-hint" required></textarea>
+                  <span class="field__hint" id="workflows-hint">Intake, billing, scheduling, data entry, quoting — a sentence or two is plenty.</span>
                   <span class="field__err">Tell us a little about the work — even one line helps.</span>
                 </div>
               </div>

@@ -15,9 +15,9 @@
 // Local dev:  npx wrangler pages dev . --binding RESEND_API_KEY=...
 // Logic-only test (no network):  npm run test:book
 
-import { validateSubmission, makeReferenceId, firstNameOf, contactVia, formatStamp } from "../../emails/lib.js";
+import { validateSubmission, validateDetails, makeReferenceId, firstNameOf, contactVia, formatStamp } from "../../emails/lib.js";
 import { renderAutoresponderHtml, renderAutoresponderText } from "../../emails/assessment-autoresponder.js";
-import { renderInternalHtml, renderInternalText, internalSubject } from "../../emails/assessment-internal.js";
+import { renderInternalHtml, renderInternalText, internalSubject, renderDetailsHtml, renderDetailsText, detailsSubject } from "../../emails/assessment-internal.js";
 
 const DEFAULT_FROM = "Main & Machine <hello@mainandmachine.com>";
 const DEFAULT_NOTIFY = "cmyers@mainandmachine.com,akester@mainandmachine.com";
@@ -46,6 +46,11 @@ export async function onRequestPost(context) {
   if (typeof body.company_url === "string" && body.company_url.trim() !== "") {
     // Pretend success so bots don't learn the trap. Nothing is sent.
     return json({ ok: true, referenceId: makeReferenceId(), recap: { name: "", via: "", company: "" } });
+  }
+
+  // --- stage 2: optional prep details appended after the confirmation screen ---
+  if (body.stage === "details") {
+    return handleDetails(body, env);
   }
 
   // --- spam: min fill time ---
@@ -135,6 +140,45 @@ export async function onRequestPost(context) {
     stamp,
     recap: { name: data.name, via: contactVia(data), company: data.company },
   });
+}
+
+// Stage 2 — "help us prep" details submitted from the confirmation screen.
+// There is no datastore, so "appending to the submission" means a second
+// internal email carrying the same reference id; no autoresponder is sent.
+async function handleDetails(body, env) {
+  const { ok, errors, data } = validateDetails(body);
+  if (!ok) {
+    return json({ ok: false, error: "Please check the highlighted fields.", errors }, 422);
+  }
+
+  const apiKey = env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not set");
+    return json({ ok: false, error: "Email is not configured. Please email us directly." }, 500);
+  }
+
+  const now = new Date();
+  const meta = { referenceId: data.referenceId, stamp: formatStamp(now) };
+  const from = env.MAIL_FROM || DEFAULT_FROM;
+  const notifyTo = (env.LEAD_NOTIFY_TO || DEFAULT_NOTIFY).split(",").map((s) => s.trim()).filter(Boolean);
+
+  console.log(`[assessment-details] ${data.referenceId} ${meta.stamp} — ${data.company} (${data.name} <${data.email}>)`);
+
+  try {
+    await sendEmail(apiKey, {
+      from,
+      to: notifyTo,
+      reply_to: data.email,
+      subject: detailsSubject(data),
+      html: renderDetailsHtml(data, meta),
+      text: renderDetailsText(data, meta),
+    });
+  } catch (e) {
+    console.error("details email failed", e);
+    return json({ ok: false, error: "We couldn't add that just now — but your request is already in." }, 502);
+  }
+
+  return json({ ok: true, referenceId: data.referenceId });
 }
 
 // Anything other than POST.

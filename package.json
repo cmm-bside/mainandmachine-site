@@ -8,8 +8,9 @@
     "blog:fetch": "node scripts/fetch-blog-posts.mjs",
     "blog:build": "node scripts/build-blog.mjs",
     "seo:check": "node scripts/check-seo.mjs",
+    "facts:check": "node scripts/check-facts.mjs",
     "test:book": "node scripts/test-book-assessment.mjs",
-    "build:static": "npm run blog:fetch && npm run blog:build && npm run seo:check",
+    "build:static": "npm run blog:fetch && npm run blog:build && npm run seo:check && npm run facts:check",
     "postinstall": "node scripts/build-blog.mjs",
     "preview": "python3 -m http.server 8000"
   },

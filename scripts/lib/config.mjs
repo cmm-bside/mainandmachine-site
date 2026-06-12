@@ -1,15 +1,18 @@
 // Shared config for the build-time blog pipeline (fetch + prerender).
 // One source of truth for site identity, paths, and Beehiiv env.
+// Business facts come from the canonical facts file — never restate them here.
 import path from "node:path";
+import { COMPANY } from "../../src/data/company.mjs";
 
 export const ROOT = process.cwd();
 
-// --- Site identity ---
-export const SITE_ORIGIN = "https://www.mainandmachine.com";
-export const SITE_HOST = "www.mainandmachine.com";
-export const BRAND = "Main & Machine";
+// --- Site identity (sourced from src/data/company.mjs) ---
+export { COMPANY };
+export const SITE_ORIGIN = COMPANY.origin;
+export const SITE_HOST = COMPANY.origin.replace(/^https?:\/\//, "");
+export const BRAND = COMPANY.name;
 export const BLOG_NAME = "The Ampersand";
-export const AUTHOR = "Christopher Myers";
+export const AUTHOR = COMPANY.founder.name;
 export const BLOG_DESCRIPTION =
 	"Free weekly essays from Christopher Myers on building durable things in a noisy time.";
 // Fallback social image when a post has no usable cover. PNG (1200x630) —

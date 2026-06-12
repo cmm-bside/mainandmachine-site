@@ -5,19 +5,25 @@
 
 // The form fields, in display order, with human labels for the notification email.
 // `required` mirrors the client-side validation in /book/index.html.
+// The form is two-stage: stage 1 is the primary submit; stage 2 ("help us prep",
+// all optional) is offered on the confirmation screen and appends to the same lead.
 export const FIELDS = [
   { key: "name",      label: "Name",              required: true },
   { key: "email",     label: "Work email",        required: true },
-  { key: "phone",     label: "Phone",             required: true },
+  { key: "phone",     label: "Phone",             required: false }, // required only when contact is Phone/Either
   { key: "contact",   label: "Preferred contact", required: true },
   { key: "company",   label: "Company name",      required: true },
-  { key: "website",   label: "Website",           required: false },
-  { key: "industry",  label: "Industry",          required: true },
-  { key: "team",      label: "Team size",         required: true },
-  { key: "revenue",   label: "Annual revenue",    required: false },
   { key: "workflows", label: "What's eating the team's time", required: true },
-  { key: "heard",     label: "How they heard",    required: false },
   { key: "interest",  label: "Interest (from CTA)", required: false },
+];
+
+// Stage-2 fields — optional, collected on the confirmation screen.
+export const DETAIL_FIELDS = [
+  { key: "industry",  label: "Industry" },
+  { key: "team",      label: "Team size" },
+  { key: "revenue",   label: "Annual revenue" },
+  { key: "website",   label: "Website" },
+  { key: "heard",     label: "How they heard" },
 ];
 
 const CONTACT_VALUES = ["Email", "Phone", "Either"];
@@ -38,17 +44,42 @@ export function validateSubmission(raw) {
   const errors = {};
   if (!data.name) errors.name = "Name is required.";
   if (!isValidEmail(data.email)) errors.email = "A valid email is required.";
-  if (data.phone.replace(/[^0-9]/g, "").length < 7) errors.phone = "A valid phone number is required.";
   if (!CONTACT_VALUES.includes(data.contact)) data.contact = "Email"; // tolerant default
+  // Phone is required only when they ask to be reached by phone.
+  const phoneNeeded = data.contact === "Phone" || data.contact === "Either";
+  const phoneDigits = data.phone.replace(/[^0-9]/g, "").length;
+  if (phoneNeeded && phoneDigits < 7) errors.phone = "A valid phone number is required.";
+  if (!phoneNeeded && data.phone && phoneDigits < 7) errors.phone = "That phone number looks incomplete.";
   if (!data.company) errors.company = "Company name is required.";
-  if (!data.industry) errors.industry = "Industry is required.";
-  if (!data.team) errors.team = "Team size is required.";
   if (!data.workflows) errors.workflows = "Tell us a little about the work.";
 
   // length guards (cheap abuse mitigation)
   for (const f of FIELDS) {
     const cap = f.key === "workflows" ? 5000 : 300;
     if (data[f.key].length > cap) errors[f.key] = "Too long.";
+  }
+
+  return { ok: Object.keys(errors).length === 0, errors, data };
+}
+
+// Stage-2 validation — everything optional, but the reference back to the
+// original submission must look sane and at least one detail must be present.
+export function validateDetails(raw) {
+  const src = raw && typeof raw === "object" ? raw : {};
+  const data = {};
+  for (const f of DETAIL_FIELDS) {
+    data[f.key] = typeof src[f.key] === "string" ? src[f.key].trim() : "";
+  }
+  for (const k of ["referenceId", "name", "email", "company"]) {
+    data[k] = typeof src[k] === "string" ? src[k].trim() : "";
+  }
+
+  const errors = {};
+  if (!/^MM-\d{4}-\d{4}$/.test(data.referenceId)) errors.referenceId = "Missing reference.";
+  if (!isValidEmail(data.email)) errors.email = "A valid email is required.";
+  if (!DETAIL_FIELDS.some((f) => data[f.key])) errors.details = "Nothing to add.";
+  for (const f of DETAIL_FIELDS) {
+    if (data[f.key].length > 300) errors[f.key] = "Too long.";
   }
 
   return { ok: Object.keys(errors).length === 0, errors, data };

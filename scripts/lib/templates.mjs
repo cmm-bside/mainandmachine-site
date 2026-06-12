@@ -6,6 +6,7 @@ import {
 	BLOG_NAME,
 	ASSET_VERSION,
 	DEFAULT_OG_IMAGE,
+	COMPANY,
 } from "./config.mjs";
 
 const FAVICON =
@@ -108,11 +109,14 @@ ${ld}
 </head>`;
 }
 
+// City names for the topbar, derived from the canonical locations ("Denver, CO" → "Denver").
+const CITIES = COMPANY.locations.map((l) => l.split(",")[0]).join(" · ");
+
 export function topbar() {
 	return `<div class="topbar">
   <div class="wrap topbar__in">
     <span class="left"><span class="dot"></span>${esc(BLOG_NAME)} — free weekly essays</span>
-    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span>Denver · Phoenix · Remote</span></span>
+    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span>${esc(CITIES)} · Remote</span></span>
   </div>
 </div>`;
 }
@@ -132,7 +136,7 @@ export function nav() {
       <a href="/blog" aria-current="page">The Ampersand</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--accent" href="/#assessment">Book an assessment</a>
+      <a class="btn btn--accent" href="/book/">Book a free assessment</a>
     </div>
   </div>
 </header>`;
@@ -153,9 +157,9 @@ export function footer() {
         <h5>Company</h5>
         <ul>
           <li><a href="/#work">The work</a></li>
-          <li><a href="/#method">The method</a></li>
           <li><a href="/#about">Who we are</a></li>
-          <li><a href="/#assessment">Book an assessment</a></li>
+          <li><a href="/#method">The method</a></li>
+          <li><a href="/blog">The Ampersand</a></li>
         </ul>
       </div>
       <div class="foot__col">
@@ -164,24 +168,24 @@ export function footer() {
           <li><a href="/#pricing">AI Readiness Audit</a></li>
           <li><a href="/#pricing">Implementation Sprint</a></li>
           <li><a href="/#pricing">Managed Services</a></li>
-          <li><a href="/#method">The method</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
         </ul>
       </div>
       <div class="foot__col">
         <h5>More</h5>
         <ul>
-          <li><a href="/blog">The Ampersand</a></li>
+          <li><a href="/#industries">Who this is for</a></li>
+          <li><a href="/#why">Why us</a></li>
           <li><a href="/blog/archive">Archive</a></li>
-          <li><a href="/#about">Why us</a></li>
           <li><a href="/#paths">Where are you?</a></li>
         </ul>
       </div>
       <div class="foot__col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="/#assessment">Book an assessment</a></li>
-          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
-          <li><a href="tel:+14803605128">480-360-5128</a></li>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:${attr(COMPANY.email)}">${esc(COMPANY.email)}</a></li>
+          <li><a href="${attr(COMPANY.phoneHref)}">${esc(COMPANY.phone)}</a></li>
           <li><a href="/">Denver and Phoenix</a></li>
         </ul>
       </div>
@@ -208,7 +212,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
         <p class="lead" style="font-size:15px;">Free weekly essays. One field. No sales pitches.</p>
         <form class="subform" data-beehiiv-subscribe action="${attr(action)}" method="get" target="_blank">
           <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
-          <button class="btn btn--accent" type="submit">Subscribe</button>
+          <button class="btn btn--accent" type="submit">Get the weekly essay →</button>
         </form>
         <p style="font-family:var(--mono);font-size:11px;color:var(--dtx-faint);margin-top:14px;line-height:1.6;">Delivered by beehiiv. No spam, unsubscribe anytime.</p>
       </div>

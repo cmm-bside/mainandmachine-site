@@ -6,13 +6,13 @@ Main & Machine is an AI implementation firm, not a strategy shop or a reseller. 
 
 ## What we do
 
-- Custom agents: software that owns the repetitive decisions and drafts the hard ones, then routes the judgment call back to a person.
+- Custom agents: software that handles the repetitive decisions and drafts the hard ones, then routes the judgment call back to a person.
 - Automations and workflow: connective tissue between the tools a business already pays for, so work moves on its own.
 - Integrations and data: one source of truth instead of five systems that do not talk to each other.
 
 ## Services and pricing
 
-- [AI Readiness Audit](https://www.mainandmachine.com/#pricing): $3,500 to $8,500, 2 to 4 weeks. A workflow map, the handful of places AI actually pays, a phased plan you own outright, and an honest read on whether to build at all.
+- [AI Readiness Audit](https://www.mainandmachine.com/#pricing): $3,500 to $8,500, 2 to 4 weeks. A workflow map, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all.
 - [AI Implementation Sprint](https://www.mainandmachine.com/#pricing): $12,000 to $45,000, 4 to 12 weeks. Working agents, automations, and integrations tested inside your real operation, with your team trained to run them. Fixed quote in writing after scoping; the price does not move after work begins.
 - [Managed Services](https://www.mainandmachine.com/#pricing): monthly retainer, ongoing and optional. Monitoring, maintenance as models and vendors shift, and new automations as the work changes. No lock-in.
 - [Free AI Opportunity Assessment](https://www.mainandmachine.com/book/): a free 30-minute call. A senior advisor walks your workflows and tells you where AI pays, where it does not, and what it is worth. No obligation, no pitch.
@@ -23,7 +23,7 @@ Small and mid-size businesses past the point where the owner can hold everything
 
 ## Founder
 
-Christopher Myers, founder and chairman. CEO of B:Side Capital and Fund, professor of entrepreneurship at ASU's W.P. Carey School, and author of several books on small business. Twenty-six years backing Main Street. Featured in Forbes, The Wall Street Journal, The New York Times, Inc., TechCrunch, MSNBC, and Fox Business.
+Christopher Myers, founder and chairman. CEO of B:Side Capital and Fund, professor of entrepreneurship at ASU's W.P. Carey School, and author of several books on small business. Twenty-six years backing Main Street. His work has been covered in Forbes, The Wall Street Journal, The New York Times, Inc., TechCrunch, MSNBC, and Fox Business.
 
 ## Contact
 

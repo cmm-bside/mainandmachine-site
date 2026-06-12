@@ -14,26 +14,25 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
-  validateSubmission, makeReferenceId, firstNameOf, contactVia, formatStamp,
+  validateSubmission, validateDetails, makeReferenceId, firstNameOf, contactVia, formatStamp,
 } from "../emails/lib.js";
 import { renderAutoresponderHtml, renderAutoresponderText } from "../emails/assessment-autoresponder.js";
-import { renderInternalHtml, renderInternalText, internalSubject } from "../emails/assessment-internal.js";
+import {
+  renderInternalHtml, renderInternalText, internalSubject,
+  renderDetailsHtml, renderDetailsText, detailsSubject,
+} from "../emails/assessment-internal.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(__dirname, "..", "emails", "preview");
 
+// Stage 1 — the primary submit (phone optional when contact is Email).
 const sample = {
   name: "Jordan Rivera",
   email: "jordan@riveraco.com",
-  phone: "(480) 360-5128",
+  phone: "(555) 201-4400",
   contact: "Either",
   company: "Rivera & Co.",
-  website: "riveraco.com",
-  industry: "Professional services",
-  team: "11 – 25",
-  revenue: "$1M – $5M",
   workflows: "Client intake is all manual — every new matter is a 40-minute copy/paste across three systems.\nBilling reconciliation eats a full day each month.",
-  heard: "A referral",
   company_url: "", // honeypot, empty
   ts: String(Date.now() - 60000),
 };
@@ -47,9 +46,44 @@ if (!ok) { fail("sample failed validation: " + JSON.stringify(errors)); }
 else { pass("sample passes server-side validation"); }
 
 // a known-bad case
-const bad = validateSubmission({ name: "", email: "nope", phone: "1", company: "", industry: "", team: "", workflows: "" });
+const bad = validateSubmission({ name: "", email: "nope", phone: "1", contact: "Phone", company: "", workflows: "" });
 if (bad.ok) fail("invalid submission was wrongly accepted");
 else pass(`invalid submission rejected (${Object.keys(bad.errors).length} field errors)`);
+
+// conditional phone: Email preference needs no phone…
+const noPhone = validateSubmission({ ...sample, phone: "", contact: "Email" });
+if (!noPhone.ok) fail("email-preference submission without phone was wrongly rejected: " + JSON.stringify(noPhone.errors));
+else pass("email-preference submission passes with no phone");
+
+// …but Phone preference does.
+const phonePref = validateSubmission({ ...sample, phone: "", contact: "Phone" });
+if (phonePref.ok) fail("phone-preference submission without phone was wrongly accepted");
+else pass("phone-preference submission without phone is rejected");
+
+// Stage 2 — optional prep details appended to the submission.
+const detailsSample = {
+  stage: "details",
+  referenceId: makeReferenceId(),
+  name: sample.name,
+  email: sample.email,
+  company: sample.company,
+  industry: "Professional services",
+  team: "11 – 25",
+  revenue: "$1M – $5M",
+  website: "riveraco.com",
+  heard: "A referral",
+};
+const det = validateDetails(detailsSample);
+if (!det.ok) fail("details sample failed validation: " + JSON.stringify(det.errors));
+else pass("details sample passes server-side validation");
+
+const detEmpty = validateDetails({ stage: "details", referenceId: detailsSample.referenceId, email: sample.email });
+if (detEmpty.ok) fail("empty details submission was wrongly accepted");
+else pass("empty details submission rejected");
+
+const detBadRef = validateDetails({ ...detailsSample, referenceId: "nope" });
+if (detBadRef.ok) fail("details with bad reference id was wrongly accepted");
+else pass("details with bad reference id rejected");
 
 // 2. render
 const now = new Date();
@@ -66,6 +100,8 @@ const files = {
   "autoresponder.txt": renderAutoresponderText(emailData),
   "internal.html": renderInternalHtml(data, meta),
   "internal.txt": renderInternalText(data, meta),
+  "details.html": renderDetailsHtml(det.data, meta),
+  "details.txt": renderDetailsText(det.data, meta),
 };
 
 fs.mkdirSync(OUT, { recursive: true });
@@ -74,6 +110,7 @@ for (const [name, body] of Object.entries(files)) {
 }
 pass(`wrote ${Object.keys(files).length} preview files to emails/preview/`);
 console.log("  internal subject: " + internalSubject(data));
+console.log("  details subject:  " + detailsSubject(det.data));
 console.log("\nOpen the previews:");
 console.log("  open emails/preview/autoresponder.html");
 console.log("  open emails/preview/internal.html");

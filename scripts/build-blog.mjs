@@ -156,7 +156,7 @@ function searchBar(placeholder) {
 
 function emptyState(subscribeUrl) {
 	const cta = subscribeUrl
-		? `<a class="btn btn--accent btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Subscribe →</a>`
+		? `<a class="btn btn--accent btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Get the weekly essay →</a>`
 		: "";
 	return `<div class="feed__empty crop">
   <span class="kicker kicker--plain">${esc(BLOG_NAME)}</span>
@@ -414,7 +414,7 @@ ${readNext.length
       <span class="kicker kicker--plain">Main &amp; Machine</span>
       <h2 class="h2 mt-s">Like how we think? Put it to work.</h2>
       <p class="lead">Book a free thirty-minute assessment. A senior advisor walks your workflows and tells you where AI actually pays — and where it doesn't.</p>
-      <a class="btn btn--accent btn--lg" href="/#assessment">Book an assessment →</a>
+      <a class="btn btn--accent btn--lg" href="/book/">Book a free assessment →</a>
     </div>
   </div>
 </section>

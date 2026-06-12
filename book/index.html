@@ -144,8 +144,7 @@ select.input:invalid { color: var(--tx-faint); }
 
 /* advisor */
 .advisor { display: flex; gap: 14px; align-items: flex-start; }
-.advisor__plate { width: 48px; height: 48px; flex: none; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 700; font-size: 15px; letter-spacing: -0.03em; }
-.advisor__plate .amp { color: var(--accent-ink); }
+.advisor__portrait { width: 48px; height: 48px; flex: none; object-fit: cover; border: 1px solid var(--line); background: var(--paper-2); }
 .advisor__tx h4 { font-size: 15.5px; font-weight: 800; letter-spacing: -0.01em; }
 .advisor__tx p { font-size: 13px; color: var(--tx-mute); margin-top: 5px; line-height: 1.55; }
 
@@ -171,6 +170,20 @@ select.input:invalid { color: var(--tx-faint); }
 .confirm__recap b { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; word-break: break-word; }
 .confirm__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
 
+/* ---- stage 2: optional prep details on the confirmation panel ---- */
+.prep { margin-top: 30px; border: 1px solid var(--line); background: var(--paper-card); padding: clamp(20px, 3vw, 28px); color: var(--tx); }
+.prep__head { display: flex; align-items: baseline; gap: 11px; }
+.prep__head .fgroup__no { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .1em; }
+.prep__head .fgroup__t { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); }
+.prep__note { font-size: 13.5px; color: var(--tx-mute); margin: 10px 0 20px; }
+.prep__foot { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 20px; }
+.prep__status { font-family: var(--mono); font-size: 12px; color: var(--tx-mute); }
+.prep__status.ok { color: var(--accent); }
+.prep--done form, .prep--done .prep__note { display: none; }
+.prep--done .prep__thanks { display: block; }
+.prep__thanks { display: none; font-size: 14.5px; color: var(--tx); margin-top: 12px; }
+.confirm__cta a[hidden] { display: none !important; }
+
 /* faq tweak: this page only */
 .faq--book .faq__aside { background: var(--ink); }
 .faq--book .faq__aside h3 { font-size: 20px; }
@@ -187,7 +200,8 @@ select.input:invalid { color: var(--tx-faint); }
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="topbar">
   <div class="wrap topbar__in">
-    <span class="left"><span class="dot"></span>Booking Q3 engagements — limited slots</span>
+    <!-- TODO: if a verifiably true slot count exists, "Two Q3 build slots remain" is stronger than the generic line. -->
+    <span class="left"><span class="dot"></span>Now booking Q3 builds — every engagement starts with the free assessment</span>
     <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span>Denver · Phoenix · Remote</span></span>
   </div>
 </div>
@@ -207,7 +221,7 @@ select.input:invalid { color: var(--tx-faint); }
       <a href="/blog">Blog</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--accent" href="#request" aria-current="page">Book an assessment</a>
+      <a class="btn btn--accent" href="#request" aria-current="page">Book a free assessment</a>
     </div>
   </div>
 </header>
@@ -276,11 +290,6 @@ select.input:invalid { color: var(--tx-faint); }
               </div>
               <div class="frow">
                 <div class="field">
-                  <label for="phone">Phone <span class="req">*</span></label>
-                  <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(480) 360-5128" required />
-                  <span class="field__err">Please enter a phone number.</span>
-                </div>
-                <div class="field">
                   <label for="contact" id="contactLabel">Preferred contact <span class="req">*</span></label>
                   <div class="seg" role="radiogroup" aria-labelledby="contactLabel">
                     <label class="seg__opt"><input type="radio" name="contact" value="Email" checked /><span>Email</span></label>
@@ -288,62 +297,22 @@ select.input:invalid { color: var(--tx-faint); }
                     <label class="seg__opt"><input type="radio" name="contact" value="Either" /><span>Either</span></label>
                   </div>
                 </div>
+                <div class="field">
+                  <label for="phone" id="phoneLabel">Phone <span class="opt">— optional</span></label>
+                  <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Best number to reach you" />
+                  <span class="field__err">Please enter a phone number.</span>
+                </div>
               </div>
             </div>
 
             <!-- B — Your business -->
             <div class="fgroup">
               <div class="fgroup__head"><span class="fgroup__no">B</span><span class="fgroup__t">Your business</span></div>
-              <div class="frow">
+              <div class="frow frow--1">
                 <div class="field">
                   <label for="company">Company name <span class="req">*</span></label>
                   <input class="input" type="text" id="company" name="company" autocomplete="organization" placeholder="Rivera &amp; Co." required />
                   <span class="field__err">Please enter your company name.</span>
-                </div>
-                <div class="field">
-                  <label for="website">Website <span class="opt">optional</span></label>
-                  <input class="input" type="text" id="website" name="website" autocomplete="url" placeholder="yourcompany.com" />
-                </div>
-              </div>
-              <div class="frow">
-                <div class="field">
-                  <label for="industry">Industry <span class="req">*</span></label>
-                  <select class="input" id="industry" name="industry" required>
-                    <option value="" disabled selected>Select one…</option>
-                    <option>Professional services</option>
-                    <option>Retail &amp; e-commerce</option>
-                    <option>Healthcare &amp; wellness</option>
-                    <option>Construction &amp; trades</option>
-                    <option>Hospitality &amp; food service</option>
-                    <option>Something else</option>
-                  </select>
-                  <span class="field__err">Please choose an industry.</span>
-                </div>
-                <div class="field">
-                  <label for="team">Team size <span class="req">*</span></label>
-                  <select class="input" id="team" name="team" required>
-                    <option value="" disabled selected>Headcount…</option>
-                    <option>1 – 10</option>
-                    <option>11 – 25</option>
-                    <option>26 – 50</option>
-                    <option>51 – 100</option>
-                    <option>100+</option>
-                  </select>
-                  <span class="field__err">Please choose a team size.</span>
-                </div>
-              </div>
-              <div class="frow frow--1">
-                <div class="field">
-                  <label for="revenue">Annual revenue <span class="opt">helps us prep — optional</span></label>
-                  <select class="input" id="revenue" name="revenue">
-                    <option value="" disabled selected>Select a range…</option>
-                    <option>Under $1M</option>
-                    <option>$1M – $5M</option>
-                    <option>$5M – $15M</option>
-                    <option>$15M – $50M</option>
-                    <option>$50M+</option>
-                    <option>Prefer not to say</option>
-                  </select>
                 </div>
               </div>
             </div>
@@ -356,21 +325,6 @@ select.input:invalid { color: var(--tx-faint); }
                   <label for="workflows">What is eating your team's time? <span class="req">*</span></label>
                   <textarea class="input" id="workflows" name="workflows" placeholder="The repetitive, manual, or slow workflows you'd most love to hand off. Intake, billing, scheduling, data entry, quoting — whatever quietly costs you the most. A sentence or two is plenty." required></textarea>
                   <span class="field__err">Tell us a little about the work — even one line helps.</span>
-                </div>
-              </div>
-              <div class="frow frow--1">
-                <div class="field">
-                  <label for="heard">How did you hear about us? <span class="opt">optional</span></label>
-                  <select class="input" id="heard" name="heard">
-                    <option value="" disabled selected>Select one…</option>
-                    <option>A search</option>
-                    <option>A referral</option>
-                    <option>The Ampersand newsletter</option>
-                    <option>Social media</option>
-                    <option>Press or an article</option>
-                    <option>An event or talk</option>
-                    <option>Other</option>
-                  </select>
                 </div>
               </div>
             </div>
@@ -413,10 +367,13 @@ select.input:invalid { color: var(--tx-faint); }
         <div class="panel">
           <div class="panel__t">Who you'll talk to</div>
           <div class="advisor">
-            <div class="advisor__plate">M<span class="amp">&amp;</span>M</div>
+            <picture>
+              <source type="image/webp" srcset="/images/christopher-myers-hedcut.webp?v=3" />
+              <img class="advisor__portrait" src="/images/christopher-myers-hedcut.png?v=3" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="48" height="48" loading="lazy" decoding="async" />
+            </picture>
             <div class="advisor__tx">
-              <h4>A senior advisor</h4>
-              <p>The person who scopes your work is the one who would build it — a senior advisor with deep small-business experience. Never a junior account rep.</p>
+              <h4>Christopher Myers</h4>
+              <p>Founder &amp; Chairman. The person who scopes your work is the one accountable for the build — twenty-six years backing Main Street, never a junior account rep.</p>
             </div>
           </div>
         </div>
@@ -424,6 +381,7 @@ select.input:invalid { color: var(--tx-faint); }
         <div class="panel panel--ink">
           <div class="panel__t">The promise</div>
           <p>Free, with no obligation. You'll leave knowing what's worth doing and what isn't — and we'll never pad the list to win the work. <b>Substance over sales.</b></p>
+          <p style="margin-top:12px;">If the assessment finds nothing worth building, we say so and you keep the notes. <b>That's the whole transaction.</b></p>
         </div>
       </aside>
 
@@ -443,6 +401,80 @@ select.input:invalid { color: var(--tx-faint); }
           <div><span class="tick-lbl">For</span><b id="recapCompany">—</b></div>
         </div>
 
+        <!-- STAGE 2 — optional prep details, appended to the same submission -->
+        <div class="prep" id="prep">
+          <div class="prep__head">
+            <span class="fgroup__no">+</span>
+            <span class="fgroup__t">Help us prep — 30 seconds, optional</span>
+          </div>
+          <p class="prep__note">None of this is required. It just makes your thirty minutes sharper.</p>
+          <form id="prepForm" novalidate>
+            <div class="frow">
+              <div class="field">
+                <label for="industry">Industry</label>
+                <select class="input" id="industry" name="industry">
+                  <option value="" disabled selected>Select one…</option>
+                  <option>Professional services</option>
+                  <option>Retail &amp; e-commerce</option>
+                  <option>Healthcare &amp; wellness</option>
+                  <option>Construction &amp; trades</option>
+                  <option>Hospitality &amp; food service</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="team">Team size</label>
+                <select class="input" id="team" name="team">
+                  <option value="" disabled selected>Headcount…</option>
+                  <option>1 – 10</option>
+                  <option>11 – 25</option>
+                  <option>26 – 50</option>
+                  <option>51 – 100</option>
+                  <option>100+</option>
+                </select>
+              </div>
+            </div>
+            <div class="frow">
+              <div class="field">
+                <label for="revenue">Annual revenue</label>
+                <select class="input" id="revenue" name="revenue">
+                  <option value="" disabled selected>Select a range…</option>
+                  <option>Under $1M</option>
+                  <option>$1M – $5M</option>
+                  <option>$5M – $15M</option>
+                  <option>$15M – $50M</option>
+                  <option>$50M+</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="website">Website</label>
+                <input class="input" type="text" id="website" name="website" autocomplete="url" placeholder="yourcompany.com" />
+              </div>
+            </div>
+            <div class="frow frow--1">
+              <div class="field">
+                <label for="heard">How did you hear about us?</label>
+                <select class="input" id="heard" name="heard">
+                  <option value="" disabled selected>Select one…</option>
+                  <option>A search</option>
+                  <option>A referral</option>
+                  <option>The Ampersand newsletter</option>
+                  <option>Social media</option>
+                  <option>Press or an article</option>
+                  <option>An event or talk</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="prep__foot">
+              <button class="btn btn--accent" type="submit" id="prepBtn">Add it to my request <span class="arr">→</span></button>
+              <span class="prep__status" id="prepStatus"></span>
+            </div>
+          </form>
+          <p class="prep__thanks">Got it — filed with your request. It'll be in front of the advisor before the call.</p>
+        </div>
+
         <div class="timeline" style="margin-top:30px;">
           <div class="tl"><span class="tl__t">Now</span><h4>Request logged</h4><p>Your details are with a senior advisor — not a CRM funnel.</p></div>
           <div class="tl"><span class="tl__t">Within 24 hours</span><h4>We email you</h4><p>A short note proposing a few times that work, in your preferred channel.</p></div>
@@ -451,6 +483,7 @@ select.input:invalid { color: var(--tx-faint); }
         </div>
 
         <div class="confirm__cta">
+          <a class="btn btn--accent btn--lg" id="pickTime" href="#" hidden>Want it on the calendar now? Pick a time <span class="arr">→</span></a>
           <a class="btn btn--accent btn--lg" href="/blog">Read The Ampersand while you wait <span class="arr">→</span></a>
           <a class="btn btn--ghost btn--lg" href="/">Back to the site</a>
         </div>
@@ -470,11 +503,11 @@ select.input:invalid { color: var(--tx-faint); }
         <div class="faq__aside" style="margin-top:28px;">
           <h3 class="accent-tx" style="color:var(--accent-ink);">Still deciding?</h3>
           <p>You don't have to be sure about AI to book. The whole point of the assessment is to find out — in thirty minutes, for free.</p>
-          <a class="btn btn--accent" href="#request">Book an assessment <span class="arr">→</span></a>
+          <a class="btn btn--accent" href="#request">Jump to the form <span class="arr">→</span></a>
         </div>
       </div>
       <div class="faq__list">
-        <details open>
+        <details>
           <summary><span class="q-no">01</span><span class="q-tx">Is it really free?</span><span class="q-pm">+</span></summary>
           <p>Yes. No card, no catch, no trial that flips to a charge. Thirty minutes with a senior advisor, a clear read on your business, and that's it. We do this because the businesses worth building with tend to start here.</p>
         </details>
@@ -519,9 +552,9 @@ select.input:invalid { color: var(--tx-faint); }
         <h5>Company</h5>
         <ul>
           <li><a href="/#work">The work</a></li>
-          <li><a href="/#method">The method</a></li>
           <li><a href="/#about">Who we are</a></li>
-          <li><a href="#request">Book an assessment</a></li>
+          <li><a href="/#method">The method</a></li>
+          <li><a href="/blog">The Ampersand</a></li>
         </ul>
       </div>
       <div class="foot__col">
@@ -530,22 +563,22 @@ select.input:invalid { color: var(--tx-faint); }
           <li><a href="/#pricing">AI Readiness Audit</a></li>
           <li><a href="/#pricing">Implementation Sprint</a></li>
           <li><a href="/#pricing">Managed Services</a></li>
-          <li><a href="/#method">The method</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
         </ul>
       </div>
       <div class="foot__col">
         <h5>More</h5>
         <ul>
           <li><a href="/#industries">Who this is for</a></li>
-          <li><a href="/#about">Why us</a></li>
-          <li><a href="/blog">The Ampersand</a></li>
+          <li><a href="/#why">Why us</a></li>
+          <li><a href="/blog/archive">Archive</a></li>
           <li><a href="/#paths">Where are you?</a></li>
         </ul>
       </div>
       <div class="foot__col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="#request">Book an assessment</a></li>
+          <li><a href="#request">Book a free assessment</a></li>
           <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
           <li><a href="tel:+14803605128">480-360-5128</a></li>
           <li><a href="/">Denver and Phoenix</a></li>
@@ -601,13 +634,35 @@ select.input:invalid { color: var(--tx-faint); }
   function setErr(el, on){ var f = fieldOf(el); if(f){ f.classList.toggle('err', !!on); } }
   function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
 
+  // Phone is required only when they ask to be reached by phone.
+  function contactValue(){
+    var sel = form.querySelector('input[name="contact"]:checked');
+    return sel ? sel.value : 'Email';
+  }
+  function phoneNeeded(){ var c = contactValue(); return c === 'Phone' || c === 'Either'; }
+  function phoneOk(v){
+    var digits = v.replace(/[^0-9]/g,'').length;
+    if(phoneNeeded()) return digits >= 7;
+    return v.trim() === '' || digits >= 7; // optional, but if given it must look like a number
+  }
+  function updatePhoneLabel(){
+    var label = document.getElementById('phoneLabel');
+    if(!label) return;
+    label.innerHTML = phoneNeeded()
+      ? 'Phone <span class="req">*</span>'
+      : 'Phone <span class="opt">— optional</span>';
+    if(!phoneNeeded()){ setErr(document.getElementById('phone'), false); }
+  }
+  form.querySelectorAll('input[name="contact"]').forEach(function(r){
+    r.addEventListener('change', updatePhoneLabel);
+  });
+  updatePhoneLabel();
+
   var required = [
     {id:'name',  test:function(v){ return v.trim().length > 0; }},
     {id:'email', test:function(v){ return validEmail(v); }},
-    {id:'phone', test:function(v){ return v.replace(/[^0-9]/g,'').length >= 7; }},
+    {id:'phone', test:phoneOk},
     {id:'company', test:function(v){ return v.trim().length > 0; }},
-    {id:'industry', test:function(v){ return v !== ''; }},
-    {id:'team', test:function(v){ return v !== ''; }},
     {id:'workflows', test:function(v){ return v.trim().length > 0; }}
   ];
 
@@ -641,19 +696,13 @@ select.input:invalid { color: var(--tx-faint); }
     });
     if(!ok){ if(firstBad){ firstBad.focus({preventScroll:false}); } return; }
 
-    var contactSel = form.querySelector('input[name="contact"]:checked');
     var payload = {
       name: val('name').trim(),
       email: val('email').trim(),
       phone: val('phone').trim(),
-      contact: contactSel ? contactSel.value : 'Email',
+      contact: contactValue(),
       company: val('company').trim(),
-      website: val('website').trim(),
-      industry: val('industry'),
-      team: val('team'),
-      revenue: val('revenue'),
       workflows: val('workflows').trim(),
-      heard: val('heard'),
       company_url: val('company_url'),
       interest: val('interest'),
       ts: val('ts')
@@ -689,6 +738,12 @@ select.input:invalid { color: var(--tx-faint); }
     });
   });
 
+  // Optional scheduling hand-off on the confirmation screen.
+  // TODO: no scheduling page exists in the repo or env config yet. When one
+  // does (e.g. a Calendly event URL), set SCHEDULING_URL and the
+  // "Pick a time →" button appears — the 24-hour email promise stays either way.
+  var SCHEDULING_URL = '';
+
   function reveal(server, payload){
     var first = (payload.name.split(/\s+/)[0]) || payload.name;
     var recap = server.recap || {};
@@ -699,12 +754,70 @@ select.input:invalid { color: var(--tx-faint); }
     document.getElementById('recapCompany').textContent = recap.company || payload.company;
     document.getElementById('confirmStamp').textContent = server.stamp ? ('Logged · ' + server.stamp) : 'Logged';
 
+    if(SCHEDULING_URL){
+      var pick = document.getElementById('pickTime');
+      if(pick){ pick.href = SCHEDULING_URL; pick.hidden = false; }
+    }
+
+    wirePrep(server.referenceId || '', payload);
+
     document.getElementById('book').style.display = 'none';
     var confirm = document.getElementById('confirm');
     confirm.style.display = 'block';
     var top = confirm.getBoundingClientRect().top + window.pageYOffset - 90;
     window.scrollTo({ top: top, behavior: 'smooth' });
     confirm.focus({preventScroll:true});
+  }
+
+  // Stage 2 — optional "help us prep" details, appended to the same submission.
+  function wirePrep(referenceId, identity){
+    var prep = document.getElementById('prep');
+    var prepForm = document.getElementById('prepForm');
+    if(!prep || !prepForm) return;
+    var prepBtn = document.getElementById('prepBtn');
+    var prepStatus = document.getElementById('prepStatus');
+
+    prepForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var details = {
+        industry: val('industry'),
+        team: val('team'),
+        revenue: val('revenue'),
+        website: val('website').trim(),
+        heard: val('heard')
+      };
+      var hasAny = Object.keys(details).some(function(k){ return details[k] !== ''; });
+      if(!hasAny){
+        prepStatus.textContent = 'Pick or fill in at least one field — or skip it entirely.';
+        return;
+      }
+      prepStatus.textContent = '';
+      prepBtn.disabled = true;
+      prepBtn.innerHTML = 'Adding…';
+
+      fetch('/api/book-assessment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.assign({
+          stage: 'details',
+          referenceId: referenceId,
+          name: identity.name,
+          email: identity.email,
+          company: identity.company,
+          company_url: val('company_url')
+        }, details))
+      })
+      .then(function(res){ return res.json(); })
+      .then(function(body){
+        if(!body || !body.ok){ throw new Error((body && body.error) || 'Could not add that just now.'); }
+        prep.classList.add('prep--done');
+      })
+      .catch(function(err){
+        prepBtn.disabled = false;
+        prepBtn.innerHTML = 'Add it to my request <span class="arr">→</span>';
+        prepStatus.textContent = err.message || 'Could not add that just now — your request is already in.';
+      });
+    });
   }
 })();
 </script>

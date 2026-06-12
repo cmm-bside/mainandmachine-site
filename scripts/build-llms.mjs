@@ -35,7 +35,7 @@ const out = `# ${COMPANY.name}
 - [Method](/method/) · [About](/about/) ·
   [Denver](/denver/) · [Phoenix](/phoenix/)
 - [The work](/work/) — builds shown plainly, sample audit included
-- [The Ampersand](/blog) — weekly plain-English AI essays
+- [The Ampersand](/blog/) — weekly plain-English AI essays
 
 ## Facts
 

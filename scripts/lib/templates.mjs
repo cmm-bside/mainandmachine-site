@@ -57,8 +57,9 @@ export function head({ title, description, canonical, ogImage, ogType = "website
 		: /\.webp(\?|$)/i.test(img) ? "image/webp"
 		: /\.svg(\?|$)/i.test(img) ? "image/svg+xml"
 		: "image/jpeg";
-	// We only know the dimensions of the brand default (1200x630).
+	// We know the dimensions of the brand default and our generated OG cards (1200x630).
 	const imgIsDefault = img === DEFAULT_OG_IMAGE;
+	const imgKnownSize = imgIsDefault || img.includes("/images/og/");
 	const imgAlt = imgIsDefault ? `${BRAND} — The machine belongs to Main Street.` : title;
 	const ld = jsonLd
 		.filter(Boolean)
@@ -81,7 +82,7 @@ export function head({ title, description, canonical, ogImage, ogType = "website
 <meta property="og:url" content="${attr(canonical)}" />
 <meta property="og:image" content="${attr(img)}" />
 <meta property="og:image:type" content="${imgType}" />
-${imgIsDefault ? `<meta property="og:image:width" content="1200" />
+${imgKnownSize ? `<meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 ` : ""}<meta property="og:image:alt" content="${attr(imgAlt)}" />
 
@@ -110,16 +111,17 @@ ${ld}
 }
 
 // City links for the topbar, derived from the canonical locations ("Denver, CO" → "Denver").
+// One span per city — the separator is drawn by .press-list CSS so it can never dangle.
 const CITY_LINKS = COMPANY.locations
 	.map((l) => l.split(",")[0])
-	.map((city) => `<a href="/${city.toLowerCase()}/">${esc(city)}</a>`)
-	.join(" · ");
+	.map((city) => `<span><a href="/${city.toLowerCase()}/">${esc(city)}</a></span>`)
+	.join("");
 
 export function topbar() {
 	return `<div class="topbar">
   <div class="wrap topbar__in">
     <span class="left"><span class="dot"></span>${esc(BLOG_NAME)} — free weekly essays</span>
-    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span>${CITY_LINKS} · Remote</span></span>
+    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span class="press-list">${CITY_LINKS}<span>Remote</span></span></span>
   </div>
 </div>`;
 }
@@ -168,7 +170,7 @@ export function nav() {
       <a href="/method/">Method</a>
       <a href="/work/">The Work</a>
       <a href="/about/">Who We Are</a>
-      <a href="/blog" class="is-active" aria-current="page">The Ampersand</a>
+      <a href="/blog/" class="is-active" aria-current="page">The Ampersand</a>
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="/book/">Book a free assessment</a>
@@ -194,7 +196,7 @@ export function footer() {
           <li><a href="/about/">Who we are</a></li>
           <li><a href="/method/">The method</a></li>
           <li><a href="/work/">The work</a></li>
-          <li><a href="/blog">The Ampersand</a></li>
+          <li><a href="/blog/">The Ampersand</a></li>
         </ul>
       </div>
       <div class="foot__col">
@@ -211,7 +213,7 @@ export function footer() {
         <ul>
           <li><a href="/industries/">Who this is for</a></li>
           <li><a href="/calculator/">ROI calculator</a></li>
-          <li><a href="/blog/archive">Archive</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
           <li><a href="/#paths">Where are you?</a></li>
         </ul>
       </div>
@@ -226,8 +228,8 @@ export function footer() {
       </div>
     </div>
     <div class="foot__bottom">
-      <span>© 2026 mainandmachine.com · Human-centric AI for small and mid-size business</span>
-      <span class="links"><a href="/">Home</a><a href="/blog">Writing</a><a href="/blog/rss.xml">RSS</a></span>
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/">Home</a><a href="/blog/">Writing</a><a href="/blog/rss.xml">RSS</a></span>
     </div>
   </div>
 </footer>`;
@@ -258,7 +260,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
           <li>How we actually think about AI on Main Street</li>
           <li>No pitches, no funnels — leave whenever it stops paying</li>
         </ul>
-        <a class="feed__archive" href="/blog/archive">Browse the full archive →</a>
+        <a class="feed__archive" href="/blog/archive/">Browse the full archive →</a>
       </div>
     </div>
   </div>

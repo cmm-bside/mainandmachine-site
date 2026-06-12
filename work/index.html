@@ -13,19 +13,19 @@
 <meta property="og:title" content="The Work — Builds &amp; Case Studies | Main &amp; Machine" />
 <meta property="og:description" content="Case studies published only when verified. Audits $3,500–$8,500, ~90 days per workflow. Built from Denver, CO and Phoenix, AZ — remote across the US." />
 <meta property="og:url" content="https://www.mainandmachine.com/work/" />
-<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image" content="https://www.mainandmachine.com/images/og/work.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
+<meta property="og:image:alt" content="Main &amp; Machine — The work, shown plainly." />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="The Work — Builds &amp; Case Studies | Main &amp; Machine" />
 <meta name="twitter:description" content="Case studies published only when verified. Audits $3,500–$8,500, ~90 days per workflow. Built from Denver, CO and Phoenix, AZ — remote across the US." />
-<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/work.png" />
 
-<link rel="stylesheet" href="/styles.css?v=15" />
+<link rel="stylesheet" href="/styles.css?v=16" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -71,14 +71,18 @@
 .case__stat:last-child { border-right: 0; }
 @media (max-width: 560px) { .case__stat { border-right: 0; border-bottom: 1px solid var(--line); } .case__stat:last-child { border-bottom: 0; } }
 .case__stat .tick-lbl { display: block; margin-bottom: 8px; }
-.todo-val { font-family: var(--mono); font-size: 18px; font-weight: 700; letter-spacing: .04em; color: var(--accent); }
+.case__stat .stat-val { font-family: var(--mono); font-size: 18px; font-weight: 700; letter-spacing: .04em; color: var(--accent); }
 .case__caption { margin-top: 14px; font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--tx-mute); max-width: 64ch; }
+.case__log { border: 1px solid var(--line); background: #fff; padding: 18px 20px; }
+.case__log .tick-lbl { display: block; margin-bottom: 8px; }
+.case__log p { font-size: 14.5px; line-height: 1.6; color: var(--tx-mute); max-width: 64ch; }
 .case__quote { padding: clamp(22px, 3vw, 30px); }
 .case__quote .tick-lbl { display: block; margin-bottom: 14px; }
 .case__quote blockquote {
-  border-left: 3px solid var(--accent); padding: 6px 0 6px 18px; min-height: 48px;
-  font-size: 17px; line-height: 1.6; color: var(--tx-faint); font-style: italic;
+  border-left: 3px solid var(--accent); padding: 6px 0 6px 18px;
+  font-size: 17px; line-height: 1.6; color: var(--tx); font-style: italic;
 }
+.case__quote cite { display: block; margin-top: 10px; font-family: var(--mono); font-style: normal; font-size: 12px; color: var(--tx-mute); }
 
 /* quiet linking inside copied build cards */
 .build h3 a { color: inherit; text-decoration: none; }
@@ -139,7 +143,7 @@
   <div class="wrap topbar__in">
     <!-- TODO: if a verifiably true slot count exists, "Two Q3 build slots remain" is stronger than the generic line. -->
     <span class="left"><span class="dot"></span>Now booking Q3 builds — every engagement starts with the free assessment</span>
-    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span><a href="/denver/">Denver</a> · <a href="/phoenix/">Phoenix</a> · Remote</span></span>
+    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span class="press-list"><span><a href="/denver/">Denver</a></span><span><a href="/phoenix/">Phoenix</a></span><span>Remote</span></span></span>
   </div>
 </div>
 
@@ -156,7 +160,7 @@
       <a href="/method/">Method</a>
       <a href="/work/" class="is-active" aria-current="page">The Work</a>
       <a href="/about/">Who We Are</a>
-      <a href="/blog">The Ampersand</a>
+      <a href="/blog/">The Ampersand</a>
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="/book/">Book a free assessment</a>
@@ -236,20 +240,23 @@
 
       <div class="case__results">
         <span class="tick-lbl">A sample week</span>
-        <!-- TODO(owner): fill from real logs — do not publish invented numbers -->
-        <div class="case__stats">
-          <div class="case__stat"><span class="tick-lbl">Requests handled</span><span class="todo-val">TODO</span></div>
-          <div class="case__stat"><span class="tick-lbl">Drafts overruled</span><span class="todo-val">TODO</span></div>
-          <div class="case__stat"><span class="tick-lbl">Minutes saved</span><span class="todo-val">TODO</span></div>
+        <!-- BUILD-LOG:STATS — rendered by scripts/build-work.mjs from data/build-log.json.
+             Stats appear only when week_of and all three numbers are non-null;
+             until then this is the designed empty state. Never hand-edit figures here. -->
+        <div class="case__log">
+          <span class="tick-lbl">The log is running</span>
+          <p>The intake agent started keeping score in June 2026. The first full month of numbers publishes here once we can verify them — the same standard we hold for client claims.</p>
         </div>
+        <!-- /BUILD-LOG:STATS -->
         <p class="case__caption">This is our own operation, shown because we don't publish client claims we can't verify yet.</p>
       </div>
 
-      <div class="case__quote">
-        <span class="tick-lbl">In their words</span>
-        <!-- pull quote slot — fill when a client signs off -->
-        <blockquote></blockquote>
-      </div>
+      <!-- BUILD-LOG:QUOTES — rendered by scripts/build-work.mjs from data/build-log.json.
+           "In their words" appears only for quotes with signed_off: true (written client
+           approval on file). No rendered output until then — an empty labeled section
+           reads as a bug. -->
+
+        <!-- /BUILD-LOG:QUOTES -->
     </article>
     <!-- ============ /CASE STUDY ============ -->
   </div>
@@ -340,7 +347,7 @@
           <li><a href="/about/">Who we are</a></li>
           <li><a href="/method/">The method</a></li>
           <li><a href="/work/">The work</a></li>
-          <li><a href="/blog">The Ampersand</a></li>
+          <li><a href="/blog/">The Ampersand</a></li>
         </ul>
       </div>
       <div class="foot__col">
@@ -357,7 +364,7 @@
         <ul>
           <li><a href="/industries/">Who this is for</a></li>
           <li><a href="/calculator/">ROI calculator</a></li>
-          <li><a href="/blog/archive">Archive</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
           <li><a href="/#paths">Where are you?</a></li>
         </ul>
       </div>
@@ -372,7 +379,7 @@
       </div>
     </div>
     <div class="foot__bottom">
-      <span>© 2026 mainandmachine.com · Human-centric AI for small and mid-size business</span>
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
       <span class="links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
     </div>
   </div>

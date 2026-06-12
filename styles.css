@@ -1008,3 +1008,17 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 .pagehero .lead { font-size: clamp(17px, 1.5vw, 20px); max-width: 62ch; }
 .pagehero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (max-width: 940px) { .pagehero__grid { grid-template-columns: 1fr; gap: 36px; } }
+
+
+/* =========================================================
+   TYPOGRAPHY HYGIENE — separated inline lists + wrap control
+   ========================================================= */
+/* One span per item; the separator is drawn in CSS so it can never
+   dangle at the end of a wrapped line. */
+.press-list { display: inline-flex; flex-wrap: wrap; gap: 0.25em 0; }
+.press-list > span { white-space: nowrap; }
+.press-list > span + span::before { content: "\00b7"; margin: 0 0.55em; }
+
+/* No one-word widows in copy; balanced headings. */
+p, li, figcaption, .lead, .hero__note { text-wrap: pretty; }
+h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }

@@ -159,7 +159,7 @@ function normalizePost(p) {
 		bodyHtml,
 		searchText: plain.toLowerCase().slice(0, BODY_SEARCH_CAP),
 		popularity,
-		url: `/blog/${slug}`,
+		url: `/blog/${slug}/`,
 		webUrl: p.web_url || "",
 		hiddenFromFeed: p.hidden_from_feed === true,
 	};

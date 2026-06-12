@@ -176,7 +176,7 @@ function renderHome(posts, { subscribeUrl, publicationUrl }) {
 		"@type": "Blog",
 		name: BLOG_NAME,
 		description: BLOG_DESCRIPTION,
-		url: `${SITE_ORIGIN}/blog`,
+		url: `${SITE_ORIGIN}/blog/`,
 		inLanguage: "en-US",
 		publisher: { "@id": `${SITE_ORIGIN}/#org` },
 		author: { "@id": `${SITE_ORIGIN}/#person-cmyers` },
@@ -195,10 +195,10 @@ function renderHome(posts, { subscribeUrl, publicationUrl }) {
 		const rest = posts.slice(1, 1 + RECENT_ON_HOME);
 		feed = `${featured(posts[0])}
 ${rest.length
-	? `<div class="feed__bar"><span class="tick-lbl">Recent dispatches</span><a class="tick-lbl" href="/blog/archive" style="color:var(--accent)">Full archive →</a></div>
+	? `<div class="feed__bar"><span class="tick-lbl">Recent dispatches</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent)">Full archive →</a></div>
 <div class="feed__grid">${rest.map(card).join("\n")}</div>`
 	: ""}
-<a class="feed__archive" href="/blog/archive">View the full archive →</a>`;
+<a class="feed__archive" href="/blog/archive/">View the full archive →</a>`;
 	}
 
 	const body = `${topbar()}
@@ -229,8 +229,8 @@ ${pageScripts()}`;
 	return `${head({
 		title: `${BLOG_NAME} — Plain-English AI Essays for Business Owners | ${BRAND}`,
 		description: `${BLOG_NAME} — ${BLOG_DESCRIPTION} Human-centric AI, small business, and the judgment no model has.`,
-		canonical: `${SITE_ORIGIN}/blog`,
-		ogImage: DEFAULT_OG_IMAGE,
+		canonical: `${SITE_ORIGIN}/blog/`,
+		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,
 		jsonLd: [blogLd, orgJsonLd()],
 	})}
 <body>
@@ -248,12 +248,12 @@ function renderArchive(posts, { subscribeUrl, publicationUrl }) {
 		"@type": "CollectionPage",
 		name: `${BLOG_NAME} — Archive`,
 		description: `Every essay from ${BLOG_NAME}.`,
-		url: `${SITE_ORIGIN}/blog/archive`,
-		isPartOf: { "@type": "Blog", name: BLOG_NAME, url: `${SITE_ORIGIN}/blog` },
+		url: `${SITE_ORIGIN}/blog/archive/`,
+		isPartOf: { "@type": "Blog", name: BLOG_NAME, url: `${SITE_ORIGIN}/blog/` },
 		breadcrumb: breadcrumbLd([
 			["Home", `${SITE_ORIGIN}/`],
-			["Writing", `${SITE_ORIGIN}/blog`],
-			["Archive", `${SITE_ORIGIN}/blog/archive`],
+			["Writing", `${SITE_ORIGIN}/blog/`],
+			["Archive", `${SITE_ORIGIN}/blog/archive/`],
 		]),
 	};
 
@@ -323,8 +323,8 @@ ${pageScripts()}`;
 	return `${head({
 		title: `Archive — ${BLOG_NAME}`,
 		description: `Every essay from ${BLOG_NAME} — ${BLOG_DESCRIPTION}`,
-		canonical: `${SITE_ORIGIN}/blog/archive`,
-		ogImage: DEFAULT_OG_IMAGE,
+		canonical: `${SITE_ORIGIN}/blog/archive/`,
+		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,
 		jsonLd: [collectionLd, orgJsonLd()],
 	})}
 <body>
@@ -353,11 +353,11 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 		author: { "@id": `${SITE_ORIGIN}/#person-cmyers` },
 		publisher: { "@id": `${SITE_ORIGIN}/#org` },
 		image: post.heroImage ? post.heroImage.assetUrl : DEFAULT_OG_IMAGE,
-		isPartOf: { "@type": "Blog", name: BLOG_NAME, url: `${SITE_ORIGIN}/blog` },
+		isPartOf: { "@type": "Blog", name: BLOG_NAME, url: `${SITE_ORIGIN}/blog/` },
 	};
 	const breadcrumbLdObj = breadcrumbLd([
 		["Home", `${SITE_ORIGIN}/`],
-		["Writing", `${SITE_ORIGIN}/blog`],
+		["Writing", `${SITE_ORIGIN}/blog/`],
 		[post.title, canonical],
 	]);
 
@@ -375,7 +375,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 ${nav()}
 <article class="section paper" data-screen-label="${esc(BLOG_NAME)}">
   <div class="wrap essay">
-    <a class="essay__back" href="/blog">← ${esc(BLOG_NAME)}</a>
+    <a class="essay__back" href="/blog/">← ${esc(BLOG_NAME)}</a>
     <header class="essay__head">
       <span class="kicker">Writing / ${esc(BLOG_NAME)}</span>
       <h1 class="essay__title">${esc(post.title)}</h1>
@@ -388,7 +388,7 @@ ${nav()}
     </header>
     ${heroBlock}
     <div class="prose">
-${bodyHtml || `<p>This essay is being mirrored from beehiiv. <a href="${attr(post.webUrl || "/blog")}">Read it here</a>.</p>`}
+${bodyHtml || `<p>This essay is being mirrored from beehiiv. <a href="${attr(post.webUrl || "/blog/")}">Read it here</a>.</p>`}
     </div>
     <div class="essay__share">
       <span class="tick-lbl">Share</span>
@@ -403,7 +403,7 @@ ${bodyHtml || `<p>This essay is being mirrored from beehiiv. <a href="${attr(pos
 ${readNext.length
 	? `<section class="section paper-2" data-screen-label="Read next">
   <div class="wrap">
-    <div class="feed__bar"><span class="tick-lbl">Read next</span><a class="tick-lbl" href="/blog/archive" style="color:var(--accent)">Archive →</a></div>
+    <div class="feed__bar"><span class="tick-lbl">Read next</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent)">Archive →</a></div>
     <div class="feed__grid">${readNext.map(card).join("\n")}</div>
   </div>
 </section>`
@@ -417,7 +417,7 @@ ${readNext.length
       <p class="lead">This is the kind of workflow the free assessment maps. Thirty minutes, no pitch.</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;">
         <a class="btn btn--accent btn--lg" href="/book/">Book a free assessment →</a>
-        <a class="btn btn--ghost btn--lg" data-beehiiv-subscribe href="/blog">Get the weekly essay →</a>
+        <a class="btn btn--ghost btn--lg" data-beehiiv-subscribe href="/blog/">Get the weekly essay →</a>
       </div>
     </div>
   </div>
@@ -463,7 +463,7 @@ function renderRss(posts, meta) {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${cdata(BLOG_NAME)}</title>
-    <link>${SITE_ORIGIN}/blog</link>
+    <link>${SITE_ORIGIN}/blog/</link>
     <atom:link href="${SITE_ORIGIN}/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>${cdata(meta.description || BLOG_DESCRIPTION)}</description>
     <language>en-us</language>
@@ -479,8 +479,8 @@ ${items}
 function seoMeta(route, isPost) {
 	if (route === "/") return { changefreq: "weekly", priority: "1.0" };
 	if (route === "/book/") return { changefreq: "monthly", priority: "1.0" };
-	if (route === "/blog") return { changefreq: "weekly", priority: "0.8" };
-	if (route === "/blog/archive") return { changefreq: "monthly", priority: "0.5" };
+	if (route === "/blog/") return { changefreq: "weekly", priority: "0.8" };
+	if (route === "/blog/archive/") return { changefreq: "monthly", priority: "0.5" };
 	if (route === "/privacy/" || route === "/terms/") return { changefreq: "yearly", priority: "0.3" };
 	if (isPost) return { changefreq: "monthly", priority: "0.7" };
 	return { changefreq: "monthly", priority: "0.5" };
@@ -491,8 +491,8 @@ function renderSitemap(posts) {
 	// the beehiiv test post), so the sitemap never lists a non-public URL.
 	const entries = [
 		...STATIC_ROUTES.map((route) => ({ route, isPost: false, lastmod: null })),
-		{ route: "/blog", isPost: false, lastmod: null },
-		{ route: "/blog/archive", isPost: false, lastmod: null },
+		{ route: "/blog/", isPost: false, lastmod: null },
+		{ route: "/blog/archive/", isPost: false, lastmod: null },
 		...posts.map((p) => ({ route: p.url, isPost: true, lastmod: p.updatedAt || p.publishedAt || null })),
 	];
 	const body = entries

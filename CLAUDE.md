@@ -115,3 +115,13 @@ Reuse these tokens and classes for any new work — never approximate the values
   "Two Q3 build slots remain" instead of the generic line (see index.html topbar).
 - After deploy: resubmit sitemap.xml in Search Console and request indexing on the
   new pages.
+
+## Proof shelf rule
+
+Numbers and quotes on /work come only from `data/build-log.json`, rendered by
+`scripts/build-work.mjs` at build time (between the BUILD-LOG markers in
+`work/index.html`). Never hand-edit rendered figures. `signed_off: true`
+requires the client's written approval on file. The "A sample week" strip
+renders only when `week_of` and all three numbers are non-null; "In their
+words" renders only signed-off quotes. `placeholders:check` fails any build
+whose rendered pages contain TODO/TBD/TKTK/lorem ipsum/XXX in visible text.

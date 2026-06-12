@@ -42,7 +42,7 @@ const home = read(path.join(BLOG_DIR, "index.html"));
 if (!home) fail("blog/index.html missing");
 else {
 	if (!/<title>[^<]+<\/title>/.test(home)) fail("/blog: missing <title>");
-	if (!home.includes(`<link rel="canonical" href="${SITE_ORIGIN}/blog"`))
+	if (!home.includes(`<link rel="canonical" href="${SITE_ORIGIN}/blog/"`))
 		fail("/blog: missing/incorrect canonical");
 	if (!/"@type":\s*"Blog"/.test(home)) fail("/blog: missing Blog JSON-LD");
 }
@@ -51,7 +51,7 @@ else {
 const archive = read(path.join(ARCHIVE_DIR, "index.html"));
 if (!archive) fail("blog/archive/index.html missing");
 else {
-	if (!archive.includes(`<link rel="canonical" href="${SITE_ORIGIN}/blog/archive"`))
+	if (!archive.includes(`<link rel="canonical" href="${SITE_ORIGIN}/blog/archive/"`))
 		fail("/blog/archive: missing/incorrect canonical");
 	if (!/"@type":\s*"CollectionPage"/.test(archive))
 		fail("/blog/archive: missing CollectionPage JSON-LD");
@@ -88,7 +88,7 @@ else {
 const sitemap = read(SITEMAP_PATH);
 if (!sitemap) fail("sitemap.xml missing");
 else {
-	for (const route of ["/blog", "/blog/archive", ...posts.map((p) => p.url)]) {
+	for (const route of ["/blog/", "/blog/archive/", ...posts.map((p) => p.url)]) {
 		if (!sitemap.includes(`<loc>${SITE_ORIGIN}${route}</loc>`))
 			fail(`sitemap: missing entry for ${route}`);
 	}

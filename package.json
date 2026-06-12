@@ -14,6 +14,7 @@
     "placeholders:check": "node scripts/check-placeholders.mjs",
     "book:check": "node scripts/check-book.mjs",
     "smoke:test": "node scripts/smoke-test.mjs",
+    "sweep:mobile": "node scripts/mobile-sweep.mjs",
     "test:book": "node scripts/test-book-assessment.mjs",
     "build:static": "npm run blog:fetch && npm run blog:build && npm run llms:build && npm run work:build && npm run seo:check && npm run facts:check && npm run placeholders:check && npm run book:check",
     "postinstall": "node scripts/build-blog.mjs",

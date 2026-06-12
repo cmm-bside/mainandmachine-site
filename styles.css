@@ -619,6 +619,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 }
 @media print{
   .rv{ opacity:1 !important; transform:none !important; transition:none !important; }
+  .hero__title .wi{ transform:none !important; transition:none !important; }
 }
 
 /* keep grain/marks from ever blocking interaction */

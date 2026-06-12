@@ -49,6 +49,14 @@ for (const url of urls) {
     fail(`${route}: missing expected topbar banner`);
 }
 
+// Apex must redirect to www — a stale copy can't hide on the bare domain.
+if (BASE === COMPANY.origin) {
+  const apex = await fetch("https://mainandmachine.com/book/", { redirect: "manual" });
+  const loc = apex.headers.get("location") || "";
+  if (![301, 308].includes(apex.status) || !loc.startsWith(COMPANY.origin))
+    fail(`apex /book/: expected 301/308 → ${COMPANY.origin}, got ${apex.status} → ${loc}`);
+}
+
 // /book/ load-bearing elements (FAQ 01 regression + the named advisor).
 const book = await get(`${BASE}/book/`);
 for (const s of ["Is it really free?", "Fair questions.", "What happens · 30 minutes", "Who you'll talk to", "Christopher Myers"]) {

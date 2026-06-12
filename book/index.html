@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — Thirty minutes. No pitch. An honest verdict." />
-<link rel="stylesheet" href="/styles.css?v=17" />
+<link rel="stylesheet" href="/styles.css?v=18" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -210,7 +210,7 @@ select.input:invalid { color: var(--tx-faint); }
 
 /* advisor */
 .advisor { display: flex; gap: 14px; align-items: flex-start; }
-.advisor__portrait { width: 48px; height: 48px; flex: none; object-fit: cover; border: 1px solid var(--line); background: var(--paper-2); }
+.advisor__portrait { width: 72px; height: 72px; flex: none; object-fit: cover; border: 1px solid var(--line); background: var(--paper-2); display: block; }
 .advisor__tx h4 { font-size: 15.5px; font-weight: 800; letter-spacing: -0.01em; }
 .advisor__tx p { font-size: 13px; color: var(--tx-mute); margin-top: 5px; line-height: 1.55; }
 
@@ -434,10 +434,7 @@ select.input:invalid { color: var(--tx-faint); }
         <div class="panel">
           <div class="panel__t">Who you'll talk to</div>
           <div class="advisor">
-            <picture>
-              <source type="image/webp" srcset="/images/christopher-myers-hedcut.webp?v=3" />
-              <img class="advisor__portrait" src="/images/christopher-myers-hedcut.png?v=3" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="48" height="48" loading="lazy" decoding="async" />
-            </picture>
+            <img class="advisor__portrait" src="/images/christopher-myers-hedcut-sq.png?v=1" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="72" height="72" loading="lazy" decoding="async" />
             <div class="advisor__tx">
               <h4>Christopher Myers</h4>
               <p>Founder &amp; Chairman. The person who scopes your work is the one accountable for the build — twenty-six years backing Main Street, never a junior account rep.</p>
@@ -892,6 +889,12 @@ select.input:invalid { color: var(--tx-faint); }
 <!-- ============ REVEAL ANIMATION ============ -->
 <script>
 (function(){
+  // Capture/automation tools (webdriver) get the full page instantly — no reveal race.
+  if (navigator.webdriver) {
+    var ht = document.querySelector('.hero__title');
+    if (ht) { ht.classList.add('in'); }
+    return;
+  }
   var sels = ['.bookhero__grid > *','.formcard','.rail > .panel','.faq > *','.faq__list details','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });

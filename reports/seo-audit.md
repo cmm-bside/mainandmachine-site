@@ -127,3 +127,33 @@ animation state.
 **v3 polish:** press lists are now glyph-free (gap-separated — nothing to strand
 on either side of a wrap); /services/ engagement rows carry the same
 "What you leave with" third column as /pricing/.
+
+---
+
+# v4 addendum (June 12, 2026)
+
+**Stale /book/ (v4 Prompt 02) — re-verified clean, third external check.** The v4
+review's two stale fetches predate the June 12 deploy that added the guards. Fresh
+verification: www `/book/` carries zero old-build markers and all new-build markers;
+`cache-control: public, max-age=0, must-revalidate`, `cf-cache-status: DYNAMIC`
+(HTML never edge-cached); apex `mainandmachine.com/book/` 301s to www on both http
+and https. The hourly + per-push smoke test now also asserts the apex redirect, so a
+stale copy cannot hide on either host. If an external fetch ever shows the old build
+again, the smoke-test workflow will be red within the hour — check the Actions tab
+before debugging by hand.
+
+**Capture-vanishing labels (v4 Prompt 03) — closed at the root.** Beyond the v3
+print rule, every reveal script now begins with a `navigator.webdriver` guard:
+automation/capture tools get the full page instantly with no reveal race (the
+homepage guard also reveals the hero word-rise). Print CSS covers the hero title
+too. `book:check` (build) + `smoke:test` (live) assert FAQ 01–05 and all /book
+labels on every deploy.
+
+**Advisor portrait (v4 Prompt 01) — fixed.** New dedicated square head crop
+`images/christopher-myers-hedcut-sq.png` (160×160, cropped inside the matte, eyes
+~45% of frame), rendered 72×72 with CSS-owned border on /book. Swept the repo: the
+only sub-120px render of the full hedcut was this card; the large founder portraits
+on / and /about/ keep the original asset.
+
+**Machine-layer audit (v4 Prompt 04):** already ran — see the v2 sections and v3
+addendum above for the full PASS/FIX ledger and URL inventory.

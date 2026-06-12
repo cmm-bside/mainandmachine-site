@@ -181,6 +181,10 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .hero h1 { margin: 12px 0 10px; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
 .hero__note { font-family: var(--mono); font-size: 12.5px; color: var(--tx-mute); margin-top: 18px; max-width: 46ch; line-height: 1.6; }
+/* quiet second path under the primary CTA — link weight, not button weight; padding keeps the tap target ≥44px */
+.hero__alt { margin: 6px 0 0; }
+.hero__alt a { display: inline-block; padding: 12px 0; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; color: var(--tx); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
+.hero__alt a:hover { color: var(--accent-deep); }
 
 /* operator stat rail */
 .statrail { border: 1px solid var(--line); background: var(--paper-card); }

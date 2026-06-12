@@ -399,10 +399,17 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 
 /* featured / latest */
 .feed__featured { display: grid; grid-template-columns: 1.1fr 1fr; background: var(--paper-card); border: 1px solid var(--line); transition: border-color .15s; }
-@media (max-width: 800px){ .feed__featured { grid-template-columns: 1fr; } }
 .feed__featured:hover { border-color: var(--tx); }
 .feed__featured-img { position: relative; min-height: 320px; background: var(--blueprint-2); overflow: hidden; }
-.feed__featured-img img { width: 100%; height: 100%; object-fit: cover; }
+/* Cover art puts the essay title top-left — when the tall desktop box
+   crops the 16:9 art, crop from the right, never through the title. */
+.feed__featured-img img { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+/* Single column: same 16:9 box as the archive cards, so the full
+   artwork (and the title drawn inside it) is always visible. */
+@media (max-width: 800px){
+  .feed__featured { grid-template-columns: 1fr; }
+  .feed__featured-img { aspect-ratio: 16 / 9; min-height: 0; }
+}
 .feed__featured-body { padding: clamp(26px, 3.5vw, 44px); display: flex; flex-direction: column; justify-content: center; }
 .feed__featured-title { font-size: clamp(26px, 3.2vw, 42px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.04; margin: 14px 0; text-wrap: balance; }
 .feed__excerpt { font-size: 16px; line-height: 1.55; color: var(--tx-mute); max-width: 52ch; }

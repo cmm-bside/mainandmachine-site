@@ -9,7 +9,7 @@ consulting and implementation for small and mid-size businesses.
 the homepage (`index.html`, six sections), `book/`, `pricing/`, `method/`, `about/`,
 `services/` (+ 3 service detail pages), `industries/` (+ 5 industry pages),
 `denver/` + `phoenix/` city pages, `work/` (+ `work/sample-audit/`), `calculator/`,
-`privacy/`, `terms/`, `404.html`. The one build step is the blog, **The Ampersand**,
+`contact/`, `privacy/`, `terms/`, `404.html`. The one build step is the blog, **The Ampersand**,
 prerendered at deploy time from beehiiv:
 
 - **Hosting/deploy:** GitHub → Cloudflare Pages runs `npm run build:static` on every
@@ -96,6 +96,10 @@ block (~line 506) overrides the first one and wins — edit values there.
   (`.crop::after` draws the marks; `--grain` adds film grain to surfaces)
 
 Reuse these tokens and classes for any new work — never approximate the values.
+**Solid accent fill is reserved for actions** (CTA buttons, the slider thumb).
+Decorative panels use ink (`.arg--amp`, `.svc__item--feature` style); accent
+appears elsewhere only as text/hairline. Never add a non-interactive solid-orange
+panel — it dilutes the CTA.
 
 ## TODO (manual tasks no prompt can do)
 

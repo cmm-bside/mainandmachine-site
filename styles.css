@@ -1035,6 +1035,10 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
    side of a wrap, so spacing alone does the separating. */
 .press-list { display: inline-flex; flex-wrap: wrap; gap: 0.3em 1.6em; }
 .press-list > span { white-space: nowrap; }
+/* The footer bottom line holds sentences, not outlet names — nowrap there
+   pushes "Human-centric AI for small and mid-size business" past a 390px
+   viewport (the site's only horizontal overflow). Let those spans wrap. */
+.foot__bottom .press-list > span { white-space: normal; }
 
 /* No one-word widows in copy; balanced headings. */
 p, li, figcaption, .lead, .hero__note { text-wrap: pretty; }

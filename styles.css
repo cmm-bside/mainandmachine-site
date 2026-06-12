@@ -571,7 +571,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 
 /* ---------- operator chrome: slim status bar above nav ---------- */
 .topbar{ background: var(--ink); color: var(--dtx-mute); background-image: var(--grain); }
-.topbar__in{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:36px;
+.topbar__in{ display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:36px;
   font-family: var(--mono); font-size: 10.5px; letter-spacing:.16em; text-transform:uppercase; }
 .topbar__in .left { display:flex; align-items:center; }
 .topbar__in .right { display:flex; gap:22px; }
@@ -580,7 +580,19 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 .topbar .dot{ width:6px; height:6px; border-radius:50%; background: var(--accent-ink); display:inline-block; margin-right:10px; }
 @media (prefers-reduced-motion: no-preference){ .topbar .dot{ animation: mm-pulse 2.6s ease-in-out infinite; } }
 @keyframes mm-pulse{ 0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(236,108,61,.55); } 50%{ opacity:.45; box-shadow:0 0 0 4px rgba(236,108,61,0); } }
-@media (max-width: 680px){ .topbar .hide-sm{ display:none; } .topbar__in{ letter-spacing:.1em; } }
+@media (max-width: 680px){ .topbar__in{ letter-spacing:.1em; } }
+/* One-line announcement bar at every width: the full message + tagline +
+   city list wraps inside what was a fixed-height bar and clipped its own
+   glyphs. The bar sizes by min-height (never clips), and its content
+   sheds in stages — tagline, then cities, then the short copy swap. */
+.topbar .bar-short{ display:none; }
+@media (max-width: 1240px){ .topbar .hide-sm{ display:none; } }
+@media (max-width: 880px){ .topbar__in .right{ display:none; } }
+@media (max-width: 768px){
+  .topbar .bar-long{ display:none; }
+  .topbar .bar-short{ display:inline; }
+  .topbar__in{ min-height:32px; padding:8px 0; }
+}
 
 /* ---------- hero ampersand watermark (the pivot) ---------- */
 .hero { position: relative; overflow: hidden; }
@@ -873,7 +885,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
    ========================================================= */
 @media (max-width: 640px){
   /* shorter operator chrome + sticky header */
-  .topbar__in{ height:32px; font-size:10px; letter-spacing:.08em; }
+  .topbar__in{ min-height:32px; font-size:10px; letter-spacing:.08em; }
   .nav__inner{ height:56px; gap:14px; }
 
   /* keep the nav CTA obvious but less dominant on small screens */

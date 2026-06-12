@@ -44,7 +44,8 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference){ html { scroll-behavior: smooth; } }
 body {
   font-family: var(--sans);
   background: var(--paper);
@@ -148,6 +149,10 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
+/* The sticky header covers the top of anything an anchor jumps to —
+   every potential target clears it. --header-h tracks .nav__inner. */
+:root{ --header-h: 70px; }
+[id]{ scroll-margin-top: calc(var(--header-h) + 16px); }
 .nav__inner { display: flex; align-items: center; gap: 28px; height: 70px; }
 .nav__links { display: flex; gap: 24px; margin-left: 8px; }
 .nav__links a { font-size: 14.5px; font-weight: 500; color: var(--tx-mute); transition: color .15s; }
@@ -896,6 +901,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
   /* shorter operator chrome + sticky header */
   .topbar__in{ min-height:32px; font-size:10px; letter-spacing:.08em; }
   .nav__inner{ height:56px; gap:14px; }
+  :root{ --header-h: 56px; }
 
   /* keep the nav CTA obvious but less dominant on small screens */
   .nav__inner{ gap:10px; }

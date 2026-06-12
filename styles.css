@@ -991,3 +991,20 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 @media (max-width:560px){
   .mediabar__list { font-size: 12px; }
 }
+
+/* =========================================================
+   SUBPAGES — breadcrumb + page hero (shared by /pricing/,
+   /method/, /about/, services, industries, cities, /work/)
+   ========================================================= */
+.crumb {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--tx-faint); display: flex; gap: 10px; align-items: center; margin-bottom: 26px; flex-wrap: wrap;
+}
+.crumb a { color: var(--tx-mute); }
+.crumb a:hover { color: var(--tx); }
+.crumb .sep { opacity: .5; }
+.pagehero { padding-bottom: clamp(40px, 5vw, 64px); }
+.pagehero h1 { margin: 22px 0 24px; }
+.pagehero .lead { font-size: clamp(17px, 1.5vw, 20px); max-width: 62ch; }
+.pagehero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+@media (max-width: 940px) { .pagehero__grid { grid-template-columns: 1fr; gap: 36px; } }

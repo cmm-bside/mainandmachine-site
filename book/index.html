@@ -3,17 +3,77 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Book an Assessment — Main &amp; Machine</title>
-<meta name="description" content="Book a free 30-minute AI Opportunity Assessment. A senior advisor walks your workflows and shows you where AI pays, where it doesn't, and what it's worth." />
+<title>Free 30-Minute AI Assessment for Small Business | Main &amp; Machine</title>
+<meta name="description" content="A senior advisor walks your workflows and shows where AI pays, what it's worth, and when to wait. Free, no pitch, reply within 24 hours." />
 <link rel="canonical" href="https://www.mainandmachine.com/book/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
-<meta property="og:title" content="Book an Assessment — Main &amp; Machine" />
-<meta property="og:description" content="Book a free 30-minute AI Opportunity Assessment. A senior advisor walks your workflows and shows you where AI pays, where it doesn't, and what it's worth." />
+<meta property="og:title" content="Free 30-Minute AI Assessment for Small Business | Main &amp; Machine" />
+<meta property="og:description" content="A senior advisor walks your workflows and shows where AI pays, what it's worth, and when to wait. Free, no pitch, reply within 24 hours." />
 <meta property="og:url" content="https://www.mainandmachine.com/book/" />
 <meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="stylesheet" href="/styles.css?v=14" />
+<link rel="stylesheet" href="/styles.css?v=15" />
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-360-5128",
+      "priceRange": "$3,500 - $45,000",
+      "areaServed": "US",
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Book a free assessment", "item": "https://www.mainandmachine.com/book/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is it really free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. No card, no catch, no trial that flips to a charge. Thirty minutes with a senior advisor, a clear read on your business, and that's it. We do this because the businesses worth building with tend to start here." }
+        },
+        {
+          "@type": "Question",
+          "name": "What if AI isn't right for my business?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Then we'll tell you. Sometimes the answer is \"wait a quarter,\" or \"you don't need us for this.\" You'll leave with thirty minutes back and a clear answer, which is more than most firms hand out for free." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to prepare anything?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Come as you are. It helps if you can speak to how the work moves day to day — where the time goes, where things pile up — but there's no homework, no data export, nothing to install before we talk." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who actually shows up to the call?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A senior advisor — the person who would scope and build your project. Not a junior rep reading off a script, and not someone who hands you to a different team the moment you sign." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to the details I submit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "They go to us so we can prepare for your call — that's all. No drip campaign, no reselling, no list. If we never end up working together, your information doesn't go anywhere either." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
@@ -202,7 +262,7 @@ select.input:invalid { color: var(--tx-faint); }
   <div class="wrap topbar__in">
     <!-- TODO: if a verifiably true slot count exists, "Two Q3 build slots remain" is stronger than the generic line. -->
     <span class="left"><span class="dot"></span>Now booking Q3 builds — every engagement starts with the free assessment</span>
-    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span>Denver · Phoenix · Remote</span></span>
+    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span><a href="/denver/">Denver</a> · <a href="/phoenix/">Phoenix</a> · Remote</span></span>
   </div>
 </div>
 
@@ -214,11 +274,12 @@ select.input:invalid { color: var(--tx-faint); }
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
     <nav class="nav__links">
-      <a href="/#work">The Work</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/#method">Method</a>
-      <a href="/#about">Who We Are</a>
-      <a href="/blog">Blog</a>
+      <a href="/services/">Services</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/method/">Method</a>
+      <a href="/work/">The Work</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog">The Ampersand</a>
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="#request" aria-current="page">Book a free assessment</a>
@@ -551,26 +612,26 @@ select.input:invalid { color: var(--tx-faint); }
       <div class="foot__col">
         <h5>Company</h5>
         <ul>
-          <li><a href="/#work">The work</a></li>
-          <li><a href="/#about">Who we are</a></li>
-          <li><a href="/#method">The method</a></li>
+          <li><a href="/about/">Who we are</a></li>
+          <li><a href="/method/">The method</a></li>
+          <li><a href="/work/">The work</a></li>
           <li><a href="/blog">The Ampersand</a></li>
         </ul>
       </div>
       <div class="foot__col">
-        <h5>The work</h5>
+        <h5>Services</h5>
         <ul>
-          <li><a href="/#pricing">AI Readiness Audit</a></li>
-          <li><a href="/#pricing">Implementation Sprint</a></li>
-          <li><a href="/#pricing">Managed Services</a></li>
-          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/implementation-sprint/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-services/">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
       <div class="foot__col">
         <h5>More</h5>
         <ul>
-          <li><a href="/#industries">Who this is for</a></li>
-          <li><a href="/#why">Why us</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
           <li><a href="/blog/archive">Archive</a></li>
           <li><a href="/#paths">Where are you?</a></li>
         </ul>
@@ -581,7 +642,7 @@ select.input:invalid { color: var(--tx-faint); }
           <li><a href="#request">Book a free assessment</a></li>
           <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
           <li><a href="tel:+14803605128">480-360-5128</a></li>
-          <li><a href="/">Denver and Phoenix</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
         </ul>
       </div>
     </div>

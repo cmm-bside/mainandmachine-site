@@ -42,6 +42,7 @@ import {
 	footer,
 	subscribeBand,
 	pageScripts,
+	orgJsonLd,
 } from "./lib/templates.mjs";
 
 const RECENT_ON_HOME = 6;
@@ -120,7 +121,7 @@ function ogImageFor(post) {
 function thumb(post, cls) {
 	const img = post.heroImage && post.heroImage.assetUrl;
 	if (!img) return `<div class="${cls} is-empty"></div>`;
-	return `<div class="${cls}"><img loading="lazy" decoding="async" alt="${attr(post.heroImage.alt || post.title)}" src="${attr(img)}" /></div>`;
+	return `<div class="${cls}"><img loading="lazy" decoding="async" alt="${attr(post.heroImage.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" src="${attr(img)}" /></div>`;
 }
 
 function card(post) {
@@ -177,8 +178,8 @@ function renderHome(posts, { subscribeUrl, publicationUrl }) {
 		description: BLOG_DESCRIPTION,
 		url: `${SITE_ORIGIN}/blog`,
 		inLanguage: "en-US",
-		publisher: { "@type": "Organization", name: BRAND, url: `${SITE_ORIGIN}/` },
-		author: { "@type": "Person", name: AUTHOR },
+		publisher: { "@id": `${SITE_ORIGIN}/#org` },
+		author: { "@id": `${SITE_ORIGIN}/#person-cmyers` },
 		blogPost: posts.slice(0, RECENT_ON_HOME + 1).map((p) => ({
 			"@type": "BlogPosting",
 			headline: p.title,
@@ -226,11 +227,11 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `${BLOG_NAME} — Writing from ${BRAND}`,
+		title: `${BLOG_NAME} — Plain-English AI Essays for Business Owners | ${BRAND}`,
 		description: `${BLOG_NAME} — ${BLOG_DESCRIPTION} Human-centric AI, small business, and the judgment no model has.`,
 		canonical: `${SITE_ORIGIN}/blog`,
 		ogImage: DEFAULT_OG_IMAGE,
-		jsonLd: [blogLd],
+		jsonLd: [blogLd, orgJsonLd()],
 	})}
 <body>
 ${body}
@@ -324,7 +325,7 @@ ${pageScripts()}`;
 		description: `Every essay from ${BLOG_NAME} — ${BLOG_DESCRIPTION}`,
 		canonical: `${SITE_ORIGIN}/blog/archive`,
 		ogImage: DEFAULT_OG_IMAGE,
-		jsonLd: [collectionLd],
+		jsonLd: [collectionLd, orgJsonLd()],
 	})}
 <body>
 ${body}
@@ -349,8 +350,8 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 		mainEntityOfPage: canonical,
 		datePublished: post.publishedAt || undefined,
 		dateModified: post.updatedAt || post.publishedAt || undefined,
-		author: { "@type": "Person", name: AUTHOR },
-		publisher: { "@type": "Organization", name: BRAND, url: `${SITE_ORIGIN}/` },
+		author: { "@id": `${SITE_ORIGIN}/#person-cmyers` },
+		publisher: { "@id": `${SITE_ORIGIN}/#org` },
 		image: post.heroImage ? post.heroImage.assetUrl : DEFAULT_OG_IMAGE,
 		isPartOf: { "@type": "Blog", name: BLOG_NAME, url: `${SITE_ORIGIN}/blog` },
 	};
@@ -364,7 +365,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	const readNext = allPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
 	const heroBlock = post.heroImage
-		? `<figure class="essay__hero"><img src="${attr(post.heroImage.assetUrl)}" alt="${attr(post.heroImage.alt || post.title)}" /></figure>`
+		? `<figure class="essay__hero"><img src="${attr(post.heroImage.assetUrl)}" alt="${attr(post.heroImage.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" /></figure>`
 		: "";
 
 	const shareUrl = encodeURIComponent(canonical);
@@ -413,8 +414,11 @@ ${readNext.length
     <div class="essay__cta crop">
       <span class="kicker kicker--plain">Main &amp; Machine</span>
       <h2 class="h2 mt-s">Like how we think? Put it to work.</h2>
-      <p class="lead">Book a free thirty-minute assessment. A senior advisor walks your workflows and tells you where AI actually pays — and where it doesn't.</p>
-      <a class="btn btn--accent btn--lg" href="/book/">Book a free assessment →</a>
+      <p class="lead">This is the kind of workflow the free assessment maps. Thirty minutes, no pitch.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;">
+        <a class="btn btn--accent btn--lg" href="/book/">Book a free assessment →</a>
+        <a class="btn btn--ghost btn--lg" data-beehiiv-subscribe href="/blog">Get the weekly essay →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -424,12 +428,12 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `${post.seoTitle || post.title} — ${BLOG_NAME}`,
+		title: `${post.seoTitle || post.title} — ${BLOG_NAME} | ${BRAND}`,
 		description: post.seoDescription || post.excerpt,
 		canonical,
 		ogImage: og,
 		ogType: "article",
-		jsonLd: [blogPostingLd, breadcrumbLdObj],
+		jsonLd: [blogPostingLd, breadcrumbLdObj, orgJsonLd()],
 	})}
 <body>
 ${body}

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sample AI Readiness Audit — What You Buy | Main &amp; Machine</title>
+<meta name="description" content="See the document every AI Readiness Audit ends in. $3,500–$8,500, 2 to 4 weeks, owned by you. From Denver, CO and Phoenix, AZ — remote across the US." />
+<link rel="canonical" href="https://www.mainandmachine.com/work/sample-audit/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="Sample AI Readiness Audit — What You Buy | Main &amp; Machine" />
+<meta property="og:description" content="See the document every AI Readiness Audit ends in. $3,500–$8,500, 2 to 4 weeks, owned by you. From Denver, CO and Phoenix, AZ — remote across the US." />
+<meta property="og:url" content="https://www.mainandmachine.com/work/sample-audit/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sample AI Readiness Audit — What You Buy | Main &amp; Machine" />
+<meta name="twitter:description" content="See the document every AI Readiness Audit ends in. $3,500–$8,500, 2 to 4 weeks, owned by you. From Denver, CO and Phoenix, AZ — remote across the US." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+
+<link rel="stylesheet" href="/styles.css?v=15" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<style>
+/* =========================================================
+   SAMPLE AUDIT — page-scoped document system
+   Built on the Main & Machine tokens in styles.css
+   ========================================================= */
+
+/* ---- the document pages ---- */
+.docs { max-width: 920px; margin: 0 auto; }
+.doc { border: 1px solid var(--ink); background: var(--paper-card); }
+.doc + .doc { margin-top: clamp(32px, 4vw, 48px); }
+.doc__bar {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 24px;
+  padding: 14px 20px; border-bottom: 1px solid var(--line);
+  background: linear-gradient(var(--paper-2), var(--paper-card));
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute);
+}
+.doc__bar b { color: var(--accent); font-weight: 700; }
+.doc__body { padding: clamp(22px, 3.4vw, 40px); }
+.doc__body h2 { font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -0.01em; margin: 6px 0 8px; }
+.doc__sub { font-family: var(--mono); font-size: 12px; color: var(--tx-mute); line-height: 1.6; margin-bottom: 24px; }
+
+/* redaction bars */
+.redact {
+  display: inline-block; background: var(--ink); color: transparent; user-select: none;
+  height: .95em; vertical-align: middle; min-width: 88px; border-radius: 1px;
+}
+.redact--sm { min-width: 54px; }
+.redact--lg { min-width: 130px; }
+
+/* workflow map table */
+.map { width: 100%; border-collapse: collapse; font-size: 13.5px; background: #fff; }
+.map th {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--tx-mute); text-align: left; font-weight: 700;
+  padding: 10px 12px; border: 1px solid var(--line); background: var(--paper-2);
+}
+.map td { padding: 11px 12px; border: 1px solid var(--line); color: var(--tx-mute); vertical-align: top; line-height: 1.5; }
+.map td:first-child { font-family: var(--mono); font-size: 11.5px; color: var(--accent); white-space: nowrap; }
+.map-wrap { overflow-x: auto; }
+
+/* ranked opportunity list */
+.rank { list-style: none; display: flex; flex-direction: column; }
+.rank li { display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 20px 0; border-top: 1px dashed var(--line); }
+.rank li:first-child { border-top: 0; padding-top: 0; }
+.rank__no { font-family: var(--mono); font-size: 20px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+.rank h3 { font-size: 17px; letter-spacing: -0.01em; margin-bottom: 6px; }
+.rank p { font-size: 14px; line-height: 1.6; color: var(--tx-mute); }
+.rank__tags { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; }
+.rank__tags span {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute);
+}
+.rank__tags b { color: var(--tx); font-weight: 700; }
+
+/* visible TODO marker */
+.todo-val { font-family: var(--mono); font-weight: 700; letter-spacing: .04em; color: var(--accent); }
+
+/* caption + actions */
+.doc-caption { max-width: 920px; margin: 28px auto 0; }
+.doc-caption .big { font-size: clamp(18px, 1.8vw, 22px); font-weight: 800; letter-spacing: -0.01em; color: var(--tx); }
+.doc-caption p { margin-top: 8px; font-size: 15px; line-height: 1.6; color: var(--tx-mute); max-width: 70ch; }
+.doc-actions { max-width: 920px; margin: 24px auto 0; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+/* ---- print: just the two document pages, clean on white ---- */
+@media print {
+  .topbar, .nav, .foot, .doc-actions, .pagehero, .final, .btn { display: none !important; }
+  body, .section, .paper, .paper-2 { background: #fff !important; }
+  .section { padding: 0 !important; }
+  .doc { border: 1px solid #000; box-shadow: none; break-inside: avoid; }
+  .doc + .doc { margin-top: 0; page-break-before: always; }
+  .doc__bar { background: #fff; }
+  .rv { opacity: 1 !important; transform: none !important; }
+}
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-360-5128",
+      "priceRange": "$3,500 - $45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "The work", "item": "https://www.mainandmachine.com/work/" },
+        { "@type": "ListItem", "position": 3, "name": "Sample audit", "item": "https://www.mainandmachine.com/work/sample-audit/" }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <!-- TODO: if a verifiably true slot count exists, "Two Q3 build slots remain" is stronger than the generic line. -->
+    <span class="left"><span class="dot"></span>Now booking Q3 builds — every engagement starts with the free assessment</span>
+    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span><a href="/denver/">Denver</a> · <a href="/phoenix/">Phoenix</a> · Remote</span></span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main and Machine home">
+      <span class="logo__plate">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links">
+      <a href="/services/">Services</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/method/">Method</a>
+      <a href="/work/" class="is-active" aria-current="page">The Work</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog">The Ampersand</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--accent" href="/book/">Book a free assessment</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="section paper pagehero" data-screen-label="Sample audit hero">
+  <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/work/">The work</a>
+      <span class="sep">/</span>
+      <span>Sample audit</span>
+    </div>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">Sample audit</span>
+        <h1 class="h2 mt-s">This is the artifact <span class="accent-tx">you buy.</span></h1>
+        <p class="lead mt-s">Most firms describe their deliverable. We'd rather you read it. Below are two pages from a sample AI Readiness Audit — the same document, redacted, that a real engagement ends in.</p>
+      </div>
+      <div class="statrail crop" aria-label="Audit at a glance">
+        <div class="statrail__bar"><span>The audit</span><span><b>Spec</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Fixed price</span><span class="statrail__v accent-tx">$3,500 – $8,500</span></div>
+        <div class="statrail__row"><span class="statrail__k">Timeline</span><span class="statrail__v">2 to 4 weeks</span></div>
+        <div class="statrail__row"><span class="statrail__k">Ownership</span><span class="statrail__v">Yours outright</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE DOCUMENT ============ -->
+<section class="section paper-2" data-screen-label="Sample document">
+  <div class="wrap">
+    <div class="docs">
+
+      <!-- ---- Page 1: redacted workflow map ---- -->
+      <article class="doc crop">
+        <div class="doc__bar">
+          <span><b>Page 1 / 2</b> · Redacted workflow map</span>
+          <span>AI Readiness Audit · Sample</span>
+        </div>
+        <div class="doc__body">
+          <h2>Workflow map — client intake</h2>
+          <p class="doc__sub">A fictional-but-typical intake workflow. Client-identifying details are redacted; the structure is what you're buying.</p>
+          <!-- TODO(owner): replace with a real redacted page after the next audit -->
+          <div class="map-wrap">
+            <table class="map">
+              <thead>
+                <tr><th>Step</th><th>What happens</th><th>Who touches it</th><th>Tool</th><th>Where it breaks</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01</td>
+                  <td>Request arrives by email or web form from <span class="redact" aria-label="redacted"></span></td>
+                  <td><span class="redact redact--sm" aria-label="redacted"></span></td>
+                  <td>Shared inbox</td>
+                  <td>Sits unread when <span class="redact redact--sm" aria-label="redacted"></span> is out</td>
+                </tr>
+                <tr>
+                  <td>02</td>
+                  <td>Details re-keyed by hand into <span class="redact" aria-label="redacted"></span></td>
+                  <td>Office manager</td>
+                  <td><span class="redact redact--sm" aria-label="redacted"></span></td>
+                  <td>Typos and missing fields surface weeks later</td>
+                </tr>
+                <tr>
+                  <td>03</td>
+                  <td>Missing information chased over <span class="redact redact--sm" aria-label="redacted"></span> and phone</td>
+                  <td><span class="redact redact--sm" aria-label="redacted"></span></td>
+                  <td>Email · phone</td>
+                  <td>No record of what was already asked</td>
+                </tr>
+                <tr>
+                  <td>04</td>
+                  <td>Job routed to <span class="redact" aria-label="redacted"></span> by whoever is in the inbox</td>
+                  <td>Whole front office</td>
+                  <td>Forwarding</td>
+                  <td>Routing depends on who's at their desk</td>
+                </tr>
+                <tr>
+                  <td><span class="todo-val">TODO</span></td>
+                  <td><span class="todo-val">TODO</span> — remaining steps drawn from the audited workflow</td>
+                  <td><span class="todo-val">TODO</span></td>
+                  <td><span class="todo-val">TODO</span></td>
+                  <td><span class="todo-val">TODO</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---- Page 2: where AI pays ---- -->
+      <article class="doc crop">
+        <div class="doc__bar">
+          <span><b>Page 2 / 2</b> · Where AI pays</span>
+          <span>AI Readiness Audit · Sample</span>
+        </div>
+        <div class="doc__body">
+          <h2>Where AI pays — ranked</h2>
+          <p class="doc__sub">The handful of places worth building, in order. Effort and payoff are stated as ranges — never dollar promises.</p>
+          <!-- TODO(owner): replace with a real redacted page after the next audit -->
+          <ol class="rank">
+            <li>
+              <span class="rank__no">01</span>
+              <div>
+                <h3>Intake triage &amp; routing</h3>
+                <p>An agent reads each request, drafts the summary, and routes it — a person reviews every draft. Specifics for this client: <span class="todo-val">TODO</span>.</p>
+                <div class="rank__tags"><span>Effort: <b>low–medium</b></span><span>Payoff: <b>medium–high</b></span><span>Build: <b>weeks, not months</b></span></div>
+              </div>
+            </li>
+            <li>
+              <span class="rank__no">02</span>
+              <div>
+                <h3>Invoice follow-up drafting</h3>
+                <p>Outstanding invoices tracked, reminders drafted in the firm's voice, exceptions flagged for a human. Specifics for this client: <span class="todo-val">TODO</span>.</p>
+                <div class="rank__tags"><span>Effort: <b>medium</b></span><span>Payoff: <b>medium–high</b></span><span>Build: <b>weeks, not months</b></span></div>
+              </div>
+            </li>
+            <li>
+              <span class="rank__no">03</span>
+              <div>
+                <h3>Cross-system status sync</h3>
+                <p>CRM, billing, and project software showing the same job at the same status, without hand reconciliation. Specifics for this client: <span class="todo-val">TODO</span>.</p>
+                <div class="rank__tags"><span>Effort: <b>medium–high</b></span><span>Payoff: <b>medium</b></span><span>Build: <b>scoped in writing first</b></span></div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="doc-caption">
+      <span class="big">This is the artifact you buy.</span>
+      <p>Every audit ends in a document like this one, owned by you.</p>
+    </div>
+
+    <div class="doc-actions">
+      <button class="btn btn--accent" type="button" onclick="window.print()">Print / save as PDF</button>
+      <a class="btn btn--ghost" href="/services/ai-readiness-audit/">Read the full audit spec →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ START HERE (ink) ============ -->
+<section class="section ink final" data-screen-label="Start here">
+  <div class="wrap">
+    <div class="closer" style="margin-top:0;">
+      <span class="kicker">Start here</span>
+      <p>The version of this document with your workflows in it starts with a <b>free thirty-minute assessment</b>. No pitch — a straight read on whether the audit is even worth buying.</p>
+      <div class="hero__cta" style="margin-top:28px;">
+        <a class="btn btn--accent btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main and Machine home" style="background:transparent;">
+          <span class="logo__plate">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats" style="border:0;padding:0;margin:0;">
+          <div><span class="tick-lbl">Scope</span><b style="color:var(--dtx);">Fixed</b></div>
+          <div><span class="tick-lbl">Delivery</span><b style="color:var(--dtx);">~90 days</b></div>
+          <div><span class="tick-lbl">Audits</span><b style="color:var(--dtx);">$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="/about/">Who we are</a></li>
+          <li><a href="/method/">The method</a></li>
+          <li><a href="/work/">The work</a></li>
+          <li><a href="/blog">The Ampersand</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/implementation-sprint/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-services/">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>More</h5>
+        <ul>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/blog/archive">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14803605128">480-360-5128</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2026 mainandmachine.com · Human-centric AI for small and mid-size business</span>
+      <span class="links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script>
+(function(){
+  var sels = ['.pagehero__grid > *','.doc','.doc-caption','.doc-actions','.closer','.foot__top > *'];
+  var set = new Set();
+  sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
+  document.querySelectorAll('.rv').forEach(function(el){
+    var sibs = Array.prototype.filter.call(el.parentElement.children, function(c){ return c.classList.contains('rv'); });
+    el.style.transitionDelay = Math.min(sibs.indexOf(el),6)*55 + 'ms';
+  });
+  if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1400);
+})();
+</script>
+
+</body>
+</html>

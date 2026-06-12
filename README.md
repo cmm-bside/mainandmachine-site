@@ -136,11 +136,11 @@ python3 -m http.server 8000      # then open http://localhost:8000
 
 ## Good to know
 
-- **One page.** Nav links are in-page anchors (`#work`, `#pricing`, `#method`, `#about`,
-  `#writing`). Real sub-pages = new `.html` files in this folder + updated links.
-- **Footer contact:** `cmyers@mainandmachine.com`, `480-360-5128`, Denver & Phoenix —
-  edit in `index.html`.
-- **Placeholder links:** the "Book an assessment" and newsletter buttons currently point at
-  `#`. Search `href="#"` in `index.html` and swap in your real scheduling / Substack URLs.
+- **Real sub-pages.** The site is no longer one page: `pricing/`, `method/`, `about/`,
+  `services/*`, `industries/*`, `denver/`, `phoenix/`, `work/`, `calculator/` are
+  static folders with an `index.html` each. New pages also go into `STATIC_ROUTES`
+  (`scripts/lib/config.mjs`) and `ALL_PAGES` (`scripts/check-facts.mjs`). See CLAUDE.md.
+- **Footer contact:** sourced from `src/data/company.mjs` (canonical facts) — the
+  build fails if a page drifts from it.
 - **Rollback:** because every deploy maps to a git commit, you can roll back instantly from
   the Cloudflare Pages **Deployments** tab, or with `git revert`.

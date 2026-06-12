@@ -109,16 +109,50 @@ ${ld}
 </head>`;
 }
 
-// City names for the topbar, derived from the canonical locations ("Denver, CO" → "Denver").
-const CITIES = COMPANY.locations.map((l) => l.split(",")[0]).join(" · ");
+// City links for the topbar, derived from the canonical locations ("Denver, CO" → "Denver").
+const CITY_LINKS = COMPANY.locations
+	.map((l) => l.split(",")[0])
+	.map((city) => `<a href="/${city.toLowerCase()}/">${esc(city)}</a>`)
+	.join(" · ");
 
 export function topbar() {
 	return `<div class="topbar">
   <div class="wrap topbar__in">
     <span class="left"><span class="dot"></span>${esc(BLOG_NAME)} — free weekly essays</span>
-    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span>${esc(CITIES)} · Remote</span></span>
+    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span>${CITY_LINKS} · Remote</span></span>
   </div>
 </div>`;
+}
+
+// Shared JSON-LD entities — every page's graph connects to the same @ids.
+// Facts come from src/data/company.mjs; never restate them here.
+// TODO: populate sameAs with the LinkedIn company page + founder profiles when they exist.
+export function orgJsonLd() {
+	const origin = COMPANY.origin;
+	return {
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "Organization",
+				"@id": `${origin}/#org`,
+				name: COMPANY.name,
+				url: `${origin}/`,
+				logo: `${origin}/icon-512.png`,
+				email: COMPANY.email,
+				telephone: COMPANY.phoneE164,
+				areaServed: "US",
+				founder: { "@id": `${origin}/#person-cmyers` },
+			},
+			{ "@type": "WebSite", "@id": `${origin}/#website`, name: COMPANY.name, url: `${origin}/` },
+			{
+				"@type": "Person",
+				"@id": `${origin}/#person-cmyers`,
+				name: COMPANY.founder.name,
+				jobTitle: "Founder & Chairman",
+				worksFor: { "@id": `${origin}/#org` },
+			},
+		],
+	};
 }
 
 export function nav() {
@@ -129,11 +163,12 @@ export function nav() {
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
     <nav class="nav__links">
-      <a href="/#work">The Work</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/#method">Method</a>
-      <a href="/#about">Who We Are</a>
-      <a href="/blog" aria-current="page">The Ampersand</a>
+      <a href="/services/">Services</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/method/">Method</a>
+      <a href="/work/">The Work</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog" class="is-active" aria-current="page">The Ampersand</a>
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="/book/">Book a free assessment</a>
@@ -156,26 +191,26 @@ export function footer() {
       <div class="foot__col">
         <h5>Company</h5>
         <ul>
-          <li><a href="/#work">The work</a></li>
-          <li><a href="/#about">Who we are</a></li>
-          <li><a href="/#method">The method</a></li>
+          <li><a href="/about/">Who we are</a></li>
+          <li><a href="/method/">The method</a></li>
+          <li><a href="/work/">The work</a></li>
           <li><a href="/blog">The Ampersand</a></li>
         </ul>
       </div>
       <div class="foot__col">
-        <h5>The work</h5>
+        <h5>Services</h5>
         <ul>
-          <li><a href="/#pricing">AI Readiness Audit</a></li>
-          <li><a href="/#pricing">Implementation Sprint</a></li>
-          <li><a href="/#pricing">Managed Services</a></li>
-          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/implementation-sprint/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-services/">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
       <div class="foot__col">
         <h5>More</h5>
         <ul>
-          <li><a href="/#industries">Who this is for</a></li>
-          <li><a href="/#why">Why us</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
           <li><a href="/blog/archive">Archive</a></li>
           <li><a href="/#paths">Where are you?</a></li>
         </ul>
@@ -186,7 +221,7 @@ export function footer() {
           <li><a href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:${attr(COMPANY.email)}">${esc(COMPANY.email)}</a></li>
           <li><a href="${attr(COMPANY.phoneHref)}">${esc(COMPANY.phone)}</a></li>
-          <li><a href="/">Denver and Phoenix</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
         </ul>
       </div>
     </div>

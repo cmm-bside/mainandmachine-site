@@ -332,13 +332,21 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .ind { display: grid; grid-template-columns: 60px 1.6fr 1fr 1fr auto; gap: 0; align-items: center; padding: 22px 28px; border-bottom: 1px solid var(--line); transition: background .15s; }
 .ind:last-child { border-bottom: 0; }
 .ind:hover { background: var(--paper-card); }
-@media (max-width: 820px){ .ind { grid-template-columns: 40px 1fr; row-gap: 6px; padding: 18px 20px; } .ind__col { display:none; } }
 .ind__no { font-family: var(--mono); color: var(--accent); font-size: 13px; }
 .ind__name { font-weight: 800; font-size: 19px; letter-spacing: -0.02em; }
 .ind__name span { display:block; font-weight: 400; font-size: 13px; color: var(--tx-mute); margin-top: 3px; letter-spacing: 0; }
 .ind__col .tick-lbl { display:block; margin-bottom: 4px; }
 .ind__col .mono { font-size: 13px; }
 .ind__go { font-family: var(--mono); font-size: 12px; color: var(--accent); display:inline-flex; gap:6px; align-items:center; justify-self:end; }
+@media (max-width: 820px){
+  /* Two columns: number | everything. Without explicit placement, the
+     justify-self:end link auto-places into the 40px number column and
+     overflows the card one word per line. */
+  .ind { grid-template-columns: 40px minmax(0,1fr); row-gap: 6px; padding: 18px 20px; }
+  .ind__col { display:none; }
+  .ind__name { grid-column: 2; min-width: 0; }
+  .ind__go { grid-column: 2; justify-self: start; min-height: 44px; align-items: center; }
+}
 
 /* =========================================================
    THREE ENTITIES (family)

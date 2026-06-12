@@ -16,6 +16,10 @@
 /styles.css
   Cache-Control: public, max-age=86400
 
+# shared JS is cache-busted via ?v=N in the pages that load it
+/js/*
+  Cache-Control: public, max-age=86400
+
 # Blog search/teaser data — short cache, refreshed on every deploy
 /blog-data/*
   Cache-Control: public, max-age=300

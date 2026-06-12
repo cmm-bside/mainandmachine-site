@@ -769,6 +769,13 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 .roi__cta{ margin-top:32px; display:flex; align-items:center; gap:clamp(20px,3vw,36px); flex-wrap:wrap; }
 .roi__cta p{ flex:1; min-width:280px; font-size:15px; line-height:1.55; color: var(--tx-mute); }
 
+/* ---- slim ROI embed (homepage calculator band) ---- */
+.roi--slim .roi__net{ margin-top:0; padding-top:0; border-top:0; }
+/* the card stays a paper surface even on the ink band — undo the dark-context cascade */
+.ink .roi .tick-lbl{ color: var(--tx-mute); }
+.ink .roi .accent-tx{ color: var(--accent); }
+.ink .roi.crop::after{ --c: var(--accent); }
+
 /* ---- closer line ---- */
 .closer{ margin-top:40px; padding-top:30px; border-top:1px solid var(--dline); display:flex; gap:22px; align-items:flex-start; }
 .closer .kicker{ white-space:nowrap; }

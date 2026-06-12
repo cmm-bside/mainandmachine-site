@@ -26,7 +26,7 @@
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/home.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
 
-<link rel="stylesheet" href="styles.css?v=20" />
+<link rel="stylesheet" href="styles.css?v=21" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -331,14 +331,71 @@
   </div>
 </section>
 
-<!-- ============ 04b CALCULATOR BAND ============ -->
+<!-- ============ 04b CALCULATOR BAND (slim embed — model in /js/roi.js, full version at /calculator/) ============ -->
 <section class="section ink final" data-screen-label="Calculator">
   <div class="wrap">
     <span class="kicker">The same numbers, pointed at your business</span>
     <h2 class="h2 mt-s">What would this cost for us?</h2>
     <p class="lead mt-s">Two inputs. A real range, built from the same price list published on this site — not a teaser that ends in "call us."</p>
-    <div class="hero__cta">
-      <a class="btn btn--accent btn--lg" href="/calculator/">Estimate your build <span class="arr">→</span></a>
+
+    <div class="roi roi--slim crop mt-m" aria-label="ROI estimate calculator — quick version">
+      <div class="roi__bar">
+        <span class="roi__id"><span class="roi__dot" aria-hidden="true"></span>Estimate.v1</span>
+        <span class="roi__id roi__id--mute">Illustrative / ranges vary</span>
+      </div>
+
+      <div class="roi__grid">
+        <!-- inputs -->
+        <div class="roi__inputs">
+          <div class="roi__field">
+            <label class="tick-lbl" for="bandIndustry">01 / Industry</label>
+            <div class="roi__selectwrap">
+              <select id="bandIndustry" class="roi__select">
+                <option value="professional-services">Professional services</option>
+                <option value="retail">Retail &amp; e-commerce</option>
+                <option value="healthcare">Healthcare &amp; wellness</option>
+                <option value="construction">Construction &amp; trades</option>
+                <option value="hospitality">Hospitality &amp; food service</option>
+              </select>
+              <span class="roi__caret" aria-hidden="true">▾</span>
+            </div>
+            <p class="roi__note" id="bandNote">Law, accounting, insurance, consulting, financial advisory.</p>
+          </div>
+
+          <div class="roi__field">
+            <div class="roi__sliderhead">
+              <label class="tick-lbl" for="bandRange">02 / Team size</label>
+              <span class="roi__count mono" id="bandCount">25</span>
+            </div>
+            <input type="range" id="bandRange" class="roi__range" min="5" max="100" value="25"
+              aria-label="Team size" aria-valuemin="5" aria-valuemax="100" aria-valuenow="25" />
+            <div class="roi__scale"><span>5</span><span>50</span><span>100</span></div>
+          </div>
+        </div>
+
+        <!-- output -->
+        <div class="roi__output">
+          <div class="roi__net">
+            <div class="roi__nethead">
+              <span class="accent-tx">Net ROI / Year 1</span>
+              <span id="bandFor">For 25 people</span>
+            </div>
+            <div class="roi__big tab" id="bandRoi">+$132,000</div>
+          </div>
+          <div class="roi__assume">
+            <ul>
+              <li><span>Total opportunity</span><span class="mono tab" id="bandTotal">$150,000</span></li>
+              <li><span>Sprint investment</span><span class="mono tab" id="bandImpl">-$18,000</span></li>
+            </ul>
+          </div>
+          <p class="roi__disclaim">Ranges, not promises. We run your real numbers in the free assessment.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi__cta">
+      <a class="btn btn--accent btn--lg" href="/book/">Run your real numbers <span class="arr">→</span></a>
+      <a class="btn btn--ghost" id="bandFull" href="/calculator/">Full breakdown + share <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -487,6 +544,46 @@
   var hTitle = document.querySelector('.hero__title');
   if(hTitle){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ hTitle.classList.add('in'); }); }); }
   setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); if(hTitle){ hTitle.classList.add('in'); } }, 1400);
+})();
+</script>
+
+<!-- ============ CALCULATOR BAND (slim) — model shared with /calculator/ via /js/roi.js ============ -->
+<script src="/js/roi.js?v=1"></script>
+<script>
+(function(){
+  var sel = document.getElementById('bandIndustry');
+  if(!sel || !window.MMRoi) return;
+  var range = document.getElementById('bandRange');
+  var count = document.getElementById('bandCount');
+  var note  = document.getElementById('bandNote');
+  var forEl = document.getElementById('bandFor');
+  var full  = document.getElementById('bandFull');
+  var els = {
+    roi:   document.getElementById('bandRoi'),
+    total: document.getElementById('bandTotal'),
+    impl:  document.getElementById('bandImpl')
+  };
+
+  function paint(v){
+    els.roi.textContent   = (v.roi >= 0 ? '+' : '') + MMRoi.fmt(v.roi);
+    els.total.textContent = MMRoi.fmt(v.total);
+    els.impl.textContent  = MMRoi.signed(-v.implementation);
+  }
+  var animate = MMRoi.animator(paint);
+
+  function update(){
+    var m = MMRoi.compute(sel.value, range.value);
+    note.textContent = m.r.note;
+    count.textContent = m.emp;
+    range.setAttribute('aria-valuenow', m.emp);
+    forEl.textContent = 'For ' + m.emp + (m.emp === 1 ? ' person' : ' people');
+    full.href = '/calculator/?industry=' + encodeURIComponent(sel.value) + '&team=' + m.emp;
+    animate(m);
+  }
+
+  sel.addEventListener('change', update);
+  range.addEventListener('input', update);
+  update();
 })();
 </script>
 

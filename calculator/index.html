@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="Pick an industry, set team size, see a year-one range. Sprints $12,000–$45,000, fixed quote in writing. Denver, CO and Phoenix, AZ — remote across the US." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/calculator.png" />
 
-<link rel="stylesheet" href="/styles.css?v=20" />
+<link rel="stylesheet" href="/styles.css?v=21" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -302,15 +302,17 @@
 })();
 </script>
 
+<!-- ============ SHARED ESTIMATE MODEL (rates + math live in one file, used here and on the homepage band) ============ -->
+<script src="/js/roi.js?v=1"></script>
+
 <!-- ============ URL STATE (runs before the calculator so its first update() reflects the URL) ============ -->
 <script>
 (function(){
   var params = new URLSearchParams(location.search);
-  var industries = ['professional-services','retail','healthcare','construction','hospitality'];
   var sel = document.getElementById('calcIndustry');
   var range = document.getElementById('calcRange');
   var ind = params.get('industry');
-  if(sel && ind && industries.indexOf(ind) !== -1){ sel.value = ind; }
+  if(sel && ind && window.MMRoi && MMRoi.rates[ind]){ sel.value = ind; }
   var team = parseInt(params.get('team'), 10);
   if(range && !isNaN(team)){ range.value = Math.min(100, Math.max(5, team)); }
 })();
@@ -320,23 +322,12 @@
 <script>
 (function(){
   var industry = document.getElementById('calcIndustry');
-  if(!industry) return;
+  if(!industry || !window.MMRoi) return;
   var range   = document.getElementById('calcRange');
   var count   = document.getElementById('calcCount');
   var note    = document.getElementById('calcNote');
   var forEl   = document.getElementById('calcFor');
-
-  var rates = {
-    'professional-services': { manual: 4000, revenue: 2000, note: 'Law, accounting, insurance, consulting, financial advisory.' },
-    'retail':               { manual: 3200, revenue: 2400, note: 'Physical, online, and omnichannel operators.' },
-    'healthcare':           { manual: 3600, revenue: 2800, note: 'Practices, clinics, wellness businesses.' },
-    'construction':         { manual: 3000, revenue: 1800, note: 'HVAC, plumbing, electrical, general contracting.' },
-    'hospitality':          { manual: 2400, revenue: 2200, note: 'Restaurants, hotels, catering, venues.' }
-  };
-
-  var usd = new Intl.NumberFormat('en-US', { style:'currency', currency:'USD', maximumFractionDigits:0 });
-  function fmt(n){ return usd.format(Math.round(n)); }
-  function signed(n){ return (n < 0 ? '-' : '+') + fmt(Math.abs(n)); }
+  var fmt = MMRoi.fmt, signed = MMRoi.signed;
 
   var els = {
     aManual:  document.getElementById('calcAManual'),
@@ -348,20 +339,6 @@
     roi:      document.getElementById('calcRoi'),
     total:    document.getElementById('calcTotal')
   };
-
-  function compute(){
-    var r = rates[industry.value];
-    var emp = Number(range.value);
-    var manual = emp * r.manual;
-    var revenue = emp * r.revenue;
-    var total = manual + revenue;
-    var implementation = Math.min(45000, Math.max(12000, 720 * emp));
-    var roi = total - implementation;
-    return { r:r, emp:emp, manual:manual, revenue:revenue, total:total, implementation:implementation, roi:roi };
-  }
-
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var prev = null, frame = 0;
 
   function paintStatic(m){
     note.textContent = m.r.note;
@@ -381,30 +358,12 @@
     els.total.textContent   = fmt(v.total);
   }
 
-  function lerp(a, b, t){
-    return {
-      manual: a.manual + (b.manual - a.manual) * t,
-      revenue: a.revenue + (b.revenue - a.revenue) * t,
-      total: a.total + (b.total - a.total) * t,
-      implementation: a.implementation + (b.implementation - a.implementation) * t,
-      roi: a.roi + (b.roi - a.roi) * t
-    };
-  }
+  var animate = MMRoi.animator(paintNumbers);
 
   function update(){
-    var m = compute();
+    var m = MMRoi.compute(industry.value, range.value);
     paintStatic(m);
-    if(reduce || !prev){ paintNumbers(m); prev = m; return; }
-    cancelAnimationFrame(frame);
-    var from = prev, start = performance.now(), dur = 400;
-    (function tick(now){
-      var t = Math.min(1, (now - start) / dur);
-      var eased = 1 - Math.pow(1 - t, 3);
-      var cur = lerp(from, m, eased);
-      paintNumbers(cur);
-      prev = cur;
-      if(t < 1){ frame = requestAnimationFrame(tick); } else { prev = m; }
-    })(start);
+    animate(m);
   }
 
   industry.addEventListener('change', update);

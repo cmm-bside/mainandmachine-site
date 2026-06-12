@@ -1,0 +1,47 @@
+name: Post-deploy smoke test (one build everywhere)
+
+# An external fetch once caught /book/ serving the old pre-redesign build while
+# every other page served the new one. This test makes that class of bug loud:
+# it fetches every URL in the LIVE sitemap and fails if any page carries an
+# old-build marker, is missing the current banner, or if /book/ loses its
+# load-bearing elements (FAQ 01, the named advisor).
+#
+# Runs:
+#   - on every push to main (waits for the Cloudflare Pages deploy to land)
+#   - 15 minutes past each hour (after the :00 beehiiv rebuild deploys)
+#   - on demand: gh workflow run smoke-test.yml
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "15 * * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: smoke-test
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # On push, give Cloudflare Pages time to build and deploy, then retry
+      # until the new commit's content is live (or time out loudly).
+      - name: Wait for deploy, then smoke test
+        run: |
+          tries=0
+          until node scripts/smoke-test.mjs; do
+            tries=$((tries+1))
+            if [ "$tries" -ge 10 ]; then
+              echo "::error::Smoke test still failing after ~10 minutes — the live site is serving stale or broken content."
+              exit 1
+            fi
+            echo "Attempt $tries failed — deploy may still be propagating; retrying in 60s…"
+            sleep 60
+          done

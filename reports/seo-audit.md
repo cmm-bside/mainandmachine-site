@@ -88,3 +88,42 @@ through that redirect**.
 `build:static` = blog fetch/build → llms:build → work:build → seo:check →
 facts:check (facts + JSON-LD) → **placeholders:check** (fails on TODO/TBD/TKTK/
 lorem ipsum/XXX in any rendered page's visible text).
+
+---
+
+# v3 addendum — deploy & cache integrity (June 12, 2026)
+
+**Finding 01 (stale /book/) — diagnosed.** Re-verified from outside after the v3
+review: the live `/book/` serves exactly one build — zero old-build markers
+("limited slots" 0, anchor-nav 0, hard-required phone 0) and all new-build
+markers present ("Now booking Q3 builds", "Christopher Myers" ×3). Headers are
+correct for HTML: `cache-control: public, max-age=0, must-revalidate` with
+`cf-cache-status: DYNAMIC` (HTML is never edge-cached). No shadow files exist
+(`book.html` never existed at the root; the only route source is
+`book/index.html`). The stale fetch most plausibly hit the propagation window
+around the June 11 deploys, or an intermediary cache outside our control —
+either way it cannot persist against `must-revalidate`.
+
+**Guards added so this class of bug is loud, not silent:**
+- `scripts/smoke-test.mjs` — fetches every URL in the **live** sitemap; fails on
+  any old-build marker, missing current banner, non-200, or a /book/ missing its
+  load-bearing elements (FAQ 01–05 numbering, named advisor).
+- `.github/workflows/smoke-test.yml` — runs the smoke test on every push to main
+  (with a retry window for deploy propagation), 15 minutes after each hourly
+  beehiiv rebuild, and on demand.
+- `scripts/check-book.mjs` (`book:check`, in `build:static`) — source-level
+  regression test for /book: FAQ 01 present and numbering 01–05, "Fair
+  questions.", "What happens · 30 minutes", "Who you'll talk to", named advisor,
+  no old-build markers, phone not hard-required.
+- `_headers` now documents the caching contract: HTML must never be long-cached.
+
+**Finding 02 (disappearing labels in captures) — confirmed as capture artifact.**
+All listed elements exist in the source (machine-verified by `book:check`). The
+reveal system already kept visible as the base state for no-JS and
+reduced-motion users; a global `@media print { .rv { opacity:1 !important … } }`
+rule was added so print/PDF/capture always get the full page regardless of
+animation state.
+
+**v3 polish:** press lists are now glyph-free (gap-separated — nothing to strand
+on either side of a wrap); /services/ engagement rows carry the same
+"What you leave with" third column as /pricing/.

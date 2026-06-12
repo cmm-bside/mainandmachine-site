@@ -12,8 +12,10 @@
     "llms:build": "node scripts/build-llms.mjs",
     "work:build": "node scripts/build-work.mjs",
     "placeholders:check": "node scripts/check-placeholders.mjs",
+    "book:check": "node scripts/check-book.mjs",
+    "smoke:test": "node scripts/smoke-test.mjs",
     "test:book": "node scripts/test-book-assessment.mjs",
-    "build:static": "npm run blog:fetch && npm run blog:build && npm run llms:build && npm run work:build && npm run seo:check && npm run facts:check && npm run placeholders:check",
+    "build:static": "npm run blog:fetch && npm run blog:build && npm run llms:build && npm run work:build && npm run seo:check && npm run facts:check && npm run placeholders:check && npm run book:check",
     "postinstall": "node scripts/build-blog.mjs",
     "preview": "python3 -m http.server 8000"
   },

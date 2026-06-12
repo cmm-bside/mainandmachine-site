@@ -609,10 +609,16 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 .kicker::before{ content:""; width:14px; height:2px; background: currentColor; opacity:.8; }
 .kicker{ gap:9px; }
 
-/* ---------- scroll reveal ---------- */
+/* ---------- scroll reveal ----------
+   Visible is the base state: hiding happens only when motion is allowed
+   (and only after JS adds .rv), so no-JS, reduced-motion, print, PDF,
+   and capture tools always get the full page. */
 @media (prefers-reduced-motion: no-preference){
   .rv{ opacity:0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.22,.72,.2,1), transform .7s cubic-bezier(.22,.72,.2,1); will-change: opacity, transform; }
   .rv.in{ opacity:1; transform: none; }
+}
+@media print{
+  .rv{ opacity:1 !important; transform:none !important; transition:none !important; }
 }
 
 /* keep grain/marks from ever blocking interaction */
@@ -1013,11 +1019,10 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 /* =========================================================
    TYPOGRAPHY HYGIENE — separated inline lists + wrap control
    ========================================================= */
-/* One span per item; the separator is drawn in CSS so it can never
-   dangle at the end of a wrapped line. */
-.press-list { display: inline-flex; flex-wrap: wrap; gap: 0.25em 0; }
+/* One span per item, no separator glyphs — a glyph always strands on one
+   side of a wrap, so spacing alone does the separating. */
+.press-list { display: inline-flex; flex-wrap: wrap; gap: 0.3em 1.6em; }
 .press-list > span { white-space: nowrap; }
-.press-list > span + span::before { content: "\00b7"; margin: 0 0.55em; }
 
 /* No one-word widows in copy; balanced headings. */
 p, li, figcaption, .lead, .hero__note { text-wrap: pretty; }

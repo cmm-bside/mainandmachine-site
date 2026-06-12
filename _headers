@@ -1,4 +1,12 @@
 # Cloudflare Pages headers — https://developers.cloudflare.com/pages/configuration/headers/
+#
+# CACHING CONTRACT (deploy integrity): HTML pages must never be long-cached.
+# Cloudflare Pages serves HTML with `max-age=0, must-revalidate` and
+# cf-cache-status: DYNAMIC by default — do not add a Cache-Control for HTML
+# routes here, and never add a zone-level "Cache Everything" rule for this
+# site. Only fingerprinted/cache-busted assets below get long max-age.
+# The post-deploy smoke test (.github/workflows/smoke-test.yml) fails loudly
+# if any route serves a stale build.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN

@@ -753,8 +753,10 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 .roi__sliderhead{ display:flex; align-items:flex-end; justify-content:space-between; }
 .roi__sliderhead .tick-lbl{ margin-bottom:0; }
 .roi__count{ font-size:21px; font-weight:700; letter-spacing:-.02em; color:var(--tx); line-height:1; }
-.roi__range{ -webkit-appearance:none; appearance:none; width:100%; height:4px; margin-top:16px;
-  background: var(--line); cursor:pointer; }
+/* 44px-tall input = the touch target; the 4px track is painted as a
+   centered gradient so the visual stays a hairline. */
+.roi__range{ -webkit-appearance:none; appearance:none; width:100%; height:44px; margin-top:2px;
+  background: linear-gradient(var(--line), var(--line)) no-repeat 50% 50% / 100% 4px; cursor:pointer; }
 .roi__range::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:18px; height:18px;
   background: var(--accent); border:0; cursor:pointer; border-radius:0; transition: background .15s; }
 .roi__range::-moz-range-thumb{ width:18px; height:18px; background: var(--accent); border:0; cursor:pointer; border-radius:0; }
@@ -898,7 +900,13 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
   /* keep the nav CTA obvious but less dominant on small screens */
   .nav__inner{ gap:10px; }
   .logo__word{ font-size:16.5px; }
-  .nav__right .btn--accent{ padding:9px 13px; font-size:12.5px; box-shadow:none; white-space:nowrap; }
+  .logo{ padding-block:5px; margin-block:-5px; }
+  .nav__right .btn--accent{ padding:12px 13px; font-size:12.5px; box-shadow:none; white-space:nowrap; }
+
+  /* 44px touch rows for the stacked footer nav */
+  .foot__col ul{ gap:2px; }
+  .foot__col a{ display:inline-flex; align-items:center; min-height:44px; }
+  .foot__bottom .links a{ display:inline-flex; align-items:center; min-height:44px; }
 
   /* hero: more breathing room around headline + CTAs */
   .hero h1{ margin:18px 0 20px; }
@@ -1076,3 +1084,12 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 /* No one-word widows in copy; balanced headings. */
 p, li, figcaption, .lead, .hero__note { text-wrap: pretty; }
 h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
+
+/* =========================================================
+   TOUCH TARGETS — ≥44px hit boxes, zero visual change
+   Inline links: vertical padding paints outside the line box, so the
+   hit area grows without moving a glyph. Atomic boxes (inline-flex)
+   get the same padding cancelled by negative margin.
+   ========================================================= */
+.crumb a, .bookhero__crumb a, .tick-lbl a, h3 a { padding-block: 14px; }
+.svc__cta, .path__cta, .feed__archive, .feed__read { padding-block: 14px; margin-block: -14px; }

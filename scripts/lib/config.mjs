@@ -88,4 +88,4 @@ export const POST_DATE_OVERRIDES = {
 };
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "23";
+export const ASSET_VERSION = "24";

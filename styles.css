@@ -58,9 +58,18 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
 /* ---------- layout ---------- */
+/* Spacing tokens: --section-pad = vertical padding of every numbered
+   section; --block-gap = the gap between major blocks inside a section
+   (head-block → grid → prose, etc.). Every major block margin uses the
+   token so the rhythm audits as one number sitewide. */
+:root{
+  --section-pad: clamp(72px, 9vw, 140px);
+  --section-pad-tight: clamp(56px, 6vw, 96px);
+  --block-gap: 48px;
+}
 .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
-.section { padding-block: clamp(72px, 9vw, 140px); }
-.section--tight { padding-block: clamp(56px, 6vw, 96px); }
+.section { padding-block: var(--section-pad); }
+.section--tight { padding-block: var(--section-pad-tight); }
 
 .ink   { background: var(--ink);  color: var(--dtx); }
 .paper { background: var(--paper); color: var(--tx); }
@@ -187,6 +196,9 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .hero h1 { margin: 12px 0 10px; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
 .hero__note { font-family: var(--mono); font-size: 12.5px; color: var(--tx-mute); margin-top: 18px; max-width: 46ch; line-height: 1.6; }
+/* table-footnote variant: spans the full table width (one line at
+   desktop) instead of the hero's 46ch measure */
+.hero__note--wide { max-width: none; }
 /* quiet second path under the primary CTA — link weight, not button weight; padding keeps the tap target ≥44px */
 .hero__alt { margin: 10px 0 0; }
 .hero__alt a { display: inline-block; padding: 12px 0; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; color: var(--tx); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
@@ -216,7 +228,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 /* =========================================================
    PATHS — three doors
    ========================================================= */
-.head-block { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: end; margin-bottom: 52px; }
+.head-block { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: end; margin-bottom: var(--block-gap); }
 @media (max-width: 820px){ .head-block { grid-template-columns: 1fr; gap: 16px; } }
 
 .paths { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; border: 1px solid var(--line); }
@@ -316,7 +328,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 /* =========================================================
    STORY / DIFFERENTIATORS
    ========================================================= */
-.diffs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; border: 1px solid var(--line); margin-top: 48px; }
+.diffs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; border: 1px solid var(--line); margin-top: var(--block-gap); }
 @media (max-width: 860px){ .diffs { grid-template-columns: 1fr; } }
 .diff { padding: 30px 26px 34px; border-right: 1px solid var(--line); }
 .diff:last-child { border-right: 0; }
@@ -497,7 +509,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
    FINAL CTA (ink) + timeline
    ========================================================= */
 .final h2 { max-width: 16ch; }
-.timeline { display:grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; background: var(--dline); border: 1px solid var(--dline); margin-top: 44px; }
+.timeline { display:grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; background: var(--dline); border: 1px solid var(--dline); margin-top: var(--block-gap); }
 @media (max-width: 820px){ .timeline { grid-template-columns: repeat(2,1fr);} }
 .tl { background: var(--ink); padding: 24px 22px 28px; }
 .tl__t { font-family: var(--mono); font-size: 12px; color: var(--accent-ink); letter-spacing: .1em; }
@@ -688,8 +700,11 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 @media(max-width:760px){ .arg{ grid-template-columns:1fr; } .arg__key{ border-right:0; border-bottom:1px solid var(--line);} .arg--amp .arg__key{ border-color: var(--dline);} }
 
 /* ---- problem: two-figure + prose ---- */
-.prose-2{ display:grid; grid-template-columns:1fr 1fr; gap: clamp(28px,4vw,56px); margin-top:44px; }
+.prose-2{ display:grid; grid-template-columns:1fr 1fr; gap: clamp(28px,4vw,56px); margin-top: var(--block-gap); }
 .prose-2 p{ font-size:16px; line-height:1.62; }
+/* column wrappers (one balanced grid, no orphan cells): paragraphs
+   stacked inside a column keep paragraph rhythm, not the grid gap */
+.prose-2 > div{ display:flex; flex-direction:column; gap:1em; }
 @media(max-width:760px){ .prose-2{ grid-template-columns:1fr; } }
 
 /* ---- why us 2x2 ---- */
@@ -860,7 +875,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 /* =========================================================
    EXAMPLE BUILDS — concrete proof module (section 03)
    ========================================================= */
-.builds{ border:1px solid var(--line); margin-top:48px; background:var(--paper-card); }
+.builds{ border:1px solid var(--line); margin-top: var(--block-gap); background:var(--paper-card); }
 .builds__bar{
   display:flex; justify-content:space-between; align-items:center; gap:18px;
   padding:14px 22px; border-bottom:1px solid var(--line);
@@ -1035,7 +1050,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 /* share row */
 .essay__share{
   display:flex; align-items:center; gap:16px; flex-wrap:wrap; max-width:680px;
-  margin-top:48px; padding-top:24px; border-top:1px solid var(--line);
+  margin-top: var(--block-gap); padding-top:24px; border-top:1px solid var(--line);
 }
 .essay__share a,.essay__copy{
   font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;

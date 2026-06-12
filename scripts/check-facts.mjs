@@ -42,6 +42,7 @@ const ALL_PAGES = [
   "work/index.html",
   "work/sample-audit/index.html",
   "calculator/index.html",
+  "contact/index.html",
   "privacy/index.html",
   "terms/index.html",
   "404.html",

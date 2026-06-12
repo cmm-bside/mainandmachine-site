@@ -165,12 +165,14 @@ export function nav() {
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
     <nav class="nav__links">
+      <a href="/">Home</a>
       <a href="/services/">Services</a>
       <a href="/pricing/">Pricing</a>
       <a href="/method/">Method</a>
       <a href="/work/">The Work</a>
       <a href="/about/">Who We Are</a>
       <a href="/blog/" class="is-active" aria-current="page">The Ampersand</a>
+      <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="/book/">Book a free assessment</a>

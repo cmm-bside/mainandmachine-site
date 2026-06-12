@@ -56,6 +56,7 @@ export const STATIC_ROUTES = [
 	"/work/",
 	"/work/sample-audit/",
 	"/calculator/",
+	"/contact/",
 	"/privacy/",
 	"/terms/",
 ];
@@ -88,4 +89,4 @@ export const POST_DATE_OVERRIDES = {
 };
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "33";
+export const ASSET_VERSION = "34";

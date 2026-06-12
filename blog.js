@@ -41,7 +41,7 @@
 	function cardHTML(post) {
 		var img = post.heroImage && post.heroImage.assetUrl;
 		var thumb = img
-			? '<div class="feed__card-img"><img loading="lazy" decoding="async" alt="' + esc((post.heroImage && post.heroImage.alt) || post.title) + '" src="' + esc(img) + '" /></div>'
+			? '<div class="feed__card-img"><img loading="lazy" decoding="async" alt="' + esc((post.heroImage && post.heroImage.alt) || (post.title + " — illustrated diagram from The Ampersand")) + '" src="' + esc(img) + '" /></div>'
 			: '<div class="feed__card-img is-empty"></div>';
 		return '<a class="feed__card" href="' + esc(post.url) + '">' + thumb +
 			'<div class="feed__card-body">' +

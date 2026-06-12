@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Main &amp; Machine — Human-centric AI for small business</title>
-<meta name="description" content="Working agents and automations running inside your business in about 90 days, at a fixed price you know before we start. Real AI built into the work you already do. Denver &amp; Phoenix." />
+<title>AI Consulting &amp; Implementation for Small Business | Main &amp; Machine</title>
+<meta name="description" content="Working AI agents and automations inside your business in ~90 days, at a fixed price quoted before we start. Audits from $3,500. Denver, Phoenix &amp; remote." />
 <link rel="canonical" href="https://www.mainandmachine.com/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
-<meta property="og:title" content="Main &amp; Machine — Human-centric AI for small business" />
-<meta property="og:description" content="Working agents and automations running inside your business in about 90 days, at a fixed price you know before we start. Real AI built into the work you already do. Denver &amp; Phoenix." />
+<meta property="og:title" content="AI Consulting &amp; Implementation for Small Business | Main &amp; Machine" />
+<meta property="og:description" content="Working AI agents and automations inside your business in ~90 days, at a fixed price quoted before we start. Audits from $3,500. Denver, Phoenix &amp; remote." />
 <meta property="og:url" content="https://www.mainandmachine.com/" />
 <meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
 <meta property="og:image:type" content="image/png" />
@@ -21,41 +21,45 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Main &amp; Machine — Human-centric AI for small business" />
-<meta name="twitter:description" content="Working agents and automations running inside your business in about 90 days, at a fixed price you know before we start. Real AI built into the work you already do. Denver &amp; Phoenix." />
+<meta name="twitter:title" content="AI Consulting &amp; Implementation for Small Business | Main &amp; Machine" />
+<meta name="twitter:description" content="Working AI agents and automations inside your business in ~90 days, at a fixed price quoted before we start. Audits from $3,500. Denver, Phoenix &amp; remote." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
 
-<link rel="stylesheet" href="styles.css?v=14" />
+<link rel="stylesheet" href="styles.css?v=15" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-<!-- Structured data -->
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Main & Machine",
-  "description": "Human-centric AI for small and mid-size business. We build working agents, automations, and integrations into the work you already do, at a fixed price, delivered in about ninety days.",
-  "url": "https://www.mainandmachine.com/",
-  "image": "https://www.mainandmachine.com/og-image.png",
-  "email": "cmyers@mainandmachine.com",
-  "telephone": "+1-480-360-5128",
-  "priceRange": "$3,500+",
-  "areaServed": "US",
-  "slogan": "The machine belongs to Main Street.",
-  "address": [
-    { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-    { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
-  ],
-  "founder": {
-    "@type": "Person",
-    "name": "Christopher Myers",
-    "jobTitle": "Founder & Chairman"
-  }
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "name": "Main & Machine",
+      "description": "Human-centric AI for small and mid-size business. We build working agents, automations, and integrations into the work you already do, at a fixed price, delivered in about ninety days.",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-360-5128",
+      "priceRange": "$3,500 - $45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } }
+  ]
 }
 </script>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -63,6 +67,20 @@
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
+</script>
+<!-- Old in-page anchors now live on their own pages — forward shared/bookmarked links. -->
+<script>
+(function(){
+  var moved = {
+    '#method': '/method/',
+    '#why': '/about/#why',
+    '#industries': '/industries/',
+    '#writing': '/blog',
+    '#assessment': '/book/'
+  };
+  var dest = moved[window.location.hash];
+  if(dest){ window.location.replace(dest); }
+})();
 </script>
 </head>
 <body>
@@ -72,7 +90,7 @@
   <div class="wrap topbar__in">
     <!-- TODO: if a verifiably true slot count exists, "Two Q3 build slots remain" is stronger than the generic line. -->
     <span class="left"><span class="dot"></span>Now booking Q3 builds — every engagement starts with the free assessment</span>
-    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span>Denver · Phoenix · Remote</span></span>
+    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span><a href="/denver/">Denver</a> · <a href="/phoenix/">Phoenix</a> · Remote</span></span>
   </div>
 </div>
 
@@ -84,11 +102,12 @@
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
     <nav class="nav__links">
-      <a href="#work">The Work</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#about">Who We Are</a>
-      <a href="#method">Method</a>
-      <a href="/blog" data-spy="writing">The Ampersand</a>
+      <a href="/services/">Services</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/method/">Method</a>
+      <a href="/work/">The Work</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog">The Ampersand</a>
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="/book/">Book a free assessment</a>
@@ -96,7 +115,7 @@
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
+<!-- ============ 01 HERO ============ -->
 <section class="hero section paper" data-screen-label="Hero">
   <div class="hero__amp" aria-hidden="true">&amp;</div>
   <div class="wrap">
@@ -137,7 +156,7 @@
   </div>
 </div>
 
-<!-- ============ 01 THE PROBLEM (ink) ============ -->
+<!-- ============ 02 THE PROBLEM (ink) ============ -->
 <section class="section ink" data-screen-label="The problem">
   <div class="wrap">
     <div class="head-block">
@@ -155,12 +174,12 @@
     <div class="prose-2">
       <p style="color:var(--dtx-mute);">Only four percent create substantial value. That is the group we build for.</p>
       <p style="color:var(--dtx-mute);">But there is a second failure that nobody puts on a slide. Plenty of AI gets installed that technically functions and quietly hollows out the business. It buries the reason a decision was made. It turns customers into profiles and your best people into ticket-closers. It de-skills the very judgment that made the place worth running.</p>
-      <p style="color:var(--dtx-mute);">We build the other kind. Human-centric AI keeps the person as the point, not the cost of doing business. Every system we put in place can be explained, questioned, and overruled by a human who is accountable for it. The machine never becomes the answer to "why did this happen." A person is always the answer. That is the design from the first day.</p>
+      <p style="color:var(--dtx-mute);">We build the other kind. Human-centric AI keeps the person as the point, not the cost of doing business. Every system we put in place can be explained, questioned, and overruled by a human who is accountable for it. The machine never becomes the answer to "why did this happen." A person is always the answer. That is the design from the first day. <a href="/method/" style="color:var(--dtx);text-decoration:underline;">How we work →</a></p>
     </div>
   </div>
 </section>
 
-<!-- ============ 02 WHAT WE DO ============ -->
+<!-- ============ 03 WHAT WE DO ============ -->
 <section class="section paper" id="work" data-screen-label="What we do">
   <div class="wrap">
     <div class="head-block">
@@ -192,27 +211,27 @@
     <div class="builds">
       <div class="builds__bar">
         <span class="tick-lbl">Example builds</span>
-        <span class="tick-lbl">What "agents, automations &amp; integrations" look like in practice</span>
+        <span class="tick-lbl"><a href="/work/">See the work →</a></span>
       </div>
       <div class="builds__grid">
         <div class="build">
           <span class="build__no">01</span>
           <span class="tick-lbl">Intake agent</span>
-          <h3>Qualifies the request before a person touches it.</h3>
+          <h3><a href="/services/ai-readiness-audit/">Qualifies the request before a person touches it.</a></h3>
           <p>Reads the incoming email or form, asks for the details that are missing, and routes the job to the right person with a clean summary attached.</p>
           <span class="build__win">The win: fewer half-formed requests landing on your best people.</span>
         </div>
         <div class="build">
           <span class="build__no">02</span>
           <span class="tick-lbl">Billing &amp; follow-up</span>
-          <h3>Watches the invoices so you don't have to.</h3>
+          <h3><a href="/services/implementation-sprint/">Watches the invoices so you don't have to.</a></h3>
           <p>Tracks what's outstanding, drafts the reminder in your voice, and flags the awkward exceptions for a human to send instead of firing them off blind.</p>
           <span class="build__win">The win: invoices chased on time, judgment calls still yours.</span>
         </div>
         <div class="build">
           <span class="build__no">03</span>
           <span class="tick-lbl">Operations data sync</span>
-          <h3>One operating view across the tools you already pay for.</h3>
+          <h3><a href="/services/managed-services/">One operating view across the tools you already pay for.</a></h3>
           <p>Connects CRM, billing, and project software so the same job shows the same status everywhere. No more reconciling five screens by hand.</p>
           <span class="build__win">The win: one reliable picture instead of five that disagree.</span>
         </div>
@@ -222,7 +241,7 @@
   </div>
 </section>
 
-<!-- ============ 03 PRICING ============ -->
+<!-- ============ 04 PRICING SUMMARY ============ -->
 <section class="section paper-2" id="pricing" data-screen-label="Pricing">
   <div class="wrap">
     <div class="head-block">
@@ -230,7 +249,7 @@
         <span class="kicker">03 / How to work with us</span>
         <h2 class="h2 mt-s">Three ways in. Priced in <span class="accent-tx">plain numbers.</span></h2>
       </div>
-      <p class="lead">You will not have to sit through three discovery calls to learn what something costs. Here is the price list.</p>
+      <p class="lead">You will not have to sit through three discovery calls to learn what something costs. Here is the price list — the full version, with every line item, lives at <a href="/pricing/" style="text-decoration:underline;">/pricing/</a>.</p>
     </div>
     <div class="svc">
       <div class="svc__item svc__item--feature crop">
@@ -242,7 +261,7 @@
           <div class="svc__price">$3,500 – $8,500</div>
         </div>
         <div class="svc__main">
-          <h3>AI Readiness Audit</h3>
+          <h3><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></h3>
           <div class="svc__tagline">Most businesses start here.</div>
           <p>We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.</p>
         </div>
@@ -254,7 +273,7 @@
             <li>A phased plan you own outright</li>
             <li>A straight read on whether to build at all</li>
           </ul>
-          <a class="svc__cta" href="/book/?service=audit">Book a free assessment to scope it →</a>
+          <a class="svc__cta" href="/services/ai-readiness-audit/">Read the full spec →</a>
         </div>
       </div>
       <div class="svc__item">
@@ -267,7 +286,7 @@
           <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
         </div>
         <div class="svc__main">
-          <h3>AI Implementation Sprint</h3>
+          <h3><a href="/services/implementation-sprint/">AI Implementation Sprint</a></h3>
           <div class="svc__tagline">We build the working systems.</div>
           <p>Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.</p>
         </div>
@@ -279,7 +298,7 @@
             <li>Integrations into one source of truth</li>
             <li>Your team trained to run all of it</li>
           </ul>
-          <a class="svc__cta" href="/book/?service=sprint">Scope a sprint (free call) →</a>
+          <a class="svc__cta" href="/services/implementation-sprint/">Read the full spec →</a>
         </div>
       </div>
       <div class="svc__item">
@@ -291,7 +310,7 @@
           <div class="svc__price">Monthly</div>
         </div>
         <div class="svc__main">
-          <h3>Managed Services</h3>
+          <h3><a href="/services/managed-services/">Managed Services</a></h3>
           <div class="svc__tagline">Optional, never required.</div>
           <p>We keep what we built healthy, watch what changes, and evolve the systems as your business does.</p>
         </div>
@@ -303,16 +322,16 @@
             <li>New automations as the work changes</li>
             <li>No lock-in: leave whenever it stops paying</li>
           </ul>
-          <a class="svc__cta" href="/book/?service=managed">Ask about managed (free call) →</a>
+          <a class="svc__cta" href="/services/managed-services/">Read the full spec →</a>
         </div>
       </div>
     </div>
-    <p class="hero__note">Every path here starts with the same free thirty-minute assessment.</p>
+    <p class="hero__note">Every path here starts with the same free thirty-minute assessment. Want a rough number first? <a href="/calculator/" style="text-decoration:underline;">Run the calculator</a>.</p>
   </div>
 </section>
 
-<!-- ============ 04 WHO BUILT THIS ============ -->
-<section class="section paper" id="about" data-screen-label="Who built this">
+<!-- ============ 05 WHO BUILDS THIS ============ -->
+<section class="section paper" id="about" data-screen-label="Who builds this">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -325,7 +344,7 @@
       <figure class="bio__portrait crop">
         <picture>
           <source type="image/webp" srcset="/images/christopher-myers-hedcut.webp?v=3" />
-          <img src="/images/christopher-myers-hedcut.png?v=3" alt="Engraved portrait of Christopher Myers" width="768" height="768" loading="lazy" decoding="async" />
+          <img src="/images/christopher-myers-hedcut.png?v=3" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="768" height="768" loading="lazy" decoding="async" />
         </picture>
         <figcaption>
           <span class="bio__name">Christopher Myers</span>
@@ -333,361 +352,20 @@
         </figcaption>
       </figure>
       <div class="bio__prose">
-        <p>Christopher has spent twenty-six years backing Main Street, today as <b>CEO of B:Side Capital and Fund</b>, a professor of entrepreneurship at ASU's W.P. Carey School, and the author of several books on small business. Main &amp; Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building.</p>
-        <p>As founder and chairman, he cultivated a team of <b>AI-native talent</b> built to help Main Street navigate the age of machine intelligence. The future doesn't belong to the people who can do what AI does; it belongs to the people who can take what the machine produces and <b>be accountable for it.</b> We hire for that, train for that, and put senior judgment in the room on every build.</p>
+        <p>Christopher has spent twenty-six years backing Main Street, today as <b>CEO of B:Side Capital and Fund</b>, a professor of entrepreneurship at ASU's W.P. Carey School, and the author of several books on small business. Main &amp; Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building. He leads a team of AI-native talent, with senior judgment in the room on every build.</p>
+        <p><a class="svc__cta" href="/about/">Who builds this, and why the name matters →</a></p>
         <div class="bio__press">His work has been covered in — Forbes · The Wall Street Journal · The New York Times · Inc. · TechCrunch · MSNBC · Fox Business</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 05 METHOD (ink) ============ -->
-<section class="section ink" id="method" data-screen-label="Method">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">05 / The method</span>
-        <h2 class="h2 mt-s">Discover. Build. Evolve.</h2>
-      </div>
-      <p class="lead">Three phases. One team from kickoff to handoff. No junior account managers parachuted in between.</p>
-    </div>
-    <div class="phases">
-      <div class="phase">
-        <span class="phase__no">01</span>
-        <h3>Discover</h3>
-        <span>learn the business first</span>
-        <p>We learn the business before we touch the technology. Where the time goes, where the money leaks, where a person is doing work a machine should be doing.</p>
-        <ul>
-          <li>Workflow + cost mapping</li>
-          <li>Where AI actually pays</li>
-          <li>A plan you own</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <span class="phase__no">02</span>
-        <h3>Build</h3>
-        <span>inside your real operation</span>
-        <p>We build inside your real operation, not a sandbox. Small, working, tested. You watch it run and earn your trust before it touches anything that matters.</p>
-        <ul>
-          <li>Small, working, tested</li>
-          <li>Runs in your real stack</li>
-          <li>Trust earned before it matters</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <span class="phase__no">03</span>
-        <h3>Evolve</h3>
-        <span>as the work changes</span>
-        <p>Businesses move. We tune, extend, and retire systems as the work changes, so what we built stays useful instead of becoming the next thing you work around.</p>
-        <ul>
-          <li>Tune and extend</li>
-          <li>Retire what is done</li>
-          <li>Stays useful over time</li>
-        </ul>
-      </div>
-    </div>
-    <div class="closer">
-      <span class="kicker">The math</span>
-      <p>The Big Four do versions of this work with <b>five-hundred-thousand-dollar minimums</b>. Our largest engagement costs less than their kickoff meeting. Same rigor, built for Main Street instead of the Fortune 500.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 06 WHY US ============ -->
-<section class="section paper" id="why" data-screen-label="Why us">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">06 / Why us</span>
-        <h2 class="h2 mt-s">What makes us <span class="accent-tx">hard to copy.</span></h2>
-      </div>
-      <p class="lead">Four things, none of which a competitor can bolt on next quarter.</p>
-    </div>
-    <div class="why">
-      <div>
-        <span class="tick-lbl">01 — Prices stated plainly</span>
-        <h3>No discovery call required to learn the cost.</h3>
-        <p>The price list is on this page, in plain numbers, because that is how you would want to be treated.</p>
-      </div>
-      <div>
-        <span class="tick-lbl">02 — Vendor-neutral</span>
-        <h3>We make no money reselling anyone's software.</h3>
-        <p>We recommend what is right for you, including the free tool over the expensive one when the free one wins.</p>
-      </div>
-      <div>
-        <span class="tick-lbl">03 — Senior people, start to finish</span>
-        <h3>The advisor who scopes it is the one who builds it.</h3>
-        <p>No junior team quietly takes over after you sign the contract.</p>
-      </div>
-      <div>
-        <span class="tick-lbl">04 — A team that grew up with this</span>
-        <h3>AI-native talent, paired with senior judgment on every build.</h3>
-        <p>They did not learn AI in a weekend bootcamp. They grew up with it.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 07 THE PROMISE (ink) ============ -->
-<section class="section ink" data-screen-label="The promise">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">07 / The promise</span>
-        <h2 class="h2 mt-s">What we promise. <span class="accent-tx">And what we don't.</span></h2>
-      </div>
-      <p class="lead">The list on the left is what we sign up for. The list on the right is what no honest AI shop should ever claim. If one does, ask harder questions.</p>
-    </div>
-    <div class="promise">
-      <div class="promise__col promise__col--do">
-        <h3 class="accent-tx">What we promise</h3>
-        <ul>
-          <li>Prices on this page, in plain numbers: no discovery call required to learn the cost</li>
-          <li>Fixed scope and a fixed price agreed before we start</li>
-          <li>The advisor who scopes your project is the one who builds it</li>
-          <li>Vendor-neutral recommendations, including the free tool when the free one wins</li>
-          <li>A human who can explain, question, and overrule every system we build</li>
-        </ul>
-      </div>
-      <div class="promise__col promise__col--dont">
-        <h3>What we don't promise</h3>
-        <ul>
-          <li>Guaranteed ROI numbers: we quote ranges; real results depend on your execution</li>
-          <li>Magic in a couple of weeks: real implementation runs about ninety days per workflow</li>
-          <li>That AI is right for you right now: sometimes the honest answer is “wait a quarter”</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 08 WHO THIS IS FOR ============ -->
-<section class="section paper-2" id="industries" data-screen-label="Who this is for">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">08 / Who this is for</span>
-        <h2 class="h2 mt-s">Built for the businesses <span class="accent-tx">big consulting forgets.</span></h2>
-      </div>
-      <p class="lead">Past the point where the owner can hold everything in their head, and not yet big enough for a Fortune 500 budget. Five industries where we have seen the clearest wins.</p>
-    </div>
-    <div class="profile">
-      <div><span class="tick-lbl">Headcount</span><div class="v">5 – 100</div></div>
-      <div><span class="tick-lbl">Revenue</span><div class="v">$1M – $50M</div></div>
-      <div><span class="tick-lbl">Coverage</span><div class="v">Remote, US</div></div>
-      <div><span class="tick-lbl">Hubs</span><div class="v">CO &amp; AZ</div></div>
-    </div>
-    <div class="industries">
-      <div class="ind">
-        <span class="ind__no">01</span>
-        <div class="ind__name">Professional services <span>Law, accounting, insurance, consulting, financial advisory.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">12 to 80</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Intake, billing, matters</span></div>
-        <a class="ind__go" href="/book/?industry=professional-services">See the wins in professional services →</a>
-      </div>
-      <div class="ind">
-        <span class="ind__no">02</span>
-        <div class="ind__name">Retail &amp; e-commerce <span>Physical, online, omnichannel operators.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">5 to 60</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Inventory, support, merch</span></div>
-        <a class="ind__go" href="/book/?industry=retail">See the wins in retail →</a>
-      </div>
-      <div class="ind">
-        <span class="ind__no">03</span>
-        <div class="ind__name">Healthcare &amp; wellness <span>Practices, clinics, wellness businesses.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">8 to 50</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Scheduling, intake, coding</span></div>
-        <a class="ind__go" href="/book/?industry=healthcare">See the wins in healthcare →</a>
-      </div>
-      <div class="ind">
-        <span class="ind__no">04</span>
-        <div class="ind__name">Construction &amp; trades <span>HVAC, plumbing, electrical, general contracting.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">10 to 100</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Dispatch, invoicing, bids</span></div>
-        <a class="ind__go" href="/book/?industry=construction">See the wins in the trades →</a>
-      </div>
-      <div class="ind">
-        <span class="ind__no">05</span>
-        <div class="ind__name">Hospitality &amp; food service <span>Restaurants, hotels, catering, venues.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">15 to 100</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Staffing, reservations, ops</span></div>
-        <a class="ind__go" href="/book/?industry=hospitality">See the wins in hospitality →</a>
-      </div>
-    </div>
-    <p class="hero__note">Checking fit is exactly what the free assessment is for.</p>
-  </div>
-</section>
-
-<!-- ============ 09 THE NAME ============ -->
-<section class="section paper" data-screen-label="The name">
-  <div class="wrap">
-    <div class="head-block" style="align-items:center; margin-bottom:38px;">
-      <div>
-        <span class="kicker">09 / The name</span>
-        <h2 class="h2 mt-s">Two words. <span class="accent-tx">One argument.</span></h2>
-      </div>
-      <p class="lead">We put Main first on purpose. The order is the whole philosophy.</p>
-    </div>
-    <div class="argument">
-      <div class="arg">
-        <div class="arg__key"><span class="arg__word">Main</span><span class="arg__tag">the human part</span></div>
-        <div class="arg__body"><p>Main Street is the human part. <b>The owner who knows which customer always pays late</b> and which one is worth keeping anyway. The manager who can feel when a week is about to go sideways. The judgment that no model has, and no model will.</p></div>
-      </div>
-      <div class="arg">
-        <div class="arg__key"><span class="arg__word">Machine</span><span class="arg__tag">the tireless part</span></div>
-        <div class="arg__body"><p>The Machine is the other part. <b>It is patient in a way people cannot be.</b> It reads every invoice, watches every queue, drafts the first version at three in the morning, and never gets tired or bored or careless on a Friday afternoon.</p></div>
-      </div>
-      <div class="arg arg--amp">
-        <div class="arg__key"><span class="arg__word"><span class="amp">&amp;</span></span><span class="arg__tag">the whole company</span></div>
-        <div class="arg__body"><p>The ampersand is the whole company. The machine works for the person: it carries the load the person should not have to carry, and hands every judgment call back to them. <b>The person stays in charge; the software stays in service.</b> Build it in that order and you have built the right thing. That is the only thing we build.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 10 THE NUMBERS (blueprint) ============ -->
-<section class="section blueprint" data-screen-label="The numbers">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">10 / The numbers</span>
-        <h2 class="h2 mt-s">What this is worth, <span class="accent-tx">roughly.</span></h2>
-      </div>
-      <p class="lead">Pick your industry. Move the team-size slider. See what automating the right handful of workflows could return in year one. Ranges, not promises: we run your real numbers in the free assessment.</p>
-    </div>
-
-    <div class="roi crop" aria-label="ROI estimate calculator">
-      <div class="roi__bar">
-        <span class="roi__id"><span class="roi__dot" aria-hidden="true"></span>Estimate.v1</span>
-        <span class="roi__id roi__id--mute">Illustrative / ranges vary</span>
-      </div>
-
-      <div class="roi__grid">
-        <!-- inputs -->
-        <div class="roi__inputs">
-          <div class="roi__field">
-            <label class="tick-lbl" for="calcIndustry">01 / Industry</label>
-            <div class="roi__selectwrap">
-              <select id="calcIndustry" class="roi__select">
-                <option value="professional-services">Professional services</option>
-                <option value="retail">Retail &amp; e-commerce</option>
-                <option value="healthcare">Healthcare &amp; wellness</option>
-                <option value="construction">Construction &amp; trades</option>
-                <option value="hospitality">Hospitality &amp; food service</option>
-              </select>
-              <span class="roi__caret" aria-hidden="true">▾</span>
-            </div>
-            <p class="roi__note" id="calcNote">Law, accounting, insurance, consulting, financial advisory.</p>
-          </div>
-
-          <div class="roi__field">
-            <div class="roi__sliderhead">
-              <label class="tick-lbl" for="calcRange">02 / Team size</label>
-              <span class="roi__count mono" id="calcCount">25</span>
-            </div>
-            <input type="range" id="calcRange" class="roi__range" min="5" max="100" value="25"
-              aria-label="Team size" aria-valuemin="5" aria-valuemax="100" aria-valuenow="25" />
-            <div class="roi__scale"><span>5</span><span>50</span><span>100</span></div>
-          </div>
-
-          <div class="roi__assume">
-            <span class="tick-lbl">Assumptions</span>
-            <ul>
-              <li><span>Manual work / employee</span><span class="mono tab" id="calcAManual">$4,000/yr</span></li>
-              <li><span>Lost revenue / employee</span><span class="mono tab" id="calcARevenue">$2,000/yr</span></li>
-              <li><span>Sprint investment</span><span class="mono tab" id="calcAImpl">$18,000</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- output -->
-        <div class="roi__output">
-          <span class="tick-lbl">Output / Year one</span>
-          <ul class="roi__rows">
-            <li><span>Repetitive manual work</span><span class="mono tab roi__pos" id="calcManual">+$100,000</span></li>
-            <li><span>Lost revenue (capacity)</span><span class="mono tab roi__pos" id="calcRevenue">+$50,000</span></li>
-            <li><span>Sprint investment</span><span class="mono tab roi__neg" id="calcImpl">-$18,000</span></li>
-          </ul>
-          <div class="roi__net">
-            <div class="roi__nethead">
-              <span class="accent-tx">Net ROI / Year 1</span>
-              <span id="calcFor">For 25 people</span>
-            </div>
-            <div class="roi__big tab" id="calcRoi">+$132,000</div>
-          </div>
-          <p class="roi__disclaim">Your exact numbers are different. The calculator gives a signal, not a guarantee. We quote ranges in the assessment and commit to fixed scope at engagement.</p>
-        </div>
-      </div>
-
-      <div class="roi__foot">
-        <span>Total opportunity: <b class="tab" id="calcTotal">$150,000</b></span>
-        <span>Method: MM-ROI-v1 / 2026</span>
-      </div>
-    </div>
-
-    <div class="roi__cta">
-      <a class="btn btn--accent btn--lg" href="/book/">See what we'd automate for you <span class="arr">→</span></a>
-      <p>A twenty-five-person firm that automates the right handful of workflows commonly nets around this in year one, after our fee. <b style="color:var(--tx);">If your numbers don't work, we'll tell you.</b></p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 11 START HERE (ink) ============ -->
-<section class="section ink final" id="assessment" data-screen-label="Start here">
-  <div class="wrap">
-    <span class="kicker">11 / Start here</span>
-    <h2 class="h2 mt-s">30 minutes. No pitch. <span class="accent-tx">A straight verdict.</span></h2>
-    <p class="lead mt-s">Book a free AI Opportunity Assessment. We will look at your business and tell you the truth, even when the truth is "wait a quarter" or "you do not need us for this." If there is a real opportunity, you will leave knowing what it is and what it is worth. If there is not, you will leave with thirty minutes back and a clear answer, which is more than most firms hand out for free.</p>
-    <div class="hero__cta">
-      <a class="btn btn--accent btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-      <a class="btn btn--ghost btn--lg" href="#pricing">Or read the price list first</a>
-    </div>
-    <p class="hero__note" style="color:var(--dtx-mute);">Free. No obligation. No pressure. A senior advisor walks three of your workflows.</p>
-  </div>
-</section>
-
-<!-- ============ 12 WRITING (ink) ============ -->
-<section class="section ink" id="writing" data-screen-label="Writing">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">12 / Writing</span>
-        <h2 class="h2 mt-s">The Ampersand.</h2>
-      </div>
-      <p class="lead">A newsletter about building durable things in a noisy time. No hype, no countdown timers, no ten-step funnel. If you want to understand how we think before you ever talk to us, start here.</p>
-    </div>
-    <div class="news">
-      <div class="subcard crop">
-        <div class="tick-lbl"><span>The Ampersand / free</span><span>Weekly</span></div>
-        <h3>Read before you ever pick up the phone.</h3>
-        <p class="lead" style="font-size:15px;">Free weekly essays. One field. No sales pitches.</p>
-        <form class="subform" data-beehiiv-subscribe action="#" method="get" target="_blank">
-          <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
-          <button class="btn btn--accent" type="submit">Get the weekly essay →</button>
-        </form>
-        <p style="font-family:var(--mono);font-size:11px;color:var(--dtx-faint);margin-top:14px;line-height:1.6;">Delivered by beehiiv. No spam, unsubscribe anytime.</p>
-      </div>
-      <div class="posts">
-        <div class="posts__bar"><span>Recent posts</span><span>RSS / live</span></div>
-        <div id="amp-posts">
-          <a class="post" href="/blog"><span class="post__no">01</span><span class="post__title">The Curator's Era</span></a>
-          <a class="post" href="/blog"><span class="post__no">02</span><span class="post__title">Leaving Power on the Table</span></a>
-          <a class="post" href="/blog"><span class="post__no">03</span><span class="post__title">The Proximity Paradox</span></a>
-          <a class="post" href="/blog"><span class="post__no">04</span><span class="post__title">The Trap That Builds Itself</span></a>
-          <a class="post" href="/blog"><span class="post__no">05</span><span class="post__title">The Market That Can't Be Talked Down</span></a>
-        </div>
-        <a class="post post--all" href="/blog"><span class="post__no">→</span><span class="post__title">Read The Ampersand</span><span class="post__date">All posts</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 13 WHERE ARE YOU ============ -->
+<!-- ============ 06 WHERE ARE YOU ============ -->
 <section class="section paper-2" id="paths" data-screen-label="Where are you">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">13 / Where are you?</span>
+        <span class="kicker">05 / Where are you?</span>
         <h2 class="h2 mt-s">Pick the door that <span class="accent-tx">fits you today.</span></h2>
       </div>
       <p class="lead">Three doors. No wrong answer.</p>
@@ -703,13 +381,13 @@
         <span class="path__no">02 / Decided</span>
         <h3>I already know what I want built.</h3>
         <p>Skip the audit. Book a scoping call and we will quote a fixed-price Implementation Sprint in writing.</p>
-        <a class="path__cta" href="#pricing">Scope a sprint →</a>
+        <a class="path__cta" href="/book/?service=sprint">Scope a sprint →</a>
       </div>
       <div class="path">
         <span class="path__no">03 / Thinking</span>
         <h3>I'm still thinking it through.</h3>
         <p>Read The Ampersand. Decide for yourself whether we sound like people who understand your world.</p>
-        <a class="path__cta" href="#writing">Read the newsletter →</a>
+        <a class="path__cta" href="/blog">Read the newsletter →</a>
       </div>
     </div>
   </div>
@@ -734,28 +412,28 @@
       <div class="foot__col">
         <h5>Company</h5>
         <ul>
-          <li><a href="#work">The work</a></li>
-          <li><a href="#about">Who we are</a></li>
-          <li><a href="#method">The method</a></li>
+          <li><a href="/about/">Who we are</a></li>
+          <li><a href="/method/">The method</a></li>
+          <li><a href="/work/">The work</a></li>
           <li><a href="/blog">The Ampersand</a></li>
         </ul>
       </div>
       <div class="foot__col">
-        <h5>The work</h5>
+        <h5>Services</h5>
         <ul>
-          <li><a href="#pricing">AI Readiness Audit</a></li>
-          <li><a href="#pricing">Implementation Sprint</a></li>
-          <li><a href="#pricing">Managed Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/implementation-sprint/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-services/">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
       <div class="foot__col">
         <h5>More</h5>
         <ul>
-          <li><a href="#industries">Who this is for</a></li>
-          <li><a href="#why">Why us</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
           <li><a href="/blog/archive">Archive</a></li>
-          <li><a href="#paths">Where are you?</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
         </ul>
       </div>
       <div class="foot__col">
@@ -764,7 +442,7 @@
           <li><a href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
           <li><a href="tel:+14803605128">480-360-5128</a></li>
-          <li><a href="/">Denver and Phoenix</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
         </ul>
       </div>
     </div>
@@ -777,7 +455,7 @@
 
 <script>
 (function(){
-  var sels = ['.hero__grid > *','.argument > .arg','.head-block','.datagrid > div','.prose-2 > p','.diffs > .diff','.svc__item','.phases > .phase','.closer','.why > div','.profile > div','.industries .ind','.math > *','.roi','.roi__cta','.bio > *','.news > *','.paths > .path','.foot__top > *'];
+  var sels = ['.hero__grid > *','.head-block','.datagrid > div','.prose-2 > p','.diffs > .diff','.builds__grid > .build','.svc__item','.bio > *','.paths > .path','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
   document.querySelectorAll('.rv').forEach(function(el){
@@ -792,146 +470,6 @@
   setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); if(hTitle){ hTitle.classList.add('in'); } }, 1400);
 })();
 </script>
-
-<!-- ============ ROI CALCULATOR ============ -->
-<script>
-(function(){
-  var industry = document.getElementById('calcIndustry');
-  if(!industry) return;
-  var range   = document.getElementById('calcRange');
-  var count   = document.getElementById('calcCount');
-  var note    = document.getElementById('calcNote');
-  var forEl   = document.getElementById('calcFor');
-
-  var rates = {
-    'professional-services': { manual: 4000, revenue: 2000, note: 'Law, accounting, insurance, consulting, financial advisory.' },
-    'retail':               { manual: 3200, revenue: 2400, note: 'Physical, online, and omnichannel operators.' },
-    'healthcare':           { manual: 3600, revenue: 2800, note: 'Practices, clinics, wellness businesses.' },
-    'construction':         { manual: 3000, revenue: 1800, note: 'HVAC, plumbing, electrical, general contracting.' },
-    'hospitality':          { manual: 2400, revenue: 2200, note: 'Restaurants, hotels, catering, venues.' }
-  };
-
-  var usd = new Intl.NumberFormat('en-US', { style:'currency', currency:'USD', maximumFractionDigits:0 });
-  function fmt(n){ return usd.format(Math.round(n)); }
-  function signed(n){ return (n < 0 ? '-' : '+') + fmt(Math.abs(n)); }
-
-  var els = {
-    aManual:  document.getElementById('calcAManual'),
-    aRevenue: document.getElementById('calcARevenue'),
-    aImpl:    document.getElementById('calcAImpl'),
-    manual:   document.getElementById('calcManual'),
-    revenue:  document.getElementById('calcRevenue'),
-    impl:     document.getElementById('calcImpl'),
-    roi:      document.getElementById('calcRoi'),
-    total:    document.getElementById('calcTotal')
-  };
-
-  function compute(){
-    var r = rates[industry.value];
-    var emp = Number(range.value);
-    var manual = emp * r.manual;
-    var revenue = emp * r.revenue;
-    var total = manual + revenue;
-    var implementation = Math.min(45000, Math.max(12000, 720 * emp));
-    var roi = total - implementation;
-    return { r:r, emp:emp, manual:manual, revenue:revenue, total:total, implementation:implementation, roi:roi };
-  }
-
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var prev = null, frame = 0;
-
-  function paintStatic(m){
-    note.textContent = m.r.note;
-    count.textContent = m.emp;
-    range.setAttribute('aria-valuenow', m.emp);
-    forEl.textContent = 'For ' + m.emp + (m.emp === 1 ? ' person' : ' people');
-    els.aManual.textContent  = fmt(m.r.manual) + '/yr';
-    els.aRevenue.textContent = fmt(m.r.revenue) + '/yr';
-  }
-
-  function paintNumbers(v){
-    els.aImpl.textContent   = fmt(v.implementation);
-    els.manual.textContent  = signed(v.manual);
-    els.revenue.textContent = signed(v.revenue);
-    els.impl.textContent    = signed(-v.implementation);
-    els.roi.textContent     = (v.roi >= 0 ? '+' : '') + fmt(v.roi);
-    els.total.textContent   = fmt(v.total);
-  }
-
-  function lerp(a, b, t){
-    return {
-      manual: a.manual + (b.manual - a.manual) * t,
-      revenue: a.revenue + (b.revenue - a.revenue) * t,
-      total: a.total + (b.total - a.total) * t,
-      implementation: a.implementation + (b.implementation - a.implementation) * t,
-      roi: a.roi + (b.roi - a.roi) * t
-    };
-  }
-
-  function update(){
-    var m = compute();
-    paintStatic(m);
-    if(reduce || !prev){ paintNumbers(m); prev = m; return; }
-    cancelAnimationFrame(frame);
-    var from = prev, start = performance.now(), dur = 400;
-    (function tick(now){
-      var t = Math.min(1, (now - start) / dur);
-      var eased = 1 - Math.pow(1 - t, 3);
-      var cur = lerp(from, m, eased);
-      paintNumbers(cur);
-      prev = cur;
-      if(t < 1){ frame = requestAnimationFrame(tick); } else { prev = m; }
-    })(start);
-  }
-
-  industry.addEventListener('change', update);
-  range.addEventListener('input', update);
-  update();
-})();
-</script>
-
-<script>
-/* Nav scroll-spy: highlight the deepest in-page section whose top has passed the sticky header. */
-(function(){
-  var nav = document.querySelector('.nav__links');
-  if(!nav) return;
-  var header = document.querySelector('.nav');
-  // Participating links: in-page anchors, plus any link with data-spy="<section-id>"
-  // (lets the Blog link — which routes to /blog — still light up over the homepage #writing section).
-  // The CTA and logo sit outside .nav__links, so they never participate.
-  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
-  var targets = links.map(function(a){
-    var spy = a.getAttribute('data-spy');
-    var href = a.getAttribute('href') || '';
-    var id = spy || (href.charAt(0) === '#' ? href.slice(1) : '');
-    var sec = id ? document.getElementById(id) : null;
-    return sec ? { link: a, sec: sec } : null;
-  }).filter(Boolean);
-  if(!targets.length) return;
-  // Order by document position so "deepest passed" is correct regardless of nav order.
-  targets.sort(function(a,b){
-    return (a.sec.compareDocumentPosition(b.sec) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
-  });
-
-  var ticking = false;
-  function update(){
-    ticking = false;
-    var hb = header ? header.getBoundingClientRect().height : 0; // real header height, not hardcoded
-    var line = hb + 1; // activate when a section top reaches just below the header
-    var active = null;
-    for(var i=0;i<targets.length;i++){
-      if(targets[i].sec.getBoundingClientRect().top <= line){ active = targets[i].link; }
-    }
-    links.forEach(function(a){ a.classList.toggle('is-active', a === active); });
-  }
-  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  update();
-})();
-</script>
-<script src="/blog.js?v=13"></script>
 
 </body>
 </html>

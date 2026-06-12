@@ -35,7 +35,30 @@ export const RSS_PATH = path.join(BLOG_DIR, "rss.xml");
 export const SITEMAP_PATH = path.join(ROOT, "sitemap.xml");
 
 // Static routes that exist outside the blog pipeline (for the sitemap).
-export const STATIC_ROUTES = ["/", "/book/", "/privacy/", "/terms/"];
+export const STATIC_ROUTES = [
+	"/",
+	"/book/",
+	"/pricing/",
+	"/method/",
+	"/about/",
+	"/services/",
+	"/services/ai-readiness-audit/",
+	"/services/implementation-sprint/",
+	"/services/managed-services/",
+	"/industries/",
+	"/industries/professional-services/",
+	"/industries/retail/",
+	"/industries/healthcare/",
+	"/industries/construction/",
+	"/industries/hospitality/",
+	"/denver/",
+	"/phoenix/",
+	"/work/",
+	"/work/sample-audit/",
+	"/calculator/",
+	"/privacy/",
+	"/terms/",
+];
 
 // Post slugs to exclude from the build entirely (test/placeholder posts that
 // exist in beehiiv but should never be indexed, linked, or sitemapped).
@@ -65,4 +88,4 @@ export const POST_DATE_OVERRIDES = {
 };
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "13";
+export const ASSET_VERSION = "15";

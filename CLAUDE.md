@@ -5,18 +5,30 @@
 The production marketing site for **Main & Machine** (www.mainandmachine.com) — AI
 consulting and implementation for small and mid-size businesses.
 
-**Stack: plain static HTML/CSS/JS, no framework.** Pages are hand-written HTML files
-(`index.html`, `book/index.html`, `privacy/`, `terms/`, `404.html`). The one build step
-is the blog, **The Ampersand**, prerendered at deploy time from beehiiv:
+**Stack: plain static HTML/CSS/JS, no framework.** Pages are hand-written HTML files:
+the homepage (`index.html`, six sections), `book/`, `pricing/`, `method/`, `about/`,
+`services/` (+ 3 service detail pages), `industries/` (+ 5 industry pages),
+`denver/` + `phoenix/` city pages, `work/` (+ `work/sample-audit/`), `calculator/`,
+`privacy/`, `terms/`, `404.html`. The one build step is the blog, **The Ampersand**,
+prerendered at deploy time from beehiiv:
 
 - **Hosting/deploy:** GitHub → Cloudflare Pages runs `npm run build:static` on every
   push to `main` and serves the repo root (`/`). Env: `BEEHIIV_API_KEY`,
   `BEEHIIV_PUBLICATION_ID`, `RESEND_API_KEY` (set in the Pages project).
 - **`npm run build:static`** = `blog:fetch` (pull posts from beehiiv into `blog-data/`)
-  → `blog:build` (prerender `/blog/*`, `rss.xml`, `sitemap.xml`) → `seo:check`
-  → `facts:check`. Generated blog artifacts are **gitignored** — never hand-edit
-  `blog/`, `blog-data/`, `sitemap.xml`, or `src/data/blog-posts.js`; edit
-  `scripts/lib/templates.mjs` and `scripts/build-blog.mjs` instead.
+  → `blog:build` (prerender `/blog/*`, `rss.xml`, `sitemap.xml`) → `llms:build`
+  (regenerate `llms.txt` from the facts file — never hand-edit `llms.txt`)
+  → `seo:check` → `facts:check`. Generated blog artifacts are **gitignored** — never
+  hand-edit `blog/`, `blog-data/`, `sitemap.xml`, or `src/data/blog-posts.js`; edit
+  `scripts/lib/templates.mjs` and `scripts/build-blog.mjs` instead. New static pages
+  must be added to `STATIC_ROUTES` in `scripts/lib/config.mjs` (sitemap) and to
+  `ALL_PAGES` in `scripts/check-facts.mjs`.
+- **Structured data:** every page carries an `@graph` JSON-LD block whose entities
+  connect via the canonical `@id`s `…/#org`, `…/#person-cmyers`, `…/#website`
+  (city pages add `…/denver/#local` / `…/phoenix/#local`). Blog pages get theirs from
+  `orgJsonLd()` in `scripts/lib/templates.mjs` (reads the facts file); static pages
+  hand-embed it, and `facts:check` parses every block and fails the build if an email,
+  phone, or `@id` drifts from `src/data/company.mjs`.
 - **Styling:** all in `styles.css` (design tokens in the `:root` blocks at the top —
   the "A+ ELEVATION LAYER" block wins). When CSS changes, bump the cache-buster
   (`styles.css?v=N` in the HTML pages **and** `ASSET_VERSION` in
@@ -87,7 +99,19 @@ Reuse these tokens and classes for any new work — never approximate the values
 
 ## TODO (manual tasks no prompt can do)
 
-- Photo shoot: 3–5 real workshop/advisor shots, duotoned to the palette.
-- Google Business Profiles for the Denver and Phoenix hubs (after city pages exist).
+- Photo shoot: 3–5 real workshop/advisor shots, duotoned to the palette — slot into
+  `/about/`, `/method/`, and the city pages.
+- Google Business Profiles for both hubs: byte-identical name, phone, URL, category
+  "Business management consultant"; use the hedcut/brand mark; link the Denver GBP to
+  `/denver/` and the Phoenix GBP to `/phoenix/`.
+- The city pages' ProfessionalService JSON-LD deliberately omits PostalAddress — no
+  verified street addresses exist. Adding verified addresses later will strengthen
+  those pages; never fake one.
+- Fill the TODO stats in `/work/` (Build 001 "sample week") from real logs, and replace
+  the sample-audit placeholder content after the next real audit. Do not invent numbers.
+- `sameAs` arrays in JSON-LD are TODO: add the LinkedIn company page + founder
+  profiles + press URLs when available (see `orgJsonLd()` in templates.mjs).
 - If a verifiably true Q3 build-slot count exists, the topbar banner can say
   "Two Q3 build slots remain" instead of the generic line (see index.html topbar).
+- After deploy: resubmit sitemap.xml in Search Console and request indexing on the
+  new pages.

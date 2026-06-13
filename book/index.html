@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — 30 minutes. No pitch. A straight answer." />
-<link rel="stylesheet" href="/styles.css?v=36" />
+<link rel="stylesheet" href="/styles.css?v=38" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -280,7 +280,7 @@ select.input:invalid { color: var(--tx-faint); }
       <span class="logo__plate">M<span class="amp">&amp;</span>M</span>
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
-    <nav class="nav__links">
+    <nav class="nav__links" id="nav-links">
       <a href="/">Home</a>
       <a href="/services/">Services</a>
       <a href="/pricing/">Pricing</a>
@@ -292,6 +292,9 @@ select.input:invalid { color: var(--tx-faint); }
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="#request" aria-current="page">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
     </div>
   </div>
 </header>
@@ -912,5 +915,6 @@ select.input:invalid { color: var(--tx-faint); }
 })();
 </script>
 
+<script src="/js/nav.js?v=1"></script>
 </body>
 </html>

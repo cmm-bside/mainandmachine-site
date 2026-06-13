@@ -172,9 +172,50 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .nav__right { margin-left: auto; display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
 .nav__right .btn--accent { white-space: nowrap; flex-shrink: 0; }
 .nav__pricing { font-size: 14.5px; font-weight: 600; }
+
+/* Hamburger toggle — hidden on desktop, shown when the link row collapses. */
+.nav__toggle { display: none; }
+
 /* Logo + 8 links + CTA pack onto one line down to ~1140px; below that the
-   row would overflow and the CTA wrap, so collapse the links instead. */
-@media (max-width: 1140px) { .nav__links { display: none; } }
+   row would overflow and the CTA wrap, so collapse the links into a panel
+   opened by the hamburger (see /js/nav.js). */
+@media (max-width: 1140px) {
+  .nav__toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; padding: 0;
+    background: transparent; border: 0; cursor: pointer; color: var(--tx);
+  }
+  .nav__toggle-box { position: relative; display: block; width: 20px; height: 14px; }
+  .nav__toggle-bar,
+  .nav__toggle-box::before,
+  .nav__toggle-box::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 2px;
+    background: currentColor; border-radius: 2px;
+    transition: top .2s ease, transform .2s ease, opacity .2s ease;
+  }
+  .nav__toggle-box::before { top: 0; }
+  .nav__toggle-bar { top: 6px; }
+  .nav__toggle-box::after { top: 12px; }
+  .nav.is-open .nav__toggle-box::before { top: 6px; transform: rotate(45deg); }
+  .nav.is-open .nav__toggle-bar { opacity: 0; }
+  .nav.is-open .nav__toggle-box::after { top: 6px; transform: rotate(-45deg); }
+
+  /* Links become a full-width dropdown anchored under the sticky bar. */
+  .nav__links {
+    display: none;
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; gap: 0; margin: 0; padding: 6px 0 10px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 20px 32px -24px rgba(20, 17, 12, .55);
+  }
+  .nav.is-open .nav__links { display: flex; }
+  .nav__links a {
+    display: flex; align-items: center; min-height: 48px;
+    padding: 12px 24px; font-size: 15.5px;
+  }
+  .wrap.nav__inner { position: static; }
+}
 
 /* logo / wordmark */
 .logo { display: inline-flex; align-items: center; gap: 11px; }
@@ -926,7 +967,9 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
   .nav__inner{ gap:10px; }
   .logo__word{ font-size:16.5px; }
   .logo{ padding-block:5px; margin-block:-5px; }
+  .nav__right{ gap:6px; }
   .nav__right .btn--accent{ padding:12px 13px; font-size:12.5px; box-shadow:none; white-space:nowrap; }
+  .nav__toggle{ width:40px; margin-right:-6px; }
 
   /* 44px touch rows for the stacked footer nav */
   .foot__col ul{ gap:2px; }
@@ -959,9 +1002,10 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
   .hero__build{ letter-spacing:.06em; }
 }
 
-/* Below ~375px the wordmark + nav CTA can't share the bar — the M&M
-   plate (and the logo link's aria-label) carries the brand alone. */
-@media (max-width: 374px){
+/* On phones the bar carries logo + CTA + hamburger; the wordmark + CTA +
+   toggle stop sharing a row around ~470px, so the M&M plate (with the logo
+   link's aria-label) carries the brand alone below that. */
+@media (max-width: 480px){
   .logo__word{ display:none; }
 }
 

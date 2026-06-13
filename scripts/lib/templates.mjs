@@ -164,7 +164,7 @@ export function nav() {
       <span class="logo__plate">M<span class="amp">&amp;</span>M</span>
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
-    <nav class="nav__links">
+    <nav class="nav__links" id="nav-links">
       <a href="/">Home</a>
       <a href="/services/">Services</a>
       <a href="/pricing/">Pricing</a>
@@ -176,6 +176,9 @@ export function nav() {
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="/book/">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
     </div>
   </div>
 </header>`;
@@ -269,7 +272,8 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
 </section>`;
 }
 
-// Scripts shared by every blog page: subscribe enhancement + search.
+// Scripts shared by every blog page: mobile nav + subscribe enhancement + search.
 export function pageScripts() {
-	return `<script src="/blog.js?v=${ASSET_VERSION}"></script>`;
+	return `<script src="/js/nav.js?v=1"></script>
+<script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

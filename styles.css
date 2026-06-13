@@ -164,15 +164,17 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
    every potential target clears it. --header-h tracks .nav__inner. */
 :root{ --header-h: 70px; }
 [id]{ scroll-margin-top: calc(var(--header-h) + 16px); }
-.nav__inner { display: flex; align-items: center; gap: 28px; height: 70px; }
-.nav__links { display: flex; gap: 24px; margin-left: 8px; }
-.nav__links a { font-size: 14.5px; font-weight: 500; color: var(--tx-mute); transition: color .15s; }
+.nav__inner { display: flex; align-items: center; gap: 22px; height: 70px; }
+.nav__links { display: flex; gap: 20px; margin-left: 8px; }
+.nav__links a { font-size: 14.5px; font-weight: 500; color: var(--tx-mute); transition: color .15s; white-space: nowrap; }
 .nav__links a:hover { color: var(--tx); }
 .nav__links a.is-active { color: var(--tx); }
-.nav__right { margin-left: auto; display: flex; align-items: center; gap: 18px; }
+.nav__right { margin-left: auto; display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+.nav__right .btn--accent { white-space: nowrap; flex-shrink: 0; }
 .nav__pricing { font-size: 14.5px; font-weight: 600; }
-/* 8 links need ~980px of bar — collapse below 1000px */
-@media (max-width: 1000px) { .nav__links { display: none; } }
+/* Logo + 8 links + CTA pack onto one line down to ~1140px; below that the
+   row would overflow and the CTA wrap, so collapse the links instead. */
+@media (max-width: 1140px) { .nav__links { display: none; } }
 
 /* logo / wordmark */
 .logo { display: inline-flex; align-items: center; gap: 11px; }

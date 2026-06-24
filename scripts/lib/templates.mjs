@@ -169,7 +169,7 @@ export function nav() {
       <a href="/services/">Services</a>
       <a href="/pricing/">Pricing</a>
       <a href="/method/">Method</a>
-      <a href="/work/">The Work</a>
+      <a href="/work/">Proof</a>
       <a href="/about/">Who We Are</a>
       <a href="/blog/" class="is-active" aria-current="page">The Ampersand</a>
       <a href="/contact/">Contact</a>
@@ -200,7 +200,7 @@ export function footer() {
         <ul>
           <li><a href="/about/">Who we are</a></li>
           <li><a href="/method/">The method</a></li>
-          <li><a href="/work/">The work</a></li>
+          <li><a href="/work/">Proof</a></li>
           <li><a href="/blog/">The Ampersand</a></li>
         </ul>
       </div>

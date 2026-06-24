@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-// Render /work's proof-shelf figures from data/build-log.json.
+// Render the Services build-log figures from data/build-log.json.
 //
 // The "A sample week" strip renders ONLY when week_of and all three numbers
 // are non-null; otherwise the committed designed empty state stays in place.
 // "In their words" renders ONLY for quotes with signed_off: true.
-// This is the single path for numbers onto /work — never hand-edit them.
+// This is the single path for these numbers — never hand-edit them.
 // Idempotent: regions are rewritten between BUILD-LOG markers on every run.
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/config.mjs";
 
-const PAGE = path.join(ROOT, "work", "index.html");
+const PAGE = path.join(ROOT, "services", "index.html");
 const DATA = path.join(ROOT, "data", "build-log.json");
 
 const esc = (s) =>
@@ -26,7 +26,7 @@ let html = fs.readFileSync(PAGE, "utf8");
 function replaceRegion(name, inner) {
   const re = new RegExp(`(<!-- BUILD-LOG:${name}\\b[\\s\\S]*?-->)[\\s\\S]*?(<!-- /BUILD-LOG:${name} -->)`);
   if (!re.test(html)) {
-    console.error(`[work:build] BUILD-LOG:${name} markers missing in work/index.html`);
+    console.error(`[work:build] BUILD-LOG:${name} markers missing in services/index.html`);
     process.exit(1);
   }
   html = html.replace(re, `$1\n${inner}\n        $2`);

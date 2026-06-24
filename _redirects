@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects — https://developers.cloudflare.com/pages/configuration/redirects/
+# The sample audit moved from the Work section into Services (2026-06).
+/work/sample-audit/  /services/sample-audit/  301

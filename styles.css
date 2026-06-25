@@ -610,6 +610,21 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
 .foot__col ul { list-style: none; display:flex; flex-direction: column; gap: 11px; }
 .foot__col a, .foot__col li { font-size: 14px; color: var(--dtx-mute); transition: color .15s; }
 .foot__col a:hover { color: var(--dtx); }
+
+/* footer newsletter signup — Beehiiv hosted form (form action -> hosted subscribe URL) */
+.foot__signup{ display:grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px,4vw,56px); align-items:center; padding-bottom: 44px; margin-bottom: 44px; border-bottom: 1px solid var(--dline); }
+@media (max-width: 760px){ .foot__signup{ grid-template-columns:1fr; gap:20px; } }
+.foot__signup .kicker{ color: var(--accent-ink); }
+.foot__signup h2{ font-family:var(--sans); font-size: clamp(22px,2.6vw,28px); font-weight:800; letter-spacing:-0.02em; line-height:1.1; color:var(--dtx); margin:12px 0 8px; }
+.foot__signup p{ color:var(--dtx-mute); font-size:14px; line-height:1.5; max-width:44ch; }
+.signup{ display:flex; gap:10px; }
+@media (max-width: 480px){ .signup{ flex-direction:column; } }
+.signup__input{ flex:1; min-width:0; background:var(--ink); border:1px solid var(--dline); color:var(--dtx); padding:14px 16px; font-family:var(--sans); font-size:14px; }
+.signup__input::placeholder{ color:var(--mono-on-dark); }
+.signup__input:focus{ outline:none; border-color:var(--accent-ink); }
+.signup .btn--accent{ white-space:nowrap; }
+.signup__note{ font-family:var(--mono); font-size:11px; letter-spacing:.02em; color:var(--mono-on-dark); margin-top:10px; }
+
 .foot__bottom { display:flex; flex-wrap: wrap; gap: 18px; align-items:center; justify-content: space-between; padding: 26px 0 40px; }
 .foot__bottom, .foot__bottom a { font-family: var(--mono); font-size: 12px; color: var(--mono-on-dark); letter-spacing: .04em; }
 .foot__bottom .links { display:flex; gap: 20px; }

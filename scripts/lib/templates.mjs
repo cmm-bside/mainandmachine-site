@@ -196,7 +196,21 @@ export function nav() {
 export function footer() {
 	return `<footer class="foot">
   <div class="wrap">
-    <div class="foot__top">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--accent" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
       <div class="foot__brand">
         <a class="logo ink" href="/" aria-label="Main and Machine home" style="background:transparent;">
           <span class="logo__plate">M<span class="amp">&amp;</span>M</span>

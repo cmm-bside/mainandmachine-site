@@ -412,7 +412,7 @@
     </div>
 
     <div class="roi__cta">
-      <a class="btn btn--accent btn--lg" href="/book/">Run your real numbers <span class="arr">→</span></a>
+      <a class="btn btn--accent btn--lg" id="bandBook" href="/book/">Run your real numbers <span class="arr">→</span></a>
       <a class="btn btn--ghost" id="bandFull" href="/calculator/">Full breakdown + share <span class="arr">→</span></a>
     </div>
   </div>
@@ -590,6 +590,7 @@
   var note  = document.getElementById('bandNote');
   var forEl = document.getElementById('bandFor');
   var full  = document.getElementById('bandFull');
+  var book  = document.getElementById('bandBook');
   var els = {
     roi:   document.getElementById('bandRoi'),
     total: document.getElementById('bandTotal'),
@@ -610,6 +611,7 @@
     range.setAttribute('aria-valuenow', m.emp);
     forEl.textContent = 'For ' + m.emp + (m.emp === 1 ? ' person' : ' people');
     full.href = '/calculator/?industry=' + encodeURIComponent(sel.value) + '&team=' + m.emp;
+    if(book) book.href = '/book/?industry=' + encodeURIComponent(sel.value) + '&team=' + m.emp + '&service=sprint';
     animate(m);
   }
 

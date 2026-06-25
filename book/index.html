@@ -702,6 +702,7 @@ select.input:invalid { color: var(--tx-faint); }
     var qp = new URLSearchParams(window.location.search);
     var svc = (qp.get('service') || '').trim().toLowerCase();
     var ind = (qp.get('industry') || '').trim().toLowerCase();
+    var team = parseInt(qp.get('team'), 10);
     var SVC = { audit: 'AI Readiness Audit', sprint: 'Implementation Sprint', managed: 'Managed Services' };
     var IND = {
       'professional-services': 'Professional services',
@@ -714,9 +715,15 @@ select.input:invalid { color: var(--tx-faint); }
       var isel = document.getElementById('industry');
       if (isel) isel.value = IND[ind];
     }
+    var tb = !(team > 0) ? '' : team <= 10 ? '1 \u2013 10' : team <= 25 ? '11 \u2013 25' : team <= 50 ? '26 \u2013 50' : '51 \u2013 100';
+    if (tb) {
+      var tsel = document.getElementById('team');
+      if (tsel) tsel.value = tb;
+    }
     var parts = [];
     if (svc) parts.push('Service: ' + (SVC[svc] || svc));
     if (ind) parts.push('Industry: ' + (IND[ind] || ind));
+    if (team > 0) parts.push('Team: ~' + team + ' (from ROI calculator)');
     var interestEl = document.getElementById('interest');
     if (interestEl) interestEl.value = parts.join(' · ');
   } catch (e) { /* query parsing is best-effort */ }

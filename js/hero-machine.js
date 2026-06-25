@@ -46,8 +46,8 @@
   let ctx, w = 0, h = 0, pts = [], mx = -9999, my = -9999, running = false, raf = 0, t = 0, queued = false;
   const dpr = Math.min(devicePixelRatio || 1, 2);
   const GAP = 30, R = 120, PUSH = 26;
-  const DOT_FAR = 'rgba(20,17,12,.12)';   /* --ink @ .12 — faint ledger grid */
-  const DOT_NEAR = 'rgba(189,69,31,.7)';  /* --accent @ .7 — cursor tint */
+  const DOT_FAR = 'rgba(26,21,17,.09)';   /* faint warm-ink on cream */
+  const DOT_NEAR = 'rgba(184,62,34,.55)'; /* rust tint near the cursor */
 
   function build() {
     const r = canvas.getBoundingClientRect();

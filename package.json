@@ -9,6 +9,7 @@
     "blog:build": "node scripts/build-blog.mjs",
     "seo:check": "node scripts/check-seo.mjs",
     "seo:dates": "node scripts/build-page-dates.mjs",
+    "faq:inject": "node scripts/inject-faq.mjs",
     "facts:check": "node scripts/check-facts.mjs",
     "llms:build": "node scripts/build-llms.mjs",
     "work:build": "node scripts/build-work.mjs",

@@ -1416,3 +1416,47 @@ textarea:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+/* ============ REVEAL MOTION — one shared .reveal class (js/reveal.js) ============
+   Section headings, cards, and stat numbers. The hidden state lives behind
+   prefers-reduced-motion: no-preference, so reduced-motion users (and print)
+   never see anything hidden — elements stay in their final state. */
+@media (prefers-reduced-motion: no-preference){
+  .reveal{
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .42s cubic-bezier(.16,1,.3,1), transform .42s cubic-bezier(.16,1,.3,1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible{ opacity: 1; transform: none; }
+}
+@media print{ .reveal{ opacity: 1 !important; transform: none !important; } }
+
+/* Card hover (capability + service cards): lift 2px + flame corner-brackets draw in.
+   Brackets are an 8-gradient L at each corner; default background-size 0 -> arms
+   grow to length on hover (the "draw in"). Disabled with motion via the global
+   reduced-motion block above (transitions collapse to instant). */
+.diff, .svc__item{ position: relative; transition: transform .2s cubic-bezier(.16,1,.3,1); }
+.diff:hover, .svc__item:hover{ transform: translateY(-2px); }
+.diff::before, .svc__item::before{
+  content:""; position:absolute; inset:7px; pointer-events:none; z-index:3;
+  --c: var(--flame); --l: 14px; --t: 2px;
+  background:
+    linear-gradient(var(--c),var(--c)) left  top    no-repeat,
+    linear-gradient(var(--c),var(--c)) left  top    no-repeat,
+    linear-gradient(var(--c),var(--c)) right top    no-repeat,
+    linear-gradient(var(--c),var(--c)) right top    no-repeat,
+    linear-gradient(var(--c),var(--c)) left  bottom no-repeat,
+    linear-gradient(var(--c),var(--c)) left  bottom no-repeat,
+    linear-gradient(var(--c),var(--c)) right bottom no-repeat,
+    linear-gradient(var(--c),var(--c)) right bottom no-repeat;
+  background-size: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+  transition: background-size .2s cubic-bezier(.16,1,.3,1);
+}
+.diff:hover::before, .svc__item:hover::before{
+  background-size:
+    var(--l) var(--t), var(--t) var(--l),
+    var(--l) var(--t), var(--t) var(--l),
+    var(--l) var(--t), var(--t) var(--l),
+    var(--l) var(--t), var(--t) var(--l);
+}

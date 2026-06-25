@@ -26,7 +26,7 @@
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/home.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
 
-<link rel="stylesheet" href="styles.css?v=47" />
+<link rel="stylesheet" href="styles.css?v=48" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -316,7 +316,6 @@
     <div class="roi roi--slim crop mt-m" aria-label="ROI estimate calculator — quick version">
       <div class="roi__bar">
         <span class="roi__id"><span class="roi__dot" aria-hidden="true"></span>Estimate.v1</span>
-        <span class="roi__id roi__id--mute">Illustrative / ranges vary</span>
       </div>
 
       <div class="roi__grid">
@@ -363,7 +362,7 @@
               <li><span>Sprint investment</span><span class="mono tab" id="bandImpl">-$18,000</span></li>
             </ul>
           </div>
-          <p class="roi__disclaim">Ranges, not promises. We run your real numbers in the free assessment.</p>
+          <p class="roi__disclaim">Illustrative — we run your real numbers in the assessment.</p>
         </div>
       </div>
     </div>
@@ -566,6 +565,7 @@
     note.textContent = m.r.note;
     count.textContent = m.emp;
     range.setAttribute('aria-valuenow', m.emp);
+    range.style.setProperty('--roi-fill', ((range.value - range.min) / (range.max - range.min) * 100) + '%');
     forEl.textContent = 'For ' + m.emp + (m.emp === 1 ? ' person' : ' people');
     full.href = '/calculator/?industry=' + encodeURIComponent(sel.value) + '&team=' + m.emp;
     if(book) book.href = '/book/?industry=' + encodeURIComponent(sel.value) + '&team=' + m.emp + '&service=sprint';
@@ -575,6 +575,28 @@
   sel.addEventListener('change', update);
   range.addEventListener('input', update);
   update();
+
+  // Count the headline ROI up from 0 once, the first time the band scrolls into
+  // view. Skipped entirely under prefers-reduced-motion (final value shown).
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    els.roi.textContent = '+' + MMRoi.fmt(0);
+    var counted = false;
+    new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){
+        if (!e.isIntersecting || counted) return;
+        counted = true; obs.disconnect();
+        var target = MMRoi.compute(sel.value, range.value).roi;
+        var sign = target >= 0 ? '+' : '', start = null, dur = 800;
+        requestAnimationFrame(function tick(now){
+          if (start === null) start = now;
+          var t = Math.min(1, (now - start) / dur), eased = 1 - Math.pow(1 - t, 3);
+          els.roi.textContent = sign + MMRoi.fmt(target * eased);
+          if (t < 1) requestAnimationFrame(tick); else els.roi.textContent = sign + MMRoi.fmt(target);
+        });
+      });
+    }, { threshold: 0.4 }).observe(sel.closest('.roi'));
+  }
 })();
 </script>
 

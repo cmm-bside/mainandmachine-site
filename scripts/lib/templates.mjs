@@ -205,7 +205,7 @@ export function footer() {
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
       </div>
       <div class="foot__col">
-        <h5>Company</h5>
+        <h2>Company</h2>
         <ul>
           <li><a href="/about/">Who we are</a></li>
           <li><a href="/method/">The method</a></li>
@@ -214,7 +214,7 @@ export function footer() {
         </ul>
       </div>
       <div class="foot__col">
-        <h5>Services</h5>
+        <h2>Services</h2>
         <ul>
           <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
           <li><a href="/services/implementation-sprint/">Implementation Sprint</a></li>
@@ -223,7 +223,7 @@ export function footer() {
         </ul>
       </div>
       <div class="foot__col">
-        <h5>More</h5>
+        <h2>More</h2>
         <ul>
           <li><a href="/industries/">Who this is for</a></li>
           <li><a href="/calculator/">ROI calculator</a></li>
@@ -232,7 +232,7 @@ export function footer() {
         </ul>
       </div>
       <div class="foot__col">
-        <h5>Contact</h5>
+        <h2>Contact</h2>
         <ul>
           <li><a href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:${attr(COMPANY.email)}">${esc(COMPANY.email)}</a></li>

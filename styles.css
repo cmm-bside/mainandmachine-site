@@ -716,25 +716,46 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
   .topbar__in{ min-height:32px; padding:8px 0; }
 }
 
-/* ---------- hero (Assembly Line headline + ledger dot-field) ---------- */
+/* ---------- hero (registration-grid motif + Assembly Line headline) ---------- */
 .hero { position: relative; overflow: hidden; }
 .hero .wrap { position: relative; z-index: 2; }
 
-/* Assembly Line — js/hero-machine.js machines the accent line into place over a
-   faint ink dot-field; an accent tooling line sweeps once. Site tokens only. */
-[data-hero-machine]{ isolation:isolate; }
-.hero__field{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+/* js/hero-machine.js plots a static registration grid ONCE (no rAF, no pointer);
+   the grid wipes in, corner crop-marks tick in, the accent line machines into
+   place, and a rust tooling baseline draws under it. NOTE: the canvas is named
+   .hm-grid, NOT .hero__grid — that class is already the hero's content grid.
+   Rust = #B83E22 (the hero's chosen accent); grid lines = faint warm-ink. */
+[data-hero-machine]{ position:relative; isolation:isolate; }
+.hm-grid{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; clip-path:inset(0 100% 0 0); }
+[data-hero-machine][data-state="play"] .hm-grid,
+[data-hero-machine][data-state="done"] .hm-grid{ animation:hm-wipe .9s cubic-bezier(.5,0,.2,1) forwards; }
+@keyframes hm-wipe{ to{ clip-path:inset(0 0 0 0); } }
+
 .hero__headline .hm-line{ display:block; overflow:hidden; }
 .hm-letter{ display:inline-block; transform:translateY(110%) rotate(3deg); opacity:0; will-change:transform,opacity; }
 [data-hero-machine][data-state="play"] .hm-letter{ animation:hm-drop .62s cubic-bezier(.16,1,.3,1) forwards; animation-delay:calc(.35s + var(--i) * .045s); }
 @keyframes hm-drop{ 60%{ opacity:1 } 100%{ transform:none; opacity:1 } }
-.hm-tool{ position:absolute; top:0; left:0; z-index:1; height:100%; width:2px; background:var(--accent-ink); box-shadow:0 0 16px var(--accent); opacity:0; pointer-events:none; }
-[data-hero-machine][data-state="play"] .hm-tool{ animation:hm-sweep 1.5s cubic-bezier(.7,0,.3,1) forwards; }
-@keyframes hm-sweep{ 0%{ left:-2%; opacity:0 } 8%{ opacity:1 } 92%{ opacity:1 } 100%{ left:102%; opacity:0 } }
+
+.hm-baseline{ display:block; height:1.5px; background:#B83E22; margin:16px 0 4px; transform:scaleX(0); transform-origin:left; }
+[data-hero-machine][data-state="play"] .hm-baseline{ animation:hm-base .6s cubic-bezier(.7,0,.3,1) .55s forwards; }
+@keyframes hm-base{ to{ transform:scaleX(1); } }
+
+.hm-crop{ position:absolute; width:13px; height:13px; border:1.5px solid #B83E22; z-index:1; opacity:0; }
+.hm-crop.tl{ top:18px; left:18px; border-right:0; border-bottom:0; }
+.hm-crop.tr{ top:18px; right:18px; border-left:0; border-bottom:0; }
+.hm-crop.bl{ bottom:18px; left:18px; border-right:0; border-top:0; }
+.hm-crop.br{ bottom:18px; right:18px; border-left:0; border-top:0; }
+[data-hero-machine][data-state="play"] .hm-crop,
+[data-hero-machine][data-state="done"] .hm-crop{ animation:hm-crop .4s ease .7s forwards; }
+@keyframes hm-crop{ from{ opacity:0; transform:scale(.6) } to{ opacity:1; transform:none } }
+
 [data-hero-machine][data-state="done"] .hm-letter{ transform:none; opacity:1; }
+[data-hero-machine][data-state="done"] .hm-baseline{ transform:scaleX(1); }
 @media (prefers-reduced-motion: reduce){
   .hm-letter{ transform:none !important; opacity:1 !important; animation:none !important; }
-  .hm-tool{ display:none; }
+  .hm-baseline{ transform:scaleX(1) !important; animation:none !important; }
+  .hm-grid{ clip-path:none !important; animation:none !important; }
+  .hm-crop{ opacity:1 !important; animation:none !important; }
 }
 
 /* ---------- spec-sheet stat rail ---------- */

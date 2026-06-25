@@ -26,7 +26,7 @@
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/home.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
 
-<link rel="stylesheet" href="styles.css?v=46" />
+<link rel="stylesheet" href="styles.css?v=47" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -176,9 +176,15 @@
       </div>
       <p class="lead">Most companies that spend on AI see almost nothing change. We exist to fix that.</p>
     </div>
-    <div class="datagrid crop" style="grid-template-columns:repeat(2,minmax(0,1fr));">
-      <div><div class="tick-num">22%</div><p>of companies turn AI spending into measurable results.</p></div>
-      <div><div class="tick-num">78%</div><p>spent the money. Nothing moved.</p></div>
+    <div class="failstat crop">
+      <div class="failstat__hero">
+        <div class="tick-num failstat__big">78%</div>
+        <p class="failstat__cap">spent the money. Nothing moved.</p>
+      </div>
+      <div class="failstat__counter">
+        <div class="tick-num failstat__sm">22%</div>
+        <p class="failstat__cap failstat__cap--sm">turn AI spending into measurable results.</p>
+      </div>
     </div>
     <p class="stat-source">Source: Boston Consulting Group, <em>Where's the Value in AI?</em>, 2024.</p>
     <div class="prose-2">
@@ -514,7 +520,7 @@
     if (ht) { ht.classList.add('in'); }
     return;
   }
-  var sels = ['.hero__grid > *','.head-block','.datagrid > div','.prose-2 > div','.diffs > .diff','.builds__grid > .build','.svc__item','.final .wrap > *','.bio > *','.paths > .path','.foot__top > *'];
+  var sels = ['.hero__grid > *','.head-block','.failstat','.prose-2 > div','.diffs > .diff','.builds__grid > .build','.svc__item','.final .wrap > *','.bio > *','.paths > .path','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
   document.querySelectorAll('.rv').forEach(function(el){

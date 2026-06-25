@@ -340,6 +340,13 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .datagrid > div { background: var(--ink); padding: 30px 24px; }
 .datagrid .tick-num { font-size: clamp(40px, 4.5vw, 60px); color: var(--accent-ink); }
 .datagrid p { font-size: 13.5px; color: var(--dtx-mute); margin-top: 14px; line-height: 1.4; }
+/* problem-section stat: one dominant 78% (bright, largest) + a subordinate flame 22% counterpoint (~half weight) */
+.failstat{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:clamp(28px,5vw,72px); padding:clamp(28px,4vw,44px) clamp(24px,3vw,36px); background:var(--ink-2); border:1px solid var(--dline); }
+.failstat__big{ font-size:clamp(72px,13vw,168px); line-height:0.82; color:var(--dtx); }
+.failstat__sm{ font-size:clamp(38px,4.2vw,72px); line-height:0.9; color:var(--accent-ink); }
+.failstat__cap{ font-size:clamp(15px,1.5vw,18px); color:var(--dtx); margin-top:12px; max-width:24ch; line-height:1.35; }
+.failstat__cap--sm{ font-size:13.5px; color:var(--dtx-mute); max-width:22ch; }
+@media (max-width:600px){ .failstat__big{ font-size:clamp(64px,20vw,100px); } }
 
 /* =========================================================
    ROI CALCULATOR (blueprint / machine)

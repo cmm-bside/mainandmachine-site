@@ -555,13 +555,30 @@ function seoMeta(route, isPost) {
 	return { changefreq: "monthly", priority: "0.5" };
 }
 
+// Real last-modified dates for static routes, generated from git history by
+// `npm run seo:dates` (committed). Read here so sitemap <lastmod> is accurate
+// without depending on build-time git (Cloudflare uses a shallow clone).
+function loadPageDates() {
+	try {
+		return JSON.parse(fs.readFileSync(path.join(ROOT, "src", "data", "page-dates.json"), "utf8"));
+	} catch {
+		return {};
+	}
+}
+
 function renderSitemap(posts) {
 	// Only real, published posts reach here (loadPosts/fetch exclude drafts and
 	// the beehiiv test post), so the sitemap never lists a non-public URL.
+	const pageDates = loadPageDates();
+	// /blog and /blog/archive track the newest post's date.
+	const newestPost = posts.reduce(
+		(acc, p) => (p.updatedAt || p.publishedAt || "") > acc ? (p.updatedAt || p.publishedAt) : acc,
+		"",
+	) || null;
 	const entries = [
-		...STATIC_ROUTES.map((route) => ({ route, isPost: false, lastmod: null })),
-		{ route: "/blog/", isPost: false, lastmod: null },
-		{ route: "/blog/archive/", isPost: false, lastmod: null },
+		...STATIC_ROUTES.map((route) => ({ route, isPost: false, lastmod: pageDates[route] || null })),
+		{ route: "/blog/", isPost: false, lastmod: newestPost },
+		{ route: "/blog/archive/", isPost: false, lastmod: newestPost },
 		...posts.map((p) => ({ route: p.url, isPost: true, lastmod: p.updatedAt || p.publishedAt || null })),
 	];
 	const body = entries

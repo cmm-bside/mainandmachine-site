@@ -30,6 +30,8 @@ import {
 	SITEMAP_PATH,
 	STATIC_ROUTES,
 	EXCLUDED_POST_SLUGS,
+	POST_TOPICS,
+	POST_TOPIC_FALLBACK,
 } from "./lib/config.mjs";
 import {
 	esc,
@@ -407,8 +409,11 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 		[post.title, canonical],
 	]);
 
-	// Read-next: the two most recent other posts.
-	const readNext = allPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+	// Related posts: score other posts by shared topic tags, then fall back to
+	// recency so there are always two. Keeps the blog from being an island.
+	const readNext = relatedPosts(post, allPosts, 2);
+	// Contextual internal link to the most relevant service/industry page.
+	const seeAlso = (POST_TOPICS[post.slug] && POST_TOPICS[post.slug].cta) || POST_TOPIC_FALLBACK;
 
 	// Derive the chaptered structure + TOC from the flat body (never hardcoded).
 	const structured = structureArticle(bodyHtml);
@@ -456,6 +461,7 @@ ${nav()}
         <div class="prose">
 ${proseInner}
         </div>
+        <p class="essay__seealso"><span class="tick-lbl">Where this shows up</span><a href="${attr(seeAlso.href)}">${esc(seeAlso.label)} →</a></p>
         <div class="essay__share">
           <span class="tick-lbl">Share</span>
           <a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}" target="_blank" rel="noopener noreferrer" aria-label="Share on X">X</a>
@@ -487,6 +493,7 @@ ${readNext.length
       <p class="lead">This is the kind of workflow the free assessment maps. Thirty minutes, no pitch.</p>
       <div class="essay__cta-actions">
         <a class="btn btn--accent btn--lg" href="/book/">Book a free assessment →</a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See what it costs →</a>
       </div>
     </div>
   </div>
@@ -613,6 +620,33 @@ function breadcrumbLd(pairs) {
 			item: url,
 		})),
 	};
+}
+
+// Related posts by shared topic tags (POST_TOPICS), tie-broken by recency, then
+// topped up with the most recent other posts so the result always has `n`.
+function relatedPosts(post, allPosts, n) {
+	const others = allPosts.filter((p) => p.slug !== post.slug);
+	const myTags = new Set((POST_TOPICS[post.slug] && POST_TOPICS[post.slug].tags) || []);
+	const scored = others
+		.map((p) => {
+			const tags = (POST_TOPICS[p.slug] && POST_TOPICS[p.slug].tags) || [];
+			const overlap = tags.filter((t) => myTags.has(t)).length;
+			return { p, overlap };
+		})
+		.filter((s) => s.overlap > 0)
+		.sort((a, b) =>
+			b.overlap - a.overlap ||
+			(b.p.publishedAt || "").localeCompare(a.p.publishedAt || ""),
+		)
+		.map((s) => s.p);
+	const picked = scored.slice(0, n);
+	if (picked.length < n) {
+		for (const p of others) {
+			if (picked.length >= n) break;
+			if (!picked.includes(p)) picked.push(p);
+		}
+	}
+	return picked;
 }
 
 function readingMinutes(searchText, bodyHtml) {

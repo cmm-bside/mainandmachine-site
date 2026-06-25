@@ -95,5 +95,30 @@ export const POST_DATE_OVERRIDES = {
 	"seventy-years-of-overnight-success": "2026-06-05",
 };
 
+// Per-essay internal-linking map. Each known post points at the single most
+// relevant service/industry page (the contextual "where this shows up" link)
+// and carries topic tags used to compute related posts. Posts NOT listed here
+// fall back to a generic services link + most-recent related posts, so the blog
+// never breaks when beehiiv adds a new essay — enrich this map when it does.
+export const POST_TOPICS = {
+	"how-to-smell-the-hype":            { tags: ["hype", "judgment", "readiness"],        cta: { href: "/services/ai-readiness-audit/", label: "The AI Readiness Audit" } },
+	"the-prediction-engine":           { tags: ["fundamentals", "how-it-works"],         cta: { href: "/services/", label: "What we actually build" } },
+	"how-the-machine-learns":          { tags: ["fundamentals", "how-it-works"],         cta: { href: "/services/ai-readiness-audit/", label: "The AI Readiness Audit" } },
+	"the-currency-of-the-machine":     { tags: ["fundamentals", "cost"],                 cta: { href: "/pricing/", label: "What this costs" } },
+	"why-everything-happened-at-once": { tags: ["history", "adoption"],                  cta: { href: "/services/", label: "What we actually build" } },
+	"the-buildings-behind-the-intelligence": { tags: ["infrastructure", "how-it-works"], cta: { href: "/services/", label: "What we actually build" } },
+	"sorting-the-vocabulary":          { tags: ["fundamentals", "vocabulary"],           cta: { href: "/services/ai-readiness-audit/", label: "The AI Readiness Audit" } },
+	"why-the-machine-makes-things-up": { tags: ["reliability", "risk"],                  cta: { href: "/services/managed-services/", label: "Managed Services" } },
+	"how-to-talk-to-the-machine":      { tags: ["usage", "practical"],                   cta: { href: "/services/implementation-sprint/", label: "The Implementation Sprint" } },
+	"what-an-agent-actually-is":       { tags: ["agents", "implementation"],             cta: { href: "/services/implementation-sprint/", label: "The Implementation Sprint" } },
+	"teaching-the-machine-your-business": { tags: ["agents", "data", "customization"],   cta: { href: "/services/implementation-sprint/", label: "The Implementation Sprint" } },
+	"open-models-closed-models":       { tags: ["models", "strategy"],                   cta: { href: "/services/ai-readiness-audit/", label: "The AI Readiness Audit" } },
+	"where-your-data-goes":            { tags: ["data", "privacy", "security"],          cta: { href: "/industries/healthcare/", label: "AI for regulated industries" } },
+	"what-the-machine-cannot-do":      { tags: ["judgment", "limits"],                   cta: { href: "/services/ai-readiness-audit/", label: "The AI Readiness Audit" } },
+	"seventy-years-of-overnight-success": { tags: ["history", "adoption"],               cta: { href: "/services/", label: "What we actually build" } },
+};
+// Fallback contextual link for any unmapped post.
+export const POST_TOPIC_FALLBACK = { href: "/services/", label: "What we actually build" };
+
 // Cache-buster shared with index.html's <link>/<script> tags.
 export const ASSET_VERSION = "40";

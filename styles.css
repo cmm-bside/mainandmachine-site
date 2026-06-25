@@ -1237,6 +1237,14 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
   padding:26px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
 }
 
+/* contextual "where this shows up" internal link, end of body */
+.essay__seealso{
+  max-width: var(--measure); display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+  margin-top:2.4em; padding-top:20px; border-top:1px solid var(--line);
+}
+.essay__seealso a{ font-family:var(--sans); font-weight:600; font-size:16px; color:var(--accent); text-decoration:none; }
+.essay__seealso a:hover{ color:var(--accent-deep); text-decoration:underline; text-underline-offset:2px; }
+
 /* end-of-article stack — distinct rhythm, not three equal blocks */
 .essay__cta--panel{
   max-width:720px; margin-inline:auto; border:1px solid var(--accent);

@@ -293,6 +293,8 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .statrail__k { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute); }
 .statrail__v { font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
 .statrail__v .accent-tx { font-weight: 900; }
+.statrail__v--sm { font-size: 13px; font-weight: 700; letter-spacing: 0; text-align: right; line-height: 1.4; }
+.hero__cta .btn--ghost { border-width: 1.5px; }  /* outlined secondary, 1.5px per spec */
 
 /* operator log strip */
 .oplog { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: clamp(56px, 7vw, 96px); }

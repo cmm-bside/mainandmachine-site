@@ -114,16 +114,27 @@ function loadBody(slug) {
 // ---------------------------------------------------------------------------
 // Shared fragments
 // ---------------------------------------------------------------------------
+// Self-hosted images are stored as root-relative paths (/images/blog/…).
+// og:image and JSON-LD image must be absolute, so promote any local path to
+// the canonical origin; already-absolute (or remote-fallback) URLs pass through.
+function absUrl(u) {
+	return u && u.startsWith("/") ? `${SITE_ORIGIN}${u}` : u;
+}
+
 function ogImageFor(post) {
-	return (post.socialImage && post.socialImage.assetUrl) ||
-		(post.heroImage && post.heroImage.assetUrl) ||
-		DEFAULT_OG_IMAGE;
+	return absUrl(
+		(post.socialImage && post.socialImage.assetUrl) ||
+			(post.heroImage && post.heroImage.assetUrl) ||
+			DEFAULT_OG_IMAGE,
+	);
 }
 
 function thumb(post, cls) {
-	const img = post.heroImage && post.heroImage.assetUrl;
+	const hi = post.heroImage;
+	const img = hi && hi.assetUrl;
 	if (!img) return `<div class="${cls} is-empty"></div>`;
-	return `<div class="${cls}"><img loading="lazy" decoding="async" alt="${attr(post.heroImage.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" src="${attr(img)}" /></div>`;
+	const dims = hi.width && hi.height ? ` width="${hi.width}" height="${hi.height}"` : "";
+	return `<div class="${cls}"><img loading="lazy" decoding="async"${dims} alt="${attr(hi.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" src="${attr(img)}" /></div>`;
 }
 
 function card(post) {
@@ -387,7 +398,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 		dateModified: post.updatedAt || post.publishedAt || undefined,
 		author: { "@id": `${SITE_ORIGIN}/#person-cmyers` },
 		publisher: { "@id": `${SITE_ORIGIN}/#org` },
-		image: post.heroImage ? post.heroImage.assetUrl : DEFAULT_OG_IMAGE,
+		image: absUrl(post.heroImage ? post.heroImage.assetUrl : DEFAULT_OG_IMAGE),
 		isPartOf: { "@type": "Blog", name: BLOG_NAME, url: `${SITE_ORIGIN}/blog/` },
 	};
 	const breadcrumbLdObj = breadcrumbLd([
@@ -413,8 +424,9 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	const heroCap = hero && (hero.caption || hero.credit)
 		? `<figcaption class="essay__cap">${hero.caption ? `<span class="essay__cap-txt">${esc(hero.caption)}</span>` : "<span></span>"}${hero.credit ? `<span class="essay__cap-src">${esc(hero.credit)}</span>` : ""}</figcaption>`
 		: "";
+	const heroDims = hero && hero.width && hero.height ? ` width="${hero.width}" height="${hero.height}"` : "";
 	const heroBlock = hero
-		? `<figure class="essay__hero"><img src="${attr(hero.assetUrl)}" alt="${attr(hero.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" />${heroCap}</figure>`
+		? `<figure class="essay__hero"><img src="${attr(hero.assetUrl)}"${heroDims} decoding="async" alt="${attr(hero.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" />${heroCap}</figure>`
 		: "";
 
 	const shareUrl = encodeURIComponent(canonical);

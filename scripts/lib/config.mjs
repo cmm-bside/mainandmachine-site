@@ -29,6 +29,11 @@ export const BEEHIIV_SUBSCRIBE_URL = process.env.BEEHIIV_SUBSCRIBE_URL || "";
 export const DATA_MODULE_PATH = path.join(ROOT, "src", "data", "blog-posts.js");
 export const BLOG_DATA_DIR = path.join(ROOT, "blog-data"); // served at /blog-data/
 export const BLOG_INDEX_JSON = path.join(BLOG_DATA_DIR, "index.json");
+// Self-hosted blog images (downloaded from beehiiv at fetch time so nothing
+// hotlinks S3). Written to /images/blog/<slug>/ and served from the deploy
+// output; gitignored like the rest of the generated blog.
+export const BLOG_IMAGES_DIR = path.join(ROOT, "images", "blog");
+export const BLOG_IMAGES_PUBLIC = "/images/blog";
 export const BLOG_DIR = path.join(ROOT, "blog"); // served at /blog/
 export const ARCHIVE_DIR = path.join(BLOG_DIR, "archive");
 export const RSS_PATH = path.join(BLOG_DIR, "rss.xml");

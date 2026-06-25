@@ -21,6 +21,7 @@
     "preview": "python3 -m http.server 8000"
   },
   "dependencies": {
+    "image-size": "^1.2.1",
     "sanitize-html": "^2.13.0"
   }
 }

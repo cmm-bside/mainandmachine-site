@@ -14,8 +14,10 @@
 //     rather than ship stale or empty content).
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { pathToFileURL } from "node:url";
 import sanitizeHtml from "sanitize-html";
+import imageSize from "image-size";
 import {
 	SITE_HOST,
 	SITE_ORIGIN,
@@ -27,6 +29,8 @@ import {
 	DATA_MODULE_PATH,
 	BLOG_DATA_DIR,
 	BLOG_INDEX_JSON,
+	BLOG_IMAGES_DIR,
+	BLOG_IMAGES_PUBLIC,
 	POST_DATE_OVERRIDES,
 } from "./lib/config.mjs";
 
@@ -57,6 +61,9 @@ export async function run() {
 		.map(normalizePost)
 		.filter((p) => p && p.slug && !p.hiddenFromFeed)
 		.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
+
+	// Self-host every image (hero + inline) so nothing hotlinks beehiiv's S3.
+	await localizeImages(posts);
 
 	const publicationUrl = derivePublicationUrl(posts);
 	const subscribeUrl = deriveSubscribeUrl(publicationUrl);
@@ -106,6 +113,117 @@ async function fetchAllPosts() {
 		page += 1;
 	} while (page <= totalPages);
 	return all;
+}
+
+// ---------------------------------------------------------------------------
+// Image self-hosting — download hero + inline images to /images/blog/<slug>/
+// so nothing on a post hotlinks beehiiv's S3. Rewrites <img src>, the
+// heroImage.assetUrl (also the og/JSON-LD image), and stamps width/height for
+// zero layout shift. Failures degrade gracefully: the original URL is kept and
+// the build continues (a hard fail over one dead asset is worse than a deploy).
+const CT_EXT = {
+	"image/jpeg": "jpg", "image/jpg": "jpg", "image/png": "png",
+	"image/webp": "webp", "image/gif": "gif", "image/avif": "avif", "image/svg+xml": "svg",
+};
+
+function isRemote(url) {
+	return typeof url === "string" && /^https?:\/\//i.test(url);
+}
+
+async function localizeImages(posts) {
+	if (!posts.length) return;
+	fs.mkdirSync(BLOG_IMAGES_DIR, { recursive: true });
+	const cache = new Map(); // remote URL -> { src, width, height }
+	const keepSlugs = new Set();
+	let downloaded = 0;
+
+	for (const post of posts) {
+		keepSlugs.add(post.slug);
+		if (post.heroImage && isRemote(post.heroImage.assetUrl)) {
+			const local = await fetchImage(post.heroImage.assetUrl, post.slug, cache);
+			if (local) {
+				post.heroImage.assetUrl = local.src;
+				post.heroImage.width = local.width;
+				post.heroImage.height = local.height;
+				downloaded++;
+			}
+		}
+		// socialImage is the SAME object reference as heroImage (set in
+		// normalizePost), so the rewrite above already covers it.
+		const before = post.bodyHtml;
+		post.bodyHtml = await rewriteBodyImages(post.bodyHtml, post.slug, post.title, cache);
+		if (post.bodyHtml !== before) downloaded++;
+	}
+	pruneImageDirs(keepSlugs);
+	console.log(`[blog:fetch] Self-hosted images for ${keepSlugs.size} post(s) (${cache.size} unique asset(s)).`);
+}
+
+async function fetchImage(remoteUrl, slug, cache) {
+	if (cache.has(remoteUrl)) return cache.get(remoteUrl);
+	try {
+		const res = await fetch(remoteUrl, { headers: { Accept: "image/*" } });
+		if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+		const buf = Buffer.from(await res.arrayBuffer());
+		const ct = (res.headers.get("content-type") || "").split(";")[0].trim().toLowerCase();
+		const urlExt = (remoteUrl.split("?")[0].match(/\.([a-z0-9]+)$/i) || [])[1];
+		const ext = CT_EXT[ct] || (urlExt ? urlExt.toLowerCase() : "jpg");
+		const hash = createHash("sha1").update(buf).digest("hex").slice(0, 12);
+		const file = `${hash}.${ext}`;
+		const dir = path.join(BLOG_IMAGES_DIR, slug);
+		fs.mkdirSync(dir, { recursive: true });
+		fs.writeFileSync(path.join(dir, file), buf);
+		let width = null, height = null;
+		try {
+			const dim = imageSize(buf);
+			if (dim && dim.width) { width = dim.width; height = dim.height; }
+		} catch { /* dimensions optional (e.g. svg) */ }
+		const out = { src: `${BLOG_IMAGES_PUBLIC}/${slug}/${file}`, width, height };
+		cache.set(remoteUrl, out);
+		return out;
+	} catch (err) {
+		console.warn(`[blog:fetch] image download failed (${slug}): ${remoteUrl.slice(0, 90)} — ${err.message}. Keeping remote URL.`);
+		cache.set(remoteUrl, null);
+		return null;
+	}
+}
+
+// Rewrite every <img> in a body: localize the src and stamp width/height +
+// a descriptive alt fallback. Sequential awaits keep it simple and the dedupe
+// cache means a repeated asset downloads once.
+async function rewriteBodyImages(html, slug, title, cache) {
+	if (!html || !/<img\b/i.test(html)) return html;
+	const tags = html.match(/<img\b[^>]*>/gi) || [];
+	let out = html;
+	for (const tag of tags) {
+		const srcMatch = tag.match(/\ssrc="([^"]*)"/i);
+		const src = srcMatch ? srcMatch[1] : "";
+		if (!isRemote(src)) continue;
+		const local = await fetchImage(src, slug, cache);
+		if (!local) continue;
+		let next = tag.replace(/\ssrc="[^"]*"/i, ` src="${local.src}"`);
+		if (local.width && !/\swidth=/i.test(next)) {
+			next = next.replace(/<img\b/i, `<img width="${local.width}" height="${local.height}"`);
+		}
+		// Descriptive alt fallback when beehiiv left it empty.
+		if (!/\salt="[^"]*[^"\s][^"]*"/i.test(next)) {
+			const safeTitle = String(title || "").replace(/"/g, "&quot;");
+			next = /\salt="/i.test(next)
+				? next.replace(/\salt="[^"]*"/i, ` alt="${safeTitle} — illustration"`)
+				: next.replace(/<img\b/i, `<img alt="${safeTitle} — illustration"`);
+		}
+		out = out.replace(tag, next);
+	}
+	return out;
+}
+
+// Drop image folders for posts that no longer exist (renames / removals).
+function pruneImageDirs(keepSlugs) {
+	if (!fs.existsSync(BLOG_IMAGES_DIR)) return;
+	for (const entry of fs.readdirSync(BLOG_IMAGES_DIR, { withFileTypes: true })) {
+		if (entry.isDirectory() && !keepSlugs.has(entry.name)) {
+			fs.rmSync(path.join(BLOG_IMAGES_DIR, entry.name), { recursive: true, force: true });
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
@@ -413,7 +531,7 @@ function writeEmpty() {
 	});
 }
 
-export { normalizePost, extractArticle, sanitizeArticle };
+export { normalizePost, extractArticle, sanitizeArticle, localizeImages };
 
 // Run only when invoked directly (not when imported by a test).
 if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {

@@ -173,6 +173,35 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .nav__right .btn--accent { white-space: nowrap; flex-shrink: 0; }
 .nav__pricing { font-size: 14.5px; font-weight: 600; }
 
+/* Services dropdown — desktop flyout (hover/focus + caret toggle); nested in
+   the mobile panel. The item stretches full bar height so the menu opens flush
+   under the bar with no hover gap. */
+.nav__item--menu { position: relative; align-self: stretch; display: inline-flex; align-items: center; gap: 1px; }
+.nav__caret {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; padding: 0; background: none; border: 0;
+  color: var(--tx-mute); cursor: pointer;
+}
+.nav__caret:hover { color: var(--tx); }
+.nav__caret-glyph {
+  width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg); transition: transform .2s ease;
+}
+.nav__menu {
+  position: absolute; top: 100%; left: 0; min-width: 234px;
+  display: none; flex-direction: column;
+  background: var(--paper-card); border: 1px solid var(--line);
+  box-shadow: 0 22px 34px -24px rgba(20, 17, 12, .6); padding: 6px; z-index: 60;
+}
+.nav__item--menu:hover .nav__menu,
+.nav__item--menu:focus-within .nav__menu,
+.nav__item--menu.is-open .nav__menu { display: flex; }
+.nav__item--menu:hover .nav__caret-glyph,
+.nav__item--menu:focus-within .nav__caret-glyph,
+.nav__item--menu.is-open .nav__caret-glyph { transform: translateY(1px) rotate(-135deg); }
+.nav__menu a { display: flex; align-items: center; min-height: 40px; padding: 9px 14px; font-size: 14.5px; color: var(--tx-mute); white-space: nowrap; }
+.nav__menu a:hover, .nav__menu a.is-active { color: var(--tx); background: var(--paper-2); }
+
 /* Hamburger toggle — hidden on desktop, shown when the link row collapses. */
 .nav__toggle { display: none; }
 
@@ -214,6 +243,14 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
     display: flex; align-items: center; min-height: 48px;
     padding: 12px 24px; font-size: 15.5px;
   }
+  /* Services submenu sits inline under its parent, indented — no caret/flyout. */
+  .nav__item--menu { display: block; align-self: auto; }
+  .nav__caret { display: none; }
+  .nav__menu {
+    position: static; display: flex; min-width: 0;
+    background: transparent; border: 0; box-shadow: none; padding: 0;
+  }
+  .nav__menu a { min-height: 44px; padding: 10px 24px 10px 44px; font-size: 15px; }
   .wrap.nav__inner { position: static; }
 }
 

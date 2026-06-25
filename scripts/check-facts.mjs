@@ -44,6 +44,7 @@ const ALL_PAGES = [
   "work/marcus/index.html",
   "calculator/index.html",
   "contact/index.html",
+  "careers/index.html",
   "privacy/index.html",
   "terms/index.html",
   "404.html",

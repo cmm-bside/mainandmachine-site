@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Careers | Main &amp; Machine</title>
+<meta name="description" content="Help us put serious AI to work for Main Street. Open application — no specific role required. We build private, auditable AI systems for the businesses that keep the economy running. A real person reads every submission." />
+<link rel="canonical" href="https://www.mainandmachine.com/careers/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="Careers | Main &amp; Machine" />
+<meta property="og:description" content="Help us put serious AI to work for Main Street. Open application — no specific role required. A real person reads every submission." />
+<meta property="og:url" content="https://www.mainandmachine.com/careers/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine — Human-centric AI for Main Street." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta name="twitter:image:alt" content="Main &amp; Machine — Human-centric AI for Main Street." />
+<link rel="stylesheet" href="/styles.css?v=39" />
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-360-5128",
+      "priceRange": "$3,500 - $45,000",
+      "areaServed": "US",
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Careers", "item": "https://www.mainandmachine.com/careers/" }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<style>
+/* =========================================================
+   CAREERS — page-scoped system
+   Built on the Main & Machine tokens in styles.css.
+   Careers-only classes are namespaced `cr-` so they never
+   collide with global components (.hero, .footer, .field…).
+   ========================================================= */
+
+/* hero */
+.cr-hero { padding-block: clamp(48px, 6vw, 96px) var(--section-pad); }
+.cr-hero__grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+@media (max-width: 880px) { .cr-hero__grid { grid-template-columns: 1fr; gap: 40px; } .cr-hero__card { max-width: 460px; } }
+.cr-hero h1 { font-size: clamp(40px, 6.6vw, 88px); line-height: 0.99; margin: 22px 0 24px; }
+.cr-hero__lede { max-width: 48ch; margin-bottom: 32px; }
+.cr-hero__actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.cr-hero__note { font-family: var(--mono); font-size: 12.5px; color: var(--tx-faint); margin-top: 22px; letter-spacing: .02em; }
+
+/* corner-bracket spec card (reuses the .statrail look) */
+.cr-spec__bar { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 18px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); }
+.cr-spec__row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); }
+.cr-spec__row:last-child { border-bottom: 0; }
+.cr-spec__k { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute); }
+.cr-spec__v { font-weight: 800; font-size: 16px; letter-spacing: -0.01em; text-align: right; }
+
+/* values */
+.cr-values__head { max-width: 24ch; margin-top: 6px; }
+.cr-values { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: clamp(40px, 5vw, 56px); }
+.cr-value { background: var(--paper); padding: 34px 32px 38px; }
+.cr-value__n { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .1em; }
+.cr-value__t { font-weight: 800; font-size: 22px; letter-spacing: -0.015em; margin: 14px 0 10px; }
+.cr-value__d { font-size: 15.5px; color: var(--tx-mute); line-height: 1.55; }
+@media (max-width: 720px) { .cr-values { grid-template-columns: 1fr; } }
+
+/* who we hire (ink) */
+.cr-hire { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: start; margin-top: var(--block-gap); }
+.cr-hire__body { font-size: 18px; line-height: 1.62; color: var(--dtx-mute); margin-top: 22px; }
+.cr-hire__body b { color: var(--dtx); font-weight: 700; }
+.cr-traits { border-top: 1px solid var(--dline); }
+.cr-trait { border-bottom: 1px solid var(--dline); padding: 20px 0; display: grid; grid-template-columns: 30px 1fr; gap: 14px; }
+.cr-trait__n { font-family: var(--mono); font-size: 12px; color: var(--accent-ink); padding-top: 3px; }
+.cr-trait__t { font-weight: 700; font-size: 17px; color: var(--dtx); letter-spacing: -0.01em; margin-bottom: 4px; }
+.cr-trait__d { font-size: 14.5px; color: var(--dtx-mute); line-height: 1.5; }
+@media (max-width: 820px) { .cr-hire { grid-template-columns: 1fr; gap: 36px; } }
+
+/* application form */
+.cr-apply { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(36px, 6vw, 80px); align-items: start; }
+@media (max-width: 900px) { .cr-apply { grid-template-columns: 1fr; gap: 44px; } }
+.cr-aside__lede { margin: 18px 0 28px; }
+.cr-aside__spec { font-family: var(--mono); }
+.cr-aside__row { display: flex; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line-soft); font-size: 13px; align-items: baseline; }
+.cr-aside__row:last-child { border-bottom: 0; }
+.cr-aside__row .k { color: var(--accent); min-width: 18px; }
+.cr-aside__row .v { color: var(--tx-mute); letter-spacing: .01em; }
+.cr-aside__row .v b { color: var(--tx); font-weight: 700; }
+
+.cr-card { background: var(--paper-card); border: 1px solid var(--line); padding: clamp(24px, 4vw, 44px); position: relative; }
+.cr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }
+.cr-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.cr-field.full { grid-column: 1 / -1; }
+.cr-field label { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--tx-mute); }
+.cr-field label .req { color: var(--accent); }
+.cr-field label .opt { color: var(--tx-faint); text-transform: none; letter-spacing: .02em; }
+.cr-field input[type="text"],
+.cr-field input[type="email"],
+.cr-field input[type="tel"],
+.cr-field input[type="url"],
+.cr-field textarea {
+  font-family: var(--sans); font-size: 16px; color: var(--tx);
+  background: #fff; border: 1.5px solid var(--line);
+  padding: 14px 15px; width: 100%; border-radius: 0;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.cr-field textarea { resize: vertical; min-height: 132px; line-height: 1.55; }
+.cr-field input:hover, .cr-field textarea:hover { border-color: rgba(29,24,18,0.30); }
+.cr-field input:focus, .cr-field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.cr-field input::placeholder, .cr-field textarea::placeholder { color: var(--tx-faint); }
+.cr-field .err { font-family: var(--mono); font-size: 11px; color: var(--accent-deep); letter-spacing: .02em; display: none; }
+.cr-field.invalid input, .cr-field.invalid textarea { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.cr-field.invalid .err { display: block; }
+
+/* résumé drop zone */
+.cr-file { position: relative; border: 1.5px dashed var(--line); background: #fff; padding: 20px 18px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: border-color .15s ease, background .15s ease; }
+.cr-file:hover { border-color: var(--accent); }
+.cr-file.has-file { border-style: solid; border-color: var(--accent); }
+.cr-file__icon { width: 40px; height: 40px; flex: none; border: 1.5px solid var(--tx); display: grid; place-items: center; font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--tx); }
+.cr-file.has-file .cr-file__icon { border-color: var(--accent); color: var(--accent); }
+.cr-file__text { font-size: 14.5px; color: var(--tx-mute); line-height: 1.35; min-width: 0; }
+.cr-file__text b { color: var(--tx); font-weight: 700; word-break: break-word; }
+.cr-file__text .sub { font-family: var(--mono); font-size: 11px; color: var(--tx-faint); display: block; margin-top: 3px; }
+/* the input overlays the whole drop zone: native click + drag target, ≥44px */
+.cr-file input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+
+.cr-foot { margin-top: 28px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.cr-foot .privacy { font-family: var(--mono); font-size: 11px; color: var(--tx-faint); letter-spacing: .02em; max-width: 38ch; line-height: 1.5; }
+
+/* send states */
+.cr-status { display: none; }
+.cr-card.is-sending .cr-grid, .cr-card.is-sending .cr-foot { opacity: .5; pointer-events: none; }
+.cr-card.is-sent .cr-grid, .cr-card.is-sent .cr-foot { display: none; }
+.cr-card.is-sent .cr-status.success { display: block; }
+.cr-status.success { padding: 14px 0; }
+.cr-status.success .icon { width: 52px; height: 52px; border: 2px solid #2e6b3f; color: #2e6b3f; display: grid; place-items: center; font-size: 24px; margin-bottom: 22px; }
+.cr-status.success h3 { font-size: 26px; letter-spacing: -0.02em; margin-bottom: 10px; }
+.cr-status.success p { color: var(--tx-mute); font-size: 16px; max-width: 46ch; }
+.cr-status.error { margin-top: 20px; border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 11px 14px; font-family: var(--mono); font-size: 12.5px; line-height: 1.5; color: var(--accent-deep); }
+.cr-card.is-error .cr-status.error { display: block; }
+.cr-card.is-error .cr-status.error a { color: inherit; }
+
+@media (max-width: 560px) { .cr-grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="left"><span class="dot"></span>We're hiring<span class="bar-long"> — open applications are always welcome</span><span class="bar-short"> — open applications</span></span>
+    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span class="press-list"><span><a href="/denver/">Denver</a></span><span><a href="/phoenix/">Phoenix</a></span><span>Remote</span></span></span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main and Machine home">
+      <span class="logo__plate">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <a href="/">Home</a>
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
+          <a href="/services/implementation-sprint/">Implementation Sprint</a>
+          <a href="/services/managed-services/">Managed Services</a>
+          <a href="/method/">Method</a>
+        </div>
+      </span>
+      <a href="/pricing/">Pricing</a>
+      <a href="/work/">Proof</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">The Ampersand</a>
+      <a href="/contact/">Contact</a>
+      <a href="/careers/" class="is-active" aria-current="page">Careers</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--accent" href="#apply" aria-current="page">Apply now</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 1 · HERO ============ -->
+<section class="section paper cr-hero" data-screen-label="Careers hero">
+  <div class="wrap">
+    <div class="cr-hero__grid">
+      <div>
+        <span class="kicker kicker--plain">Careers · Main &amp; Machine</span>
+        <h1>Help us put serious AI to work for <span class="accent-tx">Main Street.</span></h1>
+        <p class="lead cr-hero__lede">We build private, auditable AI systems for the businesses that keep the economy running — lenders, manufacturers, local institutions. It's careful, high-stakes work for clients who can't afford to get it wrong. If that's the kind of problem you want to spend your days on, we'd like to meet you.</p>
+        <div class="cr-hero__actions">
+          <a class="btn btn--accent btn--lg" href="#apply">Start your application <span class="arr">→</span></a>
+          <a class="btn btn--ghost btn--lg" href="#values">Why work here</a>
+        </div>
+        <p class="cr-hero__note">Open application · no specific role required · we read every submission</p>
+      </div>
+      <div class="cr-hero__card">
+        <div class="statrail crop" aria-label="About the shop">
+          <div class="cr-spec__bar"><span>The Shop</span><span>2026</span></div>
+          <div class="cr-spec__row"><span class="cr-spec__k">Based in</span><span class="cr-spec__v">Denver &amp; Phoenix</span></div>
+          <div class="cr-spec__row"><span class="cr-spec__k">Work style</span><span class="cr-spec__v">Remote-friendly</span></div>
+          <div class="cr-spec__row"><span class="cr-spec__k">We build</span><span class="cr-spec__v">Human-centric AI</span></div>
+          <div class="cr-spec__row"><span class="cr-spec__k">For</span><span class="cr-spec__v">Small &amp; mid-size business</span></div>
+          <div class="cr-spec__row"><span class="cr-spec__k">Hiring</span><span class="cr-spec__v accent-tx">Open applications</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · VALUES ============ -->
+<section id="values" class="section paper-2" data-screen-label="What we value">
+  <div class="wrap">
+    <span class="kicker">What we value</span>
+    <h2 class="h2 cr-values__head mt-s">The work is technical. The standard is human.</h2>
+    <div class="cr-values">
+      <div class="cr-value">
+        <div class="cr-value__n">01</div>
+        <div class="cr-value__t">Trust is the product</div>
+        <p class="cr-value__d">Our clients hand us their most sensitive data and their hardest decisions. Everything we build is private by design and auditable by default. We earn that trust on every project, and we hire people who feel the weight of it.</p>
+      </div>
+      <div class="cr-value">
+        <div class="cr-value__n">02</div>
+        <div class="cr-value__t">People stay in control</div>
+        <p class="cr-value__d">We don't build black boxes that replace judgment — we build systems that hand finished, organized work to a person who decides. We believe AI should give people their day back, not take their seat. That conviction shapes how we work, too.</p>
+      </div>
+      <div class="cr-value">
+        <div class="cr-value__n">03</div>
+        <div class="cr-value__t">Built from the real process</div>
+        <p class="cr-value__d">We don't bring templates. We read how a business actually works and build from that, citing the source for every step. We value people who do the homework before they propose the answer.</p>
+      </div>
+      <div class="cr-value">
+        <div class="cr-value__n">04</div>
+        <div class="cr-value__t">Main Street, not hype street</div>
+        <p class="cr-value__d">We're not chasing the flashiest demo. We serve lenders, manufacturers, and local institutions with consequential, unglamorous problems — and we take pride in getting them exactly right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · WHO WE HIRE ============ -->
+<section class="section ink" data-screen-label="Who we hire">
+  <div class="wrap">
+    <span class="kicker">Who we hire</span>
+    <div class="cr-hire">
+      <div>
+        <h2 class="h2">We hire for judgment, care, and range.</h2>
+        <p class="cr-hire__body">We're a small team that builds high-stakes systems, so we look for people who can own a problem end to end — engineers, AI builders, designers, and client-facing people who'd rather do a few things exceptionally than many things adequately. You don't need a specific title to be useful here. <b>Tell us what you're great at.</b></p>
+      </div>
+      <div class="cr-traits">
+        <div class="cr-trait"><span class="cr-trait__n">A</span><div><div class="cr-trait__t">You sweat the details others skip</div><p class="cr-trait__d">Edge cases, data handling, the part of the spec everyone else glosses over.</p></div></div>
+        <div class="cr-trait"><span class="cr-trait__n">B</span><div><div class="cr-trait__t">You can talk to a business owner</div><p class="cr-trait__d">You translate between what a client needs and what a system should do.</p></div></div>
+        <div class="cr-trait"><span class="cr-trait__n">C</span><div><div class="cr-trait__t">You're fluent — or fearless — with AI</div><p class="cr-trait__d">You've built with modern AI tooling, or you learn fast and ship.</p></div></div>
+        <div class="cr-trait"><span class="cr-trait__n">D</span><div><div class="cr-trait__t">You take ownership</div><p class="cr-trait__d">You'd rather own an outcome than be handed a ticket.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · APPLICATION FORM ============ -->
+<section id="apply" class="section paper-2" data-screen-label="Application form">
+  <div class="wrap">
+    <div class="cr-apply">
+      <aside class="cr-aside">
+        <span class="kicker">Apply</span>
+        <h2 class="h2 mt-s">Tell us about you.</h2>
+        <p class="lead cr-aside__lede">No role required. Send us who you are, what you've built, and why this work pulls at you. A real person reads every application.</p>
+        <div class="cr-aside__spec">
+          <div class="cr-aside__row"><span class="k">↳</span><span class="v">Goes straight to <b>our founders</b></span></div>
+          <div class="cr-aside__row"><span class="k">↳</span><span class="v">A link to your work beats a long résumé</span></div>
+          <div class="cr-aside__row"><span class="k">↳</span><span class="v">We reply to everyone we can see a fit with</span></div>
+        </div>
+      </aside>
+
+      <div class="cr-card crop" id="formCard">
+        <form id="applyForm" novalidate>
+          <div class="cr-grid">
+            <div class="cr-field">
+              <label for="f-name">Full name <span class="req">*</span></label>
+              <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Jordan Rivera" required />
+              <span class="err">Please enter your name.</span>
+            </div>
+            <div class="cr-field">
+              <label for="f-email">Email <span class="req">*</span></label>
+              <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@email.com" required />
+              <span class="err">Please enter a valid email.</span>
+            </div>
+            <div class="cr-field">
+              <label for="f-phone">Phone <span class="opt">(optional)</span></label>
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(480) 555-0123" />
+            </div>
+            <div class="cr-field">
+              <label for="f-link">LinkedIn or portfolio <span class="req">*</span></label>
+              <input type="url" id="f-link" name="link" placeholder="https://" required />
+              <span class="err">Please add a link to your work or profile.</span>
+            </div>
+            <div class="cr-field full">
+              <label for="f-source">Where did you hear about us? <span class="opt">(optional)</span></label>
+              <input type="text" id="f-source" name="source" placeholder="A friend, LinkedIn, an event…" />
+            </div>
+            <div class="cr-field full">
+              <label for="f-resume">Résumé <span class="opt">(optional · PDF or DOC, up to 10MB)</span></label>
+              <label class="cr-file" id="fileDrop" for="f-resume">
+                <span class="cr-file__icon" id="ficon">PDF</span>
+                <span class="cr-file__text" id="ftext"><b>Choose a file</b> or drag it here<span class="sub">PDF, DOC, or DOCX — 10MB max</span></span>
+                <input type="file" id="f-resume" name="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+              </label>
+              <span class="err" id="fileErr">That file is too large or not a supported type.</span>
+            </div>
+            <div class="cr-field full">
+              <label for="f-note">Cover note <span class="req">*</span></label>
+              <textarea id="f-note" name="message" placeholder="What are you great at, what have you built, and why does this work pull at you?" required></textarea>
+              <span class="err">Please tell us a little about you.</span>
+            </div>
+          </div>
+
+          <div class="cr-foot">
+            <button type="submit" class="btn btn--accent btn--lg" id="submitBtn">Submit application <span class="arr">→</span></button>
+            <p class="privacy">We use your details only to consider your application. We never share them.</p>
+          </div>
+
+          <p class="cr-status error" id="errorMsg">Something went wrong sending your application. Please email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a> directly, or try again.</p>
+        </form>
+
+        <div class="cr-status success">
+          <div class="icon">✓</div>
+          <h3>Application received.</h3>
+          <p>Thanks for reaching out — your application is on its way to our founders. If we see a fit, we'll be in touch by email. We read every one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main and Machine home" style="background:transparent;">
+          <span class="logo__plate">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats" style="border:0;padding:0;margin:0;">
+          <div><span class="tick-lbl">Scope</span><b style="color:var(--dtx);">Fixed</b></div>
+          <div><span class="tick-lbl">Delivery</span><b style="color:var(--dtx);">~90 days</b></div>
+          <div><span class="tick-lbl">Audits</span><b style="color:var(--dtx);">$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="/about/">Who we are</a></li>
+          <li><a href="/method/">The method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">The Ampersand</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/implementation-sprint/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-services/">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>More</h5>
+        <ul>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14803605128">480-360-5128</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ APPLICATION FORM SUBMIT ============ -->
+<script>
+/* Posts to Formspree (form id below). The résumé attaches only on a paid
+   Formspree plan; recipients (akester@ + cmyers@mainandmachine.com) and the
+   reply-to mapping are configured in the Formspree dashboard. See the careers
+   handoff README for the operational checklist. */
+var FORMSPREE_ENDPOINT = "xnjkjyew";
+
+(function () {
+  var form = document.getElementById('applyForm');
+  if (!form) return;
+  var card = document.getElementById('formCard');
+  var btn = document.getElementById('submitBtn');
+  var fileInput = document.getElementById('f-resume');
+  var fileDrop = document.getElementById('fileDrop');
+  var ftext = document.getElementById('ftext');
+  var ficon = document.getElementById('ficon');
+  var MAX_BYTES = 10 * 1024 * 1024;
+
+  // ---- file handling ----
+  function humanSize(n) {
+    if (n < 1024) return n + ' B';
+    if (n < 1048576) return (n / 1024).toFixed(0) + ' KB';
+    return (n / 1048576).toFixed(1) + ' MB';
+  }
+  function showFile(file) {
+    var field = fileInput.closest('.cr-field');
+    if (!file) {
+      fileDrop.classList.remove('has-file');
+      ftext.innerHTML = '<b>Choose a file</b> or drag it here<span class="sub">PDF, DOC, or DOCX — 10MB max</span>';
+      ficon.textContent = 'PDF';
+      return;
+    }
+    if (file.size > MAX_BYTES) {
+      field.classList.add('invalid');
+      fileInput.value = '';
+      showFile(null);
+      return;
+    }
+    field.classList.remove('invalid');
+    fileDrop.classList.add('has-file');
+    var ext = (file.name.split('.').pop() || 'FILE').toUpperCase().slice(0, 4);
+    ficon.textContent = ext;
+    ftext.innerHTML = '<b>' + file.name.replace(/</g, '&lt;') + '</b><span class="sub">' + humanSize(file.size) + ' · click to replace</span>';
+  }
+  fileInput.addEventListener('change', function () { showFile(fileInput.files[0]); });
+  ['dragenter', 'dragover'].forEach(function (ev) {
+    fileDrop.addEventListener(ev, function (e) { e.preventDefault(); fileDrop.style.borderColor = 'var(--accent)'; });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    fileDrop.addEventListener(ev, function (e) { e.preventDefault(); fileDrop.style.borderColor = ''; });
+  });
+  fileDrop.addEventListener('drop', function (e) {
+    if (e.dataTransfer.files && e.dataTransfer.files.length) {
+      fileInput.files = e.dataTransfer.files;
+      showFile(fileInput.files[0]);
+    }
+  });
+
+  // ---- validation ----
+  function validate() {
+    var ok = true;
+    var reqs = [
+      { id: 'f-name', test: function (v) { return v.trim().length > 0; } },
+      { id: 'f-email', test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); } },
+      { id: 'f-link', test: function (v) { return v.trim().length > 3; } },
+      { id: 'f-note', test: function (v) { return v.trim().length > 0; } }
+    ];
+    reqs.forEach(function (r) {
+      var el = document.getElementById(r.id);
+      var field = el.closest('.cr-field');
+      if (!r.test(el.value)) { field.classList.add('invalid'); ok = false; }
+      else { field.classList.remove('invalid'); }
+    });
+    return ok;
+  }
+  // clear error styling as the user fixes a field
+  form.addEventListener('input', function (e) {
+    var field = e.target.closest('.cr-field');
+    if (field && field.classList.contains('invalid')) field.classList.remove('invalid');
+  });
+
+  // ---- submit ----
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    card.classList.remove('is-error');
+    if (!validate()) {
+      var firstBad = form.querySelector('.cr-field.invalid input, .cr-field.invalid textarea');
+      if (firstBad) firstBad.focus();
+      return;
+    }
+
+    card.classList.add('is-sending');
+    btn.disabled = true;
+    btn.querySelector('.arr').textContent = '⋯';
+
+    var data = new FormData(form);
+    data.append('_subject', 'New career application — mainandmachine.com');
+
+    fetch('https://formspree.io/f/' + FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      card.classList.remove('is-sending');
+      if (res.ok) {
+        card.classList.add('is-sent');
+        var top = card.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      } else {
+        return res.json().then(function (j) { throw new Error((j && j.error) || 'Submission failed'); });
+      }
+    }).catch(function () {
+      card.classList.remove('is-sending');
+      card.classList.add('is-error');
+      btn.disabled = false;
+      btn.querySelector('.arr').textContent = '→';
+    });
+  });
+})();
+</script>
+
+<script src="/js/nav.js?v=2"></script>
+</body>
+</html>

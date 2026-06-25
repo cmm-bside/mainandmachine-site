@@ -166,13 +166,22 @@ export function nav() {
     </a>
     <nav class="nav__links" id="nav-links">
       <a href="/">Home</a>
-      <a href="/services/">Services</a>
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
+          <a href="/services/implementation-sprint/">Implementation Sprint</a>
+          <a href="/services/managed-services/">Managed Services</a>
+          <a href="/method/">Method</a>
+        </div>
+      </span>
       <a href="/pricing/">Pricing</a>
-      <a href="/method/">Method</a>
       <a href="/work/">Proof</a>
       <a href="/about/">Who We Are</a>
       <a href="/blog/" class="is-active" aria-current="page">The Ampersand</a>
       <a href="/contact/">Contact</a>
+      <a href="/careers/">Careers</a>
     </nav>
     <div class="nav__right">
       <a class="btn btn--accent" href="/book/">Book a free assessment</a>
@@ -274,6 +283,6 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
 
 // Scripts shared by every blog page: mobile nav + subscribe enhancement + search.
 export function pageScripts() {
-	return `<script src="/js/nav.js?v=1"></script>
+	return `<script src="/js/nav.js?v=2"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

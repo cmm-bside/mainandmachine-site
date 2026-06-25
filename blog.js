@@ -195,10 +195,87 @@
 		});
 	}
 
+	/* ---------- reading-progress bar (post pages) ---------- */
+	function wireReadingProgress() {
+		var bar = document.getElementById("reading-progress-bar");
+		var article = document.querySelector("article .essay");
+		if (!bar || !article) return;
+		var ticking = false;
+		function update() {
+			ticking = false;
+			var rect = article.getBoundingClientRect();
+			var total = rect.height - window.innerHeight;
+			var passed = -rect.top;
+			var pct = total > 0 ? Math.min(1, Math.max(0, passed / total)) : (rect.top <= 0 ? 1 : 0);
+			bar.style.width = (pct * 100).toFixed(2) + "%";
+		}
+		function onScroll() {
+			if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+		}
+		window.addEventListener("scroll", onScroll, { passive: true });
+		window.addEventListener("resize", onScroll, { passive: true });
+		update();
+	}
+
+	/* ---------- TOC scroll-spy + smooth-scroll (post pages) ---------- */
+	function wireToc() {
+		var toc = document.querySelector(".essay__toc");
+		if (!toc) return;
+		var links = toc.querySelectorAll("a[data-toc]");
+		if (!links.length) return;
+		var byId = {};
+		Array.prototype.forEach.call(links, function (a) {
+			byId[a.getAttribute("data-toc")] = a;
+		});
+		var sections = document.querySelectorAll(".essay__section[id]");
+
+		function setActive(id) {
+			Array.prototype.forEach.call(links, function (a) {
+				a.classList.toggle("is-active", a.getAttribute("data-toc") === id);
+			});
+		}
+
+		if ("IntersectionObserver" in window) {
+			var visible = {};
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					if (e.isIntersecting) visible[e.target.id] = e.intersectionRatio;
+					else delete visible[e.target.id];
+				});
+				// Pick the section nearest the top of the reading zone.
+				var best = null, bestTop = Infinity;
+				Array.prototype.forEach.call(sections, function (s) {
+					if (!(s.id in visible)) return;
+					var top = Math.abs(s.getBoundingClientRect().top - 110);
+					if (top < bestTop) { bestTop = top; best = s.id; }
+				});
+				if (best) setActive(best);
+			}, { rootMargin: "-100px 0px -55% 0px", threshold: [0, 0.25, 0.5, 1] });
+			Array.prototype.forEach.call(sections, function (s) { io.observe(s); });
+		}
+
+		// Smooth-scroll on click (respect reduced-motion), update the hash.
+		var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		Array.prototype.forEach.call(links, function (a) {
+			a.addEventListener("click", function (ev) {
+				var id = a.getAttribute("data-toc");
+				var target = document.getElementById(id);
+				if (!target) return;
+				ev.preventDefault();
+				target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+				setActive(id);
+				if (history.replaceState) history.replaceState(null, "", "#" + id);
+				else location.hash = id;
+			});
+		});
+	}
+
 	function init() {
 		wireTabs();
 		wireLoadMore();
 		wireCopy();
+		wireReadingProgress();
+		wireToc();
 		var needsData =
 			document.getElementById("amp-posts") ||
 			document.getElementById("blog-search") ||

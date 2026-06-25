@@ -179,7 +179,7 @@ export function nav() {
       <a href="/pricing/">Pricing</a>
       <a href="/work/">Proof</a>
       <a href="/about/">Who We Are</a>
-      <a href="/blog/" class="is-active" aria-current="page">The Ampersand</a>
+      <a href="/blog/" class="is-active" aria-current="page">Blog</a>
       <a href="/contact/">Contact</a>
       <a href="/careers/">Careers</a>
     </nav>

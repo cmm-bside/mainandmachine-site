@@ -44,6 +44,7 @@ import {
 	pageScripts,
 	orgJsonLd,
 } from "./lib/templates.mjs";
+import { structureArticle, renderToc, renderArticleBody } from "./lib/article.mjs";
 
 const RECENT_ON_HOME = 6;
 const ARCHIVE_BATCH = 12;
@@ -398,60 +399,82 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	// Read-next: the two most recent other posts.
 	const readNext = allPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
-	const heroBlock = post.heroImage
-		? `<figure class="essay__hero"><img src="${attr(post.heroImage.assetUrl)}" alt="${attr(post.heroImage.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" /></figure>`
+	// Derive the chaptered structure + TOC from the flat body (never hardcoded).
+	const structured = structureArticle(bodyHtml);
+	const tocHtml = renderToc(structured.chapters);
+	const hasToc = !!tocHtml;
+	const proseInner = bodyHtml
+		? renderArticleBody(structured)
+		: `<p>This essay is being mirrored from beehiiv. <a href="${attr(post.webUrl || "/blog/")}">Read it here</a>.</p>`;
+
+	// Lead figure — framed, caption optional (caption left, source/credit right).
+	// Images stay natural (Main & Machine doesn't grayscale its art).
+	const hero = post.heroImage;
+	const heroCap = hero && (hero.caption || hero.credit)
+		? `<figcaption class="essay__cap">${hero.caption ? `<span class="essay__cap-txt">${esc(hero.caption)}</span>` : "<span></span>"}${hero.credit ? `<span class="essay__cap-src">${esc(hero.credit)}</span>` : ""}</figcaption>`
+		: "";
+	const heroBlock = hero
+		? `<figure class="essay__hero"><img src="${attr(hero.assetUrl)}" alt="${attr(hero.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" />${heroCap}</figure>`
 		: "";
 
 	const shareUrl = encodeURIComponent(canonical);
 	const shareText = encodeURIComponent(post.title);
+	const topic = post.topic || (Array.isArray(post.contentTags) && post.contentTags[0]) || "";
+	const metaRow = [esc(AUTHOR), esc(formatDate(post.publishedAt)), `${minutes} min read`, topic ? esc(topic) : ""]
+		.filter(Boolean)
+		.map((part) => `<span>${part}</span>`)
+		.join("");
 
-	const body = `${topbar()}
+	const body = `<div class="reading-progress" aria-hidden="true"><span class="reading-progress__bar" id="reading-progress-bar"></span></div>
+${topbar()}
 ${nav()}
 <article class="section paper" data-screen-label="${esc(BLOG_NAME)}">
-  <div class="wrap essay">
+  <div class="wrap essay${hasToc ? "" : " essay--solo"}">
     <a class="essay__back" href="/blog/">← ${esc(BLOG_NAME)}</a>
     <header class="essay__head">
-      <span class="kicker">Writing / ${esc(BLOG_NAME)}</span>
+      <span class="kicker">${esc(BLOG_NAME)} · ${esc(formatDate(post.publishedAt))}</span>
       <h1 class="essay__title">${esc(post.title)}</h1>
       ${post.excerpt ? `<p class="essay__dek">${esc(post.excerpt)}</p>` : ""}
-      <div class="essay__meta">
-        <span>${esc(AUTHOR)}</span>
-        <span>${esc(formatDate(post.publishedAt))}</span>
-        <span>${minutes} min read</span>
-      </div>
+      <div class="essay__meta">${metaRow}</div>
     </header>
     ${heroBlock}
-    <div class="prose">
-${bodyHtml || `<p>This essay is being mirrored from beehiiv. <a href="${attr(post.webUrl || "/blog/")}">Read it here</a>.</p>`}
-    </div>
-    <div class="essay__share">
-      <span class="tick-lbl">Share</span>
-      <a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}" target="_blank" rel="noopener noreferrer">X</a>
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="mailto:?subject=${shareText}&body=${shareUrl}">Email</a>
-      <button type="button" class="essay__copy" data-copy="${attr(canonical)}">Copy link</button>
+    <div class="essay__grid${hasToc ? "" : " essay__grid--solo"}">
+      ${hasToc ? tocHtml : ""}
+      <div class="essay__col">
+        <div class="prose">
+${proseInner}
+        </div>
+        <div class="essay__share">
+          <span class="tick-lbl">Share</span>
+          <a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}" target="_blank" rel="noopener noreferrer" aria-label="Share on X">X</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
+          <a href="mailto:?subject=${shareText}&body=${shareUrl}" aria-label="Share by email">Email</a>
+          <button type="button" class="essay__copy" data-copy="${attr(canonical)}">Copy link</button>
+        </div>
+      </div>
     </div>
   </div>
 </article>
 
 ${readNext.length
-	? `<section class="section paper-2" data-screen-label="Read next">
+	? `<section class="section paper-2" data-screen-label="Keep reading">
   <div class="wrap">
-    <div class="feed__bar"><span class="tick-lbl">Read next</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent)">Archive →</a></div>
-    <div class="feed__grid">${readNext.map(card).join("\n")}</div>
+    <div class="essay__next">
+      <div class="feed__bar"><span class="tick-lbl">Keep reading</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent)">Archive →</a></div>
+      <div class="feed__grid">${readNext.map(card).join("\n")}</div>
+    </div>
   </div>
 </section>`
 	: ""}
 
-<section class="section ink" data-screen-label="Work with us">
+<section class="section paper" data-screen-label="Work with us">
   <div class="wrap">
-    <div class="essay__cta crop">
+    <div class="essay__cta essay__cta--panel crop">
       <span class="kicker kicker--plain">Main &amp; Machine</span>
       <h2 class="h2 mt-s">Like how we think? Put it to work.</h2>
       <p class="lead">This is the kind of workflow the free assessment maps. Thirty minutes, no pitch.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:14px;">
+      <div class="essay__cta-actions">
         <a class="btn btn--accent btn--lg" href="/book/">Book a free assessment →</a>
-        <a class="btn btn--ghost btn--lg" data-beehiiv-subscribe href="/blog/">Get the weekly essay →</a>
       </div>
     </div>
   </div>

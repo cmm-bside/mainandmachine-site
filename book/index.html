@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — 30 minutes. No pitch. A straight answer." />
-<link rel="stylesheet" href="/styles.css?v=40" />
+<link rel="stylesheet" href="/styles.css?v=41" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -122,7 +122,7 @@
 .fgroup { border-top: 1px dashed var(--line); padding-top: 26px; margin-top: 26px; }
 .fgroup:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
 .fgroup__head { display: flex; align-items: baseline; gap: 11px; margin-bottom: 20px; }
-.fgroup__no { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .1em; }
+.fgroup__no { font-family: var(--mono); font-size: 12px; color: var(--accent-text); letter-spacing: .1em; }
 .fgroup__t { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); }
 
 .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -152,7 +152,7 @@ select.input {
 select.input:invalid { color: var(--tx-faint); }
 .field.err .input { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .field__hint { font-family: var(--mono); font-size: 11px; color: var(--tx-faint); letter-spacing: .02em; line-height: 1.6; }
-.field__err { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: .02em; display: none; }
+.field__err { font-family: var(--mono); font-size: 11px; color: var(--accent-text); letter-spacing: .02em; display: none; }
 .field.err .field__err { display: block; }
 
 /* honeypot — visually & a11y hidden, still submitted if a bot fills it */
@@ -200,7 +200,7 @@ select.input:invalid { color: var(--tx-faint); }
 .astep { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 15px 0; border-top: 1px solid var(--line-soft); }
 .astep:first-child { border-top: 0; padding-top: 0; }
 .astep:last-child { padding-bottom: 0; }
-.astep__no { font-family: var(--mono); font-size: 12px; color: var(--accent); padding-top: 1px; }
+.astep__no { font-family: var(--mono); font-size: 12px; color: var(--accent-text); padding-top: 1px; }
 .astep h4 { font-size: 15.5px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
 .astep p { font-size: 13.5px; color: var(--tx-mute); line-height: 1.5; }
 
@@ -240,7 +240,7 @@ select.input:invalid { color: var(--tx-faint); }
 /* ---- stage 2: optional prep details on the confirmation panel ---- */
 .prep { margin-top: 30px; border: 1px solid var(--line); background: var(--paper-card); padding: clamp(20px, 3vw, 28px); color: var(--tx); }
 .prep__head { display: flex; align-items: baseline; gap: 11px; }
-.prep__head .fgroup__no { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .1em; }
+.prep__head .fgroup__no { font-family: var(--mono); font-size: 12px; color: var(--accent-text); letter-spacing: .1em; }
 .prep__head .fgroup__t { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); }
 .prep__note { font-size: 13.5px; color: var(--tx-mute); margin: 10px 0 20px; }
 .prep__foot { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 20px; }

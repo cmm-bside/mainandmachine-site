@@ -95,12 +95,18 @@ blog artifacts (`blog/`, `blog-data/`, `images/blog/`, `sitemap.xml`,
       `aria-expanded`/`aria-label`.
 - [x] **Focus order:** logical (DOM-ordered); interactive controls are real
       `<button>`/`<a>` with ARIA state.
-- [ ] **Accent contrast — needs your decision (see below).** `--accent #c14a24`
-      on cream is **4.29:1**, just under WCAG AA (4.5) for *normal-size* text
-      (3.92:1 on `--paper-2`). It **passes** for large text/headings and UI
-      (≥3:1), and `--accent-deep` (5.73:1) and `--accent-ink` on ink (5.28:1)
-      pass. Not auto-fixed because it's a brand-color change (ground rule: don't
-      alter the visual design).
+- [x] **Accent text contrast — FIXED to WCAG AA.** The live accent (the A+
+      elevation layer's `--accent #bd451f`, not the base `#c14a24`) on cream was
+      **4.46:1** (paper) / **4.01:1** (paper-2) — under AA 4.5 for normal-size
+      text. Added a dedicated `--accent-text: #a23c1b` (5.06–6.19:1) and switched
+      every readable body/label/link selector to it (`.prose a`, `.kicker`,
+      `.svc__cta`, `.feed__read/__archive`, `.essay__seealso/__back/__toc`,
+      `.chap__num`, `summary .q-no`, `.cmp` links/price, path/ind/why/build
+      labels, `.statrail__bar b`, the blog archive links, and the small mono
+      labels in the book/careers page styles). Bright `--accent` is retained for
+      buttons, fills, large headings (`.accent-tx`, pass at ≥3:1), the brand
+      ampersand, decorative `::before` glyphs, and borders/focus rings (UI,
+      ≥3:1). Cache-buster bumped `v=40 → v=41`.
 
 ---
 
@@ -121,12 +127,7 @@ blog artifacts (`blog/`, `blog-data/`, `images/blog/`, `sitemap.xml`,
 
 ## Decisions / items that need you
 
-1. **Accent text contrast (AA).** Recommended safe fix: add an `--accent-text:
-   #a23c1b` token (5.73:1 on cream) and use it for *normal-size* accent text on
-   paper (`.prose a`, `.kicker`, `.svc__cta`, `.essay__seealso a`, `.cmp` links,
-   feed links) while leaving `--accent` for buttons/fills/headings. Visually a
-   hair darker; meets AA. Say the word and I'll apply it.
-2. **`/images/og/contact.png`** (and optionally privacy/terms) — want a bespoke OG
+1. **`/images/og/contact.png`** (and optionally privacy/terms) — want a bespoke OG
    card, or leave the brand default? Generating it needs a design asset, like the
    other `/images/og/*` cards.
 3. **Blog image storage** — currently **deploy-time download, gitignored** (your

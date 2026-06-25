@@ -210,7 +210,7 @@ function renderHome(posts, { subscribeUrl, publicationUrl }) {
 		const rest = posts.slice(1, 1 + RECENT_ON_HOME);
 		feed = `${featured(posts[0])}
 ${rest.length
-	? `<div class="feed__bar"><span class="tick-lbl">Recent dispatches</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent)">Full archive →</a></div>
+	? `<div class="feed__bar"><span class="tick-lbl">Recent dispatches</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent-text)">Full archive →</a></div>
 <div class="feed__grid">${rest.map(card).join("\n")}</div>`
 	: ""}
 <a class="feed__archive" href="/blog/archive/">View the full archive →</a>`;
@@ -478,7 +478,7 @@ ${readNext.length
 	? `<section class="section paper-2" data-screen-label="Keep reading">
   <div class="wrap">
     <div class="essay__next">
-      <div class="feed__bar"><span class="tick-lbl">Keep reading</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent)">Archive →</a></div>
+      <div class="feed__bar"><span class="tick-lbl">Keep reading</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent-text)">Archive →</a></div>
       <div class="feed__grid">${readNext.map(card).join("\n")}</div>
     </div>
   </div>

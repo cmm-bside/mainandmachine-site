@@ -72,3 +72,14 @@
   if (mq.addEventListener) mq.addEventListener('change', onChange);
   else if (mq.addListener) mq.addListener(onChange);
 })();
+
+/* Booking banner: keep the quarter current automatically so the topbar can
+   never read a stale quarter (e.g. "Q3" in October). Shows the upcoming
+   quarter — forward booking — and falls back to the hardcoded value with no JS. */
+(function () {
+  var el = document.querySelector('.js-book-quarter');
+  if (!el) return;
+  var d = new Date();
+  var q = Math.floor(d.getMonth() / 3) + 1;   // 1..4, current quarter
+  el.textContent = 'Q' + (q === 4 ? 1 : q + 1); // next quarter
+})();

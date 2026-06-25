@@ -1266,6 +1266,19 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: 15px; li
   .prose > .essay__section{ margin-top:2.2em; padding-top:2.2em; }
 }
 
+
+/* ============ COMPARISON TABLE (extractable, GEO) ============ */
+.cmp__wrap{ overflow-x:auto; margin-top: var(--block-gap); -webkit-overflow-scrolling:touch; }
+table.cmp{ width:100%; border-collapse:collapse; font-size:15px; line-height:1.5; }
+table.cmp caption{ text-align:left; font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--tx-mute); margin-bottom:16px; }
+table.cmp th, table.cmp td{ text-align:left; padding:15px 18px; border-bottom:1px solid var(--line); vertical-align:top; }
+table.cmp thead th{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--tx-faint); font-weight:700; border-bottom:1px solid var(--tx); }
+table.cmp tbody th{ font-weight:700; white-space:nowrap; }
+table.cmp tbody th a{ color:var(--accent); text-decoration:none; }
+table.cmp tbody th a:hover{ text-decoration:underline; text-underline-offset:2px; }
+table.cmp .cmp__price{ font-family:var(--mono); color:var(--accent); white-space:nowrap; }
+@media (max-width:640px){ table.cmp{ font-size:14px; } table.cmp th, table.cmp td{ padding:12px 12px; } }
+
 /* ============ MEDIA BAR (ambient credibility under hero) ============ */
 .mediabar { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .mediabar__in { display: flex; align-items: baseline; gap: 13px 20px; padding: 13px 0; flex-wrap: wrap; }

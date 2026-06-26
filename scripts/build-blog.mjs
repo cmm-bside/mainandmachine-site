@@ -165,8 +165,8 @@ function featured(post) {
 function searchBar(placeholder) {
 	return `<div class="blogsearch">
   <input type="search" id="blog-search" autocomplete="off" placeholder="${attr(placeholder)}" aria-label="Search The Ampersand" />
-  <span class="blogsearch__hint tick-lbl">Search title, summary &amp; text</span>
 </div>
+<p class="blogsearch__hint">Searches titles, summaries, and full essay text.</p>
 <div id="blog-results" class="feed" hidden></div>`;
 }
 

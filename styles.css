@@ -525,7 +525,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .feed__loading { display:flex; align-items:center; justify-content:center; min-height: 30vh; }
 
 /* featured / latest */
-.feed__featured { display: grid; grid-template-columns: 1.1fr 1fr; background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--r-md); transition: border-color .15s; }
+.feed__featured { display: grid; grid-template-columns: 58fr 42fr; background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--r-md); transition: border-color .15s; }
 .feed__featured:hover { border-color: var(--tx); }
 .feed__featured-img { position: relative; min-height: 320px; background: var(--blueprint-2); overflow: hidden; }
 /* Cover art puts the essay title top-left — when the tall desktop box
@@ -537,21 +537,22 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
   .feed__featured { grid-template-columns: 1fr; }
   .feed__featured-img { aspect-ratio: 16 / 9; min-height: 0; }
 }
-.feed__featured-body { padding: clamp(26px, 3.5vw, 44px); display: flex; flex-direction: column; justify-content: center; }
+.feed__featured-body { padding: clamp(26px, 3.5vw, 44px); display: flex; flex-direction: column; justify-content: flex-start; }
 .feed__featured-title { font-size: clamp(var(--fs-25),3.2vw,var(--fs-39)); font-weight: 800; letter-spacing: -0.02em; line-height: 1.04; margin: 14px 0; text-wrap: balance; }
-.feed__excerpt { font-size: var(--fs-16); line-height: 1.55; color: var(--tx-mute); max-width: 52ch; }
-.feed__read { margin-top: var(--s-24); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
+.feed__excerpt { font-size: var(--fs-16); line-height: 1.55; color: var(--tx-mute); max-width: 46ch; }
+.feed__read { margin-top: auto; font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
 
 /* recent grid */
 .feed__bar { display:flex; justify-content: space-between; align-items:center; border-top: 1px solid var(--line); padding-top: var(--s-24); }
-.feed__grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.feed__grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--s-24); }
 @media (max-width: 860px){ .feed__grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 560px){ .feed__grid { grid-template-columns: 1fr; } }
-.feed__card { background: var(--paper-card); display: flex; flex-direction: column; transition: background .15s; }
-.feed__card:hover { background: #fff; }
-.feed__card-img { position: relative; aspect-ratio: 16 / 9; background: var(--blueprint-2); overflow: hidden; }
+.feed__card { background: var(--paper-card); border: 1px solid var(--hairline); border-radius: var(--r-md); padding: var(--s-24); display: flex; flex-direction: column; overflow: hidden; transition: background .15s, border-color .15s; }
+.feed__card:hover { background: #fff; border-color: var(--tx); }
+/* thumbnail bleeds out of the card padding to the top + side edges, no inset border */
+.feed__card-img { margin: calc(-1 * var(--s-24)) calc(-1 * var(--s-24)) var(--s-16); position: relative; aspect-ratio: 16 / 9; background: var(--blueprint-2); overflow: hidden; }
 .feed__card-img img { width: 100%; height: 100%; object-fit: cover; }
-.feed__card-body { padding: 22px 22px 26px; display:flex; flex-direction: column; gap: var(--s-8); flex: 1; }
+.feed__card-body { padding: 0; display:flex; flex-direction: column; gap: var(--s-8); flex: 1; }
 .feed__date { font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .08em; color: var(--tx-faint); }
 .feed__card-title { font-size: var(--fs-20); font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
 .feed__card-excerpt { font-size: var(--fs-13); line-height: 1.5; color: var(--tx-mute); }
@@ -1164,8 +1165,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 }
 .blogsearch input:focus{ outline:none; border-color:var(--accent); }
 .blogsearch input::placeholder{ color:var(--tx-faint); }
-.blogsearch__hint{ white-space:nowrap; }
-@media (max-width:560px){ .blogsearch__hint{ display:none; } }
+.blogsearch__hint{ display:block; width:100%; margin-top:var(--s-8); font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.04em; color:var(--tx-mute); }
 
 /* archive tabs + month groups */
 .archtabs{ display:flex; gap:0; border:1px solid var(--line); width:max-content; margin-bottom:var(--s-32); }
@@ -1442,7 +1442,7 @@ h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
    get the same padding cancelled by negative margin.
    ========================================================= */
 .crumb a, .bookhero__crumb a, .legal__crumb a, .tick-lbl a, h3 a { padding-block: 14px; }
-.svc__cta, .path__cta, .feed__archive, .feed__read { padding-block: 14px; margin-block: -14px; }
+.svc__cta, .path__cta, .feed__archive { padding-block: 14px; margin-block: -14px; }
 /* short footer links ("RSS") need width too — gap is 20px, so ±8px can't overlap */
 .foot__bottom .links a { padding-inline: 8px; margin-inline: -8px; }
 

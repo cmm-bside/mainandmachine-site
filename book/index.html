@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — 30 minutes. No pitch. A straight answer." />
-<link rel="stylesheet" href="/styles.css?v=52" />
+<link rel="stylesheet" href="/styles.css?v=53" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -265,11 +265,20 @@ select.input:invalid { color: var(--tx-faint); }
 <body>
 
 <!-- ============ OPERATOR CHROME ============ -->
-<div class="topbar">
-  <div class="wrap topbar__in">
-    <!-- TODO: if a verifiably true slot count exists, "Two Q3 build slots remain" is stronger than the generic line. -->
-    <span class="left"><span class="dot"></span>Now booking <span class="js-book-quarter">Q3</span> builds<span class="bar-long"> — every engagement starts with the free assessment</span><span class="bar-short"> — free assessment first</span></span>
-    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span class="press-list"><span><a href="/denver/">Denver</a></span><span><a href="/phoenix/">Phoenix</a></span><span>Remote</span></span></span>
+<div class="ticker" role="marquee" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Now booking <span class="js-book-quarter">Q3</span> builds</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Now booking <span class="js-book-quarter">Q3</span> builds</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
   </div>
 </div>
 
@@ -945,6 +954,6 @@ select.input:invalid { color: var(--tx-faint); }
 })();
 </script>
 
-<script src="/js/nav.js?v=3"></script>
+<script src="/js/nav.js?v=4"></script>
 </body>
 </html>

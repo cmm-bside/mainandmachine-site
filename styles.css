@@ -716,30 +716,35 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 }
 .ink .crop::after, .net.crop::after { --c: var(--accent-ink); }
 
-/* ---------- operator chrome: slim status bar above nav ---------- */
-.topbar{ background: var(--ink); color: var(--dtx-mute); background-image: var(--grain); }
-.topbar__in{ display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:36px;
-  font-family: var(--mono); font-size: var(--fs-13); letter-spacing:.16em; text-transform:uppercase; }
-.topbar__in .left { display:flex; align-items:center; }
-.topbar__in .right { display:flex; gap:22px; }
-.topbar a { color: var(--dtx-mute); transition: color .15s; }
-.topbar a:hover { color: var(--dtx); }
-.topbar .dot{ width:6px; height:6px; border-radius:50%; background: var(--accent-ink); display:inline-block; margin-right:10px; }
-@media (prefers-reduced-motion: no-preference){ .topbar .dot{ animation: mm-pulse 2.6s ease-in-out infinite; } }
-@keyframes mm-pulse{ 0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(236,108,61,.55); } 50%{ opacity:.45; box-shadow:0 0 0 4px rgba(236,108,61,0); } }
-@media (max-width: 680px){ .topbar__in{ letter-spacing:.1em; } }
-/* One-line announcement bar at every width: the full message + tagline +
-   city list wraps inside what was a fixed-height bar and clipped its own
-   glyphs. The bar sizes by min-height (never clips), and its content
-   sheds in stages — tagline, then cities, then the short copy swap. */
-.topbar .bar-short{ display:none; }
-@media (max-width: 1240px){ .topbar .hide-sm{ display:none; } }
-@media (max-width: 880px){ .topbar__in .right{ display:none; } }
-@media (max-width: 768px){
-  .topbar .bar-long{ display:none; }
-  .topbar .bar-short{ display:inline; }
-  .topbar__in{ min-height:32px; padding:8px 0; }
+/* ---------- operator chrome: auto-scrolling announcement ticker ---------- */
+.ticker{
+  height:38px; overflow:hidden; display:flex; align-items:center;
+  background:#15110D; border-bottom:1px solid rgba(239,233,221,.1);
 }
+.ticker__track{
+  display:flex; flex:0 0 auto; align-items:center; width:max-content;
+  animation:ticker-scroll 42s linear infinite; will-change:transform;
+}
+.ticker:hover .ticker__track{ animation-play-state:paused; }   /* pause on hover */
+.ticker__group{ display:flex; align-items:center; gap:0; }
+.ticker__item{
+  font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.12em;
+  line-height:1; white-space:nowrap; color:rgba(239,233,221,.72);
+  padding:0 26px; position:relative;
+}
+.ticker__item + .ticker__item::before{
+  content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
+  width:1px; height:11px; background:rgba(239,233,221,.18);
+}
+.ticker .dot{ color:#E06A3C; margin-right:8px; }
+/* two identical groups => shifting the track by exactly one group width (-50% of
+   the 2-group track) loops with no visible jump. linear = machine-steady. */
+@keyframes ticker-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+@media (prefers-reduced-motion: reduce){
+  .ticker__track{ animation:none; transform:none; }   /* static: readable, no scroll */
+  .ticker__group:nth-child(2){ display:none; }         /* drop the duplicate copy */
+}
+@keyframes mm-pulse{ 0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(236,108,61,.55); } 50%{ opacity:.45; box-shadow:0 0 0 4px rgba(236,108,61,0); } }
 
 /* ---------- hero (registration-grid motif + Assembly Line headline) ---------- */
 .hero { position: relative; overflow: hidden; }
@@ -1056,8 +1061,6 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
    Scoped to small screens — desktop layout is untouched.
    ========================================================= */
 @media (max-width: 640px){
-  /* shorter operator chrome + sticky header */
-  .topbar__in{ min-height:32px; font-size: var(--fs-13); letter-spacing:.08em; }
   .nav__inner{ height:56px; gap:14px; }
   :root{ --header-h: 56px; }
 
@@ -1094,9 +1097,6 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 
 /* very small phones (~360–390px): guard against tight chrome text */
 @media (max-width: 430px){
-  .topbar__in{ letter-spacing:.06em; gap:10px; }
-  .topbar__in .right{ gap:0; }
-  .topbar__in .right .hide-sm{ display:none; }
   .hero__build{ letter-spacing:.06em; }
 }
 

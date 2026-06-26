@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="Managed AI services on a monthly retainer with no lock-in. Monitoring and maintenance from Denver and Phoenix, remote across the US. Leave anytime." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/managed-services.png" />
 
-<link rel="stylesheet" href="/styles.css?v=52" />
+<link rel="stylesheet" href="/styles.css?v=53" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -155,11 +155,20 @@
 <body>
 
 <!-- ============ OPERATOR CHROME ============ -->
-<div class="topbar">
-  <div class="wrap topbar__in">
-    <!-- TODO: if a verifiably true slot count exists, "Two Q3 build slots remain" is stronger than the generic line. -->
-    <span class="left"><span class="dot"></span>Now booking <span class="js-book-quarter">Q3</span> builds<span class="bar-long"> — every engagement starts with the free assessment</span><span class="bar-short"> — free assessment first</span></span>
-    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span class="press-list"><span><a href="/denver/">Denver</a></span><span><a href="/phoenix/">Phoenix</a></span><span>Remote</span></span></span>
+<div class="ticker" role="marquee" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Now booking <span class="js-book-quarter">Q3</span> builds</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Now booking <span class="js-book-quarter">Q3</span> builds</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
   </div>
 </div>
 
@@ -474,6 +483,6 @@
 })();
 </script>
 
-<script src="/js/nav.js?v=3"></script>
+<script src="/js/nav.js?v=4"></script>
 </body>
 </html>

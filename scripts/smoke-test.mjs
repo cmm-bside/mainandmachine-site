@@ -15,7 +15,7 @@ const fail = (m) => errors.push(m);
 // Markers that only ever existed in the old build.
 const OLD_BUILD_MARKERS = ["limited slots", 'href="/#work"', "<title>Book an Assessment"];
 // Every current non-blog page carries this banner; blog pages carry their own.
-const CURRENT_BANNER = "Now booking Q3 builds";
+const CURRENT_BANNER = 'class="ticker"';
 const BLOG_BANNER = "free weekly essays";
 
 async function get(url) {

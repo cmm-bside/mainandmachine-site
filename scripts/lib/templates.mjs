@@ -110,18 +110,21 @@ ${ld}
 </head>`;
 }
 
-// City links for the topbar, derived from the canonical locations ("Denver, CO" → "Denver").
-// One span per city — the separator is drawn by .press-list CSS so it can never dangle.
-const CITY_LINKS = COMPANY.locations
-	.map((l) => l.split(",")[0])
-	.map((city) => `<span><a href="/${city.toLowerCase()}/">${esc(city)}</a></span>`)
-	.join("");
-
 export function topbar() {
-	return `<div class="topbar">
-  <div class="wrap topbar__in">
-    <span class="left"><span class="dot"></span>${esc(BLOG_NAME)} — free weekly essays</span>
-    <span class="right"><span class="hide-sm">Human-centric AI for Main Street</span><span class="press-list">${CITY_LINKS}<span>Remote</span></span></span>
+	return `<div class="ticker" role="marquee" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)} — free weekly essays</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)} — free weekly essays</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
   </div>
 </div>`;
 }

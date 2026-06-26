@@ -1,9 +1,0 @@
-/* force the "drawn" hover end-state for a static screenshot */
-.diffs > .diff:first-child{ transform: translateY(-2px) !important; }
-.diffs > .diff:first-child::before{
-  background-size: 14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px !important;
-}
-.svc__item:nth-of-type(2)::before{
-  background-size: 14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px !important;
-}
-.svc__item:nth-of-type(2){ transform: translateY(-2px) !important; }

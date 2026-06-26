@@ -77,9 +77,10 @@
    never read a stale quarter (e.g. "Q3" in October). Shows the upcoming
    quarter — forward booking — and falls back to the hardcoded value with no JS. */
 (function () {
-  var el = document.querySelector('.js-book-quarter');
-  if (!el) return;
+  var els = document.querySelectorAll('.js-book-quarter');
+  if (!els.length) return;
   var d = new Date();
   var q = Math.floor(d.getMonth() / 3) + 1;   // 1..4, current quarter
-  el.textContent = 'Q' + (q === 4 ? 1 : q + 1); // next quarter
+  var next = 'Q' + (q === 4 ? 1 : q + 1);      // next quarter — forward booking
+  els.forEach(function (el) { el.textContent = next; });
 })();

@@ -173,12 +173,13 @@ export function nav() {
         <a href="/services/">Services</a>
         <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
         <div class="nav__menu" id="nav-services-menu">
-          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
-          <a href="/services/implementation-sprint/">Implementation Sprint</a>
-          <a href="/services/managed-services/">Managed Services</a>
-          <a href="/method/">Method</a>
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
         </div>
       </span>
+      <a href="/method/">Method</a>
       <a href="/pricing/">Pricing</a>
       <a href="/work/">Proof</a>
       <a href="/about/">Who We Are</a>
@@ -219,9 +220,10 @@ export function footer() {
       <div class="foot__col">
         <h2>Services</h2>
         <ul>
-          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
-          <li><a href="/services/implementation-sprint/">Implementation Sprint</a></li>
-          <li><a href="/services/managed-services/">Managed Services</a></li>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
           <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>

@@ -883,8 +883,8 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
    ========================================================= */
 
 /* ---- 01 the argument: Main / Machine / & ---- */
-.argument{ border:1px solid var(--line); background: var(--paper-card); }
-.arg{ display:grid; grid-template-columns: 320px 1fr; gap:0; border-bottom:1px solid var(--line); transition: background .18s ease; }
+.argument{ --arg-key: 320px; border:1px solid var(--line); background: var(--paper-card); }
+.arg{ display:grid; grid-template-columns: var(--arg-key) 1fr; gap:0; border-bottom:1px solid var(--line); transition: background .18s ease; box-sizing:border-box; }
 .arg:last-child{ border-bottom:0; }
 .arg:hover{ background: #fff; }
 .arg--amp{ background: var(--ink); color: var(--dtx); }
@@ -923,7 +923,8 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 @media(max-width:680px){ .why{ grid-template-columns:1fr;} .why>div{border-right:0;} .why>div:nth-last-child(2){border-bottom:1px solid var(--line);} }
 
 /* ---- bio ---- */
-.bio{ display:grid; grid-template-columns: 320px 1fr; gap: clamp(28px,4vw,60px); align-items:start; }
+.bio{ display:grid; grid-template-columns: 320px 1fr; gap: clamp(28px,4vw,60px); align-items:stretch; }
+.bio__aside{ display:flex; flex-direction:column; min-width:0; }
 .bio__portrait{ margin:0; border:1px solid var(--line); background:var(--paper-card); }
 .bio__portrait img{ display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; filter:saturate(0); mix-blend-mode:multiply; }
 .bio__portrait figcaption{ display:block; padding:18px 22px 20px; border-top:1px solid var(--line); }
@@ -932,8 +933,15 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .bio__prose p{ font-size: var(--fs-20); line-height:1.6; color:var(--tx-mute); max-width:60ch; }
 .bio__prose p b{ color: var(--tx); font-weight:700; }
 .bio__prose p + p{ margin-top:var(--s-24); }
-.bio__press{ font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.1em; color:var(--tx-faint); text-transform:uppercase; margin-top:var(--s-24); padding-top:var(--s-24); border-top:1px solid var(--line); line-height:2.1; }
-@media(max-width:760px){ .bio{ grid-template-columns:1fr; } }
+.bio__press{ font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.02em; color:var(--tx-mute); margin-top:var(--s-24); padding-top:var(--s-24); border-top:1px solid var(--line); line-height:2.0; }
+/* the note now anchors the bottom-left of the photo column */
+.bio__note{ margin-top:auto; padding-top:var(--s-24); font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-mute); line-height:1.7; }
+.bio__note a{ color:var(--tx); text-decoration:underline; text-underline-offset:2px; }
+.bio__note a:hover{ color:var(--rust); }
+/* press outlets: solid ink wordmarks, uniform cap-height, tuned 8px dots */
+.bio__press .press-list{ gap:0.5em 0; }
+.bio__press .press-list > span{ color:var(--tx); }
+@media(max-width:760px){ .bio{ grid-template-columns:1fr; } .bio__note{ margin-top:var(--s-24); } }
 
 /* ---- the math ---- */
 .math{ display:grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px,4vw,56px); align-items:stretch; }
@@ -1424,8 +1432,8 @@ table.cmp .cmp__price{ font-family:var(--mono); color:var(--accent-text); white-
 /* Press outlets get a trailing mid-dot bound inside the nowrap span:
    a separator can never start a line, names still never split, and a
    line-end outlet ("Inc. ·") reads as a list item, not a typo. */
-.mediabar__list .press-list > span:not(:last-child)::after,
-.bio__press .press-list > span:not(:last-child)::after { content: " ·"; opacity: .55; }
+.mediabar__list .press-list > span:not(:last-child)::after { content: " ·"; opacity: .55; }
+.bio__press .press-list > span:not(:last-child)::after { content: "·"; margin: 0 8px; opacity: .4; color: var(--tx-faint); }
 /* The footer bottom line holds sentences, not outlet names — nowrap there
    pushes "Human-centric AI for small and mid-size business" past a 390px
    viewport (the site's only horizontal overflow). Let those spans wrap. */

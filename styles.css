@@ -174,9 +174,11 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 [id]{ scroll-margin-top: calc(var(--header-h) + 16px); }
 .nav__inner { display: flex; align-items: center; gap: 22px; height: 70px; }
 .nav__links { display: flex; gap: 20px; margin-left: var(--s-8); }
-.nav__links a { font-size: var(--fs-16); font-weight: 500; color: var(--tx-mute); transition: color .15s; white-space: nowrap; }
-.nav__links a:hover { color: var(--tx); }
+.nav__links a { position: relative; font-size: var(--fs-16); font-weight: 500; color: var(--ink); transition: color .2s var(--ease); white-space: nowrap; }
+.nav__links a::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--rust); transform:scaleX(0); transform-origin:left center; transition:transform .2s var(--ease); }
+.nav__links a:hover::after, .nav__links a:focus-visible::after { transform:scaleX(1); }   /* grows from 0, no color jump */
 .nav__links a.is-active { color: var(--rust); }
+.nav__links a.is-active::after { transform:scaleX(1); }
 .nav__right { margin-left: auto; display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
 .nav__right .btn--accent { white-space: nowrap; flex-shrink: 0; }
 .nav__pricing { font-size: var(--fs-16); font-weight: 600; }
@@ -251,6 +253,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
     display: flex; align-items: center; min-height: 48px;
     padding: 12px 24px; font-size: var(--fs-16);
   }
+  .nav__links a::after { display: none; }
   /* Services submenu sits inline under its parent, indented — no caret/flyout. */
   .nav__item--menu { display: block; align-self: auto; }
   .nav__caret { display: none; }
@@ -828,7 +831,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .statrail__row:hover{ background: color-mix(in srgb, var(--accent) 5%, transparent); }
 
 /* ---------- button polish ---------- */
-.btn--accent{ box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 10px 24px -14px rgba(189,69,31,.85); }
+.btn--accent{ box-shadow: var(--shadow-btn); }   /* clean button component — no glow */
 .btn--accent:hover{ transform: translateY(-2px); }
 .btn--lg .arr{ font-size: inherit; }
 

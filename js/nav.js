@@ -34,13 +34,40 @@
   menuItems.forEach(function (item) {
     var caret = item.querySelector('.nav__caret');
     if (!caret) return;
-    caret.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var open = !item.classList.contains('is-open');
+    var links = Array.prototype.slice.call(item.querySelectorAll('.nav__menu a'));
+    var trigger = item.querySelector('a'); // the Services link (first <a> before .nav__menu)
+    function open(focusFirst) {
       closeMenus(item);
-      item.classList.toggle('is-open', open);
-      caret.setAttribute('aria-expanded', open ? 'true' : 'false');
+      item.classList.add('is-open');
+      caret.setAttribute('aria-expanded', 'true');
+      if (focusFirst && links[0]) links[0].focus();
+    }
+    function close(focusCaret) {
+      item.classList.remove('is-open');
+      caret.setAttribute('aria-expanded', 'false');
+      if (focusCaret) caret.focus();
+    }
+    caret.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      if (item.classList.contains('is-open')) close(false); else open(false);
+    });
+    // open the menu from the keyboard via the trigger link or caret
+    [trigger, caret].forEach(function (el) {
+      if (!el) return;
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'Down') { e.preventDefault(); open(true); }
+      });
+    });
+    // roving arrow-key navigation between menu items; Esc closes + returns focus
+    links.forEach(function (link, i) {
+      link.addEventListener('keydown', function (e) {
+        var k = e.key;
+        if (k === 'ArrowDown' || k === 'Down') { e.preventDefault(); links[(i + 1) % links.length].focus(); }
+        else if (k === 'ArrowUp' || k === 'Up') { e.preventDefault(); links[(i - 1 + links.length) % links.length].focus(); }
+        else if (k === 'Home') { e.preventDefault(); links[0].focus(); }
+        else if (k === 'End') { e.preventDefault(); links[links.length - 1].focus(); }
+        else if (k === 'Escape' || k === 'Esc') { e.preventDefault(); e.stopPropagation(); close(true); }
+      });
     });
   });
 

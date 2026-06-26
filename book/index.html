@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — 30 minutes. No pitch. A straight answer." />
-<link rel="stylesheet" href="/styles.css?v=70" />
+<link rel="stylesheet" href="/styles.css?v=71" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -138,7 +138,7 @@
 .input {
   font-family: var(--sans); font-size: var(--fs-16); color: var(--tx); background: #fff;
   border: 1px solid var(--line); padding: 14px 15px; width: 100%;
-  transition: border-color .15s ease, box-shadow .15s ease; border-radius: 0;
+  transition: border-color .15s var(--ease), box-shadow .15s var(--ease); border-radius: 0;
 }
 .input::placeholder { color: var(--tx-faint); }
 .input:hover { border-color: rgba(29,24,18,0.30); }
@@ -164,7 +164,7 @@ select.input:invalid { color: var(--tx-faint); }
 .seg__opt input { position: absolute; opacity: 0; pointer-events: none; }
 .seg__opt span {
   display: block; text-align: center; padding: 13px 8px; font-size: var(--fs-13); font-weight: 600;
-  color: var(--tx-mute); cursor: pointer; border-right: 1px solid var(--line); transition: background .15s ease, color .15s ease;
+  color: var(--tx-mute); cursor: pointer; border-right: 1px solid var(--line); transition: background .15s var(--ease), color .15s var(--ease);
 }
 .seg__opt:last-child span { border-right: 0; }
 .seg__opt:hover span { background: var(--paper-2); }
@@ -212,7 +212,7 @@ select.input:invalid { color: var(--tx-faint); }
 
 /* advisor */
 .advisor { display: flex; gap: 14px; align-items: flex-start; }
-.advisor__portrait { width: 72px; height: 72px; flex: none; object-fit: cover; border: 1px solid var(--line); background: var(--paper-2); display: block; }
+.advisor__portrait { width: 72px; height: 72px; flex: none; object-fit: cover; border: 1px solid var(--hairline); background: var(--paper-2); display: block; filter: saturate(0); mix-blend-mode: multiply; }
 .advisor__tx h3 { font-size: var(--fs-16); font-weight: 800; letter-spacing: -0.01em; }
 .advisor__tx p { font-size: var(--fs-13); color: var(--tx-mute); margin-top: 5px; line-height: 1.55; }
 

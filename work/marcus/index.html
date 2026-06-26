@@ -26,7 +26,11 @@
 <meta name="twitter:description" content="14 AI agents running a regulated lender's back office entirely in-house, with no borrower file leaving the building. Published with B:Side Capital's permission." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/work.png" />
 
-<link rel="stylesheet" href="/styles.css?v=71" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=72" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -168,7 +172,7 @@
 
 /* ---- more stories ---- */
 .mk-storieshead{ display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
-.mk-stories{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.mk-stories{ display: grid; grid-template-columns: 1fr; border: 1px solid var(--line); }
 @media (max-width: 860px){ .mk-stories{ grid-template-columns: 1fr; } }
 .mk-story{ background: var(--paper-card); padding: 30px 28px 34px; display: flex; flex-direction: column; min-height: 250px; text-decoration: none; color: inherit; transition: background .15s var(--ease); }
 .mk-story--feat{ background: var(--ink); color: var(--dtx); }
@@ -180,8 +184,7 @@
 .mk-story--feat p{ color: var(--dtx-mute); }
 .mk-story .go{ margin-top: auto; padding-top: 22px; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .04em; color: var(--tx-mute); }
 .mk-story--feat .go{ color: var(--accent-ink); }
-.mk-story--soon{ pointer-events: none; }
-.mk-story--soon h3, .mk-story--soon p, .mk-story--soon .go{ color: var(--tx-faint); }
+.mk-more{ margin-top: var(--s-24); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em; color: var(--tx-faint); }
 </style>
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -337,7 +340,7 @@
     <div class="mk-client" style="margin-top: 28px;">
       <div>
         <div class="mk-logoframe crop">
-          <img src="/images/bside-logo.png" alt="B:Side Capital" width="230" />
+          <img src="/images/bside-logo.png" alt="B:Side Capital" width="230" height="66" />
         </div>
         <div class="statrail" style="margin-top: 18px;">
           <div class="statrail__row"><span class="statrail__k">Type</span><span class="statrail__v">SBA 504 · CDFI</span></div>
@@ -636,19 +639,8 @@
         <p>14 agents across 7 departments, running entirely in-house. The high end of what we build.</p>
         <span class="go">You're reading it</span>
       </div>
-      <div class="mk-story mk-story--soon">
-        <span class="tag">Coming soon</span>
-        <h3>Next client story</h3>
-        <p>A new showcase build will land here once the client signs off.</p>
-        <span class="go">In progress</span>
-      </div>
-      <div class="mk-story mk-story--soon">
-        <span class="tag">Coming soon</span>
-        <h3>Next client story</h3>
-        <p>A new showcase build will land here once the client signs off.</p>
-        <span class="go">In progress</span>
-      </div>
     </div>
+    <p class="mk-more">More client stories are clearing review as each client signs off on the numbers.</p>
   </div>
 </section>
 

@@ -1555,3 +1555,23 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 .svc-detail.ink .svc-detail__card { background: var(--ink-2); border-color: var(--dline); }
 .svc-detail.ink .svc-detail__faq { border-top-color: var(--dline); }
 .svc-detail.ink .svc-detail__card .crop::after { --bc: var(--rust-ink); }
+
+/* ============ PRICING tightening ============ */
+/* row-01 "most start here" tab */
+.svc__tab { position: absolute; top: 0; left: clamp(var(--s-16), 4vw, var(--s-32)); transform: translateY(-50%); z-index: 4;
+  background: var(--rust); color: var(--paper); font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em;
+  text-transform: uppercase; padding: 5px 12px; border-radius: var(--r-sm); white-space: nowrap; }
+/* "The Math" band — real visual: our largest engagement vs a Big Four minimum */
+.math-vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(var(--s-24), 4vw, var(--s-64)); align-items: center; margin-top: var(--s-48); }
+.math-vs__col .tick-lbl { color: var(--mono-on-dark); display: block; }
+.math-vs__num { font-weight: 900; font-size: clamp(var(--fs-49), 7vw, var(--fs-78)); letter-spacing: -0.03em; line-height: 1; margin: var(--s-12) 0; color: var(--rust-ink); }
+.math-vs__num--them { color: var(--dtx-mute); }
+.math-vs__col p { color: var(--dtx-mute); font-size: var(--fs-16); line-height: 1.5; max-width: 34ch; }
+.math-vs__sep { font-family: var(--mono); font-size: var(--fs-20); color: var(--mono-on-dark); letter-spacing: .1em; text-transform: uppercase; }
+@media (max-width: 720px){ .math-vs { grid-template-columns: 1fr; gap: var(--s-32); } .math-vs__sep { justify-self: start; } }
+/* FAQ CTA as a full-width strip below the accordion */
+.faq-strip { display: flex; align-items: center; justify-content: space-between; gap: clamp(var(--s-24), 4vw, var(--s-48)); flex-wrap: wrap;
+  margin-top: var(--s-48); padding: clamp(var(--s-24), 3vw, var(--s-32)) clamp(var(--s-24), 4vw, var(--s-48));
+  background: var(--ink); border-radius: var(--r-md); }
+.faq-strip__copy h3 { color: var(--rust-ink); font-size: var(--fs-20); margin-bottom: var(--s-8); }
+.faq-strip__copy p { color: var(--dtx-mute); font-size: var(--fs-16); line-height: 1.5; max-width: 56ch; }

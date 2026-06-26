@@ -13,7 +13,7 @@ import { blogPicks, SITE_ORIGIN } from "./blog-picks.js";
 
 const WORDMARK_URL = `${SITE_ORIGIN}/images/mm-wordmark-ink-trim.png`;
 const CONTACT_EMAIL = "hello@mainandmachine.com";
-const PHONE = "480-360-5128";
+const PHONE = "480-805-9983";
 
 function postBlock(p, isFirst) {
   const url = `${SITE_ORIGIN}/blog/${p.slug}`;
@@ -176,7 +176,7 @@ ${posts}
                 <tr>
                   <td style="font-family:'Space Mono',ui-monospace,monospace; font-size:10.5px; letter-spacing:.04em; color:#6f675c; line-height:1.7;">
                     Main &amp; Machine · Denver &amp; Phoenix<br />
-                    <a href="mailto:${CONTACT_EMAIL}" style="color:#6f675c; text-decoration:none;">${CONTACT_EMAIL}</a> · <a href="tel:+14803605128" style="color:#6f675c; text-decoration:none;">${PHONE}</a>
+                    <a href="mailto:${CONTACT_EMAIL}" style="color:#6f675c; text-decoration:none;">${CONTACT_EMAIL}</a> · <a href="tel:+14808059983" style="color:#6f675c; text-decoration:none;">${PHONE}</a>
                   </td>
                   <td align="right" style="font-family:'Space Mono',ui-monospace,monospace; font-size:10.5px; letter-spacing:.04em; color:#978d7f; vertical-align:bottom;">
                     <a href="${SITE_ORIGIN}" style="color:#978d7f; text-decoration:none;">mainandmachine.com</a>

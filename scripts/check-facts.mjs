@@ -56,7 +56,7 @@ const PRICING_PAGES = ["index.html", "pricing/index.html", "llms.txt"];
 // Known-bad variants that must never appear anywhere.
 const FORBIDDEN = [
   /hello@mainandmachine\.com/, // pages show the canonical contact address only (hello@ is the mail FROM identity, functions/ only)
-  /\(480\)\s*360-5128/, // phone must be 480-360-5128, not (480) 360-5128
+  /\(480\)\s*805-9983/, // phone must be 480-805-9983, not (480) 805-9983
   /Denvor|Pheonix/, // spelling drift
   /Featured in/, // press credit is always attributed to the founder
 ];

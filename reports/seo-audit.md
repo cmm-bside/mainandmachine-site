@@ -15,7 +15,7 @@ audit (this sweep) additionally confirmed **zero empty fields** in any node and 
 | Template | Nodes present |
 |---|---|
 | `/` | ProfessionalService `#org` (full: email, phone, priceRange, addresses, slogan), WebSite `#website`, Person `#person-cmyers` |
-| `/denver/` `/phoenix/` | ProfessionalService `…/#local` with `areaServed` City→State, priceRange `$3,500 - $45,000`, telephone `+1-480-360-5128`, `parentOrganization → #org`; FAQPage; BreadcrumbList. **No PostalAddress/geo by design** — no verified street addresses exist; omitted rather than faked (see CLAUDE.md TODO). |
+| `/denver/` `/phoenix/` | ProfessionalService `…/#local` with `areaServed` City→State, priceRange `$3,500 - $45,000`, telephone `+1-480-805-9983`, `parentOrganization → #org`; FAQPage; BreadcrumbList. **No PostalAddress/geo by design** — no verified street addresses exist; omitted rather than faked (see CLAUDE.md TODO). |
 | `/pricing/` | OfferCatalog with three Offers (3500–8500 / 12000–45000 / monthly-retainer), FAQPage (4 Q&As verbatim), BreadcrumbList |
 | `/services/*` | Service node each, with `provider → #org` and real priceSpecification; BreadcrumbList |
 | `/book/` | FAQPage from the five visible "Fair questions," verbatim; BreadcrumbList |
@@ -35,7 +35,7 @@ audit (this sweep) additionally confirmed **zero empty fields** in any node and 
 **PASS.** Served live as `content-type: text/plain; charset=utf-8`. The file is
 **generated at every build** by `scripts/build-llms.mjs` from `src/data/company.mjs`
 (the same module CLAUDE.md's canonical facts mirror), so prices ($3,500–$8,500,
-$12,000–$45,000), phone (480-360-5128), cities, ~90 days, and the free assessment
+$12,000–$45,000), phone (480-805-9983), cities, ~90 days, and the free assessment
 can never drift — hand-edits are overwritten at the next build.
 
 ## 3. sitemap.xml

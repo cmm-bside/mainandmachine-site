@@ -58,7 +58,7 @@ facts drift. If a fact appears in more than 2 places in code, centralize it ther
 - Delivery: ~90 days per workflow, fixed price quoted in writing before work
 - Free offer: 30-minute AI Opportunity Assessment, reply within 24 hours
 - Locations: Denver, CO and Phoenix, AZ hubs; remote across the US
-- Contact: cmyers@mainandmachine.com · 480-360-5128
+- Contact: cmyers@mainandmachine.com · 480-805-9983
 
 These facts must be byte-identical in page copy, meta tags, JSON-LD, llms.txt, and the
 footer.

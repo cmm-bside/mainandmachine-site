@@ -66,9 +66,9 @@ export const COMPANY = {
   coverage: "Remote across the US",
 
   email: "cmyers@mainandmachine.com",
-  phone: "480-360-5128", // display form
-  phoneE164: "+1-480-360-5128", // schema.org / JSON-LD form
-  phoneHref: "tel:+14803605128",
+  phone: "480-805-9983", // display form
+  phoneE164: "+1-480-805-9983", // schema.org / JSON-LD form
+  phoneHref: "tel:+14808059983",
 
   // Press credit is ALWAYS attributed to the founder, never the company.
   press: [

@@ -172,7 +172,7 @@ function searchBar(placeholder) {
 
 function emptyState(subscribeUrl) {
 	const cta = subscribeUrl
-		? `<a class="btn btn--accent btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Get the weekly essay →</a>`
+		? `<a class="btn btn--primary btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Get the weekly essay →</a>`
 		: "";
 	return `<div class="feed__empty crop">
   <span class="kicker kicker--plain">${esc(BLOG_NAME)}</span>
@@ -499,8 +499,8 @@ ${readNext.length
       <h2 class="h2 mt-s">Like how we think? Put it to work.</h2>
       <p class="lead">This is the kind of workflow the free assessment maps. Thirty minutes, no pitch.</p>
       <div class="essay__cta-actions">
-        <a class="btn btn--accent btn--lg" href="/book/">Book a free assessment →</a>
-        <a class="btn btn--ghost btn--lg" href="/pricing/">See what it costs →</a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment →</a>
+        <a class="btn btn--secondary btn--lg" href="/pricing/">See what it costs →</a>
       </div>
     </div>
   </div>

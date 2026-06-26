@@ -187,7 +187,7 @@ export function nav() {
       <a href="/careers/">Careers</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--accent" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -208,7 +208,7 @@ export function footer() {
         <div>
           <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
             <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
-            <button class="btn btn--accent" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
           </form>
           <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
         </div>
@@ -280,7 +280,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
         <p class="lead" style="font-size:15px;">Free weekly essays. One field. No sales pitches.</p>
         <form class="subform" data-beehiiv-subscribe action="${attr(action)}" method="get" target="_blank">
           <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
-          <button class="btn btn--accent" type="submit">Get the weekly essay →</button>
+          <button class="btn btn--primary" type="submit">Get the weekly essay →</button>
         </form>
         <p style="font-family:var(--mono);font-size:11px;color:var(--dtx-faint);margin-top:14px;line-height:1.6;">Delivered by beehiiv. No spam, unsubscribe anytime.</p>
       </div>

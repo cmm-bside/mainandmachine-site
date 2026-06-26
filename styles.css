@@ -124,26 +124,31 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .measure { max-width: 56ch; }
 
 /* ---------- buttons ---------- */
+/* ============ BUTTON COMPONENT — one base, three variants ============ */
 .btn {
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 52px; padding: 0 22px; border-radius: var(--r-md);
   font-family: var(--sans); font-weight: 700; font-size: var(--fs-16);
-  padding: 15px 24px; border: 1px solid transparent; cursor: pointer;
-  transition: transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease;
-  letter-spacing: -0.01em;
-  min-height: 44px; /* touch floor — smaller-padded variants stay tappable */
+  letter-spacing: -0.01em; white-space: nowrap; cursor: pointer;
+  border: 1.5px solid transparent;        /* identical box to --secondary's border */
+  box-shadow: var(--shadow-btn);
+  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
 }
 .btn:active { transform: translateY(1px); }
-.btn--accent { background: var(--flame); color: var(--ink); }
-.btn--accent:hover { background: var(--flame-deep); }
-.btn--ink { background: var(--ink); color: var(--cream); }
-.btn--ink:hover { background: #000; }
-.btn--ghost { background: transparent; color: var(--tx); border-color: var(--line); }
-.btn--ghost:hover { border-color: var(--tx); }
-.ink .btn--ghost { color: var(--dtx); border-color: var(--dline); }
-.ink .btn--ghost:hover { border-color: var(--dtx); }
-.btn--lg { padding: 18px 30px; font-size: var(--fs-16); }
-.btn .arr { transition: transform .2s ease; }
+.btn .arr { transition: transform .2s var(--ease); }
 .btn:hover .arr { transform: translateX(3px); }
+.btn--lg { padding: 0 30px; }
+/* PRIMARY — rust fill, paper text */
+.btn--primary { background: var(--rust); color: var(--paper); }
+.btn--primary:hover { background: var(--rust-bright); }
+/* SECONDARY — outlined; same height/padding/baseline as primary; ink fill on hover */
+.btn--secondary { background: transparent; border-color: var(--ink); color: var(--ink); box-shadow: none; }
+.btn--secondary:hover { background: var(--ink); color: var(--paper); }
+.ink .btn--secondary { border-color: var(--dline); color: var(--dtx); }
+.ink .btn--secondary:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+/* GHOST — text + arrow only, no box (tertiary actions) */
+.btn--ghost { height: auto; padding: 0; border: 0; background: transparent; box-shadow: none; color: var(--rust); }
+.ink .btn--ghost { color: var(--rust-ink); }
 
 /* ---------- bits ---------- */
 .rule { height: 1px; background: var(--line); border: 0; }
@@ -180,7 +185,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .nav__links a.is-active { color: var(--rust); }
 .nav__links a.is-active::after { transform:scaleX(1); }
 .nav__right { margin-left: auto; display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
-.nav__right .btn--accent { white-space: nowrap; flex-shrink: 0; }
+.nav__right .btn--primary { white-space: nowrap; flex-shrink: 0; }
 .nav__pricing { font-size: var(--fs-16); font-weight: 600; }
 
 /* Services dropdown — desktop flyout (hover/focus + caret toggle); nested in
@@ -305,7 +310,6 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .statrail__v { font-weight: 800; font-size: var(--fs-20); letter-spacing: -0.02em; }
 .statrail__v .accent-tx { font-weight: 900; }
 .statrail__v--sm { font-size: var(--fs-13); font-weight: 700; letter-spacing: 0; text-align: right; line-height: 1.4; }
-.hero__cta .btn--ghost { border-width: 1.5px; }  /* outlined secondary, 1.5px per spec */
 
 /* operator log strip */
 .oplog { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: clamp(56px, 7vw, 96px); }
@@ -335,8 +339,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .path__no { font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .12em; color: var(--accent-text); text-transform: uppercase; }
 .path h3 { margin: 22px 0 14px; font-size: var(--fs-25); line-height: 1.12; font-weight: 800; }
 .path p { color: var(--tx-mute); font-size: var(--fs-16); flex: 1; }
-.path__cta { margin-top: 22px; font-weight: 700; font-size: var(--fs-16); display:inline-flex; gap: var(--s-8); align-items:center; color: var(--accent-text); }
-.path__cta:hover { gap: var(--s-12); }
+.path__cta { margin-top: var(--s-24); align-self: flex-start; }
 
 /* =========================================================
    COMPETITORS (ink) + data
@@ -642,7 +645,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .signup__input{ flex:1; min-width:0; background:var(--ink); border:1px solid var(--dline); color:var(--dtx); padding:14px 16px; font-family:var(--sans); font-size: var(--fs-13); }
 .signup__input::placeholder{ color:var(--mono-on-dark); }
 .signup__input:focus{ outline:none; border-color:var(--accent-ink); }
-.signup .btn--accent{ white-space:nowrap; }
+.signup .btn--primary{ white-space:nowrap; }
 .signup__note{ font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.02em; color:var(--mono-on-dark); margin-top:10px; }
 
 .foot__bottom { display:flex; flex-wrap: wrap; gap: 18px; align-items:center; justify-content: space-between; padding: 26px 0 40px; }
@@ -831,8 +834,6 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .statrail__row:hover{ background: color-mix(in srgb, var(--accent) 5%, transparent); }
 
 /* ---------- button polish ---------- */
-.btn--accent{ box-shadow: var(--shadow-btn); }   /* clean button component — no glow */
-.btn--accent:hover{ transform: translateY(-2px); }
 .btn--lg .arr{ font-size: inherit; }
 
 /* ---------- card hover signature ---------- */
@@ -1101,7 +1102,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
   .logo__word{ font-size: var(--fs-16); }
   .logo{ padding-block:5px; margin-block:-5px; }
   .nav__right{ gap:6px; }
-  .nav__right .btn--accent{ padding:12px 13px; font-size: var(--fs-13); box-shadow:none; white-space:nowrap; }
+  .nav__right .btn--primary{ padding:12px 13px; font-size: var(--fs-13); box-shadow:none; white-space:nowrap; }
   .nav__toggle{ width:40px; margin-right:-6px; }
 
   /* 44px touch rows for the stacked footer nav */

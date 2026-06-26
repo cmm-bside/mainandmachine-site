@@ -431,8 +431,8 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .phase h3 + span { font-family: var(--mono); font-size: var(--fs-13); color: var(--mono-on-dark); letter-spacing: .08em; text-transform: uppercase; }
 .phase > p { color: var(--dtx-mute); font-size: var(--fs-16); margin: 18px 0 22px; }
 .phase ul { list-style: none; display:flex; flex-direction: column; gap: var(--s-12); border-top: 1px solid var(--dline-soft); padding-top: var(--s-16); }
-.phase li { font-family: var(--mono); font-size: var(--fs-13); color: var(--dtx-mute); padding-left: 18px; position: relative; letter-spacing: .02em; }
-.phase li::before { content: "›"; position:absolute; left:0; color: var(--accent-ink); }
+.phase li { font-family: var(--mono); font-size: var(--fs-13); color: var(--on-ink); padding-left: 18px; position: relative; letter-spacing: .02em; }
+.phase li::before { content: "›"; position:absolute; left:0; color: var(--rust); }
 
 /* =========================================================
    STORY / DIFFERENTIATORS
@@ -584,9 +584,9 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 /* =========================================================
    PROMISE — two columns
    ========================================================= */
-.promise { display:grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); }
+.promise { display:grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); align-items: stretch; }
 @media (max-width: 820px){ .promise { grid-template-columns: 1fr; } }
-.promise__col { padding: 34px 32px 38px; }
+.promise__col { padding: var(--s-32); }
 .promise__col--do { border-right: 1px solid var(--line); }
 .promise__col--dont { background: var(--ink); color: var(--dtx); }
 @media (max-width: 820px){ .promise__col--do { border-right:0; border-bottom:1px solid var(--line);} }
@@ -1555,6 +1555,15 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 .svc-detail.ink .svc-detail__card { background: var(--ink-2); border-color: var(--dline); }
 .svc-detail.ink .svc-detail__faq { border-top-color: var(--dline); }
 .svc-detail.ink .svc-detail__card .crop::after { --bc: var(--rust-ink); }
+
+/* ============ METHOD: first-90-days timeline ============ */
+.timeline90 { display: flex; margin-top: var(--s-48); border: 1px solid var(--hairline); border-radius: var(--r-md); overflow: hidden; }
+.timeline90__seg { padding: clamp(var(--s-16), 2.4vw, var(--s-24)); border-left: 1px solid var(--hairline); min-width: 0; }
+.timeline90__seg:first-child { border-left: 0; }
+.timeline90__weeks { display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--rust); }
+.timeline90__phase { display: block; font-weight: 700; font-size: var(--fs-20); letter-spacing: -0.01em; margin: var(--s-8) 0 var(--s-4); color: var(--ink); }
+.timeline90__seg p { font-size: var(--fs-13); color: var(--tx-mute); line-height: 1.4; }
+@media (max-width: 680px){ .timeline90 { flex-direction: column; } .timeline90__seg { border-left: 0; border-top: 1px solid var(--hairline); } .timeline90__seg:first-child { border-top: 0; } }
 
 /* ============ PRICING tightening ============ */
 /* row-01 "most start here" tab */

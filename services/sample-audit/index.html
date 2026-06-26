@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="See the document every AI Readiness Audit ends in. $3,500–$8,500, 2 to 4 weeks, owned by you. From Denver, CO and Phoenix, AZ — remote across the US." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/sample-audit.png" />
 
-<link rel="stylesheet" href="/styles.css?v=54" />
+<link rel="stylesheet" href="/styles.css?v=55" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -46,12 +46,12 @@
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 24px;
   padding: 14px 20px; border-bottom: 1px solid var(--line);
   background: linear-gradient(var(--paper-2), var(--paper-card));
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute);
+  font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute);
 }
 .doc__bar b { color: var(--accent); font-weight: 700; }
 .doc__body { padding: clamp(22px, 3.4vw, 40px); }
-.doc__body h2 { font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -0.01em; margin: 6px 0 8px; }
-.doc__sub { font-family: var(--mono); font-size: 12px; color: var(--tx-mute); line-height: 1.6; margin-bottom: 24px; }
+.doc__body h2 { font-size: clamp(var(--fs-20), 2.2vw, var(--fs-25)); letter-spacing: -0.01em; margin: 6px 0 8px; }
+.doc__sub { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-mute); line-height: 1.6; margin-bottom: 24px; }
 
 /* redaction bars */
 .redact {
@@ -62,14 +62,14 @@
 .redact--lg { min-width: 130px; }
 
 /* workflow map table */
-.map { width: 100%; border-collapse: collapse; font-size: 13.5px; background: #fff; }
+.map { width: 100%; border-collapse: collapse; font-size: var(--fs-13); background: #fff; }
 .map th {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase;
   color: var(--tx-mute); text-align: left; font-weight: 700;
   padding: 10px 12px; border: 1px solid var(--line); background: var(--paper-2);
 }
 .map td { padding: 11px 12px; border: 1px solid var(--line); color: var(--tx-mute); vertical-align: top; line-height: 1.5; }
-.map td:first-child { font-family: var(--mono); font-size: 11.5px; color: var(--accent); white-space: nowrap; }
+.map td:first-child { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent); white-space: nowrap; }
 .map-wrap { overflow-x: auto; }
 
 /* At phone widths the five-column map can't fit — restack each row into a
@@ -86,7 +86,7 @@
   .map td + td { border-top: 1px dashed var(--line); margin-top: 9px; }
   .map td:first-child { padding-top: 0; }
   .map td::before {
-    display: block; font-family: var(--mono); font-size: 10px; font-weight: 700;
+    display: block; font-family: var(--mono); font-size: var(--fs-12); font-weight: 700;
     letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute);
     margin-bottom: 3px;
   }
@@ -101,19 +101,19 @@
 .rank { list-style: none; display: flex; flex-direction: column; }
 .rank li { display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 20px 0; border-top: 1px dashed var(--line); }
 .rank li:first-child { border-top: 0; padding-top: 0; }
-.rank__no { font-family: var(--mono); font-size: 20px; font-weight: 700; color: var(--accent); line-height: 1.2; }
-.rank h3 { font-size: 17px; letter-spacing: -0.01em; margin-bottom: 6px; }
-.rank p { font-size: 14px; line-height: 1.6; color: var(--tx-mute); }
+.rank__no { font-family: var(--mono); font-size: var(--fs-20); font-weight: 700; color: var(--accent); line-height: 1.2; }
+.rank h3 { font-size: var(--fs-16); letter-spacing: -0.01em; margin-bottom: 6px; }
+.rank p { font-size: var(--fs-13); line-height: 1.6; color: var(--tx-mute); }
 .rank__tags { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; }
 .rank__tags span {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute);
+  font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute);
 }
 .rank__tags b { color: var(--tx); font-weight: 700; }
 
 /* caption + actions */
 .doc-caption { max-width: 920px; margin: 28px auto 0; }
-.doc-caption .big { font-size: clamp(18px, 1.8vw, 22px); font-weight: 800; letter-spacing: -0.01em; color: var(--tx); }
-.doc-caption p { margin-top: 8px; font-size: 15px; line-height: 1.6; color: var(--tx-mute); max-width: 70ch; }
+.doc-caption .big { font-size: var(--fs-20); font-weight: 800; letter-spacing: -0.01em; color: var(--tx); }
+.doc-caption p { margin-top: 8px; font-size: var(--fs-16); line-height: 1.6; color: var(--tx-mute); max-width: 70ch; }
 .doc-actions { max-width: 920px; margin: 24px auto 0; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
 /* ---- print: just the two document pages, clean on white ---- */

@@ -56,7 +56,7 @@ body {
   font-size: var(--fs-16);
   background: var(--cream);
   color: var(--tx);
-  line-height: 1.6;
+  line-height: 1.58;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -85,9 +85,9 @@ a { color: inherit; text-decoration: none; }
 /* ---------- type ---------- */
 .kicker {
   font-family: var(--mono);
-  font-size: var(--fs-13);
+  font-size: var(--fs-12);
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
@@ -108,12 +108,12 @@ a { color: inherit; text-decoration: none; }
 .ink .eyebrow { color: var(--dtx-mute); }
 
 h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-wrap: balance; }
-.h-hero { font-size: clamp(var(--fs-39),7vw,var(--fs-110)); font-weight: 900; letter-spacing: -0.025em; line-height: 0.98; }
+.h-hero { font-size: clamp(var(--fs-49),5.6vw,var(--fs-78)); font-weight: 900; letter-spacing: -0.022em; line-height: 0.98; }
 /* hero headline: capped so it can't balloon; max-width holds it to ~3 lines */
-.hero__headline { font-size: clamp(46px, 5.4vw, 84px); line-height: 0.95; letter-spacing: -0.025em; max-width: 12ch; }
+.hero__headline { font-size: clamp(var(--fs-49), 5.6vw, var(--fs-78)); line-height: 0.98; letter-spacing: -0.022em; max-width: 12ch; }
 /* section headings: capped display size + intentional wrap (not ragged) */
-.h2     { font-size: clamp(32px, 3.8vw, 60px); line-height: 1.06; letter-spacing: -0.02em; max-width: 18ch; text-wrap: balance; }
-.h3     { font-size: clamp(var(--fs-20),2.4vw,var(--fs-31)); }
+.h2     { font-size: var(--fs-39); line-height: 1.0; letter-spacing: -0.02em; max-width: 18ch; text-wrap: balance; }
+.h3     { font-size: var(--fs-20); line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; }
 .lead   { font-size: var(--fs-20); line-height: 1.55; color: var(--tx-mute); max-width: 60ch; }
 .ink .lead { color: var(--dtx-mute); }
 
@@ -156,7 +156,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 
 /* numeric ticker */
 .tick-num { font-family: var(--sans); font-weight: 900; letter-spacing: -0.03em; line-height: 0.9; }
-.tick-lbl { font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .12em; text-transform: uppercase; color: var(--label); }
+.tick-lbl { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--mono-on-cream); }
 .ink .tick-lbl { color: var(--dtx-mute); }
 
 /* =========================================================
@@ -315,7 +315,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .oplog__cell .tick-num { font-size: clamp(var(--fs-31),4vw,var(--fs-49)); }
 .oplog__cell p { font-size: var(--fs-13); color: var(--tx-mute); margin-top: var(--s-12); line-height: 1.45; }
 .founder { margin-top: 40px; display:flex; gap: 22px; align-items:flex-start; }
-.founder p { color: var(--tx-mute); font-size: var(--fs-16); max-width: 70ch; }
+.founder p { color: var(--tx-mute); font-size: var(--fs-16); max-width: 66ch; }
 
 /* =========================================================
    PATHS — three doors
@@ -599,7 +599,7 @@ summary .q-no { font-family: var(--mono); font-size: var(--fs-13); color: var(--
 summary .q-tx { font-weight: 700; font-size: var(--fs-16); flex: 1; letter-spacing: -0.01em; }
 summary .q-pm { font-family: var(--mono); font-size: var(--fs-20); color: var(--tx-mute); transition: transform .2s; }
 details[open] summary .q-pm { transform: rotate(45deg); }
-details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs-16); line-height: 1.6; max-width: 70ch; }
+details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs-16); line-height: 1.6; max-width: 66ch; }
 .faq__aside { background: var(--ink); color: var(--dtx); padding: 30px; }
 .faq__aside p { color: var(--dtx-mute); font-size: var(--fs-13); margin: 14px 0 22px; }
 
@@ -757,7 +757,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .ticker:hover .ticker__track{ animation-play-state:paused; }   /* pause on hover */
 .ticker__group{ display:flex; align-items:center; gap:0; }
 .ticker__item{
-  font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.12em;
+  font-family:'Space Mono',monospace; font-size:var(--fs-12); letter-spacing:.12em;
   line-height:1; white-space:nowrap; color:rgba(239,233,221,.72);
   padding:0 26px; position:relative;
 }
@@ -1021,7 +1021,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 /* ---- closer line ---- */
 .closer{ margin-top:40px; padding-top:30px; border-top:1px solid var(--dline); display:flex; gap:22px; align-items:flex-start; }
 .closer .kicker{ white-space:nowrap; }
-.closer p{ font-size: var(--fs-16); color:var(--dtx-mute); max-width:74ch; line-height:1.55; }
+.closer p{ font-size: var(--fs-16); color:var(--dtx-mute); max-width:66ch; line-height:1.55; }
 .closer p b{ color: var(--dtx); font-weight:700; }
 @media(max-width:620px){ .closer{ flex-direction:column; gap:var(--s-12); } }
 
@@ -1493,3 +1493,13 @@ textarea:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
     var(--l) var(--t), var(--t) var(--l),
     var(--l) var(--t), var(--t) var(--l);
 }
+
+
+/* ============ TYPOGRAPHY: scale enforcement, measure, balanced wrap ============
+   Optical display tracking: -.022em on hero (40px+), -.02em section, easing to
+   -.01em on card headings (20px) — applied per role above. */
+h3 { line-height: 1.15; font-weight: 700; }
+/* 66ch measure on every body paragraph + pretty wrap to kill widows/orphans */
+p { max-width: 66ch; text-wrap: pretty; }
+/* headings balance their wrap (no lonely last word) */
+h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }

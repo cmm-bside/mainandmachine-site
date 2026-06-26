@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="Custom agents, automations and integrations for small business. Audits from $3,500, sprints to $45,000, about 90 days. Denver, Phoenix and remote US." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/services.png" />
 
-<link rel="stylesheet" href="/styles.css?v=54" />
+<link rel="stylesheet" href="/styles.css?v=55" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -44,13 +44,13 @@
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 28px;
   padding: 14px 20px; border-bottom: 1px solid var(--line);
   background: linear-gradient(var(--paper-2), var(--paper-card));
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute);
+  font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute);
 }
 .case__no { color: var(--accent); font-weight: 700; }
 .case__fields { display: flex; flex-wrap: wrap; gap: 10px 24px; }
 .case__fields span b { color: var(--tx); font-weight: 700; }
 .case__frame { padding: clamp(22px, 3vw, 32px); border-bottom: 1px solid var(--line); }
-.case__frame p { font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; max-width: 72ch; color: var(--tx); }
+.case__frame p { font-size: clamp(var(--fs-16), 1.4vw, var(--fs-20)); line-height: 1.65; max-width: 72ch; color: var(--tx); }
 .case__cols { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); }
 @media (max-width: 760px) { .case__cols { grid-template-columns: 1fr; } }
 .case__col { padding: clamp(22px, 3vw, 30px); }
@@ -58,9 +58,9 @@
 @media (max-width: 760px) { .case__col + .case__col { border-left: 0; border-top: 1px solid var(--line); } }
 .case__col .tick-lbl { display: block; margin-bottom: 16px; }
 .case__steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 14px; }
-.case__steps li { counter-increment: step; display: flex; gap: 14px; font-size: 14.5px; line-height: 1.6; color: var(--tx-mute); }
+.case__steps li { counter-increment: step; display: flex; gap: 14px; font-size: var(--fs-16); line-height: 1.6; color: var(--tx-mute); }
 .case__steps li::before {
-  content: "0" counter(step); font-family: var(--mono); font-size: 12px; color: var(--accent-text);
+  content: "0" counter(step); font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-text);
   letter-spacing: .08em; padding-top: 3px; flex: 0 0 auto;
 }
 .case__results { padding: clamp(22px, 3vw, 30px); border-bottom: 1px solid var(--line); }
@@ -71,18 +71,18 @@
 .case__stat:last-child { border-right: 0; }
 @media (max-width: 560px) { .case__stat { border-right: 0; border-bottom: 1px solid var(--line); } .case__stat:last-child { border-bottom: 0; } }
 .case__stat .tick-lbl { display: block; margin-bottom: 8px; }
-.case__stat .stat-val { font-family: var(--mono); font-size: 18px; font-weight: 700; letter-spacing: .04em; color: var(--accent); }
-.case__caption { margin-top: 14px; font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--tx-mute); max-width: 64ch; }
+.case__stat .stat-val { font-family: var(--mono); font-size: var(--fs-20); font-weight: 700; letter-spacing: .04em; color: var(--accent); }
+.case__caption { margin-top: 14px; font-family: var(--mono); font-size: var(--fs-12); line-height: 1.6; color: var(--tx-mute); max-width: 64ch; }
 .case__log { border: 1px solid var(--line); background: #fff; padding: 18px 20px; }
 .case__log .tick-lbl { display: block; margin-bottom: 8px; }
-.case__log p { font-size: 14.5px; line-height: 1.6; color: var(--tx-mute); max-width: 64ch; }
+.case__log p { font-size: var(--fs-16); line-height: 1.6; color: var(--tx-mute); max-width: 64ch; }
 .case__quote { padding: clamp(22px, 3vw, 30px); }
 .case__quote .tick-lbl { display: block; margin-bottom: 14px; }
 .case__quote blockquote {
   border-left: 3px solid var(--accent); padding: 6px 0 6px 18px;
-  font-size: 17px; line-height: 1.6; color: var(--tx); font-style: italic;
+  font-size: var(--fs-16); line-height: 1.6; color: var(--tx); font-style: italic;
 }
-.case__quote cite { display: block; margin-top: 10px; font-family: var(--mono); font-style: normal; font-size: 12px; color: var(--tx-mute); }
+.case__quote cite { display: block; margin-top: 10px; font-family: var(--mono); font-style: normal; font-size: var(--fs-12); color: var(--tx-mute); }
 
 /* quiet linking inside build cards */
 .build h3 a { color: inherit; text-decoration: none; }

@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="14 AI agents running a regulated lender's back office entirely in-house, with no borrower file leaving the building. Published with B:Side Capital's permission." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/work.png" />
 
-<link rel="stylesheet" href="/styles.css?v=54" />
+<link rel="stylesheet" href="/styles.css?v=55" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -41,13 +41,13 @@
    ========================================================= */
 
 /* ---- type helpers ---- */
-.mk-display{ font-size: clamp(40px, 6.4vw, 86px); line-height: .99; letter-spacing: -.022em; font-weight: 900; margin: 0; text-wrap: balance; }
-.mk-body{ font-size: 18px; line-height: 1.62; color: var(--tx-mute); }
+.mk-display{ font-size: clamp(var(--fs-39), 6.4vw, var(--fs-78)); line-height: .99; letter-spacing: -.022em; font-weight: 900; margin: 0; text-wrap: balance; }
+.mk-body{ font-size: var(--fs-20); line-height: 1.62; color: var(--tx-mute); }
 .ink .mk-body{ color: var(--dtx-mute); }
 .mk-body strong{ color: var(--tx); font-weight: 700; }
 .ink .mk-body strong{ color: #fff; }
-.mk-note{ font-family: var(--mono); font-size: 12px; color: var(--tx-faint); letter-spacing: .02em; }
-.mk-overline{ font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 16px; }
+.mk-note{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); letter-spacing: .02em; }
+.mk-overline{ font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 16px; }
 .ink .mk-overline{ color: var(--accent-ink); }
 
 /* ---- hero ---- */
@@ -70,31 +70,31 @@
 @media (max-width: 820px){ .mk-client{ grid-template-columns: 1fr; } }
 .mk-logoframe{ border: 1px solid var(--line); background: var(--paper-card); padding: 38px 30px; display: grid; place-items: center; min-height: 150px; }
 .mk-logoframe img{ width: 230px; max-width: 100%; height: auto; display: block; }
-.mk-punch{ font-size: clamp(22px, 2.3vw, 30px); font-weight: 800; letter-spacing: -.02em; line-height: 1.14; margin: 30px 0 0; }
+.mk-punch{ font-size: clamp(var(--fs-20), 2.3vw, var(--fs-31)); font-weight: 800; letter-spacing: -.02em; line-height: 1.14; margin: 30px 0 0; }
 
 /* ---- problem brief ---- */
-.mk-brief{ border-left: 2px solid var(--accent-ink); padding: 6px 0 6px 26px; margin: 40px 0 0; font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; letter-spacing: -.02em; line-height: 1.18; max-width: 26ch; color: #fff; }
+.mk-brief{ border-left: 2px solid var(--accent-ink); padding: 6px 0 6px 26px; margin: 40px 0 0; font-size: clamp(var(--fs-20), 2.5vw, var(--fs-31)); font-weight: 800; letter-spacing: -.02em; line-height: 1.18; max-width: 26ch; color: #fff; }
 
 /* ---- four surfaces ---- */
 .mk-surfaces{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 18px; }
 @media (max-width: 900px){ .mk-surfaces{ grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px){ .mk-surfaces{ grid-template-columns: 1fr; } }
 .mk-surface{ background: var(--paper-card); padding: 26px 24px 30px; }
-.mk-surface .n{ font-family: var(--mono); font-size: 12px; color: var(--tx-faint); }
-.mk-surface h3{ font-weight: 800; font-size: 18px; letter-spacing: -.01em; margin: 14px 0 8px; }
-.mk-surface p{ font-size: 14.5px; color: var(--tx-mute); line-height: 1.5; margin: 0; }
-.mk-surface .tool{ display: block; margin-top: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.mk-surface .n{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); }
+.mk-surface h3{ font-weight: 800; font-size: var(--fs-20); letter-spacing: -.01em; margin: 14px 0 8px; }
+.mk-surface p{ font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.5; margin: 0; }
+.mk-surface .tool{ display: block; margin-top: 16px; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
 
 /* ---- stat row ---- */
 .mk-stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 56px; }
 @media (max-width: 760px){ .mk-stats{ grid-template-columns: 1fr; } }
 .mk-stat{ background: var(--paper-card); padding: 36px 32px; }
-.mk-stat .tick-num{ font-size: clamp(44px, 5vw, 68px); color: var(--accent); }
-.mk-stat .l{ font-size: 16px; font-weight: 700; margin-top: 14px; letter-spacing: -.01em; }
-.mk-stat .s{ font-family: var(--mono); font-size: 12px; color: var(--tx-faint); margin-top: 8px; line-height: 1.45; }
+.mk-stat .tick-num{ font-size: clamp(var(--fs-49), 5vw, var(--fs-61)); color: var(--accent); }
+.mk-stat .l{ font-size: var(--fs-16); font-weight: 700; margin-top: 14px; letter-spacing: -.01em; }
+.mk-stat .s{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); margin-top: 8px; line-height: 1.45; }
 
 /* ---- lifecycle breadcrumb ---- */
-.mk-life{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--tx-faint); margin: 38px 0 18px; }
+.mk-life{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--tx-faint); margin: 38px 0 18px; }
 .mk-life .s{ color: var(--tx-mute); }
 .mk-life .a{ color: var(--accent); }
 
@@ -103,18 +103,18 @@
 .mk-dept{ display: grid; grid-template-columns: 210px 1fr; align-items: stretch; border-bottom: 1px solid var(--line); }
 .mk-dept:last-child{ border-bottom: 0; }
 .mk-dept__l{ padding: 22px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 7px; justify-content: center; background: var(--paper-2); }
-.mk-dept__l .i{ font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--accent); }
-.mk-dept__l .n{ font-weight: 800; font-size: 17px; letter-spacing: -.01em; line-height: 1.12; }
-.mk-dept__l .c{ font-family: var(--mono); font-size: 11px; color: var(--tx-faint); }
+.mk-dept__l .i{ font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; color: var(--accent); }
+.mk-dept__l .n{ font-weight: 800; font-size: var(--fs-16); letter-spacing: -.01em; line-height: 1.12; }
+.mk-dept__l .c{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); }
 .mk-agents{ display: flex; flex-wrap: wrap; gap: 0; }
 .mk-agent{ flex: 1 1 0; min-width: 190px; padding: 20px 22px; border-right: 1px solid var(--line-soft); display: flex; flex-direction: column; gap: 6px; transition: background .15s ease; }
 .mk-agent:last-child{ border-right: 0; }
 .mk-agent:hover{ background: #fff; }
-.mk-agent .i{ font-family: var(--mono); font-size: 11px; color: var(--tx-faint); letter-spacing: .06em; }
-.mk-agent .t{ font-weight: 700; font-size: 16px; letter-spacing: -.01em; line-height: 1.16; }
-.mk-agent .src{ margin-top: 4px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; }
+.mk-agent .i{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); letter-spacing: .06em; }
+.mk-agent .t{ font-weight: 700; font-size: var(--fs-16); letter-spacing: -.01em; line-height: 1.16; }
+.mk-agent .src{ margin-top: 4px; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .04em; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; }
 .mk-agent .src::before{ content: "\21B3"; }
-.mk-mapfoot{ font-family: var(--mono); font-size: 11.5px; color: var(--tx-faint); letter-spacing: .02em; margin-top: 18px; }
+.mk-mapfoot{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); letter-spacing: .02em; margin-top: 18px; }
 @media (max-width: 720px){
   .mk-dept{ grid-template-columns: 1fr; }
   .mk-dept__l{ border-right: 0; border-bottom: 1px solid var(--line); }
@@ -128,33 +128,33 @@
 @media (max-width: 900px){ .mk-priv{ grid-template-columns: 1fr; gap: 40px; } }
 .mk-layers{ display: grid; gap: 14px; }
 .mk-layer{ border: 1px solid var(--dline); padding: 22px 24px; display: grid; grid-template-columns: 38px 1fr; gap: 18px; align-items: start; background: var(--ink-2); }
-.mk-layer .ln{ font-family: var(--mono); font-size: 13px; color: var(--accent-ink); padding-top: 3px; }
-.mk-layer h3{ font-weight: 800; font-size: 18px; letter-spacing: -.01em; color: #fff; margin: 0 0 5px; }
-.mk-layer p{ font-size: 14.5px; color: var(--dtx-mute); line-height: 1.52; margin: 0; }
+.mk-layer .ln{ font-family: var(--mono); font-size: var(--fs-13); color: var(--accent-ink); padding-top: 3px; }
+.mk-layer h3{ font-weight: 800; font-size: var(--fs-20); letter-spacing: -.01em; color: #fff; margin: 0 0 5px; }
+.mk-layer p{ font-size: var(--fs-16); color: var(--dtx-mute); line-height: 1.52; margin: 0; }
 .mk-closet{ border: 1.5px solid var(--dline); padding: 22px; position: relative; }
-.mk-closet__tag{ font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--dtx-faint); display: flex; justify-content: space-between; margin-bottom: 18px; }
+.mk-closet__tag{ font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--dtx-faint); display: flex; justify-content: space-between; margin-bottom: 18px; }
 .mk-box{ border: 1px solid var(--dline); padding: 16px 18px; margin-bottom: 12px; background: rgba(0,0,0,.25); }
 .mk-box:last-of-type{ margin-bottom: 0; }
-.mk-box h4{ font-weight: 700; font-size: 15.5px; color: #fff; letter-spacing: -.01em; margin: 0; }
-.mk-box .d{ font-family: var(--mono); font-size: 11px; color: var(--dtx-faint); letter-spacing: .04em; margin-top: 4px; }
+.mk-box h4{ font-weight: 700; font-size: var(--fs-16); color: #fff; letter-spacing: -.01em; margin: 0; }
+.mk-box .d{ font-family: var(--mono); font-size: var(--fs-12); color: var(--dtx-faint); letter-spacing: .04em; margin-top: 4px; }
 .mk-box--core{ border-color: rgba(236,108,61,.5); background: rgba(189,69,31,.12); }
 .mk-box--core h4{ color: var(--accent-ink); }
-.mk-flowarrow{ text-align: center; color: var(--accent-ink); font-family: var(--mono); font-size: 14px; margin: 2px 0 12px; }
-.mk-ext{ margin-top: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; color: var(--dtx-faint); text-align: center; padding-top: 16px; border-top: 1px dashed var(--dline); }
+.mk-flowarrow{ text-align: center; color: var(--accent-ink); font-family: var(--mono); font-size: var(--fs-13); margin: 2px 0 12px; }
+.mk-ext{ margin-top: 16px; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .04em; color: var(--dtx-faint); text-align: center; padding-top: 16px; border-top: 1px dashed var(--dline); }
 .mk-ext b{ color: var(--dtx-mute); font-weight: 500; }
 
 /* ---- operating principle ---- */
 .mk-flow{ display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 56px; border: 1px solid var(--line); }
 .mk-flow__step{ padding: 30px 28px; border-right: 1px solid var(--line); background: var(--paper-card); }
 .mk-flow__step:last-child{ border-right: 0; }
-.mk-flow__step .n{ font-family: var(--mono); font-size: 12px; color: var(--accent-text); letter-spacing: .1em; }
-.mk-flow__step h3{ font-weight: 800; font-size: 19px; letter-spacing: -.01em; margin: 14px 0 8px; }
-.mk-flow__step p{ font-size: 15px; color: var(--tx-mute); line-height: 1.5; margin: 0; }
+.mk-flow__step .n{ font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-text); letter-spacing: .1em; }
+.mk-flow__step h3{ font-weight: 800; font-size: var(--fs-20); letter-spacing: -.01em; margin: 14px 0 8px; }
+.mk-flow__step p{ font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.5; margin: 0; }
 @media (max-width: 800px){ .mk-flow{ grid-template-columns: 1fr; } .mk-flow__step{ border-right: 0; border-bottom: 1px solid var(--line); } .mk-flow__step:last-child{ border-bottom: 0; } }
 .mk-rules{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
 .mk-rule{ border-top: 2px solid var(--ink); padding-top: 16px; }
-.mk-rule h4{ font-weight: 700; font-size: 16px; letter-spacing: -.01em; margin: 0 0 6px; }
-.mk-rule p{ font-size: 14.5px; color: var(--tx-mute); margin: 0; }
+.mk-rule h4{ font-weight: 700; font-size: var(--fs-16); letter-spacing: -.01em; margin: 0 0 6px; }
+.mk-rule p{ font-size: var(--fs-16); color: var(--tx-mute); margin: 0; }
 @media (max-width: 760px){ .mk-rules{ grid-template-columns: 1fr; gap: 18px; } }
 
 /* ---- outcome ---- */
@@ -172,13 +172,13 @@
 @media (max-width: 860px){ .mk-stories{ grid-template-columns: 1fr; } }
 .mk-story{ background: var(--paper-card); padding: 30px 28px 34px; display: flex; flex-direction: column; min-height: 250px; text-decoration: none; color: inherit; transition: background .15s ease; }
 .mk-story--feat{ background: var(--ink); color: var(--dtx); }
-.mk-story .tag{ font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.mk-story .tag{ font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
 .mk-story--feat .tag{ color: var(--accent-ink); }
-.mk-story h3{ font-weight: 800; font-size: 22px; letter-spacing: -.015em; line-height: 1.14; margin: 16px 0 10px; }
+.mk-story h3{ font-weight: 800; font-size: var(--fs-20); letter-spacing: -.015em; line-height: 1.14; margin: 16px 0 10px; }
 .mk-story--feat h3{ color: #fff; }
-.mk-story p{ font-size: 14.5px; color: var(--tx-mute); line-height: 1.5; margin: 0; }
+.mk-story p{ font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.5; margin: 0; }
 .mk-story--feat p{ color: var(--dtx-mute); }
-.mk-story .go{ margin-top: auto; padding-top: 22px; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--tx-mute); }
+.mk-story .go{ margin-top: auto; padding-top: 22px; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .04em; color: var(--tx-mute); }
 .mk-story--feat .go{ color: var(--accent-ink); }
 .mk-story--soon{ pointer-events: none; }
 .mk-story--soon h3, .mk-story--soon p, .mk-story--soon .go{ color: var(--tx-faint); }
@@ -373,7 +373,7 @@
     <div class="mk-headsplit" style="align-items: end;">
       <div>
         <span class="kicker">The solution</span>
-        <h2 class="mk-display" style="font-size: clamp(48px, 7vw, 96px); margin-top: 18px;">Meet <span class="accent-tx">MARCUS.</span></h2>
+        <h2 class="mk-display" style="font-size: clamp(var(--fs-49), 7vw, var(--fs-78)); margin-top: 18px;">Meet <span class="accent-tx">MARCUS.</span></h2>
       </div>
       <div>
         <p class="mk-body">MARCUS is not an app B:Side's team had to learn. It's a colleague that lives inside the tools they already use — Slack, their lending systems, the browser. It does the gathering, checking, and drafting, then hands finished, organized work to a person to approve.</p>
@@ -607,7 +607,7 @@
 <section class="section paper" data-screen-label="Closing CTA">
   <div class="wrap mk-closer">
     <span class="kicker">If the stakes are real</span>
-    <h2 class="mk-display" style="font-size: clamp(38px, 5.4vw, 76px);">If you can document how your business works, <span class="accent-tx">we can build the machine that runs it.</span></h2>
+    <h2 class="mk-display" style="font-size: clamp(var(--fs-39), 5.4vw, var(--fs-78));">If you can document how your business works, <span class="accent-tx">we can build the machine that runs it.</span></h2>
     <p class="lead">MARCUS is what Main &amp; Machine builds when the stakes are real: private, auditable, built from your own processes, and designed so your people stay in control the whole way through. If that's the kind of system your business needs, let's talk.</p>
     <div class="mk-cta">
       <a class="btn btn--accent btn--lg" href="/book/">Start a conversation <span class="arr">→</span></a>

@@ -303,11 +303,14 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .hero__alt a:hover { color: var(--accent-deep); }
 
 /* operator stat rail */
-.statrail { border: 1px solid var(--line); background: var(--paper-card); }
-.statrail__row { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 18px; border-bottom: 1px solid var(--line-soft); }
-.statrail__row:last-child { border-bottom: 0; }
-.statrail__k { font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute); }
-.statrail__v { font-weight: 800; font-size: var(--fs-20); letter-spacing: -0.02em; }
+/* ============ SPEC CARD — one reusable spec-sheet component ============
+   Card frame + label/value rows. Corner brackets come from .crop (locked above). */
+.spec-card, .statrail { position: relative; background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--r-md); }
+.spec-card__row, .statrail__row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 18px; border-top: 1px solid var(--hairline); }
+.spec-card__row:first-child, .statrail__row:first-child { border-top: 0; }
+.spec-card__row:last-child, .statrail__row:last-child { border-radius: 0 0 var(--r-md) var(--r-md); }
+.spec-card__label, .statrail__k { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--mono-on-cream); }
+.spec-card__value, .statrail__v { font-weight: 700; font-size: var(--fs-20); letter-spacing: -0.02em; color: var(--ink); }
 .statrail__v .accent-tx { font-weight: 900; }
 .statrail__v--sm { font-size: var(--fs-13); font-weight: 700; letter-spacing: 0; text-align: right; line-height: 1.4; }
 
@@ -520,7 +523,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .feed__loading { display:flex; align-items:center; justify-content:center; min-height: 30vh; }
 
 /* featured / latest */
-.feed__featured { display: grid; grid-template-columns: 1.1fr 1fr; background: var(--paper-card); border: 1px solid var(--line); transition: border-color .15s; }
+.feed__featured { display: grid; grid-template-columns: 1.1fr 1fr; background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--r-md); transition: border-color .15s; }
 .feed__featured:hover { border-color: var(--tx); }
 .feed__featured-img { position: relative; min-height: 320px; background: var(--blueprint-2); overflow: hidden; }
 /* Cover art puts the essay title top-left — when the tall desktop box
@@ -738,18 +741,14 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .crop { position: relative; }
 .crop::after{
   content:""; position:absolute; inset:-1px; pointer-events:none; z-index:3;
-  --c: var(--accent); --l: 14px; --t: 2px;
+  --bc: var(--rust);   /* 16px arms, 1.5px stroke, top-left + bottom-right */
   background:
-    linear-gradient(var(--c),var(--c)) left  top/var(--l) var(--t) no-repeat,
-    linear-gradient(var(--c),var(--c)) left  top/var(--t) var(--l) no-repeat,
-    linear-gradient(var(--c),var(--c)) right top/var(--l) var(--t) no-repeat,
-    linear-gradient(var(--c),var(--c)) right top/var(--t) var(--l) no-repeat,
-    linear-gradient(var(--c),var(--c)) left  bottom/var(--l) var(--t) no-repeat,
-    linear-gradient(var(--c),var(--c)) left  bottom/var(--t) var(--l) no-repeat,
-    linear-gradient(var(--c),var(--c)) right bottom/var(--l) var(--t) no-repeat,
-    linear-gradient(var(--c),var(--c)) right bottom/var(--t) var(--l) no-repeat;
+    linear-gradient(var(--bc),var(--bc)) top    left  / 16px 1.5px no-repeat,
+    linear-gradient(var(--bc),var(--bc)) top    left  / 1.5px 16px no-repeat,
+    linear-gradient(var(--bc),var(--bc)) bottom right / 16px 1.5px no-repeat,
+    linear-gradient(var(--bc),var(--bc)) bottom right / 1.5px 16px no-repeat;
 }
-.ink .crop::after, .net.crop::after { --c: var(--accent-ink); }
+.ink .crop::after, .net.crop::after { --bc: var(--rust-ink); }
 
 /* ---------- operator chrome: auto-scrolling announcement ticker ---------- */
 .ticker{
@@ -826,8 +825,8 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 
 /* ---------- spec-sheet stat rail ---------- */
 .statrail__bar{ display:flex; justify-content:space-between; align-items:center;
-  padding: 12px 18px; border-bottom: 1px solid var(--line);
-  background: linear-gradient(var(--paper-2), var(--paper-card));
+  padding: 12px 18px; border-bottom: 1px solid var(--hairline); border-radius: var(--r-md) var(--r-md) 0 0;
+  background: var(--cream-band);
   font-family: var(--mono); font-size: var(--fs-13); letter-spacing:.14em; text-transform:uppercase; color: var(--tx-mute); }
 .statrail__bar b{ color: var(--accent-text); font-weight:700; }
 .statrail__row{ transition: background .15s; }
@@ -1020,7 +1019,6 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 /* the card stays a paper surface even on the ink band — undo the dark-context cascade */
 .ink .roi .tick-lbl{ color: var(--tx-mute); }
 .ink .roi .accent-tx{ color: var(--accent); }
-.ink .roi.crop::after{ --c: var(--accent); }
 
 /* ---- closer line ---- */
 .closer{ margin-top:40px; padding-top:30px; border-top:1px solid var(--dline); display:flex; gap:22px; align-items:flex-start; }
@@ -1344,7 +1342,6 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
   max-width:720px; margin-inline:auto; border:1px solid var(--accent);
   background:var(--accent-soft); padding:clamp(28px,4vw,46px);
 }
-.essay__cta--panel.crop::after{ --c: var(--accent); }
 .essay__cta-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-top:var(--s-24); }
 
 /* collapse to a single column below ~940px */

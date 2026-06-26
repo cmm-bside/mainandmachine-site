@@ -218,12 +218,13 @@ ${rest.length
 
 	const body = `${topbar()}
 ${nav()}
+<main id="main" tabindex="-1">
 <section class="section section--tight paper" data-screen-label="${esc(BLOG_NAME)}">
   <div class="wrap">
     <div class="head-block" style="align-items:flex-end;">
       <div>
         <span class="kicker">Writing / ${esc(BLOG_NAME)}</span>
-        <h1 class="h-hero" style="font-size:clamp(40px,6vw,76px);margin-top:14px;">${esc(BLOG_NAME)}.</h1>
+        <h1 class="h-hero" style="font-size:clamp(var(--fs-39),6vw,var(--fs-78));margin-top:14px;">${esc(BLOG_NAME)}.</h1>
       </div>
       <p class="lead">A newsletter about building durable things in a noisy time. No hype, no countdown timers, no ten-step funnel. If you want to understand how we think before you ever talk to us, start here.</p>
     </div>
@@ -238,6 +239,7 @@ ${nav()}
 </section>
 
 ${subscribeBand(subscribeUrl, publicationUrl)}
+</main>
 ${footer()}
 ${pageScripts()}`;
 
@@ -249,6 +251,7 @@ ${pageScripts()}`;
 		jsonLd: [blogLd, orgJsonLd()],
 	})}
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 ${body}
 </body>
 </html>`;
@@ -345,12 +348,13 @@ ${topBatches.length > 1 ? moreBtn("top") : ""}</div>`;
 
 	const body = `${topbar()}
 ${nav()}
+<main id="main" tabindex="-1">
 <section class="section section--tight paper" data-screen-label="Archive">
   <div class="wrap">
     <div class="head-block" style="align-items:flex-end;">
       <div>
         <span class="kicker">Writing / Archive</span>
-        <h1 class="h-hero" style="font-size:clamp(36px,5vw,64px);margin-top:14px;">The full archive.</h1>
+        <h1 class="h-hero" style="font-size:clamp(var(--fs-31),5vw,var(--fs-61));margin-top:14px;">The full archive.</h1>
       </div>
       <p class="lead">Everything from ${esc(BLOG_NAME)}, in order — or sorted by what's been read most. Search across every essay below.</p>
     </div>
@@ -365,6 +369,7 @@ ${nav()}
 </section>
 
 ${subscribeBand(subscribeUrl, publicationUrl)}
+</main>
 ${footer()}
 ${pageScripts()}`;
 
@@ -376,6 +381,7 @@ ${pageScripts()}`;
 		jsonLd: [collectionLd, orgJsonLd()],
 	})}
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 ${body}
 </body>
 </html>`;
@@ -445,6 +451,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	const body = `<div class="reading-progress" aria-hidden="true"><span class="reading-progress__bar" id="reading-progress-bar"></span></div>
 ${topbar()}
 ${nav()}
+<main id="main" tabindex="-1">
 <article class="section paper" data-screen-label="${esc(BLOG_NAME)}">
   <div class="wrap essay${hasToc ? "" : " essay--solo"}">
     <a class="essay__back" href="/blog/">← ${esc(BLOG_NAME)}</a>
@@ -500,6 +507,7 @@ ${readNext.length
 </section>
 
 ${subscribeBand(subscribeUrl, publicationUrl)}
+</main>
 ${footer()}
 ${pageScripts()}`;
 
@@ -512,6 +520,7 @@ ${pageScripts()}`;
 		jsonLd: [blogPostingLd, breadcrumbLdObj, orgJsonLd()],
 	})}
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 ${body}
 </body>
 </html>`;

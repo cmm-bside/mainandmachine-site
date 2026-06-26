@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine — 30 minutes. No pitch. A straight answer." />
-<link rel="stylesheet" href="/styles.css?v=55" />
+<link rel="stylesheet" href="/styles.css?v=56" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -201,7 +201,8 @@ select.input:invalid { color: var(--tx-faint); }
 .astep:first-child { border-top: 0; padding-top: 0; }
 .astep:last-child { padding-bottom: 0; }
 .astep__no { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-text); padding-top: 1px; }
-.astep h4 { font-size: var(--fs-16); font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+.astep h3 { font-size: var(--fs-16); font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+.tl h3 { font-size: var(--fs-16); font-weight: 700; margin: 0; line-height: 1.2; }
 .astep p { font-size: var(--fs-13); color: var(--tx-mute); line-height: 1.5; }
 
 /* leave-with checklist */
@@ -212,7 +213,7 @@ select.input:invalid { color: var(--tx-faint); }
 /* advisor */
 .advisor { display: flex; gap: 14px; align-items: flex-start; }
 .advisor__portrait { width: 72px; height: 72px; flex: none; object-fit: cover; border: 1px solid var(--line); background: var(--paper-2); display: block; }
-.advisor__tx h4 { font-size: var(--fs-16); font-weight: 800; letter-spacing: -0.01em; }
+.advisor__tx h3 { font-size: var(--fs-16); font-weight: 800; letter-spacing: -0.01em; }
 .advisor__tx p { font-size: var(--fs-13); color: var(--tx-mute); margin-top: 5px; line-height: 1.55; }
 
 .panel--ink p { color: var(--dtx-mute); font-size: var(--fs-16); line-height: 1.6; }
@@ -263,9 +264,10 @@ select.input:invalid { color: var(--tx-faint); }
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ OPERATOR CHROME ============ -->
-<div class="ticker" role="marquee" aria-label="Announcements">
+<div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
       <span class="ticker__item"><span class="dot">●</span> Now booking <span class="js-book-quarter">Q3</span> builds</span>
@@ -316,6 +318,7 @@ select.input:invalid { color: var(--tx-faint); }
     </div>
   </div>
 </header>
+<main id="main" tabindex="-1">
 
 <!-- ============ PAGE HEADER ============ -->
 <section class="section paper bookhero" data-screen-label="Book header">
@@ -437,17 +440,17 @@ select.input:invalid { color: var(--tx-faint); }
       <!-- RAIL -->
       <aside class="rail" aria-label="What to expect">
         <div class="panel">
-          <div class="panel__t">What happens · 30 minutes</div>
+          <h2 class="panel__t">What happens · 30 minutes</h2>
           <div class="agenda">
-            <div class="astep"><span class="astep__no">01</span><div><h4>We listen</h4><p>You walk us through how the work actually flows today — plain language is plenty.</p></div></div>
-            <div class="astep"><span class="astep__no">02</span><div><h4>We map</h4><p>A senior advisor finds the handful of workflows quietly costing you the most.</p></div></div>
-            <div class="astep"><span class="astep__no">03</span><div><h4>We level with you</h4><p>Where AI pays, where it doesn't, and a rough sense of what it's worth.</p></div></div>
-            <div class="astep"><span class="astep__no">04</span><div><h4>You decide</h4><p>You leave with a clear read — that's where it ends unless you want more.</p></div></div>
+            <div class="astep"><span class="astep__no">01</span><div><h3>We listen</h3><p>You walk us through how the work actually flows today — plain language is plenty.</p></div></div>
+            <div class="astep"><span class="astep__no">02</span><div><h3>We map</h3><p>A senior advisor finds the handful of workflows quietly costing you the most.</p></div></div>
+            <div class="astep"><span class="astep__no">03</span><div><h3>We level with you</h3><p>Where AI pays, where it doesn't, and a rough sense of what it's worth.</p></div></div>
+            <div class="astep"><span class="astep__no">04</span><div><h3>You decide</h3><p>You leave with a clear read — that's where it ends unless you want more.</p></div></div>
           </div>
         </div>
 
         <div class="panel">
-          <div class="panel__t">What you leave with</div>
+          <h2 class="panel__t">What you leave with</h2>
           <ul class="leave">
             <li>A plain-language read on where AI would actually pay in your business</li>
             <li>A rough dollar range on the opportunity, run against your real numbers</li>
@@ -457,18 +460,18 @@ select.input:invalid { color: var(--tx-faint); }
         </div>
 
         <div class="panel">
-          <div class="panel__t">Who you'll talk to</div>
+          <h2 class="panel__t">Who you'll talk to</h2>
           <div class="advisor">
             <img class="advisor__portrait" src="/images/christopher-myers-hedcut-sq.png?v=1" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="72" height="72" loading="lazy" decoding="async" />
             <div class="advisor__tx">
-              <h4>Christopher Myers</h4>
+              <h3>Christopher Myers</h3>
               <p>Founder &amp; Chairman. The person who scopes your work is the one accountable for the build — 26 years backing Main Street.</p>
             </div>
           </div>
         </div>
 
         <div class="panel panel--ink">
-          <div class="panel__t">The promise</div>
+          <h2 class="panel__t">The promise</h2>
           <p>You'll leave knowing what's worth doing and what isn't — and we'll never pad the list to win the work. <b>Substance over sales.</b></p>
           <p style="margin-top:12px;">If the assessment finds nothing worth building, we say so and you keep the notes. <b>That's the whole transaction.</b></p>
         </div>
@@ -565,10 +568,10 @@ select.input:invalid { color: var(--tx-faint); }
         </div>
 
         <div class="timeline" style="margin-top:30px;">
-          <div class="tl"><span class="tl__t">Now</span><h4>Request logged</h4><p>Your details land in front of a senior advisor the same day.</p></div>
-          <div class="tl"><span class="tl__t">Within 24 hours</span><h4>We email you</h4><p>A short note proposing a few times that work, in your preferred channel.</p></div>
-          <div class="tl"><span class="tl__t">The call</span><h4>30 focused minutes</h4><p>We walk your workflows and show you where AI pays.</p></div>
-          <div class="tl"><span class="tl__t">After</span><h4>You decide</h4><p>Build with us, sit tight, or walk away — your call.</p></div>
+          <div class="tl"><span class="tl__t">Now</span><h3>Request logged</h3><p>Your details land in front of a senior advisor the same day.</p></div>
+          <div class="tl"><span class="tl__t">Within 24 hours</span><h3>We email you</h3><p>A short note proposing a few times that work, in your preferred channel.</p></div>
+          <div class="tl"><span class="tl__t">The call</span><h3>30 focused minutes</h3><p>We walk your workflows and show you where AI pays.</p></div>
+          <div class="tl"><span class="tl__t">After</span><h3>You decide</h3><p>Build with us, sit tight, or walk away — your call.</p></div>
         </div>
 
         <div class="confirm__cta">
@@ -622,6 +625,7 @@ select.input:invalid { color: var(--tx-faint); }
 </section>
 
 <!-- ============ FOOTER ============ -->
+</main>
 <footer class="foot">
   <div class="wrap">
     <div class="foot__signup">

@@ -111,7 +111,7 @@ ${ld}
 }
 
 export function topbar() {
-	return `<div class="ticker" role="marquee" aria-label="Announcements">
+	return `<div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
       <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)} — free weekly essays</span>

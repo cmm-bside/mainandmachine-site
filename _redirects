@@ -1,3 +1,8 @@
 # Cloudflare Pages redirects — https://developers.cloudflare.com/pages/configuration/redirects/
 # The sample audit moved from the Work section into Services (2026-06).
 /work/sample-audit/  /services/sample-audit/  301
+
+# Three service detail pages consolidated into /services/ anchored sections (2026-06).
+/services/ai-readiness-audit/   /services/#audit    301
+/services/implementation-sprint/  /services/#sprint  301
+/services/managed-services/     /services/#managed  301

@@ -26,8 +26,10 @@ let html = fs.readFileSync(PAGE, "utf8");
 function replaceRegion(name, inner) {
   const re = new RegExp(`(<!-- BUILD-LOG:${name}\\b[\\s\\S]*?-->)[\\s\\S]*?(<!-- /BUILD-LOG:${name} -->)`);
   if (!re.test(html)) {
-    console.error(`[work:build] BUILD-LOG:${name} markers missing in services/index.html`);
-    process.exit(1);
+    // The build-log "sample week" section was consolidated out of /services/.
+    // Skip gracefully until the markers are reintroduced (e.g. on /work/).
+    console.log(`[work:build] no BUILD-LOG:${name} markers — skipping`);
+    return;
   }
   html = html.replace(re, `$1\n${inner}\n        $2`);
 }

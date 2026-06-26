@@ -1531,3 +1531,27 @@ h3 { line-height: 1.15; font-weight: 700; }
 p { max-width: 66ch; text-wrap: pretty; }
 /* headings balance their wrap (no lonely last word) */
 h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
+
+/* ============ SERVICE DETAIL SECTIONS (consolidated /services/) ============ */
+.svc-detail__head { max-width: 60ch; }
+.svc-detail__grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(var(--s-32), 5vw, var(--s-96)); margin-top: var(--s-48); align-items: start; }
+@media (max-width: 860px){ .svc-detail__grid { grid-template-columns: 1fr; gap: var(--s-32); } }
+.svc-detail__main h3 { font-size: var(--fs-20); margin: var(--s-32) 0 var(--s-12); }
+.svc-detail__main > h3:first-child { margin-top: 0; }
+.svc-detail__main p { font-size: var(--fs-16); line-height: 1.6; color: var(--tx-mute); margin-bottom: var(--s-12); max-width: 60ch; }
+.svc-detail__main p b { color: var(--tx); font-weight: 700; }
+.svc-detail__note { font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); line-height: 1.6; }
+.svc-detail__card { position: relative; background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--r-md); padding: clamp(var(--s-24), 3vw, var(--s-32)); align-self: start; }
+.svc-detail__card .tick-lbl { display: block; margin-bottom: var(--s-16); }
+.svc-detail__deliv { list-style: none; display: flex; flex-direction: column; gap: var(--s-12); margin-bottom: var(--s-24); }
+.svc-detail__deliv li { font-size: var(--fs-16); padding-left: var(--s-24); position: relative; line-height: 1.4; }
+.svc-detail__deliv li::before { content: "+"; position: absolute; left: 0; color: var(--rust); font-weight: 800; }
+.svc-detail__faq { margin-top: var(--s-48); padding-top: var(--s-32); border-top: 1px solid var(--hairline); }
+.svc-detail__faq > h3 { font-size: var(--fs-20); margin-bottom: var(--s-16); }
+/* inverted (Sprint) — ink surface */
+.svc-detail.ink .svc-detail__main p { color: var(--dtx-mute); }
+.svc-detail.ink .svc-detail__main p b { color: var(--dtx); }
+.svc-detail.ink .svc-detail__note { color: var(--dtx-faint); }
+.svc-detail.ink .svc-detail__card { background: var(--ink-2); border-color: var(--dline); }
+.svc-detail.ink .svc-detail__faq { border-top-color: var(--dline); }
+.svc-detail.ink .svc-detail__card .crop::after { --bc: var(--rust-ink); }

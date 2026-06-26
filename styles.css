@@ -748,7 +748,10 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 /* ---------- operator chrome: auto-scrolling announcement ticker ---------- */
 .ticker{
   height:38px; overflow:hidden; display:flex; align-items:center;
-  background:#15110D; border-bottom:1px solid rgba(239,233,221,.1);
+  background:var(--cream); border-bottom:1px solid var(--line);
+  /* edge fade so items never hard-clip mid-word at the rims */
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 48px,#000 calc(100% - 48px),transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 48px,#000 calc(100% - 48px),transparent);
 }
 .ticker__track{
   display:flex; flex:0 0 auto; align-items:center; width:max-content;
@@ -757,20 +760,17 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .ticker:hover .ticker__track{ animation-play-state:paused; }   /* pause on hover */
 .ticker__group{ display:flex; align-items:center; gap:0; }
 .ticker__item{
-  font-family:'Space Mono',monospace; font-size:var(--fs-12); letter-spacing:.12em;
-  line-height:1; white-space:nowrap; color:rgba(239,233,221,.72);
-  padding:0 26px; position:relative;
+  font-family:'Space Mono',monospace; font-size:var(--fs-12); letter-spacing:.1em;
+  line-height:1; white-space:nowrap; color:var(--mono-on-cream); padding:0;
 }
-.ticker__item + .ticker__item::before{
-  content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
-  width:1px; height:11px; background:rgba(239,233,221,.18);
-}
-.ticker .dot{ color:#E06A3C; margin-right:var(--s-8); }
-/* two identical groups => shifting the track by exactly one group width (-50% of
-   the 2-group track) loops with no visible jump. linear = machine-steady. */
+/* a single middot separator, even 16px each side — uniform on every item and at
+   the loop seam, since the 2nd identical group makes the wrap invisible */
+.ticker__item::after{ content:"·"; margin:0 16px; color:var(--mono-on-cream); }
+.ticker .dot{ color:var(--rust); margin-right:var(--s-8); }
+/* two identical groups => -50% shift loops with no visible jump. linear = steady */
 @keyframes ticker-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 @media (prefers-reduced-motion: reduce){
-  .ticker__track{ animation:none; transform:none; }   /* static: readable, no scroll */
+  .ticker__track{ animation:none; transform:none; }   /* fully static, readable */
   .ticker__group:nth-child(2){ display:none; }         /* drop the duplicate copy */
 }
 @keyframes mm-pulse{ 0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(236,108,61,.55); } 50%{ opacity:.45; box-shadow:0 0 0 4px rgba(236,108,61,0); } }
@@ -1440,7 +1440,7 @@ h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
 }
 /* Cream ring on dark surfaces (rust is invisible on near-black) */
 .ink :focus-visible, .foot :focus-visible, .topbar :focus-visible,
-.ticker :focus-visible, [data-hero-machine] :focus-visible {
+[data-hero-machine] :focus-visible {
   outline-color: var(--paper);
 }
 

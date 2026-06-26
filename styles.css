@@ -627,11 +627,15 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
    FOOTER
    ========================================================= */
 .foot { background: var(--ink); color: var(--dtx); padding-top: clamp(56px,7vw,90px); }
-.foot__top { display:grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 36px; padding-bottom: 50px; border-bottom: 1px solid var(--dline); }
+.foot__top { display:grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 36px; align-items: start; padding-bottom: 50px; border-bottom: 1px solid var(--dline); }
 @media (max-width: 920px){ .foot__top { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px){ .foot__top { grid-template-columns: 1fr; } }
 .foot__brand p { color: var(--dtx-mute); font-size: var(--fs-13); max-width: 32ch; margin: 18px 0 24px; }
-.foot__brand .entity__stats { border:0; padding:0; margin:0; }
+/* SCOPE / DELIVERY / AUDITS micro-stats — three equal columns, hairline, aligned */
+.foot__brand .entity__stats { display:grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 30px 0 0; padding-top: 18px; border-top: 1px solid var(--dline); }
+.foot__brand .entity__stats > div { display:flex; flex-direction:column; gap: 7px; }
+.foot__brand .entity__stats .tick-lbl { display:block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--mono-on-dark); }
+.foot__brand .entity__stats b { font-weight: 700; font-size: var(--fs-20); letter-spacing: -0.02em; color: var(--dtx); line-height: 1; }
 .foot__col h2 { font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .12em; text-transform: uppercase; color: var(--mono-on-dark); margin-bottom: 18px; }
 .foot__col ul { list-style: none; display:flex; flex-direction: column; gap: 11px; }
 .foot__col a, .foot__col li { font-size: var(--fs-13); color: var(--dtx-mute); transition: color .15s; }

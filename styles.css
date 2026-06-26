@@ -974,7 +974,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 
 .roi__selectwrap{ position:relative; }
 .roi__select{
-  appearance:none; -webkit-appearance:none; width:100%;
+  appearance:none; -webkit-appearance:none; width:auto; min-width:200px; max-width:100%;
   background: var(--cream); color: var(--tx); border:1px solid var(--line);
   font-family: var(--sans); font-size: var(--fs-16); font-weight:600; letter-spacing:-.01em;
   padding: 13px 40px 13px 14px; cursor:pointer; transition: border-color .15s; }
@@ -1002,7 +1002,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .roi__range:focus-visible::-webkit-slider-thumb{ box-shadow:0 0 0 4px rgba(218,90,48,.4); }
 .roi__range:focus-visible::-moz-range-thumb{ box-shadow:0 0 0 4px rgba(218,90,48,.4); }
 .roi__scale{ display:flex; justify-content:space-between; margin-top:var(--s-8);
-  font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.1em; color: var(--tx-faint); }
+  font-family:var(--mono); font-size: var(--fs-12); letter-spacing:.1em; color: var(--mono-on-cream); }
 
 .roi__assume{ margin-top:var(--s-32); padding-top:var(--s-24); border-top:1px solid var(--line); }
 .roi__assume .tick-lbl{ display:block; margin-bottom:var(--s-16); }
@@ -1021,7 +1021,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .roi__neg{ color: var(--accent); }
 
 .roi__net{ margin-top:var(--s-24); padding-top:var(--s-24); border-top:2px solid var(--ink); }
-.roi__nethead{ display:flex; align-items:center; justify-content:space-between; gap:var(--s-16);
+.roi__nethead{ display:flex; align-items:baseline; justify-content:space-between; gap:var(--s-16);
   font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.16em; text-transform:uppercase; }
 .roi__nethead span:last-child{ color: var(--tx-faint); letter-spacing:.1em; }
 .roi__big{ margin-top:var(--s-12); font-weight:900; font-size: clamp(var(--fs-39),6.5vw,var(--fs-49));
@@ -1042,6 +1042,21 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 /* the card stays a paper surface even on the ink band — undo the dark-context cascade */
 .ink .roi .tick-lbl{ color: var(--tx-mute); }
 .ink .roi .accent-tx{ color: var(--accent); }
+
+/* ---- homepage calculator band: ONE balanced 2-col grid; slim card stacks ---- */
+.section.calcband{ padding-block: var(--s-128); }
+@media(max-width:760px){ .section.calcband{ padding-block: var(--s-64); } }
+.calcband__grid{ max-width:1200px; margin-inline:auto; display:grid; grid-template-columns:1.1fr .9fr; gap:var(--s-64); align-items:center; }
+@media(max-width:900px){ .calcband__grid{ grid-template-columns:1fr; gap:var(--s-48); } }
+.calcband__intro{ min-width:0; }
+.calcband__intro .lead{ max-width:46ch; }
+.calcband__intro .roi__cta{ margin-top:var(--s-32); }
+/* the slim embed sits in a ~510px column: stack inputs over output so the
+   select shows its full value, the note reads at measure, and the big number
+   sits on the same grid as the rows beneath it */
+.roi--slim .roi__grid{ grid-template-columns:1fr; }
+.roi--slim .roi__inputs{ border-right:0; border-bottom:1px solid var(--line); }
+.roi--slim .roi__output{ gap:0; }
 
 /* ---- closer line ---- */
 .closer{ margin-top:var(--s-48); padding-top:var(--s-32); border-top:1px solid var(--dline); display:flex; gap:var(--s-24); align-items:flex-start; }

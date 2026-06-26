@@ -29,9 +29,26 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=73" />
+<link rel="stylesheet" href="/styles.css?v=79" />
+<style>
+/* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
+/* 1. Price/range values never wrap. Stepped down one size so the widest range
+   ($12,000–$45,000) fits the 220px meta column on a single line. */
+.svc__price { white-space: nowrap; font-size: var(--fs-16); }
+/* 2. Uniform price-table row heights (desktop 3-column table only — stacks <921px).
+   grid-auto-rows:1fr keeps the three rows equal at every width, unlike a fixed
+   min-height which only lines up at one viewport. */
+@media (min-width: 921px){ .svc { display: grid; grid-auto-rows: 1fr; } }
+/* 3. THE MATH: top-align the columns so the two figures share a baseline (the
+   longer caption no longer pushes $45,000 down via align-items:center), then
+   drop "vs" to the figures' cap-height midline (≈ label + 0.36 × figure size). */
+.math-vs { align-items: start; }
+.math-vs__sep { align-self: start; margin-top: calc(15px + 0.36 * clamp(var(--fs-49), 7vw, var(--fs-78))); }
+/* 4. FAQ heading/accordion gutter matches the page's section-head gutter (48px). */
+.faq { gap: var(--s-48); }
+</style>
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -50,7 +67,7 @@
       "image": "https://www.mainandmachine.com/og-image.png",
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-360-5128",
-      "priceRange": "$3,500 - $45,000",
+      "priceRange": "$3,500–$45,000",
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
@@ -198,8 +215,8 @@
       </div>
       <div class="statrail crop" aria-label="Pricing at a glance">
         <div class="statrail__bar"><span>Price list</span><span><b>Published</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Audits</span><span class="statrail__v accent-tx">$3,500 – $8,500</span></div>
-        <div class="statrail__row"><span class="statrail__k">Sprints</span><span class="statrail__v">$12,000 – $45,000</span></div>
+        <div class="statrail__row"><span class="statrail__k">Audits</span><span class="statrail__v accent-tx">$3,500–$8,500</span></div>
+        <div class="statrail__row"><span class="statrail__k">Sprints</span><span class="statrail__v">$12,000–$45,000</span></div>
         <div class="statrail__row"><span class="statrail__k">Managed</span><span class="statrail__v">Monthly · no lock-in</span></div>
         <div class="statrail__row"><span class="statrail__k">Quote</span><span class="statrail__v">Fixed, in writing</span></div>
       </div>
@@ -225,7 +242,7 @@
           <span class="tick-lbl">Timeline</span>
           <div class="svc__price">2 to 4 weeks</div>
           <span class="tick-lbl" style="margin-top:14px;">Fixed price</span>
-          <div class="svc__price">$3,500 – $8,500</div>
+          <div class="svc__price">$3,500–$8,500</div>
         </div>
         <div class="svc__main">
           <h3><a href="/services/#audit">AI Readiness Audit</a></h3>
@@ -249,7 +266,7 @@
           <span class="tick-lbl">Timeline</span>
           <div class="svc__price">4 to 12 weeks</div>
           <span class="tick-lbl" style="margin-top:14px;">Fixed quote after scoping</span>
-          <div class="svc__price">$12,000 – $45,000</div>
+          <div class="svc__price">$12,000–$45,000</div>
           <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
         </div>
         <div class="svc__main">

@@ -177,7 +177,7 @@ function emptyState(subscribeUrl) {
 	return `<div class="feed__empty crop">
   <span class="kicker kicker--plain">${esc(BLOG_NAME)}</span>
   <h2 class="h2 mt-s">The first dispatch is on its way.</h2>
-  <p class="lead">Free weekly essays on building durable things in a noisy time — no hype, no funnels. Subscribe and you'll get the first one the moment it's out.</p>
+  <p class="lead">Free weekly essays on building durable things in a noisy time — no hype, no funnels. Subscribe and you’ll get the first one the moment it’s out.</p>
   ${cta}
 </div>`;
 }
@@ -213,7 +213,7 @@ ${rest.length
 	? `<div class="feed__bar"><span class="tick-lbl">Recent dispatches</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent-text)">Full archive →</a></div>
 <div class="feed__grid">${rest.map(card).join("\n")}</div>`
 	: ""}
-<a class="feed__archive" href="/blog/archive/">View the full archive →</a>`;
+<a class="feed__archive" href="/blog/archive/">Full archive →</a>`;
 	}
 
 	const body = `${topbar()}
@@ -356,7 +356,7 @@ ${nav()}
         <span class="kicker">Writing / Archive</span>
         <h1 class="h-hero" style="font-size:clamp(var(--fs-31),5vw,var(--fs-61));margin-top:14px;">The full archive.</h1>
       </div>
-      <p class="lead">Everything from ${esc(BLOG_NAME)}, in order — or sorted by what's been read most. Search across every essay below.</p>
+      <p class="lead">Everything from ${esc(BLOG_NAME)}, in order — or sorted by what’s been read most. Search across every essay below.</p>
     </div>
     ${searchBar("Search the archive…")}
   </div>

@@ -283,7 +283,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
           <li>How we actually think about AI on Main Street</li>
           <li>No pitches, no funnels — leave whenever it stops paying</li>
         </ul>
-        <a class="feed__archive" href="/blog/archive/">Browse the full archive →</a>
+        <a class="feed__archive" href="/blog/archive/">Full archive →</a>
       </div>
     </div>
   </div>

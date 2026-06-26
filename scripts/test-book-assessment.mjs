@@ -68,8 +68,8 @@ const detailsSample = {
   email: sample.email,
   company: sample.company,
   industry: "Professional services",
-  team: "11 – 25",
-  revenue: "$1M – $5M",
+  team: "11–25",
+  revenue: "$1M–$5M",
   website: "riveraco.com",
   heard: "A referral",
 };

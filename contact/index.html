@@ -29,16 +29,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=73" />
+<link rel="stylesheet" href="/styles.css?v=79" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 <style>
 /* contact card — spec-sheet motif on the site tokens */
-.contact-card { max-width: 720px; border: 1px solid var(--hairline); border-radius: var(--r-md); background: var(--paper); margin-top: var(--s-48); }
+.contact-card { border: 1px solid var(--hairline); border-radius: var(--r-md); background: var(--paper); margin-top: var(--s-64); } /* in the hero left column, 64px below the CTAs */
 .contact-cta { display: flex; gap: var(--s-16); flex-wrap: wrap; margin-top: var(--s-24); }
 .contact-cta__note { font-size: var(--fs-13); color: var(--tx-mute); line-height: 1.5; margin-top: var(--s-12); max-width: 44ch; }
 .contact-card__row {
@@ -51,6 +51,8 @@
 .contact-card__row .v a:hover, .contact-card__row .v a:focus-visible { color: var(--rust); text-decoration: underline; }
 .contact-card__row .v small { display: block; font-weight: 400; font-size: var(--fs-13); color: var(--tx-mute); margin-top: 3px; }
 @media (max-width: 560px){ .contact-card__row { grid-template-columns: 1fr; gap: 6px; } }
+/* this hero's H1 caps sit 6px higher than the other pagehero pages — align the card to them */
+@media (min-width: 941px){ .pagehero__grid > .statrail { margin-top: 46px; } }
 </style>
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -66,7 +68,7 @@
       "logo": "https://www.mainandmachine.com/icon-512.png",
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-360-5128",
-      "priceRange": "$3,500 - $45,000",
+      "priceRange": "$3,500–$45,000",
       "areaServed": "US",
       "address": [
         { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
@@ -158,8 +160,13 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ CONTACT ============ -->
-<section class="section section--tight paper" data-screen-label="Contact">
+<section class="section paper pagehero" data-screen-label="Contact">
   <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <span>Contact</span>
+    </div>
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Contact</span>
@@ -172,7 +179,7 @@
         <p class="contact-cta__note">A 30-minute working session — no obligation, no pitch.</p>
       </div>
       <aside class="statrail crop" aria-label="What to expect on the call">
-        <div class="statrail__bar"><span>On the call</span><span><b style="color:var(--ink);">30 minutes</b></span></div>
+        <div class="statrail__bar"><span>On the call</span><span><b>30 minutes</b></span></div>
         <div class="statrail__row"><span class="statrail__k">Format</span><span class="statrail__v">Working session</span></div>
         <div class="statrail__row"><span class="statrail__k">Pitch</span><span class="statrail__v">None, ever</span></div>
         <div class="statrail__row"><span class="statrail__k">Who</span><span class="statrail__v">A senior advisor</span></div>
@@ -192,10 +199,6 @@
       <div class="contact-card__row">
         <span class="tick-lbl">Where we work</span>
         <span class="v"><a href="/denver/">Denver, CO</a> and <a href="/phoenix/">Phoenix, AZ</a><small>Hubs in both cities; remote across the US.</small></span>
-      </div>
-      <div class="contact-card__row">
-        <span class="tick-lbl">Response time</span>
-        <span class="v">Within 24 hours</span>
       </div>
     </div>
   </div>

@@ -17,6 +17,8 @@
     "book:check": "node scripts/check-book.mjs",
     "smoke:test": "node scripts/smoke-test.mjs",
     "sweep:mobile": "node scripts/mobile-sweep.mjs",
+    "audit": "node scripts/audit.mjs",
+    "audit:shots": "node scripts/screenshot-routes.mjs",
     "test:book": "node scripts/test-book-assessment.mjs",
     "build:static": "npm run blog:fetch && npm run blog:build && npm run llms:build && npm run work:build && npm run seo:check && npm run facts:check && npm run placeholders:check && npm run book:check",
     "postinstall": "node scripts/build-blog.mjs",
@@ -25,5 +27,8 @@
   "dependencies": {
     "image-size": "^1.2.1",
     "sanitize-html": "^2.13.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.61.1"
   }
 }

@@ -3,10 +3,10 @@
 
   <!-- oversized ampersand watermark (the pivot) -->
   <text x="1085" y="540" text-anchor="end" font-family="Archivo, Arial, sans-serif" font-weight="900"
-        font-size="640" letter-spacing="-20" fill="none" stroke="#bd451f" stroke-opacity="0.12" stroke-width="3">&amp;</text>
+        font-size="640" letter-spacing="-20" fill="none" stroke="#B83E22" stroke-opacity="0.12" stroke-width="3">&amp;</text>
 
   <!-- registration crop marks -->
-  <g fill="#bd451f">
+  <g fill="#B83E22">
     <rect x="64" y="64" width="34" height="3"/><rect x="64" y="64" width="3" height="34"/>
     <rect x="1102" y="64" width="34" height="3"/><rect x="1133" y="64" width="3" height="34"/>
     <rect x="64" y="563" width="34" height="3"/><rect x="64" y="533" width="3" height="34"/>
@@ -15,15 +15,15 @@
 
   <!-- kicker -->
   <text x="84" y="150" font-family="'Space Mono', monospace" font-weight="700" font-size="22"
-        letter-spacing="4" fill="#ec6c3d">HUMAN-CENTRIC AI FOR SMALL BUSINESS</text>
+        letter-spacing="4" fill="#B83E22">HUMAN-CENTRIC AI FOR SMALL BUSINESS</text>
 
   <!-- headline -->
   <text x="80" y="300" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="100"
         letter-spacing="-4" fill="#f3ede0">The machine belongs</text>
   <text x="80" y="420" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="100"
-        letter-spacing="-4"><tspan fill="#f3ede0">to </tspan><tspan fill="#ec6c3d">Main Street.</tspan></text>
+        letter-spacing="-4"><tspan fill="#f3ede0">to </tspan><tspan fill="#B83E22">Main Street.</tspan></text>
 
   <!-- footer line -->
   <text x="84" y="552" font-family="'Space Mono', monospace" font-weight="700" font-size="24"
-        letter-spacing="2" fill="#a59c8e">Main <tspan fill="#ec6c3d">&amp;</tspan> Machine &#183; Denver &#183; Phoenix &#183; Fixed price, ~90 days</text>
+        letter-spacing="2" fill="#a59c8e">Main <tspan fill="#B83E22">&amp;</tspan> Machine &#183; Denver &#183; Phoenix &#183; Fixed price, ~90 days</text>
 </svg>

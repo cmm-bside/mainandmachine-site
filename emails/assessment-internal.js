@@ -13,11 +13,11 @@ function rows(data, fields = FIELDS) {
     let val = data[f.key];
     if (f.key === "website" && val) {
       const href = /^https?:\/\//i.test(val) ? val : `https://${val}`;
-      val = `<a href="${escapeHtml(href)}" style="color:#c14a24; text-decoration:none;">${escapeHtml(data[f.key])}</a>`;
+      val = `<a href="${escapeHtml(href)}" style="color:#B83E22; text-decoration:none;">${escapeHtml(data[f.key])}</a>`;
     } else if (f.key === "email" && val) {
-      val = `<a href="mailto:${escapeHtml(val)}" style="color:#c14a24; text-decoration:none;">${escapeHtml(data[f.key])}</a>`;
+      val = `<a href="mailto:${escapeHtml(val)}" style="color:#B83E22; text-decoration:none;">${escapeHtml(data[f.key])}</a>`;
     } else if (f.key === "phone" && val) {
-      val = `<a href="tel:${escapeHtml(val.replace(/[^0-9+]/g, ""))}" style="color:#c14a24; text-decoration:none;">${escapeHtml(data[f.key])}</a>`;
+      val = `<a href="tel:${escapeHtml(val.replace(/[^0-9+]/g, ""))}" style="color:#B83E22; text-decoration:none;">${escapeHtml(data[f.key])}</a>`;
     } else {
       val = val ? escapeHtml(val).replace(/\n/g, "<br />") : "—";
     }
@@ -52,12 +52,12 @@ export function renderInternalHtml(data, meta) {
           <tr>
             <td style="background:#14110c; padding:0;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr><td style="height:4px; background:#c14a24; font-size:0; line-height:0;">&nbsp;</td></tr>
+                <tr><td style="height:4px; background:#B83E22; font-size:0; line-height:0;">&nbsp;</td></tr>
                 <tr>
                   <td style="padding:26px 32px;">
                     <div style="font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#a59c8e;">New assessment request</div>
                     <div style="margin-top:8px; font-family:Georgia,serif; font-size:24px; font-weight:700; color:#f4efe4; letter-spacing:-0.01em;">${escapeHtml(data.company)}</div>
-                    <div style="margin-top:6px; font-family:Georgia,serif; font-size:15px; color:#a59c8e;">${escapeHtml(data.name)} · preferred contact: <span style="color:#ec6c3d;">${via}</span></div>
+                    <div style="margin-top:6px; font-family:Georgia,serif; font-size:15px; color:#a59c8e;">${escapeHtml(data.name)} · preferred contact: <span style="color:#B83E22;">${via}</span></div>
                   </td>
                 </tr>
               </table>
@@ -68,7 +68,7 @@ export function renderInternalHtml(data, meta) {
             <td style="padding:22px 32px 0;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fbf8f1; border:1px solid rgba(32,28,23,0.14);">
                 <tr>
-                  <td style="padding:14px 16px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#6f675c;">Reference <b style="color:#c14a24;">${ref}</b></td>
+                  <td style="padding:14px 16px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#6f675c;">Reference <b style="color:#B83E22;">${ref}</b></td>
                   <td align="right" style="padding:14px 16px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.04em; color:#978d7f;">${stamp}</td>
                 </tr>
               </table>
@@ -85,7 +85,7 @@ ${rows(data)}
 
           <tr>
             <td style="padding:16px 32px 30px;">
-              <p style="margin:0; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.04em; line-height:1.7; color:#6f675c;">Reply to this email to reach ${escapeHtml(data.name)} directly — Reply-To is set to their address. Submitted via <a href="${SITE_ORIGIN}/book/" style="color:#c14a24; text-decoration:none;">mainandmachine.com/book</a>.</p>
+              <p style="margin:0; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.04em; line-height:1.7; color:#6f675c;">Reply to this email to reach ${escapeHtml(data.name)} directly — Reply-To is set to their address. Submitted via <a href="${SITE_ORIGIN}/book/" style="color:#B83E22; text-decoration:none;">mainandmachine.com/book</a>.</p>
             </td>
           </tr>
 
@@ -141,12 +141,12 @@ export function renderDetailsHtml(data, meta) {
           <tr>
             <td style="background:#14110c; padding:0;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr><td style="height:4px; background:#c14a24; font-size:0; line-height:0;">&nbsp;</td></tr>
+                <tr><td style="height:4px; background:#B83E22; font-size:0; line-height:0;">&nbsp;</td></tr>
                 <tr>
                   <td style="padding:26px 32px;">
                     <div style="font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#a59c8e;">Prep details added</div>
                     <div style="margin-top:8px; font-family:Georgia,serif; font-size:24px; font-weight:700; color:#f4efe4; letter-spacing:-0.01em;">${escapeHtml(data.company)}</div>
-                    <div style="margin-top:6px; font-family:Georgia,serif; font-size:15px; color:#a59c8e;">${escapeHtml(data.name)} · appended to reference <span style="color:#ec6c3d;">${ref}</span></div>
+                    <div style="margin-top:6px; font-family:Georgia,serif; font-size:15px; color:#a59c8e;">${escapeHtml(data.name)} · appended to reference <span style="color:#B83E22;">${ref}</span></div>
                   </td>
                 </tr>
               </table>
@@ -157,7 +157,7 @@ export function renderDetailsHtml(data, meta) {
             <td style="padding:22px 32px 0;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fbf8f1; border:1px solid rgba(32,28,23,0.14);">
                 <tr>
-                  <td style="padding:14px 16px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#6f675c;">Reference <b style="color:#c14a24;">${ref}</b></td>
+                  <td style="padding:14px 16px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#6f675c;">Reference <b style="color:#B83E22;">${ref}</b></td>
                   <td align="right" style="padding:14px 16px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.04em; color:#978d7f;">${stamp}</td>
                 </tr>
               </table>
@@ -174,7 +174,7 @@ ${rows(data, DETAIL_FIELDS)}
 
           <tr>
             <td style="padding:16px 32px 30px;">
-              <p style="margin:0; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.04em; line-height:1.7; color:#6f675c;">Optional details ${escapeHtml(data.name)} added after submitting. File with the original request — same reference id. Submitted via <a href="${SITE_ORIGIN}/book/" style="color:#c14a24; text-decoration:none;">mainandmachine.com/book</a>.</p>
+              <p style="margin:0; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.04em; line-height:1.7; color:#6f675c;">Optional details ${escapeHtml(data.name)} added after submitting. File with the original request — same reference id. Submitted via <a href="${SITE_ORIGIN}/book/" style="color:#B83E22; text-decoration:none;">mainandmachine.com/book</a>.</p>
             </td>
           </tr>
 

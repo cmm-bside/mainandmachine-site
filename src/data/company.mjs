@@ -31,7 +31,7 @@ export const COMPANY = {
     {
       key: "audit",
       name: "AI Readiness Audit",
-      price: "$3,500 – $8,500",
+      price: "$3,500–$8,500",
       priceLow: 3500,
       priceHigh: 8500,
       timeline: "2 to 4 weeks",
@@ -39,7 +39,7 @@ export const COMPANY = {
     {
       key: "sprint",
       name: "AI Implementation Sprint",
-      price: "$12,000 – $45,000",
+      price: "$12,000–$45,000",
       priceLow: 12000,
       priceHigh: 45000,
       timeline: "4 to 12 weeks",
@@ -58,8 +58,8 @@ export const COMPANY = {
   freeOffer: "30-minute AI Opportunity Assessment, reply within 24 hours",
 
   audience: {
-    headcount: "5 – 100",
-    revenue: "$1M – $50M",
+    headcount: "5–100",
+    revenue: "$1M–$50M",
   },
 
   locations: ["Denver, CO", "Phoenix, AZ"],

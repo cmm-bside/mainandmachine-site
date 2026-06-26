@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=73" />
+<link rel="stylesheet" href="/styles.css?v=79" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -38,7 +38,7 @@
       "logo": "https://www.mainandmachine.com/icon-512.png",
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-360-5128",
-      "priceRange": "$3,500 - $45,000",
+      "priceRange": "$3,500–$45,000",
       "areaServed": "US",
       "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
     },
@@ -54,7 +54,7 @@
   ]
 }
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23bd451f'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -67,11 +67,13 @@
    ========================================================= */
 
 /* hero */
-.cr-hero { padding-block: clamp(48px, 6vw, 96px) var(--section-pad); }
-.cr-hero__grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.cr-hero { padding-block: var(--hero-top) var(--section-pad); }
+.cr-hero__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+/* spec card top aligns to the H1 first-line cap height (side-by-side only) */
+@media (min-width: 881px) { .cr-hero__card { margin-top: 57px; } }
 @media (max-width: 880px) { .cr-hero__grid { grid-template-columns: 1fr; gap: 40px; } .cr-hero__card { max-width: 460px; } }
 .cr-hero h1 { font-size: clamp(var(--fs-39), 6.6vw, var(--fs-78)); line-height: 0.99; margin: 22px 0 24px; }
-.cr-hero__lede { max-width: 48ch; margin-bottom: 32px; }
+.cr-hero__lede { max-width: 60ch; margin-bottom: 32px; }
 .cr-hero__actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 .cr-hero__note { font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); margin-top: 22px; letter-spacing: .02em; }
 
@@ -95,8 +97,9 @@
 .cr-hire { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: start; margin-top: var(--block-gap); }
 .cr-hire__body { font-size: var(--fs-20); line-height: 1.62; color: var(--dtx-mute); margin-top: 22px; }
 .cr-hire__body b { color: var(--dtx); font-weight: 700; }
-.cr-traits { border-top: 1px solid var(--dline); }
+.cr-traits { border-top: 1px solid var(--dline); border-bottom: 1px solid var(--dline); } /* both caps on the container — symmetric top/bottom */
 .cr-trait { border-bottom: 1px solid var(--dline); padding: 20px 0; display: grid; grid-template-columns: 30px 1fr; gap: 14px; }
+.cr-trait:last-child { border-bottom: 0; } /* container provides the bottom cap — no double rule */
 .cr-trait__n { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-ink); padding-top: 3px; }
 .cr-trait__t { font-weight: 700; font-size: var(--fs-16); color: var(--dtx); letter-spacing: -0.01em; margin-bottom: 4px; }
 .cr-trait__d { font-size: var(--fs-16); color: var(--dtx-mute); line-height: 1.5; }
@@ -125,7 +128,8 @@
 .cr-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .cr-field.full { grid-column: 1 / -1; }
 .cr-field label { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--tx-mute); }
-.cr-field label .req { color: var(--accent); }
+.cr-field:not(.full) label { white-space: nowrap; } /* two-up labels never wrap → inputs stay aligned */
+.cr-field label .req { color: var(--rust); }
 .cr-field label .opt { color: var(--tx-faint); text-transform: none; letter-spacing: .02em; }
 .cr-field input[type="text"],
 .cr-field input[type="email"],
@@ -153,7 +157,7 @@
 .cr-file.has-file .cr-file__icon { border-color: var(--accent); color: var(--accent); }
 .cr-file__text { font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.35; min-width: 0; }
 .cr-file__text b { color: var(--tx); font-weight: 700; word-break: break-word; }
-.cr-file__text .sub { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); display: block; margin-top: 3px; }
+.cr-file__text .sub { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); display: block; margin-top: 3px; text-transform: uppercase; }
 /* the input overlays the whole drop zone: native click + drag target, ≥44px */
 .cr-file input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
 .cr-file:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
@@ -244,11 +248,16 @@
 <!-- ============ 1 · HERO ============ -->
 <section class="section paper cr-hero" data-screen-label="Careers hero">
   <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <span>Careers</span>
+    </div>
     <div class="cr-hero__grid">
       <div>
-        <span class="kicker kicker--plain">Careers · Main &amp; Machine</span>
+        <span class="kicker">Careers</span>
         <h1>Help us put serious AI to work for <span class="accent-tx">Main Street.</span></h1>
-        <p class="lead cr-hero__lede">We build private, auditable AI systems for the businesses that keep the economy running — lenders, manufacturers, local institutions. It's careful, high-stakes work for clients who can't afford to get it wrong. If that's the kind of problem you want to spend your days on, we'd like to meet you.</p>
+        <p class="lead cr-hero__lede">We build private, auditable AI systems for the businesses that keep the economy running — lenders, manufacturers, local institutions. It’s careful, high-stakes work for clients who can’t afford to get it wrong. If that’s the kind of problem you want to spend your days on, we’d like to meet you.</p>
         <div class="cr-hero__actions">
           <a class="btn btn--primary btn--lg" href="#apply">Start your application <span class="arr">→</span></a>
           <a class="btn btn--secondary btn--lg" href="#values">Why work here</a>
@@ -283,17 +292,17 @@
       <div class="cr-value">
         <div class="cr-value__n">02</div>
         <div class="cr-value__t">People stay in control</div>
-        <p class="cr-value__d">We don't build black boxes that replace judgment — we build systems that hand finished, organized work to a person who decides. AI should give people their day back, not take their seat. That conviction shapes who we hire, too.</p>
+        <p class="cr-value__d">We don’t build black boxes that replace judgment — we build systems that hand finished, organized work to a person who decides. AI should give people their day back, not take their seat. That conviction shapes who we hire, too.</p>
       </div>
       <div class="cr-value">
         <div class="cr-value__n">03</div>
         <div class="cr-value__t">Built from the real process</div>
-        <p class="cr-value__d">We don't bring templates. We read how a business actually works and build from that, citing the source for every step. We value people who do the homework before they propose the answer.</p>
+        <p class="cr-value__d">We don’t bring templates. We read how a business actually works and build from that, citing the source for every step. We value people who do the homework before they propose the answer.</p>
       </div>
       <div class="cr-value">
         <div class="cr-value__n">04</div>
         <div class="cr-value__t">Main Street, not hype street</div>
-        <p class="cr-value__d">We're not chasing the flashiest demo. We serve lenders, manufacturers, and local institutions with consequential, unglamorous problems — and we take pride in getting them exactly right.</p>
+        <p class="cr-value__d">We’re not chasing the flashiest demo. We serve lenders, manufacturers, and local institutions with consequential, unglamorous problems — and we take pride in getting them exactly right.</p>
       </div>
     </div>
   </div>
@@ -306,13 +315,13 @@
     <div class="cr-hire">
       <div>
         <h2 class="h2">We hire for judgment, care, and range.</h2>
-        <p class="cr-hire__body">We're a small team that builds high-stakes systems, so we look for people who can own a problem end to end — engineers, AI builders, designers, and client-facing people who'd rather do a few things exceptionally than many things adequately. You don't need a specific title to be useful here. <b>Tell us what you're great at.</b></p>
+        <p class="cr-hire__body">We’re a small team that builds high-stakes systems, so we look for people who can own a problem end to end — engineers, AI builders, designers, and client-facing people who’d rather do a few things exceptionally than many things adequately. You don’t need a specific title to be useful here. <b>Tell us what you’re great at.</b></p>
       </div>
       <div class="cr-traits">
-        <div class="cr-trait"><span class="cr-trait__n">A</span><div><div class="cr-trait__t">You sweat the details others skip</div><p class="cr-trait__d">Edge cases, data handling, the part of the spec everyone else glosses over.</p></div></div>
-        <div class="cr-trait"><span class="cr-trait__n">B</span><div><div class="cr-trait__t">You can talk to a business owner</div><p class="cr-trait__d">You translate between what a client needs and what a system should do.</p></div></div>
-        <div class="cr-trait"><span class="cr-trait__n">C</span><div><div class="cr-trait__t">You're fluent — or fearless — with AI</div><p class="cr-trait__d">You've built with modern AI tooling, or you learn fast and ship.</p></div></div>
-        <div class="cr-trait"><span class="cr-trait__n">D</span><div><div class="cr-trait__t">You take ownership</div><p class="cr-trait__d">You'd rather own an outcome than be handed a ticket.</p></div></div>
+        <div class="cr-trait"><span class="cr-trait__n">01</span><div><div class="cr-trait__t">You sweat the details others skip</div><p class="cr-trait__d">Edge cases, data handling, the part of the spec everyone else glosses over.</p></div></div>
+        <div class="cr-trait"><span class="cr-trait__n">02</span><div><div class="cr-trait__t">You can talk to a business owner</div><p class="cr-trait__d">You translate between what a client needs and what a system should do.</p></div></div>
+        <div class="cr-trait"><span class="cr-trait__n">03</span><div><div class="cr-trait__t">You’re fluent — or fearless — with AI</div><p class="cr-trait__d">You’ve built with modern AI tooling, or you learn fast and ship.</p></div></div>
+        <div class="cr-trait"><span class="cr-trait__n">04</span><div><div class="cr-trait__t">You take ownership</div><p class="cr-trait__d">You’d rather own an outcome than be handed a ticket.</p></div></div>
       </div>
     </div>
   </div>
@@ -325,7 +334,7 @@
       <div class="cr-aside">
         <span class="kicker">Apply</span>
         <h2 class="h2 mt-s">Tell us about you.</h2>
-        <p class="lead cr-aside__lede">No role required. Send us who you are, what you've built, and why this work pulls at you. A real person reads every application.</p>
+        <p class="lead cr-aside__lede">No role required. Send us who you are, what you’ve built, and why this work pulls at you. A real person reads every application.</p>
         <div class="cr-aside__spec">
           <div class="cr-aside__row"><span class="k">↳</span><span class="v">Goes straight to <b>our founders</b></span></div>
           <div class="cr-aside__row"><span class="k">↳</span><span class="v">A link to your work beats a long résumé</span></div>
@@ -340,11 +349,11 @@
             </li>
             <li class="cr-after__step">
               <span class="cr-after__n">02</span>
-              <div><span class="cr-after__t">A straight reply</span><span class="cr-after__d">If we see a fit, we reach out to talk. If we don't, we'll tell you — no silent rejections.</span></div>
+              <div><span class="cr-after__t">A straight reply</span><span class="cr-after__d">If we see a fit, we reach out to talk. If we don’t, we’ll tell you — no silent rejections.</span></div>
             </li>
             <li class="cr-after__step">
               <span class="cr-after__n">03</span>
-              <div><span class="cr-after__t">A real conversation</span><span class="cr-after__d">We walk through something you've actually built. No trick questions, no whiteboard gauntlet.</span></div>
+              <div><span class="cr-after__t">A real conversation</span><span class="cr-after__d">We walk through something you’ve actually built. No trick questions, no whiteboard gauntlet.</span></div>
             </li>
           </ol>
         </div>
@@ -377,7 +386,7 @@
               <input type="text" id="f-source" name="source" placeholder="A friend, LinkedIn, an event…" />
             </div>
             <div class="cr-field full">
-              <label for="f-resume">Résumé <span class="opt">(optional · PDF or DOC, up to 10MB)</span></label>
+              <label for="f-resume">Résumé <span class="opt">(optional)</span></label>
               <label class="cr-file" id="fileDrop" for="f-resume">
                 <span class="cr-file__icon" id="ficon">PDF</span>
                 <span class="cr-file__text" id="ftext"><b>Choose a file</b> or drag it here<span class="sub">PDF, DOC, or DOCX — 10MB max</span></span>
@@ -403,7 +412,7 @@
         <div class="cr-status success">
           <div class="icon">✓</div>
           <h3>Application received.</h3>
-          <p>Thanks for reaching out — your application is on its way to our founders. If we see a fit, we'll be in touch by email. We read every one.</p>
+          <p>Thanks for reaching out — your application is on its way to our founders. If we see a fit, we’ll be in touch by email. We read every one.</p>
         </div>
       </div>
     </div>

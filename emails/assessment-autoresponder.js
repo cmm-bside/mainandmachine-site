@@ -23,7 +23,7 @@ function postBlock(p, isFirst) {
                   </td>`
     : `<td width="132" style="width:132px; padding:0;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="height:108px; background:${escapeHtml(p.plate || "#14110c")};">
-                      <tr><td align="center" valign="middle" style="font-family:'Space Mono',ui-monospace,monospace; font-size:14px; font-weight:700; color:#ec6c3d; letter-spacing:-0.04em;">M<span style="color:#f4efe4;">&amp;</span>M</td></tr>
+                      <tr><td align="center" valign="middle" style="font-family:'Space Mono',ui-monospace,monospace; font-size:14px; font-weight:700; color:#B83E22; letter-spacing:-0.04em;">M<span style="color:#f4efe4;">&amp;</span>M</td></tr>
                     </table>
                   </td>`;
   return `
@@ -34,7 +34,7 @@ function postBlock(p, isFirst) {
                 <tr>
                   ${thumbCell}
                   <td style="padding:16px 18px;">
-                    <div style="font-family:'Space Mono',ui-monospace,monospace; font-size:9.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#c14a24;">${escapeHtml(p.category)}</div>
+                    <div style="font-family:'Space Mono',ui-monospace,monospace; font-size:9.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#B83E22;">${escapeHtml(p.category)}</div>
                     <div style="margin-top:7px; font-family:Georgia,serif; font-size:17px; font-weight:700; line-height:1.2; color:#201c17;">${escapeHtml(p.title)}</div>
                     <div style="margin-top:6px; font-family:Georgia,serif; font-size:13px; line-height:1.45; color:#6f675c;">${escapeHtml(p.blurb)}</div>
                   </td>
@@ -75,7 +75,7 @@ export function renderAutoresponderHtml(data) {
             <td style="background:#14110c; padding:0;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="height:4px; background:#c14a24; font-size:0; line-height:0;">&nbsp;</td>
+                  <td style="height:4px; background:#B83E22; font-size:0; line-height:0;">&nbsp;</td>
                 </tr>
                 <tr>
                   <td style="padding:30px 40px;">
@@ -107,7 +107,7 @@ export function renderAutoresponderHtml(data) {
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fbf8f1; border:1px solid rgba(32,28,23,0.14);">
                 <tr>
                   <td style="padding:16px 22px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#6f675c;">Your reference</td>
-                  <td align="right" style="padding:16px 22px; font-family:'Space Mono',ui-monospace,monospace; font-size:14px; font-weight:700; letter-spacing:.06em; color:#c14a24;">${ref}</td>
+                  <td align="right" style="padding:16px 22px; font-family:'Space Mono',ui-monospace,monospace; font-size:14px; font-weight:700; letter-spacing:.06em; color:#B83E22;">${ref}</td>
                 </tr>
               </table>
             </td>
@@ -119,15 +119,15 @@ export function renderAutoresponderHtml(data) {
               <div style="font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#6f675c; padding-bottom:6px; border-bottom:1px solid rgba(32,28,23,0.14);">What happens next</div>
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding:18px 0 0; vertical-align:top; width:80px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#c14a24;">Now</td>
+                  <td style="padding:18px 0 0; vertical-align:top; width:80px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#B83E22;">Now</td>
                   <td style="padding:18px 0 0; font-family:Georgia,serif; font-size:15px; line-height:1.5; color:#3f3a32;"><b style="color:#201c17;">Request logged.</b> Your details are with a senior advisor — not a CRM funnel.</td>
                 </tr>
                 <tr>
-                  <td style="padding:14px 0 0; vertical-align:top; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#c14a24;">&lt;24 hrs</td>
+                  <td style="padding:14px 0 0; vertical-align:top; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#B83E22;">&lt;24 hrs</td>
                   <td style="padding:14px 0 0; font-family:Georgia,serif; font-size:15px; line-height:1.5; color:#3f3a32;"><b style="color:#201c17;">We email you.</b> A short note proposing a few times that work.</td>
                 </tr>
                 <tr>
-                  <td style="padding:14px 0 18px; vertical-align:top; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#c14a24;">The call</td>
+                  <td style="padding:14px 0 18px; vertical-align:top; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#B83E22;">The call</td>
                   <td style="padding:14px 0 18px; font-family:Georgia,serif; font-size:15px; line-height:1.5; color:#3f3a32;"><b style="color:#201c17;">Thirty focused minutes.</b> We walk your workflows and show you where AI pays — and where it doesn't.</td>
                 </tr>
               </table>
@@ -151,7 +151,7 @@ ${posts}
           <!-- read-more link -->
           <tr>
             <td style="padding:20px 40px 0;">
-              <a href="${SITE_ORIGIN}/blog/" style="font-family:'Space Mono',ui-monospace,monospace; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#c14a24; text-decoration:none;">All field notes&nbsp;→</a>
+              <a href="${SITE_ORIGIN}/blog/" style="font-family:'Space Mono',ui-monospace,monospace; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#B83E22; text-decoration:none;">All field notes&nbsp;→</a>
             </td>
           </tr>
 

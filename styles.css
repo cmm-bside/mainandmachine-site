@@ -56,7 +56,7 @@ body {
   font-size: var(--fs-16);
   background: var(--paper);
   color: var(--tx);
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -69,7 +69,7 @@ a { color: inherit; text-decoration: none; }
    (head-block → grid → prose, etc.). Every major block margin uses the
    token so the rhythm audits as one number sitewide. */
 :root{
-  --section-pad: clamp(72px, 9vw, 140px);
+  --section-pad: clamp(72px, 9vw, 112px);
   --section-pad-tight: clamp(56px, 6vw, 96px);
   --block-gap: 48px;
 }
@@ -109,7 +109,10 @@ a { color: inherit; text-decoration: none; }
 
 h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-wrap: balance; }
 .h-hero { font-size: clamp(var(--fs-39),7vw,var(--fs-110)); font-weight: 900; letter-spacing: -0.025em; line-height: 0.98; }
-.h2     { font-size: clamp(var(--fs-39),4.4vw,var(--fs-76)); letter-spacing: -0.025em; }
+/* hero headline: capped so it can't balloon; max-width holds it to ~3 lines */
+.hero__headline { font-size: clamp(46px, 5.4vw, 84px); line-height: 0.95; letter-spacing: -0.025em; max-width: 12ch; }
+/* section headings: capped display size + intentional wrap (not ragged) */
+.h2     { font-size: clamp(32px, 3.8vw, 60px); line-height: 1.06; letter-spacing: -0.02em; max-width: 18ch; text-wrap: balance; }
 .h3     { font-size: clamp(var(--fs-20),2.4vw,var(--fs-31)); }
 .lead   { font-size: var(--fs-20); line-height: 1.55; color: var(--tx-mute); max-width: 60ch; }
 .ink .lead { color: var(--dtx-mute); }
@@ -318,7 +321,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
    PATHS — three doors
    ========================================================= */
 .head-block { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: end; margin-bottom: var(--block-gap); }
-@media (max-width: 820px){ .head-block { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 820px){ .head-block { grid-template-columns: 1fr; gap: 24px; } }
 
 .paths { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; border: 1px solid var(--line); }
 @media (max-width: 860px){ .paths { grid-template-columns: 1fr; } }
@@ -754,6 +757,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 @keyframes hm-wipe{ to{ clip-path:inset(0 0 0 0); } }
 
 .hero__headline .hm-line{ display:block; overflow:hidden; }
+.hm-word{ display:inline-block; white-space:nowrap; }
 .hm-letter{ display:inline-block; transform:translateY(110%) rotate(3deg); opacity:0; will-change:transform,opacity; }
 [data-hero-machine][data-state="play"] .hm-letter{ animation:hm-drop .62s cubic-bezier(.16,1,.3,1) forwards; animation-delay:calc(.35s + var(--i) * .045s); }
 @keyframes hm-drop{ 60%{ opacity:1 } 100%{ transform:none; opacity:1 } }
@@ -762,11 +766,11 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 [data-hero-machine][data-state="play"] .hm-baseline{ animation:hm-base .6s cubic-bezier(.7,0,.3,1) .55s forwards; }
 @keyframes hm-base{ to{ transform:scaleX(1); } }
 
-.hm-crop{ position:absolute; width:13px; height:13px; border:1.5px solid #B83E22; z-index:1; opacity:0; }
-.hm-crop.tl{ top:18px; left:18px; border-right:0; border-bottom:0; }
-.hm-crop.tr{ top:18px; right:18px; border-left:0; border-bottom:0; }
-.hm-crop.bl{ bottom:18px; left:18px; border-right:0; border-top:0; }
-.hm-crop.br{ bottom:18px; right:18px; border-left:0; border-top:0; }
+.hm-crop{ position:absolute; box-sizing:border-box; width:13px; height:13px; background:none; padding:0; border:1.5px solid #B83E22; z-index:1; opacity:0; }
+.hm-crop--tl{ top:18px; left:18px; border-right:0; border-bottom:0; }
+.hm-crop--tr{ top:18px; right:18px; border-left:0; border-bottom:0; }
+.hm-crop--bl{ bottom:18px; left:18px; border-right:0; border-top:0; }
+.hm-crop--br{ bottom:18px; right:18px; border-left:0; border-top:0; }
 [data-hero-machine][data-state="play"] .hm-crop,
 [data-hero-machine][data-state="done"] .hm-crop{ animation:hm-crop .4s ease .7s forwards; }
 @keyframes hm-crop{ from{ opacity:0; transform:scale(.6) } to{ opacity:1; transform:none } }

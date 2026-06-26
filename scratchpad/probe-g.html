@@ -82,8 +82,8 @@
   if(dest){ window.location.replace(dest); }
 })();
 </script>
-<script defer src="/js/hero-machine.js?v=3"></script>
-<link rel="stylesheet" href="/Users/christophermyers/mainandmachine-site/scratchpad/forcehover.css"></head>
+<script defer src="/Users/christophermyers/mainandmachine-site/js/hero-machine.js?v=4"></script>
+<script>addEventListener("load",function(){setTimeout(function(){var o=[];var hl=document.querySelector(".hero__headline");var cs=getComputedStyle(hl);o.push("headline font="+cs.fontSize+" lh="+cs.lineHeight+" maxw="+cs.maxWidth);document.querySelectorAll(".hero__headline .hm-line").forEach(function(l){var r=l.getBoundingClientRect();var lh=parseFloat(getComputedStyle(l).lineHeight)||parseFloat(cs.fontSize)*0.95;o.push("line ["+l.textContent.trim()+"] h="+Math.round(r.height)+" ~lines="+Math.max(1,Math.round(r.height/lh)));});var c=document.querySelector(".hm-crop--tl");var ccs=getComputedStyle(c);var cr=c.getBoundingClientRect();o.push("crop--tl "+Math.round(cr.width)+"x"+Math.round(cr.height)+" bg="+ccs.backgroundColor+" pad="+ccs.paddingTop);var h2=document.querySelector(".h2");o.push("h2 font="+getComputedStyle(h2).fontSize+" maxw="+getComputedStyle(h2).maxWidth);document.title="P:: "+o.join(" :: ");},700);});</script></head>
 <body>
 
 <!-- ============ OPERATOR CHROME ============ -->
@@ -131,12 +131,12 @@
 </header>
 
 <!-- ============ 01 HERO ============ -->
-<section class="hero section paper" data-screen-label="Hero" data-hero-machine data-state="idle">
+<section class="hero section paper" data-screen-label="Hero" data-hero-machine data-state="done">
   <canvas class="hm-grid" data-machine-grid aria-hidden="true"></canvas>
-  <span class="hm-crop tl" aria-hidden="true"></span>
-  <span class="hm-crop tr" aria-hidden="true"></span>
-  <span class="hm-crop bl" aria-hidden="true"></span>
-  <span class="hm-crop br" aria-hidden="true"></span>
+  <span class="hm-crop hm-crop--tl" aria-hidden="true"></span>
+  <span class="hm-crop hm-crop--tr" aria-hidden="true"></span>
+  <span class="hm-crop hm-crop--bl" aria-hidden="true"></span>
+  <span class="hm-crop hm-crop--br" aria-hidden="true"></span>
   <div class="wrap">
     <div class="hero__grid">
       <div>

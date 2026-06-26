@@ -83,7 +83,7 @@
 })();
 </script>
 <script defer src="/js/hero-machine.js?v=3"></script>
-<link rel="stylesheet" href="/Users/christophermyers/mainandmachine-site/scratchpad/forcehover.css"></head>
+<script>addEventListener("load",function(){setTimeout(function(){var out=[];document.querySelectorAll("[data-hero-machine] *").forEach(function(el){var r=el.getBoundingClientRect();var cs=getComputedStyle(el);if(r.left<90&&r.top<320&&r.top>90&&r.width>20&&r.width<120&&r.height>20){out.push(el.className+" | "+Math.round(r.width)+"x"+Math.round(r.height)+" @"+Math.round(r.left)+","+Math.round(r.top)+" | bg="+cs.backgroundColor+" | border="+cs.borderTopWidth+" "+cs.borderTopColor+" | bs="+cs.boxShadow.slice(0,40));}});document.title="HITS:: "+out.join(" ::: ");},600);});</script></head>
 <body>
 
 <!-- ============ OPERATOR CHROME ============ -->
@@ -131,7 +131,7 @@
 </header>
 
 <!-- ============ 01 HERO ============ -->
-<section class="hero section paper" data-screen-label="Hero" data-hero-machine data-state="idle">
+<section class="hero section paper" data-screen-label="Hero" data-hero-machine data-state="done">
   <canvas class="hm-grid" data-machine-grid aria-hidden="true"></canvas>
   <span class="hm-crop tl" aria-hidden="true"></span>
   <span class="hm-crop tr" aria-hidden="true"></span>

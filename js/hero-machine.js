@@ -9,16 +9,19 @@
   root.dataset.init = '1';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // split the accent word into letters (plain text in source -> JS-off shows it)
+  // split the accent line into letters, grouped by WORD so it can never break mid-word
   const word = root.querySelector('[data-machine-word]');
   if (word && !word.dataset.split) {
-    const frag = document.createDocumentFragment();
-    [...word.textContent].forEach((ch, i) => {
-      const s = document.createElement('span');
-      s.className = 'hm-letter';
-      s.textContent = ch === ' ' ? ' ' : ch;
-      s.style.setProperty('--i', i);
-      frag.appendChild(s);
+    const words = word.textContent.split(/(\s+)/);
+    let i = 0; const frag = document.createDocumentFragment();
+    words.forEach(chunk => {
+      if (/^\s+$/.test(chunk)) { frag.appendChild(document.createTextNode(chunk)); return; }
+      const wrap = document.createElement('span'); wrap.className = 'hm-word';
+      [...chunk].forEach(ch => {
+        const sp = document.createElement('span'); sp.className = 'hm-letter';
+        sp.textContent = ch; sp.style.setProperty('--i', i++); wrap.appendChild(sp);
+      });
+      frag.appendChild(wrap);
     });
     word.textContent = ''; word.appendChild(frag); word.dataset.split = '1';
   }

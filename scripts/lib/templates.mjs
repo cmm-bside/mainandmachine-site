@@ -120,13 +120,13 @@ export function topbar() {
     <div class="ticker__group">
       <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)} — free weekly essays</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">AI a person can explain, question, and overrule</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
       <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)} — free weekly essays</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">AI a person can explain, question, and overrule</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
   </div>
@@ -208,7 +208,7 @@ export function footer() {
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
           <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
         </a>
-        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business — every system we ship can be overruled by a person who owns it.</p>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
       </div>
       <div class="foot__col">
         <h2>Company</h2>
@@ -250,7 +250,7 @@ export function footer() {
       </div>
     </div>
     <div class="foot__bottom">
-      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI you can overrule</span></span>
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
       <span class="links"><a href="/">Home</a><a href="/blog/">Writing</a><a href="/blog/rss.xml">RSS</a></span>
     </div>
   </div>

@@ -14,7 +14,7 @@ export const COMPANY = {
   origin: "https://www.mainandmachine.com",
   oneLiner:
     "AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue)",
-  tagline: "Human-centric AI for small and mid-size business — every system we ship can be overruled by a person who owns it",
+  tagline: "Human-centric AI for small and mid-size business",
   slogan: "The machine belongs to Main Street.",
 
   founder: {

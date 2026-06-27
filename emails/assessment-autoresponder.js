@@ -80,7 +80,7 @@ export function renderAutoresponderHtml(data) {
                 <tr>
                   <td style="padding:30px 40px;">
                     <img src="${WORDMARK_URL}" width="252" height="27" alt="Main &amp; Machine" style="display:block; border:0; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic;" />
-                    <div style="margin-top:14px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#a59c8e;">AI a person can explain, question, and overrule</div>
+                    <div style="margin-top:14px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#a59c8e;">Human-Centric AI for Main Street</div>
                   </td>
                 </tr>
               </table>

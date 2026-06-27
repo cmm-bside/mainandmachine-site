@@ -60,6 +60,24 @@
 
 /* ---- coming-soon grid ---- */
 .story-more { margin-top: clamp(var(--s-24), 4vw, var(--s-32)); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em; color: var(--tx-faint); }
+
+/* ---- founder featured quote (ink) ---- */
+.foundernote { background: var(--ink); color: var(--dtx); border-radius: var(--r-md); padding: clamp(var(--s-32), 5vw, var(--s-64)); }
+.foundernote__tag { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); display: block; margin-bottom: var(--s-24); }
+.foundernote__q { font-family: var(--sans); font-style: italic; font-weight: 500; font-size: clamp(var(--fs-20), 2.5vw, var(--fs-31)); line-height: 1.34; letter-spacing: -.01em; color: #fff; max-width: 54ch; text-wrap: balance; margin: 0; }
+.foundernote__q b { color: var(--accent-ink); font-weight: 600; font-style: italic; }
+.foundernote__by { display: flex; align-items: baseline; gap: var(--s-12); flex-wrap: wrap; margin-top: var(--s-32); padding-top: var(--s-24); border-top: 1px solid var(--dline); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em; color: var(--dtx-mute); }
+.foundernote__by b { color: var(--dtx); font-weight: 700; letter-spacing: 0; }
+
+/* ---- MARCUS teardown breakdown ---- */
+.teardown { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border: 1px solid var(--line); margin-top: clamp(var(--s-24), 4vw, var(--s-32)); }
+@media (max-width: 820px) { .teardown { grid-template-columns: 1fr; } }
+.teardown__cell { padding: clamp(var(--s-24), 3vw, var(--s-32)); border-right: 1px solid var(--line); background: var(--paper-card); }
+.teardown__cell:last-child { border-right: 0; }
+@media (max-width: 820px) { .teardown__cell { border-right: 0; border-bottom: 1px solid var(--line); } .teardown__cell:last-child { border-bottom: 0; } }
+.teardown__cell .tick-lbl { color: var(--accent-text); display: block; margin-bottom: var(--s-12); }
+.teardown__cell h3 { font-size: var(--fs-20); line-height: 1.18; margin-bottom: var(--s-12); }
+.teardown__cell p { font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.5; }
 </style>
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -184,35 +202,68 @@
       <div>
         <span class="kicker">Proof</span>
         <h1 class="h2 mt-s">Proof, not <span class="accent-tx">promises.</span></h1>
-        <p class="lead mt-s">We publish a client story only when the numbers are verified and the client signs off. The first is MARCUS, built for B:Side Capital and shared with their permission. More land here as clients clear them. Want to see the system we run ourselves? That’s on the <a href="/services/" style="text-decoration:underline;">Services</a>&nbsp;page.</p>
+        <p class="lead mt-s">Most firms hand you a deck. We hand you the system we trust to run our own regulated lender. MARCUS is the AI back office we built for B:Side Capital — proven on our own operation, with our own name on the line, before we offered a version of it to anyone else.</p>
       </div>
-      <div class="statrail crop" aria-label="Shelf rules at a glance">
-        <div class="statrail__bar"><span>Shelf rules</span><span><b>One standard</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Published</span><span class="statrail__v">Verified only</span></div>
-        <div class="statrail__row"><span class="statrail__k">Client stories</span><span class="statrail__v">With sign-off</span></div>
-        <div class="statrail__row"><span class="statrail__k">First story</span><span class="statrail__v accent-tx">MARCUS</span></div>
+      <div class="statrail crop" aria-label="MARCUS case file at a glance">
+        <div class="statrail__bar"><span>Case file</span><span><b>MARCUS · 2026</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Built for</span><span class="statrail__v">B:Side Capital</span></div>
+        <div class="statrail__row"><span class="statrail__k">Sector</span><span class="statrail__v">SBA 504 / CDFI</span></div>
+        <div class="statrail__row"><span class="statrail__k">The team</span><span class="statrail__v accent-tx">14 AI agents</span></div>
+        <div class="statrail__row"><span class="statrail__k">Footprint</span><span class="statrail__v">7 departments</span></div>
+        <div class="statrail__row"><span class="statrail__k">Runs</span><span class="statrail__v">In-house, on-prem</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE FIRST STORY ============ -->
-<section class="section paper-2" data-screen-label="The first story">
+<!-- ============ FOUNDER NOTE ============ -->
+<section class="section paper-2" data-screen-label="Why we built it for ourselves first">
+  <div class="wrap">
+    <div class="foundernote crop">
+      <span class="foundernote__tag">Why we lead with our own company</span>
+      <blockquote class="foundernote__q">
+        <p>I didn’t start Main &amp; Machine to sell AI. I built MARCUS to run my own company — B:Side Capital, a regulated SBA and CDFI lender, where a wrong call has real consequences and a borrower’s file never leaves the building. I made every mistake on my own operation first, with my own money and my own name on the line. Only once I trusted it with the thing I’m accountable for did I take it to anyone else. <b>We sell exactly one thing: what we already proved on ourselves.</b></p>
+      </blockquote>
+      <p class="foundernote__by"><b>Christopher Myers</b> — Founder &amp; Chairman, Main &amp; Machine · CEO, B:Side Capital</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANCHOR CASE: MARCUS ============ -->
+<section class="section paper" data-screen-label="Anchor case — MARCUS">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">01 / Client stories</span>
-        <h2 class="h2 mt-s">The first one we can show you.</h2>
+        <span class="kicker">01 / Anchor case study</span>
+        <h2 class="h2 mt-s">We didn’t sell it until we trusted it with our own loans.</h2>
       </div>
-      <p class="lead">Published with the client’s permission — the high end of what we build, opened up.</p>
+      <p class="lead">The clearest case study we have is our own. Our founder runs B:Side Capital; MARCUS is the AI back office we built to run it — under real regulatory stakes, on our own infrastructure. That it’s our own company isn’t a caveat. It’s the credibility.</p>
     </div>
 
-    <a class="story-feat crop" href="/work/marcus/" aria-label="Read the MARCUS client story">
+    <div class="teardown crop">
+      <div class="teardown__cell">
+        <span class="tick-lbl">The problem</span>
+        <h3>Prep ate the days.</h3>
+        <p>B:Side Capital is a regulated SBA 504 and CDFI lender. Before anyone decides anything, someone gathers the documents, pulls the reports, and drafts the paperwork — the same steps, over and over, across seven departments. And none of it could move to a cloud tool: borrower files can’t leave the building.</p>
+      </div>
+      <div class="teardown__cell">
+        <span class="tick-lbl">What we built</span>
+        <h3>Fourteen agents, in-house.</h3>
+        <p>We read roughly 840 of B:Side’s own process documents and built fourteen AI agents — one for each step of the lending lifecycle — running entirely on B:Side’s own infrastructure. No borrower file leaves the building, and every action traces back to a real procedure.</p>
+      </div>
+      <div class="teardown__cell">
+        <span class="tick-lbl">Who stays in control</span>
+        <h3>A person signs off. Always.</h3>
+        <p>MARCUS does the gathering, checking, and drafting, then hands finished work to a person who says yes, sends it back, or escalates. It clears the routine and drafts the hard calls — the judgment stays with the people accountable for it.</p>
+      </div>
+    </div>
+
+    <a class="story-feat crop" href="/work/marcus/" aria-label="Read the full MARCUS teardown" style="margin-top: clamp(var(--s-24), 4vw, var(--s-32));">
       <div class="story-feat__body">
-        <span class="story-feat__tag">Client story · B:Side Capital</span>
+        <span class="story-feat__tag">Full teardown · B:Side Capital</span>
         <h2>MARCUS — a private AI back office for a regulated lender</h2>
-        <p>B:Side Capital, an SBA 504 and CDFI lender, needed the repetitive prep automated without giving up control of the data or the decisions. We built 14 AI agents across 7 departments that run entirely in-house — with no borrower file leaving the building.</p>
-        <span class="story-feat__go">Read the story <span class="arr">→</span></span>
+        <p>The brief was one line: take the prep off our people’s plate, without ever taking them out of control. Walk the whole build — the seven departments, the fourteen agents, and the four surfaces the team already uses.</p>
+        <span class="story-feat__go">Read the full teardown <span class="arr">→</span></span>
       </div>
       <div class="story-feat__rail">
         <div class="story-feat__row"><span>Client</span><b>B:Side Capital</b></div>
@@ -222,8 +273,25 @@
         <div class="story-feat__row"><span>Runs</span><b>On-prem</b></div>
       </div>
     </a>
+  </div>
+</section>
 
-    <p class="story-more">More client stories are clearing review.</p>
+<!-- ============ THE STANDARD ============ -->
+<section class="section paper-2" data-screen-label="The shelf rule">
+  <div class="wrap">
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">02 / The shelf rule</span>
+        <h2 class="h2 mt-s">Client work goes up the same way — <span class="accent-tx">verified, and signed off.</span></h2>
+        <p class="lead mt-s">MARCUS we can open up because it’s ours. Everyone else’s work goes on this shelf by one rule: we publish a client story only when the numbers are verified and the client signs off in writing. No borrowed logos, no rounded-up results, nothing here we can’t stand behind. More are clearing review now.</p>
+      </div>
+      <div class="statrail crop" aria-label="Shelf rules at a glance">
+        <div class="statrail__bar"><span>Shelf rules</span><span><b>One standard</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Published</span><span class="statrail__v">Verified only</span></div>
+        <div class="statrail__row"><span class="statrail__k">Client stories</span><span class="statrail__v">With sign-off</span></div>
+        <div class="statrail__row"><span class="statrail__k">Borrowed logos</span><span class="statrail__v">None</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -324,7 +392,7 @@
 <script>
 (function(){
   if (navigator.webdriver) { return; }
-  var sels = ['.pagehero__grid > *','.head-block','.story-feat','.story-more','.closer','.foot__top > *'];
+  var sels = ['.pagehero__grid > *','.head-block','.foundernote','.teardown','.story-feat','.closer','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
   document.querySelectorAll('.rv').forEach(function(el){

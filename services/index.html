@@ -95,6 +95,14 @@
 /* artifact rail row */
 .artifact { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (max-width: 940px) { .artifact { grid-template-columns: 1fr; gap: 36px; } }
+
+/* ---- illustrative before/after cards (#builds) ---- */
+.svc-ba { margin-top: var(--s-12); }
+.svc-ba__k { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-faint); margin-right: var(--s-8); }
+.svc-ba--after .svc-ba__k { color: var(--accent-text); }
+.svc-ba__foot { margin-top: var(--s-24); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .02em; color: var(--tx-faint); }
+.svc-ba__foot a { color: var(--tx); text-decoration: underline; text-underline-offset: 2px; }
+.svc-ba__foot a:hover { color: var(--rust); }
 </style>
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -451,8 +459,7 @@
         <h3>Who it’s for</h3>
         <p>Teams of 5 to 100 people, $1M to $50M in revenue, with workflows worth automating and named. Most arrive by way of the <a href="#audit">audit</a>. Some already know exactly what they want built and skip straight to scoping.</p>
         <h3>Example builds</h3>
-        <p><b>Billing &amp; follow-up</b> — watches the invoices so you don’t have to. Tracks what’s outstanding, drafts the reminder in your voice, and flags the awkward exceptions for a human to send. The win: invoices chased on time, judgment calls still yours.</p>
-        <p><b>Operations data sync</b> — one operating view across the tools you already pay for. Connects CRM, billing, and project software so the same job shows the same status everywhere. The win: one reliable picture instead of five that disagree.</p>
+        <p>An intake agent, invoice follow-up, an ops data sync — see a concrete before/after for each in <a href="#builds">what a build looks like</a>.</p>
         <p class="svc-detail__note">Illustrative builds, not client claims. For a sprint we shipped — 14 agents across 7 departments — see <a href="/work/marcus/">the MARCUS case</a>.</p>
       </div>
       <div class="svc-detail__card crop">
@@ -519,6 +526,40 @@
         <details><summary><span class="q-no">04</span><span class="q-tx">Do you only manage what you built?</span><span class="q-pm">+</span></summary><p>The road here runs through the audit and the sprint, so yes — we manage systems we built and understand.</p></details>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ WHAT A BUILD LOOKS LIKE (illustrative) ============ -->
+<section class="section paper-2" id="builds" data-screen-label="What a build looks like">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">Picture it</span>
+        <h2 class="h2 mt-s">What a build <span class="accent-tx">looks like.</span></h2>
+      </div>
+      <p class="lead">One concrete before/after per category — illustrative, not client claims. Read these and you should be able to name the first thing you’d want built.</p>
+    </div>
+    <div class="diffs">
+      <div class="diff">
+        <span class="tick-lbl">Custom agent</span>
+        <h3>Intake agent</h3>
+        <p class="svc-ba"><span class="svc-ba__k">Before</span> A new lead or application lands in an inbox and waits while someone re-keys it, runs the checks, and decides where it goes.</p>
+        <p class="svc-ba svc-ba--after"><span class="svc-ba__k">After</span> The agent reads every submission, runs the checks, and drafts the reply — then hands a person finished work to approve, send back, or escalate.</p>
+      </div>
+      <div class="diff">
+        <span class="tick-lbl">Automation</span>
+        <h3>Invoice follow-up</h3>
+        <p class="svc-ba"><span class="svc-ba__k">Before</span> Overdue invoices slip because chasing them is nobody’s full-time job, and the awkward ones get put off.</p>
+        <p class="svc-ba svc-ba--after"><span class="svc-ba__k">After</span> The automation tracks what’s outstanding, drafts each reminder in your voice on schedule, and flags the judgment calls for a person to send.</p>
+      </div>
+      <div class="diff">
+        <span class="tick-lbl">Integration</span>
+        <h3>Ops data sync</h3>
+        <p class="svc-ba"><span class="svc-ba__k">Before</span> The same job shows a different status in your CRM, your billing tool, and your project software — so no number gets trusted.</p>
+        <p class="svc-ba svc-ba--after"><span class="svc-ba__k">After</span> One integration keeps them in sync, so every system shows the same source of truth and your team stops reconciling by hand.</p>
+      </div>
+    </div>
+    <p class="svc-ba__foot">Illustrative builds, not client claims — patterns, not specific clients. For one we actually shipped, 14 AI agents across 7 departments for a regulated lender, see <a href="/work/marcus/">the MARCUS teardown</a>.</p>
   </div>
 </section>
 

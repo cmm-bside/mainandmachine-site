@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=79" />
+<link rel="stylesheet" href="/styles.css?v=80" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -141,7 +141,7 @@
 
 .input {
   font-family: var(--sans); font-size: var(--fs-16); color: var(--tx); background: #fff;
-  border: 1px solid var(--line); padding: 14px 15px; width: 100%;
+  border: 1px solid var(--line); padding: 14px 15px; width: 100%; height: 52px;
   transition: border-color .15s var(--ease), box-shadow .15s var(--ease); border-radius: 0;
 }
 .input::placeholder { color: var(--tx-faint); }
@@ -422,7 +422,7 @@ select.input:invalid { color: var(--tx-faint); }
               <div class="frow frow--1">
                 <div class="field">
                   <label for="workflows">What is eating your team’s time? <span class="req">*</span></label>
-                  <textarea class="input" id="workflows" name="workflows" placeholder="The repetitive, manual, or slow workflows you'd most love to hand off." aria-describedby="workflows-hint" required></textarea>
+                  <textarea class="input" id="workflows" name="workflows" placeholder="The repetitive, manual, or slow workflows you’d most love to hand off." aria-describedby="workflows-hint" required></textarea>
                   <span class="field__hint" id="workflows-hint">Intake, billing, scheduling, data entry, quoting — a sentence or two is plenty.</span>
                   <span class="field__err">Tell us a little about the work — even one line helps.</span>
                 </div>

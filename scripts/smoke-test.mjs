@@ -59,7 +59,7 @@ if (BASE === COMPANY.origin) {
 
 // /book/ load-bearing elements (FAQ 01 regression + the named advisor).
 const book = await get(`${BASE}/book/`);
-for (const s of ["Is it really free?", "Fair questions.", "What happens · 30 minutes", "Who you'll talk to", "Christopher Myers"]) {
+for (const s of ["Is it really free?", "Fair questions.", "What happens · 30 minutes", "Who you’ll talk to", "Christopher Myers"]) {
   if (!book.body.includes(s)) fail(`/book/: missing "${s}"`);
 }
 const nums = [...book.body.matchAll(/<summary><span class="q-no">(\d{2})<\/span>/g)].map((m) => m[1]);

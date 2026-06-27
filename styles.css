@@ -639,6 +639,11 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
    FOOTER
    ========================================================= */
 .foot { background: var(--ink); color: var(--dtx); padding-top: clamp(56px,7vw,90px); }
+/* When a page ends on the dark CTA band (.final), the footer abuts it — both
+   are ink, so the band's 96px bottom padding + the footer's top padding stacked
+   into a dead black pocket. Drop the footer's top pad there and mark the seam
+   with a hairline; the band's symmetric 96px is the only spacing. */
+main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed rgba(255,255,255,.10); }
 .foot__top { display:grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: var(--s-32); align-items: start; padding-bottom: var(--s-48); border-bottom: 1px solid var(--dline); }
 @media (max-width: 920px){ .foot__top { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px){ .foot__top { grid-template-columns: 1fr; } }

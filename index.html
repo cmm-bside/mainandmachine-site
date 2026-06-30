@@ -4,40 +4,46 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AI Consulting &amp; Implementation for Small Business | Main &amp; Machine</title>
-<meta name="description" content="Working AI agents and automations inside your business in ~90 days, at a fixed price quoted in writing before we start. Denver, Phoenix &amp; remote across the US." />
+<meta name="description" content="Working AI agents and automations inside your business, at a fixed price quoted in writing before we start. Denver, Phoenix &amp; remote across the US." />
 <link rel="canonical" href="https://www.mainandmachine.com/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
 <meta property="og:title" content="AI Consulting &amp; Implementation for Small Business | Main &amp; Machine" />
-<meta property="og:description" content="Working AI agents and automations inside your business in ~90 days, at a fixed price quoted in writing before we start. Denver, Phoenix &amp; remote across the US." />
+<meta property="og:description" content="Working AI agents and automations inside your business, at a fixed price quoted in writing before we start. Denver, Phoenix &amp; remote across the US." />
 <meta property="og:url" content="https://www.mainandmachine.com/" />
 <meta property="og:image" content="https://www.mainandmachine.com/images/og/home.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
+<meta property="og:image:alt" content="Main &amp; Machine: The machine belongs to Main Street." />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="AI Consulting &amp; Implementation for Small Business | Main &amp; Machine" />
-<meta name="twitter:description" content="Working AI agents and automations inside your business in ~90 days, at a fixed price quoted in writing before we start. Denver, Phoenix &amp; remote across the US." />
+<meta name="twitter:description" content="Working AI agents and automations inside your business, at a fixed price quoted in writing before we start. Denver, Phoenix &amp; remote across the US." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/home.png" />
-<meta name="twitter:image:alt" content="Main &amp; Machine — The machine belongs to Main Street." />
+<meta name="twitter:image:alt" content="Main &amp; Machine: The machine belongs to Main Street." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="styles.css?v=81" />
+<link rel="stylesheet" href="styles.css?v=82" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
-<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<!--
+  GEO/entity trust signals — sameAs profile links live in the JSON-LD below.
+  Still unconfirmed (add to the relevant sameAs array only when a real URL exists — do not invent):
+  GitHub org, Crunchbase, author/speaker profiles (Amazon author page, etc.).
+  NOTE: JSON-LD cannot contain comments — keep TODOs here in this HTML comment, never inside the <script> block.
+-->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,7 +52,7 @@
       "@type": "ProfessionalService",
       "@id": "https://www.mainandmachine.com/#org",
       "name": "Main & Machine",
-      "description": "Human-centric AI for small and mid-size business. We build working agents, automations, and integrations into the work you already do, at a fixed price, delivered in about 90 days.",
+      "description": "Human-centric AI for small and mid-size business. We build working agents, automations, and integrations into the work you already do, at a fixed price.",
       "url": "https://www.mainandmachine.com/",
       "logo": "https://www.mainandmachine.com/icon-512.png",
       "image": "https://www.mainandmachine.com/og-image.png",
@@ -59,10 +65,31 @@
         { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
         { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ]
     },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } }
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": { "@id": "https://www.mainandmachine.com/#org" },
+      "affiliation": { "@id": "https://www.mainandmachine.com/#asu" },
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers"
+      ]
+    },
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://www.mainandmachine.com/#asu",
+      "name": "Arizona State University, W. P. Carey School of Business",
+      "url": "https://wpcarey.asu.edu/"
+    }
   ]
 }
 </script>
@@ -161,7 +188,7 @@
           <span class="hm-line accent-tx" data-machine-word>Main Street.</span>
         </h1>
         <span class="hm-baseline" aria-hidden="true"></span>
-        <p class="lead">Other AI firms hand you a deck. We build the working systems — inside your business, in ~90 days, at a fixed price.</p>
+        <p class="lead">Other AI firms hand you a deck. We build the working systems that run inside your business, at a fixed price.</p>
         <div class="hero__cta">
           <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
           <a class="btn btn--secondary btn--lg" href="/work/marcus/">See a real build</a>
@@ -173,7 +200,6 @@
         <div class="statrail__row"><span class="statrail__k">Audits from</span><span class="statrail__v accent-tx">$3,500</span></div>
         <div class="statrail__row"><span class="statrail__k">Approach</span><span class="statrail__v">Human-centric</span></div>
         <div class="statrail__row"><span class="statrail__k">Builds</span><span class="statrail__v statrail__v--sm">Agents · Automations · Integrations</span></div>
-        <div class="statrail__row"><span class="statrail__k">Delivery</span><span class="statrail__v">~90 days</span></div>
         <div class="statrail__row"><span class="statrail__k">Hubs</span><span class="statrail__v">Denver &amp; Phoenix</span></div>
       </div>
     </div>
@@ -221,21 +247,21 @@
         <span class="kicker">02 / What we actually do</span>
         <h2 class="h2 mt-s">We implement. That is the <span class="accent-tx">whole difference.</span></h2>
       </div>
-      <p class="lead">Plenty of AI experts have a framework and a workshop. We go into your business, find the three workflows costing you the most, and build the fix. Fixed price before we start. Done in about 90 days.</p>
+      <p class="lead">Plenty of AI experts have a framework and a workshop. We go into your business, find the three workflows costing you the most, and build the fix. Fixed price before we start.</p>
     </div>
     <div class="diffs">
       <div class="diff">
-        <span class="tick-lbl">A — Custom agents</span>
+        <span class="tick-lbl">A: Custom agents</span>
         <h3>Software that drafts the repetitive decisions.</h3>
         <p>It clears the routine work and drafts the hard calls, then routes the final judgment to a person who owns it.</p>
       </div>
       <div class="diff">
-        <span class="tick-lbl">B — Automations &amp; workflow</span>
+        <span class="tick-lbl">B: Automations &amp; workflow</span>
         <h3>Work moves between your tools on its own.</h3>
         <p>It connects the systems you already use, so nothing waits on a person to copy and paste it.</p>
       </div>
       <div class="diff">
-        <span class="tick-lbl">C — Integrations &amp; data</span>
+        <span class="tick-lbl">C: Integrations &amp; data</span>
         <h3>One source of truth you can trust.</h3>
         <p>We make your data do something instead of sitting in five systems that do not talk to each other.</p>
       </div>
@@ -247,7 +273,7 @@
         <span class="tick-lbl">Example builds</span>
         <span class="tick-lbl"><a href="/services/">See example builds →</a></span>
       </div>
-      <p class="builds__note" style="margin-top:16px;padding-top:16px;border-top:1px solid var(--line);color:var(--tx);"><b style="color:var(--tx);">One we can name:</b> <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a> — 14 AI agents across 7 departments for B:Side Capital, a regulated SBA &amp; CDFI lender. It runs entirely in-house, with no borrower file leaving the building. <a href="/work/marcus/" style="text-decoration:underline;">Read the build →</a></p>
+      <p class="builds__note" style="margin-top:16px;padding-top:16px;border-top:1px solid var(--line);color:var(--tx);"><b style="color:var(--tx);">One we can name:</b> <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a> runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA &amp; CDFI lender. It runs entirely in-house, with no borrower file leaving the building. <a href="/work/marcus/" style="text-decoration:underline;">Read the build →</a></p>
     </div>
   </div>
 </section>
@@ -260,7 +286,7 @@
         <span class="kicker">03 / How to work with us</span>
         <h2 class="h2 mt-s">Three ways in. Priced in <span class="accent-tx">plain numbers.</span></h2>
       </div>
-      <p class="lead">You will not have to sit through three discovery calls to learn what something costs. Here is the short version — <a href="/pricing/" style="text-decoration:underline;">the price list</a> has every line item.</p>
+      <p class="lead">You will not have to sit through three discovery calls to learn what something costs. Here is the short version. <a href="/pricing/" style="text-decoration:underline;">The price list</a> has every line item.</p>
     </div>
     <div class="svc">
       <div class="svc__item svc__item--feature crop">
@@ -327,7 +353,7 @@
     <div class="calcband__intro">
     <span class="kicker">The same numbers, pointed at your business</span>
     <h2 class="h2 mt-s">What would this cost for us?</h2>
-    <p class="lead mt-s">Two inputs. A real range, built from the same price list published on this site — not a teaser that ends in “call us.”</p>
+    <p class="lead mt-s">Two inputs. A real range, built from the same price list published on this site, not a teaser that ends in “call us.”</p>
 
     <div class="roi__cta">
       <a class="btn btn--primary btn--lg" id="bandBook" href="/book/">Run your real numbers <span class="arr">→</span></a>
@@ -335,7 +361,7 @@
     </div>
     </div>
 
-    <div class="roi roi--slim crop" aria-label="ROI estimate calculator — quick version">
+    <div class="roi roi--slim crop" aria-label="ROI estimate calculator, quick version">
       <div class="roi__bar">
         <span class="roi__id"><span class="roi__dot" aria-hidden="true"></span>Estimate.v1</span>
         <span class="roi__id roi__id--mute">A model, not a promise</span>
@@ -385,7 +411,7 @@
               <li><span>Sprint investment</span><span class="mono tab" id="bandImpl">-$18,000</span></li>
             </ul>
           </div>
-          <p class="roi__disclaim">A model, not a promise — we run your real numbers in the free assessment.</p>
+          <p class="roi__disclaim">A model, not a promise. We run your real numbers in the free assessment.</p>
         </div>
       </div>
     </div>
@@ -415,9 +441,9 @@
         </figcaption>
       </figure>
       <div class="bio__prose">
-        <p>He’s <b>CEO of B:Side Capital and Fund</b>, a professor at ASU’s W.P. Carey School, and an author — 26 years backing Main Street. He pairs that judgment with a team of <b>AI-native builders</b> who never had to unlearn the old way. One name owns every build.</p>
+        <p>He’s <b>CEO of B:Side Capital and Fund</b>, a professor at ASU’s W.P. Carey School, and an author with 26 years backing Main Street. He pairs that judgment with a team of <b>AI-native builders</b> who never had to unlearn the old way. One name owns every build.</p>
         <p><a class="svc__cta" href="/about/">Who builds this, and why the name matters →</a></p>
-        <div class="bio__press">His work has been covered in — <span class="press-list"><span>Forbes</span><span>The Wall Street Journal</span><span>The New York Times</span><span>Inc.</span><span>TechCrunch</span><span>MSNBC</span><span>Fox Business</span></span></div>
+        <div class="bio__press">His work has been covered in: <span class="press-list"><span>Forbes</span><span>The Wall Street Journal</span><span>The New York Times</span><span>Inc.</span><span>TechCrunch</span><span>MSNBC</span><span>Fox Business</span></span></div>
       </div>
     </div>
   </div>
@@ -483,7 +509,6 @@
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">
           <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
-          <div><span class="tick-lbl">Delivery</span><b>~90 days</b></div>
           <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
         </div>
       </div>

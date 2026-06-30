@@ -7,10 +7,49 @@
 # site. Only fingerprinted/cache-busted assets below get long max-age.
 # The post-deploy smoke test (.github/workflows/smoke-test.yml) fails loudly
 # if any route serves a stale build.
+# SECURITY HEADERS (apply to every route).
+#
+# HSTS: force HTTPS for a year, incl. subdomains. `preload` is SET here but NOT
+# yet submitted — preloading is a one-way commitment (browsers hard-fail HTTP for
+# the whole apex + all subdomains). Submit at https://hstspreload.org ONLY after
+# confirming every subdomain serves HTTPS. Until submitted, the token is inert.
+#
+# Content-Security-Policy is shipped REPORT-ONLY first: it does not block anything,
+# it only logs violations to the browser console (and report-to, if added). Verify
+# the console is clean across all pages, THEN rename the header to
+# `Content-Security-Policy` to enforce. CSP source map (one policy, served on /*):
+#   default-src 'self'        — baseline: same-origin only unless overridden below
+#   base-uri 'none'           — no <base> tag is used anywhere; forbid injection of one
+#   object-src 'none'         — no <object>/<embed>/<applet>
+#   frame-ancestors 'self'    — mirrors X-Frame-Options: SAMEORIGIN
+#   frame-src 'none'          — site embeds no iframes
+#   script-src 'self' 'unsafe-inline' https://plausible.io
+#                             — 'self': /js/*.js + Cloudflare /cdn-cgi/ email-decode;
+#                               'unsafe-inline': inline init blocks + onclick="window.print()";
+#                               plausible.io: analytics loader
+#   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com
+#                             — 'self': styles.css; 'unsafe-inline': 157 inline style=
+#                               attrs + <style> blocks; googleapis: Google Fonts CSS
+#   img-src 'self' data:      — 'self': og-image/icons/content; data:: SVG film-grain
+#                               in styles.css, inline SVG icons, SVG favicon
+#   font-src 'self' https://fonts.gstatic.com — Google Fonts woff2 files
+#   connect-src 'self' https://plausible.io https://formspree.io
+#                             — 'self': /api/book-assessment + /blog-data/*.json;
+#                               plausible.io: event beacons; formspree.io: careers form
+#                               (api.resend.com is server-side in the Pages Function, not here)
+#   form-action 'self' https://theampersand.beehiiv.com
+#                             — 'self': same-origin forms; beehiiv: newsletter subscribe
+#   upgrade-insecure-requests — upgrade any stray http subresource (no-op in report-only)
+#
+# To enforce later, rename the header below to `Content-Security-Policy`. To capture
+# violations centrally, add a `report-to` directive + a `Report-To` header endpoint.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src 'none'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
 
 # styles.css is cache-busted via ?v=N in index.html, so it can cache for a while
 /styles.css

@@ -60,7 +60,7 @@ export function head({ title, description, canonical, ogImage, ogType = "website
 	// We know the dimensions of the brand default and our generated OG cards (1200x630).
 	const imgIsDefault = img === DEFAULT_OG_IMAGE;
 	const imgKnownSize = imgIsDefault || img.includes("/images/og/");
-	const imgAlt = imgIsDefault ? `${BRAND} — The machine belongs to Main Street.` : title;
+	const imgAlt = imgIsDefault ? `${BRAND}: The machine belongs to Main Street.` : title;
 	const ld = jsonLd
 		.filter(Boolean)
 		.map((obj) => `<script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n</script>`)
@@ -99,9 +99,9 @@ ${imgKnownSize ? `<meta property="og:image:width" content="1200" />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="/styles.css?v=${ASSET_VERSION}" />
-<link rel="icon" href="${FAVICON}" />
-<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="icon" type="image/svg+xml" href="${FAVICON}" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js"></script>
@@ -118,13 +118,13 @@ export function topbar() {
 	return `<div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)} — free weekly essays</span>
+      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)}: free weekly essays</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)} — free weekly essays</span>
+      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)}: free weekly essays</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -135,7 +135,16 @@ export function topbar() {
 
 // Shared JSON-LD entities — every page's graph connects to the same @ids.
 // Facts come from src/data/company.mjs; never restate them here.
-// TODO: populate sameAs with the LinkedIn company page + founder profiles when they exist.
+// sameAs = verified official profiles only (do not invent). Add GitHub org /
+// Crunchbase / author-speaker profiles here when real URLs exist.
+const ORG_SAMEAS = [
+	"https://www.linkedin.com/company/main-and-machine/",
+	"https://x.com/mainandmachine",
+];
+const PERSON_SAMEAS = [
+	"https://www.linkedin.com/in/cmyers85/",
+	"https://x.com/Chris_myers",
+];
 export function orgJsonLd() {
 	const origin = COMPANY.origin;
 	return {
@@ -151,6 +160,7 @@ export function orgJsonLd() {
 				telephone: COMPANY.phoneE164,
 				areaServed: "US",
 				founder: { "@id": `${origin}/#person-cmyers` },
+				sameAs: ORG_SAMEAS,
 			},
 			{ "@type": "WebSite", "@id": `${origin}/#website`, name: COMPANY.name, url: `${origin}/` },
 			{
@@ -159,6 +169,7 @@ export function orgJsonLd() {
 				name: COMPANY.founder.name,
 				jobTitle: "Founder & Chairman",
 				worksFor: { "@id": `${origin}/#org` },
+				sameAs: PERSON_SAMEAS,
 			},
 		],
 	};
@@ -280,7 +291,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
         <ul>
           <li>Short essays you can read in one sitting</li>
           <li>How we actually think about AI on Main Street</li>
-          <li>No pitches, no funnels — leave whenever it stops paying</li>
+          <li>No pitches, no funnels. Leave whenever it stops paying</li>
         </ul>
         <a class="feed__archive" href="/blog/archive/">Full archive →</a>
       </div>

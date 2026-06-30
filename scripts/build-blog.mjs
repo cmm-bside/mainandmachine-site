@@ -136,7 +136,7 @@ function thumb(post, cls) {
 	const img = hi && hi.assetUrl;
 	if (!img) return `<div class="${cls} is-empty"></div>`;
 	const dims = hi.width && hi.height ? ` width="${hi.width}" height="${hi.height}"` : "";
-	return `<div class="${cls}"><img loading="lazy" decoding="async"${dims} alt="${attr(hi.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" src="${attr(img)}" /></div>`;
+	return `<div class="${cls}"><img loading="lazy" decoding="async"${dims} alt="${attr(hi.alt || `${post.title}: illustrated diagram from ${BLOG_NAME}`)}" src="${attr(img)}" /></div>`;
 }
 
 function card(post) {
@@ -177,7 +177,7 @@ function emptyState(subscribeUrl) {
 	return `<div class="feed__empty crop">
   <span class="kicker kicker--plain">${esc(BLOG_NAME)}</span>
   <h2 class="h2 mt-s">The first dispatch is on its way.</h2>
-  <p class="lead">Free weekly essays on building durable things in a noisy time — no hype, no funnels. Subscribe and you’ll get the first one the moment it’s out.</p>
+  <p class="lead">Free weekly essays on building durable things in a noisy time. No hype, no funnels. Subscribe and you’ll get the first one the moment it’s out.</p>
   ${cta}
 </div>`;
 }
@@ -244,8 +244,8 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `${BLOG_NAME} — Plain-English AI Essays for Business Owners | ${BRAND}`,
-		description: `${BLOG_NAME} — ${BLOG_DESCRIPTION} Human-centric AI, small business, and the judgment no model has.`,
+		title: `${BLOG_NAME}: Plain-English AI Essays for Business Owners | ${BRAND}`,
+		description: `${BLOG_NAME}: ${BLOG_DESCRIPTION} Human-centric AI, small business, and the judgment no model has.`,
 		canonical: `${SITE_ORIGIN}/blog/`,
 		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,
 		jsonLd: [blogLd, orgJsonLd()],
@@ -264,7 +264,7 @@ function renderArchive(posts, { subscribeUrl, publicationUrl }) {
 	const collectionLd = {
 		"@context": "https://schema.org",
 		"@type": "CollectionPage",
-		name: `${BLOG_NAME} — Archive`,
+		name: `${BLOG_NAME}: Archive`,
 		description: `Every essay from ${BLOG_NAME}.`,
 		url: `${SITE_ORIGIN}/blog/archive/`,
 		isPartOf: { "@type": "Blog", name: BLOG_NAME, url: `${SITE_ORIGIN}/blog/` },
@@ -356,7 +356,7 @@ ${nav()}
         <span class="kicker">Writing / Archive</span>
         <h1 class="h-hero" style="font-size:clamp(var(--fs-31),5vw,var(--fs-61));margin-top:14px;">The full archive.</h1>
       </div>
-      <p class="lead">Everything from ${esc(BLOG_NAME)}, in order — or sorted by what’s been read most. Search across every essay below.</p>
+      <p class="lead">Everything from ${esc(BLOG_NAME)}, in order, or sorted by what’s been read most. Search across every essay below.</p>
     </div>
     ${searchBar("Search the archive…")}
   </div>
@@ -374,8 +374,8 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `Archive — ${BLOG_NAME}`,
-		description: `Every essay from ${BLOG_NAME} — ${BLOG_DESCRIPTION}`,
+		title: `Archive | ${BLOG_NAME}`,
+		description: `Every essay from ${BLOG_NAME}: ${BLOG_DESCRIPTION}`,
 		canonical: `${SITE_ORIGIN}/blog/archive/`,
 		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,
 		jsonLd: [collectionLd, orgJsonLd()],
@@ -437,7 +437,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 		: "";
 	const heroDims = hero && hero.width && hero.height ? ` width="${hero.width}" height="${hero.height}"` : "";
 	const heroBlock = hero
-		? `<figure class="essay__hero"><img src="${attr(hero.assetUrl)}"${heroDims} decoding="async" alt="${attr(hero.alt || `${post.title} — illustrated diagram from ${BLOG_NAME}`)}" />${heroCap}</figure>`
+		? `<figure class="essay__hero"><img src="${attr(hero.assetUrl)}"${heroDims} decoding="async" alt="${attr(hero.alt || `${post.title}: illustrated diagram from ${BLOG_NAME}`)}" />${heroCap}</figure>`
 		: "";
 
 	const shareUrl = encodeURIComponent(canonical);
@@ -512,7 +512,7 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `${post.seoTitle || post.title} — ${BLOG_NAME} | ${BRAND}`,
+		title: `${post.seoTitle || post.title} | ${BLOG_NAME} | ${BRAND}`,
 		description: post.seoDescription || post.excerpt,
 		canonical,
 		ogImage: og,

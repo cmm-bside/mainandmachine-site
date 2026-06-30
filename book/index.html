@@ -15,15 +15,17 @@
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine — 30 minutes. No pitch. A straight answer." />
+<meta property="og:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Free 30-Minute AI Assessment for Small Business | Main &amp; Machine" />
+<meta name="twitter:description" content="A senior advisor walks your workflows and shows where AI pays, what it's worth, and when to wait. Free, no pitch, reply within 24 hours." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
-<meta name="twitter:image:alt" content="Main &amp; Machine — 30 minutes. No pitch. A straight answer." />
+<meta name="twitter:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=81" />
+<link rel="stylesheet" href="/styles.css?v=82" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -33,6 +35,10 @@
     {
       "@type": "ProfessionalService",
       "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
       "name": "Main & Machine",
       "url": "https://www.mainandmachine.com/",
       "logo": "https://www.mainandmachine.com/icon-512.png",
@@ -43,7 +49,7 @@
       "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
     },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -84,9 +90,9 @@
   ]
 }
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
-<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <style>
 /* =========================================================
@@ -335,7 +341,7 @@ select.input:invalid { color: var(--tx-faint); }
       <div>
         <span class="kicker">The AI Opportunity Assessment</span>
         <h1 class="h2 mt-s">30 minutes. No pitch. <span class="accent-tx">A straight answer.</span></h1>
-        <p class="lead mt-s">Tell us a little about your business and we will set up a free 30-minute assessment. A senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth — including when the smart move is to wait a quarter.</p>
+        <p class="lead mt-s">Tell us a little about your business and we will set up a free 30-minute assessment. A senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth, including when the smart move is to wait a quarter.</p>
       </div>
       <div class="statrail crop" aria-label="What the assessment is">
         <div class="statrail__bar"><span>Assessment</span><span><b>Free</b></span></div>
@@ -395,7 +401,7 @@ select.input:invalid { color: var(--tx-faint); }
                   </div>
                 </div>
                 <div class="field">
-                  <label for="phone" id="phoneLabel">Phone <span class="opt">— optional</span></label>
+                  <label for="phone" id="phoneLabel">Phone <span class="opt">(optional)</span></label>
                   <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Best number to reach you" />
                   <span class="field__err">Please enter a phone number.</span>
                 </div>
@@ -421,8 +427,8 @@ select.input:invalid { color: var(--tx-faint); }
                 <div class="field">
                   <label for="workflows">What is eating your team’s time? <span class="req">*</span></label>
                   <textarea class="input" id="workflows" name="workflows" placeholder="The repetitive, manual, or slow workflows you’d most love to hand off." aria-describedby="workflows-hint" required></textarea>
-                  <span class="field__hint" id="workflows-hint">Intake, billing, scheduling, data entry, quoting — a sentence or two is plenty.</span>
-                  <span class="field__err">Tell us a little about the work — even one line helps.</span>
+                  <span class="field__hint" id="workflows-hint">Intake, billing, scheduling, data entry, quoting. A sentence or two is plenty.</span>
+                  <span class="field__err">Tell us a little about the work. Even one line helps.</span>
                 </div>
               </div>
             </div>
@@ -445,10 +451,10 @@ select.input:invalid { color: var(--tx-faint); }
         <div class="panel">
           <h2 class="panel__t">What happens · 30 minutes</h2>
           <div class="agenda">
-            <div class="astep"><span class="astep__no">01</span><div><h3>We listen</h3><p>You walk us through how the work actually flows today — plain language is plenty.</p></div></div>
+            <div class="astep"><span class="astep__no">01</span><div><h3>We listen</h3><p>You walk us through how the work actually flows today. Plain language is plenty.</p></div></div>
             <div class="astep"><span class="astep__no">02</span><div><h3>We map</h3><p>A senior advisor finds the handful of workflows quietly costing you the most.</p></div></div>
             <div class="astep"><span class="astep__no">03</span><div><h3>We level with you</h3><p>Where AI pays, where it doesn’t, and a rough sense of what it’s worth.</p></div></div>
-            <div class="astep"><span class="astep__no">04</span><div><h3>You decide</h3><p>You leave with a clear read — that’s where it ends unless you want more.</p></div></div>
+            <div class="astep"><span class="astep__no">04</span><div><h3>You decide</h3><p>You leave with a clear read. That’s where it ends unless you want more.</p></div></div>
           </div>
         </div>
 
@@ -457,7 +463,7 @@ select.input:invalid { color: var(--tx-faint); }
           <ul class="leave">
             <li>A plain-language read on where AI would actually pay in your business</li>
             <li>A rough dollar range on the opportunity, run against your real numbers</li>
-            <li>A clear “not yet” if that’s the call — said out loud</li>
+            <li>A clear “not yet” if that’s the call, said out loud</li>
             <li>A read that’s yours to act on with us, another firm, or alone</li>
           </ul>
         </div>
@@ -468,14 +474,14 @@ select.input:invalid { color: var(--tx-faint); }
             <img class="advisor__portrait" src="/images/christopher-myers-hedcut-sq.png?v=1" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="72" height="72" loading="lazy" decoding="async" />
             <div class="advisor__tx">
               <h3>Christopher Myers</h3>
-              <p>Founder &amp; Chairman. The person who scopes your work is the one accountable for the build — 26 years backing Main Street.</p>
+              <p>Founder &amp; Chairman. The person who scopes your work is the one accountable for the build. 26 years backing Main Street.</p>
             </div>
           </div>
         </div>
 
         <div class="panel panel--ink">
           <h2 class="panel__t">The promise</h2>
-          <p>You’ll leave knowing what’s worth doing and what isn’t — and we’ll never pad the list to win the work. <b>Substance over sales.</b></p>
+          <p>You’ll leave knowing what’s worth doing and what isn’t, and we’ll never pad the list to win the work. <b>Substance over sales.</b></p>
           <p style="margin-top:12px;">If the assessment finds nothing worth building, we say so and you keep the notes. <b>That’s the whole transaction.</b></p>
         </div>
       </aside>
@@ -487,7 +493,7 @@ select.input:invalid { color: var(--tx-faint); }
       <div class="confirm__bar"><span class="ok">Request received</span><span id="confirmStamp">Logged</span></div>
       <div class="confirm__body">
         <div class="confirm__id">Reference <b id="refId">MM-2026-0000</b></div>
-        <h2 class="h2" id="confirmTitle">Thanks — you’re in the queue.</h2>
+        <h2 class="h2" id="confirmTitle">Thanks. You’re in the queue.</h2>
         <p class="lead" id="confirmLede">We’ve got your request. A senior advisor will email you within 24 hours to set a time for your 30-minute assessment.</p>
 
         <div class="confirm__recap">
@@ -500,7 +506,7 @@ select.input:invalid { color: var(--tx-faint); }
         <div class="prep" id="prep">
           <div class="prep__head">
             <span class="fgroup__no">+</span>
-            <span class="fgroup__t">Help us prep — 30 seconds, optional</span>
+            <span class="fgroup__t">Help us prep: 30 seconds, optional</span>
           </div>
           <p class="prep__note">None of this is required. It just makes your 30 minutes sharper.</p>
           <form id="prepForm" novalidate>
@@ -567,14 +573,14 @@ select.input:invalid { color: var(--tx-faint); }
               <span class="prep__status" id="prepStatus"></span>
             </div>
           </form>
-          <p class="prep__thanks">Got it — filed with your request. It’ll be in front of the advisor before the call.</p>
+          <p class="prep__thanks">Got it. Filed with your request. It’ll be in front of the advisor before the call.</p>
         </div>
 
         <div class="timeline" style="margin-top:30px;">
           <div class="tl"><span class="tl__t">Now</span><h3>Request logged</h3><p>Your details land in front of a senior advisor the same day.</p></div>
           <div class="tl"><span class="tl__t">Within 24 hours</span><h3>We email you</h3><p>A short note proposing a few times that work, in your preferred channel.</p></div>
           <div class="tl"><span class="tl__t">The call</span><h3>30 focused minutes</h3><p>We walk your workflows and show you where AI pays.</p></div>
-          <div class="tl"><span class="tl__t">After</span><h3>You decide</h3><p>Build with us, sit tight, or walk away — your call.</p></div>
+          <div class="tl"><span class="tl__t">After</span><h3>You decide</h3><p>Build with us, sit tight, or walk away. Your call.</p></div>
         </div>
 
         <div class="confirm__cta">
@@ -597,14 +603,14 @@ select.input:invalid { color: var(--tx-faint); }
         <h2 class="h2 mt-s">Fair questions.</h2>
         <div class="faq__aside" style="margin-top:28px;">
           <h3 class="accent-tx" style="color:var(--accent-ink);">Still deciding?</h3>
-          <p>You don’t have to be sure about AI to book. The whole point of the assessment is to find out — in 30 minutes.</p>
+          <p>You don’t have to be sure about AI to book. The whole point of the assessment is to find out. In 30 minutes.</p>
           <a class="btn btn--primary" href="#request">Jump to the form <span class="arr">→</span></a>
         </div>
       </div>
       <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">Is it really free?</span><span class="q-pm">+</span></summary>
-          <p>Yes — no card, no catch. 30 minutes with a senior advisor, a clear read on your business, and that’s it. We do this because the businesses worth building with tend to start here.</p>
+          <p>Yes. No card, no catch. 30 minutes with a senior advisor, a clear read on your business, and that’s it. We do this because the businesses worth building with tend to start here.</p>
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">What if AI isn’t right for my business?</span><span class="q-pm">+</span></summary>
@@ -612,15 +618,15 @@ select.input:invalid { color: var(--tx-faint); }
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">Do I need to prepare anything?</span><span class="q-pm">+</span></summary>
-          <p>No — come as you are. It helps if you can speak to how the work moves day to day: where the time goes, where things pile up. That’s all the prep there is.</p>
+          <p>No. Come as you are. It helps if you can speak to how the work moves day to day: where the time goes, where things pile up. That’s all the prep there is.</p>
         </details>
         <details>
           <summary><span class="q-no">04</span><span class="q-tx">Who actually shows up to the call?</span><span class="q-pm">+</span></summary>
-          <p>A senior advisor — the person who would scope and build your project, not a junior rep reading off a script.</p>
+          <p>A senior advisor, the person who would scope and build your project, not a junior rep reading off a script.</p>
         </details>
         <details>
           <summary><span class="q-no">05</span><span class="q-tx">What happens to the details I submit?</span><span class="q-pm">+</span></summary>
-          <p>They go to us so we can prepare for your call — that’s all. Your details never enter a marketing list, and if we never work together they go nowhere at all.</p>
+          <p>They go to us so we can prepare for your call. That’s all. Your details never enter a marketing list, and if we never work together they go nowhere at all.</p>
         </details>
       </div>
     </div>
@@ -654,7 +660,6 @@ select.input:invalid { color: var(--tx-faint); }
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">
           <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
-          <div><span class="tick-lbl">Delivery</span><b>~90 days</b></div>
           <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
         </div>
       </div>
@@ -769,7 +774,7 @@ select.input:invalid { color: var(--tx-faint); }
     if(!label) return;
     label.innerHTML = phoneNeeded()
       ? 'Phone <span class="req">*</span>'
-      : 'Phone <span class="opt">— optional</span>';
+      : 'Phone <span class="opt">(optional)</span>';
     if(!phoneNeeded()){ setErr(document.getElementById('phone'), false); }
   }
   form.querySelectorAll('input[name="contact"]').forEach(function(r){
@@ -867,7 +872,7 @@ select.input:invalid { color: var(--tx-faint); }
     var first = (payload.name.split(/\s+/)[0]) || payload.name;
     var recap = server.recap || {};
     document.getElementById('refId').textContent = server.referenceId || '';
-    document.getElementById('confirmTitle').textContent = 'Thanks, ' + first + ' — you’re in the queue.';
+    document.getElementById('confirmTitle').textContent = 'Thanks, ' + first + '. You’re in the queue.';
     document.getElementById('recapName').textContent = recap.name || payload.name;
     document.getElementById('recapContact').textContent = recap.via || payload.email;
     document.getElementById('recapCompany').textContent = recap.company || payload.company;
@@ -907,7 +912,7 @@ select.input:invalid { color: var(--tx-faint); }
       };
       var hasAny = Object.keys(details).some(function(k){ return details[k] !== ''; });
       if(!hasAny){
-        prepStatus.textContent = 'Pick or fill in at least one field — or skip it entirely.';
+        prepStatus.textContent = 'Pick or fill in at least one field. Or skip it entirely.';
         return;
       }
       prepStatus.textContent = '';
@@ -934,7 +939,7 @@ select.input:invalid { color: var(--tx-faint); }
       .catch(function(err){
         prepBtn.disabled = false;
         prepBtn.innerHTML = 'Add it to my request <span class="arr">→</span>';
-        prepStatus.textContent = err.message || 'Could not add that just now — your request is already in.';
+        prepStatus.textContent = err.message || 'Could not add that just now. Your request is already in.';
       });
     });
   }

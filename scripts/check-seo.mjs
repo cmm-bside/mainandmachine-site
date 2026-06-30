@@ -4,6 +4,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import {
+	ROOT,
 	SITE_ORIGIN,
 	BLOG_DIR,
 	ARCHIVE_DIR,
@@ -11,6 +12,7 @@ import {
 	SITEMAP_PATH,
 	BLOG_INDEX_JSON,
 	EXCLUDED_POST_SLUGS,
+	STATIC_ROUTES,
 } from "./lib/config.mjs";
 
 const errors = [];
@@ -93,6 +95,42 @@ else {
 			fail(`sitemap: missing entry for ${route}`);
 	}
 }
+
+// --- STATIC_ROUTES <-> disk parity (anti-drift guard) --------------------
+// The sitemap is generated from STATIC_ROUTES, so a new page that isn't added
+// to STATIC_ROUTES silently never gets sitemapped, and a route whose file was
+// deleted/renamed becomes a sitemap 404. Fail the build on either, plus on any
+// stale page-dates.json key (a date for a route that no longer exists).
+function routeToIndex(route) {
+	return route === "/" ? "index.html" : route.replace(/^\//, "") + "index.html";
+}
+// every STATIC_ROUTE must have a real file
+for (const route of STATIC_ROUTES) {
+	if (!fs.existsSync(path.join(ROOT, routeToIndex(route))))
+		fail(`sitemap drift: STATIC_ROUTES has "${route}" but ${routeToIndex(route)} does not exist (would 404)`);
+}
+// every public page on disk must be declared in STATIC_ROUTES
+const IGNORE_TOP = new Set(["node_modules", "scratchpad", "blog", "reports", "audit", "emails", "images", "blog-data", "src", "scripts", "functions", "js"]);
+const staticSet = new Set(STATIC_ROUTES);
+(function walk(dir, prefix) {
+	for (const name of fs.readdirSync(dir)) {
+		if (prefix === "" && IGNORE_TOP.has(name)) continue;
+		const fp = path.join(dir, name);
+		const st = fs.statSync(fp);
+		if (st.isDirectory()) walk(fp, prefix + "/" + name);
+		else if (name === "index.html") {
+			const route = (prefix || "") + "/";
+			if (!staticSet.has(route))
+				fail(`sitemap drift: ${path.relative(ROOT, fp)} exists but route "${route}" is not in STATIC_ROUTES (missing from sitemap)`);
+		}
+	}
+})(ROOT, "");
+// page-dates.json must not carry dates for routes that no longer exist
+try {
+	const pageDates = JSON.parse(fs.readFileSync(path.join(ROOT, "src", "data", "page-dates.json"), "utf8"));
+	for (const r of Object.keys(pageDates))
+		if (!staticSet.has(r)) fail(`page-dates.json: stale key "${r}" (not in STATIC_ROUTES) — re-run \`npm run seo:dates\``);
+} catch { /* page-dates.json optional */ }
 
 if (errors.length) {
 	console.error(`[seo:check] FAILED with ${errors.length} issue(s):`);

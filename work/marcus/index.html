@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Client Story: MARCUS — A Private AI Back Office for B:Side Capital | Main &amp; Machine</title>
+<title>Client Story: MARCUS, a Private AI Back Office for B:Side Capital | Main &amp; Machine</title>
 <meta name="description" content="How Main &amp; Machine built MARCUS: 14 AI agents that run a regulated lender's back office entirely on-prem, with no borrower file leaving the building. A client story, published with B:Side Capital's permission." />
 <link rel="canonical" href="https://www.mainandmachine.com/work/marcus/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
-<meta property="og:title" content="Client Story: MARCUS — A Private AI Back Office for B:Side Capital | Main &amp; Machine" />
-<meta property="og:description" content="14 AI agents running a regulated lender's back office entirely in-house, with no borrower file leaving the building. The high end of what Main &amp; Machine builds — published with B:Side Capital's permission." />
+<meta property="og:title" content="Client Story: MARCUS, a Private AI Back Office for B:Side Capital | Main &amp; Machine" />
+<meta property="og:description" content="14 AI agents running a regulated lender's back office entirely in-house, with no borrower file leaving the building. The high end of what Main &amp; Machine builds. Published with B:Side Capital's permission." />
 <meta property="og:url" content="https://www.mainandmachine.com/work/marcus/" />
 <!-- TODO: dedicated 1200×630 share card at /images/og/marcus.png — reusing the work card for now. -->
 <meta property="og:image" content="https://www.mainandmachine.com/images/og/work.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine — MARCUS, a private AI back office for B:Side Capital." />
+<meta property="og:image:alt" content="Main &amp; Machine: MARCUS, a private AI back office for B:Side Capital." />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Client Story: MARCUS — A Private AI Back Office for B:Side Capital | Main &amp; Machine" />
+<meta name="twitter:title" content="Client Story: MARCUS, a Private AI Back Office for B:Side Capital | Main &amp; Machine" />
 <meta name="twitter:description" content="14 AI agents running a regulated lender's back office entirely in-house, with no borrower file leaving the building. Published with B:Side Capital's permission." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/work.png" />
 
@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=81" />
+<link rel="stylesheet" href="/styles.css?v=82" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -195,6 +195,10 @@
     {
       "@type": "ProfessionalService",
       "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
       "name": "Main & Machine",
       "url": "https://www.mainandmachine.com/",
       "logo": "https://www.mainandmachine.com/icon-512.png",
@@ -211,7 +215,7 @@
       "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
     },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
     {
       "@type": "Article",
       "headline": "MARCUS: a private AI back office for B:Side Capital",
@@ -233,6 +237,44 @@
   ]
 }
 </script>
+<!--
+  REVIEW / AGGREGATERATING — STUB ONLY. Nothing below is live (HTML comment).
+  No Review or AggregateRating schema is published because, as of this writing,
+  the repo contains NO real, attributable, third-party client testimonial.
+
+  POLICY GUARDRAILS before you ever uncomment any of this:
+  1. Reviews must be genuine and written by the CLIENT, not by us. Self-authored /
+     first-party reviews of our own Organization violate Google's review-snippet
+     guidelines and risk a structured-data manual action — not just loss of the
+     rich result.
+  2. MARCUS was built for B:Side Capital, but Christopher Myers founds/leads BOTH
+     Main & Machine and B:Side. A B:Side quote about Main & Machine is therefore
+     STILL first-party and does NOT qualify as an independent client review. Do not
+     mark one up as a Review of #org.
+  3. Add reviewRating ONLY if that client gave a real numeric score. Otherwise omit
+     reviewRating entirely (a Review with just author + reviewBody is valid).
+  4. AggregateRating requires a legitimate set of numeric ratings to average — the
+     ratingValue must be the true mean and reviewCount the true count. Do not invent
+     either. Prefer third-party platforms (Google Business Profile, G2, Clutch) for
+     aggregate ratings of your own org.
+
+  TEMPLATE — add as a node inside the @graph above, only when a genuine, named,
+  independent client review exists (replace EVERY bracketed value with real data):
+
+    {
+      "@type": "Review",
+      "itemReviewed": { "@id": "https://www.mainandmachine.com/#org" },
+      "author": { "@type": "Person", "name": "[Real reviewer full name]",
+                  "jobTitle": "[role]", "worksFor": "[their company — NOT B:Side]" },
+      "reviewBody": "[verbatim, with their written permission on file]",
+      "datePublished": "[YYYY-MM-DD]"
+      // , "reviewRating": { "@type": "Rating", "ratingValue": [n], "bestRating": 5 }  // ONLY if real
+    }
+
+  AGGREGATERATING — add to the #org node ONLY once a real set of numeric ratings exists:
+    "aggregateRating": { "@type": "AggregateRating",
+      "ratingValue": "[true average]", "reviewCount": "[true count]", "bestRating": 5 }
+-->
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js"></script>
 <script>
@@ -309,13 +351,13 @@
     <div class="mk-hero" style="margin-top: clamp(24px, 4vw, 44px);">
       <div>
         <span class="kicker">Client story · B:Side Capital</span>
-        <h1 class="mk-display">We built a team of AI agents that runs a lender’s back office — <span class="accent-tx">without a single file leaving the building.</span></h1>
+        <h1 class="mk-display">We built a team of AI agents that runs a lender’s back office, <span class="accent-tx">without a single file leaving the building.</span></h1>
         <p class="lead">B:Side Capital, an SBA 504 and CDFI lender, came to us with hundreds of process documents and one hard requirement: automate the repetitive work, but never give up control of the data or the decisions. We built MARCUS to do exactly that.</p>
         <div class="mk-cta">
           <a class="btn btn--primary btn--lg" href="/book/">Build something like MARCUS <span class="arr">→</span></a>
           <a class="btn btn--secondary btn--lg" href="#solution">See how it works</a>
         </div>
-        <p class="mk-note" style="margin-top: 22px;">Private by design. Auditable by default. Built from their own process — published with permission.</p>
+        <p class="mk-note" style="margin-top: 22px;">Private by design. Auditable by default. Built from their own process. Published with permission.</p>
       </div>
       <div class="mk-hero__card">
         <div class="statrail crop">
@@ -347,7 +389,7 @@
         </div>
       </div>
       <div>
-        <p class="mk-body">B:Side Capital is a mission-driven lender — an SBA 504 and CDFI institution whose work touches sensitive borrower financials at every step: intake, eligibility, underwriting support, funding, portfolio monitoring, and the high-stakes work of servicing distressed loans. It’s a business where a single mishandled document isn’t an inconvenience; it’s a compliance event.</p>
+        <p class="mk-body">B:Side Capital is a mission-driven lender, an SBA 504 and CDFI institution whose work touches sensitive borrower financials at every step: intake, eligibility, underwriting support, funding, portfolio monitoring, and the high-stakes work of servicing distressed loans. It’s a business where a single mishandled document isn’t an inconvenience; it’s a compliance event.</p>
         <p class="mk-punch">That’s the kind of environment most AI tools quietly avoid. <span class="accent-tx">It’s the kind we build for.</span></p>
       </div>
     </div>
@@ -363,8 +405,8 @@
       <div></div>
     </div>
     <div class="mk-2col" style="margin-top: 46px;">
-      <p class="mk-body">Before anyone can make a decision, someone has to gather the documents, pull the reports, run the checks, and draft the paperwork — the same steps, over and over, across seven departments. That preparation is where the bottlenecks form.</p>
-      <p class="mk-body">The obvious fix — feed it all to a cloud AI — was a non-starter. Borrower data can’t leave a controlled environment. Eligibility, credit, and pricing can’t be decided by a black box. And every action a regulator might ask about has to be provable, after the fact, down to the source.</p>
+      <p class="mk-body">Before anyone can make a decision, someone has to gather the documents, pull the reports, run the checks, and draft the paperwork. The same steps, over and over, across seven departments. That preparation is where the bottlenecks form.</p>
+      <p class="mk-body">The obvious fix, feed it all to a cloud AI, was a non-starter. Borrower data can’t leave a controlled environment. Eligibility, credit, and pricing can’t be decided by a black box. And every action a regulator might ask about has to be provable, after the fact, down to the source.</p>
     </div>
     <p class="mk-overline" style="margin-top: 48px;">The brief, in one line</p>
     <p class="mk-brief">Take the prep off our people’s plate, without ever taking them out of control.</p>
@@ -380,7 +422,7 @@
         <h2 class="mk-display" style="font-size: clamp(var(--fs-49), 7vw, var(--fs-78)); margin-top: 18px;">Meet <span class="accent-tx">MARCUS.</span></h2>
       </div>
       <div>
-        <p class="mk-body">MARCUS is not an app B:Side’s team had to learn. It’s a colleague that lives inside the tools they already use — Slack, their lending systems, the browser. It does the gathering, checking, and drafting, then hands finished, organized work to a person to approve.</p>
+        <p class="mk-body">MARCUS is not an app B:Side’s team had to learn. It’s a colleague that lives inside the tools they already use: Slack, their lending systems, the browser. It does the gathering, checking, and drafting, then hands finished, organized work to a person to approve.</p>
         <p class="mk-body" style="margin-bottom: 0;">Built entirely from B:Side’s own process documentation, every step MARCUS takes traces back to how the institution already works. Nothing was invented.</p>
       </div>
     </div>
@@ -408,7 +450,7 @@
       <div class="mk-surface">
         <div class="n">04</div>
         <h3>The systems of record</h3>
-        <p>Once approved, work lands where it already belongs — their lending platform and tools.</p>
+        <p>Once approved, work lands where it already belongs: their lending platform and tools.</p>
         <span class="tool">Existing systems</span>
       </div>
     </div>
@@ -439,7 +481,7 @@
     <span class="kicker">Built from their work, not our assumptions</span>
     <div class="mk-headsplit" style="margin-top: 22px;">
       <h2 class="h2">We didn’t bring a template. <span class="accent-tx">We read everything.</span></h2>
-      <p class="mk-body" style="margin-bottom: 0;">Before we wrote a line of code, we reviewed roughly 840 files across every division of the business. From that, we mapped fourteen distinct agents — each one doing a specific, real job, each one citing the exact operations document it came from.</p>
+      <p class="mk-body" style="margin-bottom: 0;">Before we wrote a line of code, we reviewed roughly 840 files across every division of the business. From that, we mapped fourteen distinct agents, each one doing a specific, real job, each one citing the exact operations document it came from.</p>
     </div>
 
     <div class="mk-life">
@@ -502,11 +544,11 @@
     <div class="mk-buildorder">
       <div>
         <p class="mk-overline">How it was built</p>
-        <p class="mk-body" style="margin-bottom: 0;">We built it the way you’d actually want a system this consequential built — in order, one capability at a time, each piece proven on real files before the next one shipped.</p>
+        <p class="mk-body" style="margin-bottom: 0;">We built it the way you’d actually want a system this consequential built: in order, one capability at a time, each piece proven on real files before the next one shipped.</p>
       </div>
       <div>
         <p class="mk-overline">Highest exposure, built last</p>
-        <p class="mk-body" style="margin-bottom: 0;">The most delicate work — payment relief and loan resolution — was deliberately built last, once trust in the system was already established.</p>
+        <p class="mk-body" style="margin-bottom: 0;">The most delicate work, payment relief and loan resolution, was deliberately built last, once trust in the system was already established.</p>
       </div>
     </div>
   </div>
@@ -556,7 +598,7 @@
         <div class="mk-ext">⛌&nbsp;&nbsp;<b>No borrower file leaves this box in normal operation.</b></div>
       </div>
     </div>
-    <p class="mk-body" style="margin-top: 46px; max-width: 62ch;">This is what makes MARCUS usable in a regulated lending environment at all — and it’s the part most teams can’t build.</p>
+    <p class="mk-body" style="margin-top: 46px; max-width: 62ch;">This is what makes MARCUS usable in a regulated lending environment at all, and it’s the part most teams can’t build.</p>
   </div>
 </section>
 
@@ -565,7 +607,7 @@
   <div class="wrap">
     <span class="kicker">One rule behind everything</span>
     <h2 class="h2" style="max-width: 18ch; margin-top: 22px;">MARCUS prepares the work. <span class="accent-tx">People decide.</span></h2>
-    <p class="mk-body" style="max-width: 64ch; margin-top: 22px;">Nothing sends, files, posts, or pays until a person approves it. MARCUS never decides eligibility, credit, or price — those numbers come from systems, never from memory. Every request arrives the same way.</p>
+    <p class="mk-body" style="max-width: 64ch; margin-top: 22px;">Nothing sends, files, posts, or pays until a person approves it. MARCUS never decides eligibility, credit, or price. Those numbers come from systems, never from memory. Every request arrives the same way.</p>
 
     <div class="mk-flow">
       <div class="mk-flow__step">
@@ -586,7 +628,7 @@
     </div>
 
     <div class="mk-rules">
-      <div class="mk-rule"><h4>Numbers come from systems</h4><p>Eligibility, credit, and price are looked up — never recalled from memory.</p></div>
+      <div class="mk-rule"><h4>Numbers come from systems</h4><p>Eligibility, credit, and price are looked up, never recalled from memory.</p></div>
       <div class="mk-rule"><h4>Every step is logged</h4><p>Attributable and auditable, down to the source document.</p></div>
       <div class="mk-rule"><h4>It’s the design, not a limit</h4><p>Humans in control isn’t a constraint we worked around. It’s the point.</p></div>
     </div>
@@ -600,7 +642,7 @@
     <div class="mk-outcome" style="margin-top: 28px;">
       <h2 class="h2">B:Side’s people get their day back for the work only people can do.</h2>
       <div>
-        <p class="mk-body">With the preparation handled, the team is free for the relationships, the customer service, and the judgment calls that actually move a deal. The repetitive prep that used to create bottlenecks now arrives finished, organized, and named the way the team already does it — ready for a human to review.</p>
+        <p class="mk-body">With the preparation handled, the team is free for the relationships, the customer service, and the judgment calls that actually move a deal. The repetitive prep that used to create bottlenecks now arrives finished, organized, and named the way the team already does it, ready for a human to review.</p>
         <p class="mk-body" style="margin-bottom: 0;"><strong>The result is an institution that moves faster without giving up an ounce of control, compliance, or trust.</strong></p>
       </div>
     </div>
@@ -633,7 +675,7 @@
     <div class="mk-stories">
       <div class="mk-story mk-story--feat">
         <span class="tag">Current · B:Side Capital</span>
-        <h3>MARCUS — a private back-office brain for a regulated lender</h3>
+        <h3>MARCUS: a private back-office brain for a regulated lender</h3>
         <p>14 agents across 7 departments, running entirely in-house. The high end of what we build.</p>
         <span class="go">You’re reading it</span>
       </div>
@@ -669,7 +711,6 @@
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">
           <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
-          <div><span class="tick-lbl">Delivery</span><b>~90 days</b></div>
           <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
         </div>
       </div>

@@ -6,3 +6,12 @@
 /services/ai-readiness-audit/   /services/#audit    301
 /services/implementation-sprint/  /services/#sprint  301
 /services/managed-services/     /services/#managed  301
+
+# The AI-Ready Score app lives on Vercel at score.mainandmachine.com; these
+# keep the SPEC'd /score path and the PRINTED book-QR short links (/s/ch05
+# etc.) working on the main domain forever. The /s/* rule is the permanent
+# contract behind the QR codes in The AI-Ready Owner — never remove it;
+# where it points is the only thing that may change.
+/score   https://score.mainandmachine.com/score    302
+/score/  https://score.mainandmachine.com/score    302
+/s/*     https://score.mainandmachine.com/s/:splat 301

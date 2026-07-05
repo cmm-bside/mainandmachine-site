@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=82" />
+<link rel="stylesheet" href="/styles.css?v=83" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -60,6 +60,11 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What exactly is the assessment?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A free 30-minute working session with a senior advisor. We walk your workflows: where the time goes, what it costs, what a machine could carry. You leave with a plain-language read on where AI pays in your business and a rough dollar range. It ends there unless you want more. We reply within 24 hours to set a time." }
+        },
         {
           "@type": "Question",
           "name": "Is it really free?",
@@ -609,23 +614,27 @@ select.input:invalid { color: var(--tx-faint); }
       </div>
       <div class="faq__list">
         <details>
-          <summary><span class="q-no">01</span><span class="q-tx">Is it really free?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">01</span><span class="q-tx">What exactly is the assessment?</span><span class="q-pm">+</span></summary>
+          <p>A free 30-minute working session with a senior advisor. We walk your workflows: where the time goes, what it costs, what a machine could carry. You leave with a plain-language read on where AI pays in your business and a rough dollar range. It ends there unless you want more. We reply within 24 hours to set a time.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">Is it really free?</span><span class="q-pm">+</span></summary>
           <p>Yes. No card, no catch. 30 minutes with a senior advisor, a clear read on your business, and that’s it. We do this because the businesses worth building with tend to start here.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">What if AI isn’t right for my business?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">03</span><span class="q-tx">What if AI isn’t right for my business?</span><span class="q-pm">+</span></summary>
           <p>Then we’ll tell you. Sometimes the answer is “wait a quarter,” or “you don’t need us for this.” You’ll leave with 30 minutes back and a clear answer, which is more than most firms hand out.</p>
         </details>
         <details>
-          <summary><span class="q-no">03</span><span class="q-tx">Do I need to prepare anything?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">04</span><span class="q-tx">Do I need to prepare anything?</span><span class="q-pm">+</span></summary>
           <p>No. Come as you are. It helps if you can speak to how the work moves day to day: where the time goes, where things pile up. That’s all the prep there is.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">Who actually shows up to the call?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">05</span><span class="q-tx">Who actually shows up to the call?</span><span class="q-pm">+</span></summary>
           <p>A senior advisor, the person who would scope and build your project, not a junior rep reading off a script.</p>
         </details>
         <details>
-          <summary><span class="q-no">05</span><span class="q-tx">What happens to the details I submit?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">06</span><span class="q-tx">What happens to the details I submit?</span><span class="q-pm">+</span></summary>
           <p>They go to us so we can prepare for your call. That’s all. Your details never enter a marketing list, and if we never work together they go nowhere at all.</p>
         </details>
       </div>
@@ -947,27 +956,7 @@ select.input:invalid { color: var(--tx-faint); }
 </script>
 
 <!-- ============ REVEAL ANIMATION ============ -->
-<script>
-(function(){
-  // Capture/automation tools (webdriver) get the full page instantly — no reveal race.
-  if (navigator.webdriver) {
-    var ht = document.querySelector('.hero__title');
-    if (ht) { ht.classList.add('in'); }
-    return;
-  }
-  var sels = ['.bookhero__grid > *','.formcard','.rail > .panel','.faq > *','.faq__list details','.foot__top > *'];
-  var set = new Set();
-  sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
-  document.querySelectorAll('.rv').forEach(function(el){
-    var sibs = Array.prototype.filter.call(el.parentElement.children, function(c){ return c.classList.contains('rv'); });
-    el.style.transitionDelay = Math.min(sibs.indexOf(el),6)*55 + 'ms';
-  });
-  if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
-  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('.rv').forEach(function(el){ if (el.getBoundingClientRect().top < window.innerHeight * 0.92) { el.classList.add('in'); } else { io.observe(el); } });
-  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 900);
-})();
-</script>
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=5"></script>
 </body>

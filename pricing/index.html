@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=82" />
+<link rel="stylesheet" href="/styles.css?v=83" />
 <style>
 /* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
 /* 1. Price/range values never wrap. Stepped down one size so the widest range
@@ -457,27 +457,7 @@
 </footer>
 
 <!-- ============ REVEAL ANIMATION ============ -->
-<script>
-(function(){
-  // Capture/automation tools (webdriver) get the full page instantly — no reveal race.
-  if (navigator.webdriver) {
-    var ht = document.querySelector('.hero__title');
-    if (ht) { ht.classList.add('in'); }
-    return;
-  }
-  var sels = ['.pagehero__grid > *','.head-block','.svc__item','.closer','.faq > *','.faq__list details','.foot__top > *'];
-  var set = new Set();
-  sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
-  document.querySelectorAll('.rv').forEach(function(el){
-    var sibs = Array.prototype.filter.call(el.parentElement.children, function(c){ return c.classList.contains('rv'); });
-    el.style.transitionDelay = Math.min(sibs.indexOf(el),6)*55 + 'ms';
-  });
-  if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
-  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('.rv').forEach(function(el){ if (el.getBoundingClientRect().top < window.innerHeight * 0.92) { el.classList.add('in'); } else { io.observe(el); } });
-  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 900);
-})();
-</script>
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.svc__item,.closer,.faq > *,.faq__list details,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=5"></script>
 </body>

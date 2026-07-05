@@ -884,17 +884,8 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
 .kicker::before{ content:""; width:14px; height:2px; background: currentColor; opacity:.8; }
 .kicker{ gap:var(--s-8); }
 
-/* ---------- scroll reveal ----------
-   Visible is the base state: hiding happens only when motion is allowed
-   (and only after JS adds .rv), so no-JS, reduced-motion, print, PDF,
-   and capture tools always get the full page. */
-@media (prefers-reduced-motion: no-preference){
-  .rv{ opacity:0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.22,.72,.2,1), transform .7s cubic-bezier(.22,.72,.2,1); will-change: opacity, transform; }
-  .rv.in{ opacity:1; transform: none; }
-}
-@media print{
-  .rv{ opacity:1 !important; transform:none !important; transition:none !important; }
-}
+/* scroll reveal: one shared .reveal/.is-visible pair for every page —
+   see the REVEAL MOTION block further down (applied by js/reveal.js). */
 
 /* keep grain/marks from ever blocking interaction */
 .section, .foot, .topbar { position: relative; }

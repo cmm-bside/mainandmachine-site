@@ -14,10 +14,13 @@
 # the whole apex + all subdomains). Submit at https://hstspreload.org ONLY after
 # confirming every subdomain serves HTTPS. Until submitted, the token is inert.
 #
-# Content-Security-Policy is shipped REPORT-ONLY first: it does not block anything,
-# it only logs violations to the browser console (and report-to, if added). Verify
-# the console is clean across all pages, THEN rename the header to
-# `Content-Security-Policy` to enforce. CSP source map (one policy, served on /*):
+# Content-Security-Policy is now ENFORCED (audited 2026-07: every external
+# script/style/font/connect/form target on the site is allowed by the policy;
+# see the source map below). The identical Report-Only line stays for ONE more
+# release as a canary — if the console ever shows a report-only violation the
+# enforced header is blocking the same thing; revert the enforced line to
+# Report-Only first, fix, then re-enforce. Drop the Report-Only line next release.
+# CSP source map (one policy, served on /*):
 #   default-src 'self'        — baseline: same-origin only unless overridden below
 #   base-uri 'none'           — no <base> tag is used anywhere; forbid injection of one
 #   object-src 'none'         — no <object>/<embed>/<applet>
@@ -41,14 +44,19 @@
 #                             — 'self': same-origin forms; beehiiv: newsletter subscribe
 #   upgrade-insecure-requests — upgrade any stray http subresource (no-op in report-only)
 #
-# To enforce later, rename the header below to `Content-Security-Policy`. To capture
+# The two CSP lines below MUST stay byte-identical while both ship. To capture
 # violations centrally, add a `report-to` directive + a `Report-To` header endpoint.
+# Dropping 'unsafe-inline' (nonces or hashes) would require restructuring: the
+# pages carry inline <script>/<style> blocks, style= attrs, and onclick handlers
+# by design, and static _headers cannot mint per-request nonces (that needs a
+# Worker/Function, or build-time hashing of every inline block). Not planned.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src 'none'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
   Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src 'none'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
 
 # styles.css is cache-busted via ?v=N in index.html, so it can cache for a while

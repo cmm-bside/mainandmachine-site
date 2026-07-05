@@ -8,13 +8,23 @@
    hidden state lives in an @media (prefers-reduced-motion: no-preference) block).
 
    The hero keeps its own treatment (js/hero-machine.js) and is intentionally
-   excluded here. Add the targets you want revealed to TARGETS — that's the only
-   per-page knob; the mechanism is shared. */
+   excluded here. Per-page targets: add a comma-separated selector list in the
+   script tag's data-reveal-targets attribute — it's merged with the defaults
+   below; the mechanism is shared. */
 (function () {
+  var script = document.currentScript;
+
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || navigator.webdriver || !('IntersectionObserver' in window)) return;
 
   var TARGETS = ['.head-block', '.diffs > .diff', '.svc__item', '.paths > .path', '.failstat'];
+  var extra = script && script.getAttribute('data-reveal-targets');
+  if (extra) {
+    extra.split(',').forEach(function (sel) {
+      sel = sel.trim();
+      if (sel && TARGETS.indexOf(sel) < 0) TARGETS.push(sel);
+    });
+  }
   var els = [];
   TARGETS.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el) { if (els.indexOf(el) < 0) els.push(el); });

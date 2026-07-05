@@ -101,13 +101,15 @@
 })();
 
 /* Booking banner: keep the quarter current automatically so the topbar can
-   never read a stale quarter (e.g. "Q3" in October). Shows the upcoming
-   quarter — forward booking — and falls back to the hardcoded value with no JS. */
+   never read a stale quarter (e.g. "Q4" in January). The copy is delivery
+   framing ("Booking now for QN delivery"), so the quarter shown is the NEXT
+   one — when a build booked today lands — not the quarter being booked.
+   Falls back to the hardcoded value with no JS. */
 (function () {
   var els = document.querySelectorAll('.js-book-quarter');
   if (!els.length) return;
   var d = new Date();
   var q = Math.floor(d.getMonth() / 3) + 1;   // 1..4, current quarter
-  var next = 'Q' + (q === 4 ? 1 : q + 1);      // next quarter — forward booking
+  var next = 'Q' + (q === 4 ? 1 : q + 1);      // next quarter — the delivery quarter
   els.forEach(function (el) { el.textContent = next; });
 })();

@@ -144,6 +144,7 @@ const ORG_SAMEAS = [
 const PERSON_SAMEAS = [
 	"https://www.linkedin.com/in/cmyers85/",
 	"https://x.com/Chris_myers",
+	"https://www.entrepreneur.com/author/christopher-myers",
 ];
 export function orgJsonLd() {
 	const origin = COMPANY.origin;

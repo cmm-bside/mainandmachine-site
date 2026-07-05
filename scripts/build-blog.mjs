@@ -244,8 +244,10 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `${BLOG_NAME}: Plain-English AI Essays for Business Owners | ${BRAND}`,
-		description: `${BLOG_NAME}: ${BLOG_DESCRIPTION} Human-centric AI, small business, and the judgment no model has.`,
+		// no "| BRAND" suffix and "Free weekly" → "Weekly": the archive <title>
+		// must stay ≤60 chars and the description ≤160 (head:check limits).
+		title: `${BLOG_NAME}: Plain-English AI Essays for Business Owners`,
+		description: `${BLOG_NAME}: ${BLOG_DESCRIPTION.replace(/^Free weekly/, "Weekly")} Human-centric AI, small business, and the judgment no model has.`,
 		canonical: `${SITE_ORIGIN}/blog/`,
 		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,
 		jsonLd: [blogLd, orgJsonLd()],

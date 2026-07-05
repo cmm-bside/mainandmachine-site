@@ -16,9 +16,9 @@ const REQUIRED = [
   "What happens · 30 minutes",
   "Who you’ll talk to", // typographic apostrophe — page copy is educated (“ ” ‘ ’)
   "Christopher Myers",
-  // Booking-urgency banner. The quarter is auto-advanced by js/nav.js, so assert
-  // the structural hook (not a fixed quarter) — a literal "Q3" would go stale.
-  'Now booking <span class="js-book-quarter">',
+  // Booking banner (delivery framing). The quarter is auto-advanced by js/nav.js,
+  // so assert the structural hook (not a fixed quarter) — a literal "Q4" would go stale.
+  'Booking now for <span class="js-book-quarter">',
 ];
 for (const s of REQUIRED) {
   if (!html.includes(s)) errors.push(`/book: missing required text "${s}"`);

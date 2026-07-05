@@ -3,27 +3,27 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI for Healthcare Practices | Main &amp; Machine</title>
-<meta name="description" content="AI for scheduling, intake, and coding in practices and clinics of 8–50. Audits from $3,500, fixed quote in writing. Denver, Phoenix, and remote US." />
-<link rel="canonical" href="https://www.mainandmachine.com/industries/healthcare/" />
+<title>Who Builds This: Christopher Myers &amp; Main &amp; Machine</title>
+<meta name="description" content="Christopher Myers: 26 years backing Main Street, and an AI-native team building fixed-price systems in about 90 days from Denver and Phoenix." />
+<link rel="canonical" href="https://www.mainandmachine.com/about/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
-<meta property="og:title" content="AI for Healthcare Practices | Main &amp; Machine" />
-<meta property="og:description" content="AI for scheduling, intake, and coding in practices and clinics of 8–50. Audits from $3,500, fixed quote in writing. Denver, Phoenix, and remote US." />
-<meta property="og:url" content="https://www.mainandmachine.com/industries/healthcare/" />
-<meta property="og:image" content="https://www.mainandmachine.com/images/og/industry-healthcare.png" />
+<meta property="og:title" content="Who Builds This: Christopher Myers &amp; Main &amp; Machine" />
+<meta property="og:description" content="Christopher Myers: 26 years backing Main Street, and an AI-native team building fixed-price systems in about 90 days from Denver and Phoenix." />
+<meta property="og:url" content="https://www.mainandmachine.com/about/" />
+<meta property="og:image" content="https://www.mainandmachine.com/images/og/about.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine. AI for healthcare practices." />
+<meta property="og:image:alt" content="Main &amp; Machine: Who builds this." />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="AI for Healthcare Practices | Main &amp; Machine" />
-<meta name="twitter:description" content="AI for scheduling, intake, and coding in practices and clinics of 8–50. Audits from $3,500, fixed quote in writing. Denver, Phoenix, and remote US." />
-<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/industry-healthcare.png" />
+<meta name="twitter:title" content="Who Builds This: Christopher Myers &amp; Main &amp; Machine" />
+<meta name="twitter:description" content="Christopher Myers: 26 years backing Main Street, and an AI-native team building fixed-price systems in about 90 days from Denver and Phoenix." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/about.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -85,13 +85,27 @@
       }
     },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": { "@id": "https://www.mainandmachine.com/#org" },
+      "affiliation": [
+        { "@type": "Organization", "name": "B:Side Capital + Fund" },
+        { "@type": "CollegeOrUniversity", "name": "ASU W.P. Carey School of Business" }
+      ],
+      "knowsAbout": ["small business", "AI implementation", "SBA lending", "entrepreneurship"]
+    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Who this is for", "item": "https://www.mainandmachine.com/industries/" },
-        { "@type": "ListItem", "position": 3, "name": "Healthcare & wellness", "item": "https://www.mainandmachine.com/industries/healthcare/" }
+        { "@type": "ListItem", "position": 2, "name": "Who we are", "item": "https://www.mainandmachine.com/about/" }
       ]
     }
   ]
@@ -102,57 +116,6 @@
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
-</script>
-
-
-<!-- FAQ-JSONLD:auto -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What can AI do for a healthcare practice?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Typically the front-desk and intake work — scheduling, forms, and summaries — handled so a person reviews rather than retypes."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Where does our patient data go?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Where it needs to stay. The MARCUS build for a regulated lender runs entirely in-house, with no file leaving the building — the same control is available to you."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does it cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An audit is 2 to 4 weeks; a build is 4 to 12."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you work remotely or on-site?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We run two hubs — Denver, Colorado and Phoenix, Arizona — for in-person work, and we work remotely with businesses across the US. Same method, same fixed prices either way."
-      }
-    }
-  ]
-}
 </script>
 </head>
 <body>
@@ -197,7 +160,7 @@
       <a href="/work/">Proof</a>
       <a href="/pricing/">Pricing</a>
       <a href="/method/">Method</a>
-      <a href="/about/">Who We Are</a>
+      <a href="/about/" class="is-active" aria-current="page">Who We Are</a>
       <a href="/blog/">Blog</a>
       <a href="/contact/">Contact</a>
     </nav>
@@ -212,152 +175,151 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Healthcare hero">
+<section class="section paper pagehero" data-screen-label="About hero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
       <span class="sep">/</span>
-      <a href="/industries/">Who this is for</a>
-      <span class="sep">/</span>
-      <span>Healthcare &amp; wellness</span>
+      <span>Who we are</span>
     </div>
     <div class="pagehero__grid">
       <div>
-        <span class="kicker">Industries / 03</span>
-        <h1 class="h2 mt-s">AI for healthcare, built for the <span class="accent-tx">5–100 person shop.</span></h1>
-        <p class="lead mt-s">Practices, clinics, and wellness businesses: places where the front desk carries the whole operation and the paperwork grows faster than the patient list.</p>
+        <span class="kicker">Who we are</span>
+        <h1 class="h2 mt-s">Who builds this.</h1>
+        <p class="lead mt-s">Main &amp; Machine is an AI consulting and implementation firm for small and mid-size businesses, founded by Christopher Myers, with hubs in Denver and Phoenix and remote coverage across the US. It builds custom agents, workflow automations, and data integrations at fixed prices, delivered in about 90 days.</p>
       </div>
-      <div class="statrail crop" aria-label="Healthcare at a glance">
-        <div class="statrail__bar"><span>Fit check</span><span><b>v.2026</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Typical team</span><span class="statrail__v">8 to 50</span></div>
-        <div class="statrail__row"><span class="statrail__k">Clearest wins</span><span class="statrail__v accent-tx">Scheduling, intake, coding</span></div>
-        <div class="statrail__row"><span class="statrail__k">First step</span><span class="statrail__v">Readiness Audit</span></div>
-        <div class="statrail__row"><span class="statrail__k">Coverage</span><span class="statrail__v">Denver · Phoenix · Remote</span></div>
+      <div class="statrail crop" aria-label="The firm at a glance">
+        <div class="statrail__bar"><span>The firm</span><span><b>v.2026</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Founder</span><span class="statrail__v accent-tx">Christopher Myers</span></div>
+        <div class="statrail__row"><span class="statrail__k">Backing Main Street</span><span class="statrail__v">26 years</span></div>
+        <div class="statrail__row"><span class="statrail__k">Hubs</span><span class="statrail__v">Denver &amp; Phoenix</span></div>
+        <div class="statrail__row"><span class="statrail__k">Build team</span><span class="statrail__v">~25 AI-native</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE CLEAREST WINS ============ -->
-<section class="section paper-2" data-screen-label="The clearest wins">
+<!-- ============ THE FOUNDER ============ -->
+<section class="section paper-2" data-screen-label="The founder">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">The clearest wins</span>
-        <h2 class="h2 mt-s">Where does AI actually pay in <span class="accent-tx">healthcare?</span></h2>
+        <span class="kicker">01 / The founder</span>
+        <h2 class="h2 mt-s">Christopher Myers.</h2>
       </div>
-      <p class="lead">Three places, in our experience. These are the clearest wins we see in practices like yours, not results we promise. None of them touch clinical judgment, and all of them start with the question every practice should ask first: where does the data go? We answer that plainly in <a href="/blog/where-your-data-goes/" style="text-decoration:underline;">Where Your Data Goes</a>.</p>
+      <p class="lead">A professor, an entrepreneur, and an operator: 26 years in service of Main Street.</p>
     </div>
-    <div class="diffs">
-      <div class="diff">
-        <span class="tick-lbl">01 · Scheduling</span>
-        <h3>The calendar fills itself instead of the phone line.</h3>
-        <p>Phone tag, no-shows, and gaps the front desk discovers too late to fill. An automation drafts confirmations and reminders, offers open slots when someone cancels, and keeps the day full. The front desk approves what goes out.</p>
+    <div class="bio">
+      <div class="bio__aside">
+      <figure class="bio__portrait crop">
+        <picture>
+          <source type="image/webp" srcset="/images/christopher-myers-hedcut.webp?v=3" />
+          <img src="/images/christopher-myers-hedcut.png?v=3" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="768" height="768" loading="lazy" decoding="async" />
+        </picture>
+        <figcaption>
+          <span class="bio__name">Christopher Myers</span>
+          <span class="bio__role">CEO, B:Side Capital + Fund · Founder &amp; Chairman, Main &amp; Machine · Professor, ASU W.P. Carey · Author</span>
+        </figcaption>
+      </figure>
+      <p class="bio__note">Read his essay <a href="/blog/seventy-years-of-overnight-success/">Seventy Years of Overnight Success</a>, or see how every build runs in <a href="/method/">the method</a>.</p>
       </div>
-      <div class="diff">
-        <span class="tick-lbl">02 · Intake</span>
-        <h3>The paperwork is done before the patient sits down.</h3>
-        <p>An intake agent collects forms and history ahead of the visit, chases what is missing, and hands staff a clean, chart-ready summary. Your clinicians spend the visit on the patient, and every clinical call stays theirs.</p>
+      <div class="bio__prose">
+        <p>Christopher has spent 26 years backing Main Street, today as <b>CEO of B:Side Capital and Fund</b>, a professor of entrepreneurship at ASU’s W.P. Carey School, and the author of several books on small business. Main &amp; Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building.</p>
+        <p>As founder and chairman, he pairs his own senior judgment with a team of <b>AI-native builders</b>: digital natives who never had to unlearn the old way. One operator stays accountable for every build. The future doesn’t belong to the people who can do what AI does; it belongs to the people who can take what the machine produces and <b>be accountable for it.</b></p>
+        <div class="bio__press">His work has been covered in: <span class="press-list"><span>Forbes</span><span>The Wall Street Journal</span><span>The New York Times</span><span>Inc.</span><span>TechCrunch</span><span>MSNBC</span><span>Fox Business</span></span></div>
       </div>
-      <div class="diff">
-        <span class="tick-lbl">03 · Coding</span>
-        <h3>The claim is drafted from the documentation, not from memory.</h3>
-        <p>Coding and claims work piles up at the end of the day and the denials pile up after that. An agent drafts the codes from the documentation and flags the uncertain ones for a person to review, so the biller stays accountable for every claim that goes out.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHICH SERVICE FITS FIRST (ink) ============ -->
-<section class="section ink" data-screen-label="Which service fits first">
-  <div class="wrap">
-    <div class="closer" style="margin-top:0;">
-      <span class="kicker">Which service fits first</span>
-      <p>For most practices the right first move is the <a href="/services/#audit" style="text-decoration:underline;">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go, and where patient data can and cannot go, before anyone builds anything. Pricing is published, in plain numbers: <a href="/pricing/" style="text-decoration:underline;">audits run $3,500–$8,500; sprints $12,000–$45,000, fixed quote in writing</a>.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ AN EXAMPLE BUILD ============ -->
-<section class="section paper" data-screen-label="An example build">
+<!-- ============ THE TEAM ============ -->
+<section class="section paper" data-screen-label="The team">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">An example build</span>
-        <h2 class="h2 mt-s">One build, <span class="accent-tx">drawn to scale.</span></h2>
+        <span class="kicker">02 / The team</span>
+        <h2 class="h2 mt-s">The build team is young <span class="accent-tx">on purpose.</span></h2>
       </div>
-      <p class="lead">Of the example builds on our homepage, this is the one that maps most directly onto the front-desk and intake work of a practice.</p>
-    </div>
-    <div class="builds">
-      <div class="builds__bar">
-        <span class="tick-lbl">Example builds</span>
-        <span class="tick-lbl">What “agents, automations &amp; integrations” look like in practice</span>
-      </div>
-      <div class="builds__grid">
-        <div class="build">
-          <span class="build__no">01</span>
-          <span class="tick-lbl">Intake agent</span>
-          <h3>Qualifies the request before a person touches it.</h3>
-          <p>Reads the incoming email or form, asks for the details that are missing, and routes the job to the right person with a clean summary attached.</p>
-          <span class="build__win">The win: every request arrives qualified, summarized, and routed before a person reads it.</span>
-        </div>
-      </div>
-      <p class="builds__note">Illustrative builds, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, a private AI back office for a regulated lender.</p>
+      <p class="lead">Around twenty-five AI-native technologists, most of them students and recent graduates, who have never known work without these tools and have nothing to unlearn. Every build runs under one accountable operator with twenty-six years backing Main Street. That pairing is the whole company: fluency with the new, judgment from the old.</p>
     </div>
   </div>
 </section>
 
-
-
-
-<!-- FAQ:auto -->
-<section class="section paper-2" data-screen-label="Industry FAQ">
+<!-- ============ WHY US ============ -->
+<section class="section paper-2" id="why" data-screen-label="Why us">
   <div class="wrap">
-    <div class="faq">
+    <div class="head-block">
       <div>
-        <span class="kicker">Fair questions</span>
-        <h2 class="h2 mt-s">AI for healthcare practices.</h2>
-        <div class="faq__aside" style="margin-top:28px;">
-          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
-          <p>The full price list is published: audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
-        </div>
+        <span class="kicker">03 / Why us</span>
+        <h2 class="h2 mt-s">What makes us <span class="accent-tx">hard to copy.</span></h2>
       </div>
-      <div class="faq__list">
-        <details>
-          <summary><span class="q-no">01</span><span class="q-tx">What can AI do for a healthcare practice?</span><span class="q-pm">+</span></summary>
-          <p>Typically the front-desk and intake work: scheduling, forms, and summaries, handled so a person reviews rather than retypes.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">02</span><span class="q-tx">Where does our patient data go?</span><span class="q-pm">+</span></summary>
-          <p>Where it needs to stay. The MARCUS build for a regulated lender runs entirely in-house, with no file leaving the building. The same control is available to you.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">03</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
-          <p>The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">04</span><span class="q-tx">How long does it take?</span><span class="q-pm">+</span></summary>
-          <p>An audit is 2 to 4 weeks; a build is 4 to 12.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">05</span><span class="q-tx">Do you work remotely or on-site?</span><span class="q-pm">+</span></summary>
-          <p>We run two hubs for in-person work: Denver, Colorado and Phoenix, Arizona. We work remotely with businesses across the US. Same method, same fixed prices either way.</p>
-        </details>
+      <p class="lead">Four things, none of which a competitor can bolt on next quarter.</p>
+    </div>
+    <div class="why">
+      <div>
+        <span class="tick-lbl">01: Prices stated plainly</span>
+        <h3>No discovery call required to learn the cost.</h3>
+        <p><a href="/pricing/" style="text-decoration:underline;">The price list</a> is published in plain numbers, because that is how you would want to be treated.</p>
+      </div>
+      <div>
+        <span class="tick-lbl">02: Vendor-neutral</span>
+        <h3>We make no money reselling anyone’s software.</h3>
+        <p>We recommend what is right for you, including the free tool over the expensive one when the free one wins.</p>
+      </div>
+      <div>
+        <span class="tick-lbl">03: One accountable operator</span>
+        <h3>One name owns your build, start to finish.</h3>
+        <p>Christopher Myers scopes the work, holds the judgment calls, and signs off, so you always know exactly who is accountable.</p>
+      </div>
+      <div>
+        <span class="tick-lbl">04: Built by digital natives</span>
+        <h3>The people building your systems never had to unlearn the old way.</h3>
+        <p>They did not learn AI in a weekend bootcamp. They grew up with it, building under one accountable operator.</p>
       </div>
     </div>
   </div>
 </section>
-<!-- /FAQ:auto -->
+
+<!-- ============ THE NAME ============ -->
+<section class="section paper" data-screen-label="The name">
+  <div class="wrap">
+    <div class="head-block" style="align-items:center; margin-bottom:38px;">
+      <div>
+        <span class="kicker">04 / The name</span>
+        <h2 class="h2 mt-s">Two words. <span class="accent-tx">One argument.</span></h2>
+      </div>
+      <p class="lead">We put Main first on purpose. The order is the whole philosophy.</p>
+    </div>
+    <div class="argument">
+      <div class="arg">
+        <div class="arg__key"><span class="arg__word">Main</span><span class="arg__tag">the human part</span></div>
+        <div class="arg__body"><p>Main Street is the human part. <b>The owner who knows which customer always pays late</b> and which one is worth keeping anyway. The manager who can feel when a week is about to go sideways. The judgment that no model has, and no model will.</p></div>
+      </div>
+      <div class="arg">
+        <div class="arg__key"><span class="arg__word">Machine</span><span class="arg__tag">the tireless part</span></div>
+        <div class="arg__body"><p>The Machine is the other part. <b>It is patient in a way people cannot be.</b> It reads every invoice, watches every queue, drafts the first version at three in the morning, and never gets tired or bored or careless on a Friday afternoon.</p></div>
+      </div>
+      <div class="arg arg--amp">
+        <div class="arg__key"><span class="arg__word"><span class="amp">&amp;</span></span><span class="arg__tag">the whole company</span></div>
+        <div class="arg__body"><p>The ampersand is the whole company. The machine works for the person: it carries the load the person should not have to carry, and hands every judgment call back to them. <b>The person stays in charge; the software stays in service.</b> Build it in that order and you have built the right thing. That is the only thing we build.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ START HERE (ink) ============ -->
 <section class="section ink final" data-screen-label="Start here">
   <div class="wrap">
-    <span class="kicker">Start here</span>
-    <h2 class="h2 mt-s">See the wins in <span class="accent-tx">healthcare.</span></h2>
-    <p class="lead mt-s">30 minutes with a senior advisor who walks your scheduling, intake, and coding workflows and tells you what is worth automating, and what is not.</p>
-    <div class="hero__cta">
-      <a class="btn btn--primary btn--lg" href="/book/?industry=healthcare">Book a free assessment <span class="arr">→</span></a>
+    <div class="final__cta">
+      <span class="kicker">Start here</span>
+      <p class="lead mt-s">Book a free 30-minute AI Opportunity Assessment. We will look at your business and tell you the truth, even when the truth is “wait a quarter” or “you do not need us for this.”</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="final__promise">
+      <p>A fixed price, quoted in writing before we start. And a straight answer within 24 hours.</p>
+      <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
 </section>
@@ -447,7 +409,7 @@
     if (ht) { ht.classList.add('in'); }
     return;
   }
-  var sels = ['.pagehero__grid > *','.head-block','.diffs > .diff','.closer','.builds > *','.final .hero__cta','.foot__top > *'];
+  var sels = ['.pagehero__grid > *','.head-block','.bio > *','.why > div','.argument > .arg','.final .wrap > *','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
   document.querySelectorAll('.rv').forEach(function(el){
@@ -456,8 +418,8 @@
   });
   if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('.rv').forEach(function(el){ if (el.getBoundingClientRect().top < window.innerHeight * 0.92) { el.classList.add('in'); } else { io.observe(el); } });
-  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 900);
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1400);
 })();
 </script>
 

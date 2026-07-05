@@ -362,9 +362,6 @@
         <span class="kicker">Services</span>
         <h1 class="h2 mt-s">Three ways <span class="accent-tx">in.</span></h1>
         <p class="lead mt-s">An audit that maps where AI actually pays, a sprint that builds the highest-payback workflow, and managed services that keeps it healthy. Fixed prices, quoted in writing before we start.</p>
-        <div class="hero__cta">
-          <a class="btn btn--primary btn--lg" href="/book/">Not sure which? Book a free assessment <span class="arr">→</span></a>
-        </div>
       </div>
       <div class="statrail crop" aria-label="Services at a glance">
         <div class="statrail__bar"><span>Price list</span><span><b>Published</b></span></div>

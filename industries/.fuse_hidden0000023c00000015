@@ -3,27 +3,27 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI for Healthcare Practices | Main &amp; Machine</title>
-<meta name="description" content="AI for scheduling, intake, and coding in practices and clinics of 8–50. Audits from $3,500, fixed quote in writing. Denver, Phoenix, and remote US." />
-<link rel="canonical" href="https://www.mainandmachine.com/industries/healthcare/" />
+<title>AI by Industry: Built for the 5–100 Person Shop | Main &amp; Machine</title>
+<meta name="description" content="AI for the 5–100 person shop: professional services, retail, healthcare, trades, hospitality. Audits from $3,500. Denver, Phoenix and remote US." />
+<link rel="canonical" href="https://www.mainandmachine.com/industries/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
-<meta property="og:title" content="AI for Healthcare Practices | Main &amp; Machine" />
-<meta property="og:description" content="AI for scheduling, intake, and coding in practices and clinics of 8–50. Audits from $3,500, fixed quote in writing. Denver, Phoenix, and remote US." />
-<meta property="og:url" content="https://www.mainandmachine.com/industries/healthcare/" />
-<meta property="og:image" content="https://www.mainandmachine.com/images/og/industry-healthcare.png" />
+<meta property="og:title" content="AI by Industry: Built for the 5–100 Person Shop | Main &amp; Machine" />
+<meta property="og:description" content="AI for the 5–100 person shop: professional services, retail, healthcare, trades, hospitality. Audits from $3,500. Denver, Phoenix and remote US." />
+<meta property="og:url" content="https://www.mainandmachine.com/industries/" />
+<meta property="og:image" content="https://www.mainandmachine.com/images/og/industries.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine. AI for healthcare practices." />
+<meta property="og:image:alt" content="Main &amp; Machine. Built for the businesses big consulting forgets." />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="AI for Healthcare Practices | Main &amp; Machine" />
-<meta name="twitter:description" content="AI for scheduling, intake, and coding in practices and clinics of 8–50. Audits from $3,500, fixed quote in writing. Denver, Phoenix, and remote US." />
-<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/industry-healthcare.png" />
+<meta name="twitter:title" content="AI by Industry: Built for the 5–100 Person Shop | Main &amp; Machine" />
+<meta name="twitter:description" content="AI for the 5–100 person shop: professional services, retail, healthcare, trades, hospitality. Audits from $3,500. Denver, Phoenix and remote US." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/industries.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -85,13 +85,11 @@
       }
     },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Who this is for", "item": "https://www.mainandmachine.com/industries/" },
-        { "@type": "ListItem", "position": 3, "name": "Healthcare & wellness", "item": "https://www.mainandmachine.com/industries/healthcare/" }
+        { "@type": "ListItem", "position": 2, "name": "Who this is for", "item": "https://www.mainandmachine.com/industries/" }
       ]
     }
   ]
@@ -113,18 +111,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What can AI do for a healthcare practice?",
+      "name": "Which industries do you work with?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Typically the front-desk and intake work — scheduling, forms, and summaries — handled so a person reviews rather than retypes."
+        "text": "Professional services, retail, healthcare, construction, and hospitality — small and mid-size businesses, roughly 5 to 100 people and $1M to $50M in revenue."
       }
     },
     {
       "@type": "Question",
-      "name": "Where does our patient data go?",
+      "name": "Does the approach change by industry?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Where it needs to stay. The MARCUS build for a regulated lender runs entirely in-house, with no file leaving the building — the same control is available to you."
+        "text": "The method is the same — map the work, price the opportunities, build the highest-payback one. What changes is which workflows pay first."
       }
     },
     {
@@ -132,20 +130,12 @@
       "name": "How much does it cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins."
+        "text": "The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $12,000–$45,000, quoted as a fixed price in writing before any work begins. Managed Services is a monthly retainer with no lock-in."
       }
     },
     {
       "@type": "Question",
-      "name": "How long does it take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An audit is 2 to 4 weeks; a build is 4 to 12."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you work remotely or on-site?",
+      "name": "Do you work remotely?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "We run two hubs — Denver, Colorado and Phoenix, Arizona — for in-person work, and we work remotely with businesses across the US. Same method, same fixed prices either way."
@@ -212,97 +202,82 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Healthcare hero">
+<section class="section paper pagehero" data-screen-label="Industries hero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
       <span class="sep">/</span>
-      <a href="/industries/">Who this is for</a>
-      <span class="sep">/</span>
-      <span>Healthcare &amp; wellness</span>
+      <span>Who this is for</span>
     </div>
     <div class="pagehero__grid">
       <div>
-        <span class="kicker">Industries / 03</span>
-        <h1 class="h2 mt-s">AI for healthcare, built for the <span class="accent-tx">5–100 person shop.</span></h1>
-        <p class="lead mt-s">Practices, clinics, and wellness businesses: places where the front desk carries the whole operation and the paperwork grows faster than the patient list.</p>
+        <span class="kicker">Who this is for</span>
+        <h1 class="h2 mt-s">Built for the businesses <span class="accent-tx">big consulting forgets.</span></h1>
+        <p class="lead mt-s">Past the point where the owner can hold everything in their head, and not yet big enough for a Fortune 500 budget. Five industries where we have seen the clearest wins.</p>
       </div>
-      <div class="statrail crop" aria-label="Healthcare at a glance">
-        <div class="statrail__bar"><span>Fit check</span><span><b>v.2026</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Typical team</span><span class="statrail__v">8 to 50</span></div>
-        <div class="statrail__row"><span class="statrail__k">Clearest wins</span><span class="statrail__v accent-tx">Scheduling, intake, coding</span></div>
-        <div class="statrail__row"><span class="statrail__k">First step</span><span class="statrail__v">Readiness Audit</span></div>
+      <div class="statrail crop" aria-label="Fit check at a glance">
+        <div class="statrail__bar"><span>Fit check</span><span><b>Free</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Assessment</span><span class="statrail__v accent-tx">30 minutes, free</span></div>
+        <div class="statrail__row"><span class="statrail__k">Reply</span><span class="statrail__v">Within 24 hours</span></div>
+        <div class="statrail__row"><span class="statrail__k">Audits from</span><span class="statrail__v">$3,500</span></div>
         <div class="statrail__row"><span class="statrail__k">Coverage</span><span class="statrail__v">Denver · Phoenix · Remote</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE CLEAREST WINS ============ -->
-<section class="section paper-2" data-screen-label="The clearest wins">
+<!-- ============ THE PROFILE + INDUSTRIES ============ -->
+<section class="section paper-2" id="industries" data-screen-label="The industries">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">The clearest wins</span>
-        <h2 class="h2 mt-s">Where does AI actually pay in <span class="accent-tx">healthcare?</span></h2>
+        <span class="kicker">01 / The profile</span>
+        <h2 class="h2 mt-s">Five industries. <span class="accent-tx">One profile.</span></h2>
       </div>
-      <p class="lead">Three places, in our experience. These are the clearest wins we see in practices like yours, not results we promise. None of them touch clinical judgment, and all of them start with the question every practice should ask first: where does the data go? We answer that plainly in <a href="/blog/where-your-data-goes/" style="text-decoration:underline;">Where Your Data Goes</a>.</p>
+      <p class="lead">If your business fits the numbers below, the wins are usually sitting in the same handful of workflows.</p>
     </div>
-    <div class="diffs">
-      <div class="diff">
-        <span class="tick-lbl">01 · Scheduling</span>
-        <h3>The calendar fills itself instead of the phone line.</h3>
-        <p>Phone tag, no-shows, and gaps the front desk discovers too late to fill. An automation drafts confirmations and reminders, offers open slots when someone cancels, and keeps the day full. The front desk approves what goes out.</p>
-      </div>
-      <div class="diff">
-        <span class="tick-lbl">02 · Intake</span>
-        <h3>The paperwork is done before the patient sits down.</h3>
-        <p>An intake agent collects forms and history ahead of the visit, chases what is missing, and hands staff a clean, chart-ready summary. Your clinicians spend the visit on the patient, and every clinical call stays theirs.</p>
-      </div>
-      <div class="diff">
-        <span class="tick-lbl">03 · Coding</span>
-        <h3>The claim is drafted from the documentation, not from memory.</h3>
-        <p>Coding and claims work piles up at the end of the day and the denials pile up after that. An agent drafts the codes from the documentation and flags the uncertain ones for a person to review, so the biller stays accountable for every claim that goes out.</p>
-      </div>
+    <div class="profile">
+      <div><span class="tick-lbl">Headcount</span><div class="v">5–100</div></div>
+      <div><span class="tick-lbl">Revenue</span><div class="v">$1M–$50M</div></div>
+      <div><span class="tick-lbl">Coverage</span><div class="v">Remote, US</div></div>
+      <div><span class="tick-lbl">Hubs</span><div class="v">CO &amp; AZ</div></div>
     </div>
-  </div>
-</section>
-
-<!-- ============ WHICH SERVICE FITS FIRST (ink) ============ -->
-<section class="section ink" data-screen-label="Which service fits first">
-  <div class="wrap">
-    <div class="closer" style="margin-top:0;">
-      <span class="kicker">Which service fits first</span>
-      <p>For most practices the right first move is the <a href="/services/#audit" style="text-decoration:underline;">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go, and where patient data can and cannot go, before anyone builds anything. Pricing is published, in plain numbers: <a href="/pricing/" style="text-decoration:underline;">audits run $3,500–$8,500; sprints $12,000–$45,000, fixed quote in writing</a>.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AN EXAMPLE BUILD ============ -->
-<section class="section paper" data-screen-label="An example build">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">An example build</span>
-        <h2 class="h2 mt-s">One build, <span class="accent-tx">drawn to scale.</span></h2>
+    <div class="industries">
+      <div class="ind">
+        <span class="ind__no">01</span>
+        <div class="ind__name">Professional services <span>Law, accounting, insurance, consulting, financial advisory.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">12 to 80</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Intake, billing, matters</span></div>
+        <a class="ind__go" href="/industries/professional-services/">See the wins in professional services →</a>
       </div>
-      <p class="lead">Of the example builds on our homepage, this is the one that maps most directly onto the front-desk and intake work of a practice.</p>
-    </div>
-    <div class="builds">
-      <div class="builds__bar">
-        <span class="tick-lbl">Example builds</span>
-        <span class="tick-lbl">What “agents, automations &amp; integrations” look like in practice</span>
+      <div class="ind">
+        <span class="ind__no">02</span>
+        <div class="ind__name">Retail &amp; e-commerce <span>Physical, online, omnichannel operators.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">5 to 60</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Inventory, support, merch</span></div>
+        <a class="ind__go" href="/industries/retail/">See the wins in retail →</a>
       </div>
-      <div class="builds__grid">
-        <div class="build">
-          <span class="build__no">01</span>
-          <span class="tick-lbl">Intake agent</span>
-          <h3>Qualifies the request before a person touches it.</h3>
-          <p>Reads the incoming email or form, asks for the details that are missing, and routes the job to the right person with a clean summary attached.</p>
-          <span class="build__win">The win: every request arrives qualified, summarized, and routed before a person reads it.</span>
-        </div>
+      <div class="ind">
+        <span class="ind__no">03</span>
+        <div class="ind__name">Healthcare &amp; wellness <span>Practices, clinics, wellness businesses.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">8 to 50</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Scheduling, intake, coding</span></div>
+        <a class="ind__go" href="/industries/healthcare/">See the wins in healthcare →</a>
       </div>
-      <p class="builds__note">Illustrative builds, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, a private AI back office for a regulated lender.</p>
+      <div class="ind">
+        <span class="ind__no">04</span>
+        <div class="ind__name">Construction &amp; trades <span>HVAC, plumbing, electrical, general contracting.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">10 to 100</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Dispatch, invoicing, bids</span></div>
+        <a class="ind__go" href="/industries/construction/">See the wins in the trades →</a>
+      </div>
+      <div class="ind">
+        <span class="ind__no">05</span>
+        <div class="ind__name">Hospitality &amp; food service <span>Restaurants, hotels, catering, venues.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">15 to 100</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Staffing, reservations, ops</span></div>
+        <a class="ind__go" href="/industries/hospitality/">See the wins in hospitality →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -311,12 +286,12 @@
 
 
 <!-- FAQ:auto -->
-<section class="section paper-2" data-screen-label="Industry FAQ">
+<section class="section paper-2" data-screen-label="Industries FAQ">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
-        <h2 class="h2 mt-s">AI for healthcare practices.</h2>
+        <h2 class="h2 mt-s">Who this is for.</h2>
         <div class="faq__aside" style="margin-top:28px;">
           <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
           <p>The full price list is published: audits, sprints, managed services, all on one page.</p>
@@ -325,23 +300,19 @@
       </div>
       <div class="faq__list">
         <details>
-          <summary><span class="q-no">01</span><span class="q-tx">What can AI do for a healthcare practice?</span><span class="q-pm">+</span></summary>
-          <p>Typically the front-desk and intake work: scheduling, forms, and summaries, handled so a person reviews rather than retypes.</p>
+          <summary><span class="q-no">01</span><span class="q-tx">Which industries do you work with?</span><span class="q-pm">+</span></summary>
+          <p>Professional services, retail, healthcare, construction, and hospitality: small and mid-size businesses, roughly 5 to 100 people and $1M to $50M in revenue.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">Where does our patient data go?</span><span class="q-pm">+</span></summary>
-          <p>Where it needs to stay. The MARCUS build for a regulated lender runs entirely in-house, with no file leaving the building. The same control is available to you.</p>
+          <summary><span class="q-no">02</span><span class="q-tx">Does the approach change by industry?</span><span class="q-pm">+</span></summary>
+          <p>The method is the same: map the work, price the opportunities, build the highest-payback one. What changes is which workflows pay first.</p>
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
-          <p>The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins.</p>
+          <p>The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $12,000–$45,000, quoted as a fixed price in writing before any work begins. Managed Services is a monthly retainer with no lock-in.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">How long does it take?</span><span class="q-pm">+</span></summary>
-          <p>An audit is 2 to 4 weeks; a build is 4 to 12.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">05</span><span class="q-tx">Do you work remotely or on-site?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">04</span><span class="q-tx">Do you work remotely?</span><span class="q-pm">+</span></summary>
           <p>We run two hubs for in-person work: Denver, Colorado and Phoenix, Arizona. We work remotely with businesses across the US. Same method, same fixed prices either way.</p>
         </details>
       </div>
@@ -354,10 +325,9 @@
 <section class="section ink final" data-screen-label="Start here">
   <div class="wrap">
     <span class="kicker">Start here</span>
-    <h2 class="h2 mt-s">See the wins in <span class="accent-tx">healthcare.</span></h2>
-    <p class="lead mt-s">30 minutes with a senior advisor who walks your scheduling, intake, and coding workflows and tells you what is worth automating, and what is not.</p>
+    <p class="lead mt-s">Checking fit is exactly what the free assessment is for. 30 minutes, a senior advisor, and a straight answer on whether your business is one where AI actually pays.</p>
     <div class="hero__cta">
-      <a class="btn btn--primary btn--lg" href="/book/?industry=healthcare">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -447,7 +417,7 @@
     if (ht) { ht.classList.add('in'); }
     return;
   }
-  var sels = ['.pagehero__grid > *','.head-block','.diffs > .diff','.closer','.builds > *','.final .hero__cta','.foot__top > *'];
+  var sels = ['.pagehero__grid > *','.head-block','.profile > div','.industries .ind','.final .wrap > *','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
   document.querySelectorAll('.rv').forEach(function(el){
@@ -457,7 +427,7 @@
   if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.rv').forEach(function(el){ if (el.getBoundingClientRect().top < window.innerHeight * 0.92) { el.classList.add('in'); } else { io.observe(el); } });
-  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 900);
+  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1400);
 })();
 </script>
 

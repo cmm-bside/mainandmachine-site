@@ -3,50 +3,33 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI Consulting Pricing: Fixed, Published, No Discovery Call | Main &amp; Machine</title>
-<meta name="description" content="Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page." />
-<link rel="canonical" href="https://www.mainandmachine.com/pricing/" />
+<title>AI Consulting in Denver, Colorado | Main &amp; Machine</title>
+<meta name="description" content="Working AI agents inside Denver businesses in about 90 days, fixed price in writing. Audits from $3,500. In person on the Front Range, remote anywhere." />
+<link rel="canonical" href="https://www.mainandmachine.com/denver/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
-<meta property="og:title" content="AI Consulting Pricing: Fixed, Published, No Discovery Call | Main &amp; Machine" />
-<meta property="og:description" content="Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page." />
-<meta property="og:url" content="https://www.mainandmachine.com/pricing/" />
-<meta property="og:image" content="https://www.mainandmachine.com/images/og/pricing.png" />
+<meta property="og:title" content="AI Consulting in Denver, Colorado | Main &amp; Machine" />
+<meta property="og:description" content="Working AI agents inside Denver businesses in about 90 days, fixed price in writing. Audits from $3,500. In person on the Front Range, remote anywhere." />
+<meta property="og:url" content="https://www.mainandmachine.com/denver/" />
+<meta property="og:image" content="https://www.mainandmachine.com/images/og/denver.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine: Three ways in. Priced in plain numbers." />
+<meta property="og:image:alt" content="Main &amp; Machine: AI consulting in Denver, built for the 5-100 person shop." />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="AI Consulting Pricing: Fixed, Published, No Discovery Call | Main &amp; Machine" />
-<meta name="twitter:description" content="Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page." />
-<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/pricing.png" />
+<meta name="twitter:title" content="AI Consulting in Denver, Colorado | Main &amp; Machine" />
+<meta name="twitter:description" content="Working AI agents inside Denver businesses in about 90 days, fixed price in writing. Audits from $3,500. In person on the Front Range, remote anywhere." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/denver.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="/styles.css?v=82" />
-<style>
-/* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
-/* 1. Price/range values never wrap. Stepped down one size so the widest range
-   ($12,000–$45,000) fits the 220px meta column on a single line. */
-.svc__price { white-space: nowrap; font-size: var(--fs-16); }
-/* 2. Uniform price-table row heights (desktop 3-column table only — stacks <921px).
-   grid-auto-rows:1fr keeps the three rows equal at every width, unlike a fixed
-   min-height which only lines up at one viewport. */
-@media (min-width: 921px){ .svc { display: grid; grid-auto-rows: 1fr; } }
-/* 3. THE MATH: top-align the columns so the two figures share a baseline (the
-   longer caption no longer pushes $45,000 down via align-items:center), then
-   drop "vs" to the figures' cap-height midline (≈ label + 0.36 × figure size). */
-.math-vs { align-items: start; }
-.math-vs__sep { align-self: start; margin-top: calc(15px + 0.36 * clamp(var(--fs-49), 7vw, var(--fs-78))); }
-/* 4. FAQ heading/accordion gutter matches the page's section-head gutter (48px). */
-.faq { gap: var(--s-48); }
-</style>
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -60,24 +43,17 @@
   "@graph": [
     {
       "@type": "ProfessionalService",
-      "@id": "https://www.mainandmachine.com/#org",
-      "sameAs": [
-        "https://www.linkedin.com/company/main-and-machine/",
-        "https://x.com/mainandmachine"
-      ],
+      "@id": "https://www.mainandmachine.com/denver/#local",
       "name": "Main & Machine",
-      "url": "https://www.mainandmachine.com/",
+      "url": "https://www.mainandmachine.com/denver/",
       "logo": "https://www.mainandmachine.com/icon-512.png",
       "image": "https://www.mainandmachine.com/og-image.png",
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$45,000",
-      "areaServed": "US",
+      "areaServed": { "@type": "City", "name": "Denver", "containedInPlace": { "@type": "State", "name": "Colorado" } },
       "slogan": "The machine belongs to Main Street.",
-      "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
-      ],
+      "parentOrganization": { "@id": "https://www.mainandmachine.com/#org" },
       "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -101,13 +77,28 @@
         ]
       }
     },
+    {
+      "@type": "Organization",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "areaServed": "US"
+    },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman" },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://www.mainandmachine.com/pricing/" }
+        { "@type": "ListItem", "position": 2, "name": "Denver", "item": "https://www.mainandmachine.com/denver/" }
       ]
     },
     {
@@ -115,23 +106,23 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How much does AI implementation cost for a small business?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in." }
+          "name": "Where is Main & Machine located?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We run two hubs: Denver, Colorado and Phoenix, Arizona. Remote work covers businesses across the rest of the US." }
         },
         {
           "@type": "Question",
-          "name": "What does the AI Readiness Audit include?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks." }
+          "name": "Do you meet in person in Denver?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We run workshops and working sessions at your shop in and around Denver. When distance wins, we work remotely — same method, same fixed prices." }
         },
         {
           "@type": "Question",
-          "name": "Why fixed prices instead of hourly?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs." }
+          "name": "Do you work with businesses outside Colorado and Arizona?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We work remotely with businesses across the US. The hubs are where we meet in person; the work itself travels fine." }
         },
         {
           "@type": "Question",
-          "name": "What happens after the 90 days?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift — a monthly retainer you can cancel any month it stops earning its keep." }
+          "name": "How much does it cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $12,000–$45,000, with the exact price quoted fixed in writing before work begins. Managed Services is a monthly retainer with no lock-in." }
         }
       ]
     }
@@ -185,7 +176,7 @@
         </div>
       </span>
       <a href="/work/">Proof</a>
-      <a href="/pricing/" class="is-active" aria-current="page">Pricing</a>
+      <a href="/pricing/">Pricing</a>
       <a href="/method/">Method</a>
       <a href="/about/">Who We Are</a>
       <a href="/blog/">Blog</a>
@@ -202,43 +193,42 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Pricing hero">
+<section class="section paper pagehero" data-screen-label="Denver hero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
       <span class="sep">/</span>
-      <span>Pricing</span>
+      <span>Denver</span>
     </div>
     <div class="pagehero__grid">
       <div>
-        <span class="kicker">Pricing</span>
-        <h1 class="h2 mt-s">Three ways in. Priced in <span class="accent-tx">plain numbers.</span></h1>
-        <p class="lead mt-s">You will not have to sit through three discovery calls to learn what something costs. Here is the price list.</p>
+        <span class="kicker">Denver, Colorado</span>
+        <h1 class="h2 mt-s">AI consulting in Denver, built for the <span class="accent-tx">5–100 person shop.</span></h1>
+        <p class="lead mt-s">We work with Denver businesses in person: workshops at your shop, working sessions with the people who own the workflow, not a vendor on a screen. Our other hub is <a href="/phoenix/" style="text-decoration:underline;">Phoenix</a>, and remote covers the rest of the US. Same method, same fixed prices, wherever the work happens.</p>
       </div>
-      <div class="statrail crop" aria-label="Pricing at a glance">
-        <div class="statrail__bar"><span>Price list</span><span><b>Published</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Audits</span><span class="statrail__v accent-tx">$3,500–$8,500</span></div>
-        <div class="statrail__row"><span class="statrail__k">Sprints</span><span class="statrail__v">$12,000–$45,000</span></div>
-        <div class="statrail__row"><span class="statrail__k">Managed</span><span class="statrail__v">Monthly · no lock-in</span></div>
-        <div class="statrail__row"><span class="statrail__k">Quote</span><span class="statrail__v">Fixed, in writing</span></div>
+      <div class="statrail crop" aria-label="Denver at a glance">
+        <div class="statrail__bar"><span>At a glance</span><span><b>Denver</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Hub</span><span class="statrail__v accent-tx">Denver, CO</span></div>
+        <div class="statrail__row"><span class="statrail__k">Other hub</span><span class="statrail__v">Phoenix, AZ</span></div>
+        <div class="statrail__row"><span class="statrail__k">Coverage</span><span class="statrail__v">Remote across the US</span></div>
+        <div class="statrail__row"><span class="statrail__k">Audits</span><span class="statrail__v">From $3,500</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE PRICE LIST ============ -->
-<section class="section paper-2" id="pricing" data-screen-label="Price list">
+<!-- ============ SERVICES AND PRICES ============ -->
+<section class="section paper-2" id="services" data-screen-label="Denver services">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">The price list</span>
-        <h2 class="h2 mt-s">What each one <span class="accent-tx">costs.</span></h2>
+        <span class="kicker">Services &amp; prices</span>
+        <h2 class="h2 mt-s">Same services. Same <span class="accent-tx">published prices.</span></h2>
       </div>
-      <p class="lead">Audit, sprint, retainer: every price fixed and quoted in writing before any work begins.</p>
+      <p class="lead">The price list does not change by zip code. Audits, sprints, and managed services read the same in Denver as they do anywhere else we work.</p>
     </div>
     <div class="svc">
       <div class="svc__item svc__item--feature crop">
-        <span class="svc__tab">Most start here</span>
         <div class="svc__meta">
           <div class="svc__no">01</div>
           <span class="tick-lbl">Timeline</span>
@@ -312,71 +302,106 @@
         </div>
       </div>
     </div>
-    <p class="hero__note hero__note--wide">Every path here starts with the same <a href="/book/" style="text-decoration:underline;">free 30-minute assessment</a>. Want a rough number first? <a href="/calculator/" style="text-decoration:underline;">Run the calculator</a>.</p>
+    <p class="hero__note">Full detail on every engagement is on the <a href="/pricing/" style="text-decoration:underline;">pricing page</a>.</p>
   </div>
 </section>
 
-
-<!-- ============ THE MATH (ink) ============ -->
-<section class="section ink" data-screen-label="The math">
+<!-- ============ THE FIVE INDUSTRIES ============ -->
+<section class="section paper" data-screen-label="Denver industries">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">The math</span>
-        <h2 class="h2 mt-s">Same rigor. <span class="accent-tx">A fraction of the bill.</span></h2>
+        <span class="kicker">Who this is for</span>
+        <h2 class="h2 mt-s">Built for the businesses <span class="accent-tx">big consulting forgets.</span></h2>
       </div>
-      <p class="lead">The Big Four do versions of this work with half-million-dollar minimums. We built the same discipline for Main Street.</p>
+      <p class="lead">The five industries where we see the clearest wins.</p>
     </div>
-    <div class="math-vs">
-      <div class="math-vs__col">
-        <span class="tick-lbl">Our largest engagement</span>
-        <div class="math-vs__num">$45,000</div>
-        <p>A full Implementation Sprint, fixed in writing before we start.</p>
+    <div class="industries">
+      <div class="ind">
+        <span class="ind__no">01</span>
+        <div class="ind__name">Professional services <span>Law, accounting, insurance, consulting, financial advisory.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">12 to 80</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Intake, billing, matters</span></div>
+        <a class="ind__go" href="/industries/professional-services/">Professional services →</a>
       </div>
-      <span class="math-vs__sep">vs</span>
-      <div class="math-vs__col">
-        <span class="tick-lbl">A Big Four minimum</span>
-        <div class="math-vs__num math-vs__num--them">$500,000+</div>
-        <p>More than ten times the cost, before the work begins. Our largest engagement is less than their kickoff meeting.</p>
+      <div class="ind">
+        <span class="ind__no">02</span>
+        <div class="ind__name">Retail &amp; e-commerce <span>Physical, online, omnichannel operators.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">5 to 60</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Inventory, support, merch</span></div>
+        <a class="ind__go" href="/industries/retail/">Retail &amp; e-commerce →</a>
+      </div>
+      <div class="ind">
+        <span class="ind__no">03</span>
+        <div class="ind__name">Healthcare &amp; wellness <span>Practices, clinics, wellness businesses.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">8 to 50</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Scheduling, intake, coding</span></div>
+        <a class="ind__go" href="/industries/healthcare/">Healthcare &amp; wellness →</a>
+      </div>
+      <div class="ind">
+        <span class="ind__no">04</span>
+        <div class="ind__name">Construction &amp; trades <span>HVAC, plumbing, electrical, general contracting.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">10 to 100</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Dispatch, invoicing, bids</span></div>
+        <a class="ind__go" href="/industries/construction/">Construction &amp; trades →</a>
+      </div>
+      <div class="ind">
+        <span class="ind__no">05</span>
+        <div class="ind__name">Hospitality &amp; food service <span>Restaurants, hotels, catering, venues.</span></div>
+        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">15 to 100</span></div>
+        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Staffing, reservations, ops</span></div>
+        <a class="ind__go" href="/industries/hospitality/">Hospitality &amp; food service →</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="section paper" data-screen-label="Pricing FAQ">
+<section class="section paper-2" data-screen-label="Denver FAQ">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
-        <h2 class="h2 mt-s">How much does AI implementation cost?</h2>
+        <h2 class="h2 mt-s">Working with us in Denver.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+          <p>The full price list is published: audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
       </div>
       <div class="faq__list">
         <details>
-          <summary><span class="q-no">01</span><span class="q-tx">How much does AI implementation cost for a small business?</span><span class="q-pm">+</span></summary>
-          <p>The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in.</p>
+          <summary><span class="q-no">01</span><span class="q-tx">Where is Main &amp; Machine located?</span><span class="q-pm">+</span></summary>
+          <p>We run two hubs: Denver, Colorado and Phoenix, Arizona. Remote work covers businesses across the rest of the US.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">What does the AI Readiness Audit include?</span><span class="q-pm">+</span></summary>
-          <p>A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.</p>
+          <summary><span class="q-no">02</span><span class="q-tx">Do you meet in person in Denver?</span><span class="q-pm">+</span></summary>
+          <p>Yes. We run workshops and working sessions at your shop in and around Denver. When distance wins, we work remotely. Same method, same fixed prices.</p>
         </details>
         <details>
-          <summary><span class="q-no">03</span><span class="q-tx">Why fixed prices instead of hourly?</span><span class="q-pm">+</span></summary>
-          <p>Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs.</p>
+          <summary><span class="q-no">03</span><span class="q-tx">Do you work with businesses outside Colorado and Arizona?</span><span class="q-pm">+</span></summary>
+          <p>Yes. We work remotely with businesses across the US. The hubs are where we meet in person; the work itself travels fine.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">What happens after the 90 days?</span><span class="q-pm">+</span></summary>
-          <p>Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: a monthly retainer you can cancel any month it stops earning its keep.</p>
+          <summary><span class="q-no">04</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
+          <p>The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $12,000–$45,000, with the exact price quoted fixed in writing before work begins. Managed Services is a monthly retainer with no lock-in.</p>
         </details>
       </div>
     </div>
-    <div class="faq-strip">
-      <div class="faq-strip__copy">
-        <h3>Want exact numbers?</h3>
-        <p>The assessment is where ranges become a fixed quote in writing: 30 minutes, free. No obligation.</p>
-      </div>
-      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section ink final" data-screen-label="Start here">
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2 class="h2 mt-s">30 minutes. <span class="accent-tx">A straight answer.</span></h2>
+    <p class="lead mt-s">Book a free AI Opportunity Assessment: 30 minutes on your real workflows, in person in Denver or over a call. You leave knowing whether there is a real opportunity and what it is worth.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--secondary btn--lg" href="/phoenix/">Also in Phoenix →</a>
     </div>
+    <p class="hero__note" style="color:var(--dtx-mute);">Free. No obligation. No pitch. We reply within 24 hours.</p>
   </div>
 </section>
 
@@ -465,7 +490,7 @@
     if (ht) { ht.classList.add('in'); }
     return;
   }
-  var sels = ['.pagehero__grid > *','.head-block','.svc__item','.closer','.faq > *','.faq__list details','.foot__top > *'];
+  var sels = ['.pagehero__grid > *','.head-block','.svc__item','.industries .ind','.faq > *','.faq__list details','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
   document.querySelectorAll('.rv').forEach(function(el){
@@ -475,7 +500,7 @@
   if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.rv').forEach(function(el){ if (el.getBoundingClientRect().top < window.innerHeight * 0.92) { el.classList.add('in'); } else { io.observe(el); } });
-  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 900);
+  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1400);
 })();
 </script>
 

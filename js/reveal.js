@@ -36,10 +36,20 @@
       if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-  els.forEach(function (el) { io.observe(el); });
+
+  // Anything already inside the initial viewport paints visible immediately —
+  // above-the-fold content must never wait on the observer. Scroll-reveal
+  // applies only below the fold.
+  els.forEach(function (el) {
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+      el.classList.add('is-visible');
+    } else {
+      io.observe(el);
+    }
+  });
 
   // safety net: never leave anything hidden (e.g. element already past viewport)
   setTimeout(function () {
     els.forEach(function (el) { el.classList.add('is-visible'); });
-  }, 1600);
+  }, 900);
 })();

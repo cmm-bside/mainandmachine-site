@@ -3,33 +3,50 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI for Healthcare Practices | Main &amp; Machine</title>
-<meta name="description" content="AI for scheduling, intake, and coding in practices and clinics of 8–50. Audits from $3,500, fixed quote in writing. Denver, Phoenix, and remote US." />
-<link rel="canonical" href="https://www.mainandmachine.com/industries/healthcare/" />
+<title>AI Consulting Pricing: Fixed, Published, No Discovery Call | Main &amp; Machine</title>
+<meta name="description" content="Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page." />
+<link rel="canonical" href="https://www.mainandmachine.com/pricing/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
-<meta property="og:title" content="AI for Healthcare Practices | Main &amp; Machine" />
-<meta property="og:description" content="AI for scheduling, intake, and coding in practices and clinics of 8–50. Audits from $3,500, fixed quote in writing. Denver, Phoenix, and remote US." />
-<meta property="og:url" content="https://www.mainandmachine.com/industries/healthcare/" />
-<meta property="og:image" content="https://www.mainandmachine.com/images/og/industry-healthcare.png" />
+<meta property="og:title" content="AI Consulting Pricing: Fixed, Published, No Discovery Call | Main &amp; Machine" />
+<meta property="og:description" content="Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page." />
+<meta property="og:url" content="https://www.mainandmachine.com/pricing/" />
+<meta property="og:image" content="https://www.mainandmachine.com/images/og/pricing.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine. AI for healthcare practices." />
+<meta property="og:image:alt" content="Main &amp; Machine: Three ways in. Priced in plain numbers." />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="AI for Healthcare Practices | Main &amp; Machine" />
-<meta name="twitter:description" content="AI for scheduling, intake, and coding in practices and clinics of 8–50. Audits from $3,500, fixed quote in writing. Denver, Phoenix, and remote US." />
-<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/industry-healthcare.png" />
+<meta name="twitter:title" content="AI Consulting Pricing: Fixed, Published, No Discovery Call | Main &amp; Machine" />
+<meta name="twitter:description" content="Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/pricing.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="/styles.css?v=82" />
+<style>
+/* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
+/* 1. Price/range values never wrap. Stepped down one size so the widest range
+   ($12,000–$45,000) fits the 220px meta column on a single line. */
+.svc__price { white-space: nowrap; font-size: var(--fs-16); }
+/* 2. Uniform price-table row heights (desktop 3-column table only — stacks <921px).
+   grid-auto-rows:1fr keeps the three rows equal at every width, unlike a fixed
+   min-height which only lines up at one viewport. */
+@media (min-width: 921px){ .svc { display: grid; grid-auto-rows: 1fr; } }
+/* 3. THE MATH: top-align the columns so the two figures share a baseline (the
+   longer caption no longer pushes $45,000 down via align-items:center), then
+   drop "vs" to the figures' cap-height midline (≈ label + 0.36 × figure size). */
+.math-vs { align-items: start; }
+.math-vs__sep { align-self: start; margin-top: calc(15px + 0.36 * clamp(var(--fs-49), 7vw, var(--fs-78))); }
+/* 4. FAQ heading/accordion gutter matches the page's section-head gutter (48px). */
+.faq { gap: var(--s-48); }
+</style>
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23b83e22'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -90,8 +107,32 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Who this is for", "item": "https://www.mainandmachine.com/industries/" },
-        { "@type": "ListItem", "position": 3, "name": "Healthcare & wellness", "item": "https://www.mainandmachine.com/industries/healthcare/" }
+        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://www.mainandmachine.com/pricing/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does AI implementation cost for a small business?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the AI Readiness Audit include?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why fixed prices instead of hourly?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after the 90 days?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift — a monthly retainer you can cancel any month it stops earning its keep." }
+        }
       ]
     }
   ]
@@ -102,57 +143,6 @@
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
-</script>
-
-
-<!-- FAQ-JSONLD:auto -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What can AI do for a healthcare practice?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Typically the front-desk and intake work — scheduling, forms, and summaries — handled so a person reviews rather than retypes."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Where does our patient data go?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Where it needs to stay. The MARCUS build for a regulated lender runs entirely in-house, with no file leaving the building — the same control is available to you."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does it cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An audit is 2 to 4 weeks; a build is 4 to 12."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you work remotely or on-site?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We run two hubs — Denver, Colorado and Phoenix, Arizona — for in-person work, and we work remotely with businesses across the US. Same method, same fixed prices either way."
-      }
-    }
-  ]
-}
 </script>
 </head>
 <body>
@@ -195,7 +185,7 @@
         </div>
       </span>
       <a href="/work/">Proof</a>
-      <a href="/pricing/">Pricing</a>
+      <a href="/pricing/" class="is-active" aria-current="page">Pricing</a>
       <a href="/method/">Method</a>
       <a href="/about/">Who We Are</a>
       <a href="/blog/">Blog</a>
@@ -212,152 +202,180 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Healthcare hero">
+<section class="section paper pagehero" data-screen-label="Pricing hero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
       <span class="sep">/</span>
-      <a href="/industries/">Who this is for</a>
-      <span class="sep">/</span>
-      <span>Healthcare &amp; wellness</span>
+      <span>Pricing</span>
     </div>
     <div class="pagehero__grid">
       <div>
-        <span class="kicker">Industries / 03</span>
-        <h1 class="h2 mt-s">AI for healthcare, built for the <span class="accent-tx">5–100 person shop.</span></h1>
-        <p class="lead mt-s">Practices, clinics, and wellness businesses: places where the front desk carries the whole operation and the paperwork grows faster than the patient list.</p>
+        <span class="kicker">Pricing</span>
+        <h1 class="h2 mt-s">Three ways in. Priced in <span class="accent-tx">plain numbers.</span></h1>
+        <p class="lead mt-s">You will not have to sit through three discovery calls to learn what something costs. Here is the price list.</p>
       </div>
-      <div class="statrail crop" aria-label="Healthcare at a glance">
-        <div class="statrail__bar"><span>Fit check</span><span><b>v.2026</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Typical team</span><span class="statrail__v">8 to 50</span></div>
-        <div class="statrail__row"><span class="statrail__k">Clearest wins</span><span class="statrail__v accent-tx">Scheduling, intake, coding</span></div>
-        <div class="statrail__row"><span class="statrail__k">First step</span><span class="statrail__v">Readiness Audit</span></div>
-        <div class="statrail__row"><span class="statrail__k">Coverage</span><span class="statrail__v">Denver · Phoenix · Remote</span></div>
+      <div class="statrail crop" aria-label="Pricing at a glance">
+        <div class="statrail__bar"><span>Price list</span><span><b>Published</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Audits</span><span class="statrail__v accent-tx">$3,500–$8,500</span></div>
+        <div class="statrail__row"><span class="statrail__k">Sprints</span><span class="statrail__v">$12,000–$45,000</span></div>
+        <div class="statrail__row"><span class="statrail__k">Managed</span><span class="statrail__v">Monthly · no lock-in</span></div>
+        <div class="statrail__row"><span class="statrail__k">Quote</span><span class="statrail__v">Fixed, in writing</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE CLEAREST WINS ============ -->
-<section class="section paper-2" data-screen-label="The clearest wins">
+<!-- ============ THE PRICE LIST ============ -->
+<section class="section paper-2" id="pricing" data-screen-label="Price list">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">The clearest wins</span>
-        <h2 class="h2 mt-s">Where does AI actually pay in <span class="accent-tx">healthcare?</span></h2>
+        <span class="kicker">The price list</span>
+        <h2 class="h2 mt-s">What each one <span class="accent-tx">costs.</span></h2>
       </div>
-      <p class="lead">Three places, in our experience. These are the clearest wins we see in practices like yours, not results we promise. None of them touch clinical judgment, and all of them start with the question every practice should ask first: where does the data go? We answer that plainly in <a href="/blog/where-your-data-goes/" style="text-decoration:underline;">Where Your Data Goes</a>.</p>
+      <p class="lead">Audit, sprint, retainer: every price fixed and quoted in writing before any work begins.</p>
     </div>
-    <div class="diffs">
-      <div class="diff">
-        <span class="tick-lbl">01 · Scheduling</span>
-        <h3>The calendar fills itself instead of the phone line.</h3>
-        <p>Phone tag, no-shows, and gaps the front desk discovers too late to fill. An automation drafts confirmations and reminders, offers open slots when someone cancels, and keeps the day full. The front desk approves what goes out.</p>
-      </div>
-      <div class="diff">
-        <span class="tick-lbl">02 · Intake</span>
-        <h3>The paperwork is done before the patient sits down.</h3>
-        <p>An intake agent collects forms and history ahead of the visit, chases what is missing, and hands staff a clean, chart-ready summary. Your clinicians spend the visit on the patient, and every clinical call stays theirs.</p>
-      </div>
-      <div class="diff">
-        <span class="tick-lbl">03 · Coding</span>
-        <h3>The claim is drafted from the documentation, not from memory.</h3>
-        <p>Coding and claims work piles up at the end of the day and the denials pile up after that. An agent drafts the codes from the documentation and flags the uncertain ones for a person to review, so the biller stays accountable for every claim that goes out.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHICH SERVICE FITS FIRST (ink) ============ -->
-<section class="section ink" data-screen-label="Which service fits first">
-  <div class="wrap">
-    <div class="closer" style="margin-top:0;">
-      <span class="kicker">Which service fits first</span>
-      <p>For most practices the right first move is the <a href="/services/#audit" style="text-decoration:underline;">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go, and where patient data can and cannot go, before anyone builds anything. Pricing is published, in plain numbers: <a href="/pricing/" style="text-decoration:underline;">audits run $3,500–$8,500; sprints $12,000–$45,000, fixed quote in writing</a>.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AN EXAMPLE BUILD ============ -->
-<section class="section paper" data-screen-label="An example build">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">An example build</span>
-        <h2 class="h2 mt-s">One build, <span class="accent-tx">drawn to scale.</span></h2>
-      </div>
-      <p class="lead">Of the example builds on our homepage, this is the one that maps most directly onto the front-desk and intake work of a practice.</p>
-    </div>
-    <div class="builds">
-      <div class="builds__bar">
-        <span class="tick-lbl">Example builds</span>
-        <span class="tick-lbl">What “agents, automations &amp; integrations” look like in practice</span>
-      </div>
-      <div class="builds__grid">
-        <div class="build">
-          <span class="build__no">01</span>
-          <span class="tick-lbl">Intake agent</span>
-          <h3>Qualifies the request before a person touches it.</h3>
-          <p>Reads the incoming email or form, asks for the details that are missing, and routes the job to the right person with a clean summary attached.</p>
-          <span class="build__win">The win: every request arrives qualified, summarized, and routed before a person reads it.</span>
+    <div class="svc">
+      <div class="svc__item svc__item--feature crop">
+        <span class="svc__tab">Most start here</span>
+        <div class="svc__meta">
+          <div class="svc__no">01</div>
+          <span class="tick-lbl">Timeline</span>
+          <div class="svc__price">2 to 4 weeks</div>
+          <span class="tick-lbl" style="margin-top:14px;">Fixed price</span>
+          <div class="svc__price">$3,500–$8,500</div>
+        </div>
+        <div class="svc__main">
+          <h3><a href="/services/#audit">AI Readiness Audit</a></h3>
+          <div class="svc__tagline">Most businesses start here.</div>
+          <p>We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.</p>
+        </div>
+        <div class="svc__list">
+          <span class="tick-lbl">What you leave with</span>
+          <ul>
+            <li>A workflow map of your real operations</li>
+            <li>The handful of places AI actually pays</li>
+            <li>A phased plan you own outright</li>
+            <li>A straight read on whether to build at all</li>
+          </ul>
+          <a class="svc__cta" href="/services/#audit">Read the full spec →</a>
         </div>
       </div>
-      <p class="builds__note">Illustrative builds, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, a private AI back office for a regulated lender.</p>
+      <div class="svc__item">
+        <div class="svc__meta">
+          <div class="svc__no">02</div>
+          <span class="tick-lbl">Timeline</span>
+          <div class="svc__price">4 to 12 weeks</div>
+          <span class="tick-lbl" style="margin-top:14px;">Fixed quote after scoping</span>
+          <div class="svc__price">$12,000–$45,000</div>
+          <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
+        </div>
+        <div class="svc__main">
+          <h3><a href="/services/#sprint">AI Implementation Sprint</a></h3>
+          <div class="svc__tagline">We build the working systems.</div>
+          <p>Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.</p>
+        </div>
+        <div class="svc__list">
+          <span class="tick-lbl">What you leave with</span>
+          <ul>
+            <li>Working agents built to your workflow</li>
+            <li>Automations across your existing stack</li>
+            <li>Integrations into one source of truth</li>
+            <li>Your team trained to run all of it</li>
+          </ul>
+          <a class="svc__cta" href="/services/#sprint">Read the full spec →</a>
+        </div>
+      </div>
+      <div class="svc__item">
+        <div class="svc__meta">
+          <div class="svc__no">03</div>
+          <span class="tick-lbl">Timeline</span>
+          <div class="svc__price">Ongoing</div>
+          <span class="tick-lbl" style="margin-top:14px;">Retainer</span>
+          <div class="svc__price">Monthly</div>
+        </div>
+        <div class="svc__main">
+          <h3><a href="/services/#managed">Managed Services</a></h3>
+          <div class="svc__tagline">Optional, never required.</div>
+          <p>We keep what we built healthy, watch what changes, and evolve the systems as your business does.</p>
+        </div>
+        <div class="svc__list">
+          <span class="tick-lbl">What you leave with</span>
+          <ul>
+            <li>Monitoring on every deployed system</li>
+            <li>Maintenance as models and vendors shift</li>
+            <li>New automations as the work changes</li>
+            <li>No lock-in: leave whenever it stops paying</li>
+          </ul>
+          <a class="svc__cta" href="/services/#managed">Read the full spec →</a>
+        </div>
+      </div>
     </div>
+    <p class="hero__note hero__note--wide">Every path here starts with the same <a href="/book/" style="text-decoration:underline;">free 30-minute assessment</a>. Want a rough number first? <a href="/calculator/" style="text-decoration:underline;">Run the calculator</a>.</p>
   </div>
 </section>
 
 
+<!-- ============ THE MATH (ink) ============ -->
+<section class="section ink" data-screen-label="The math">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">The math</span>
+        <h2 class="h2 mt-s">Same rigor. <span class="accent-tx">A fraction of the bill.</span></h2>
+      </div>
+      <p class="lead">The Big Four do versions of this work with half-million-dollar minimums. We built the same discipline for Main Street.</p>
+    </div>
+    <div class="math-vs">
+      <div class="math-vs__col">
+        <span class="tick-lbl">Our largest engagement</span>
+        <div class="math-vs__num">$45,000</div>
+        <p>A full Implementation Sprint, fixed in writing before we start.</p>
+      </div>
+      <span class="math-vs__sep">vs</span>
+      <div class="math-vs__col">
+        <span class="tick-lbl">A Big Four minimum</span>
+        <div class="math-vs__num math-vs__num--them">$500,000+</div>
+        <p>More than ten times the cost, before the work begins. Our largest engagement is less than their kickoff meeting.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-<!-- FAQ:auto -->
-<section class="section paper-2" data-screen-label="Industry FAQ">
+<!-- ============ FAQ ============ -->
+<section class="section paper" data-screen-label="Pricing FAQ">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
-        <h2 class="h2 mt-s">AI for healthcare practices.</h2>
-        <div class="faq__aside" style="margin-top:28px;">
-          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
-          <p>The full price list is published: audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
-        </div>
+        <h2 class="h2 mt-s">How much does AI implementation cost?</h2>
       </div>
       <div class="faq__list">
         <details>
-          <summary><span class="q-no">01</span><span class="q-tx">What can AI do for a healthcare practice?</span><span class="q-pm">+</span></summary>
-          <p>Typically the front-desk and intake work: scheduling, forms, and summaries, handled so a person reviews rather than retypes.</p>
+          <summary><span class="q-no">01</span><span class="q-tx">How much does AI implementation cost for a small business?</span><span class="q-pm">+</span></summary>
+          <p>The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">Where does our patient data go?</span><span class="q-pm">+</span></summary>
-          <p>Where it needs to stay. The MARCUS build for a regulated lender runs entirely in-house, with no file leaving the building. The same control is available to you.</p>
+          <summary><span class="q-no">02</span><span class="q-tx">What does the AI Readiness Audit include?</span><span class="q-pm">+</span></summary>
+          <p>A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.</p>
         </details>
         <details>
-          <summary><span class="q-no">03</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
-          <p>The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins.</p>
+          <summary><span class="q-no">03</span><span class="q-tx">Why fixed prices instead of hourly?</span><span class="q-pm">+</span></summary>
+          <p>Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">How long does it take?</span><span class="q-pm">+</span></summary>
-          <p>An audit is 2 to 4 weeks; a build is 4 to 12.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">05</span><span class="q-tx">Do you work remotely or on-site?</span><span class="q-pm">+</span></summary>
-          <p>We run two hubs for in-person work: Denver, Colorado and Phoenix, Arizona. We work remotely with businesses across the US. Same method, same fixed prices either way.</p>
+          <summary><span class="q-no">04</span><span class="q-tx">What happens after the 90 days?</span><span class="q-pm">+</span></summary>
+          <p>Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: a monthly retainer you can cancel any month it stops earning its keep.</p>
         </details>
       </div>
     </div>
-  </div>
-</section>
-<!-- /FAQ:auto -->
-
-<!-- ============ START HERE (ink) ============ -->
-<section class="section ink final" data-screen-label="Start here">
-  <div class="wrap">
-    <span class="kicker">Start here</span>
-    <h2 class="h2 mt-s">See the wins in <span class="accent-tx">healthcare.</span></h2>
-    <p class="lead mt-s">30 minutes with a senior advisor who walks your scheduling, intake, and coding workflows and tells you what is worth automating, and what is not.</p>
-    <div class="hero__cta">
-      <a class="btn btn--primary btn--lg" href="/book/?industry=healthcare">Book a free assessment <span class="arr">→</span></a>
+    <div class="faq-strip">
+      <div class="faq-strip__copy">
+        <h3>Want exact numbers?</h3>
+        <p>The assessment is where ranges become a fixed quote in writing: 30 minutes, free. No obligation.</p>
+      </div>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -447,7 +465,7 @@
     if (ht) { ht.classList.add('in'); }
     return;
   }
-  var sels = ['.pagehero__grid > *','.head-block','.diffs > .diff','.closer','.builds > *','.final .hero__cta','.foot__top > *'];
+  var sels = ['.pagehero__grid > *','.head-block','.svc__item','.closer','.faq > *','.faq__list details','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
   document.querySelectorAll('.rv').forEach(function(el){
@@ -456,8 +474,8 @@
   });
   if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('.rv').forEach(function(el){ if (el.getBoundingClientRect().top < window.innerHeight * 0.92) { el.classList.add('in'); } else { io.observe(el); } });
-  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 900);
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1400);
 })();
 </script>
 

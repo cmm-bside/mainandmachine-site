@@ -3,27 +3,28 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>How We Implement AI: Discover, Build, Evolve | Main &amp; Machine</title>
-<meta name="description" content="Discover, build, evolve: one senior team from kickoff to handoff, working systems in about 90 days. Denver, Phoenix and remote across the US." />
-<link rel="canonical" href="https://www.mainandmachine.com/method/" />
+<title>AI ROI Calculator for Small Business | Main &amp; Machine</title>
+<meta name="description" content="Pick an industry, set team size, see a year-one range. Sprints $12,000–$45,000, fixed quote in writing. Denver, CO and Phoenix, AZ. Remote across the US." />
+<link rel="canonical" href="https://www.mainandmachine.com/calculator/" />
 
 <!-- Open Graph -->
+<!-- TODO: dynamic OG image with the headline number if the stack ever supports it -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
-<meta property="og:title" content="How We Implement AI: Discover, Build, Evolve | Main &amp; Machine" />
-<meta property="og:description" content="Discover, build, evolve: one senior team from kickoff to handoff, working systems in about 90 days. Denver, Phoenix and remote across the US." />
-<meta property="og:url" content="https://www.mainandmachine.com/method/" />
-<meta property="og:image" content="https://www.mainandmachine.com/images/og/method.png" />
+<meta property="og:title" content="AI ROI Calculator for Small Business | Main &amp; Machine" />
+<meta property="og:description" content="Pick an industry, set team size, see a year-one range. Sprints $12,000–$45,000, fixed quote in writing. Denver, CO and Phoenix, AZ. Remote across the US." />
+<meta property="og:url" content="https://www.mainandmachine.com/calculator/" />
+<meta property="og:image" content="https://www.mainandmachine.com/images/og/calculator.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine: Discover. Build. Evolve." />
+<meta property="og:image:alt" content="Main &amp; Machine: What this is worth, roughly." />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="How We Implement AI: Discover, Build, Evolve | Main &amp; Machine" />
-<meta name="twitter:description" content="Discover, build, evolve: one senior team from kickoff to handoff, working systems in about 90 days. Denver, Phoenix and remote across the US." />
-<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/method.png" />
+<meta name="twitter:title" content="AI ROI Calculator for Small Business | Main &amp; Machine" />
+<meta name="twitter:description" content="Pick an industry, set team size, see a year-one range. Sprints $12,000–$45,000, fixed quote in writing. Denver, CO and Phoenix, AZ. Remote across the US." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/calculator.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,6 +36,15 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<style>
+/* =========================================================
+   ROI CALCULATOR — page-scoped extras
+   The .roi system itself lives in styles.css
+   ========================================================= */
+.roi-sharebar { display: flex; justify-content: flex-end; margin-top: 14px; }
+.roi-sharebar .btn { min-width: 190px; }
+</style>
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -61,28 +71,7 @@
         { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
         { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Readiness Audit", "serviceType": "AI readiness audit", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#audit" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Implementation Sprint", "serviceType": "AI implementation", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#sprint" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 12000, "maxPrice": 45000, "priceCurrency": "USD" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "Managed Services", "serviceType": "AI monitoring and maintenance", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#managed" },
-            "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "USD", "description": "Monthly retainer, no lock-in" }
-          }
-        ]
-      }
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
     },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
     { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
@@ -90,7 +79,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "The method", "item": "https://www.mainandmachine.com/method/" }
+        { "@type": "ListItem", "position": 2, "name": "Calculator", "item": "https://www.mainandmachine.com/calculator/" }
       ]
     }
   ]
@@ -144,7 +133,7 @@
       </span>
       <a href="/work/">Proof</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/method/" class="is-active" aria-current="page">Method</a>
+      <a href="/method/">Method</a>
       <a href="/about/">Who We Are</a>
       <a href="/blog/">Blog</a>
       <a href="/contact/">Contact</a>
@@ -160,154 +149,104 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Method hero">
+<section class="section paper pagehero" data-screen-label="Calculator hero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
       <span class="sep">/</span>
-      <span>The method</span>
+      <span>Calculator</span>
     </div>
     <div class="pagehero__grid">
       <div>
-        <span class="kicker">The method</span>
-        <h1 class="h2 mt-s">Discover. Build. Evolve.</h1>
-        <p class="lead mt-s">Three phases. One team from kickoff to handoff. No junior account managers parachuted in between.</p>
-      </div>
-      <div class="statrail crop" aria-label="The method at a glance">
-        <div class="statrail__bar"><span>The method</span><span><b>v.2026</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Phases</span><span class="statrail__v accent-tx">Three</span></div>
-        <div class="statrail__row"><span class="statrail__k">Delivery</span><span class="statrail__v">~90 days</span></div>
-        <div class="statrail__row"><span class="statrail__k">Team</span><span class="statrail__v">Senior, start to finish</span></div>
-        <div class="statrail__row"><span class="statrail__k">Quote</span><span class="statrail__v">Fixed, in writing</span></div>
+        <span class="kicker">The numbers</span>
+        <h1 class="h2 mt-s">What this is worth, <span class="accent-tx">roughly.</span></h1>
+        <p class="lead mt-s">Pick your industry. Move the team-size slider. See what automating the right handful of workflows could return in year one. Ranges, not promises: we run your real numbers in the free assessment.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE THREE PHASES (ink) ============ -->
-<section class="section ink" id="phases" data-screen-label="The three phases">
+<!-- ============ THE CALCULATOR (blueprint) ============ -->
+<section class="section blueprint" data-screen-label="The numbers">
   <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">01 / The three phases</span>
-        <h2 class="h2 mt-s">How a build <span class="accent-tx">actually runs.</span></h2>
-      </div>
-      <p class="lead">The same three phases on every engagement, in the same order. No phase gets skipped, and none runs forever.</p>
-    </div>
-    <div class="phases">
-      <div class="phase">
-        <span class="phase__no">01</span>
-        <h3>Discover</h3>
-        <span>learn the business first</span>
-        <p>We learn the business before we touch the technology. Where the time goes, where the money leaks, where a person is doing work a machine should be doing.</p>
-        <ul>
-          <li>Workflow + cost mapping</li>
-          <li>Where AI actually pays</li>
-          <li>A plan you own</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <span class="phase__no">02</span>
-        <h3>Build</h3>
-        <span>inside your real operation</span>
-        <p>We build inside your real operation, not a sandbox. Small, working, tested. You watch it run and earn your trust before it touches anything that matters.</p>
-        <ul>
-          <li>Small, working, tested</li>
-          <li>Runs in your real stack</li>
-          <li>Trust earned before it matters</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <span class="phase__no">03</span>
-        <h3>Evolve</h3>
-        <span>as the work changes</span>
-        <p>Businesses move. We tune, extend, and retire systems as the work changes, so what we built stays useful instead of becoming the next thing you work around.</p>
-        <ul>
-          <li>Tune and extend</li>
-          <li>Retire what is done</li>
-          <li>Stays useful over time</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ THE FIRST 90 DAYS ============ -->
-<section class="section section--tight paper-2" data-screen-label="The first 90 days">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">02 / The first 90 days</span>
-        <h2 class="h2 mt-s">What happens in the first 90 days?</h2>
+    <div class="roi crop" aria-label="ROI estimate calculator">
+      <div class="roi__bar">
+        <span class="roi__id"><span class="roi__dot" aria-hidden="true"></span>Estimate.v1</span>
+        <span class="roi__id roi__id--mute">A model, not a promise</span>
       </div>
-      <p class="lead">Thirteen weeks, three movements: discover, build, hand off. The exact price is quoted in writing before week 1; see the <a href="/services/#sprint" style="text-decoration:underline;">Implementation Sprint spec</a> or the <a href="/pricing/" style="text-decoration:underline;">price list</a>.</p>
-    </div>
-    <div class="timeline90" aria-label="The 13-week build timeline">
-      <div class="timeline90__seg">
-        <span class="timeline90__weeks">Weeks 1–2</span>
-        <span class="timeline90__phase">Discover</span>
-        <p>Walk the workflows with the people who run them, and cost each one.</p>
-      </div>
-      <div class="timeline90__seg">
-        <span class="timeline90__weeks">Weeks 3–10</span>
-        <span class="timeline90__phase">Build</span>
-        <p>Build and test inside your live operation, proving each piece before it touches anything that matters.</p>
-      </div>
-      <div class="timeline90__seg">
-        <span class="timeline90__weeks">Weeks 11–13</span>
-        <span class="timeline90__phase">Handoff</span>
-        <p>Train your team and hand everything over. You own all of it.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ THE PROMISE ============ -->
-<section class="section paper" data-screen-label="The promise">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">03 / The promise</span>
-        <h2 class="h2 mt-s">What we promise. <span class="accent-tx">And what we don’t.</span></h2>
-      </div>
-      <p class="lead">The list on the left is what we sign up for. The list on the right is what no honest AI shop should ever claim. If one does, ask harder questions.</p>
-    </div>
-    <div class="promise">
-      <div class="promise__col promise__col--do">
-        <h3 class="accent-tx">What we promise</h3>
-        <ul>
-          <li>Prices on this page, in plain numbers: no discovery call required to learn the cost</li>
-          <li>Fixed scope and a fixed price agreed before we start</li>
-          <li>The advisor who scopes your project is the one who builds it</li>
-          <li>Vendor-neutral recommendations, including the free tool when the free one wins</li>
-          <li>A human who can explain, question, and overrule every system we build</li>
-        </ul>
-      </div>
-      <div class="promise__col promise__col--dont">
-        <h3>What we don’t promise</h3>
-        <ul>
-          <li>Guaranteed ROI numbers: we quote ranges; real results depend on your execution</li>
-          <li>Magic in a couple of weeks: real implementation runs about 90 days per workflow</li>
-          <li>That AI is right for you right now: sometimes the honest answer is “wait a quarter”</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="roi__grid">
+        <!-- inputs -->
+        <div class="roi__inputs">
+          <div class="roi__field">
+            <label class="tick-lbl" for="calcIndustry">01 / Industry</label>
+            <div class="roi__selectwrap">
+              <select id="calcIndustry" class="roi__select">
+                <option value="professional-services">Professional services</option>
+                <option value="retail">Retail &amp; e-commerce</option>
+                <option value="healthcare">Healthcare &amp; wellness</option>
+                <option value="construction">Construction &amp; trades</option>
+                <option value="hospitality">Hospitality &amp; food service</option>
+              </select>
+              <span class="roi__caret" aria-hidden="true">▾</span>
+            </div>
+            <p class="roi__note" id="calcNote">Law, accounting, insurance, consulting, financial advisory.</p>
+          </div>
 
-<!-- ============ START HERE (ink) ============ -->
-<section class="section ink final" data-screen-label="Start here">
-  <div class="wrap">
-    <div class="final__cta">
-      <span class="kicker">Start here</span>
-      <p class="lead mt-s">Every engagement starts with a free 30-minute AI Opportunity Assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. We reply within 24 hours.</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+          <div class="roi__field">
+            <div class="roi__sliderhead">
+              <label class="tick-lbl" for="calcRange">02 / Team size</label>
+              <span class="roi__count mono" id="calcCount">25</span>
+            </div>
+            <input type="range" id="calcRange" class="roi__range" min="5" max="100" value="25"
+              aria-label="Team size" aria-valuemin="5" aria-valuemax="100" aria-valuenow="25" />
+            <div class="roi__scale"><span>5</span><span>50</span><span>100</span></div>
+          </div>
+
+          <div class="roi__assume">
+            <span class="tick-lbl">Assumptions</span>
+            <ul>
+              <li><span>Manual work / employee</span><span class="mono tab" id="calcAManual">$4,000/yr</span></li>
+              <li><span>Lost revenue / employee</span><span class="mono tab" id="calcARevenue">$2,000/yr</span></li>
+              <li><span>Sprint investment</span><span class="mono tab" id="calcAImpl">$18,000</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- output -->
+        <div class="roi__output">
+          <span class="tick-lbl">Output / Year one</span>
+          <ul class="roi__rows">
+            <li><span>Repetitive manual work</span><span class="mono tab roi__pos" id="calcManual">+$100,000</span></li>
+            <li><span>Lost revenue (capacity)</span><span class="mono tab roi__pos" id="calcRevenue">+$50,000</span></li>
+            <li><span>Sprint investment</span><span class="mono tab roi__neg" id="calcImpl">-$18,000</span></li>
+          </ul>
+          <div class="roi__net">
+            <div class="roi__nethead">
+              <span class="accent-tx">Projected ROI / Year 1</span>
+              <span id="calcFor">For 25 people</span>
+            </div>
+            <div class="roi__big tab" id="calcRoi">+$132,000</div>
+          </div>
+          <p class="roi__disclaim">A model, not a promise. The sprint cost is our published price; the savings are round assumptions you can see above, not your books. We run your real numbers in the free assessment, then commit to fixed scope in writing.</p>
+        </div>
+      </div>
+
+      <div class="roi__foot">
+        <span>Total opportunity: <b class="tab" id="calcTotal">$150,000</b></span>
+        <span>Method: MM-ROI-v1 / 2026</span>
       </div>
     </div>
-    <div class="final__promise">
-      <p>A fixed price, quoted in writing before we start. And a straight answer within 24 hours.</p>
-      <span class="final__sig">&mdash; Christopher Myers, Founder</span>
+
+    <!-- share — sits flush under the output column; the URL always encodes the current estimate -->
+    <div class="roi-sharebar">
+      <button class="btn btn--secondary" id="calcShare" type="button">Share this estimate</button>
+    </div>
+
+    <div class="roi__cta">
+      <a class="btn btn--primary btn--lg" id="calcBook" href="/book/">Run your real numbers: book the free assessment <span class="arr">→</span></a>
+      <p>A 25-person firm that automates the right handful of workflows commonly nets around this in year one, after our fee. <b style="color:var(--tx);">If your numbers don’t work, we’ll tell you.</b></p>
     </div>
   </div>
 </section>
@@ -397,7 +336,7 @@
     if (ht) { ht.classList.add('in'); }
     return;
   }
-  var sels = ['.pagehero__grid > *','.head-block','.phases > .phase','.promise > .promise__col','.final .wrap > *','.foot__top > *'];
+  var sels = ['.pagehero__grid > *','.roi','.roi-sharebar','.roi__cta','.foot__top > *'];
   var set = new Set();
   sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ if(!set.has(el)){ set.add(el); el.classList.add('rv'); } }); });
   document.querySelectorAll('.rv').forEach(function(el){
@@ -407,7 +346,110 @@
   if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.rv').forEach(function(el){ if (el.getBoundingClientRect().top < window.innerHeight * 0.92) { el.classList.add('in'); } else { io.observe(el); } });
-  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 900);
+  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1400);
+})();
+</script>
+
+<!-- ============ SHARED ESTIMATE MODEL (rates + math live in one file, used here and on the homepage band) ============ -->
+<script src="/js/roi.js?v=1"></script>
+
+<!-- ============ URL STATE (runs before the calculator so its first update() reflects the URL) ============ -->
+<script>
+(function(){
+  var params = new URLSearchParams(location.search);
+  var sel = document.getElementById('calcIndustry');
+  var range = document.getElementById('calcRange');
+  var ind = params.get('industry');
+  if(sel && ind && window.MMRoi && MMRoi.rates[ind]){ sel.value = ind; }
+  var team = parseInt(params.get('team'), 10);
+  if(range && !isNaN(team)){ range.value = Math.min(100, Math.max(5, team)); }
+})();
+</script>
+
+<!-- ============ ROI CALCULATOR ============ -->
+<script>
+(function(){
+  var industry = document.getElementById('calcIndustry');
+  if(!industry || !window.MMRoi) return;
+  var range   = document.getElementById('calcRange');
+  var count   = document.getElementById('calcCount');
+  var note    = document.getElementById('calcNote');
+  var forEl   = document.getElementById('calcFor');
+  var fmt = MMRoi.fmt, signed = MMRoi.signed;
+
+  var els = {
+    aManual:  document.getElementById('calcAManual'),
+    aRevenue: document.getElementById('calcARevenue'),
+    aImpl:    document.getElementById('calcAImpl'),
+    manual:   document.getElementById('calcManual'),
+    revenue:  document.getElementById('calcRevenue'),
+    impl:     document.getElementById('calcImpl'),
+    roi:      document.getElementById('calcRoi'),
+    total:    document.getElementById('calcTotal')
+  };
+
+  function paintStatic(m){
+    note.textContent = m.r.note;
+    count.textContent = m.emp;
+    range.setAttribute('aria-valuenow', m.emp);
+    forEl.textContent = 'For ' + m.emp + (m.emp === 1 ? ' person' : ' people');
+    els.aManual.textContent  = fmt(m.r.manual) + '/yr';
+    els.aRevenue.textContent = fmt(m.r.revenue) + '/yr';
+  }
+
+  function paintNumbers(v){
+    els.aImpl.textContent   = fmt(v.implementation);
+    els.manual.textContent  = signed(v.manual);
+    els.revenue.textContent = signed(v.revenue);
+    els.impl.textContent    = signed(-v.implementation);
+    els.roi.textContent     = (v.roi >= 0 ? '+' : '') + fmt(v.roi);
+    els.total.textContent   = fmt(v.total);
+  }
+
+  var animate = MMRoi.animator(paintNumbers);
+
+  function update(){
+    var m = MMRoi.compute(industry.value, range.value);
+    range.style.setProperty('--roi-fill', ((range.value - range.min) / (range.max - range.min) * 100) + '%');
+    paintStatic(m);
+    animate(m);
+  }
+
+  industry.addEventListener('change', update);
+  range.addEventListener('input', update);
+  update();
+})();
+</script>
+
+<!-- ============ URL SYNC + SHARE (extends the calculator above) ============ -->
+<script>
+(function(){
+  var sel = document.getElementById('calcIndustry');
+  var range = document.getElementById('calcRange');
+  if(!sel || !range) return;
+
+  var book = document.getElementById('calcBook');
+  function sync(){
+    var qs = '?industry=' + encodeURIComponent(sel.value) + '&team=' + range.value;
+    history.replaceState(null, '', location.pathname + qs);
+    if(book) book.href = '/book/' + qs + '&service=sprint';
+  }
+  sel.addEventListener('change', sync);
+  range.addEventListener('input', sync);
+  sync(); /* the URL always encodes the current state */
+
+  var share = document.getElementById('calcShare');
+  if(!share) return;
+  share.addEventListener('click', function(){
+    var done = function(){
+      var label = share.textContent;
+      share.textContent = 'Copied ✓';
+      setTimeout(function(){ share.textContent = label; }, 1600);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(location.href).then(done, done);
+    } else { done(); }
+  });
 })();
 </script>
 

@@ -50,6 +50,23 @@
 # pages carry inline <script>/<style> blocks, style= attrs, and onclick handlers
 # by design, and static _headers cannot mint per-request nonces (that needs a
 # Worker/Function, or build-time hashing of every inline block). Not planned.
+# The AI-Ready Score app is reverse-proxied from Vercel at /score/* and /s/*
+# (functions/…). It ships standalone with its own scripts, styles, and security
+# headers, so detach the main site's CSP + frame rules here — otherwise
+# default-src 'self' / frame-src 'none' would block the app.
+/score
+  ! Content-Security-Policy
+  ! Content-Security-Policy-Report-Only
+  ! X-Frame-Options
+/score/*
+  ! Content-Security-Policy
+  ! Content-Security-Policy-Report-Only
+  ! X-Frame-Options
+/s/*
+  ! Content-Security-Policy
+  ! Content-Security-Policy-Report-Only
+  ! X-Frame-Options
+
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN

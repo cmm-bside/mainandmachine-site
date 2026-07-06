@@ -7,11 +7,8 @@
 /services/implementation-sprint/  /services/#sprint  301
 /services/managed-services/     /services/#managed  301
 
-# The AI-Ready Score app lives on Vercel at score.mainandmachine.com; these
-# keep the SPEC'd /score path and the PRINTED book-QR short links (/s/ch05
-# etc.) working on the main domain forever. The /s/* rule is the permanent
-# contract behind the QR codes in The AI-Ready Owner — never remove it;
-# where it points is the only thing that may change.
-/score   https://score.mainandmachine.com/score    302
-/score/  https://score.mainandmachine.com/score    302
-/s/*     https://score.mainandmachine.com/s/:splat 301
+# The AI-Ready Score app (Vercel) is reverse-proxied onto the apex — /score/*
+# and the PRINTED book-QR short links /s/* — by functions/score/[[path]].js and
+# functions/s/[[path]].js (origin = SCORE_ORIGIN env var). Served same-origin,
+# no redirect. Do NOT add a /score or /s redirect here; it would pre-empt the
+# Functions. The /s/* QR contract is permanent — never drop those routes.

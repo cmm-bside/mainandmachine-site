@@ -196,6 +196,7 @@ export function nav() {
       </span>
       <a href="/work/">Proof</a>
       <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
       <a href="/method/">Method</a>
       <a href="/about/">Who We Are</a>
       <a href="/blog/" class="is-active" aria-current="page">Blog</a>

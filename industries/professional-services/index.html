@@ -104,7 +104,6 @@
   plausible.init()
 </script>
 
-
 <!-- FAQ-JSONLD:auto -->
 <script type="application/ld+json">
 {
@@ -117,6 +116,30 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Usually the intake and coordination work — qualifying requests, summarizing, routing, and prepping the repetitive documents — so your people spend time on judgment, not handoffs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is our client data safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It can be built so nothing leaves your office. MARCUS — the system we built for B:Side Capital, a regulated lender — runs entirely on the client's own hardware: PII is stripped before any model reads a document, and every action writes to a tamper-evident log. A firm holding privileged files can ask for the same pattern."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do we need to replace our practice management software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We build an integration layer on the practice management, billing, and document tools you already run. Nothing gets ripped out; the systems you have start talking to each other."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to billable-hour economics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The hours you bill are judgment hours, and those stay human. What the machine takes is the non-billable wrapper — intake write-ups, chasing invoices, reconciling status — so more of the week is billable in the first place. On flat-fee work, the same recovered capacity shows up as margin."
       }
     },
     {
@@ -226,7 +249,7 @@
       <div>
         <span class="kicker">Industries / 01</span>
         <h1 class="h2 mt-s">AI for professional services, built for the <span class="accent-tx">5–100 person shop.</span></h1>
-        <p class="lead mt-s">Law, accounting, insurance, consulting, financial advisory: firms that bill for judgment and lose too much of the week to everything wrapped around it.</p>
+        <p class="lead mt-s">Law, accounting, insurance, consulting, financial advisory: firms that bill for judgment and lose too much of the week to everything wrapped around it. The examples below lean legal, because law makes the stakes plain — but the pattern holds across the desk professions.</p>
       </div>
       <div class="statrail crop" aria-label="Professional services at a glance">
         <div class="statrail__bar"><span>Fit check</span><span><b>v.2026</b></span></div>
@@ -247,24 +270,40 @@
         <span class="kicker">The clearest wins</span>
         <h2 class="h2 mt-s">Where does AI actually pay in <span class="accent-tx">professional services?</span></h2>
       </div>
-      <p class="lead">Three places, in our experience. These are the clearest wins we see in firms like yours, not results we promise. In every one, the machine drafts and chases; the person who knows the client decides. How that handoff gets taught is the subject of <a href="/blog/teaching-the-machine-your-business/" style="text-decoration:underline;">Teaching the Machine Your Business</a>.</p>
+      <p class="lead">Three places, in our experience. Each one is drawn out below as a before-and-after — illustrative vignettes, not client claims. In every one, the machine drafts and chases; the person who knows the client decides. How that handoff gets taught is the subject of <a href="/blog/teaching-the-machine-your-business/" style="text-decoration:underline;">Teaching the Machine Your Business</a>.</p>
     </div>
-    <div class="diffs">
-      <div class="diff">
-        <span class="tick-lbl">01 · Intake</span>
-        <h3>The request is qualified before it reaches your best people.</h3>
-        <p>New matters arrive as half-formed emails, and senior people burn billable hours chasing the missing details. An intake agent reads the request, asks for what is missing, and routes the matter with a clean summary attached. Whether to take the client stays your call.</p>
+    <div class="builds">
+      <div class="builds__bar">
+        <span class="tick-lbl">Three wins, drawn to scale</span>
+        <span class="tick-lbl">Illustrative, not client claims</span>
       </div>
-      <div class="diff">
-        <span class="tick-lbl">02 · Billing</span>
-        <h3>The work gets chased without the month-end scramble.</h3>
-        <p>Unbilled time and unpaid invoices are where service firms quietly leak. An automation watches what is outstanding, drafts the reminder in your voice, and flags the awkward exceptions for a partner to handle instead of firing them off blind.</p>
+      <div class="builds__grid">
+        <div class="build">
+          <span class="build__no">01</span>
+          <span class="tick-lbl">Intake</span>
+          <h3>The request is qualified before it reaches your best people.</h3>
+          <p><b>Before.</b> A referral emails the managing partner: “Possible commercial dispute, wants to talk this week.” No entity names, no opposing party, no dates. A senior associate spends forty minutes on the phone collecting basics and twenty more writing them up — none of it billable — and the conflicts check has not even started. Multiply by every request in a month.</p>
+          <p><b>After.</b> An intake agent reads the email and replies within minutes, asking for the facts the firm always needs: the parties, the matter, the timing, the deadline driving it. It checks the names against your conflicts list, drafts a one-page summary, and routes the matter to the right practice group. Whether to take the client is still a partner’s call. The agent just makes sure the call starts informed.</p>
+          <span class="build__win">The win: senior time starts at “should we take this,” not “what is this.”</span>
+        </div>
+        <div class="build">
+          <span class="build__no">02</span>
+          <span class="tick-lbl">Billing</span>
+          <h3>The work gets chased without the month-end scramble.</h3>
+          <p><b>Before.</b> It is the 28th. The office manager exports unbilled time from one system and open invoices from another, reconciles them in a spreadsheet, and drafts reminders one at a time — softening some, skipping the awkward ones entirely. A handful of invoices quietly age past sixty days because chasing them is nobody’s favorite job.</p>
+          <p><b>After.</b> An automation watches unbilled time and open invoices every day. It drafts each reminder in your voice, matched to the invoice’s age and the client’s history, and queues the routine ones for one-click approval. The exceptions — the disputed bill, the client a partner has known for twenty years — get flagged to a person with context instead of fired off blind. Nothing sends without approval.</p>
+          <span class="build__win">The win: receivables get chased every week, and no client ever hears from a robot.</span>
+        </div>
+        <div class="build">
+          <span class="build__no">03</span>
+          <span class="tick-lbl">Matters</span>
+          <h3>Every matter shows the same status everywhere.</h3>
+          <p><b>Before.</b> A client calls and asks where things stand. The document system says one thing, the billing system says another, and the real answer is three weeks deep in a partner’s inbox. Someone reconciles the three by hand, the client waits until tomorrow, and the same reconciliation happens again next month.</p>
+          <p><b>After.</b> An integration keeps matter status in one place. When a filing lands, an invoice pays, or a deadline moves, every system shows it — the same record, everywhere. “Where does this stand” has exactly one answer, and anyone at the firm can give it in under a minute, including the person answering the phone.</p>
+          <span class="build__win">The win: status questions cost a minute, not an afternoon.</span>
+        </div>
       </div>
-      <div class="diff">
-        <span class="tick-lbl">03 · Matters</span>
-        <h3>Every matter shows the same status everywhere.</h3>
-        <p>When the file, the billing system, and the inbox disagree, someone reconciles them by hand. An integration keeps matter status in one place, so “where does this stand” has exactly one answer.</p>
-      </div>
+      <p class="builds__note">Illustrative vignettes, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, a private AI back office for a regulated lender.</p>
     </div>
   </div>
 </section>
@@ -274,43 +313,60 @@
   <div class="wrap">
     <div class="closer" style="margin-top:0;">
       <span class="kicker">Which service fits first</span>
-      <p>For most firms the right first move is the <a href="/services/#audit" style="text-decoration:underline;">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go before anyone builds anything. Pricing is published, in plain numbers: <a href="/pricing/" style="text-decoration:underline;">audits run $3,500–$8,500; sprints $12,000–$45,000, fixed quote in writing</a>.</p>
+      <p>For most firms the right first move is the <a href="/services/#audit" style="text-decoration:underline;">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go before anyone builds anything. For a firm shaped like yours, that usually means four questions — where intake time goes, what unbilled work is aging, which systems disagree about matter status, and which documents get rebuilt from scratch when they should be assembled. Two redacted pages of a real audit deliverable are published at <a href="/services/sample-audit/" style="text-decoration:underline;">the sample audit</a>, so you can read the document before you spend a dollar. Pricing is published, in plain numbers: <a href="/pricing/" style="text-decoration:underline;">audits run $3,500–$8,500; sprints $12,000–$45,000, fixed quote in writing</a>.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ AN EXAMPLE BUILD ============ -->
-<section class="section paper" data-screen-label="An example build">
+<!-- ============ WHAT THIS COSTS ============ -->
+<section class="section paper" data-screen-label="What this costs">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">An example build</span>
-        <h2 class="h2 mt-s">One build, <span class="accent-tx">drawn to scale.</span></h2>
+        <span class="kicker">The numbers</span>
+        <h2 class="h2 mt-s">What this costs for a <span class="accent-tx">firm your size.</span></h2>
       </div>
-      <p class="lead">Of the example builds on our homepage, this is the one that maps most directly onto intake work in a services firm.</p>
+      <p class="lead">Our <a href="/calculator/?industry=professional-services&amp;team=25" style="text-decoration:underline;">ROI calculator</a> models professional services with two round assumptions: $4,000 a year of repetitive manual work per employee, and $2,000 a year of lost revenue per employee — capacity your people cannot bill because the wrapper work eats it. Here is the model worked for a 25-person firm.</p>
     </div>
     <div class="builds">
       <div class="builds__bar">
-        <span class="tick-lbl">Example builds</span>
-        <span class="tick-lbl">What “agents, automations &amp; integrations” look like in practice</span>
+        <span class="tick-lbl">Worked example · 25 people</span>
+        <span class="tick-lbl">Method: MM-ROI-v1 / 2026</span>
       </div>
       <div class="builds__grid">
         <div class="build">
           <span class="build__no">01</span>
-          <span class="tick-lbl">Intake agent</span>
-          <h3>Qualifies the request before a person touches it.</h3>
-          <p>Reads the incoming email or form, asks for the details that are missing, and routes the job to the right person with a clean summary attached.</p>
-          <span class="build__win">The win: every request arrives qualified, summarized, and routed before a person reads it.</span>
+          <span class="tick-lbl">The assumptions</span>
+          <h3>Round numbers, stated in the open.</h3>
+          <p>$4,000 per employee per year in repetitive manual work: intake write-ups, billing reconciliation, status chasing. $2,000 per employee per year in lost revenue: hours that could bill but never do. These are the same figures the calculator shows; nothing is hidden in the math.</p>
+        </div>
+        <div class="build">
+          <span class="build__no">02</span>
+          <span class="tick-lbl">Year one, gross</span>
+          <h3>$150,000 on the table.</h3>
+          <p>Twenty-five people × $4,000 puts $100,000 of manual work in reach. Twenty-five × $2,000 adds $50,000 in recoverable capacity. Total year-one opportunity: $150,000.</p>
+        </div>
+        <div class="build">
+          <span class="build__no">03</span>
+          <span class="tick-lbl">Net of the sprint</span>
+          <h3>+$132,000 projected, year one.</h3>
+          <p>At this size the model prices the Implementation Sprint at $18,000 — inside the published $12,000–$45,000 range, and fixed in writing before work begins. $150,000 minus $18,000 leaves +$132,000.</p>
         </div>
       </div>
-      <p class="builds__note">Illustrative builds, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, a private AI back office for a regulated lender.</p>
+      <p class="builds__note">A model, not a promise. The savings are assumptions you can see above, not your books. <a href="/calculator/?industry=professional-services&amp;team=25" style="text-decoration:underline;">Run it at your own headcount →</a> Then we run your real numbers in the free assessment.</p>
     </div>
   </div>
 </section>
 
-
-
-
+<!-- ============ FOR THE REGULATED (ink) ============ -->
+<section class="section ink" data-screen-label="How a regulated firm should think about this">
+  <div class="wrap">
+    <div class="closer" style="margin-top:0;">
+      <span class="kicker">How a regulated firm should think about this</span>
+      <p>If your first objection is confidentiality, you are thinking about this correctly. A firm holding privileged files has the same problem as a lender holding borrower files — and a lender is the strongest analogy we can offer. <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, the system we built for B:Side Capital, runs entirely on the client’s own hardware: PII is stripped before any model reads a document, and every action writes to a tamper-evident log. That is the pattern a regulated firm should demand from any vendor, ours included: ask where the model runs, what it sees before redaction, and who can prove what happened afterward. A vendor who cannot answer those three in plain English has answered them. Where your files go, and where they should never go, is the subject of <a href="/blog/where-your-data-goes/" style="text-decoration:underline;">Where Your Data Goes</a>.</p>
+    </div>
+  </div>
+</section>
 <!-- FAQ:auto -->
 <section class="section paper-2" data-screen-label="Industry FAQ">
   <div class="wrap">
@@ -320,30 +376,42 @@
         <h2 class="h2 mt-s">AI for professional services firms.</h2>
         <div class="faq__aside" style="margin-top:28px;">
           <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
-          <p>The full price list is published: audits, sprints, managed services, all on one page.</p>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
           <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
         </div>
       </div>
       <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">What can AI do for a professional services firm?</span><span class="q-pm">+</span></summary>
-          <p>Usually the intake and coordination work: qualifying requests, summarizing, routing, and prepping the repetitive documents, so your people spend time on judgment, not handoffs.</p>
+          <p>Usually the intake and coordination work — qualifying requests, summarizing, routing, and prepping the repetitive documents — so your people spend time on judgment, not handoffs.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">02</span><span class="q-tx">Is our client data safe?</span><span class="q-pm">+</span></summary>
+          <p>It can be built so nothing leaves your office. MARCUS — the system we built for B:Side Capital, a regulated lender — runs entirely on the client's own hardware: PII is stripped before any model reads a document, and every action writes to a tamper-evident log. A firm holding privileged files can ask for the same pattern.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Do we need to replace our practice management software?</span><span class="q-pm">+</span></summary>
+          <p>No. We build an integration layer on the practice management, billing, and document tools you already run. Nothing gets ripped out; the systems you have start talking to each other.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">What happens to billable-hour economics?</span><span class="q-pm">+</span></summary>
+          <p>The hours you bill are judgment hours, and those stay human. What the machine takes is the non-billable wrapper — intake write-ups, chasing invoices, reconciling status — so more of the week is billable in the first place. On flat-fee work, the same recovered capacity shows up as margin.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">05</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
           <p>The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins.</p>
         </details>
         <details>
-          <summary><span class="q-no">03</span><span class="q-tx">How long does it take?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">06</span><span class="q-tx">How long does it take?</span><span class="q-pm">+</span></summary>
           <p>An audit is 2 to 4 weeks; a build is 4 to 12.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">Do you work remotely or on-site?</span><span class="q-pm">+</span></summary>
-          <p>We run two hubs for in-person work: Denver, Colorado and Phoenix, Arizona. We work remotely with businesses across the US. Same method, same fixed prices either way.</p>
+          <summary><span class="q-no">07</span><span class="q-tx">Do you work remotely or on-site?</span><span class="q-pm">+</span></summary>
+          <p>We run two hubs — Denver, Colorado and Phoenix, Arizona — for in-person work, and we work remotely with businesses across the US. Same method, same fixed prices either way.</p>
         </details>
         <details>
-          <summary><span class="q-no">05</span><span class="q-tx">Is there a real example?</span><span class="q-pm">+</span></summary>
-          <p>The closest published case is MARCUS: 14 AI agents we built for B:Side Capital, a regulated lender.</p>
+          <summary><span class="q-no">08</span><span class="q-tx">Is there a real example?</span><span class="q-pm">+</span></summary>
+          <p>The closest published case is MARCUS — 14 AI agents we built for B:Side Capital, a regulated lender.</p>
         </details>
       </div>
     </div>
@@ -356,7 +424,7 @@
   <div class="wrap">
     <span class="kicker">Start here</span>
     <h2 class="h2 mt-s">See the wins in <span class="accent-tx">professional services.</span></h2>
-    <p class="lead mt-s">30 minutes with a senior advisor who walks your intake, billing, and matter workflows and tells you what is worth automating, and what is not.</p>
+    <p class="lead mt-s">30 minutes with a senior advisor who walks your intake, billing, and matter workflows and tells you what is worth automating, and what is not — in person from our <a href="/denver/" style="text-decoration:underline;">Denver</a> and <a href="/phoenix/" style="text-decoration:underline;">Phoenix</a> hubs, or remote anywhere in the US.</p>
     <div class="hero__cta">
       <a class="btn btn--primary btn--lg" href="/book/?industry=professional-services">Book a free assessment <span class="arr">→</span></a>
     </div>
@@ -441,7 +509,7 @@
 </footer>
 
 <!-- ============ REVEAL ANIMATION ============ -->
-<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.diffs > .diff,.closer,.builds > *,.final .hero__cta,.foot__top > *"></script>
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.closer,.builds > *,.final .hero__cta,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=5"></script>
 <script src="/js/analytics.js?v=1"></script>

@@ -13,8 +13,8 @@ import { FAQ } from "./lib/faq-data.mjs";
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const pad = (n) => ("0" + n).slice(-2);
 
-const JSONLD_RE = /\n?<!-- FAQ-JSONLD:auto -->[\s\S]*?<\/script>/;
-const VIS_RE = /\n?<!-- FAQ:auto -->[\s\S]*?<!-- \/FAQ:auto -->/;
+const JSONLD_RE = /\n*<!-- FAQ-JSONLD:auto -->[\s\S]*?<\/script>/;
+const VIS_RE = /\n*<!-- FAQ:auto -->[\s\S]*?<!-- \/FAQ:auto -->\n*/;
 
 function jsonLdBlock(items) {
 	const obj = {
@@ -48,7 +48,7 @@ function visibleBlock(label, heading, items) {
         <div class="faq__aside" style="margin-top:28px;">
           <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--accent" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
         </div>
       </div>
       <div class="faq__list">

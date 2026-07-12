@@ -42,6 +42,9 @@ export const FAQ = {
 		heading: "AI for professional services firms.",
 		items: [
 			{ q: "What can AI do for a professional services firm?", a: "Usually the intake and coordination work — qualifying requests, summarizing, routing, and prepping the repetitive documents — so your people spend time on judgment, not handoffs." },
+			{ q: "Is our client data safe?", a: "It can be built so nothing leaves your office. MARCUS — the system we built for B:Side Capital, a regulated lender — runs entirely on the client's own hardware: PII is stripped before any model reads a document, and every action writes to a tamper-evident log. A firm holding privileged files can ask for the same pattern." },
+			{ q: "Do we need to replace our practice management software?", a: "No. We build an integration layer on the practice management, billing, and document tools you already run. Nothing gets ripped out; the systems you have start talking to each other." },
+			{ q: "What happens to billable-hour economics?", a: "The hours you bill are judgment hours, and those stay human. What the machine takes is the non-billable wrapper — intake write-ups, chasing invoices, reconciling status — so more of the week is billable in the first place. On flat-fee work, the same recovered capacity shows up as margin." },
 			{ q: "How much does it cost?", a: COST_SHORT },
 			{ q: "How long does it take?", a: "An audit is 2 to 4 weeks; a build is 4 to 12." },
 			{ q: "Do you work remotely or on-site?", a: REMOTE },

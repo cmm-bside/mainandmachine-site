@@ -4,18 +4,17 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Privacy Policy | Main &amp; Machine</title>
-<meta name="description" content="How Main & Machine collects, uses, and protects the information you share with us." />
+<meta name="description" content="What Main & Machine collects, why, how long we keep it, and how to see it or delete it. Plain English, no surprises." />
 <link rel="canonical" href="https://www.mainandmachine.com/privacy/" />
-<meta name="robots" content="noindex" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
 <meta property="og:title" content="Privacy Policy | Main &amp; Machine" />
-<meta property="og:description" content="How Main & Machine collects, uses, and protects the information you share with us." />
+<meta property="og:description" content="What Main & Machine collects, why, how long we keep it, and how to see it or delete it. Plain English, no surprises." />
 <meta property="og:url" content="https://www.mainandmachine.com/privacy/" />
 <meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Privacy Policy | Main &amp; Machine" />
-<meta name="twitter:description" content="How Main & Machine collects, uses, and protects the information you share with us." />
+<meta name="twitter:description" content="What Main & Machine collects, why, how long we keep it, and how to see it or delete it. Plain English, no surprises." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,14 +35,31 @@
 .legal__crumb a { color: var(--tx-mute); }
 .legal__crumb a:hover { color: var(--tx); }
 .legal__crumb .sep { opacity: .5; }
-.legal__updated { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); margin: 8px 0 36px; }
 .legal h2 { margin: 36px 0 12px; }
+.legal h3 { margin: 26px 0 8px; font-size: var(--fs-16); }
 .legal p, .legal li { color: var(--tx-mute); line-height: 1.7; }
 .legal ul { margin: 0 0 8px 1.1em; }
 .legal a { color: var(--accent-tx, var(--accent)); }
 .legal .note {
   border-left: 2px solid var(--line); padding: 4px 0 4px 16px; margin: 24px 0;
   font-size: var(--fs-13); color: var(--tx-faint);
+}
+/* spec plate — document registration block, mirrors the site's spec-sheet motif */
+.legal__spec {
+  position: relative; display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--line); background: var(--paper-card); margin: 26px 0 44px;
+}
+.legal__spec > div { padding: 13px 18px; border-left: 1px solid var(--line-soft); }
+.legal__spec > div:first-child { border-left: 0; }
+.legal__spec .k {
+  display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--tx-faint); margin-bottom: 3px;
+}
+.legal__spec .v { display: block; font-weight: 800; font-size: var(--fs-14); letter-spacing: -0.01em; }
+@media (max-width: 640px) {
+  .legal__spec { grid-template-columns: repeat(2, 1fr); }
+  .legal__spec > div:nth-child(3) { border-left: 0; }
+  .legal__spec > div:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
 }
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -102,28 +118,96 @@
     </div>
     <span class="kicker">Legal</span>
     <h1 class="h2 mt-s">Privacy Policy</h1>
-    <p class="legal__updated">Last updated: June 9, 2026</p>
 
-    <p class="note">This is a placeholder policy that reflects our current practices in plain language. We will replace it with counsel-reviewed terms before any broad launch. Questions in the meantime? Email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a>.</p>
+    <div class="legal__spec crop" aria-label="Document details">
+      <div><span class="k">Document</span><span class="v">Privacy Policy</span></div>
+      <div><span class="k">Version</span><span class="v">1.0</span></div>
+      <div><span class="k">Last updated</span><span class="v">July 12, 2026</span></div>
+      <div><span class="k">Reviewed</span><span class="v">July 12, 2026</span></div>
+    </div>
 
-    <h2 class="h4">What we collect</h2>
-    <p>When you book an assessment or contact us, we collect the information you give us: your name, email, phone, company, website, and the details you share about your workflows. We also collect basic, non-identifying analytics about how the site is used.</p>
+    <h2 class="h4">The short version</h2>
+    <p>We collect what you type into our forms, plus anonymous counts of how the site is used. We use it to do the thing you asked us to do. We do not sell it, rent it, or trade it. Want to see what we have, or want it gone? Email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a>.</p>
+    <p>The rest of this page says the same thing with the details filled in.</p>
 
-    <h2 class="h4">How we use it</h2>
+    <h2 class="h4">What we collect, and what it's for</h2>
+
+    <h3>When you book a free assessment</h3>
+    <p>The form at <a href="/book/">/book/</a> asks for your name, email, phone, preferred way to reach you, company, website, industry, team size, revenue range, the workflows you want to talk about, and how you heard about us. After you submit, you can optionally add prep details for the call.</p>
+    <p>We use this to reply within 24 hours, schedule your assessment, and prepare for it. Your submission becomes two emails: one to the advisor who prepares your call, and a confirmation to you. There is no marketing database behind the form, and booking an assessment does not add you to our newsletter.</p>
+
+    <h3>When you take the AI-Ready Score</h3>
+    <p>The <a href="/score">AI-Ready Score</a> collects your answers and, if you want the full report, your email. Your submission is stored in the Score application's database so your report keeps working at its link. When you finish, three things happen: you get one report email, we get notified that someone completed the Score, and your email is added to The Ampersand (our newsletter, run on beehiiv) along with a summary of your result &mdash; your score, phase, industry, and headcount band &mdash; so any notes we send you are relevant.</p>
+    <p>The promise on the Score itself holds here too: <strong>Your answers stay between us. One report email, occasional notes from the book, unsubscribe in one click. We do not sell lists.</strong> And the deletion path is real: <strong>Want your data gone? Email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a> and we delete everything</strong> &mdash; your submission from the Score database and your newsletter subscription.</p>
+    <p>If you book a call from your report, scheduling runs through Calendly, which collects your name, email, and meeting time under its own privacy policy.</p>
+
+    <h3>When you use the ROI calculator</h3>
+    <p>Nothing. The <a href="/calculator/">calculator</a> runs entirely in your browser. The numbers you enter are never sent to us, stored, or seen by anyone but you.</p>
+
+    <h3>When you apply to work with us</h3>
+    <p>The application form at <a href="/careers/">/careers/</a> asks for your name, email, a link to your work, and a cover note, plus an optional phone number, an optional note on where you heard about us, and an optional r&eacute;sum&eacute; (PDF, DOC, or DOCX). Applications are relayed to our inbox by Formspree, a form-processing service.</p>
+    <p>The promise on the form stands: we use your details only to consider your application. We never share them. Applying does not add you to any list.</p>
+
+    <h3>When you subscribe to The Ampersand</h3>
+    <p>The signup form sends your email directly to beehiiv, the platform that publishes our newsletter. One field, no spam, leave anytime &mdash; every issue has a one-click unsubscribe link.</p>
+
+    <h3>Analytics and logs</h3>
     <ul>
-      <li>To respond to your request and schedule your assessment.</li>
-      <li>To prepare for and follow up on our conversations with you.</li>
-      <li>To improve the site and our services.</li>
+      <li><strong>Main site:</strong> we use Plausible, a privacy-focused analytics service. It counts page views and button clicks in aggregate, without cookies and without building a profile of you. When we track that a "book" or "score" button was clicked, the event records which button and where it sits on the page &mdash; not who clicked it.</li>
+      <li><strong>Score pages:</strong> the <a href="/score">/score</a> experience uses Google Analytics (GA4) to measure how people move through the assessment. Google Analytics uses cookies. It runs only on the Score pages, not the rest of the site.</li>
+      <li><strong>Server logs:</strong> our hosting providers (Cloudflare for the site, Vercel for the Score app) keep standard server logs &mdash; IP address, browser type, pages requested &mdash; for security and operations, on their usual retention schedules.</li>
+      <li><strong>Spam control:</strong> when you submit the assessment form, your IP address may be used to rate-limit repeat submissions. That record is kept for at most one hour.</li>
+      <li><strong>Fonts:</strong> our pages load type from Google Fonts. Like any web request, fetching a font shares your IP address with the server that hosts it &mdash; in this case, Google.</li>
     </ul>
 
-    <h2 class="h4">How we share it</h2>
-    <p>We do not sell your information. We share it only with the service providers that help us operate, for example, our email delivery provider, and only as needed to do the work you asked for.</p>
+    <h2 class="h4">What we never do</h2>
+    <ul>
+      <li>We do not sell, rent, or trade your personal information. We never have.</li>
+      <li>We run no ad pixels, no retargeting, and send nothing to data brokers.</li>
+      <li>The main site sets no tracking cookies. The one exception is Google Analytics on the Score pages, disclosed above.</li>
+    </ul>
 
-    <h2 class="h4">Data retention</h2>
-    <p>We keep what you send us for as long as we have an active or prospective relationship, and as needed to meet legal and accounting obligations.</p>
+    <h2 class="h4">How long we keep it</h2>
+    <ul>
+      <li><strong>Assessment and contact requests:</strong> for as long as we have an active or prospective relationship with you, then as long as tax and business records require. Ask and we delete sooner.</li>
+      <li><strong>Score submissions:</strong> for as long as the Score runs, so your report link keeps working. Deleted on request.</li>
+      <li><strong>Job applications and r&eacute;sum&eacute;s:</strong> up to one year after the search closes, in case a fit opens later. Deleted sooner on request. If we hire you, your application becomes part of your employment records.</li>
+      <li><strong>Newsletter subscriptions:</strong> until you unsubscribe.</li>
+      <li><strong>Spam-control IP records:</strong> one hour.</li>
+    </ul>
 
-    <h2 class="h4">Your choices</h2>
-    <p>You can ask us to access, correct, or delete the information we hold about you at any time. Email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a> and we will take care of it.</p>
+    <h2 class="h4">Service providers</h2>
+    <p>A small, named set of companies helps us run things. Each one processes your data only to provide its service to us, under its own terms and privacy policy.</p>
+    <ul>
+      <li><strong>Cloudflare</strong> &mdash; hosts and serves this site. Handles server logs, form traffic in transit, and spam rate-limiting.</li>
+      <li><strong>Vercel</strong> &mdash; hosts the AI-Ready Score application and its database. Holds Score answers, emails, and reports.</li>
+      <li><strong>Resend</strong> &mdash; sends our transactional email. Carries form submissions, confirmations, and Score reports in transit.</li>
+      <li><strong>beehiiv</strong> &mdash; publishes The Ampersand. Holds subscriber emails and, for Score takers, the result summary described above.</li>
+      <li><strong>Formspree</strong> &mdash; relays careers applications, including r&eacute;sum&eacute;s, to our inbox.</li>
+      <li><strong>Plausible</strong> &mdash; main-site analytics. Aggregate, cookieless counts; no personal data.</li>
+      <li><strong>Google</strong> &mdash; Analytics on the Score pages; web fonts sitewide.</li>
+      <li><strong>Calendly</strong> &mdash; schedules calls booked from your Score report.</li>
+    </ul>
+
+    <h2 class="h4">Your rights</h2>
+    <p>California's Consumer Privacy Act and the Colorado Privacy Act give residents rights over their personal data. Those laws technically bind businesses far larger than ours. We follow them anyway, for everyone, in every state:</p>
+    <ul>
+      <li><strong>Know and access:</strong> ask what we hold about you and get a copy in a usable format.</li>
+      <li><strong>Correct:</strong> fix anything we have wrong.</li>
+      <li><strong>Delete:</strong> ask and we delete it, everywhere we put it.</li>
+      <li><strong>Opt out of sale and targeted advertising:</strong> there is nothing to opt out of. We do neither.</li>
+      <li><strong>No retaliation:</strong> exercising these rights never changes how we treat you.</li>
+    </ul>
+    <p>To use any of them, email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a> from the address we have on file &mdash; that is how we verify it's you. We respond within 45 days. If we ever refuse a request, you can appeal by replying to our response; Colorado residents can also raise a denied appeal with the Colorado Attorney General.</p>
+
+    <h2 class="h4">Children</h2>
+    <p>This site is for businesses. It is not directed to anyone under 16, and we do not knowingly collect information from children. If you believe a child has given us personal data, tell us and we will delete it.</p>
+
+    <h2 class="h4">Security</h2>
+    <p>Every page and form on this site is served over an encrypted connection. Your data flows to the small set of providers named above and to our own inboxes &mdash; not into a sprawling stack &mdash; and access is limited to the people doing the work. No system is perfect. If a breach ever affects your data, we will notify you as the law requires, and sooner if we can.</p>
+
+    <h2 class="h4">Changes to this policy</h2>
+    <p>When this policy changes, the version number and dates at the top change with it. If a change is material &mdash; new data collected, a new provider, a new use &mdash; we will say so plainly on this page.</p>
 
     <h2 class="h4">Contact</h2>
     <p>Main &amp; Machine · Denver &amp; Phoenix<br />

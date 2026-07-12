@@ -4,18 +4,17 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Terms of Service | Main &amp; Machine</title>
-<meta name="description" content="The terms that govern your use of the Main & Machine website and the requests you submit through it." />
+<meta name="description" content="The terms that govern your use of the Main & Machine website, the ROI calculator, the AI-Ready Score, and the requests you submit through them." />
 <link rel="canonical" href="https://www.mainandmachine.com/terms/" />
-<meta name="robots" content="noindex" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
 <meta property="og:title" content="Terms of Service | Main &amp; Machine" />
-<meta property="og:description" content="The terms that govern your use of the Main & Machine website and the requests you submit through it." />
+<meta property="og:description" content="The terms that govern your use of the Main & Machine website, the ROI calculator, the AI-Ready Score, and the requests you submit through them." />
 <meta property="og:url" content="https://www.mainandmachine.com/terms/" />
 <meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Terms of Service | Main &amp; Machine" />
-<meta name="twitter:description" content="The terms that govern your use of the Main & Machine website and the requests you submit through it." />
+<meta name="twitter:description" content="The terms that govern your use of the Main & Machine website, the ROI calculator, the AI-Ready Score, and the requests you submit through them." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,14 +35,31 @@
 .legal__crumb a { color: var(--tx-mute); }
 .legal__crumb a:hover { color: var(--tx); }
 .legal__crumb .sep { opacity: .5; }
-.legal__updated { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); margin: 8px 0 36px; }
 .legal h2 { margin: 36px 0 12px; }
+.legal h3 { margin: 26px 0 8px; font-size: var(--fs-16); }
 .legal p, .legal li { color: var(--tx-mute); line-height: 1.7; }
 .legal ul { margin: 0 0 8px 1.1em; }
 .legal a { color: var(--accent-tx, var(--accent)); }
 .legal .note {
   border-left: 2px solid var(--line); padding: 4px 0 4px 16px; margin: 24px 0;
   font-size: var(--fs-13); color: var(--tx-faint);
+}
+/* spec plate — document registration block, mirrors the site's spec-sheet motif */
+.legal__spec {
+  position: relative; display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--line); background: var(--paper-card); margin: 26px 0 44px;
+}
+.legal__spec > div { padding: 13px 18px; border-left: 1px solid var(--line-soft); }
+.legal__spec > div:first-child { border-left: 0; }
+.legal__spec .k {
+  display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--tx-faint); margin-bottom: 3px;
+}
+.legal__spec .v { display: block; font-weight: 800; font-size: var(--fs-14); letter-spacing: -0.01em; }
+@media (max-width: 640px) {
+  .legal__spec { grid-template-columns: repeat(2, 1fr); }
+  .legal__spec > div:nth-child(3) { border-left: 0; }
+  .legal__spec > div:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
 }
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -102,24 +118,66 @@
     </div>
     <span class="kicker">Legal</span>
     <h1 class="h2 mt-s">Terms of Service</h1>
-    <p class="legal__updated">Last updated: June 9, 2026</p>
 
-    <p class="note">This is a placeholder agreement that reflects our current practices in plain language. We will replace it with counsel-reviewed terms before any broad launch. Questions in the meantime? Email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a>.</p>
+    <div class="legal__spec crop" aria-label="Document details">
+      <div><span class="k">Document</span><span class="v">Terms of Service</span></div>
+      <div><span class="k">Version</span><span class="v">1.0</span></div>
+      <div><span class="k">Last updated</span><span class="v">July 12, 2026</span></div>
+      <div><span class="k">Reviewed</span><span class="v">July 12, 2026</span></div>
+    </div>
 
-    <h2 class="h4">Using this site</h2>
-    <p>This website is provided for information about Main &amp; Machine and to let you request an assessment. By using it, you agree to use it lawfully and not to disrupt or misuse it.</p>
+    <h2 class="h4">The short version</h2>
+    <p>Read the site. Use the tools. Ask us for help. The content is information, not professional advice. The calculators are models, not promises. Real work gets a real contract, in writing, before it starts.</p>
+
+    <h2 class="h4">Who we are, and what this covers</h2>
+    <p>Main &amp; Machine provides AI consulting and implementation for small and mid-size business, from hubs in Denver, Colorado and Phoenix, Arizona. This website exists to tell you about that work, publish our writing, and let you start a conversation with us.</p>
+    <p>These terms govern your use of www.mainandmachine.com, including the blog, the ROI calculator, the AI-Ready Score, and the forms. By using the site, you agree to them. If you don't agree, don't use the site.</p>
+
+    <h2 class="h4">Information, not advice</h2>
+    <p>Everything published on this site &mdash; the pages, the blog, the guides, the sample audit, the examples &mdash; is general information. It is not legal, financial, tax, accounting, or professional advice, and it is not advice about your specific business. Your situation has facts we haven't seen. Before acting on anything you read here, run it past someone who has seen them &mdash; us in an engagement, or another qualified advisor.</p>
+
+    <h2 class="h4">The calculator and the Score: models, not promises</h2>
+    <p>The <a href="/calculator/">ROI calculator</a> and the <a href="/score">AI-Ready Score</a> are estimation tools. Both say it on the page, and it bears repeating here: <strong>a model, not a promise.</strong></p>
+    <ul>
+      <li>The calculator's savings figures come from round assumptions you can see on the page, not from your books. The sprint cost shown is our published price; the rest is arithmetic on inputs you chose.</li>
+      <li>The Score is a structured self-assessment. Your number, your phase, and the constraint it names are a reading of your answers &mdash; a starting point for a conversation, not a diagnosis or a certification.</li>
+      <li>Neither tool's output is an offer, a quote, or a guarantee of savings, results, or fit. We run your real numbers in the free assessment, then commit to fixed scope in writing.</li>
+    </ul>
 
     <h2 class="h4">Requests you submit</h2>
-    <p>When you submit a form, you confirm the information you provide is accurate and that you are authorized to share it. Submitting a request starts a conversation. It does not create an engagement or a contract on its own.</p>
+    <p>When you submit a form on this site, you confirm that the information is accurate and that you are authorized to share it. Submitting a request starts a conversation. It does not create an engagement, a contract, or any obligation on either side. The 30-minute assessment is free and stays free whether or not you hire us.</p>
 
-    <h2 class="h4">No guarantees</h2>
-    <p>The site, including the ROI calculator and any examples, is provided “as is” for general guidance. Figures are illustrative ranges, not promises. Any actual scope, pricing, and outcomes are defined in a separate written agreement.</p>
+    <h2 class="h4">Engagements are separate</h2>
+    <p>If we do work together, that work is governed by a separate written agreement &mdash; scope, price, timeline, and terms, signed before work begins. Where that agreement and these terms conflict, the agreement wins. Nothing on this site changes what a signed agreement says.</p>
 
-    <h2 class="h4">Intellectual property</h2>
-    <p>The content, design, and branding on this site belong to Main &amp; Machine and may not be copied or reused without permission.</p>
+    <h2 class="h4">Our content</h2>
+    <p>The content, design, code, and branding on this site &mdash; including the Main &amp; Machine name and marks and the writing in The Ampersand &mdash; belong to Main &amp; Machine or are used with permission. You may browse the site, share links, and quote brief passages with attribution. You may not republish our content wholesale, sell it, or use our name or marks in a way that implies we endorse you. Press articles about our founder belong to the publications that ran them.</p>
+
+    <h2 class="h4">Acceptable use</h2>
+    <p>Use the site lawfully. Don't disrupt it, probe or bypass its security, submit forms with false identities, or use the forms to send spam. If we believe you're misusing the site, we can block your access without notice.</p>
+
+    <h2 class="h4">Third-party services</h2>
+    <p>Parts of the experience run on other companies' platforms &mdash; the newsletter on beehiiv, scheduling on Calendly, and the providers listed in our <a href="/privacy/">Privacy Policy</a>. Their services are governed by their own terms. Links to other sites are provided for convenience; we don't control them and aren't responsible for what's on them.</p>
+
+    <h2 class="h4">No warranties</h2>
+    <p>The site is provided "as is" and "as available." We work to keep it accurate and up, but we don't warrant that it is error-free, complete, current, or uninterrupted. We may change, move, or remove content at any time without notice.</p>
 
     <h2 class="h4">Limitation of liability</h2>
-    <p>To the extent permitted by law, Main &amp; Machine is not liable for any indirect or consequential damages arising from your use of this site.</p>
+    <p>To the fullest extent Colorado law permits: Main &amp; Machine, its founder, and its people are not liable for indirect, incidental, special, consequential, or punitive damages &mdash; including lost profits, lost data, or lost business &mdash; arising from your use of this site or reliance on its content. Our total liability for any claim arising from the site is capped at one hundred dollars ($100). The site is free; that cap reflects it. Liability for actual engagement work is addressed in the written agreement that governs that work, not here.</p>
+
+    <h2 class="h4">Indemnification</h2>
+    <p>If your unlawful use of this site, or your breach of these terms, causes a claim against us, you agree to cover the costs of defending it and any resulting damages.</p>
+
+    <h2 class="h4">Governing law and disputes</h2>
+    <p>These terms are governed by the laws of the State of Colorado, without regard to its conflict-of-law rules. Any dispute arising from these terms or your use of the site belongs in the state or federal courts sitting in Denver, Colorado, and both sides consent to that venue. Before filing anything, email us &mdash; most disagreements are shorter than a lawsuit.</p>
+
+    <h2 class="h4">Housekeeping</h2>
+    <ul>
+      <li>If any part of these terms is found unenforceable, the rest stands.</li>
+      <li>If we don't enforce a provision today, we haven't waived it for tomorrow.</li>
+      <li>These terms are the entire agreement between you and us about using the site &mdash; not about engagement work, which has its own contract.</li>
+      <li>When these terms change, the version number and dates at the top change with them. Continued use of the site after a change means you accept it.</li>
+    </ul>
 
     <h2 class="h4">Contact</h2>
     <p>Main &amp; Machine · Denver &amp; Phoenix<br />

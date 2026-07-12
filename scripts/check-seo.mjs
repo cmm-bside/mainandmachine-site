@@ -13,6 +13,7 @@ import {
 	BLOG_INDEX_JSON,
 	EXCLUDED_POST_SLUGS,
 	STATIC_ROUTES,
+	PROXIED_ROUTES,
 } from "./lib/config.mjs";
 
 const errors = [];
@@ -90,7 +91,8 @@ else {
 const sitemap = read(SITEMAP_PATH);
 if (!sitemap) fail("sitemap.xml missing");
 else {
-	for (const route of ["/blog/", "/blog/archive/", ...posts.map((p) => p.url)]) {
+	// Proxied routes (no local file — see PROXIED_ROUTES) must still be listed.
+	for (const route of ["/blog/", "/blog/archive/", ...PROXIED_ROUTES, ...posts.map((p) => p.url)]) {
 		if (!sitemap.includes(`<loc>${SITE_ORIGIN}${route}</loc>`))
 			fail(`sitemap: missing entry for ${route}`);
 	}

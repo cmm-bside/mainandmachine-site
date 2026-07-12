@@ -65,6 +65,13 @@ export const STATIC_ROUTES = [
 	"/terms/",
 ];
 
+// Routes reverse-proxied from another origin (lib/score-proxy.mjs): sitemapped
+// like static routes but with no local index.html, so check-seo exempts them
+// from disk parity and instead asserts they made it into the sitemap.
+// Canonical form is slash-less — the Next.js score app 308s /score/ → /score,
+// and every internal link, the sitemap, and the injected canonical use /score.
+export const PROXIED_ROUTES = ["/score"];
+
 // Post slugs to exclude from the build entirely (test/placeholder posts that
 // exist in beehiiv but should never be indexed, linked, or sitemapped).
 export const EXCLUDED_POST_SLUGS = ["test"];

@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="styles.css?v=86" />
+<link rel="stylesheet" href="styles.css?v=87" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -134,7 +134,7 @@
     </div>
     <div class="ticker__group" aria-hidden="true">
       <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item"><a href="/score" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Every engagement starts with the free assessment — get your AI-Ready Score →</a></span>
+      <span class="ticker__item"><a href="/score" tabindex="-1" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Every engagement starts with the free assessment — get your AI-Ready Score →</a></span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
@@ -230,6 +230,17 @@
       <div class="failstat__counter">
         <div class="tick-num failstat__sm">22%</div>
         <p class="failstat__cap failstat__cap--sm">turn AI spending into measurable results.</p>
+      </div>
+      <div class="failstat__aside">
+        <div class="failstat__ratio" role="img" aria-label="A bar split 78 to 22: seventy-eight percent of AI spending moves nothing; twenty-two percent produces measurable results.">
+          <span class="failstat__ratio-spent"></span>
+          <span class="failstat__ratio-moved"></span>
+        </div>
+        <div class="failstat__ratio-lbls" aria-hidden="true">
+          <span>spent</span>
+          <span>moved</span>
+        </div>
+        <p class="failstat__kicker">We exist for the <b>22%</b>.</p>
       </div>
     </div>
     <p class="stat-source">Source: Boston Consulting Group, <em>Where’s the Value in AI?</em>, 2024.</p>

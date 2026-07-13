@@ -366,7 +366,18 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .failstat__sm{ font-size:clamp(var(--fs-31),4.2vw,var(--fs-49)); line-height:0.9; color:var(--accent-ink); }
 .failstat__cap{ font-size:var(--fs-16); color:var(--dtx); margin-top:var(--s-12); max-width:24ch; line-height:1.35; }
 .failstat__cap--sm{ font-size: var(--fs-13); color:var(--dtx-mute); max-width:22ch; }
-@media (max-width:600px){ .failstat__big{ font-size:clamp(var(--fs-49),20vw,var(--fs-110)); } }
+/* third element: the split drawn as a bar, capped with the thesis line —
+   fills the card's right half on desktop, stacks full-width on mobile */
+.failstat__aside{ flex:1 1 300px; min-width:260px; margin-left:auto; align-self:stretch; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; }
+.failstat__ratio{ display:flex; gap:3px; height:12px; }
+.failstat__ratio-spent{ flex:78; background:var(--dline); }
+.failstat__ratio-moved{ flex:22; background:var(--accent-ink); }
+.failstat__ratio-lbls{ display:flex; gap:3px; font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--dtx-mute); }
+.failstat__ratio-lbls span:first-child{ flex:78; }
+.failstat__ratio-lbls span:last-child{ flex:22; color:var(--accent-ink); }
+.failstat__kicker{ margin-top:var(--s-12); font-size:var(--fs-20); font-weight:700; letter-spacing:-0.01em; color:var(--dtx); }
+.failstat__kicker b{ color:var(--accent-ink); font-weight:800; }
+@media (max-width:600px){ .failstat__big{ font-size:clamp(var(--fs-49),20vw,var(--fs-110)); } .failstat__aside{ margin-left:0; } }
 
 /* =========================================================
    ROI CALCULATOR (blueprint / machine)
@@ -730,7 +741,9 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   --paper-card:  var(--cream);
   --ink-3:       #2a251d;               /* hairline on ink (outside the token set) */
   --accent:      var(--rust);           /* links / display accents */
-  --accent-text: var(--rust);
+  --accent-text: color-mix(in srgb, var(--rust) 92%, #000);  /* derived: rust for SMALL
+                                text — plain rust is 4.13:1 on the deepest cream band
+                                (AA fail <4.5); this lands 4.71 on band / 5.23 on cream */
   --accent-deep: color-mix(in srgb, var(--rust) 82%, #000);  /* derived: link hover */
   --accent-ink:  var(--rust-bright);    /* accent text on dark */
   --flame:       var(--rust);           /* buttons — the single rust */
@@ -741,6 +754,10 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   --dtx:         var(--on-ink);         /* text on ink */
   --tx:          #1d1812;               /* body text on cream (kept) */
   --tx-faint:    #3A322A;               /* faint label floor, AA (kept) */
+  --dtx-faint:   #8A8071;               /* faintest text on ink — raised from #756c5f
+                                (3.5:1, decoration-only) because real 12px text uses it
+                                (.confirm__id/.confirm__spam, .svc-detail__note): 4.66:1
+                                on ink, still a full step below --dtx-mute (6.68) */
   --line:        var(--hairline);
   --line-soft:   rgba(29,24,18,0.085);  /* kept */
   --block-gap:   var(--s-48);           /* inter-block gap == 48 */
@@ -779,17 +796,27 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
 
 /* ---------- operator chrome: auto-scrolling announcement ticker ---------- */
 .ticker{
-  height:38px; overflow:hidden; display:flex; align-items:center;
+  height:38px; overflow:hidden; display:flex; align-items:center; position:relative;
   background:var(--cream); border-bottom:1px solid var(--line);
-  /* edge fade so items never hard-clip mid-word at the rims */
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 48px,#000 calc(100% - 48px),transparent);
-          mask-image:linear-gradient(90deg,transparent,#000 48px,#000 calc(100% - 48px),transparent);
 }
+/* Edge fades so items never hard-clip mid-word at the rims. Painted as solid
+   cream→transparent overlays instead of the previous 48px mask-image: the bg
+   is solid cream so covering IS fading, it needs no mask support, and it
+   can't be dropped if the animated (will-change) track is ever composited
+   differently. 64px reads as a deliberate fade where 48px read as a clip.
+   The overlays stop 1px short of the bottom hairline. */
+.ticker::before, .ticker::after{
+  content:""; position:absolute; top:0; bottom:1px; width:64px; z-index:2; pointer-events:none;
+}
+.ticker::before{ left:0;  background:linear-gradient(90deg, var(--cream), transparent); }
+.ticker::after { right:0; background:linear-gradient(270deg, var(--cream), transparent); }
 .ticker__track{
   display:flex; flex:0 0 auto; align-items:center; width:max-content;
   animation:ticker-scroll 42s linear infinite; will-change:transform;
 }
-.ticker:hover .ticker__track{ animation-play-state:paused; }   /* pause on hover */
+/* pause on hover AND on keyboard focus (the ticker carries a live link) */
+.ticker:hover .ticker__track,
+.ticker:focus-within .ticker__track{ animation-play-state:paused; }
 .ticker__group{ display:flex; align-items:center; gap:0; }
 .ticker__item{
   font-family:'Space Mono',monospace; font-size:var(--fs-12); letter-spacing:.1em;

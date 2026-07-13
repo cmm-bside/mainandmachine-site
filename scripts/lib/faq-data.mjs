@@ -18,6 +18,55 @@ const FREE =
 	"Every engagement starts with a free 30-minute AI Opportunity Assessment. We reply within 24 hours, and there is no pitch — just a straight read on whether there is a real opportunity and what it is worth.";
 
 export const FAQ = {
+	"guides/index.html": {
+		label: "Field Guide FAQ",
+		heading: "About the Field Guide.",
+		items: [
+			{ q: "What is the Field Guide?", a: "Practical guides to the buying questions around AI consulting — what it costs, whether you are ready, hiring versus engaging, and how to vet a firm — written with our real published prices as the spine." },
+			{ q: "How is the Field Guide different from The Ampersand?", a: "The Ampersand is weekly essays on how the machine works and what it means. The Field Guide answers commercial questions with numbers. Read the essays to understand; read the guides to decide." },
+			{ q: "Are the prices in these guides real?", a: "Ours are the published list: audits $3,500–$8,500, sprints $12,000–$45,000, fixed in writing before work begins. Market figures are stated as typical ranges, not competitor quotes." },
+		],
+	},
+	"guides/ai-consultant-cost/index.html": {
+		label: "Cost guide FAQ",
+		heading: "What AI consulting costs.",
+		items: [
+			{ q: "How much does an AI consultant cost per hour?", a: "Independent AI consultants typically bill $100–$300 an hour; specialists with deep machine-learning backgrounds run $200–$500. The total depends on hours, which almost nobody quotes in advance — which is why we price fixed instead." },
+			{ q: "How much should a small business budget for AI consulting?", a: "Roughly $15,000–$55,000 in year one at our published prices: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $12,000–$45,000, fixed in writing before work begins." },
+			{ q: "Why are Big Four AI engagements so expensive?", a: "They are built for enterprises: layers of analysts, governance frameworks, and brand assurance. Engagements commonly start around $250,000 — rational at 40,000 employees, mismatched at 40." },
+			{ q: "Is fixed-price better than hourly for AI projects?", a: "For small and mid-size businesses, usually yes. AI work carries unusual scope uncertainty, and hourly billing hands all of it to the buyer. A fixed price forces the seller to scope before selling." },
+		],
+	},
+	"guides/ai-readiness-checklist/index.html": {
+		label: "Readiness FAQ",
+		heading: "About AI readiness.",
+		items: [
+			{ q: "How do I know if my business is ready for AI?", a: "Run the 20 checks on this page: documented workflows, exportable data, a named owner with review time, and a number on what the manual work costs. Sixteen or more and you are ready to build; nine or fewer means fix the foundations first." },
+			{ q: "What should be in place before hiring an AI consultant?", a: "At minimum: your three most repetitive workflows named, one of them written down, a person with two to three hours a week to review outputs, and a budget range. Those four save you money in week one of any engagement." },
+			{ q: "Do I need clean data before starting with AI?", a: "No — nobody's data is clean. You need to know which system is the truth for each core fact and be able to export it without calling a vendor. That is a policy decision more often than a purchase." },
+			{ q: "Is there a free automated readiness assessment?", a: "Yes — the AI-Ready Score: fourteen questions, about seven minutes, a 0–100 score, and the one constraint to fix first. No sales call follows it." },
+		],
+	},
+	"guides/ai-consultant-vs-in-house/index.html": {
+		label: "Hire vs. engage FAQ",
+		heading: "Hiring vs. engaging.",
+		items: [
+			{ q: "Should a small business hire an AI engineer?", a: "Usually not below about 100 employees. A capable hire runs $165,000–$280,000 a year fully loaded and pays off only with several new builds a quarter; a fixed-price engagement covers a complete first build for $15,500–$53,500, once." },
+			{ q: "How much does an in-house AI hire cost?", a: "$130,000–$200,000 in salary for someone who can genuinely build, plus 25–40% for taxes, benefits, and overhead — $165,000–$280,000 a year, every year, plus three to six months of ramp before the first workflow ships." },
+			{ q: "What does doing nothing about AI cost?", a: "Our ROI calculator models the drag at roughly $4,600–$6,400 per employee per year in manual work and lost capacity, depending on industry. Modeled assumptions, stated in the open — not your books, but not zero." },
+			{ q: "Can a consultant hand off to an internal team?", a: "That is our default: every build ends with your team trained and everything owned by you. Many clients then name a part-time internal owner from operations rather than hiring an engineer." },
+		],
+	},
+	"guides/how-to-choose-an-ai-consultant/index.html": {
+		label: "Vetting FAQ",
+		heading: "Vetting an AI consultant.",
+		items: [
+			{ q: "What should I ask an AI consultant before hiring them?", a: "Ten questions: the exact cost and when you learn it, whether they guarantee ROI (they should not), the real timeline, who scopes versus who builds, whether they can say wait, tool incentives, where your data goes, who can overrule the system, what you own at handoff, and proof of a real build." },
+			{ q: "What are red flags when hiring an AI consultant?", a: "Guaranteed ROI numbers, transformation promised in weeks, prices only available after a discovery sequence, unverifiable scarcity, tool recommendations that always land on a partner product, and case studies with no names." },
+			{ q: "Should an AI consultant guarantee ROI?", a: "No — and a guarantee is itself a red flag. Real results depend on your execution, so a serious firm quotes ranges and publishes its assumptions." },
+			{ q: "What should you own at the end of an AI project?", a: "Everything: the systems, credentials, documentation, and prompts, with your team trained to run them. Ongoing help should be optional — ours is a monthly retainer with no lock-in." },
+		],
+	},
 	"services/sample-audit/index.html": {
 		label: "Sample audit FAQ",
 		heading: "About this sample document.",

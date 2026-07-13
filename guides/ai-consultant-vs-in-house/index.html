@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Consultant vs. In-House Hire: The Math | Main &amp; Machine</title>
+<meta name="description" content="Hire an AI engineer, engage a consultancy, or do nothing: real year-one costs on all three options, with the break-even headcounts where the answer flips." />
+<link rel="canonical" href="https://www.mainandmachine.com/guides/ai-consultant-vs-in-house/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="AI Consultant vs. In-House Hire: The Math | Main &amp; Machine" />
+<meta property="og:description" content="Hire an AI engineer, engage a consultancy, or do nothing: real year-one costs on all three options, with the break-even headcounts where the answer flips." />
+<meta property="og:url" content="https://www.mainandmachine.com/guides/ai-consultant-vs-in-house/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine. AI consultant vs. in-house hire." />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Consultant vs. In-House Hire: The Math | Main &amp; Machine" />
+<meta name="twitter:description" content="Hire an AI engineer, engage a consultancy, or do nothing: real year-one costs on all three options, with the break-even headcounts where the answer flips." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=83" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* field guide article — built on the Main & Machine tokens in styles.css */
+.gtable-wrap{ overflow-x:auto; margin:1.6em 0; border:1px solid var(--line); background:var(--paper-card); }
+.gtable{ width:100%; border-collapse:collapse; font-size:var(--fs-16); line-height:1.5; }
+.gtable th{ font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--tx-faint); text-align:left; padding:12px 14px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.gtable td{ padding:12px 14px; border-bottom:1px solid var(--line-soft); color:var(--tx-mute); vertical-align:top; min-width:120px; }
+.gtable tr:last-child td{ border-bottom:0; }
+.gtable .us td{ background:#fff; color:var(--tx); box-shadow:inset 3px 0 0 var(--accent); }
+.gtable td b{ color:var(--tx); }
+.gtable-note{ font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-faint); margin-top:-0.6em; }
+.prose .check{ list-style:none; padding-left:0; counter-reset:ck; }
+.prose .check li{ counter-increment:ck; position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--line-soft); }
+.prose .check li::before{ content:counter(ck,decimal-leading-zero); position:absolute; left:0; top:14px; font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.08em; color:var(--accent-text); }
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "Article",
+      "@id": "https://www.mainandmachine.com/guides/ai-consultant-vs-in-house/#article",
+      "headline": "AI Consultant vs. In-House Hire: The Math",
+      "description": "Hire an AI engineer, engage a consultancy, or do nothing — real year-one costs on all three options, with the break-even headcounts where the answer flips.",
+      "url": "https://www.mainandmachine.com/guides/ai-consultant-vs-in-house/",
+      "datePublished": "2026-07-12",
+      "dateModified": "2026-07-12",
+      "author": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "publisher": { "@id": "https://www.mainandmachine.com/#org" },
+      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" },
+        { "@type": "ListItem", "position": 3, "name": "Consultant vs. in-house", "item": "https://www.mainandmachine.com/guides/ai-consultant-vs-in-house/" }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+<!-- FAQ-JSONLD:auto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should a small business hire an AI engineer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually not below about 100 employees. A capable hire runs $165,000–$280,000 a year fully loaded and pays off only with several new builds a quarter; a fixed-price engagement covers a complete first build for $15,500–$53,500, once."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does an in-house AI hire cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$130,000–$200,000 in salary for someone who can genuinely build, plus 25–40% for taxes, benefits, and overhead — $165,000–$280,000 a year, every year, plus three to six months of ramp before the first workflow ships."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does doing nothing about AI cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our ROI calculator models the drag at roughly $4,600–$6,400 per employee per year in manual work and lost capacity, depending on industry. Modeled assumptions, stated in the open — not your books, but not zero."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a consultant hand off to an internal team?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is our default: every build ends with your team trained and everything owned by you. Many clients then name a part-time internal owner from operations rather than hiring an engineer."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="section paper pagehero" data-screen-label="Consultant vs. in-house">
+  <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/guides/">The Field Guide</a>
+      <span class="sep">/</span>
+      <span>Consultant vs. in-house</span>
+    </div>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">The Field Guide / 03</span>
+        <h1 class="h2 mt-s">AI consultant vs. in-house hire: <span class="accent-tx">the math.</span></h1>
+        <p class="lead mt-s">Three options, real costs on each: hire someone, engage a firm like ours, or do nothing. One of the three is right for you, and it is not always the one we sell.</p>
+      </div>
+      <div class="statrail crop" aria-label="Guide details">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>No. 03</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">8 min</span></div>
+        <div class="statrail__row"><span class="statrail__k">Hire, loaded</span><span class="statrail__v">$165k–$280k/yr</span></div>
+        <div class="statrail__row"><span class="statrail__k">Engage, year one</span><span class="statrail__v accent-tx">$15,500–$53,500</span></div>
+        <div class="statrail__row"><span class="statrail__k">Do nothing</span><span class="statrail__v">Not $0</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE BODY ============ -->
+<section class="section paper-2" data-screen-label="Guide body">
+  <div class="wrap">
+    <article class="prose">
+
+      <h2>Should you hire an AI person or engage a consultant?</h2>
+      <p>Below about 100 employees, engaging is usually the better math; a full-time AI hire starts paying for itself only when you have continuous build work — several new workflows a quarter, not several a year. Above roughly 150–200 employees, or with a genuine data team already in place, hiring wins.</p>
+      <p>That is the summary. The rest of this guide is the arithmetic behind it, using real numbers on all three options — including the one nobody prices: doing nothing. We sell the middle option, so read the numbers, not our conclusion.</p>
+
+      <h2>What does an in-house AI hire actually cost?</h2>
+      <p>Plan on $165,000–$280,000 a year, fully loaded, for someone who can genuinely build — an automation or machine-learning engineer, not a prompt hobbyist. That is a $130,000–$200,000 salary plus the standard 25–40% for taxes, benefits, and overhead, and it repeats every year.</p>
+      <p>The salary is only the visible cost. Add three to six months of ramp before the first workflow ships. Add tooling and infrastructure. Add the market reality that this person is being recruited weekly by companies with deeper pockets, so factor replacement risk into any three-year plan. And note the structural problem no salary fixes: one person is a single point of failure holding systems only they understand. If they leave in month fourteen, you own software with no author.</p>
+      <p>None of this means the hire is wrong. It means the hire is a factory, and a factory only pays when there is a production line to run.</p>
+
+      <h2>What does engaging a consultancy cost?</h2>
+      <p>At our published prices, a complete first build costs $15,500–$53,500, one time: an AI Readiness Audit at $3,500–$8,500, plus an Implementation Sprint at $12,000–$45,000, fixed in writing before work begins. There is no salary, no ramp, and no replacement risk — and no meter running, because the price cannot move after the start.</p>
+      <p>What you get for that is a working system in about 90 days per workflow, your team trained to run it, and ownership of everything at handoff. The trained-team part matters for this comparison: our model deliberately ends with your people running the machine, which is what makes the engage-then-own path viable for a small firm. If you want ongoing coverage as models and vendors shift, <a href="/services/#managed">Managed Services</a> is a monthly retainer you can cancel any month — a fraction of a salary, and only for as long as it earns its keep. The full price list is <a href="/pricing/">published</a>; what the audit deliverable looks like is <a href="/services/sample-audit/">published too</a>.</p>
+
+      <h2>What does doing nothing cost?</h2>
+      <p>More than zero, and it compounds. Our <a href="/calculator/">ROI calculator</a> models the drag at roughly $4,600–$6,400 per employee per year depending on industry — repetitive manual work plus the revenue capacity it eats — which puts a 25-person firm at $115,000–$160,000 a year, every year.</p>
+      <p>Those are modeled assumptions, stated in the open, not your books — the calculator shows every number it uses. But even if your real figure is half the model, doing nothing is the most expensive option on this page within two years. It just bills you in a currency that never shows up on an invoice: evenings, errors, and the slow leak of hours your best people spend re-typing what one system already knows into another.</p>
+
+      <h2>Where is the break-even?</h2>
+      <p>Divide the loaded cost of a hire by the cost of a sprint: $180,000 a year buys roughly four maximum-size sprints, or a dozen small ones. So the hire breaks even only when you need at least four significant new builds a year, sustained — a pipeline that in our experience appears somewhere north of 100 employees, or in unusually systems-heavy smaller firms.</p>
+      <p>There is a second lens: headcount. At the calculator’s modeled $4,600–$6,400 of recoverable drag per employee, a 30-person firm has perhaps $150,000 a year on the table — enough to justify several engagements, nowhere near enough to feed a salary that consumes the entire recovery before it starts. The hire begins to make sense when the opportunity pool is several times the loaded cost, which again points somewhere past 100 people.</p>
+      <p>Here is the same comparison laid flat:</p>
+      <div class="gtable-wrap">
+        <table class="gtable">
+          <thead>
+            <tr>
+              <th>Option</th>
+              <th>Year-one cost</th>
+              <th>Ongoing cost</th>
+              <th>When it wins</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Hire in-house</b></td>
+              <td>$165,000–$280,000 loaded, plus 3–6 months of ramp</td>
+              <td>The same, every year, plus retention risk</td>
+              <td>4+ new builds a year, sustained — typically 100+ employees or a data team already in place</td>
+            </tr>
+            <tr class="us">
+              <td><b>Engage (our published prices)</b></td>
+              <td>$15,500–$53,500 one time: audit + one sprint, fixed in writing</td>
+              <td>$0 required; optional monthly retainer, no lock-in</td>
+              <td>5–100 people with a handful of workflows worth automating</td>
+            </tr>
+            <tr>
+              <td><b>Do nothing</b></td>
+              <td>~$4,600–$6,400 per employee (modeled)</td>
+              <td>The same, every year, compounding</td>
+              <td>When an audit genuinely says “wait” — as a decision, not a default</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gtable-note">Hire figures are typical 2026 US market ranges; engage figures are our published price list; do-nothing figures are the ROI calculator’s modeled assumptions, not your books.</p>
+      <p>And the disclosure the table deserves: if you are 200 people with a data team, hire — that is the right answer even though we sell the other row. The worst outcome on this page is not choosing wrong between hiring and engaging; it is defaulting into row three without ever pricing it.</p>
+
+      <h2>What about a fractional AI hire?</h2>
+      <p>A fractional AI leader — a consultant on a $2,000–$10,000 monthly retainer, a day or two a week — buys you judgment without a salary, and it is the right answer for some firms. Just be clear about what it is not: hands that build.</p>
+      <p>Fractional arrangements shine when the problem is direction — which vendors, which workflows, what to say no to — and when someone in-house will do the building. They disappoint when the deliverable everyone actually wants is a working system, because advice compounds slowly and retainers do not expire. Run the same test you would run on any consultant: what ships, by when, and who owns it? A fractional advisor who cannot point at something that will exist in 90 days is a subscription, not a strategy. Many buyers end up combining models — fractional judgment plus fixed-price builds — which is roughly what our audit-then-sprint sequence packages into one engagement.</p>
+
+      <h2>Is there a middle path?</h2>
+      <p>Yes, and it is the one most of our clients actually take: engage for the builds, then put a part-time internal owner — promoted from operations, not hired from a lab — in charge of running them. You get consultant-grade construction without consultant dependency, and an owner without an engineer’s salary.</p>
+      <p>This works because of how the handoff is structured. Every build ends with your team trained and everything owned by you; the internal owner inherits documented systems, not mysteries. Later, if the pipeline of new builds thickens, that owner becomes the justification — and the hiring manager — for the real in-house hire. The sequence for most firms under 100 people: run the <a href="/guides/ai-readiness-checklist/">readiness checklist</a>, audit, build once, train, then decide about ongoing coverage with real usage in front of you. Whoever you engage for it, vet them with <a href="/guides/how-to-choose-an-ai-consultant/">the ten questions</a> first, and walk in knowing <a href="/guides/ai-consultant-cost/">what the market charges</a>.</p>
+
+    </article>
+  </div>
+</section>
+
+
+<!-- FAQ:auto -->
+<section class="section paper-2" data-screen-label="Hire vs. engage FAQ">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">Hiring vs. engaging.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">Should a small business hire an AI engineer?</span><span class="q-pm">+</span></summary>
+          <p>Usually not below about 100 employees. A capable hire runs $165,000–$280,000 a year fully loaded and pays off only with several new builds a quarter; a fixed-price engagement covers a complete first build for $15,500–$53,500, once.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">How much does an in-house AI hire cost?</span><span class="q-pm">+</span></summary>
+          <p>$130,000–$200,000 in salary for someone who can genuinely build, plus 25–40% for taxes, benefits, and overhead — $165,000–$280,000 a year, every year, plus three to six months of ramp before the first workflow ships.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">What does doing nothing about AI cost?</span><span class="q-pm">+</span></summary>
+          <p>Our ROI calculator models the drag at roughly $4,600–$6,400 per employee per year in manual work and lost capacity, depending on industry. Modeled assumptions, stated in the open — not your books, but not zero.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Can a consultant hand off to an internal team?</span><span class="q-pm">+</span></summary>
+          <p>That is our default: every build ends with your team trained and everything owned by you. Many clients then name a part-time internal owner from operations rather than hiring an engineer.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
+<!-- ============ START HERE (ink) ============ -->
+<section class="section ink final" data-screen-label="Start here">
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2 class="h2 mt-s">Run the math on <span class="accent-tx">your headcount.</span></h2>
+    <p class="lead mt-s">The calculator shows the do-nothing cost at your team size, assumption by assumption. The free 30-minute assessment replaces the assumptions with your real numbers.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--secondary btn--lg" href="/calculator/">Open the ROI calculator <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
+
+<script src="/js/nav.js?v=5"></script>
+<script src="/js/analytics.js?v=1"></script>
+</body>
+</html>

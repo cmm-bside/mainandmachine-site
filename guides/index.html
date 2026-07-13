@@ -3,27 +3,27 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI for Retail &amp; E-commerce | Main &amp; Machine</title>
-<meta name="description" content="AI for inventory, support, and merchandising in retail and e-commerce teams of 5–60. Working systems in ~90 days. Denver, Phoenix, and remote US." />
-<link rel="canonical" href="https://www.mainandmachine.com/industries/retail/" />
+<title>The Field Guide — AI Buying Answers | Main &amp; Machine</title>
+<meta name="description" content="Practical answers to AI buying questions: what consultants cost, whether you're ready, hiring vs. engaging, and how to choose. Real published prices throughout." />
+<link rel="canonical" href="https://www.mainandmachine.com/guides/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
-<meta property="og:title" content="AI for Retail &amp; E-commerce | Main &amp; Machine" />
-<meta property="og:description" content="AI for inventory, support, and merchandising in retail and e-commerce teams of 5–60. Working systems in ~90 days. Denver, Phoenix, and remote US." />
-<meta property="og:url" content="https://www.mainandmachine.com/industries/retail/" />
-<meta property="og:image" content="https://www.mainandmachine.com/images/og/industry-retail.png" />
+<meta property="og:title" content="The Field Guide — AI Buying Answers | Main &amp; Machine" />
+<meta property="og:description" content="Practical answers to AI buying questions: what consultants cost, whether you're ready, hiring vs. engaging, and how to choose. Real published prices throughout." />
+<meta property="og:url" content="https://www.mainandmachine.com/guides/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine. AI for retail and e-commerce." />
+<meta property="og:image:alt" content="Main &amp; Machine. The Field Guide." />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="AI for Retail &amp; E-commerce | Main &amp; Machine" />
-<meta name="twitter:description" content="AI for inventory, support, and merchandising in retail and e-commerce teams of 5–60. Working systems in ~90 days. Denver, Phoenix, and remote US." />
-<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/industry-retail.png" />
+<meta name="twitter:title" content="The Field Guide — AI Buying Answers | Main &amp; Machine" />
+<meta name="twitter:description" content="Practical answers to AI buying questions: what consultants cost, whether you're ready, hiring vs. engaging, and how to choose. Real published prices throughout." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,6 +35,25 @@
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* field guide index — built on the Main & Machine tokens in styles.css */
+.gcards{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border:1px solid var(--line); background:var(--paper-card); margin-top: var(--block-gap); }
+.gcard{ position:relative; display:block; padding: var(--s-32) var(--s-24); border-right:1px solid var(--line); border-bottom:1px solid var(--line); color:inherit; text-decoration:none; transition:background .18s var(--ease); }
+.gcard:nth-child(2n){ border-right:0; }
+.gcard:nth-child(n+3){ border-bottom:0; }
+.gcard:hover{ background:#fff; box-shadow:inset 0 3px 0 var(--accent); }
+.gcard__no{ font-family:var(--mono); font-size: var(--fs-13); color:var(--tx-faint); letter-spacing:.12em; }
+.gcard h3{ font-size: var(--fs-20); line-height:1.18; margin: var(--s-12) 0; }
+.gcard p{ font-size: var(--fs-16); color:var(--tx-mute); line-height:1.5; }
+.gcard__meta{ display:block; margin-top: var(--s-16); font-family:var(--mono); font-size: var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--accent-text); }
+@media (max-width:760px){
+  .gcards{ grid-template-columns:1fr; }
+  .gcard{ border-right:0; }
+  .gcard:nth-child(n+3){ border-bottom:1px solid var(--line); }
+  .gcard:last-child{ border-bottom:0; }
+}
+</style>
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -61,37 +80,29 @@
         { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
         { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Readiness Audit", "serviceType": "AI readiness audit", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#audit" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Implementation Sprint", "serviceType": "AI implementation", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#sprint" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 12000, "maxPrice": 45000, "priceCurrency": "USD" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "Managed Services", "serviceType": "AI monitoring and maintenance", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#managed" },
-            "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "USD", "description": "Monthly retainer, no lock-in" }
-          }
-        ]
-      }
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
     },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
     { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
     {
+      "@type": "CollectionPage",
+      "@id": "https://www.mainandmachine.com/guides/#collection",
+      "name": "The Field Guide",
+      "description": "Practical answers to AI buying questions, with Main & Machine's real published prices as the spine.",
+      "url": "https://www.mainandmachine.com/guides/",
+      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" },
+      "hasPart": [
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-consultant-cost/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-readiness-checklist/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-consultant-vs-in-house/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/how-to-choose-an-ai-consultant/#article" }
+      ]
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Who this is for", "item": "https://www.mainandmachine.com/industries/" },
-        { "@type": "ListItem", "position": 3, "name": "Retail & e-commerce", "item": "https://www.mainandmachine.com/industries/retail/" }
+        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" }
       ]
     }
   ]
@@ -112,34 +123,26 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What can AI do for a retail business?",
+      "name": "What is the Field Guide?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Often the reconciliation across systems that do not talk — inventory, POS, and ordering — plus demand patterns and the repetitive back-office work."
+        "text": "Practical guides to the buying questions around AI consulting — what it costs, whether you are ready, hiring versus engaging, and how to vet a firm — written with our real published prices as the spine."
       }
     },
     {
       "@type": "Question",
-      "name": "How much does it cost?",
+      "name": "How is the Field Guide different from The Ampersand?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins."
+        "text": "The Ampersand is weekly essays on how the machine works and what it means. The Field Guide answers commercial questions with numbers. Read the essays to understand; read the guides to decide."
       }
     },
     {
       "@type": "Question",
-      "name": "How long does it take?",
+      "name": "Are the prices in these guides real?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "An audit is 2 to 4 weeks; a build is 4 to 12."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you work remotely or on-site?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We run two hubs — Denver, Colorado and Phoenix, Arizona — for in-person work, and we work remotely with businesses across the US. Same method, same fixed prices either way."
+        "text": "Ours are the published list: audits $3,500–$8,500, sprints $12,000–$45,000, fixed in writing before work begins. Market figures are stated as typical ranges, not competitor quotes."
       }
     }
   ]
@@ -204,107 +207,87 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Retail hero">
+<section class="section paper pagehero" data-screen-label="The Field Guide">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
       <span class="sep">/</span>
-      <a href="/industries/">Who this is for</a>
-      <span class="sep">/</span>
-      <span>Retail &amp; e-commerce</span>
+      <span>The Field Guide</span>
     </div>
     <div class="pagehero__grid">
       <div>
-        <span class="kicker">Industries / 02</span>
-        <h1 class="h2 mt-s">AI for retail, built for the <span class="accent-tx">5–100 person shop.</span></h1>
-        <p class="lead mt-s">Physical, online, and omnichannel operators: businesses where the margin lives in 1,000 small operational calls a week, most of them made by hand.</p>
+        <span class="kicker">The Field Guide</span>
+        <h1 class="h2 mt-s">The buying questions, answered <span class="accent-tx">in the open.</span></h1>
+        <p class="lead mt-s">The Ampersand is where we think out loud. The Field Guide is where you shop: what AI help costs, whether you are ready for it, whether to hire or engage, and how to tell a builder from a hype merchant. Real prices throughout — ours included.</p>
       </div>
-      <div class="statrail crop" aria-label="Retail at a glance">
-        <div class="statrail__bar"><span>Fit check</span><span><b>v.2026</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Typical team</span><span class="statrail__v">5 to 60</span></div>
-        <div class="statrail__row"><span class="statrail__k">Clearest wins</span><span class="statrail__v accent-tx">Inventory, support, merch</span></div>
-        <div class="statrail__row"><span class="statrail__k">First step</span><span class="statrail__v">Readiness Audit</span></div>
-        <div class="statrail__row"><span class="statrail__k">Coverage</span><span class="statrail__v">Denver · Phoenix · Remote</span></div>
+      <div class="statrail crop" aria-label="Field Guide at a glance">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>v.2026</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Guides</span><span class="statrail__v">04</span></div>
+        <div class="statrail__row"><span class="statrail__k">Format</span><span class="statrail__v accent-tx">Answer-first</span></div>
+        <div class="statrail__row"><span class="statrail__k">Prices cited</span><span class="statrail__v">Published</span></div>
+        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v">July 2026</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE CLEAREST WINS ============ -->
-<section class="section paper-2" data-screen-label="The clearest wins">
+<!-- ============ THE GUIDES ============ -->
+<section class="section paper-2" data-screen-label="The guides">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">The clearest wins</span>
-        <h2 class="h2 mt-s">Where does AI actually pay in <span class="accent-tx">retail?</span></h2>
+        <span class="kicker">Four guides</span>
+        <h2 class="h2 mt-s">Start with the question <span class="accent-tx">you actually have.</span></h2>
       </div>
-      <p class="lead">Three places, in our experience. These are the clearest wins we see in shops like yours, not results we promise. In every one, the machine does the counting and the watching; the merchant keeps the call on what goes on the shelf.</p>
+      <p class="lead">Each guide does one job. The first two sentences under every heading answer the heading’s question, so you can skim for the number you came for and leave.</p>
     </div>
-    <div class="diffs">
-      <div class="diff">
-        <span class="tick-lbl">01 · Inventory</span>
-        <h3>What the system says matches what is on the shelf.</h3>
-        <p>Counts drift, channels disagree, and reorders get made on gut and memory. An automation reconciles stock across your channels and drafts the reorder before the gap becomes a stockout. You still decide what to buy.</p>
-      </div>
-      <div class="diff">
-        <span class="tick-lbl">02 · Support</span>
-        <h3>The routine ticket answered fast, the hard one routed to a person.</h3>
-        <p>Most of the queue is where-is-my-order, returns, and sizing. An agent drafts those replies from your real order data and escalates the angry, the odd, and the high-value to a human who can actually fix it.</p>
-      </div>
-      <div class="diff">
-        <span class="tick-lbl">03 · Merch</span>
-        <h3>Merchandising decisions start from a draft, not a blank sheet.</h3>
-        <p>An agent assembles what is moving, what is stuck, and what last season says about next month, so the buying decision starts with the evidence on the table. The merchant still makes the call. We wrote about how the pattern-finding works, and where it stops, in <a href="/blog/the-prediction-engine/" style="text-decoration:underline;">The Prediction Engine</a>.</p>
-      </div>
+    <div class="gcards">
+      <a class="gcard" href="/guides/ai-consultant-cost/">
+        <span class="gcard__no">Guide 01</span>
+        <h3>What an AI consultant costs in 2026.</h3>
+        <p>The whole market’s ranges — hourly independents, boutique projects, Big Four minimums — and where our published $3,500–$45,000 sits. With a comparison table.</p>
+        <span class="gcard__meta">8 min · Pricing</span>
+      </a>
+      <a class="gcard" href="/guides/ai-readiness-checklist/">
+        <span class="gcard__no">Guide 02</span>
+        <h3>The AI readiness checklist: 20 points.</h3>
+        <p>A checklist you can run in an afternoon without hiring anyone. Score yourself, then see what the score means — including “wait.”</p>
+        <span class="gcard__meta">9 min · Readiness</span>
+      </a>
+      <a class="gcard" href="/guides/ai-consultant-vs-in-house/">
+        <span class="gcard__no">Guide 03</span>
+        <h3>AI consultant vs. in-house hire: the math.</h3>
+        <p>Hiring, engaging, or doing nothing — three options with real costs on each, and the break-even points where the answer flips.</p>
+        <span class="gcard__meta">8 min · Deciding</span>
+      </a>
+      <a class="gcard" href="/guides/how-to-choose-an-ai-consultant/">
+        <span class="gcard__no">Guide 04</span>
+        <h3>How to choose an AI consultant.</h3>
+        <p>Ten questions to ask any firm before you sign — including us. The good ones answer in plain English; the hype merchants answer in adjectives.</p>
+        <span class="gcard__meta">8 min · Vetting</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ WHICH SERVICE FITS FIRST (ink) ============ -->
-<section class="section ink" data-screen-label="Which service fits first">
+<!-- ============ GUIDE VS ESSAY (ink) ============ -->
+<section class="section ink" data-screen-label="Guides and essays">
   <div class="wrap">
     <div class="closer" style="margin-top:0;">
-      <span class="kicker">Which service fits first</span>
-      <p>For most retail operators the right first move is the <a href="/services/#audit" style="text-decoration:underline;">AI Readiness Audit</a>: two to four weeks mapping where the hours and the margin actually go before anyone builds anything. Pricing is published, in plain numbers: <a href="/pricing/" style="text-decoration:underline;">audits run $3,500–$8,500; sprints $12,000–$45,000, fixed quote in writing</a>.</p>
+      <span class="kicker">Two shelves, one library</span>
+      <p>These guides answer buying questions; <a href="/blog/" style="text-decoration:underline;">The Ampersand</a> answers understanding questions — how the machine works, what it cannot do, why everything happened at once. Read the guides when you are deciding. Read the essays when you want the decision to be a good one. Both are free, and neither ends in a countdown timer.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ AN EXAMPLE BUILD ============ -->
-<section class="section paper" data-screen-label="An example build">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">An example build</span>
-        <h2 class="h2 mt-s">One build, <span class="accent-tx">drawn to scale.</span></h2>
-      </div>
-      <p class="lead">Of the example builds on our homepage, this is the one that maps most directly onto a retail operation running on five systems that do not talk.</p>
-    </div>
-    <div class="builds">
-      <div class="builds__bar">
-        <span class="tick-lbl">Example builds</span>
-        <span class="tick-lbl">What “agents, automations &amp; integrations” look like in practice</span>
-      </div>
-      <div class="builds__grid">
-        <div class="build">
-          <span class="build__no">03</span>
-          <span class="tick-lbl">Operations data sync</span>
-          <h3>One operating view across the tools you already pay for.</h3>
-          <p>Connects CRM, billing, and project software so the same job shows the same status everywhere. No more reconciling five screens by hand.</p>
-          <span class="build__win">The win: one reliable picture instead of five that disagree.</span>
-        </div>
-      </div>
-      <p class="builds__note">Illustrative builds, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, a private AI back office for a regulated lender.</p>
-    </div>
-  </div>
-</section>
+
 <!-- FAQ:auto -->
-<section class="section paper-2" data-screen-label="Industry FAQ">
+<section class="section paper-2" data-screen-label="Field Guide FAQ">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
-        <h2 class="h2 mt-s">AI for retail businesses.</h2>
+        <h2 class="h2 mt-s">About the Field Guide.</h2>
         <div class="faq__aside" style="margin-top:28px;">
           <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
@@ -313,20 +296,16 @@
       </div>
       <div class="faq__list">
         <details>
-          <summary><span class="q-no">01</span><span class="q-tx">What can AI do for a retail business?</span><span class="q-pm">+</span></summary>
-          <p>Often the reconciliation across systems that do not talk — inventory, POS, and ordering — plus demand patterns and the repetitive back-office work.</p>
+          <summary><span class="q-no">01</span><span class="q-tx">What is the Field Guide?</span><span class="q-pm">+</span></summary>
+          <p>Practical guides to the buying questions around AI consulting — what it costs, whether you are ready, hiring versus engaging, and how to vet a firm — written with our real published prices as the spine.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
-          <p>The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins.</p>
+          <summary><span class="q-no">02</span><span class="q-tx">How is the Field Guide different from The Ampersand?</span><span class="q-pm">+</span></summary>
+          <p>The Ampersand is weekly essays on how the machine works and what it means. The Field Guide answers commercial questions with numbers. Read the essays to understand; read the guides to decide.</p>
         </details>
         <details>
-          <summary><span class="q-no">03</span><span class="q-tx">How long does it take?</span><span class="q-pm">+</span></summary>
-          <p>An audit is 2 to 4 weeks; a build is 4 to 12.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">04</span><span class="q-tx">Do you work remotely or on-site?</span><span class="q-pm">+</span></summary>
-          <p>We run two hubs — Denver, Colorado and Phoenix, Arizona — for in-person work, and we work remotely with businesses across the US. Same method, same fixed prices either way.</p>
+          <summary><span class="q-no">03</span><span class="q-tx">Are the prices in these guides real?</span><span class="q-pm">+</span></summary>
+          <p>Ours are the published list: audits $3,500–$8,500, sprints $12,000–$45,000, fixed in writing before work begins. Market figures are stated as typical ranges, not competitor quotes.</p>
         </details>
       </div>
     </div>
@@ -338,10 +317,10 @@
 <section class="section ink final" data-screen-label="Start here">
   <div class="wrap">
     <span class="kicker">Start here</span>
-    <h2 class="h2 mt-s">See the wins in <span class="accent-tx">retail.</span></h2>
-    <p class="lead mt-s">30 minutes with a senior advisor who walks your inventory, support, and merchandising workflows and tells you what is worth automating, and what is not.</p>
+    <h2 class="h2 mt-s">Prefer answers about <span class="accent-tx">your business?</span></h2>
+    <p class="lead mt-s">30 minutes with a senior advisor who walks your workflows and tells you what is worth automating, and what is not. We reply within 24 hours.</p>
     <div class="hero__cta">
-      <a class="btn btn--primary btn--lg" href="/book/?industry=retail">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -425,7 +404,7 @@
 </footer>
 
 <!-- ============ REVEAL ANIMATION ============ -->
-<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.diffs > .diff,.closer,.builds > *,.final .hero__cta,.foot__top > *"></script>
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.gcards > .gcard,.closer,.faq__list details,.final .hero__cta,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=5"></script>
 <script src="/js/analytics.js?v=1"></script>

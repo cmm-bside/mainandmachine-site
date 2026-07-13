@@ -249,6 +249,7 @@ export function footer() {
           <li><a href="/score">AI-Ready Score</a></li>
           <li><a href="/industries/">Who this is for</a></li>
           <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
           <li><a href="/blog/archive/">Archive</a></li>
           <li><a href="/#paths">Where are you?</a></li>
         </ul>

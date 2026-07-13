@@ -22,6 +22,19 @@
   fourteen questions across three phases (Map, Prove, Expand). You get a
   0–100 score and the one constraint to fix first. No sales call.
 
+## Guides
+
+- [The Field Guide](/guides/) — practical answers to AI buying questions,
+  real published prices throughout
+- [What an AI consultant costs in 2026](/guides/ai-consultant-cost/) —
+  the market's ranges (hourly, boutique, Big Four) and where ours sit
+- [AI readiness checklist](/guides/ai-readiness-checklist/) — 20 points
+  an owner can run in an afternoon, no consultant required
+- [AI consultant vs. in-house hire](/guides/ai-consultant-vs-in-house/) —
+  the hiring math, with break-even headcounts
+- [How to choose an AI consultant](/guides/how-to-choose-an-ai-consultant/) —
+  10 questions that separate builders from hype merchants
+
 ## Key pages
 
 - [Pricing](/pricing/) — full price list, published

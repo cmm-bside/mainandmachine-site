@@ -17,6 +17,13 @@ const errors = [];
 const fail = (m) => errors.push(m);
 const llms = fs.readFileSync(path.join(ROOT, "llms.txt"), "utf8");
 
+// --- 0. company.mjs must be in sync with site-facts.json --------------------
+// (company.mjs is generated from the JSON by render-facts; a hand edit or a
+// forgotten regeneration makes every downstream surface lie.)
+const rawFacts = JSON.parse(fs.readFileSync(path.join(ROOT, "src", "data", "site-facts.json"), "utf8"));
+if (JSON.stringify(rawFacts) !== JSON.stringify(COMPANY))
+  fail("src/data/company.mjs is out of sync with site-facts.json — run npm run facts:render");
+
 // --- 1. every internal link resolves in the build output --------------------
 const links = [...llms.matchAll(/\]\((\/[^)\s]*)\)/g)].map((m) => m[1]);
 for (const link of new Set(links)) {

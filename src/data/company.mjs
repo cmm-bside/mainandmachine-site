@@ -1,15 +1,83 @@
-// CANONICAL BUSINESS FACTS — thin module wrapper over site-facts.json,
-// which is THE single source of truth (edit prices/contact/timelines there,
-// nowhere else). Every fact must be byte-identical wherever it appears:
-// page copy, meta tags, JSON-LD, llms.txt, /facts.json, footers, emails.
-// Generated surfaces import this module; committed HTML carries data-fact
-// spans stamped by scripts/render-facts.mjs; scripts/check-facts.mjs and
-// scripts/check-llms.mjs fail the build if anything drifts. See CLAUDE.md.
+// GENERATED from src/data/site-facts.json by scripts/render-facts.mjs —
+// DO NOT EDIT. Edit the JSON, then run: npm run facts:render
+// (build:static runs it automatically; check-llms.mjs fails the build if
+// this file and the JSON ever disagree).
 //
-// Keep this file runtime-agnostic (no Node or Worker globals): it is
-// imported by build scripts, Cloudflare Pages Functions, and email
-// templates. The JSON import attribute below works in Node ESM and in the
-// esbuild bundle Pages Functions use.
-import FACTS from "./site-facts.json" with { type: "json" };
-
-export const COMPANY = FACTS;
+// Runtime-agnostic on purpose: imported by build scripts, Cloudflare Pages
+// Functions, and email templates.
+export const COMPANY = {
+  "_meta": {
+    "description": "CANONICAL BUSINESS FACTS — the single source of truth. Edit prices, timelines, and contact facts HERE and only here. company.mjs re-exports this file for every generated surface (blog templates, llms.txt, facts.json, emails, the booking Function); scripts/render-facts.mjs stamps it into the data-fact spans in committed HTML; scripts/check-facts.mjs and scripts/check-llms.mjs fail the build on any drift.",
+    "schemaVersion": 1
+  },
+  "name": "Main & Machine",
+  "domain": "mainandmachine.com",
+  "origin": "https://www.mainandmachine.com",
+  "oneLiner": "AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue)",
+  "tagline": "Human-centric AI for small and mid-size business",
+  "slogan": "The machine belongs to Main Street.",
+  "founder": {
+    "name": "Christopher Myers",
+    "title": "Founder & Chairman",
+    "roles": [
+      "CEO, B:Side Capital + Fund",
+      "Professor of entrepreneurship, ASU W.P. Carey School of Business",
+      "Author"
+    ]
+  },
+  "team": {
+    "size": "~25",
+    "description": "AI-native build team under one accountable operator"
+  },
+  "services": [
+    {
+      "key": "audit",
+      "name": "AI Readiness Audit",
+      "price": "$3,500–$8,500",
+      "priceLow": 3500,
+      "priceHigh": 8500,
+      "timeline": "2 to 4 weeks"
+    },
+    {
+      "key": "sprint",
+      "name": "AI Implementation Sprint",
+      "price": "$12,000–$45,000",
+      "priceLow": 12000,
+      "priceHigh": 45000,
+      "timeline": "4 to 12 weeks",
+      "note": "Fixed quote in writing before work begins"
+    },
+    {
+      "key": "managed",
+      "name": "Managed Services",
+      "price": "Monthly retainer",
+      "timeline": "Ongoing",
+      "note": "No lock-in"
+    }
+  ],
+  "runningCosts": "$50–$500/month typical (tools + model usage) for a small business",
+  "delivery": "~90 days per workflow, fixed price quoted in writing before work",
+  "freeOffer": "30-minute AI Opportunity Assessment, reply within 24 hours",
+  "audience": {
+    "headcount": "5–100",
+    "revenue": "$1M–$50M"
+  },
+  "locations": [
+    "Denver, CO",
+    "Phoenix, AZ"
+  ],
+  "coverage": "Remote across the US",
+  "email": "cmyers@mainandmachine.com",
+  "phone": "480-805-9983",
+  "phoneE164": "+1-480-805-9983",
+  "phoneHref": "tel:+14808059983",
+  "press": [
+    "Forbes",
+    "The Wall Street Journal",
+    "The New York Times",
+    "Inc.",
+    "TechCrunch",
+    "MSNBC",
+    "Fox Business"
+  ]
+};

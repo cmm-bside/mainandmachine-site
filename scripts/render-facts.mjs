@@ -7,7 +7,29 @@
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/config.mjs";
-import { COMPANY } from "../src/data/company.mjs";
+
+// Read the source of truth directly (not via company.mjs — this script
+// GENERATES company.mjs, so it must not depend on it).
+const FACTS_PATH = path.join(ROOT, "src", "data", "site-facts.json");
+const COMPANY = JSON.parse(fs.readFileSync(FACTS_PATH, "utf8"));
+
+// --- 0. regenerate src/data/company.mjs from the JSON -----------------------
+// A committed plain-object module (no JSON import attribute) so it works on
+// every Node version, in the Pages Functions esbuild bundle, and in Workers.
+const MODULE = `// GENERATED from src/data/site-facts.json by scripts/render-facts.mjs —
+// DO NOT EDIT. Edit the JSON, then run: npm run facts:render
+// (build:static runs it automatically; check-llms.mjs fails the build if
+// this file and the JSON ever disagree).
+//
+// Runtime-agnostic on purpose: imported by build scripts, Cloudflare Pages
+// Functions, and email templates.
+export const COMPANY = ${JSON.stringify(COMPANY, null, 2)};
+`;
+const modulePath = path.join(ROOT, "src", "data", "company.mjs");
+if (fs.readFileSync(modulePath, "utf8") !== MODULE) {
+  fs.writeFileSync(modulePath, MODULE);
+  console.log("[facts:render] src/data/company.mjs regenerated from site-facts.json");
+}
 
 const svc = (key) => COMPANY.services.find((s) => s.key === key);
 const usd = (n) => "$" + n.toLocaleString("en-US");

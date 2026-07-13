@@ -1,7 +1,7 @@
-// The proxied Score app (Next.js) requests its assets from the root namespace
-// /_next/* rather than /score/_next/*, so proxy that namespace to the same
-// origin or the app renders unstyled. /_next/* is Next-internal and does not
-// collide with the plain-HTML main site. (The clean long-term fix is basePath
-// '/score' on the app, after which this route can be removed.)
+// COMPAT ONLY: the Score app now ships basePath '/score', so its HTML asks
+// for assets at /score/_next/* (covered by functions/score). This route only
+// serves browsers holding pre-basePath cached HTML that still references
+// bare /_next/* — lib/score-proxy.mjs rewrites those onto /score/_next/*.
+// Safe to delete after a few weeks in production.
 import { proxyScore } from "../../lib/score-proxy.mjs";
 export const onRequest = proxyScore;

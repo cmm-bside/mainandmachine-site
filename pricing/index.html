@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=83" />
+<link rel="stylesheet" href="/styles.css?v=84" />
 <style>
 /* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
 /* 1. Price/range values never wrap. Stepped down one size so the widest range
@@ -85,20 +85,71 @@
         "itemListElement": [
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Readiness Audit", "serviceType": "AI readiness audit", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#audit" },
+            "itemOffered": { "@id": "https://www.mainandmachine.com/services/#service-audit" },
             "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Implementation Sprint", "serviceType": "AI implementation", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#sprint" },
+            "itemOffered": { "@id": "https://www.mainandmachine.com/services/#service-sprint" },
             "priceSpecification": { "@type": "PriceSpecification", "minPrice": 12000, "maxPrice": 45000, "priceCurrency": "USD" }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "Managed Services", "serviceType": "AI monitoring and maintenance", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#managed" },
+            "itemOffered": { "@id": "https://www.mainandmachine.com/services/#service-managed" },
             "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "USD", "description": "Monthly retainer, no lock-in" }
           }
         ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.mainandmachine.com/services/#service-audit",
+      "name": "AI Readiness Audit",
+      "serviceType": "AI readiness audit",
+      "description": "Two to four weeks inside your real operation: we map your workflows, find where AI actually pays, and hand you a phased plan you own — whether or not you build it with us. Fixed price, quoted in writing before work begins.",
+      "url": "https://www.mainandmachine.com/services/#audit",
+      "provider": { "@id": "https://www.mainandmachine.com/#org" },
+      "areaServed": "US",
+      "audience": { "@type": "BusinessAudience", "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)" },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.mainandmachine.com/pricing/",
+        "priceCurrency": "USD",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.mainandmachine.com/services/#service-sprint",
+      "name": "AI Implementation Sprint",
+      "serviceType": "AI implementation",
+      "description": "A fixed-scope build of the highest-payback workflow: agents, automations, and integrations tested inside your real operation, with your team trained to run them. 4 to 12 weeks — about 90 days per workflow. Fixed quote in writing before work begins.",
+      "url": "https://www.mainandmachine.com/services/#sprint",
+      "provider": { "@id": "https://www.mainandmachine.com/#org" },
+      "areaServed": "US",
+      "audience": { "@type": "BusinessAudience", "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)" },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.mainandmachine.com/pricing/",
+        "priceCurrency": "USD",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 12000, "maxPrice": 45000, "priceCurrency": "USD" }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.mainandmachine.com/services/#service-managed",
+      "name": "Managed Services",
+      "serviceType": "AI monitoring and maintenance",
+      "description": "Ongoing monitoring and maintenance for the systems we build: we keep them healthy as models and vendors shift, and add automations as the work changes. A monthly retainer with no lock-in.",
+      "url": "https://www.mainandmachine.com/services/#managed",
+      "provider": { "@id": "https://www.mainandmachine.com/#org" },
+      "areaServed": "US",
+      "audience": { "@type": "BusinessAudience", "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)" },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.mainandmachine.com/pricing/",
+        "priceCurrency": "USD",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "priceCurrency": "USD", "unitText": "month", "description": "Monthly retainer, no lock-in" }
       }
     },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
@@ -216,13 +267,13 @@
         <h1 class="h2 mt-s">Three ways in. Priced in <span class="accent-tx">plain numbers.</span></h1>
         <p class="lead mt-s">You will not have to sit through three discovery calls to learn what something costs. Here is the price list.</p>
       </div>
-      <div class="statrail crop" aria-label="Pricing at a glance">
-        <div class="statrail__bar"><span>Price list</span><span><b>Published</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Audits</span><span class="statrail__v accent-tx">$3,500–$8,500</span></div>
-        <div class="statrail__row"><span class="statrail__k">Sprints</span><span class="statrail__v">$12,000–$45,000</span></div>
-        <div class="statrail__row"><span class="statrail__k">Managed</span><span class="statrail__v">Monthly · no lock-in</span></div>
-        <div class="statrail__row"><span class="statrail__k">Quote</span><span class="statrail__v">Fixed, in writing</span></div>
-      </div>
+      <dl class="statrail crop" aria-label="Pricing at a glance">
+        <div class="statrail__bar"><dt>Price list</dt><dd><b>Published</b></dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Audits</dt><dd class="statrail__v accent-tx">$3,500–$8,500</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Sprints</dt><dd class="statrail__v">$12,000–$45,000</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Managed</dt><dd class="statrail__v">Monthly · no lock-in</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Quote</dt><dd class="statrail__v">Fixed, in writing</dd></div>
+      </dl>
     </div>
   </div>
 </section>

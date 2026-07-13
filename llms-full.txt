@@ -1,0 +1,1723 @@
+# Main & Machine — llms-full.txt
+# The complete visible text of the 10 most important pages on
+# https://www.mainandmachine.com/ , concatenated with page delimiters.
+# The condensed fact sheet lives at https://www.mainandmachine.com/llms.txt
+# Canonical business facts: AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue).
+# Contact: cmyers@mainandmachine.com · 480-805-9983 · Denver, CO & Phoenix, AZ.
+
+========================================================================
+PAGE: AI Consulting & Implementation for Small Business | Main & Machine
+URL: https://www.mainandmachine.com/
+SUMMARY: Working AI agents and automations inside your business, at a fixed price quoted in writing before we start. Denver, Phoenix & remote across the US.
+========================================================================
+
+AI implementation for small & mid-size business
+
+# The machine belongs to Main Street.
+
+Other AI firms hand you a deck. We build the working systems that run inside your business, at a fixed price.
+
+Get your AI-Ready Score →
+Book a free assessment
+
+Seven minutes. Free. A straight answer.
+
+Spec Sheet v.2026
+
+Audits from $3,500
+
+Approach Human-centric
+
+Builds Agents · Automations · Integrations
+
+Hubs Denver & Phoenix
+
+01 / The problem with most AI work
+
+## Most AI projects fail. The ones that “work” can cost you something worse.
+
+Most companies that spend on AI see almost nothing change. We exist to fix that.
+
+78%
+
+spent the money. Nothing moved.
+
+22%
+
+turn AI spending into measurable results.
+
+Source: Boston Consulting Group, Where’s the Value in AI? , 2024.
+
+There is a second failure nobody mentions: AI that technically works but buries why decisions get made and turns your best people into ticket-closers.
+
+We build the other kind. Every system we ship can be explained, questioned, and overruled by a person who owns it.
+
+The machine is never the answer to “why did this happen.” A person is. How we work →
+
+02 / What we actually do
+
+## We implement. That is the whole difference.
+
+Plenty of AI experts have a framework and a workshop. We go into your business, find the three workflows costing you the most, and build the fix. Fixed price before we start.
+
+A: Custom agents
+
+### Software that drafts the repetitive decisions.
+
+It clears the routine work and drafts the hard calls, then routes the final judgment to a person who owns it.
+
+B: Automations & workflow
+
+### Work moves between your tools on its own.
+
+It connects the systems you already use, so nothing waits on a person to copy and paste it.
+
+C: Integrations & data
+
+### One source of truth you can trust.
+
+We make your data do something instead of sitting in five systems that do not talk to each other.
+
+Example builds
+See example builds →
+
+One we can name: MARCUS runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA & CDFI lender. It runs entirely in-house, with no borrower file leaving the building. Read the build →
+
+03 / How to work with us
+
+## Three ways in. Priced in plain numbers.
+
+You will not have to sit through three discovery calls to learn what something costs. Here is the short version. The price list has every line item.
+
+01
+
+Timeline
+2 to 4 weeks
+
+Fixed price
+$3,500–$8,500
+
+### AI Readiness Audit
+
+Most businesses start here.
+
+We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
+
+Read the full spec →
+
+02
+
+Timeline
+4 to 12 weeks
+
+Fixed quote after scoping
+$12,000–$45,000
+
+Exact price quoted in writing before work begins. It does not move after we start.
+
+### AI Implementation Sprint
+
+We build the working systems.
+
+Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
+
+Read the full spec →
+
+03
+
+Timeline
+Ongoing
+
+Retainer
+Monthly
+
+### Managed Services
+
+Optional, never required.
+
+We keep what we built healthy, watch what changes, and evolve the systems as your business does.
+
+Read the full spec →
+
+Every path here starts with the same free 30-minute assessment.
+
+The same numbers, pointed at your business
+
+## What would this cost for us?
+
+Two inputs. A real range, built from the same price list published on this site, not a teaser that ends in “call us.”
+
+Run your real numbers →
+Full breakdown + share →
+
+Estimate.v1
+A model, not a promise
+
+01 / Industry
+
+Professional services
+Retail & e-commerce
+Healthcare & wellness
+Construction & trades
+Hospitality & food service
+
+Law, accounting, insurance, consulting, financial advisory.
+
+02 / Team size
+25
+
+5 50 100
+
+Projected ROI / Year 1
+For 25 people
+
++$132,000
+
+- Total opportunity $150,000
+
+- Sprint investment -$18,000
+
+A model, not a promise. We run your real numbers in the free assessment.
+
+04 / Who builds this
+
+## Christopher Myers.
+
+A professor, an entrepreneur, and an operator: 26 years in service of Main Street.
+
+Christopher Myers
+CEO, B:Side Capital + Fund · Founder & Chairman, Main & Machine · Professor, ASU W.P. Carey · Author
+
+He’s CEO of B:Side Capital and Fund , a professor at ASU’s W.P. Carey School, and an author with 26 years backing Main Street. He pairs that judgment with a team of AI-native builders who never had to unlearn the old way. One name owns every build.
+
+Who builds this, and why the name matters →
+
+Our founder’s work has been covered in: Forbes The Wall Street Journal The New York Times Inc. TechCrunch MSNBC Fox Business
+
+05 / Where are you?
+
+## Pick the door that fits you today.
+
+Three doors. No wrong answer.
+
+01 / Ready
+
+### I want to see where AI pays in my business.
+
+Book the free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. No obligation, no pitch.
+
+Book a free assessment →
+
+02 / Decided
+
+### I already know what I want built.
+
+Skip the audit. Book a scoping call and we will quote a fixed-price Implementation Sprint in writing.
+
+Scope a sprint →
+
+03 / Curious
+
+### I’d rather see where I stand first.
+
+Take the AI-Ready Score. Fourteen questions, seven minutes, and a straight answer about whether your company is ready — before you talk to anyone.
+
+Get your score →
+
+========================================================================
+PAGE: AI Services for Small Business: Audit, Sprint, Managed
+URL: https://www.mainandmachine.com/services/
+SUMMARY: Custom agents, automations and integrations for small business. Audits from $3,500, sprints to $45,000, about 90 days. Denver, Phoenix and remote US.
+========================================================================
+
+Main & Machine
+/
+Services
+
+Services
+
+# Three ways in.
+
+An audit that maps where AI actually pays, a sprint that builds the highest-payback workflow, and managed services that keeps it healthy. Fixed prices, quoted in writing before we start.
+
+Not sure which? Book a free assessment →
+
+Price list Published
+
+Audits $3,500–$8,500
+
+Sprints $12,000–$45,000
+
+Managed Monthly · no lock-in
+
+Delivery ~90 days
+
+At a glance
+
+## The three services, side by side.
+
+Price, timeline, and what each one delivers. The whole offer, one row each. Jump to any of the three below.
+
+Main & Machine services compared: price, timeline, and deliverables.
+
+Service
+Price
+Timeline
+What it delivers
+
+AI Readiness Audit : $3,500–$8,500 : 2 to 4 weeks : A workflow map and a phased plan you own. The handful of places AI actually pays.
+
+AI Implementation Sprint : $12,000–$45,000 : 4 to 12 weeks : The highest-payback workflow built, tested in your operation, and handed to your team.
+
+Managed Services : Monthly · no lock-in : Ongoing : Monitoring, maintenance, and new automations as the work changes.
+
+Service 01 · 2–4 weeks · $3,500–$8,500
+
+## AI Readiness Audit.
+
+We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
+
+### What it is
+
+Two to four weeks inside your real operation. Not a survey. Not a maturity model. Not a slide deck about the future of work.
+
+We start where the work actually happens. Where the time goes, where the money leaks, where a person is doing work a machine should be doing. We walk the workflows with the people who run them and put a cost on each one, so the plan rests on your numbers instead of someone’s framework.
+
+What comes out is a phased plan you own outright. Build it with us, build it with another firm, build it in-house. The plan is yours either way, priced and sequenced so you can act on it without us in the room.
+
+And sometimes the right call is to wait a quarter. When the numbers say so, the audit says so, in writing. You will not be talked into building something your own data does not support.
+
+### Who it’s for
+
+Businesses of 5 to 100 people, $1M to $50M in revenue, past the point where the owner can hold everything in their head, and not yet big enough for a Fortune 500 budget.
+
+### An example build
+
+Intake agent : qualifies the request before a person touches it. Reads the incoming email or form, asks for the details that are missing, and routes the job to the right person with a clean summary attached. The win: every request arrives qualified, summarized, and routed before a person reads it.
+
+Illustrative builds, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. If the audit finds something worth building, the Implementation Sprint builds it.
+
+What you leave with
+
+- A workflow map of your real operations
+
+- The handful of places AI actually pays
+
+- A phased plan you own outright
+
+- A straight read on whether to build at all
+
+See a sample audit deliverable →
+See the full price list →
+
+### Questions about the audit
+
+01 What is the AI Readiness Audit? + Two to four weeks inside your real operation. We map your workflows, put a cost on each one, and hand you a phased plan you own, whether or not you build it with us.
+
+02 How much does the AI Readiness Audit cost? + $3,500–$8,500, quoted as a fixed price in writing before work begins. The exact number depends on the size and complexity of your operation.
+
+03 How long does the audit take? + 2 to 4 weeks.
+
+04 What do I leave with? + A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all.
+
+05 What if the audit says don’t build? + Then it says so, in writing. Sometimes the right call is to wait a quarter. You will not be talked into a build your own numbers do not support. To gauge readiness before spending anything, run the 20-point readiness checklist yourself.
+
+Service 02 · 4–12 weeks · $12,000–$45,000
+
+## AI Implementation Sprint.
+
+Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
+
+### What it is
+
+Small, working, tested. You watch it run and earn your trust before it touches anything that matters.
+
+A sprint takes the workflows worth automating and builds the thing that fixes them. Agents that draft the repetitive decisions and route the judgment calls back to a person. Automations between the systems you already run. Integrations that pull your data into one source of truth instead of five systems that disagree.
+
+One team runs it from kickoff to handoff. The advisor who scopes your sprint is the one who builds it; no junior team quietly takes over after you sign. Each workflow lands in about 90 days, because a project without a deadline is a project that dies.
+
+And before any of it starts, you get the exact price in writing. It does not move after we start. Handoff means your team trained to run all of it, and ownership of all of it.
+
+### Who it’s for
+
+Teams of 5 to 100 people, $1M to $50M in revenue, with workflows worth automating and named. Most arrive by way of the audit . Some already know exactly what they want built and skip straight to scoping.
+
+### Example builds
+
+An intake agent, invoice follow-up, an ops data sync. See a concrete before/after for each in what a build looks like .
+
+Illustrative builds, not client claims. For a sprint we shipped, 14 agents across 7 departments, see the MARCUS case .
+
+What you leave with
+
+- Working agents built to your workflow
+
+- Automations across your existing stack
+
+- Integrations into one source of truth
+
+- Your team trained to run all of it
+
+See the full price list →
+
+### Questions about the sprint
+
+01 What is the AI Implementation Sprint? + A fixed-scope build of the highest-payback workflow your audit surfaced, typically 4 to 12 weeks, about 90 days per workflow.
+
+02 How much does an Implementation Sprint cost? + $12,000–$45,000, quoted as a fixed price in writing before any work begins. For how that compares to the wider market, see What an AI Consultant Costs in 2026 .
+
+03 How long does a sprint take? + 4 to 12 weeks, depending on scope.
+
+04 Do I need an audit first? + Usually. Most sprints start with the AI Readiness Audit so the build rests on your numbers instead of a guess.
+
+05 What does a finished sprint look like? + A working system your team actually uses. The closest published example is MARCUS: 14 AI agents across 7 departments we built for B:Side Capital, a regulated lender.
+
+Service 03 · Ongoing · Monthly · no lock-in
+
+## Managed Services.
+
+We keep what we built healthy, watch what changes, and evolve the systems as your business does. Optional, never required.
+
+### What it is
+
+Models shift. Vendors change their APIs and their prices. A workflow that ran clean in March can drift by September. Managed Services means someone is watching for that before it costs you anything: monitoring on every deployed system, maintenance when the ground moves underneath it, and new automations as the work itself changes.
+
+A retainer should survive on usefulness, not paperwork. If we are not earning the fee in a given month, you should be able to act on that immediately. So you can.
+
+And because you own everything we build, leaving is clean. No license to surrender, no hostage data, no exit fee. The month it stops paying is the month you stop paying.
+
+### Who it’s for
+
+You could put a person on this. At 5 to 100 employees, most businesses should not. The retainer buys the watching without the headcount, and your team stays trained to run everything either way.
+
+### An example
+
+Operations data sync : a build like this touches three vendors’ software, and any of the three can change without asking you first. Managed Services is the watch on all of it: the same job keeps showing the same status everywhere, even as the tools underneath it move.
+
+We manage what we build, so the road here runs through the audit and the sprint . For a system we built and now run, see the MARCUS case .
+
+What the retainer covers
+
+- Monitoring on every deployed system
+
+- Maintenance as models and vendors shift
+
+- New automations as the work changes
+
+- No lock-in: leave whenever it stops paying
+
+See the full price list →
+
+### Questions about managed services
+
+01 What are Managed Services? + Ongoing monitoring and maintenance for what we build, keeping the system healthy after handoff. A monthly retainer with no lock-in.
+
+02 How much do Managed Services cost? + A monthly retainer with no lock-in; the amount depends on what is running. The audit and sprint that lead here run $3,500–$8,500 and $12,000–$45,000 respectively.
+
+03 Is Managed Services required? + No. It is optional, never required. You can run what we build yourself. The hire-or-engage math behind that choice is in AI Consultant vs. In-House Hire .
+
+04 Do you only manage what you built? + The road here runs through the audit and the sprint, so yes. We manage systems we built and understand.
+
+Picture it
+
+## What a build looks like.
+
+One concrete before/after per category. Illustrative, not client claims. Read these and you should be able to name the first thing you’d want built.
+
+Custom agent
+
+### Intake agent
+
+Before A new lead or application lands in an inbox and waits while someone re-keys it, runs the checks, and decides where it goes.
+
+After The agent reads every submission, runs the checks, and drafts the reply, then hands a person finished work to approve, send back, or escalate.
+
+Automation
+
+### Invoice follow-up
+
+Before Overdue invoices slip because chasing them is nobody’s full-time job, and the awkward ones get put off.
+
+After The automation tracks what’s outstanding, drafts each reminder in your voice on schedule, and flags the judgment calls for a person to send.
+
+Integration
+
+### Ops data sync
+
+Before The same job shows a different status in your CRM, your billing tool, and your project software, so no number gets trusted.
+
+After One integration keeps them in sync, so every system shows the same source of truth and your team stops reconciling by hand.
+
+Illustrative builds, not client claims. Patterns, not specific clients. For one we actually shipped, 14 AI agents across 7 departments for a regulated lender, see the MARCUS teardown .
+
+Start here
+Every path here starts with the same free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. We reply within 24 hours.
+
+Book a free assessment →
+
+A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
+
+— Christopher Myers, Founder
+
+========================================================================
+PAGE: AI Consulting Pricing: Fixed, Published, No Discovery Call
+URL: https://www.mainandmachine.com/pricing/
+SUMMARY: Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page.
+========================================================================
+
+Main & Machine
+/
+Pricing
+
+Pricing
+
+# Three ways in. Priced in plain numbers.
+
+You will not have to sit through three discovery calls to learn what something costs. Here is the price list.
+
+Price list : Published
+
+Audits : $3,500–$8,500
+
+Sprints : $12,000–$45,000
+
+Managed : Monthly · no lock-in
+
+Quote : Fixed, in writing
+
+The price list
+
+## What each one costs.
+
+Audit, sprint, retainer: every price fixed and quoted in writing before any work begins.
+
+Most start here
+
+01
+
+Timeline
+2 to 4 weeks
+
+Fixed price
+$3,500–$8,500
+
+### AI Readiness Audit
+
+Most businesses start here.
+
+We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
+
+What you leave with
+
+- A workflow map of your real operations
+
+- The handful of places AI actually pays
+
+- A phased plan you own outright
+
+- A straight read on whether to build at all
+
+Read the full spec →
+
+02
+
+Timeline
+4 to 12 weeks
+
+Fixed quote after scoping
+$12,000–$45,000
+
+Exact price quoted in writing before work begins. It does not move after we start.
+
+### AI Implementation Sprint
+
+We build the working systems.
+
+Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
+
+What you leave with
+
+- Working agents built to your workflow
+
+- Automations across your existing stack
+
+- Integrations into one source of truth
+
+- Your team trained to run all of it
+
+Read the full spec →
+
+03
+
+Timeline
+Ongoing
+
+Retainer
+Monthly
+
+### Managed Services
+
+Optional, never required.
+
+We keep what we built healthy, watch what changes, and evolve the systems as your business does.
+
+What you leave with
+
+- Monitoring on every deployed system
+
+- Maintenance as models and vendors shift
+
+- New automations as the work changes
+
+- No lock-in: leave whenever it stops paying
+
+Read the full spec →
+
+Every path here starts with the same free 30-minute assessment . Want a rough number first? Run the calculator .
+
+The math
+
+## Same rigor. A fraction of the bill.
+
+The Big Four do versions of this work with half-million-dollar minimums. We built the same discipline for Main Street.
+
+Our largest engagement
+$45,000
+
+A full Implementation Sprint, fixed in writing before we start.
+
+vs
+
+A Big Four minimum
+$500,000+
+
+More than ten times the cost, before the work begins. Our largest engagement is less than their kickoff meeting.
+
+Fair questions
+
+## How much does AI implementation cost?
+
+01 How much does AI implementation cost for a small business? +
+The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026 .
+
+02 What does the AI Readiness Audit include? +
+A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.
+
+03 Why fixed prices instead of hourly? +
+Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs. If you are comparing firms, the ten questions in How to Choose an AI Consultant include this one.
+
+04 What happens after the 90 days? +
+Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: a monthly retainer you can cancel any month it stops earning its keep. Whether to keep a retainer, name an internal owner, or hire is worked through in AI Consultant vs. In-House Hire .
+
+### Want exact numbers?
+
+The assessment is where ranges become a fixed quote in writing: 30 minutes, free. No obligation.
+
+Book a free assessment →
+
+========================================================================
+PAGE: How We Implement AI: Discover, Build, Evolve | Main & Machine
+URL: https://www.mainandmachine.com/method/
+SUMMARY: Discover, build, evolve: one senior team from kickoff to handoff, working systems in about 90 days. Denver, Phoenix and remote across the US.
+========================================================================
+
+Main & Machine
+/
+The method
+
+The method
+
+# Discover. Build. Evolve.
+
+Three phases. One team from kickoff to handoff. No junior account managers parachuted in between.
+
+The method v.2026
+
+Phases Three
+
+Delivery ~90 days
+
+Team Senior, start to finish
+
+Quote Fixed, in writing
+
+01 / The three phases
+
+## How a build actually runs.
+
+The same three phases on every engagement, in the same order. No phase gets skipped, and none runs forever.
+
+01
+
+### Discover
+
+learn the business first
+We learn the business before we touch the technology. Where the time goes, where the money leaks, where a person is doing work a machine should be doing.
+
+- Workflow + cost mapping
+
+- Where AI actually pays
+
+- A plan you own
+
+02
+
+### Build
+
+inside your real operation
+We build inside your real operation, not a sandbox. Small, working, tested. You watch it run and earn your trust before it touches anything that matters.
+
+- Small, working, tested
+
+- Runs in your real stack
+
+- Trust earned before it matters
+
+03
+
+### Evolve
+
+as the work changes
+Businesses move. We tune, extend, and retire systems as the work changes, so what we built stays useful instead of becoming the next thing you work around.
+
+- Tune and extend
+
+- Retire what is done
+
+- Stays useful over time
+
+02 / The first 90 days
+
+## What happens in the first 90 days?
+
+Thirteen weeks, three movements: discover, build, hand off. The exact price is quoted in writing before week 1; see the Implementation Sprint spec or the price list .
+
+Weeks 1–2
+Discover
+Walk the workflows with the people who run them, and cost each one.
+
+Weeks 3–10
+Build
+Build and test inside your live operation, proving each piece before it touches anything that matters.
+
+Weeks 11–13
+Handoff
+Train your team and hand everything over. You own all of it.
+
+03 / The promise
+
+## What we promise. And what we don’t.
+
+The list on the left is what we sign up for. The list on the right is what no honest AI shop should ever claim. If one does, ask harder questions.
+
+### What we promise
+
+- Prices on this page, in plain numbers: no discovery call required to learn the cost
+
+- Fixed scope and a fixed price agreed before we start
+
+- The advisor who scopes your project is the one who builds it
+
+- Vendor-neutral recommendations, including the free tool when the free one wins
+
+- A human who can explain, question, and overrule every system we build
+
+### What we don’t promise
+
+- Guaranteed ROI numbers: we quote ranges; real results depend on your execution
+
+- Magic in a couple of weeks: real implementation runs about 90 days per workflow
+
+- That AI is right for you right now: sometimes the honest answer is “wait a quarter”
+
+Start here
+Every engagement starts with a free 30-minute AI Opportunity Assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. We reply within 24 hours.
+
+Book a free assessment →
+
+A fixed price, quoted in writing before we start. And a straight answer within 24 hours.
+
+— Christopher Myers, Founder
+
+========================================================================
+PAGE: Who Builds This: Christopher Myers & Main & Machine
+URL: https://www.mainandmachine.com/about/
+SUMMARY: Christopher Myers: 26 years backing Main Street, and an AI-native team building fixed-price systems in about 90 days from Denver and Phoenix.
+========================================================================
+
+Main & Machine
+/
+Who we are
+
+Who we are
+
+# Who builds this.
+
+Main & Machine is an AI consulting and implementation firm for small and mid-size businesses, founded by Christopher Myers, with hubs in Denver and Phoenix and remote coverage across the US. It builds custom agents, workflow automations, and data integrations at fixed prices, delivered in about 90 days.
+
+The firm : v.2026
+
+Founder : Christopher Myers
+
+Backing Main Street : 26 years
+
+Hubs : Denver & Phoenix
+
+Build team : ~25 AI-native
+
+01 / The founder
+
+## Christopher Myers.
+
+A professor, an entrepreneur, and an operator: 26 years in service of Main Street.
+
+Christopher Myers
+CEO, B:Side Capital + Fund · Founder & Chairman, Main & Machine · Professor, ASU W.P. Carey · Author
+
+Read his essay Seventy Years of Overnight Success , or see how every build runs in the method .
+
+Christopher has spent 26 years backing Main Street, today as CEO of B:Side Capital and Fund , a professor of entrepreneurship at ASU’s W.P. Carey School, and the author of several books on small business. Main & Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building.
+
+As chairman, he pairs his own senior judgment with a team of AI-native builders : digital natives who never had to unlearn the old way. One operator stays accountable for every build. The future doesn’t belong to the people who can do what AI does; it belongs to the people who can take what the machine produces and be accountable for it.
+
+Our founder’s work has been covered in: Forbes The Wall Street Journal The New York Times Inc. TechCrunch MSNBC Fox Business
+
+02 / The team
+
+## The build team is young on purpose.
+
+Around twenty-five AI-native technologists, most of them students and recent graduates, who have never known work without these tools and have nothing to unlearn. Every build runs under one accountable operator with twenty-six years backing Main Street. That pairing is the whole company: fluency with the new, judgment from the old.
+
+03 / Why us
+
+## What makes us hard to copy.
+
+Four things, none of which a competitor can bolt on next quarter.
+
+01: Prices stated plainly
+
+### No discovery call required to learn the cost.
+
+The price list is published in plain numbers, because that is how you would want to be treated.
+
+02: Vendor-neutral
+
+### We make no money reselling anyone’s software.
+
+We recommend what is right for you, including the free tool over the expensive one when the free one wins.
+
+03: One accountable operator
+
+### One name owns your build, start to finish.
+
+Christopher Myers scopes the work, holds the judgment calls, and signs off, so you always know exactly who is accountable.
+
+04: Built by digital natives
+
+### The people building your systems never had to unlearn the old way.
+
+They did not learn AI in a weekend bootcamp. They grew up with it, building under one accountable operator.
+
+04 / The name
+
+## Two words. One argument.
+
+We put Main first on purpose. The order is the whole philosophy.
+
+Main the human part
+
+Main Street is the human part. The owner who knows which customer always pays late and which one is worth keeping anyway. The manager who can feel when a week is about to go sideways. The judgment that no model has, and no model will.
+
+Machine the tireless part
+
+The Machine is the other part. It is patient in a way people cannot be. It reads every invoice, watches every queue, drafts the first version at three in the morning, and never gets tired or bored or careless on a Friday afternoon.
+
+& the whole company
+
+The ampersand is the whole company. The machine works for the person: it carries the load the person should not have to carry, and hands every judgment call back to them. The person stays in charge; the software stays in service. Build it in that order and you have built the right thing. That is the only thing we build.
+
+Start here
+Book a free 30-minute AI Opportunity Assessment. We will look at your business and tell you the truth, even when the truth is “wait a quarter” or “you do not need us for this.”
+
+Book a free assessment →
+
+A fixed price, quoted in writing before we start. And a straight answer within 24 hours.
+
+— Christopher Myers, Founder
+
+========================================================================
+PAGE: MARCUS: A Private AI Back Office for B:Side Capital
+URL: https://www.mainandmachine.com/work/marcus/
+SUMMARY: How Main & Machine built MARCUS: 14 AI agents that run a regulated lender's back office entirely on-prem, with no borrower file leaving the building. A client story, published with B:Side Capital's permission.
+========================================================================
+
+Main & Machine
+/
+Proof
+/
+MARCUS
+
+Client story · B:Side Capital
+
+# We built a team of AI agents that runs a lender’s back office, without a single file leaving the building.
+
+B:Side Capital, an SBA 504 and CDFI lender, came to us with hundreds of process documents and one hard requirement: automate the repetitive work, but never give up control of the data or the decisions. We built MARCUS to do exactly that.
+
+Build something like MARCUS →
+See how it works
+
+Private by design. Auditable by default. Built from their own process. Published with permission.
+
+Case file : MARCUS · 2026
+
+Client : B:Side Capital
+
+Sector : SBA 504 / CDFI lender
+
+Footprint : 7 departments
+
+The team : 14 AI agents
+
+Runs : In-house, on-prem
+
+Who we built it for
+
+Type : SBA 504 · CDFI
+
+Touches : Borrower financials
+
+Stakes : Regulated · auditable
+
+B:Side Capital is a mission-driven lender, an SBA 504 and CDFI institution whose work touches sensitive borrower financials at every step: intake, eligibility, underwriting support, funding, portfolio monitoring, and the high-stakes work of servicing distressed loans. It’s a business where a single mishandled document isn’t an inconvenience; it’s a compliance event.
+
+That’s the kind of environment most AI tools quietly avoid. It’s the kind we build for.
+
+The problem
+
+## Lending runs on preparation. That’s where the days disappear.
+
+Before anyone can make a decision, someone has to gather the documents, pull the reports, run the checks, and draft the paperwork. The same steps, over and over, across seven departments. That preparation is where the bottlenecks form.
+
+The obvious fix, feed it all to a cloud AI, was a non-starter. Borrower data can’t leave a controlled environment. Eligibility, credit, and pricing can’t be decided by a black box. And every action a regulator might ask about has to be provable, after the fact, down to the source.
+
+The brief, in one line
+
+Take the prep off our people’s plate, without ever taking them out of control.
+
+The solution
+
+## Meet MARCUS.
+
+MARCUS is not an app B:Side’s team had to learn. It’s a colleague that lives inside the tools they already use: Slack, their lending systems, the browser. It does the gathering, checking, and drafting, then hands finished, organized work to a person to approve.
+
+Built entirely from B:Side’s own process documentation, every step MARCUS takes traces back to how the institution already works. Nothing was invented.
+
+Four surfaces the team already knows
+
+01
+
+### A chat front door
+
+Ask a question, get findings back. The way the team already talks to each other.
+
+In Slack
+
+02
+
+### An approval queue
+
+A simple list where a person says yes, sends it back, or escalates.
+
+Human sign-off
+
+03
+
+### A browser assistant
+
+Read-only. Answers questions about the screen in front of you, changes nothing.
+
+On-screen, view-only
+
+04
+
+### The systems of record
+
+Once approved, work lands where it already belongs: their lending platform and tools.
+
+Existing systems
+
+AI agents
+: 14
+: one for each step of the lending lifecycle
+
+departments
+: 7
+: from intake to portfolio to distressed-asset servicing
+
+source documents
+: ~840
+: every action traced to a real B:Side process
+
+Built from their work, not our assumptions
+
+## We didn’t bring a template. We read everything.
+
+Before we wrote a line of code, we reviewed roughly 840 files across every division of the business. From that, we mapped fourteen distinct agents, each one doing a specific, real job, each one citing the exact operations document it came from.
+
+Intake →
+Production →
+Funding →
+Portfolio →
+Priority assets →
+Across the institution
+
+DEPT 01 Lender Services 2 agents
+
+AGENT 01 Intake agent cited to source
+
+AGENT 02 Eligibility agent cited to source
+
+DEPT 02 Loan Production 4 agents
+
+AGENT 03 Document-prep agent cited to source
+
+AGENT 04 Due-diligence agent cited to source
+
+AGENT 05 Credit-analysis agent cited to source
+
+AGENT 06 Underwriting-support agent cited to source
+
+DEPT 03 Funding 2 agents
+
+AGENT 07 Closing & funding agent cited to source
+
+AGENT 08 Disbursement agent cited to source
+
+DEPT 04 Portfolio 2 agents
+
+AGENT 09 Portfolio-monitoring agent cited to source
+
+AGENT 10 Covenant & reporting agent cited to source
+
+DEPT 05 Priority Assets 2 agents · built last
+
+AGENT 11 Payment-relief agent cited to source
+
+AGENT 12 Loan-resolution agent cited to source
+
+DEPT 06–07 Sales & Administration 2 agents · cross-cutting
+
+AGENT 13 Outreach & pipeline agent cited to source
+
+AGENT 14 Compliance & audit agent cited to source
+
+Every step in the blueprint cites the operations document it came from. That’s the difference between an AI demo and an AI system.
+
+How it was built
+
+We built it the way you’d actually want a system this consequential built: in order, one capability at a time, each piece proven on real files before the next one shipped.
+
+Highest exposure, built last
+
+The most delicate work, payment relief and loan resolution, was deliberately built last, once trust in the system was already established.
+
+Your data never leaves the building
+
+## The whole system runs in-house. On purpose.
+
+Most AI vendors ask you to trust their cloud. We did the opposite. MARCUS runs on a single secured machine in B:Side’s own server closet. The models that read borrower documents run right there, in the building.
+
+L1
+
+### Local by default
+
+The AI lives on B:Side’s own hardware, not someone else’s cloud. In normal operation, nothing about a file is sent to an outside service.
+
+L2
+
+### PII stripped before the model ever sees it
+
+Microsoft Presidio detects and removes names, SSNs, and account numbers first. The model sees the work, not the identity.
+
+L3
+
+### Encrypted and tamper-evident
+
+Everything stored is fully encrypted, and every action writes to an append-only log secured as a tamper-evident chain. Compliance can prove nothing was altered.
+
+B:Side server closet On-prem
+
+#### Borrower document
+
+raw · sensitive · stays put
+
+↓ Presidio strips PII
+
+#### Local model
+
+reads the work, not the identity
+
+↓ encrypt + log to chain
+
+#### Encrypted store & audit chain
+
+append-only · tamper-evident
+
+⛌ No borrower file leaves this box in normal operation.
+
+This is what makes MARCUS usable in a regulated lending environment at all, and it’s the part most teams can’t build.
+
+One rule behind everything
+
+## MARCUS prepares the work. People decide.
+
+Nothing sends, files, posts, or pays until a person approves it. MARCUS never decides eligibility, credit, or price. Those numbers come from systems, never from memory. Every request arrives the same way.
+
+STEP 01
+
+### It shows its work
+
+Here’s what I did, here’s what I’m asking for, here’s the source I relied on.
+
+STEP 02
+
+### A person chooses
+
+Approve it, send it back with comments, or escalate it. While a request waits, nothing moves.
+
+STEP 03
+
+### It escalates, never proceeds
+
+If it waits too long, it escalates to a person automatically. It never proceeds on its own.
+
+#### Numbers come from systems
+
+Eligibility, credit, and price are looked up, never recalled from memory.
+
+#### Every step is logged
+
+Attributable and auditable, down to the source document.
+
+#### It’s the design, not a limit
+
+Humans in control isn’t a constraint we worked around. It’s the point.
+
+What changed
+
+## B:Side’s people get their day back for the work only people can do.
+
+With the preparation handled, the team is free for the relationships, the customer service, and the judgment calls that actually move a deal. The repetitive prep that used to create bottlenecks now arrives finished, organized, and named the way the team already does it, ready for a human to review.
+
+The result is an institution that moves faster without giving up an ounce of control, compliance, or trust.
+
+If the stakes are real
+
+## If you can document how your business works, we can build the machine that runs it.
+
+MARCUS is what Main & Machine builds when the stakes are real: private, auditable, built from your own processes, and designed so your people stay in control the whole way through. If that’s the kind of system your business needs, let’s talk.
+
+Start a conversation →
+Explore more client stories
+
+Proof
+
+## More client stories.
+
+See all of Proof →
+
+Current · B:Side Capital
+
+### MARCUS: a private back-office brain for a regulated lender
+
+14 agents across 7 departments, running entirely in-house. The high end of what we build.
+
+You’re reading it
+
+More client stories are clearing review as each client signs off on the numbers.
+
+========================================================================
+PAGE: Free 30-Minute AI Assessment for Small Business | Main & Machine
+URL: https://www.mainandmachine.com/book/
+SUMMARY: A senior advisor walks your workflows and shows where AI pays, what it's worth, and when to wait. Free, no pitch, reply within 24 hours.
+========================================================================
+
+Main & Machine
+/
+Book an assessment
+
+The AI Opportunity Assessment
+
+# 30 minutes. No pitch. A straight answer.
+
+Tell us a little about your business and we will set up a free 30-minute assessment. A senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth, including when the smart move is to wait a quarter.
+
+Assessment Free
+
+Cost $0
+
+Length 30 minutes
+
+Format Call · remote
+
+You hear back Within 24 hours
+
+Assessment request * required
+
+## What happens · 30 minutes
+
+01
+
+### We listen
+
+You walk us through how the work actually flows today. Plain language is plenty.
+
+02
+
+### We map
+
+A senior advisor finds the handful of workflows quietly costing you the most.
+
+03
+
+### We level with you
+
+Where AI pays, where it doesn’t, and a rough sense of what it’s worth.
+
+04
+
+### You decide
+
+You leave with a clear read. That’s where it ends unless you want more.
+
+## What you leave with
+
+- A plain-language read on where AI would actually pay in your business
+
+- A rough dollar range on the opportunity, run against your real numbers
+
+- A clear “not yet” if that’s the call, said out loud
+
+- A read that’s yours to act on with us, another firm, or alone
+
+## Who you’ll talk to
+
+### Christopher Myers
+
+Founder & Chairman. The person who scopes your work is the one accountable for the build. 26 years backing Main Street.
+
+## The promise
+
+You’ll leave knowing what’s worth doing and what isn’t, and we’ll never pad the list to win the work. Substance over sales.
+
+If the assessment finds nothing worth building, we say so and you keep the notes. That’s the whole transaction.
+
+Request received Logged
+
+Reference MM-2026-0000
+
+## Thanks. You’re in the queue.
+
+We’ve got your request. A senior advisor will email you within 24 hours to set a time for your 30-minute assessment.
+
+Reaching out to —
+
+Via —
+
+For —
+
++
+Help us prep: 30 seconds, optional
+
+None of this is required. It just makes your 30 minutes sharper.
+
+Got it. Filed with your request. It’ll be in front of the advisor before the call.
+
+Now
+
+### Request logged
+
+Your details land in front of a senior advisor the same day.
+
+Within 24 hours
+
+### We email you
+
+A short note proposing a few times that work, in your preferred channel.
+
+The call
+
+### 30 focused minutes
+
+We walk your workflows and show you where AI pays.
+
+After
+
+### You decide
+
+Build with us, sit tight, or walk away. Your call.
+
+Want it on the calendar now? Pick a time →
+Read The Ampersand while you wait →
+Back to the site
+
+Before you book
+
+## Fair questions.
+
+### Still deciding?
+
+You don’t have to be sure about AI to book. The whole point of the assessment is to find out. In 30 minutes.
+
+Jump to the form →
+
+01 What exactly is the assessment? +
+A free 30-minute working session with a senior advisor. We walk your workflows: where the time goes, what it costs, what a machine could carry. You leave with a plain-language read on where AI pays in your business and a rough dollar range. It ends there unless you want more. We reply within 24 hours to set a time.
+
+02 Is it really free? +
+Yes. No card, no catch. 30 minutes with a senior advisor, a clear read on your business, and that’s it. We do this because the businesses worth building with tend to start here.
+
+03 What if AI isn’t right for my business? +
+Then we’ll tell you. Sometimes the answer is “wait a quarter,” or “you don’t need us for this.” You’ll leave with 30 minutes back and a clear answer, which is more than most firms hand out.
+
+04 Do I need to prepare anything? +
+No. Come as you are. It helps if you can speak to how the work moves day to day: where the time goes, where things pile up. That’s all the prep there is.
+
+05 Who actually shows up to the call? +
+A senior advisor, the person who would scope and build your project, not a junior rep reading off a script.
+
+06 What happens to the details I submit? +
+They go to us so we can prepare for your call. That’s all. Your details never enter a marketing list, and if we never work together they go nowhere at all.
+
+========================================================================
+PAGE: What an AI Consultant Costs in 2026 | Main & Machine
+URL: https://www.mainandmachine.com/guides/ai-consultant-cost/
+SUMMARY: What AI consultants charge in 2026: hourly rates, boutique project fees, Big Four minimums — and where our published $3,500–$45,000 fixed prices sit.
+========================================================================
+
+Main & Machine
+/
+The Field Guide
+/
+What it costs
+
+The Field Guide / 01
+
+# What an AI consultant costs in 2026.
+
+Most firms make you book a call to learn a number. Here is the whole market instead — hourly rates, boutique projects, Big Four minimums — and exactly where we sit in it.
+
+Field Guide No. 01
+
+Reading time 8 min
+
+Market range $100/hr–$1M+
+
+Our range $3,500–$45,000
+
+Updated July 2026
+
+## What does an AI consultant cost in 2026?
+
+Anywhere from $100 an hour to more than $1 million a project, depending on the shape of the firm you hire. Independent consultants typically bill $100–$300 an hour, specialist boutiques price projects from roughly $10,000 to $150,000, and the global firms start in the mid six figures.
+
+That spread is not noise. You are buying genuinely different things at each tier: a person’s time at the bottom, a scoped build in the middle, and an institution’s process at the top. Our own prices sit at the low end of the boutique band and are published in full: an AI Readiness Audit runs $3,500–$8,500, and an AI Implementation Sprint runs $12,000–$45,000, quoted as a fixed price in writing before work begins. The rest of this guide shows you the whole shelf so you know what you are choosing between.
+
+## What do hourly AI consultants charge?
+
+Independent AI consultants generally bill $100–$300 an hour, and specialists with deep machine-learning or data-engineering backgrounds run $200–$500. The rate is only half the number that matters; the other half is hours, and almost nobody quotes those in advance.
+
+Run the arithmetic on a real project. A modest automation build — intake handling, invoice follow-up, a data sync — is commonly 150 to 400 hours of work once meetings, revisions, and testing are counted. At $250 an hour, that is $37,500 to $100,000, and you learn the true figure only when it stops climbing. Hourly billing is not dishonest; plenty of good people work this way. But the structure puts every unknown on your side of the table. When the project runs long, the consultant earns more. You would not let a contractor rebuild your kitchen on those terms.
+
+The Ampersand essay The Currency of the Machine covers why AI work in particular resists time-based pricing: the costs live in tokens, tooling, and iteration, not in neat billable blocks.
+
+## What do the big firms charge for AI consulting?
+
+Big Four and global-consultancy AI engagements commonly start around $250,000 and pass $500,000 before anything ships; multi-year transformation programs run into the millions. For an enterprise wiring AI through 40,000 employees and a compliance department, that can be entirely rational.
+
+What you are paying for is scale and cover: layers of analysts, governance frameworks, and a brand that reassures a board. None of that is fake — it is just built for a different customer. A 30-person firm inside one of those engagements is a rounding error, and rounding errors get the junior team. As our pricing page puts it: our largest engagement costs less than their kickoff meeting. If you are 5 to 100 people, this tier is not your market, and being priced out of it costs you nothing.
+
+## What do boutique AI consultancies charge?
+
+Specialist AI boutiques generally price by project: roughly $10,000–$50,000 for a scoped implementation, and $50,000–$150,000 for larger multi-workflow builds. This is the band where small and mid-size businesses should shop.
+
+The variance inside the band comes from three things: how senior the people actually doing the work are, how much custom engineering the build needs, and how the firm handles risk. Watch the last one closely. Many boutiques quote a “project price” that is time-and-materials wearing a suit — an estimate, not a commitment, with a change-order pipeline waiting behind it. The test is simple: is the number fixed, in writing, before work begins? If the answer involves the word “typically,” it is an hourly engagement with better marketing.
+
+## How does the market compare, side by side?
+
+Four tiers, one table. The ranges are typical market figures — what firms in each tier commonly charge — not quotes; the bottom row is our published price list.
+
+Who
+
+Pricing model
+
+Typical range
+
+Built for
+
+You learn the price
+
+: Independent consultant
+: Hourly
+: $100–$300/hr ($200–$500 for specialists)
+: Advice, small scoped tasks
+: Rate up front; total when it ends
+
+: Boutique consultancy
+: Project (often estimated, not fixed)
+: $10,000–$150,000
+: SMB and mid-market builds
+: After discovery, sometimes fixed
+
+: Big Four / global firm
+: Engagement / retainer
+: $250,000–$1M+
+: Enterprise transformation
+: After a proposal cycle
+
+: Main & Machine
+: Fixed price, in writing, before work begins
+: Audit $3,500–$8,500 · Sprint $12,000–$45,000
+: 5–100 person businesses
+: Right now, on the pricing page
+
+Market ranges are typical 2026 figures for US firms, stated for comparison — not competitor quotes. Our row is the published list.
+
+## Why does fixed-price beat hourly for AI work?
+
+Because AI projects carry more scope uncertainty than almost any other consulting work, and hourly billing hands every ounce of that uncertainty to you. A fixed price forces the seller to scope before selling — and scoping first is precisely the discipline that makes AI projects succeed.
+
+The incentives are the whole story. An hourly consultant is paid for time spent; a fixed-price builder is paid for finishing. When the model misbehaves in week six — and some week, it will — one of those two parties absorbs the surprise. That is why our engagements start with the audit: two to four weeks of mapping where the hours actually go, so the sprint that follows is priced on knowledge instead of hope. The number is quoted in writing before work begins and does not move after we start.
+
+## Where do our prices sit, exactly?
+
+At the published bottom of the boutique band. The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks; the AI Implementation Sprint runs $12,000–$45,000, fixed in writing, over 4 to 12 weeks — about 90 days per workflow; Managed Services is a monthly retainer with no lock-in.
+
+Three things are deliberately not in those prices. There is no discovery-call gauntlet — the numbers are on one page , and you just read them. There is no strategy-deck line item; we implement, and a plan you cannot execute is a poster. And there is no dependency by design: your team is trained to run what we build, and you own all of it at handoff. If you want to see what the audit deliverable actually looks like before spending a dollar, two redacted pages of a real one are published . Every engagement starts with a free 30-minute assessment, and we reply within 24 hours.
+
+## How should a small business budget for AI in 2026?
+
+Plan for roughly $15,000–$55,000 in year one if you build: an audit plus one implementation sprint, at our prices. Budget zero for strategy decks, and treat any year-one number above $150,000 as an enterprise price that wandered into the wrong meeting.
+
+Two smaller lines belong in the budget too. Running costs: the tools and model usage behind a working system typically land between $50 and $500 a month for a small business — real money, but a fraction of what the manual work cost. And maintenance: models and vendors shift, so either someone in-house watches the system or a retainer does. Ours is monthly with no lock-in, priced by what is running.
+
+Whether the build budget returns anything depends on your workflows, not the consultant’s slides — our ROI calculator shows the assumptions we use, in the open, and the audit exists to replace those assumptions with your real numbers. Sometimes the audit’s answer is “wait a quarter,” in writing, and the sprint money stays in your pocket. Before you spend anything, run the 20-point readiness checklist — it is free and takes an afternoon. And when you start taking meetings, bring the ten vetting questions to every one of them, including ours.
+
+Fair questions
+
+## What AI consulting costs.
+
+### Want the numbers?
+
+The full price list is published — audits, sprints, managed services, all on one page.
+
+Read the price list →
+
+01 How much does an AI consultant cost per hour? +
+Independent AI consultants typically bill $100–$300 an hour; specialists with deep machine-learning backgrounds run $200–$500. The total depends on hours, which almost nobody quotes in advance — which is why we price fixed instead.
+
+02 How much should a small business budget for AI consulting? +
+Roughly $15,000–$55,000 in year one at our published prices: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $12,000–$45,000, fixed in writing before work begins.
+
+03 Why are Big Four AI engagements so expensive? +
+They are built for enterprises: layers of analysts, governance frameworks, and brand assurance. Engagements commonly start around $250,000 — rational at 40,000 employees, mismatched at 40.
+
+04 Is fixed-price better than hourly for AI projects? +
+For small and mid-size businesses, usually yes. AI work carries unusual scope uncertainty, and hourly billing hands all of it to the buyer. A fixed price forces the seller to scope before selling.
+
+Start here
+
+## Want a number for your business?
+
+The free 30-minute assessment is where ranges become a fixed quote in writing. A senior advisor walks your workflows and gives you a straight read. We reply within 24 hours.
+
+Book a free assessment →
+Read the full price list →
+
+========================================================================
+PAGE: The AI Readiness Checklist: 20 Points | Main & Machine
+URL: https://www.mainandmachine.com/guides/ai-readiness-checklist/
+SUMMARY: A 20-point AI readiness checklist a business owner can run in an afternoon, no consultant required. Score it, then verify with the free AI-Ready Score.
+========================================================================
+
+Main & Machine
+/
+The Field Guide
+/
+Readiness checklist
+
+The Field Guide / 02
+
+# The AI readiness checklist: 20 points.
+
+Run it in an afternoon, without hiring anyone — including us. Twenty checks across your workflows, data, team, and economics, with scoring bands that include the answer nobody sells: wait.
+
+Field Guide No. 02
+
+Reading time 9 min
+
+Checks 20
+
+Cost to run $0
+
+Automated version AI-Ready Score
+
+Updated July 2026
+
+## What makes a business ready for AI?
+
+Documented workflows, data somebody can actually export, one named person with time to review what a machine produces, and a number on what the manual work costs you. That is the whole secret — not a data science team, not a bigger budget, not a platform migration.
+
+The twenty checks below test exactly those four things. They are the same questions we ask in the first week of a paid AI Readiness Audit , published here because you can run most of them yourself. A business that passes fifteen of these will get more from a $12,000 build than an unprepared one gets from a $200,000 engagement.
+
+## How do you use this checklist?
+
+Score one point for every item you can check off without squinting, zero for the rest — no half points. Twenty minutes if you know your business; an afternoon if you have to go look, and having to go look is itself a finding.
+
+Be strict. The checklist only helps if the score is true, and nobody is watching you take it. If an item makes you say “sort of,” that is a zero with better posture.
+
+## Are your workflows ready? (Points 1–5)
+
+Ready means known, written down, and owned. AI automates what you can describe; it cannot automate a vibe.
+
+- You can name your three most repetitive workflows without checking. If you have to ask a manager, start there — the asking is the audit.
+
+- At least one of those workflows is written down, step by step, somewhere other than someone’s head. A checklist, a wiki page, even a dusty SOP. Machines learn from documents, not folklore.
+
+- You know roughly how often each one runs. Ten times a week or ten times a day changes what a fix is worth by an order of magnitude.
+
+- You can describe the exceptions. Someone can say what the weird ten percent looks like — the rush order, the disputed invoice, the client who calls instead of emailing.
+
+- Each workflow has one owner with a name. “Operations handles that” is not a name. Automation without an owner is a stray dog.
+
+## Is your data ready? (Points 6–10)
+
+Ready does not mean clean — nobody’s data is clean. It means you know where each fact lives and you can get it out.
+
+- You can say which system is the truth for each core fact. Customer, order, invoice, job status: one home each. Two systems that disagree is the most expensive kind of normal.
+
+- No critical number lives only in a spreadsheet on one person’s desktop. If payroll week depends on Carol’s laptop surviving, fix that before any AI conversation.
+
+- You can export your own data without calling a vendor. Try it this week. A system that holds your data hostage will hold your automation hostage too.
+
+- You know what you are obliged to keep private, and for whom. Clients, patients, employees — the obligations differ, and the build must honor them. Where data may and may not go is the subject of Where Your Data Goes .
+
+- Someone can pull last month’s numbers in under an hour, without IT. If a basic report takes a week, the machine will automate confusion at scale.
+
+## Is your team ready? (Points 11–15)
+
+Most AI projects fail on people, not technology. These five checks find out before the invoice does.
+
+- Someone at the top actually wants this. A sponsor who will spend attention on it — not an owner who merely tolerates the experiment.
+
+- A specific person has two to three hours a week to review what the system drafts. Every system worth building routes judgment to a human. That human needs a calendar, not a title.
+
+- Your team has survived a process change in the past year. New POS, new scheduling tool, new anything. If the last change died in quiet mutiny, the pattern will repeat.
+
+- You can name who says “stop.” When the machine misbehaves, one person has the authority to pull the cord and the standing to be believed.
+
+- Training sticks here. Your people have learned a tool before and still used it in month three. Software that nobody opens is furniture.
+
+## Are your economics ready? (Points 16–20)
+
+AI is an investment with a payback period, not a lottery ticket. These checks confirm you can do the arithmetic — because a vendor certainly will not do it against themselves.
+
+- You know what an hour of admin work costs you, fully loaded. Wage plus taxes plus benefits. Every automation case is built on this number.
+
+- You can name the three workflows that cost the most. Not the most annoying — the most expensive. They are frequently not the same list.
+
+- You have a budget range, even a soft one. For scale: our audits run $3,500–$8,500 and sprints $12,000–$45,000, fixed in writing. If those numbers are unthinkable, the answer is “not yet,” and that is a fine answer.
+
+- You expect ranges, not guarantees. Anyone who promises exact ROI is selling something other than results. We publish our assumptions ; a promise dressed as a number is a red flag.
+
+- You are willing to stop a failing project at day 45. Not day 300. The discipline to quit early is worth more than the discipline to start.
+
+## How do you score it?
+
+Sixteen or more: you are ready to build, and your problem is choosing what first — an audit will rank the options by payback. Ten to fifteen: you are ready to map but not yet to build; start with the audit, or work the failed checks yourself first. Nine or fewer: wait.
+
+One pattern is worth naming because it is so common: a business that scores eighteen on workflows and economics but fails points 11 through 15 — the team section. That firm will buy a good system and starve it, because nobody has the hours to review what it drafts. If your zeros cluster in one section, fix that section before anything else; a lopsided score fails in more expensive ways than a low one.
+
+Waiting is not falling behind. Most of what a low score reveals — an undocumented workflow, a hostage export, a missing owner — costs little or nothing to fix and pays off whether or not you ever build. The items in the data section are the usual culprits, and most are a policy decision, not a purchase. Fix the foundations, retake the list in a quarter, and you will have gained ground on competitors who bought first and prepared never. When you do take meetings, bring the ten vetting questions , and know what the market charges before anyone quotes you.
+
+## Is there an automated version?
+
+Yes — the AI-Ready Score : fourteen questions, about seven minutes, and you get a 0–100 score plus the one constraint to fix first. No sales call follows it.
+
+We built it as the instrumented version of this page. The checklist tells you what to look at; the Score weighs the answers the way we would in an audit and hands you a number you can retake next quarter. Run both — the gap between your self-score here and your Score there is usually the most instructive number of all.
+
+Fair questions
+
+## About AI readiness.
+
+### Want the numbers?
+
+The full price list is published — audits, sprints, managed services, all on one page.
+
+Read the price list →
+
+01 How do I know if my business is ready for AI? +
+Run the 20 checks on this page: documented workflows, exportable data, a named owner with review time, and a number on what the manual work costs. Sixteen or more and you are ready to build; nine or fewer means fix the foundations first.
+
+02 What should be in place before hiring an AI consultant? +
+At minimum: your three most repetitive workflows named, one of them written down, a person with two to three hours a week to review outputs, and a budget range. Those four save you money in week one of any engagement.
+
+03 Do I need clean data before starting with AI? +
+No — nobody's data is clean. You need to know which system is the truth for each core fact and be able to export it without calling a vendor. That is a policy decision more often than a purchase.
+
+04 Is there a free automated readiness assessment? +
+Yes — the AI-Ready Score: fourteen questions, about seven minutes, a 0–100 score, and the one constraint to fix first. No sales call follows it.
+
+Start here
+
+## Get the automated version in seven minutes.
+
+Fourteen questions, a 0–100 score, and the one constraint to fix first. No sales call. When you want a human read instead, the free 30-minute assessment is the front door.
+
+Get your AI-Ready Score →
+Book a free assessment →
+
+========================================================================
+PAGE: How to Choose an AI Consultant | Main & Machine
+URL: https://www.mainandmachine.com/guides/how-to-choose-an-ai-consultant/
+SUMMARY: Ten questions to ask any AI consultant before you sign — including us. How to spot hype merchants, and the answers a real builder should give.
+========================================================================
+
+Main & Machine
+/
+The Field Guide
+/
+How to choose
+
+The Field Guide / 04
+
+# How to choose an AI consultant.
+
+Ten questions that separate builders from hype merchants. Ask every firm all ten — including us. The good ones answer in plain English; the rest answer in adjectives.
+
+Field Guide No. 04
+
+Reading time 8 min
+
+Questions 10
+
+Applies to Us included
+
+Updated July 2026
+
+## How do you choose an AI consultant?
+
+Ask every candidate the same ten questions and disqualify anyone who dodges more than two. The questions below test the things that predict whether you get a working system or a deck: pricing candor, incentive alignment, proof, and what happens to your data.
+
+They are drawn from the same standard we publish against ourselves — the “what we don’t promise” list on our method page . Print this page and bring it to every meeting, ours included. If our answers and this list ever disagree, that is your red flag.
+
+## The ten questions
+
+Each comes with what a good answer contains — and what a bad one sounds like.
+
+Run the meeting the same way every time: same questions, same order, answers written down. Comparing firms only works when the inputs match, and taking notes changes the answers you get — vague firms get specific or get visibly uncomfortable, and both are information.
+
+### 1. What will this cost, and when do I learn the exact number?
+
+A builder gives you a range now and a fixed price in writing before work begins. Anyone who needs three discovery calls to produce a number is already billing you; the meetings are the meter. Our ranges are published — $3,500–$8,500 for an audit, $12,000–$45,000 for a sprint — and the whole market’s ranges are in Guide 01 , so you will know if a quote is an outlier.
+
+Bad answer: “Every engagement is unique — let’s schedule a discovery workshop.”
+
+### 2. Will you guarantee an ROI number?
+
+This one is a trap, and the right answer is no. Real results depend on your execution, so a serious firm quotes ranges and shows its assumptions; a firm that guarantees “300% ROI” is quoting fiction with confidence. We publish the assumptions behind our estimates precisely so nobody has to take a promise on faith.
+
+Bad answer: “Clients typically see 10x returns in 90 days, guaranteed.”
+
+### 3. How long until something actually works?
+
+About 90 days per workflow is what real implementation takes — scoping, building, testing inside your operation, and training your people. Two weeks is a demo, not a deployment, and “transformation by Friday” is the loudest hype tell there is.
+
+Bad answer: “We can have you fully AI-powered in two weeks.”
+
+### 4. Who scopes the project, and who builds it?
+
+The same person, or you are being bait-and-switched: a partner sells you, then a junior team you have never met inherits you. Ask to name the humans. In our shop the advisor who scopes your project is the one who builds it — that is a published promise , so hold us to it.
+
+Bad answer: “Our senior team oversees all delivery.” (Oversees is doing heavy lifting in that sentence.)
+
+### 5. Will you tell me if AI is wrong for us right now?
+
+“Wait a quarter” must be an answer the firm can afford to give, or every diagnosis will be “build.” Ask when they last told a prospect not to buy. A firm whose audit can conclude “don’t build yet, and here’s why, in writing” is scoping for your benefit, not their pipeline.
+
+Bad answer: “Every business needs AI today — the risk is waiting.”
+
+### 6. What tools will you recommend, and what do you earn from them?
+
+Vendor-neutral means the recommendation can be the free tool, and the firm earns nothing when it is not. Reseller commissions and “partner tiers” quietly bend advice toward whatever pays the consultant twice. Ask the question directly and watch for a flinch.
+
+Bad answer: “We’re a certified premier partner of [the thing they are about to recommend].”
+
+### 7. Where does our data go?
+
+You want three plain-English answers: where the model runs, what it sees before redaction, and who can prove what happened afterward. A vendor who cannot answer those three has answered them. The strongest pattern we can show is MARCUS — a regulated lender’s back office where the models run on the client’s own hardware and PII is stripped before anything is read.
+
+Bad answer: “It’s all encrypted in the cloud, totally secure.”
+
+### 8. Who can overrule the system?
+
+A named human, with the authority to say stop — or you are buying a machine that buries why decisions get made. Every system worth building drafts the work and routes the judgment to a person who owns it. If the pitch celebrates “fully autonomous, no human in the loop,” the demo is the product.
+
+Bad answer: “The beauty is it runs itself — no oversight needed.”
+
+### 9. What do we own when you leave?
+
+Everything, and your team trained to run it — or you have signed a lease, not bought a system. Ask what happens on the day the contract ends: who holds the credentials, the documentation, the prompts, the integrations. Dependency is a business model; make sure it is not the one you are buying.
+
+Bad answer: “Most clients stay on our platform long-term.”
+
+### 10. Show me something you built.
+
+Not slides — a build, with a name on it, and what it does. One verifiable system beats fifty logos on a credentials page. Ours are public: MARCUS, 14 agents running a regulated lender’s back office , and two redacted pages of a real audit deliverable . Ask every firm for their equivalent.
+
+Bad answer: “We’ve delivered AI transformation for leading brands across verticals.”
+
+## What are the red flags, in one list?
+
+Guaranteed ROI numbers, transformation measured in weeks, and a price you can only learn through a discovery sequence — any one of these ends the meeting. The rest of the list: scarcity pressure (“two slots left” with nothing verifiable behind it), tool recommendations that always land on a partner product, autonomy sold as a feature instead of a risk, and case studies with no names and no numbers.
+
+Watch for the pilot trap, too: a paid “pilot” that renews into a second pilot, then a third, with production always one phase away. Pilots are legitimate — ours is called a sprint and it ends with a working system in about 90 days. A pilot with no named graduation criteria is a subscription wearing a lab coat.
+
+None of these people are stupid, and some are not even dishonest — hype is a market, and they are serving it. Your job is only to notice you are the product. The Ampersand essay How to Smell the Hype is the longer training course for that nose.
+
+## Why publish questions we could fail?
+
+Because we would rather be disqualified by a sharp buyer than hired by a confused one. A client who chose us against a real standard stays; a client who was dazzled churns — so the standard is good business, not virtue.
+
+It is also the standard we already signed. Our method page lists what we promise and what we refuse to promise, and this guide is that list turned into questions anyone can ask any firm. Use it on us first: book the free 30-minute assessment and ask all ten. If you are still comparing, Guide 01 prices the whole market and Guide 03 runs the hire-or-engage math .
+
+Fair questions
+
+## Vetting an AI consultant.
+
+### Want the numbers?
+
+The full price list is published — audits, sprints, managed services, all on one page.
+
+Read the price list →
+
+01 What should I ask an AI consultant before hiring them? +
+Ten questions: the exact cost and when you learn it, whether they guarantee ROI (they should not), the real timeline, who scopes versus who builds, whether they can say wait, tool incentives, where your data goes, who can overrule the system, what you own at handoff, and proof of a real build.
+
+02 What are red flags when hiring an AI consultant? +
+Guaranteed ROI numbers, transformation promised in weeks, prices only available after a discovery sequence, unverifiable scarcity, tool recommendations that always land on a partner product, and case studies with no names.
+
+03 Should an AI consultant guarantee ROI? +
+No — and a guarantee is itself a red flag. Real results depend on your execution, so a serious firm quotes ranges and publishes its assumptions.
+
+04 What should you own at the end of an AI project? +
+Everything: the systems, credentials, documentation, and prompts, with your team trained to run them. Ongoing help should be optional — ours is a monthly retainer with no lock-in.
+
+Start here
+
+## Ask us all ten. We’ll go first.
+
+30 minutes with a senior advisor. Bring this page. You get straight answers and a read on what is worth automating — and what is not. We reply within 24 hours.
+
+Book a free assessment →
+Read our method first →

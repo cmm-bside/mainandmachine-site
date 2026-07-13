@@ -1,26 +1,82 @@
 # Main & Machine
 
 > AI consulting and implementation for small and mid-size businesses
-> (5–100 employees, $1M–$50M revenue). Fixed-price audits from $3,500;
-> implementation sprints $12,000–$45,000, delivered in ~90 days.
-> Denver, Phoenix, and remote across the US. Founded by Christopher Myers.
+> (5–100 employees, $1M–$50M revenue). Fixed-price audits $3,500–$8,500;
+> implementation sprints $12,000–$45,000, fixed quote in writing, delivered
+> in ~90 days per workflow. Hubs in Denver, CO and Phoenix, AZ; remote across
+> the US. Founded by Christopher Myers.
 > The free 30-minute assessment is the front door.
 
-## Services
+Full page text for AI systems: [llms-full.txt](/llms-full.txt) — the complete
+visible copy of the ten most important pages, with page delimiters.
 
-- [AI Readiness Audit](/services/ai-readiness-audit/): $3,500–$8,500,
-  2–4 weeks. Workflow map + where AI pays + a phased plan you own.
-- [AI Implementation Sprint](/services/implementation-sprint/):
-  $12,000–$45,000 fixed quote, 4–12 weeks. Working agents, automations,
-  integrations, team training.
-- [Managed Services](/services/managed-services/): monthly retainer,
-  no lock-in.
+## Company facts
+
+- Company: Main & Machine — AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue)
+- Who it serves: owner-run and mid-size businesses of 5–100 employees,
+  $1M–$50M in revenue — past what the owner can hold in their head,
+  short of a Fortune 500 budget
+- Founder & Chairman: Christopher Myers — CEO of B:Side Capital + Fund,
+  professor of entrepreneurship at ASU's W.P. Carey School of Business,
+  and author of several books on small business
+- Hubs: Denver, CO and Phoenix, AZ · remote across the US
+- Delivery: ~90 days per workflow, fixed price quoted in writing before work
+- Free offer: 30-minute AI Opportunity Assessment, reply within 24 hours
+- Contact: cmyers@mainandmachine.com · 480-805-9983
+- Operating principle: every system we build can be explained, questioned,
+  and overruled by an accountable human.
+
+## Services & published prices
+
+Every price is published; the exact number is quoted fixed, in writing,
+before work begins.
+
+- [AI Readiness Audit](/services/#audit): $3,500–$8,500, 2–4 weeks.
+  A workflow map of your real operations, the handful of places AI actually
+  pays, and a phased plan you own outright — whether or not you build with us.
+- [AI Implementation Sprint](/services/#sprint): $12,000–$45,000 fixed quote,
+  4–12 weeks. Working agents, automations, and integrations built inside
+  your real operation, with your team trained to run them. About 90 days
+  per workflow.
+- [Managed Services](/services/#managed): monthly retainer, no lock-in.
+  Monitoring and maintenance on every deployed system; leave any month it
+  stops paying.
+- [Pricing](/pricing/) — the full price list, on the page. Our largest
+  engagement ($45,000) is less than a Big Four kickoff meeting ($500,000+
+  minimums).
+- [Sample audit deliverable](/services/sample-audit/) — the artifact you buy,
+  shown before you buy it.
+
+## Proof: the MARCUS case
+
+- [MARCUS](/work/marcus/) — a private AI back office built for
+  B:Side Capital, an SBA 504 / CDFI lender: 14 AI agents across
+  7 departments, built from ~840 source documents, running
+  entirely on-prem — no borrower file leaves the building in normal
+  operation. PII is stripped by Microsoft Presidio before any model reads
+  a document; every action writes to a tamper-evident audit log; nothing
+  sends, files, posts, or pays until a person approves it. Published with
+  the client's permission.
+- [Proof](/work/) — builds shown plainly, with a standing rule: numbers and
+  client quotes on that page render only from a build log, and quotes appear
+  only with the client's written sign-off on file. Missing numbers stay
+  blank rather than invented.
+
+## Method
+
+- [The method](/method/) — three phases on every engagement: Discover
+  (map and cost the workflows), Build (working systems inside your real
+  operation), Evolve (tune, extend, retire as the work changes). A workflow
+  lands in about 90 days: weeks 1–2 discover, weeks 3–10 build, weeks
+  11–13 handoff.
 
 ## Free tools
 
 - [The AI-Ready Score](/score) — free seven-minute self-assessment:
   fourteen questions across three phases (Map, Prove, Expand). You get a
   0–100 score and the one constraint to fix first. No sales call.
+- [ROI calculator](/calculator/) — rough year-one ranges by industry and
+  team size. Ranges, not promises.
 
 ## Guides
 
@@ -35,19 +91,22 @@
 - [How to choose an AI consultant](/guides/how-to-choose-an-ai-consultant/) —
   10 questions that separate builders from hype merchants
 
+## Industries
+
+- [Who this is for](/industries/) — five industries with the clearest wins:
+  [professional services](/industries/professional-services/) ·
+  [retail](/industries/retail/) · [healthcare](/industries/healthcare/) ·
+  [construction & trades](/industries/construction/) ·
+  [hospitality](/industries/hospitality/)
+
 ## Key pages
 
-- [Pricing](/pricing/) — full price list, published
+- [Home](/) — what we build and why
 - [Free assessment](/book/) — 30 minutes, reply within 24 hours
-- [Method](/method/) · [About](/about/) ·
-  [Denver](/denver/) · [Phoenix](/phoenix/)
-- [The work](/work/) — builds shown plainly, sample audit included
+- [Who we are](/about/) — the founder, the AI-native build team, the name
+- [Denver](/denver/) · [Phoenix](/phoenix/) — the two hubs, in person
+- [Contact](/contact/) — email or call; both land with the founder
+- [Careers](/careers/) — join the build team
 - [The Ampersand](/blog/) — weekly plain-English AI essays
-
-## Facts
-
-- Founder & Chairman: Christopher Myers (CEO, B:Side Capital + Fund;
-  professor, ASU W.P. Carey; author)
-- Contact: cmyers@mainandmachine.com · 480-805-9983
-- Every system we build can be explained, questioned, and overruled
-  by an accountable human.
+  ([archive](/blog/archive/), [RSS](/blog/rss.xml))
+- [Privacy](/privacy/) · [Terms](/terms/)

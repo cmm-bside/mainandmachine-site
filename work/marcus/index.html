@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=83" />
+<link rel="stylesheet" href="/styles.css?v=84" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -96,6 +96,14 @@
 .mk-stat .tick-num{ font-size: clamp(var(--fs-49), 5vw, var(--fs-61)); color: var(--accent); }
 .mk-stat .l{ font-size: var(--fs-16); font-weight: 700; margin-top: 14px; letter-spacing: -.01em; }
 .mk-stat .s{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); margin-top: 8px; line-height: 1.45; }
+/* The stat row is a <dl>: each tile groups <dt> (label) before <dd> (figure,
+   note) for machine readability; flex order keeps the figure on top visually. */
+dl.mk-stats{ margin-bottom: 0; }
+.mk-stat{ display: flex; flex-direction: column; }
+.mk-stat dt, .mk-stat dd{ margin: 0; }
+.mk-stat .tick-num{ order: 1; }
+.mk-stat .l{ order: 2; }
+.mk-stat .s{ order: 3; }
 
 /* ---- lifecycle breadcrumb ---- */
 .mk-life{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--tx-faint); margin: 38px 0 18px; }
@@ -220,6 +228,8 @@
       "@type": "Article",
       "headline": "MARCUS: a private AI back office for B:Side Capital",
       "url": "https://www.mainandmachine.com/work/marcus/",
+      "datePublished": "2026-06-24",
+      "dateModified": "2026-07-12",
       "description": "Main & Machine built MARCUS — 14 AI agents that run a regulated lender's back office entirely on-prem, with no borrower file leaving the building.",
       "about": "AI implementation for a regulated SBA 504 / CDFI lender",
       "isPartOf": { "@id": "https://www.mainandmachine.com/#website" },
@@ -361,14 +371,14 @@
         <p class="mk-note" style="margin-top: 22px;">Private by design. Auditable by default. Built from their own process. Published with permission.</p>
       </div>
       <div class="mk-hero__card">
-        <div class="statrail crop">
-          <div class="statrail__bar"><span>Case file</span><span><b>MARCUS · 2026</b></span></div>
-          <div class="statrail__row"><span class="statrail__k">Client</span><span class="statrail__v">B:Side Capital</span></div>
-          <div class="statrail__row"><span class="statrail__k">Sector</span><span class="statrail__v">SBA 504 / CDFI lender</span></div>
-          <div class="statrail__row"><span class="statrail__k">Footprint</span><span class="statrail__v">7 departments</span></div>
-          <div class="statrail__row"><span class="statrail__k">The team</span><span class="statrail__v accent-tx">14 AI agents</span></div>
-          <div class="statrail__row"><span class="statrail__k">Runs</span><span class="statrail__v">In-house, on-prem</span></div>
-        </div>
+        <dl class="statrail crop" aria-label="MARCUS case facts">
+          <div class="statrail__bar"><dt>Case file</dt><dd><b>MARCUS · 2026</b></dd></div>
+          <div class="statrail__row"><dt class="statrail__k">Client</dt><dd class="statrail__v">B:Side Capital</dd></div>
+          <div class="statrail__row"><dt class="statrail__k">Sector</dt><dd class="statrail__v">SBA 504 / CDFI lender</dd></div>
+          <div class="statrail__row"><dt class="statrail__k">Footprint</dt><dd class="statrail__v">7 departments</dd></div>
+          <div class="statrail__row"><dt class="statrail__k">The team</dt><dd class="statrail__v accent-tx">14 AI agents</dd></div>
+          <div class="statrail__row"><dt class="statrail__k">Runs</dt><dd class="statrail__v">In-house, on-prem</dd></div>
+        </dl>
       </div>
     </div>
   </div>
@@ -383,11 +393,11 @@
         <div class="mk-logoframe crop">
           <img src="/images/bside-logo.png" alt="B:Side Capital" width="230" height="66" />
         </div>
-        <div class="statrail" style="margin-top: 18px;">
-          <div class="statrail__row"><span class="statrail__k">Type</span><span class="statrail__v">SBA 504 · CDFI</span></div>
-          <div class="statrail__row"><span class="statrail__k">Touches</span><span class="statrail__v">Borrower financials</span></div>
-          <div class="statrail__row"><span class="statrail__k">Stakes</span><span class="statrail__v">Regulated · auditable</span></div>
-        </div>
+        <dl class="statrail" style="margin-top: 18px;" aria-label="Client facts">
+          <div class="statrail__row"><dt class="statrail__k">Type</dt><dd class="statrail__v">SBA 504 · CDFI</dd></div>
+          <div class="statrail__row"><dt class="statrail__k">Touches</dt><dd class="statrail__v">Borrower financials</dd></div>
+          <div class="statrail__row"><dt class="statrail__k">Stakes</dt><dd class="statrail__v">Regulated · auditable</dd></div>
+        </dl>
       </div>
       <div>
         <p class="mk-body">B:Side Capital is a mission-driven lender, an SBA 504 and CDFI institution whose work touches sensitive borrower financials at every step: intake, eligibility, underwriting support, funding, portfolio monitoring, and the high-stakes work of servicing distressed loans. It’s a business where a single mishandled document isn’t an inconvenience; it’s a compliance event.</p>
@@ -456,23 +466,23 @@
       </div>
     </div>
 
-    <div class="mk-stats">
+    <dl class="mk-stats" aria-label="MARCUS by the numbers">
       <div class="mk-stat">
-        <div class="tick-num">14</div>
-        <div class="l">AI agents</div>
-        <div class="s">one for each step of the lending lifecycle</div>
+        <dt class="l">AI agents</dt>
+        <dd class="tick-num">14</dd>
+        <dd class="s">one for each step of the lending lifecycle</dd>
       </div>
       <div class="mk-stat">
-        <div class="tick-num">7</div>
-        <div class="l">departments</div>
-        <div class="s">from intake to portfolio to distressed-asset servicing</div>
+        <dt class="l">departments</dt>
+        <dd class="tick-num">7</dd>
+        <dd class="s">from intake to portfolio to distressed-asset servicing</dd>
       </div>
       <div class="mk-stat">
-        <div class="tick-num">~840</div>
-        <div class="l">source documents</div>
-        <div class="s">every action traced to a real B:Side process</div>
+        <dt class="l">source documents</dt>
+        <dd class="tick-num">~840</dd>
+        <dd class="s">every action traced to a real B:Side process</dd>
       </div>
-    </div>
+    </dl>
   </div>
 </section>
 

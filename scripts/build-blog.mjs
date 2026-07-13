@@ -201,6 +201,7 @@ function renderHome(posts, { subscribeUrl, publicationUrl }) {
 			headline: p.title,
 			url: `${SITE_ORIGIN}${p.url}`,
 			datePublished: p.publishedAt || undefined,
+			dateModified: p.updatedAt || p.publishedAt || undefined,
 		})),
 	};
 
@@ -446,7 +447,13 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	const shareUrl = encodeURIComponent(canonical);
 	const shareText = encodeURIComponent(post.title);
 	const topic = post.topic || (Array.isArray(post.contentTags) && post.contentTags[0]) || "";
-	const metaRow = [esc(AUTHOR), esc(formatDate(post.publishedAt)), `${minutes} min read`, topic ? esc(topic) : ""]
+	// Freshness stamp: only when the update landed on a later calendar day than
+	// publication (beehiiv touches updatedAt on trivial saves).
+	const updatedStamp =
+		post.updatedAt && post.publishedAt && post.updatedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
+			? `Updated ${formatDate(post.updatedAt)}`
+			: "";
+	const metaRow = [esc(AUTHOR), esc(formatDate(post.publishedAt)), updatedStamp ? esc(updatedStamp) : "", `${minutes} min read`, topic ? esc(topic) : ""]
 		.filter(Boolean)
 		.map((part) => `<span>${part}</span>`)
 		.join("");

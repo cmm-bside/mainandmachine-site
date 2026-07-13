@@ -867,6 +867,10 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   .pagehero__grid > .statrail { margin-top: 52px; }
 }
 .statrail__row:hover{ background: color-mix(in srgb, var(--accent) 5%, transparent); }
+/* A .statrail may be marked up as a <dl> (rows are <div><dt>/<dd> groups) so
+   the key/value pairs are machine-readable; classes carry the design either
+   way — only the UA's default list margins need neutralizing. */
+dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 
 /* ---------- button polish ---------- */
 .btn--lg .arr{ font-size: inherit; }

@@ -252,7 +252,7 @@ ${pageScripts()}`;
 		description: `${BLOG_NAME}: ${BLOG_DESCRIPTION.replace(/^Free weekly/, "Weekly")} Human-centric AI, small business, and the judgment no model has.`,
 		canonical: `${SITE_ORIGIN}/blog/`,
 		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,
-		jsonLd: [blogLd, orgJsonLd()],
+		jsonLd: [blogLd, orgJsonLd({ searchAction: true })],
 	})}
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -378,7 +378,7 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `Archive | ${BLOG_NAME}`,
+		title: `Essay Archive | ${BLOG_NAME} | ${BRAND}`,
 		description: `Every essay from ${BLOG_NAME}: ${BLOG_DESCRIPTION}`,
 		canonical: `${SITE_ORIGIN}/blog/archive/`,
 		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,

@@ -120,6 +120,15 @@
 		}
 
 		input.addEventListener("input", run);
+
+		// Honor ?q= so the WebSite SearchAction target (/blog/?q={term}) lands
+		// on a pre-run search, not an empty box.
+		var initial = "";
+		try { initial = new URLSearchParams(window.location.search).get("q") || ""; } catch (e) { /* no URLSearchParams: skip */ }
+		if (initial) {
+			input.value = initial;
+			run();
+		}
 	}
 
 	/* ---------- archive tabs ---------- */

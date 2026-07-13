@@ -146,8 +146,18 @@ const PERSON_SAMEAS = [
 	"https://x.com/Chris_myers",
 	"https://www.entrepreneur.com/author/christopher-myers",
 ];
-export function orgJsonLd() {
+// Pass { searchAction: true } on pages whose search honors ?q= (the blog
+// index) to emit a WebSite SearchAction (sitelinks searchbox).
+export function orgJsonLd({ searchAction = false } = {}) {
 	const origin = COMPANY.origin;
+	const website = { "@type": "WebSite", "@id": `${origin}/#website`, name: COMPANY.name, url: `${origin}/` };
+	if (searchAction) {
+		website.potentialAction = {
+			"@type": "SearchAction",
+			target: { "@type": "EntryPoint", urlTemplate: `${origin}/blog/?q={search_term_string}` },
+			"query-input": "required name=search_term_string",
+		};
+	}
 	return {
 		"@context": "https://schema.org",
 		"@graph": [
@@ -163,7 +173,7 @@ export function orgJsonLd() {
 				founder: { "@id": `${origin}/#person-cmyers` },
 				sameAs: ORG_SAMEAS,
 			},
-			{ "@type": "WebSite", "@id": `${origin}/#website`, name: COMPANY.name, url: `${origin}/` },
+			website,
 			{
 				"@type": "Person",
 				"@id": `${origin}/#person-cmyers`,

@@ -23,6 +23,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://calendly.com" />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="/styles.css?v=84" />
@@ -234,38 +235,24 @@ select.input:invalid { color: var(--tx-faint); }
 .panel--ink p { color: var(--dtx-mute); font-size: var(--fs-16); line-height: 1.6; }
 .panel--ink p b { color: var(--dtx); font-weight: 700; }
 
-/* ---- confirmation state ---- */
-.confirm { display: none; border: 1px solid var(--dline); background: var(--ink); color: var(--dtx); background-image: var(--grain); }
-.confirm__bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 22px; border-bottom: 1px solid var(--dline); font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--dtx-mute); }
-.confirm__bar .ok { color: var(--accent-ink); display: flex; align-items: center; gap: 9px; }
-.confirm__bar .ok::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-ink); }
-.confirm__body { padding: clamp(30px, 4vw, 56px); }
-.confirm__id { font-family: var(--mono); font-size: var(--fs-12); color: var(--dtx-faint); letter-spacing: .12em; }
-.confirm__id b { color: var(--accent-ink); }
-.confirm h2 { margin: 16px 0 16px; }
-.confirm .lead { color: var(--dtx-mute); }
-.confirm__recap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--dline); margin: 30px 0 4px; }
-@media (max-width: 620px) { .confirm__recap { grid-template-columns: 1fr; } }
-.confirm__recap div { padding: 16px 22px; border-right: 1px solid var(--dline); min-width: 0; }
-.confirm__recap div:last-child { border-right: 0; }
-@media (max-width: 620px) { .confirm__recap div { border-right: 0; border-bottom: 1px solid var(--dline); } .confirm__recap div:last-child { border-bottom: 0; } }
-.confirm__recap .tick-lbl { display: block; margin-bottom: 6px; }
-.confirm__recap b { font-weight: 700; font-size: var(--fs-16); letter-spacing: -0.01em; word-break: break-word; }
-.confirm__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+/* ---- pick-a-time (Calendly) card — the primary path ---- */
+.schedwrap { max-width: 880px; margin: 0 auto; }
+.cal-q { max-width: 640px; }
+.cal-embed { position: relative; margin-top: 24px; min-height: 720px; border: 1px solid var(--line); background: var(--paper); }
+.cal-embed::before {
+  content: "Loading the scheduler…"; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); letter-spacing: .08em;
+}
+.cal-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@media (max-width: 700px) { .cal-embed { min-height: 980px; } }
+.cal-note { margin-top: 16px; font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-mute); line-height: 1.6; }
+.cal-note b { color: var(--accent); font-weight: 700; }
 
-/* ---- stage 2: optional prep details on the confirmation panel ---- */
-.prep { margin-top: 30px; border: 1px solid var(--line); background: var(--paper-card); padding: clamp(20px, 3vw, 28px); color: var(--tx); }
-.prep__head { display: flex; align-items: baseline; gap: 11px; }
-.prep__head .fgroup__no { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-text); letter-spacing: .1em; }
-.prep__head .fgroup__t { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); }
-.prep__note { font-size: var(--fs-13); color: var(--tx-mute); margin: 10px 0 20px; }
-.prep__foot { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 20px; }
-.prep__status { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-mute); }
-.prep__status.ok { color: var(--accent); }
-.prep--done form, .prep--done .prep__note { display: none; }
-.prep--done .prep__thanks { display: block; }
-.prep__thanks { display: none; font-size: var(--fs-16); color: var(--tx); margin-top: 12px; }
-.confirm__cta a[hidden] { display: none !important; }
+/* divider between the two paths */
+.orpath { display: flex; align-items: center; gap: 18px; margin: clamp(32px, 4vw, 48px) 0; }
+.orpath::before, .orpath::after { content: ""; height: 1px; background: var(--line); flex: 1; }
+.orpath span { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); text-align: center; }
 
 /* faq tweak: this page only */
 .faq--book .faq__aside { background: var(--ink); }
@@ -347,14 +334,14 @@ select.input:invalid { color: var(--tx-faint); }
       <div>
         <span class="kicker">The AI Opportunity Assessment</span>
         <h1 class="h2 mt-s">30 minutes. No pitch. <span class="accent-tx">A straight answer.</span></h1>
-        <p class="lead mt-s">Tell us a little about your business and we will set up a free 30-minute assessment. A senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth, including when the smart move is to wait a quarter.</p>
+        <p class="lead mt-s">Pick a time below and it’s booked. Or send the form and we’ll reach out within 24 hours. Either way, a senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth, including when the smart move is to wait a quarter.</p>
       </div>
       <div class="statrail crop" aria-label="What the assessment is">
         <div class="statrail__bar"><span>Assessment</span><span><b>Free</b></span></div>
         <div class="statrail__row"><span class="statrail__k">Cost</span><span class="statrail__v accent-tx">$0</span></div>
         <div class="statrail__row"><span class="statrail__k">Length</span><span class="statrail__v">30 minutes</span></div>
         <div class="statrail__row"><span class="statrail__k">Format</span><span class="statrail__v">Call · remote</span></div>
-        <div class="statrail__row"><span class="statrail__k">You hear back</span><span class="statrail__v">Within 24 hours</span></div>
+        <div class="statrail__row"><span class="statrail__k">Scheduling</span><span class="statrail__v">Instant · pick below</span></div>
       </div>
     </div>
   </div>
@@ -363,6 +350,26 @@ select.input:invalid { color: var(--tx-faint); }
 <!-- ============ BOOKING ============ -->
 <section class="section paper-2" id="request" data-screen-label="Request form">
   <div class="wrap">
+
+    <!-- PRIMARY — pick a time now (inline Calendly, lazy-loaded) -->
+    <div class="schedwrap">
+      <div class="formcard crop" id="schedule">
+        <div class="formcard__bar"><span>Pick a time now</span><span><b>Fastest</b></span></div>
+        <div class="formcard__body">
+          <div class="field cal-q">
+            <label for="cal-workflows">What is eating your team’s time? <span class="opt">(optional — rides along with your booking)</span></label>
+            <input class="input" type="text" id="cal-workflows" placeholder="Intake, billing, scheduling, data entry, quoting…" />
+            <span class="field__hint">The advisor reads this before your call. One line is plenty.</span>
+          </div>
+          <div class="cal-embed" id="calEmbed" data-cal-url="https://calendly.com/cmyers-mainandmachine/30min">
+            <noscript><a href="https://calendly.com/cmyers-mainandmachine/30min">Open the scheduler in a new tab →</a></noscript>
+          </div>
+          <p class="cal-note"><b>Pick a slot and it’s booked.</b> The calendar invite and confirmation arrive from Calendly right away.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="orpath" role="separator"><span>Prefer we reach out? Use the form — we email within 24 hours</span></div>
 
     <!-- the form + rail -->
     <div class="book" id="book">
@@ -494,109 +501,6 @@ select.input:invalid { color: var(--tx-faint); }
 
     </div>
 
-    <!-- CONFIRMATION (revealed on submit) -->
-    <div class="confirm crop" id="confirm" tabindex="-1" aria-live="polite">
-      <div class="confirm__bar"><span class="ok">Request received</span><span id="confirmStamp">Logged</span></div>
-      <div class="confirm__body">
-        <div class="confirm__id">Reference <b id="refId">MM-2026-0000</b></div>
-        <h2 class="h2" id="confirmTitle">Thanks. You’re in the queue.</h2>
-        <p class="lead" id="confirmLede">We’ve got your request. A senior advisor will email you within 24 hours to set a time for your 30-minute assessment.</p>
-
-        <div class="confirm__recap">
-          <div><span class="tick-lbl">Reaching out to</span><b id="recapName">—</b></div>
-          <div><span class="tick-lbl">Via</span><b id="recapContact">—</b></div>
-          <div><span class="tick-lbl">For</span><b id="recapCompany">—</b></div>
-        </div>
-
-        <!-- STAGE 2 — optional prep details, appended to the same submission -->
-        <div class="prep" id="prep">
-          <div class="prep__head">
-            <span class="fgroup__no">+</span>
-            <span class="fgroup__t">Help us prep: 30 seconds, optional</span>
-          </div>
-          <p class="prep__note">None of this is required. It just makes your 30 minutes sharper.</p>
-          <form id="prepForm" novalidate>
-            <div class="frow">
-              <div class="field">
-                <label for="industry">Industry</label>
-                <select class="input" id="industry" name="industry">
-                  <option value="" disabled selected>Select one…</option>
-                  <option>Professional services</option>
-                  <option>Retail &amp; e-commerce</option>
-                  <option>Healthcare &amp; wellness</option>
-                  <option>Construction &amp; trades</option>
-                  <option>Hospitality &amp; food service</option>
-                  <option>Something else</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="team">Team size</label>
-                <select class="input" id="team" name="team">
-                  <option value="" disabled selected>Headcount…</option>
-                  <option>1–10</option>
-                  <option>11–25</option>
-                  <option>26–50</option>
-                  <option>51–100</option>
-                  <option>100+</option>
-                </select>
-              </div>
-            </div>
-            <div class="frow">
-              <div class="field">
-                <label for="revenue">Annual revenue</label>
-                <select class="input" id="revenue" name="revenue">
-                  <option value="" disabled selected>Select a range…</option>
-                  <option>Under $1M</option>
-                  <option>$1M–$5M</option>
-                  <option>$5M–$15M</option>
-                  <option>$15M–$50M</option>
-                  <option>$50M+</option>
-                  <option>Prefer not to say</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="website">Website</label>
-                <input class="input" type="text" id="website" name="website" autocomplete="url" placeholder="yourcompany.com" />
-              </div>
-            </div>
-            <div class="frow frow--1">
-              <div class="field">
-                <label for="heard">How did you hear about us?</label>
-                <select class="input" id="heard" name="heard">
-                  <option value="" disabled selected>Select one…</option>
-                  <option>A search</option>
-                  <option>A referral</option>
-                  <option>The Ampersand newsletter</option>
-                  <option>Social media</option>
-                  <option>Press or an article</option>
-                  <option>An event or talk</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-            <div class="prep__foot">
-              <button class="btn btn--primary" type="submit" id="prepBtn">Add it to my request <span class="arr">→</span></button>
-              <span class="prep__status" id="prepStatus"></span>
-            </div>
-          </form>
-          <p class="prep__thanks">Got it. Filed with your request. It’ll be in front of the advisor before the call.</p>
-        </div>
-
-        <div class="timeline" style="margin-top:30px;">
-          <div class="tl"><span class="tl__t">Now</span><h3>Request logged</h3><p>Your details land in front of a senior advisor the same day.</p></div>
-          <div class="tl"><span class="tl__t">Within 24 hours</span><h3>We email you</h3><p>A short note proposing a few times that work, in your preferred channel.</p></div>
-          <div class="tl"><span class="tl__t">The call</span><h3>30 focused minutes</h3><p>We walk your workflows and show you where AI pays.</p></div>
-          <div class="tl"><span class="tl__t">After</span><h3>You decide</h3><p>Build with us, sit tight, or walk away. Your call.</p></div>
-        </div>
-
-        <div class="confirm__cta">
-          <a class="btn btn--primary btn--lg" id="pickTime" href="#" hidden>Want it on the calendar now? Pick a time <span class="arr">→</span></a>
-          <a class="btn btn--primary btn--lg" href="/blog/">Read The Ampersand while you wait <span class="arr">→</span></a>
-          <a class="btn btn--secondary btn--lg" href="/">Back to the site</a>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -610,7 +514,7 @@ select.input:invalid { color: var(--tx-faint); }
         <div class="faq__aside" style="margin-top:28px;">
           <h3 class="accent-tx" style="color:var(--accent-ink);">Still deciding?</h3>
           <p>You don’t have to be sure about AI to book. The whole point of the assessment is to find out. In 30 minutes.</p>
-          <a class="btn btn--primary" href="#request">Jump to the form <span class="arr">→</span></a>
+          <a class="btn btn--primary" href="#request">Pick a time <span class="arr">→</span></a>
         </div>
       </div>
       <div class="faq__list">
@@ -874,87 +778,97 @@ select.input:invalid { color: var(--tx-faint); }
     });
   });
 
-  // Optional scheduling hand-off on the confirmation screen.
-  // TODO: no scheduling page exists in the repo or env config yet. When one
-  // does (e.g. a Calendly event URL), set SCHEDULING_URL and the
-  // "Pick a time →" button appears — the 24-hour email promise stays either way.
-  var SCHEDULING_URL = '';
-
+  // Success → /book/thanks/. The confirmation page reads this to personalize
+  // the recap and wire the optional stage-2 prep form to the same submission.
   function reveal(server, payload){
-    var first = (payload.name.split(/\s+/)[0]) || payload.name;
-    var recap = server.recap || {};
-    document.getElementById('refId').textContent = server.referenceId || '';
-    document.getElementById('confirmTitle').textContent = 'Thanks, ' + first + '. You’re in the queue.';
-    document.getElementById('recapName').textContent = recap.name || payload.name;
-    document.getElementById('recapContact').textContent = recap.via || payload.email;
-    document.getElementById('recapCompany').textContent = recap.company || payload.company;
-    document.getElementById('confirmStamp').textContent = server.stamp ? ('Logged · ' + server.stamp) : 'Logged';
+    try {
+      sessionStorage.setItem('mm:book-confirm', JSON.stringify({
+        referenceId: server.referenceId || '',
+        stamp: server.stamp || '',
+        recap: server.recap || {},
+        name: payload.name,
+        email: payload.email,
+        company: payload.company
+      }));
+    } catch (e) { /* private mode — thanks page falls back to generic copy */ }
 
-    if(SCHEDULING_URL){
-      var pick = document.getElementById('pickTime');
-      if(pick){ pick.href = SCHEDULING_URL; pick.hidden = false; }
+    var done = false;
+    function go(){ if(done) return; done = true; window.location.href = '/book/thanks/'; }
+    if(typeof window.plausible === 'function'){
+      window.plausible('form_submitted', { callback: go });
+      setTimeout(go, 400); // never let a blocked beacon hold the redirect
+    } else {
+      go();
     }
-
-    wirePrep(server.referenceId || '', payload);
-
-    document.getElementById('book').style.display = 'none';
-    var confirm = document.getElementById('confirm');
-    confirm.style.display = 'block';
-    var top = confirm.getBoundingClientRect().top + window.pageYOffset - 90;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-    confirm.focus({preventScroll:true});
   }
+})();
 
-  // Stage 2 — optional "help us prep" details, appended to the same submission.
-  function wirePrep(referenceId, identity){
-    var prep = document.getElementById('prep');
-    var prepForm = document.getElementById('prepForm');
-    if(!prep || !prepForm) return;
-    var prepBtn = document.getElementById('prepBtn');
-    var prepStatus = document.getElementById('prepStatus');
+// ---- Calendly inline (the primary path) ----
+// A plain iframe, created only as the card nears the viewport, so the embed
+// never competes with first paint. No Calendly widget.js: the iframe is the
+// whole integration, and booking events arrive via postMessage regardless.
+(function(){
+  var mount = document.getElementById('calEmbed');
+  if(!mount) return;
+  var base = mount.getAttribute('data-cal-url');
+  var qEl = document.getElementById('cal-workflows');
+  var iframe = null, loadedFired = false;
 
-    prepForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      var details = {
-        industry: val('industry'),
-        team: val('team'),
-        revenue: val('revenue'),
-        website: val('website').trim(),
-        heard: val('heard')
-      };
-      var hasAny = Object.keys(details).some(function(k){ return details[k] !== ''; });
-      if(!hasAny){
-        prepStatus.textContent = 'Pick or fill in at least one field. Or skip it entirely.';
-        return;
-      }
-      prepStatus.textContent = '';
-      prepBtn.disabled = true;
-      prepBtn.innerHTML = 'Adding…';
-
-      fetch('/api/book-assessment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.assign({
-          stage: 'details',
-          referenceId: referenceId,
-          name: identity.name,
-          email: identity.email,
-          company: identity.company,
-          company_url: val('company_url')
-        }, details))
-      })
-      .then(function(res){ return res.json(); })
-      .then(function(body){
-        if(!body || !body.ok){ throw new Error((body && body.error) || 'Could not add that just now.'); }
-        prep.classList.add('prep--done');
-      })
-      .catch(function(err){
-        prepBtn.disabled = false;
-        prepBtn.innerHTML = 'Add it to my request <span class="arr">→</span>';
-        prepStatus.textContent = err.message || 'Could not add that just now. Your request is already in.';
-      });
+  // Brand-matched embed (Calendly's supported theming params) + the
+  // qualifying answer prefilled into the booking form's first question (a1).
+  function calUrl(){
+    var p = new URLSearchParams({
+      embed_domain: location.hostname,
+      embed_type: 'Inline',
+      hide_gdpr_banner: '1',
+      hide_event_type_details: '1',
+      background_color: 'f3ede0',
+      text_color: '1d1812',
+      primary_color: 'bd451f'
     });
+    var q = qEl ? qEl.value.trim() : '';
+    if(q) p.set('a1', q.slice(0, 500));
+    return base + '?' + p.toString();
   }
+
+  function mountFrame(){
+    var f = document.createElement('iframe');
+    f.src = calUrl();
+    f.title = 'Schedule your free 30-minute AI Opportunity Assessment';
+    f.addEventListener('load', function(){
+      if(loadedFired) return;
+      loadedFired = true;
+      if(typeof window.plausible === 'function') window.plausible('calendly_loaded');
+    });
+    if(iframe){ mount.replaceChild(f, iframe); } else { mount.appendChild(f); }
+    iframe = f;
+  }
+
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      for(var i = 0; i < entries.length; i++){
+        if(entries[i].isIntersecting){ io.disconnect(); mountFrame(); return; }
+      }
+    }, { rootMargin: '600px 0px' });
+    io.observe(mount);
+  } else {
+    mountFrame();
+  }
+
+  // Typed (or edited) the qualifying answer after the embed loaded? Rebuild
+  // the iframe with the new a1 — cheap before a slot is picked, and the
+  // answer must be attached before booking to ride along at all.
+  if(qEl){
+    qEl.addEventListener('change', function(){ if(iframe) mountFrame(); });
+  }
+
+  // Booked: Calendly posts calendly.event_scheduled to the parent window.
+  window.addEventListener('message', function(e){
+    if(e.origin !== 'https://calendly.com') return;
+    if(e.data && e.data.event === 'calendly.event_scheduled'){
+      if(typeof window.plausible === 'function') window.plausible('calendly_booked');
+    }
+  });
 })();
 </script>
 

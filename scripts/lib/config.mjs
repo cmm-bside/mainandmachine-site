@@ -77,6 +77,11 @@ export const STATIC_ROUTES = [
 // and every internal link, the sitemap, and the injected canonical use /score.
 export const PROXIED_ROUTES = ["/score"];
 
+// On-disk pages that are deliberately NOT sitemapped: post-conversion pages
+// that only exist as redirect targets (each must carry a robots noindex meta
+// — check-seo enforces both directions).
+export const NOINDEX_ROUTES = ["/book/thanks/"];
+
 // Post slugs to exclude from the build entirely (test/placeholder posts that
 // exist in beehiiv but should never be indexed, linked, or sitemapped).
 export const EXCLUDED_POST_SLUGS = ["test"];

@@ -24,6 +24,7 @@ function read(file) {
 const ALL_PAGES = [
   "index.html",
   "book/index.html",
+  "book/thanks/index.html",
   "pricing/index.html",
   "method/index.html",
   "about/index.html",

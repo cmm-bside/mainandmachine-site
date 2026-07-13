@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Request received | Main &amp; Machine</title>
+<meta name="description" content="Your assessment request is in. A senior advisor emails you from cmyers@mainandmachine.com within 24 hours — or put your 30 minutes on the calendar now." />
+<link rel="canonical" href="https://www.mainandmachine.com/book/thanks/" />
+<meta name="robots" content="noindex, follow" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="Request received | Main &amp; Machine" />
+<meta property="og:description" content="Your assessment request is in. A senior advisor emails you from cmyers@mainandmachine.com within 24 hours — or put your 30 minutes on the calendar now." />
+<meta property="og:url" content="https://www.mainandmachine.com/book/thanks/" />
+<meta property="og:image" content="https://www.mainandmachine.com/images/og/book.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Request received | Main &amp; Machine" />
+<meta name="twitter:description" content="Your assessment request is in. A senior advisor emails you from cmyers@mainandmachine.com within 24 hours — or put your 30 minutes on the calendar now." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
+<meta name="twitter:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=84" />
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$45,000",
+      "areaServed": "US",
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Book a free assessment", "item": "https://www.mainandmachine.com/book/" },
+        { "@type": "ListItem", "position": 3, "name": "Request received", "item": "https://www.mainandmachine.com/book/thanks/" }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+<style>
+/* =========================================================
+   REQUEST RECEIVED — the form path's confirmation page.
+   Built on the Main & Machine tokens in styles.css; the
+   confirmation panel styles moved here from /book/.
+   ========================================================= */
+.thankshero { padding-bottom: clamp(40px, 5vw, 64px); }
+.thankshero__crumb {
+  font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--tx-faint); display: flex; gap: 10px; align-items: center; margin-bottom: 26px;
+}
+.thankshero__crumb a { color: var(--tx-mute); }
+.thankshero__crumb a:hover { color: var(--tx); }
+.thankshero__crumb .sep { opacity: .5; }
+
+.confirm { border: 1px solid var(--dline); background: var(--ink); color: var(--dtx); background-image: var(--grain); }
+.confirm__bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 22px; border-bottom: 1px solid var(--dline); font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--dtx-mute); }
+.confirm__bar .ok { color: var(--accent-ink); display: flex; align-items: center; gap: 9px; }
+.confirm__bar .ok::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-ink); }
+.confirm__body { padding: clamp(30px, 4vw, 56px); }
+.confirm__id { font-family: var(--mono); font-size: var(--fs-12); color: var(--dtx-faint); letter-spacing: .12em; }
+.confirm__id b { color: var(--accent-ink); }
+.confirm h1 { margin: 16px 0 16px; }
+.confirm .lead { color: var(--dtx-mute); }
+.confirm__recap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--dline); margin: 30px 0 4px; }
+@media (max-width: 620px) { .confirm__recap { grid-template-columns: 1fr; } }
+.confirm__recap div { padding: 16px 22px; border-right: 1px solid var(--dline); min-width: 0; }
+.confirm__recap div:last-child { border-right: 0; }
+@media (max-width: 620px) { .confirm__recap div { border-right: 0; border-bottom: 1px solid var(--dline); } .confirm__recap div:last-child { border-bottom: 0; } }
+.confirm__recap .tick-lbl { display: block; margin-bottom: 6px; }
+.confirm__recap b { font-weight: 700; font-size: var(--fs-16); letter-spacing: -0.01em; word-break: break-word; }
+.confirm__spam { font-family: var(--mono); font-size: var(--fs-12); color: var(--dtx-faint); line-height: 1.6; margin-top: 14px; }
+.confirm__spam b { color: var(--dtx); font-weight: 700; }
+.confirm__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+/* the faster path */
+.faster { margin-top: 30px; border: 1px solid var(--dline); padding: clamp(20px, 3vw, 28px); display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
+.faster p { color: var(--dtx-mute); font-size: var(--fs-16); line-height: 1.55; max-width: 46ch; }
+.faster p b { color: var(--dtx); font-weight: 700; }
+
+/* form-card fields reused by the prep form (subset of /book/'s system) */
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.frow + .frow { margin-top: 16px; }
+.frow--1 { grid-template-columns: 1fr; }
+@media (max-width: 560px) { .frow { grid-template-columns: 1fr; } }
+.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.field > label { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--tx-mute); }
+.input {
+  font-family: var(--sans); font-size: var(--fs-16); color: var(--tx); background: #fff;
+  border: 1px solid var(--line); padding: 14px 15px; width: 100%; height: 52px;
+  transition: border-color .15s var(--ease), box-shadow .15s var(--ease); border-radius: 0;
+}
+.input::placeholder { color: var(--tx-faint); }
+.input:hover { border-color: rgba(29,24,18,0.30); }
+.input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+select.input {
+  appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 42px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%236f675c' stroke-width='1.6'/></svg>");
+  background-repeat: no-repeat; background-position: right 15px center;
+}
+select.input:invalid { color: var(--tx-faint); }
+
+/* stage 2: optional prep details */
+.prep { margin-top: 30px; border: 1px solid var(--line); background: var(--paper-card); padding: clamp(20px, 3vw, 28px); color: var(--tx); }
+.prep__head { display: flex; align-items: baseline; gap: 11px; }
+.prep__head .no { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-text); letter-spacing: .1em; }
+.prep__head .t { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); }
+.prep__note { font-size: var(--fs-13); color: var(--tx-mute); margin: 10px 0 20px; }
+.prep__foot { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 20px; }
+.prep__status { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-mute); }
+.prep--done form, .prep--done .prep__note { display: none; }
+.prep--done .prep__thanks { display: block; }
+.prep__thanks { display: none; font-size: var(--fs-16); color: var(--tx); margin-top: 12px; }
+.btn[disabled] { opacity: .55; cursor: not-allowed; }
+</style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="/book/#request">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ CONFIRMATION ============ -->
+<section class="section paper thankshero" data-screen-label="Request received">
+  <div class="wrap">
+    <div class="thankshero__crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/book/">Book an assessment</a>
+      <span class="sep">/</span>
+      <span>Request received</span>
+    </div>
+
+    <div class="confirm crop">
+      <div class="confirm__bar"><span class="ok">Request received</span><span id="confirmStamp">Logged</span></div>
+      <div class="confirm__body">
+        <div class="confirm__id" id="refRow" hidden>Reference <b id="refId">—</b></div>
+        <h1 class="h2" id="confirmTitle">Thanks. You’re in the queue.</h1>
+        <p class="lead" id="confirmLede">Your request is in front of the advisor who prepares your call. Here is exactly what happens next.</p>
+
+        <div class="confirm__recap">
+          <div><span class="tick-lbl">Who replies</span><b>Christopher Myers — the advisor on your call</b></div>
+          <div><span class="tick-lbl">When</span><b>Within 24 hours</b></div>
+          <div><span class="tick-lbl">From</span><b>cmyers@mainandmachine.com</b></div>
+        </div>
+        <p class="confirm__spam">A short note proposing a few times that work. Add <b>cmyers@mainandmachine.com</b> to your contacts so it never lands in spam.</p>
+
+        <!-- the faster path -->
+        <div class="faster">
+          <p><b>Don’t want to wait for the email?</b> The same 30 minutes, on the calendar right now. Booked in about a minute.</p>
+          <a class="btn btn--primary btn--lg" href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">Pick a time now <span class="arr">→</span></a>
+        </div>
+
+        <!-- STAGE 2 — optional prep details, appended to the same submission -->
+        <div class="prep" id="prep" hidden>
+          <div class="prep__head">
+            <span class="no">+</span>
+            <span class="t">Help us prep: 30 seconds, optional</span>
+          </div>
+          <p class="prep__note">None of this is required. It just makes your 30 minutes sharper.</p>
+          <form id="prepForm" novalidate>
+            <div class="frow">
+              <div class="field">
+                <label for="industry">Industry</label>
+                <select class="input" id="industry" name="industry">
+                  <option value="" disabled selected>Select one…</option>
+                  <option>Professional services</option>
+                  <option>Retail &amp; e-commerce</option>
+                  <option>Healthcare &amp; wellness</option>
+                  <option>Construction &amp; trades</option>
+                  <option>Hospitality &amp; food service</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="team">Team size</label>
+                <select class="input" id="team" name="team">
+                  <option value="" disabled selected>Headcount…</option>
+                  <option>1–10</option>
+                  <option>11–25</option>
+                  <option>26–50</option>
+                  <option>51–100</option>
+                  <option>100+</option>
+                </select>
+              </div>
+            </div>
+            <div class="frow">
+              <div class="field">
+                <label for="revenue">Annual revenue</label>
+                <select class="input" id="revenue" name="revenue">
+                  <option value="" disabled selected>Select a range…</option>
+                  <option>Under $1M</option>
+                  <option>$1M–$5M</option>
+                  <option>$5M–$15M</option>
+                  <option>$15M–$50M</option>
+                  <option>$50M+</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="website">Website</label>
+                <input class="input" type="text" id="website" name="website" autocomplete="url" placeholder="yourcompany.com" />
+              </div>
+            </div>
+            <div class="frow frow--1">
+              <div class="field">
+                <label for="heard">How did you hear about us?</label>
+                <select class="input" id="heard" name="heard">
+                  <option value="" disabled selected>Select one…</option>
+                  <option>A search</option>
+                  <option>A referral</option>
+                  <option>The Ampersand newsletter</option>
+                  <option>Social media</option>
+                  <option>Press or an article</option>
+                  <option>An event or talk</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="prep__foot">
+              <button class="btn btn--primary" type="submit" id="prepBtn">Add it to my request <span class="arr">→</span></button>
+              <span class="prep__status" id="prepStatus"></span>
+            </div>
+          </form>
+          <p class="prep__thanks">Got it. Filed with your request. It’ll be in front of the advisor before the call.</p>
+        </div>
+
+        <div class="timeline" style="margin-top:30px;">
+          <div class="tl"><span class="tl__t">Now</span><h3>Request logged</h3><p>Your details land in front of a senior advisor the same day.</p></div>
+          <div class="tl"><span class="tl__t">Within 24 hours</span><h3>We email you</h3><p>A short note proposing a few times that work, in your preferred channel.</p></div>
+          <div class="tl"><span class="tl__t">The call</span><h3>30 focused minutes</h3><p>We walk your workflows and show you where AI pays.</p></div>
+          <div class="tl"><span class="tl__t">After</span><h3>You decide</h3><p>Build with us, sit tight, or walk away. Your call.</p></div>
+        </div>
+
+        <div class="confirm__cta">
+          <a class="btn btn--primary btn--lg" href="/blog/">Read The Ampersand while you wait <span class="arr">→</span></a>
+          <a class="btn btn--secondary btn--lg" href="/">Back to the site</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="/book/#request">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CONFIRMATION WIRING ============ -->
+<script>
+(function(){
+  // The /book/ form drops its confirmation here before redirecting. Without
+  // it (direct visit, private mode) the page stays generic: no reference,
+  // no personalization, no prep form — the expectations copy stands alone.
+  var data = null;
+  try { data = JSON.parse(sessionStorage.getItem('mm:book-confirm') || 'null'); } catch (e) {}
+  if(!data || !data.referenceId) return;
+
+  var first = (String(data.name || '').split(/\s+/)[0]) || '';
+  if(first){ document.getElementById('confirmTitle').textContent = 'Thanks, ' + first + '. You’re in the queue.'; }
+  document.getElementById('refId').textContent = data.referenceId;
+  document.getElementById('refRow').hidden = false;
+  if(data.stamp){ document.getElementById('confirmStamp').textContent = 'Logged · ' + data.stamp; }
+  var via = data.recap && data.recap.via;
+  if(via){
+    document.getElementById('confirmLede').textContent =
+      'Your request is in front of the advisor who prepares your call. We’ll reach you via ' + via + '. Here is exactly what happens next.';
+  }
+
+  // Stage 2 — optional "help us prep" details, appended to the same submission.
+  var prep = document.getElementById('prep');
+  var prepForm = document.getElementById('prepForm');
+  prep.hidden = false;
+  var prepBtn = document.getElementById('prepBtn');
+  var prepStatus = document.getElementById('prepStatus');
+  function val(id){ var el = document.getElementById(id); return el ? el.value : ''; }
+
+  prepForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var details = {
+      industry: val('industry'),
+      team: val('team'),
+      revenue: val('revenue'),
+      website: val('website').trim(),
+      heard: val('heard')
+    };
+    var hasAny = Object.keys(details).some(function(k){ return details[k] !== ''; });
+    if(!hasAny){
+      prepStatus.textContent = 'Pick or fill in at least one field. Or skip it entirely.';
+      return;
+    }
+    prepStatus.textContent = '';
+    prepBtn.disabled = true;
+    prepBtn.innerHTML = 'Adding…';
+
+    fetch('/api/book-assessment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.assign({
+        stage: 'details',
+        referenceId: data.referenceId,
+        name: data.name,
+        email: data.email,
+        company: data.company,
+        company_url: ''
+      }, details))
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(body){
+      if(!body || !body.ok){ throw new Error((body && body.error) || 'Could not add that just now.'); }
+      prep.classList.add('prep--done');
+    })
+    .catch(function(err){
+      prepBtn.disabled = false;
+      prepBtn.innerHTML = 'Add it to my request <span class="arr">→</span>';
+      prepStatus.textContent = err.message || 'Could not add that just now. Your request is already in.';
+    });
+  });
+})();
+</script>
+
+<script src="/js/nav.js?v=5"></script>
+<script src="/js/analytics.js?v=1"></script>
+</body>
+</html>

@@ -25,7 +25,8 @@
 #   base-uri 'none'           — no <base> tag is used anywhere; forbid injection of one
 #   object-src 'none'         — no <object>/<embed>/<applet>
 #   frame-ancestors 'self'    — mirrors X-Frame-Options: SAMEORIGIN
-#   frame-src 'none'          — site embeds no iframes
+#   frame-src https://calendly.com — the /book/ inline scheduler (the site's
+#                               only iframe; direct embed, no widget.js)
 #   script-src 'self' 'unsafe-inline' https://plausible.io
 #                             — 'self': /js/*.js + Cloudflare /cdn-cgi/ email-decode;
 #                               'unsafe-inline': inline init blocks + onclick="window.print()";
@@ -53,7 +54,7 @@
 # The AI-Ready Score app is reverse-proxied from Vercel at /score/* and /s/*
 # (functions/…). It ships standalone with its own scripts, styles, and security
 # headers, so detach the main site's CSP + frame rules here — otherwise
-# default-src 'self' / frame-src 'none' would block the app.
+# default-src 'self' and the frame rules would block the app.
 /score
   ! Content-Security-Policy
   ! Content-Security-Policy-Report-Only
@@ -73,8 +74,8 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Permissions-Policy: geolocation=(), microphone=(), camera=()
-  Content-Security-Policy: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src 'none'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
-  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src 'none'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
+  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
 
 # styles.css is cache-busted via ?v=N in index.html, so it can cache for a while
 /styles.css

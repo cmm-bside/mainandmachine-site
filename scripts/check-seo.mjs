@@ -14,6 +14,7 @@ import {
 	EXCLUDED_POST_SLUGS,
 	STATIC_ROUTES,
 	PROXIED_ROUTES,
+	NOINDEX_ROUTES,
 } from "./lib/config.mjs";
 
 const errors = [];
@@ -111,9 +112,18 @@ for (const route of STATIC_ROUTES) {
 	if (!fs.existsSync(path.join(ROOT, routeToIndex(route))))
 		fail(`sitemap drift: STATIC_ROUTES has "${route}" but ${routeToIndex(route)} does not exist (would 404)`);
 }
-// every public page on disk must be declared in STATIC_ROUTES
+// noindex routes: real file, robots noindex meta, and NEVER in the sitemap
+for (const route of NOINDEX_ROUTES) {
+	const html = read(path.join(ROOT, routeToIndex(route)));
+	if (!html) fail(`NOINDEX_ROUTES has "${route}" but ${routeToIndex(route)} does not exist (would 404)`);
+	else if (!/<meta[^>]*name=["']robots["'][^>]*noindex/i.test(html))
+		fail(`noindex route ${route}: missing <meta name="robots" content="noindex…">`);
+	if (sitemap && sitemap.includes(`<loc>${SITE_ORIGIN}${route}</loc>`))
+		fail(`sitemap: noindex route ${route} must not be listed`);
+}
+// every public page on disk must be declared in STATIC_ROUTES (or NOINDEX_ROUTES)
 const IGNORE_TOP = new Set(["node_modules", "scratchpad", "blog", "reports", "audit", "emails", "images", "blog-data", "src", "scripts", "functions", "js"]);
-const staticSet = new Set(STATIC_ROUTES);
+const staticSet = new Set([...STATIC_ROUTES, ...NOINDEX_ROUTES]);
 (function walk(dir, prefix) {
 	for (const name of fs.readdirSync(dir)) {
 		if (prefix === "" && IGNORE_TOP.has(name)) continue;

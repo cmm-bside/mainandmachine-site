@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Writing an Inflation-Proof AI Project Scope | Main &amp; Machine</title>
+<meta name="description" content="How to write an AI project scope a vendor can't inflate: one named workflow, the current cost, acceptance criteria, run costs, and a fixed price in writing." />
+<link rel="canonical" href="https://www.mainandmachine.com/guides/how-to-scope-an-ai-project/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="Writing an Inflation-Proof AI Project Scope | Main &amp; Machine" />
+<meta property="og:description" content="How to write an AI project scope a vendor can't inflate: one named workflow, the current cost, acceptance criteria, run costs, and a fixed price in writing." />
+<meta property="og:url" content="https://www.mainandmachine.com/guides/how-to-scope-an-ai-project/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine. How to scope an AI project." />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Writing an Inflation-Proof AI Project Scope | Main &amp; Machine" />
+<meta name="twitter:description" content="How to write an AI project scope a vendor can't inflate: one named workflow, the current cost, acceptance criteria, run costs, and a fixed price in writing." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=87" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* field guide article — built on the Main & Machine tokens in styles.css */
+.gtable-wrap{ overflow-x:auto; margin:1.6em 0; border:1px solid var(--line); background:var(--paper-card); }
+.gtable{ width:100%; border-collapse:collapse; font-size:var(--fs-16); line-height:1.5; }
+.gtable th{ font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--tx-faint); text-align:left; padding:12px 14px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.gtable td{ padding:12px 14px; border-bottom:1px solid var(--line-soft); color:var(--tx-mute); vertical-align:top; min-width:120px; }
+.gtable tr:last-child td{ border-bottom:0; }
+.gtable .us td{ background:#fff; color:var(--tx); box-shadow:inset 3px 0 0 var(--accent); }
+.gtable td b{ color:var(--tx); }
+.gtable-note{ font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-faint); margin-top:-0.6em; }
+.prose .check{ list-style:none; padding-left:0; counter-reset:ck; }
+.prose .check li{ counter-increment:ck; position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--line-soft); }
+.prose .check li::before{ content:counter(ck,decimal-leading-zero); position:absolute; left:0; top:14px; font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.08em; color:var(--accent-text); }
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "Article",
+      "@id": "https://www.mainandmachine.com/guides/how-to-scope-an-ai-project/#article",
+      "headline": "Writing an Inflation-Proof AI Project Scope",
+      "description": "How a small business writes an AI project scope a vendor can't inflate: one workflow named end-to-end, the current cost stated, acceptance criteria in operations language, run costs, and a fixed price in writing before work begins.",
+      "url": "https://www.mainandmachine.com/guides/how-to-scope-an-ai-project/",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "author": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "publisher": { "@id": "https://www.mainandmachine.com/#org" },
+      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" },
+        { "@type": "ListItem", "position": 3, "name": "How to scope an AI project", "item": "https://www.mainandmachine.com/guides/how-to-scope-an-ai-project/" }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="/js/pa"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
+</script>
+
+<!-- FAQ-JSONLD:auto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What should an AI project scope include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One workflow named end-to-end, its current annual cost in hours times loaded rate, acceptance criteria written in operations language, an explicit out-of-scope list, ownership of everything at handoff, the vendor's stated monthly run cost, and a fixed price in writing before work begins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do vendors inflate AI project scopes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Four patterns recur: discovery phases that never end, \"phase 1\" pricing that hides unpriced later phases, proprietary-platform lock-in presented as architecture, and change-order pipelines that reprice every ambiguity after you are committed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should an AI project be priced hourly or fixed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fixed, in writing, before work begins — that single clause moves scope risk to the vendor. Our AI Readiness Audits run $3,500–$8,500 and Implementation Sprints $12,000–$45,000 on exactly those terms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should an AI implementation take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About 90 days per workflow is a fair yardstick. Our Implementation Sprints run 4–12 weeks; a project with no end date is an inflation pattern, not a plan."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="section paper pagehero" data-screen-label="Scoping an AI project">
+  <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/guides/">The Field Guide</a>
+      <span class="sep">/</span>
+      <span>Scoping a project</span>
+    </div>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">The Field Guide / 12</span>
+        <h1 class="h2 mt-s">How do you write an AI project scope a vendor <span class="accent-tx">can’t inflate?</span></h1>
+        <p class="lead mt-s">Scope inflation is how a $15,000 project becomes a $60,000 relationship. Here is the document that prevents it — every clause, and the vendor patterns each one blocks.</p>
+      </div>
+      <div class="statrail crop" aria-label="Guide details">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>No. 12</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">9 min</span></div>
+        <div class="statrail__row"><span class="statrail__k">Scope lines</span><span class="statrail__v">10</span></div>
+        <div class="statrail__row"><span class="statrail__k">Strongest clause</span><span class="statrail__v accent-tx">Fixed, in writing</span></div>
+        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v">July 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE BODY ============ -->
+<section class="section paper-2" data-screen-label="Scope guide body">
+  <div class="wrap">
+    <article class="prose">
+
+      <h2>How do you write an AI project scope a vendor can’t inflate?</h2>
+      <p>Name one workflow end-to-end, state what it costs you today, define “done” in operations language, list what is explicitly out, make the vendor state the monthly run cost, and get the price fixed in writing before work begins. A scope with those six properties has no room to grow — which is the entire point.</p>
+      <p>Most owners have bought plenty of software but have never bought AI, and some vendors price that inexperience in. This guide is procurement armor: what each clause does, the inflation patterns it blocks, and a ten-line template at the end you can copy into your next conversation. We build under these terms ourselves — <a href="/pricing/">every price we charge is published</a> — so nothing here asks a vendor for anything we do not put in our own contracts.</p>
+
+      <h2>Why must the scope name exactly one workflow?</h2>
+      <p>Because “AI transformation” can absorb any invoice, and “the proposal workflow, from intake email to filed PDF” cannot. Scope inflation begins with nouns that have no edges.</p>
+      <p>Name the workflow end-to-end: what event starts it, what artifact ends it, and everything a person touches in between. A workflow with a named beginning and a named end can be priced, tested, and declared finished; a “transformation” can only be extended. This is also the honest unit of delivery — roughly 90 days per workflow is a realistic yardstick, and it is the rhythm we publish for our own work. The second workflow is not scope creep waiting to happen; it is a second project with its own scope, priced after the first one has proven itself.</p>
+
+      <h2>What does the workflow cost you today — and why put it in the scope?</h2>
+      <p>Hours per week times loaded hourly rate, written into the document. That number is the ceiling every quote must answer to, and a scope without it has no way to call a price absurd.</p>
+      <p>The arithmetic takes ten minutes. A workflow that eats six hours a week at a $55 loaded rate costs about $17,000 a year; now a $60,000 build has to explain itself, and a $95,000 one cannot. This is the same logic as <a href="/calculator/">our ROI calculator</a>, except better: the calculator uses published per-employee averages, and your measured hours beat a modeled average every time. Vendors inflate into vagueness. A stated current cost is the single cheapest anti-inflation device in the document, because it converts “what is this worth to you?” — a negotiation — into arithmetic.</p>
+
+      <h2>What do good acceptance criteria look like?</h2>
+      <p>They are written in operations language: “drafts the response, files it in the job folder, and a person approves before anything sends.” If a criterion mentions model names, unmeasurable accuracy percentages, or the word “intelligent,” rewrite it.</p>
+      <p>Operations language does two jobs. It makes “done” testable by a manager instead of a data scientist — either the drafts appear in the folder on Tuesday or they do not. And it keeps the human approval point in the contract, where it belongs: who reviews, what they approve, and how many hours a week that takes. Model language does the opposite job; a criterion like “95% accuracy” sounds rigorous and is unenforceable, because you have no way to measure it and the vendor defines the test. If you want the vocabulary to see through that kind of clause, the Ampersand essay <a href="/blog/how-to-smell-the-hype/">How to Smell the Hype</a> is twenty minutes well spent before the first meeting.</p>
+
+      <h2>What belongs explicitly out of scope?</h2>
+      <p>The next workflow, the website redesign, and any data cleanup beyond what this workflow needs. Out-of-scope lines are not pessimism — they are the walls of the room.</p>
+      <p>Change orders live in ambiguity. Every adjacent thing the scope fails to exclude is a thing the project can quietly grow to include, billed at whatever the moment allows. Data cleanup is the classic: your records will need some work, and the scope should cover exactly the cleanup this workflow requires — not a general data-hygiene program that runs for two quarters. Writing the exclusions down feels blunt in the meeting. It is far friendlier than the alternative, which is discovering in week seven that you and the vendor were building different projects all along.</p>
+
+      <h2>Who owns what at handoff, and what does it cost to run?</h2>
+      <p>You own everything — the code and configuration, the prompts, the documentation, the accounts — and your team is trained to run it. The scope says so in writing, and it makes the vendor state the monthly run cost next to it.</p>
+      <p>For a small business, the tools and model usage behind a working system typically land between $50 and $500 a month. A vendor who will not commit to a run-cost figure is reserving the right to surprise you with one, and a vendor whose architecture only they can operate has sold you a subscription dressed as a build. The test for lock-in is one question: “If we parted ways, could a competent firm take this over inside a month using the documentation?” If the answer wobbles, the “platform” is a leash. Handoff terms are the difference between buying an asset and renting a dependency, and they cost nothing to ask for — before you sign.</p>
+
+      <h2>Why is a fixed price in writing the strongest clause?</h2>
+      <p>Because it moves scope risk from your side of the table to the vendor’s before work begins. Every inflation pattern — endless discovery, phase pricing, change orders — is a mechanism for billing uncertainty to you; a fixed price makes uncertainty the seller’s problem.</p>
+      <p>It also changes who scopes carefully. A firm that must commit to a number has to understand the work before selling it, which is why our engagements run in two fixed steps: an <a href="/guides/what-is-an-ai-readiness-audit/">AI Readiness Audit</a> at $3,500–$8,500 over 2–4 weeks, which produces the measured scope, and an <a href="/services/#sprint">Implementation Sprint</a> at $12,000–$45,000, quoted as a fixed price in writing before work begins, delivered in 4–12 weeks. That structure is not generosity — it is the discipline this whole guide is asking you to demand from anyone, including us. “Fixed” has a precise meaning here: the number does not move after work starts. An “estimate,” a “target,” or a “typical range” is hourly billing with better marketing.</p>
+
+      <h2>What are the vendor-inflation patterns to catch?</h2>
+      <p>Four recur: discovery that never ends, “phase 1” pricing, platform lock-in dressed as architecture, and change-order pipelines. Each converts an ambiguity in your scope into billable time.</p>
+      <p>They are easiest to catch in the proposal language itself, so here they are side by side — the clause as commonly written, what it turns into, and the rewrite that closes the door.</p>
+      <div class="gtable-wrap">
+        <table class="gtable">
+          <thead>
+            <tr>
+              <th>Inflatable clause</th>
+              <th>What it becomes</th>
+              <th>Inflation-proof rewrite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>“Phase 1 begins with discovery, billed monthly until requirements stabilize.”</b></td>
+              <td>Discovery that never ends — requirements never quite stabilize</td>
+              <td>“Discovery is a fixed-price, fixed-length audit (2–4 weeks) that ends with a written implementation quote.”</td>
+            </tr>
+            <tr>
+              <td><b>“Phase 1 investment: $15,000.”</b></td>
+              <td>Phases 2 through 5, unpriced and assumed</td>
+              <td>“This price covers the named workflow running in production — or the document states exactly what it excludes.”</td>
+            </tr>
+            <tr>
+              <td><b>“We build on our proprietary platform for long-term scalability.”</b></td>
+              <td>Lock-in dressed as architecture — leaving costs a rebuild</td>
+              <td>“Client owns all code, prompts, documentation, and accounts at handoff; a competent third party could take over from the docs.”</td>
+            </tr>
+            <tr>
+              <td><b>“Additional requirements are handled through our change-request process.”</b></td>
+              <td>A change-order pipeline priced after you are committed</td>
+              <td>“The out-of-scope list is in the contract. New requirements are a new scope with its own fixed quote, not an amendment.”</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gtable-note">“Inflatable” clauses are composites of common proposal language, not quotes from any specific firm.</p>
+
+      <h2>What goes in the scope document, line by line?</h2>
+      <p>Ten lines. Copy them, fill them in, and bring the page to every vendor meeting — if a vendor pushes back on more than two, that is the finding.</p>
+      <ol class="check">
+        <li><b>The workflow, named end-to-end.</b> “From [intake event] to [filed output].” One workflow. The next one is a separate project.</li>
+        <li><b>Who touches it today, and for how many hours a week.</b> Named roles, measured or carefully estimated hours.</li>
+        <li><b>The current annual cost.</b> Hours × loaded rate. This is the ceiling every quote answers to.</li>
+        <li><b>Acceptance criteria in operations language.</b> What “done” does on an ordinary Tuesday — drafts filed, statuses updated, nothing sent without sign-off.</li>
+        <li><b>The human approval point.</b> Who reviews, what they approve, and the 2–3 hours a week budgeted for it.</li>
+        <li><b>Explicitly out of scope.</b> The next workflow, the redesign, and any data cleanup beyond what this workflow needs.</li>
+        <li><b>Ownership at handoff.</b> You own the code, prompts, documentation, and accounts; your team is trained to run it.</li>
+        <li><b>The run cost, stated by the vendor in writing.</b> Tools plus model usage — $50–$500 a month is the normal band for a small business.</li>
+        <li><b>A fixed price, in writing, before work begins.</b> With the payment schedule. Not an estimate, not a target.</li>
+        <li><b>A timeline with an end date.</b> Roughly 90 days per workflow is a fair yardstick; a project with no end date is a retainer wearing a hard hat.</li>
+      </ol>
+      <p>Owners in trades businesses tend to take to this fastest — <a href="/industries/construction/">construction firms</a> have been burned by open-ended change orders before and recognize the pattern instantly. The same armor works in every industry. Pair this template with the <a href="/guides/how-to-choose-an-ai-consultant/">ten vetting questions</a> when you take meetings, and if you want to watch the process from the other side of the table first, the <a href="/book/">free 30-minute assessment</a> is where we scope exactly this way — one workflow, real numbers, and a straight answer about whether it is worth building at all. We reply within 24 hours.</p>
+
+    </article>
+  </div>
+</section>
+
+<!-- ============ START HERE (ink) ============ -->
+
+<!-- FAQ:auto -->
+<section class="section paper-2" data-screen-label="Scoping FAQ">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">Scoping it tight.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">What should an AI project scope include?</span><span class="q-pm">+</span></summary>
+          <p>One workflow named end-to-end, its current annual cost in hours times loaded rate, acceptance criteria written in operations language, an explicit out-of-scope list, ownership of everything at handoff, the vendor's stated monthly run cost, and a fixed price in writing before work begins.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">How do vendors inflate AI project scopes?</span><span class="q-pm">+</span></summary>
+          <p>Four patterns recur: discovery phases that never end, "phase 1" pricing that hides unpriced later phases, proprietary-platform lock-in presented as architecture, and change-order pipelines that reprice every ambiguity after you are committed.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Should an AI project be priced hourly or fixed?</span><span class="q-pm">+</span></summary>
+          <p>Fixed, in writing, before work begins — that single clause moves scope risk to the vendor. Our AI Readiness Audits run $3,500–$8,500 and Implementation Sprints $12,000–$45,000 on exactly those terms.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">How long should an AI implementation take?</span><span class="q-pm">+</span></summary>
+          <p>About 90 days per workflow is a fair yardstick. Our Implementation Sprints run 4–12 weeks; a project with no end date is an inflation pattern, not a plan.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
+<section class="section ink final" data-screen-label="Scope start">
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2 class="h2 mt-s">Want a scope with a number <span class="accent-tx">that can’t move?</span></h2>
+    <p class="lead mt-s">The free 30-minute assessment is where one workflow gets named, measured, and priced — fixed, in writing, before any work begins. We reply within 24 hours.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--secondary btn--lg" href="/pricing/">Read the full price list <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
+
+<script src="/js/nav.js?v=5"></script>
+<script src="/js/analytics.js?v=2"></script>
+</body>
+</html>

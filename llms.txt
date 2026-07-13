@@ -108,6 +108,26 @@ before work begins.
   the hiring math, with break-even headcounts
 - [How to choose an AI consultant](/guides/how-to-choose-an-ai-consultant/) —
   10 questions that separate builders from hype merchants
+- [What AI automation costs to run](/guides/what-ai-automation-costs-to-run/) —
+  the monthly reality after the build: tokens, tools, maintenance ($50–$500/mo)
+- [Agents vs. automations vs. integrations](/guides/ai-agents-vs-automations-vs-integrations/) —
+  which one your problem needs, and why it's often the cheaper one
+- [How long AI implementation takes](/guides/how-long-ai-implementation-takes/) —
+  ~90 days per workflow, week by week; what "2 weeks" actually buys
+- [What an AI readiness audit is](/guides/what-is-an-ai-readiness-audit/) —
+  what $3,500–$8,500 buys, what it deliberately doesn't
+- [Where AI data actually goes](/guides/ai-data-cloud-vs-on-prem/) —
+  cloud vs. on-prem for a small business, matched to what's in the documents
+- [ChatGPT vs. custom AI](/guides/chatgpt-vs-custom-ai/) —
+  when a $25 subscription wins and where it stalls
+- [Signs you are NOT ready for AI](/guides/signs-you-are-not-ready-for-ai/) —
+  and the 90-day plan that costs almost nothing instead
+- [How to scope an AI project a vendor can't inflate](/guides/how-to-scope-an-ai-project/) —
+  procurement armor: clauses, inflation patterns, a copyable template
+- [The real ROI math](/guides/ai-roi-math-small-business/) —
+  the calculator's model published in full, worked example included
+- [AI for the skeptical owner](/guides/ai-for-the-skeptical-owner/) —
+  what the skeptic has right, and a first step requiring no belief
 
 ## Industries
 

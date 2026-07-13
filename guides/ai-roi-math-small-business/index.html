@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Real ROI Math of AI for Small Business | Main &amp; Machine</title>
+<meta name="description" content="Our full AI ROI model, published: per-industry manual-work and lost-capacity rates, the cost formula, a worked 25-person example — and what breaks the math." />
+<link rel="canonical" href="https://www.mainandmachine.com/guides/ai-roi-math-small-business/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="The Real ROI Math of AI for Small Business | Main &amp; Machine" />
+<meta property="og:description" content="Our full AI ROI model, published: per-industry manual-work and lost-capacity rates, the cost formula, a worked 25-person example — and what breaks the math." />
+<meta property="og:url" content="https://www.mainandmachine.com/guides/ai-roi-math-small-business/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine. The real ROI math of AI." />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Real ROI Math of AI for Small Business | Main &amp; Machine" />
+<meta name="twitter:description" content="Our full AI ROI model, published: per-industry manual-work and lost-capacity rates, the cost formula, a worked 25-person example — and what breaks the math." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=87" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* field guide article — built on the Main & Machine tokens in styles.css */
+.gtable-wrap{ overflow-x:auto; margin:1.6em 0; border:1px solid var(--line); background:var(--paper-card); }
+.gtable{ width:100%; border-collapse:collapse; font-size:var(--fs-16); line-height:1.5; }
+.gtable th{ font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--tx-faint); text-align:left; padding:12px 14px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.gtable td{ padding:12px 14px; border-bottom:1px solid var(--line-soft); color:var(--tx-mute); vertical-align:top; min-width:120px; }
+.gtable tr:last-child td{ border-bottom:0; }
+.gtable .us td{ background:#fff; color:var(--tx); box-shadow:inset 3px 0 0 var(--accent); }
+.gtable td b{ color:var(--tx); }
+.gtable-note{ font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-faint); margin-top:-0.6em; }
+.prose .check{ list-style:none; padding-left:0; counter-reset:ck; }
+.prose .check li{ counter-increment:ck; position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--line-soft); }
+.prose .check li::before{ content:counter(ck,decimal-leading-zero); position:absolute; left:0; top:14px; font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.08em; color:var(--accent-text); }
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "Article",
+      "@id": "https://www.mainandmachine.com/guides/ai-roi-math-small-business/#article",
+      "headline": "The Real ROI Math of AI for Small Business",
+      "description": "Main & Machine's full AI ROI model, published: per-industry manual-work and lost-capacity rates, the implementation cost formula, a fully worked 25-person example — and the three things that break the math.",
+      "url": "https://www.mainandmachine.com/guides/ai-roi-math-small-business/",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "author": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "publisher": { "@id": "https://www.mainandmachine.com/#org" },
+      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" },
+        { "@type": "ListItem", "position": 3, "name": "The ROI math of AI", "item": "https://www.mainandmachine.com/guides/ai-roi-math-small-business/" }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="/js/pa"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
+</script>
+
+<!-- FAQ-JSONLD:auto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you calculate AI ROI for a small business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Model two lines against one cost: manual work ($2,400–$4,000 per employee per year depending on industry) plus lost capacity ($1,800–$2,800 per employee per year), against an implementation estimate of $720 per employee, floored at $12,000 and capped at $45,000. Treat the result as a first read, never a promise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does AI implementation cost for a 25-person firm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About $18,000 in our published model ($720 × 25 employees), which sits inside our Implementation Sprint range of $12,000–$45,000, quoted as a fixed price in writing before work begins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the ROI of AI guaranteed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and anyone guaranteeing it is selling. The math breaks when the workflows are not truly repetitive, when adoption fails, or when the estimate counts work you would never have staffed anyway."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do the per-employee ROI numbers come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are our published model assumptions — the same rates behind our online ROI calculator — stated as team-wide averages. An AI Readiness Audit ($3,500–$8,500, 2–4 weeks) replaces them with your measured numbers."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="section paper pagehero" data-screen-label="The ROI math of AI">
+  <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/guides/">The Field Guide</a>
+      <span class="sep">/</span>
+      <span>The ROI math</span>
+    </div>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">The Field Guide / 13</span>
+        <h1 class="h2 mt-s">What is the real ROI math of AI for a 5–100 person <span class="accent-tx">business?</span></h1>
+        <p class="lead mt-s">Most firms keep their ROI model in a black box and hand you the output. Here is our entire model — every rate, the cost formula, one fully worked example, and the three things that break it.</p>
+      </div>
+      <div class="statrail crop" aria-label="Guide details">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>No. 13</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">9 min</span></div>
+        <div class="statrail__row"><span class="statrail__k">Worked example</span><span class="statrail__v">25-person firm</span></div>
+        <div class="statrail__row"><span class="statrail__k">Modeled drag</span><span class="statrail__v accent-tx">$150,000/yr</span></div>
+        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v">July 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE BODY ============ -->
+<section class="section paper-2" data-screen-label="ROI guide body">
+  <div class="wrap">
+    <article class="prose">
+
+      <h2>What is the real ROI math of AI for a small business?</h2>
+      <p>Two modeled cost lines — manual work and lost capacity — weighed against one implementation cost, with every assumption published. For a 25-person professional-services firm, the model says $150,000 a year of drag against roughly $18,000 to build, and the whole calculation is only as good as its assumptions, which is why this guide shows you every one of them.</p>
+      <p>These are the exact numbers behind <a href="/calculator/">our ROI calculator</a>, laid out in prose instead of a widget. Read them as what they are: a model — our published averages, useful for a first read of whether AI is worth investigating at your size, and built to be replaced by your measured numbers the moment you have them. Nothing on this page is a promise, and the last two sections explain why we refuse to make one.</p>
+
+      <h2>What does the “manual work” line actually measure?</h2>
+      <p>The modeled cost of hours your team spends on repetitive, rule-following work a machine could carry: re-keying data between systems, drafting routine emails and documents, chasing statuses, reconciling records, copying answers from one place to another. We model it at $4,000 per employee per year in professional services, with different rates by industry.</p>
+      <p>Two things about that number matter more than the number. First, it is an average across your whole headcount, not a claim about any individual — some employees do almost none of this work, and a few do ten times the average; spread over the team, the modeled figure is what survives. Second, it is deliberately unspectacular. At a $50 loaded rate, $4,000 a year is roughly an hour and a half per person per week — the arithmetic of ordinary friction, not a story about robots replacing anyone. The average includes the owner, whose re-keying hour is the most expensive one in the building. If your reaction is “our people lose more than that,” you may be right, and that is exactly what an audit measures rather than assumes.</p>
+
+      <h2>What does the “lost capacity” line mean?</h2>
+      <p>The revenue the model says you do not pursue because your people are busy with the manual work: proposals that never get written, callbacks that never happen, jobs that never get quoted, follow-ups that die in a full inbox. We model it at $2,000 per employee per year in professional services, again varying by industry.</p>
+      <p>This is the softer of the two lines, and we treat it that way. Manual work is a cost you are already paying and could in principle time-and-motion study next week. Lost capacity is a counterfactual — an estimate of what freed hours would earn if they were redirected at revenue, which requires that there is revenue to chase and someone who redirects the hours. In some businesses that line is conservative; a <a href="/industries/retail/">retail operation</a> that answers product questions an hour faster genuinely sells more. In others it is generous. When the two lines are added, remember which one stands on observed hours and which one stands on an assumption about what you would do with them.</p>
+
+      <h2>What are the per-industry rates, exactly?</h2>
+      <p>Five industries, two rates each, exactly as published in the calculator. They differ because the mix of paperwork, margins, and hourly economics differs by industry — a law firm’s hour is not a restaurant’s hour.</p>
+      <div class="gtable-wrap">
+        <table class="gtable">
+          <thead>
+            <tr>
+              <th>Industry</th>
+              <th>Manual work / employee / yr</th>
+              <th>Lost capacity / employee / yr</th>
+              <th>Combined</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Professional services</b></td>
+              <td>$4,000</td>
+              <td>$2,000</td>
+              <td>$6,000</td>
+            </tr>
+            <tr>
+              <td><b>Healthcare</b></td>
+              <td>$3,600</td>
+              <td>$2,800</td>
+              <td>$6,400</td>
+            </tr>
+            <tr>
+              <td><b>Retail</b></td>
+              <td>$3,200</td>
+              <td>$2,400</td>
+              <td>$5,600</td>
+            </tr>
+            <tr>
+              <td><b>Construction</b></td>
+              <td>$3,000</td>
+              <td>$1,800</td>
+              <td>$4,800</td>
+            </tr>
+            <tr>
+              <td><b>Hospitality</b></td>
+              <td>$2,400</td>
+              <td>$2,200</td>
+              <td>$4,600</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gtable-note">Our published model assumptions — the same rates behind the calculator. Team-wide averages, not per-person promises; an audit replaces them with your measured numbers.</p>
+      <p>If you want the operational detail behind any row — which workflows drive the number in your world — the industry pages walk through it: <a href="/industries/professional-services/">professional services</a> is the deepest of the five. Two notes on using the table. If your business straddles categories — a design-build firm that is half construction and half professional services — blend the rows by headcount rather than picking the flattering one. And if any rate strikes you as too high for your operation, cut it in half and rerun the math; a model you have deliberately discounted and that still clears is telling you more than one you swallowed whole.</p>
+
+      <h2>What does implementation cost in this model?</h2>
+      <p>min($45,000, max($12,000, $720 × employees)). In plain English: $720 per employee, with a floor of $12,000 and a ceiling of $45,000 — which is, not coincidentally, the published range of our <a href="/services/#sprint">Implementation Sprint</a>.</p>
+      <p>The floor exists because a real build has fixed costs that do not shrink with headcount: mapping the workflow, wiring the systems, testing, training the team. The ceiling exists because our unit of work is one workflow at a time, not an enterprise program — past roughly 62 employees the formula stops climbing, because the workflow does not get harder just because the org chart got longer. A 10-person firm models at the $12,000 floor; a 25-person firm at $18,000; a 100-person firm at the $45,000 cap. Real quotes are produced by an audit and fixed in writing before work begins, but this formula is what the calculator uses, and it lands inside the real range on purpose. All of it is on <a href="/pricing/">the pricing page</a>.</p>
+
+      <h2>How does the math work for a 25-person firm?</h2>
+      <p>Take a 25-person professional-services firm and run every line. Manual work: 25 × $4,000 = $100,000 a year; lost capacity: 25 × $2,000 = $50,000 a year; modeled drag: $150,000 a year against an implementation estimate of $720 × 25 = $18,000.</p>
+      <p>On those numbers the conclusion writes itself: if a build recovers even a fifth of the modeled drag — $30,000 a year — it pays for itself inside eight months, and the model’s full figure would pay it back in weeks. Add the running costs to be fair: the tools and model usage behind a working system typically run $50–$500 a month, so call it up to $6,000 a year on top. The arithmetic still clears easily.</p>
+      <p>Now stress-test it the way you would any forecast. Cut both lines in half — $75,000 of modeled drag — and assume the build captures only a quarter of that: $18,750 a year against $18,000 up front still pays back inside eighteen months, run costs included. The model has room to be substantially wrong and still clear.</p>
+      <p>Run the same math at the other end of our range and the model gets noticeably less enthusiastic. A 10-person <a href="/industries/construction/">construction firm</a> models at 10 × $3,000 + 10 × $1,800 = $48,000 a year of drag, against the $12,000 implementation floor. Apply the same discount — half the drag, a quarter captured — and the build returns $6,000 a year against $12,000 up front plus run costs: a two-to-four-year payback. The model itself is saying “thin, maybe wait” unless the hours are unusually concentrated in one workflow. A model that can say “wait” is the only kind worth publishing.</p>
+
+      <h2>What breaks the model?</h2>
+      <p>Three things, and at least one of them applies to most businesses. The workflows are not actually repetitive; adoption fails; or the estimate counts work you would never have staffed anyway.</p>
+      <p>First: the model assumes the manual hours are rule-following hours. If the work that eats your week is judgment dressed in paperwork — pricing oddball jobs, handling exceptions, soothing a particular client — a machine drafts it badly and a person redoes it, and the “saved” hours come back with interest. The Ampersand essay <a href="/blog/the-currency-of-the-machine/">The Currency of the Machine</a> is about exactly this distinction, and it is the first thing an audit checks.</p>
+      <p>Second: a system nobody uses returns zero, regardless of what the spreadsheet said. Adoption does not fail loudly — the approval seat goes empty for a week, the old habit creeps back because it was faster that day, and by month four the build is a login nobody remembers. The model assumes the hours flow back; adoption is the pipe they flow through, and it is a human pipe.</p>
+      <p>Third, the subtlest: saved time is not captured value. “Lost capacity” only converts to dollars if someone redirects the freed hours at revenue — and if the manual work was being absorbed into slack you would never have staffed anyway, eliminating it improves morale, not the bank balance. A model that counts those hours as dollars is double-counting, and most vendor ROI slides do. Any pitch that ignores all three of these failure modes is showing you the model’s best day and calling it a forecast.</p>
+
+      <h2>Why won’t we promise ROI numbers?</h2>
+      <p>Because everything above is our published set of assumptions, not your measured facts, and a promise built on assumptions is fiction with a signature. That is why no page on this site quotes a guaranteed return — this one included.</p>
+      <p>What we do instead is stage the certainty. The <a href="/calculator/">calculator</a> gives you a free first read using the rates in this guide — run your own headcount through it. The same model does heavier work in <a href="/guides/ai-consultant-vs-in-house/">the build-versus-hire comparison</a>, if your alternative is a full-time hire. And when the first read looks worth testing, an <a href="/services/#audit">AI Readiness Audit</a> — $3,500–$8,500, 2–4 weeks — replaces every average on this page with your workflows, your hours, and your rates, then prices the build as a fixed quote in writing. Sometimes the audit’s answer is that the drag is real but the workflows are not automatable yet, and the recommendation is to wait. If you would rather start smaller than that, the <a href="/book/">free 30-minute assessment</a> is a conversation about which of your numbers would survive the audit — we reply within 24 hours.</p>
+
+    </article>
+  </div>
+</section>
+
+<!-- ============ START HERE (ink) ============ -->
+
+<!-- FAQ:auto -->
+<section class="section paper-2" data-screen-label="ROI math FAQ">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">The model, published.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">How do you calculate AI ROI for a small business?</span><span class="q-pm">+</span></summary>
+          <p>Model two lines against one cost: manual work ($2,400–$4,000 per employee per year depending on industry) plus lost capacity ($1,800–$2,800 per employee per year), against an implementation estimate of $720 per employee, floored at $12,000 and capped at $45,000. Treat the result as a first read, never a promise.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">What does AI implementation cost for a 25-person firm?</span><span class="q-pm">+</span></summary>
+          <p>About $18,000 in our published model ($720 × 25 employees), which sits inside our Implementation Sprint range of $12,000–$45,000, quoted as a fixed price in writing before work begins.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Is the ROI of AI guaranteed?</span><span class="q-pm">+</span></summary>
+          <p>No, and anyone guaranteeing it is selling. The math breaks when the workflows are not truly repetitive, when adoption fails, or when the estimate counts work you would never have staffed anyway.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Where do the per-employee ROI numbers come from?</span><span class="q-pm">+</span></summary>
+          <p>They are our published model assumptions — the same rates behind our online ROI calculator — stated as team-wide averages. An AI Readiness Audit ($3,500–$8,500, 2–4 weeks) replaces them with your measured numbers.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
+<section class="section ink final" data-screen-label="ROI start">
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2 class="h2 mt-s">Run the model on <span class="accent-tx">your headcount.</span></h2>
+    <p class="lead mt-s">The calculator is free and uses every rate on this page. When you want the averages replaced with your real numbers, the 30-minute assessment is where that starts. We reply within 24 hours.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--secondary btn--lg" href="/calculator/">Open the ROI calculator <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
+
+<script src="/js/nav.js?v=5"></script>
+<script src="/js/analytics.js?v=2"></script>
+</body>
+</html>

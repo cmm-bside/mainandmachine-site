@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What AI Automation Costs to Run | Main &amp; Machine</title>
+<meta name="description" content="The monthly reality of AI automation: model usage, software subscriptions, integration fees, and maintenance — typically $50–$500/month, itemized here." />
+<link rel="canonical" href="https://www.mainandmachine.com/guides/what-ai-automation-costs-to-run/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="What AI Automation Costs to Run | Main &amp; Machine" />
+<meta property="og:description" content="The monthly reality of AI automation: model usage, software subscriptions, integration fees, and maintenance — typically $50–$500/month, itemized here." />
+<meta property="og:url" content="https://www.mainandmachine.com/guides/what-ai-automation-costs-to-run/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine. What AI automation costs to run." />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="What AI Automation Costs to Run | Main &amp; Machine" />
+<meta name="twitter:description" content="The monthly reality of AI automation: model usage, software subscriptions, integration fees, and maintenance — typically $50–$500/month, itemized here." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=87" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* field guide article — built on the Main & Machine tokens in styles.css */
+.gtable-wrap{ overflow-x:auto; margin:1.6em 0; border:1px solid var(--line); background:var(--paper-card); }
+.gtable{ width:100%; border-collapse:collapse; font-size:var(--fs-16); line-height:1.5; }
+.gtable th{ font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--tx-faint); text-align:left; padding:12px 14px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.gtable td{ padding:12px 14px; border-bottom:1px solid var(--line-soft); color:var(--tx-mute); vertical-align:top; min-width:120px; }
+.gtable tr:last-child td{ border-bottom:0; }
+.gtable .us td{ background:#fff; color:var(--tx); box-shadow:inset 3px 0 0 var(--accent); }
+.gtable td b{ color:var(--tx); }
+.gtable-note{ font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-faint); margin-top:-0.6em; }
+.prose .check{ list-style:none; padding-left:0; counter-reset:ck; }
+.prose .check li{ counter-increment:ck; position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--line-soft); }
+.prose .check li::before{ content:counter(ck,decimal-leading-zero); position:absolute; left:0; top:14px; font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.08em; color:var(--accent-text); }
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "Article",
+      "@id": "https://www.mainandmachine.com/guides/what-ai-automation-costs-to-run/#article",
+      "headline": "What AI Automation Costs to Run",
+      "description": "The monthly reality of AI automation: model usage, software subscriptions, integration fees, and maintenance — typically $50–$500/month for a small business.",
+      "url": "https://www.mainandmachine.com/guides/what-ai-automation-costs-to-run/",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "author": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "publisher": { "@id": "https://www.mainandmachine.com/#org" },
+      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" },
+        { "@type": "ListItem", "position": 3, "name": "What AI automation costs to run", "item": "https://www.mainandmachine.com/guides/what-ai-automation-costs-to-run/" }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="/js/pa"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
+</script>
+
+<!-- FAQ-JSONLD:auto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does AI automation cost to run per month?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically $50–$500 a month for a small business, covering model usage, software subscriptions, integration platform fees, and monitoring. Document-heavy workflows sit at the top of that band; chat-light workflows at the bottom."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does AI model usage actually cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Models charge by the token — roughly three-quarters of a word — in both directions. Light use often runs $20–$100 a month; systems that read long documents at volume can run several times that."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to pay for AI maintenance after the build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Someone has to own the system: a named person in-house spending a few hours a month, or a maintenance retainer. Ours is Managed Services — a monthly retainer with no lock-in, priced by what is running."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AI automation ever not worth the running cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A task done a handful of times a month cannot repay even $50 in monthly costs plus the attention the system needs — leave those workflows manual. Volume is the test."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="section paper pagehero" data-screen-label="What AI automation costs to run">
+  <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/guides/">The Field Guide</a>
+      <span class="sep">/</span>
+      <span>Running costs</span>
+    </div>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">The Field Guide / 05</span>
+        <h1 class="h2 mt-s">What does AI automation cost <span class="accent-tx">to run?</span></h1>
+        <p class="lead mt-s">Everyone quotes the build price; almost nobody tells you about the monthly bill that follows. Here is that bill, itemized — and the cases where it means you should not automate at all.</p>
+      </div>
+      <div class="statrail crop" aria-label="Guide details">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>No. 05</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">8 min</span></div>
+        <div class="statrail__row"><span class="statrail__k">Typical band</span><span class="statrail__v accent-tx">$50–$500/mo</span></div>
+        <div class="statrail__row"><span class="statrail__k">Biggest driver</span><span class="statrail__v">Document volume</span></div>
+        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v">July 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE BODY ============ -->
+<section class="section paper-2" data-screen-label="Guide body">
+  <div class="wrap">
+    <article class="prose">
+
+      <h2>What does AI automation cost to run each month?</h2>
+      <p>Typically $50–$500 a month for a small business, covering four line items: model usage, software subscriptions, integration platform fees, and someone watching the system. The build is a one-time price; this is the bill that arrives every month after.</p>
+      <p>The build side of the market is noisy but at least discussed — we publish ours, an <a href="/services/#audit">AI Readiness Audit</a> at $3,500–$8,500 and an <a href="/services/#sprint">AI Implementation Sprint</a> at $12,000–$45,000, fixed in writing before work begins. The running side is where buyers get surprised, because most sellers simply never bring it up. This guide walks through each of the four line items, shows what drives them up or down, and ends with the case nobody selling automation wants to mention: the workflows where the monthly bill exceeds the monthly value, and the right answer is to leave the work manual.</p>
+
+      <h2>What does the model bill actually look like?</h2>
+      <p>For most single-workflow systems, $20–$100 a month; document-heavy workflows can run several times that. Models charge by the token — roughly three-quarters of a word — metered in both directions, for what the machine reads and what it writes.</p>
+      <p>The shape of your workflow decides the bill. A chat-light system — an assistant that answers a few dozen staff questions a day against your procedures — reads and writes small amounts of text and lands at the bottom of the band, often a few dollars a day or less. A document-heavy system is different arithmetic. When the machine reads every 40-page contract, every intake packet, every invoice attachment, each document is thousands of tokens in and often thousands more out in summaries and drafts. A <a href="/industries/professional-services/">professional-services firm</a> running proposals and engagement letters through a system will spend more per month on tokens than a shop using the same model to answer scheduling questions — not because anyone did anything wrong, but because tokens are the metered fuel. The Ampersand essay <a href="/blog/the-currency-of-the-machine/">The Currency of the Machine</a> explains the meter in plain English, and <a href="/blog/the-buildings-behind-the-intelligence/">The Buildings Behind the Intelligence</a> covers the physical infrastructure the meter is paying for.</p>
+      <p>You can rough out your own bill before anyone builds anything. Count the documents the workflow touches in a month and multiply by their typical length: two hundred 3-page invoices is a modest token load; forty 40-page contracts is a heavy one, even though it is fewer documents. Precision does not matter at this stage — what matters is knowing whether you are a $30-a-month workflow or a $300-a-month workflow before you commit to a build price, because the answer occasionally changes whether the build is worth doing at all.</p>
+
+      <h2>What software subscriptions sit underneath a working system?</h2>
+      <p>Plan on $30–$200 a month in tools around the model: the platform that hosts the workflow, the integration layer that moves data between your systems, and sometimes a specialty service for documents. Each piece is small; together they are usually the second-largest line.</p>
+      <p>A typical stack for one automated workflow looks like this: an integration platform (the plumbing that connects your inbox, your file storage, and your system of record) at $20–$100 a month depending on how many times it runs; a hosting or workflow tool at $0–$50; and, for document work, OCR or storage services at $10–$50. One caution worth flagging separately: per-seat AI add-ons — the $20–$30-per-user-per-month copilot licenses sold inside office suites — are a different bill entirely. Twenty seats of a copilot is $400–$600 a month before any workflow exists. That can be worth it, but do not confuse it with the running cost of an automated workflow; a scoped system usually costs less per month than blanket seats and does something specific.</p>
+
+      <h2>Who watches the system, and what does that cost?</h2>
+      <p>Someone has to own the system after handoff — either a named person in-house spending a few hours a month, or a maintenance retainer. Skipping this line item does not make it free; it makes it invisible until something breaks quietly.</p>
+      <p>Watching a system means concrete work: reviewing the exception queue where the machine flags what it could not handle, spot-checking outputs so drift gets caught early, and applying updates when a vendor changes an API or retires a model version. In-house, that is commonly two to six hours a month for a single workflow — a real cost even though no invoice arrives. If you would rather not staff it, our <a href="/services/#managed">Managed Services</a> covers exactly this: a monthly retainer, priced by what is running, with no lock-in — cancel any month and the system is still yours, because you owned it from handoff. Either answer works. Having no answer is the only wrong one.</p>
+
+      <h2>Why do running costs shift over time?</h2>
+      <p>Because the ground moves: model vendors retire versions, change prices, and update APIs, and each shift can require a few hours of retuning. The good news is the price direction — per-token costs have generally fallen, sharply, year over year.</p>
+      <p>The pattern to expect is occasional, not constant. A model deprecation forces a migration to the successor, and the successor never behaves identically — prompts get re-tested, edge cases get re-checked, and a workday or two disappears. An integration partner changes an endpoint and the plumbing needs a fitting replaced. Budget for two or three such events a year on a single workflow. This is most of what a maintenance retainer actually buys: not standby heroics, but somebody whose job it is to absorb these shifts before you notice them.</p>
+
+      <h2>When do running costs exceed the value?</h2>
+      <p>On low-volume workflows. A task performed a handful of times a month cannot repay even $50 in monthly costs plus the attention the system needs — so do not automate it.</p>
+      <p>Run the arithmetic before anyone runs a demo. If a task takes your bookkeeper two hours a month, full automation saves at most two hours a month — against $50 or more in running costs and a build price on top. That is a hobby, not an investment. A small <a href="/industries/retail/">retail shop</a> reconciling four supplier invoices a month should keep reconciling them by hand; the same shop answering two hundred customer emails a week has a real candidate. Volume is the test, and it is why every audit we deliver marks some workflows “leave it manual” in writing. If a seller has never told you not to automate something, they are not scoping — they are selling. The free <a href="/guides/ai-readiness-checklist/">20-point readiness checklist</a> helps you sort your own list before anyone charges you to sort it.</p>
+      <p>There is a middle case worth naming, too. Some workflows are low-volume today and will not stay that way — the shop opening a second location, the firm about to take on a new contract type. For those, the right answer is usually “not yet, revisit at volume,” with a specific trigger written down: automate the invoice flow when it crosses fifty a month, not before. A dated threshold turns a vague someday into a decision that makes itself, and it costs nothing to write.</p>
+
+      <h2>How do monthly costs compare across workflow types?</h2>
+      <p>Three profiles cover most of what small businesses actually run. The ranges are typical figures for systems like the ones we scope — not quotes, because your volume decides your number.</p>
+      <div class="gtable-wrap">
+        <table class="gtable">
+          <thead>
+            <tr>
+              <th>Profile</th>
+              <th>Typical monthly</th>
+              <th>What drives it</th>
+              <th>Watch for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Single chat-assist workflow</b> — staff Q&amp;A, drafting replies against your procedures</td>
+              <td>$50–$150</td>
+              <td>Question volume; short texts in, short texts out</td>
+              <td>Per-seat add-ons creeping in beside it</td>
+            </tr>
+            <tr>
+              <td><b>Document-processing workflow</b> — intake packets, invoices, contracts read and routed</td>
+              <td>$150–$400</td>
+              <td>Document volume and length; OCR and storage on top of tokens</td>
+              <td>A single long-document type dominating the bill</td>
+            </tr>
+            <tr>
+              <td><b>Multi-agent back office</b> — several workflows across departments, shared plumbing</td>
+              <td>$300–$500+</td>
+              <td>Number of workflows and integrations; monitoring load</td>
+              <td>Maintenance hours growing faster than the token bill</td>
+            </tr>
+            <tr>
+              <td><b>Low-volume task</b> — done a handful of times a month</td>
+              <td>Not worth it</td>
+              <td>Nothing — the costs exceed the value</td>
+              <td>Anyone trying to sell you this row</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gtable-note">Typical 2026 figures for small-business systems, stated as ranges — your document volume, run counts, and tool choices set the real number.</p>
+
+      <h2>How do build costs and running costs fit together?</h2>
+      <p>Think of the build as the mortgage and the running cost as the utilities: $12,000–$45,000 once for an implementation sprint at our published prices, then $50–$500 a month to keep it working. Both numbers should be on the table before you sign anything.</p>
+      <p>The full year-one picture, then: an audit at $3,500–$8,500 over 2–4 weeks, a sprint at $12,000–$45,000 fixed in writing over 4–12 weeks, and roughly $600–$6,000 in running costs across the first twelve months. For the build side of the market — hourly rates, boutique bands, Big Four minimums — the companion guide <a href="/guides/ai-consultant-cost/">What an AI consultant costs</a> lays out the whole shelf; the full price list is on <a href="/pricing/">one page</a>. And one vetting question worth carrying into every meeting, including ours: ask for the projected monthly running cost next to the build quote. A builder who cannot estimate the monthly number has not actually scoped the workflow. Every engagement starts with a free 30-minute assessment, and we reply within 24 hours.</p>
+
+    </article>
+  </div>
+</section>
+
+
+<!-- FAQ:auto -->
+<section class="section paper-2" data-screen-label="Running costs FAQ">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">What it costs to run.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">How much does AI automation cost to run per month?</span><span class="q-pm">+</span></summary>
+          <p>Typically $50–$500 a month for a small business, covering model usage, software subscriptions, integration platform fees, and monitoring. Document-heavy workflows sit at the top of that band; chat-light workflows at the bottom.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">How much does AI model usage actually cost?</span><span class="q-pm">+</span></summary>
+          <p>Models charge by the token — roughly three-quarters of a word — in both directions. Light use often runs $20–$100 a month; systems that read long documents at volume can run several times that.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Do I have to pay for AI maintenance after the build?</span><span class="q-pm">+</span></summary>
+          <p>Someone has to own the system: a named person in-house spending a few hours a month, or a maintenance retainer. Ours is Managed Services — a monthly retainer with no lock-in, priced by what is running.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Is AI automation ever not worth the running cost?</span><span class="q-pm">+</span></summary>
+          <p>Yes. A task done a handful of times a month cannot repay even $50 in monthly costs plus the attention the system needs — leave those workflows manual. Volume is the test.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
+<!-- ============ START HERE (ink) ============ -->
+<section class="section ink final" data-screen-label="Start here">
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2 class="h2 mt-s">Want both numbers for <span class="accent-tx">your workflows?</span></h2>
+    <p class="lead mt-s">The free 30-minute assessment is where ranges become your numbers — a senior advisor walks your workflows and gives you a straight read on the build price and the monthly bill behind it. We reply within 24 hours.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--secondary btn--lg" href="/pricing/">Read the full price list <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
+
+<script src="/js/nav.js?v=5"></script>
+<script src="/js/analytics.js?v=2"></script>
+</body>
+</html>

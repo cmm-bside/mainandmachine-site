@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How Long AI Implementation Takes | Main &amp; Machine</title>
+<meta name="description" content="The real timeline for AI implementation at a small business: about 90 days per workflow, week by week — and what the two-week promises actually deliver." />
+<link rel="canonical" href="https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="How Long AI Implementation Takes | Main &amp; Machine" />
+<meta property="og:description" content="The real timeline for AI implementation at a small business: about 90 days per workflow, week by week — and what the two-week promises actually deliver." />
+<meta property="og:url" content="https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine. How long AI implementation takes." />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How Long AI Implementation Takes | Main &amp; Machine" />
+<meta name="twitter:description" content="The real timeline for AI implementation at a small business: about 90 days per workflow, week by week — and what the two-week promises actually deliver." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=87" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* field guide article — built on the Main & Machine tokens in styles.css */
+.gtable-wrap{ overflow-x:auto; margin:1.6em 0; border:1px solid var(--line); background:var(--paper-card); }
+.gtable{ width:100%; border-collapse:collapse; font-size:var(--fs-16); line-height:1.5; }
+.gtable th{ font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--tx-faint); text-align:left; padding:12px 14px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.gtable td{ padding:12px 14px; border-bottom:1px solid var(--line-soft); color:var(--tx-mute); vertical-align:top; min-width:120px; }
+.gtable tr:last-child td{ border-bottom:0; }
+.gtable .us td{ background:#fff; color:var(--tx); box-shadow:inset 3px 0 0 var(--accent); }
+.gtable td b{ color:var(--tx); }
+.gtable-note{ font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-faint); margin-top:-0.6em; }
+.prose .check{ list-style:none; padding-left:0; counter-reset:ck; }
+.prose .check li{ counter-increment:ck; position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--line-soft); }
+.prose .check li::before{ content:counter(ck,decimal-leading-zero); position:absolute; left:0; top:14px; font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.08em; color:var(--accent-text); }
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "Article",
+      "@id": "https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/#article",
+      "headline": "How Long AI Implementation Takes",
+      "description": "The real timeline for AI implementation at a small business: about 90 days per workflow, week by week — and what the two-week promises actually deliver.",
+      "url": "https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "author": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "publisher": { "@id": "https://www.mainandmachine.com/#org" },
+      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" },
+        { "@type": "ListItem", "position": 3, "name": "How long implementation takes", "item": "https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/" }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="/js/pa"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
+</script>
+
+<!-- FAQ-JSONLD:auto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does AI implementation take for a small business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About 90 days per workflow: roughly two weeks of discovery and mapping, weeks of building and integration inside the real operation, then handoff and training. An AI Readiness Audit of 2–4 weeks precedes the 4–12 week Implementation Sprint."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI really be implemented in two weeks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A chat wrapper can — a general model with your logo, not wired to your systems, with no training. That can be a fair pilot; it is not an implementation, because it never touches your operation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What takes the longest in an AI implementation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Integration, not the model. Getting the AI working takes an afternoon; wiring it into your systems, handling real files and edge cases, and testing until the exception rate is boring takes weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes AI implementation go faster?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exportable data, one named owner who answers questions in hours, and one workflow instead of five. Approval bottlenecks and a missing system of record are what slow it down."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="section paper pagehero" data-screen-label="How long AI implementation takes">
+  <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/guides/">The Field Guide</a>
+      <span class="sep">/</span>
+      <span>How long it takes</span>
+    </div>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">The Field Guide / 07</span>
+        <h1 class="h2 mt-s">How long does AI implementation <span class="accent-tx">actually take?</span></h1>
+        <p class="lead mt-s">The market promises two weeks; the real answer is about 90 days per workflow. Here is the week-by-week why — and what the two-week version actually delivers.</p>
+      </div>
+      <div class="statrail crop" aria-label="Guide details">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>No. 07</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">9 min</span></div>
+        <div class="statrail__row"><span class="statrail__k">Real answer</span><span class="statrail__v accent-tx">~90 days/workflow</span></div>
+        <div class="statrail__row"><span class="statrail__k">Audit first</span><span class="statrail__v">2–4 weeks</span></div>
+        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v">July 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE BODY ============ -->
+<section class="section paper-2" data-screen-label="Guide body">
+  <div class="wrap">
+    <article class="prose">
+
+      <h2>How long does AI implementation take for a small business?</h2>
+      <p>About 90 days per workflow, from the first mapping session to your team running the system without us. Before that build starts, an <a href="/services/#audit">AI Readiness Audit</a> takes 2–4 weeks; the <a href="/services/#sprint">Implementation Sprint</a> itself runs 4–12 weeks depending on the workflow’s complexity.</p>
+      <p>You will hear shorter numbers. “Live in two weeks” is a common pitch, and this guide takes it seriously enough to explain exactly what ships in two weeks and why almost nobody is using it by week six. The 90-day figure is not padding — every week in it does specific work, and cutting a week removes something you will pay for later. What follows is the arc broken into its three phases, a week-by-week table, the levers that genuinely make it faster or slower, and one sequencing lesson from our largest published build. The full version of how we work is on the <a href="/method/">method page</a>; this is the calendar view of it.</p>
+
+      <h2>What happens in weeks 1–2?</h2>
+      <p>Discovery and mapping: we watch the workflow run inside your real operation and write down where the hours, files, and decisions actually go. Skipping this phase is where AI projects die.</p>
+      <p>The work is unglamorous on purpose. We interview the people who do the task, watch them do it, inventory which systems hold the data and who can export it, list the edge cases everyone “just handles,” and pin down what done means — in numbers, agreed in writing. The reason this cannot be compressed is that every business runs two versions of every workflow: the one in the org chart and the one that actually happens. Build against the org chart’s version and you automate a process nobody performs; the system demos beautifully and dies in a month. Two weeks of mapping is the cheapest insurance in the whole project, and it is why our <a href="/method/">method</a> starts here rather than at the keyboard.</p>
+
+      <h2>What happens in weeks 3–10?</h2>
+      <p>The build — inside your real operation, on your real files. The long pole is integration, not the model: getting the AI wired into your systems takes weeks; getting the AI to work takes an afternoon.</p>
+      <p>This surprises most buyers, so it bears spelling out. Modern models are astonishingly capable out of the box; the hard part is everything around them. Data access and permissions to your system of record. Handling the invoice that arrives as a photo of a crumpled page. Teaching the system your terminology, your formats, your exceptions — the work the essay <a href="/blog/teaching-the-machine-your-business/">Teaching the Machine Your Business</a> describes. Then testing on real files, because real files are where demos go to be humbled: a <a href="/industries/healthcare/">healthcare practice</a> we would map, for instance, gets intake paperwork as faxes, phone photos, and handwriting, and the system has to route all three or staff will stop trusting it after the first miss. Weeks 3–10 are mostly this: plumbing, edge cases, and testing against reality until the exception rate is boring.</p>
+
+      <h2>What happens in weeks 11–13?</h2>
+      <p>Handoff and training: your team runs the system while we watch, and by the end they own it outright. No dependency by design.</p>
+      <p>The deliverables are concrete — documentation written for the people who will use it, training sessions for the operators and the exception-handlers, and an escalation path for the day something odd appears. Training is not a webinar; it is your bookkeeper processing Thursday’s real invoices through the new system with us in the room, hitting a real exception, and handling it. People trust what they have personally seen recover from a mistake, and manufacturing that moment on purpose is what the last fortnight is for. The important part is the posture: we do not hold the keys. The system, the prompts, the integrations, and the documentation are yours at handoff, and if you never call us again it keeps working. If you would rather someone else watch it long-term, <a href="/services/#managed">Managed Services</a> is a monthly retainer with no lock-in — but it is an option, not a tether. A vendor whose timeline has no training phase is planning to be permanent. Ask where handoff is on their calendar; if the answer is vague, so is your ownership.</p>
+
+      <h2>What does the timeline look like, week by week?</h2>
+      <p>Three phases, thirteen weeks, and a column most timelines omit: what you should be doing while we work. The calendar has two owners or it slips.</p>
+      <div class="gtable-wrap">
+        <table class="gtable">
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Weeks</th>
+              <th>What ships</th>
+              <th>What you should be doing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Discovery &amp; mapping</b></td>
+              <td>1–2</td>
+              <td>Workflow map, data inventory, edge-case list, a written definition of done</td>
+              <td>Granting data access, naming one owner, telling staff why we are watching them work</td>
+            </tr>
+            <tr>
+              <td><b>Build &amp; integration</b></td>
+              <td>3–10</td>
+              <td>The working system, wired to your tools, tested on your real files</td>
+              <td>Reviewing weekly outputs, flagging exceptions fast, keeping approvals to days not weeks</td>
+            </tr>
+            <tr>
+              <td><b>Handoff &amp; training</b></td>
+              <td>11–13</td>
+              <td>Documentation, trained operators, an escalation path — you own all of it</td>
+              <td>Running the system yourselves while we watch, and telling us where it fights you</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gtable-note">The sprint band is 4–12 weeks — a single contained workflow lands near the short end; ~90 days is the typical full arc for one workflow.</p>
+
+      <h2>What does a “two-week AI implementation” actually deliver?</h2>
+      <p>Usually a chat wrapper: a general-purpose model with your logo on it, not connected to your systems, with no training and no edge-case testing. It is not fraud — it is just a different product wearing the word “implementation.”</p>
+      <p>The pattern is predictable. Week one, the wrapper appears and everyone tries it. Week three, usage has fallen to the two people who like new things, because the tool cannot see the job files, the customer records, or the calendar — so every answer is generic and every task still ends in the old system. By week six it is a line item nobody defends. That said, there is a legitimate case for the fast version: as a pilot. If your team has never touched AI and you want to build familiarity cheaply before committing real money, a two-week wrapper is a reasonable experiment — as long as it is priced like an experiment and nobody calls it a transformation. What it cannot be is the thing that changes your operation, because it never touches your operation.</p>
+
+      <h2>What makes implementation faster — or slower?</h2>
+      <p>Faster: exportable data, one named owner, and one workflow instead of five. Slower: approval bottlenecks and no system of record.</p>
+      <p>The fast levers are all on your side of the table. If your data can be exported from real systems, weeks of archaeology disappear. If one person owns the project and can answer questions in hours, the build never idles — decision latency is the quietest schedule-killer there is, and a question that waits a week doubles the calendar all by itself. And scope discipline compounds: one workflow done in ~90 days beats five workflows half-done in a year, every time. The slow cases are the mirror image: a committee where an owner should be, or an operation running on paper and memory, where there is no system of record to integrate with and one must be stood up first. If you want to know which side of this ledger you are on before spending anything, the free <a href="/guides/ai-readiness-checklist/">20-point readiness checklist</a> will tell you in an afternoon — and being unready is a fixable condition, not a verdict.</p>
+      <p>One more calendar fact vendors soften: multiple workflows do not run in parallel on day one. The second workflow reuses the plumbing, the data access, and the trust the first one built, so it usually lands faster — but it starts after the first one works, not alongside it. A vendor promising five workflows in one quarter is describing five pilots, not five implementations. A <a href="/industries/professional-services/">professional-services firm</a> that automates intake first and proposals second will finish both sooner, and keep both, compared with one that launches everything at once and stabilizes nothing.</p>
+
+      <h2>When should the highest-stakes work get built?</h2>
+      <p>Last. In the <a href="/work/marcus/">MARCUS</a> build at B:Side Capital — 14 agents across 7 departments — the highest-exposure work was deliberately sequenced last, after the low-stakes agents had run long enough to earn trust.</p>
+      <p>That ordering is the opposite of the demo instinct, which wants the most impressive thing first. But trust is the actual product of an implementation, and trust is built by boring reliability on low-stakes work — which is also why nothing in that system sends, files, posts, or pays without human approval. Sequencing this way is a large part of why real timelines are measured in quarters rather than days: the calendar is not just building software, it is building your team’s justified confidence in it. So plan the arc in full: an audit first — 2–4 weeks, $3,500–$8,500, which tells you which workflow to build and in what order — then a sprint at $12,000–$45,000, fixed in writing before work begins. Both prices are on <a href="/pricing/">one page</a>. If 90 days sounds long, note what it replaces: a two-week tool nobody uses, purchased three separate times.</p>
+
+    </article>
+  </div>
+</section>
+
+
+<!-- FAQ:auto -->
+<section class="section paper-2" data-screen-label="Timeline FAQ">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">How long it takes.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">How long does AI implementation take for a small business?</span><span class="q-pm">+</span></summary>
+          <p>About 90 days per workflow: roughly two weeks of discovery and mapping, weeks of building and integration inside the real operation, then handoff and training. An AI Readiness Audit of 2–4 weeks precedes the 4–12 week Implementation Sprint.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">Can AI really be implemented in two weeks?</span><span class="q-pm">+</span></summary>
+          <p>A chat wrapper can — a general model with your logo, not wired to your systems, with no training. That can be a fair pilot; it is not an implementation, because it never touches your operation.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">What takes the longest in an AI implementation?</span><span class="q-pm">+</span></summary>
+          <p>Integration, not the model. Getting the AI working takes an afternoon; wiring it into your systems, handling real files and edge cases, and testing until the exception rate is boring takes weeks.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">What makes AI implementation go faster?</span><span class="q-pm">+</span></summary>
+          <p>Exportable data, one named owner who answers questions in hours, and one workflow instead of five. Approval bottlenecks and a missing system of record are what slow it down.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
+<!-- ============ START HERE (ink) ============ -->
+<section class="section ink final" data-screen-label="Start here">
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2 class="h2 mt-s">Want a real timeline for <span class="accent-tx">your workflow?</span></h2>
+    <p class="lead mt-s">The free 30-minute assessment is where the calendar gets specific: a senior advisor walks your workflow and gives you a straight read on how long it would actually take. We reply within 24 hours.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--secondary btn--lg" href="/services/">See how the services fit <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
+
+<script src="/js/nav.js?v=5"></script>
+<script src="/js/analytics.js?v=2"></script>
+</body>
+</html>

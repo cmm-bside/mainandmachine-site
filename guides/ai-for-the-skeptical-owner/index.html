@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI for the Skeptical Business Owner | Main &amp; Machine</title>
+<meta name="description" content="You're skeptical of AI. Good — most projects fail and the hype is self-serving. What the skeptic has right, and a first step that requires no belief." />
+<link rel="canonical" href="https://www.mainandmachine.com/guides/ai-for-the-skeptical-owner/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="AI for the Skeptical Business Owner | Main &amp; Machine" />
+<meta property="og:description" content="You're skeptical of AI. Good — most projects fail and the hype is self-serving. What the skeptic has right, and a first step that requires no belief." />
+<meta property="og:url" content="https://www.mainandmachine.com/guides/ai-for-the-skeptical-owner/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine. AI for the skeptical owner." />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI for the Skeptical Business Owner | Main &amp; Machine" />
+<meta name="twitter:description" content="You're skeptical of AI. Good — most projects fail and the hype is self-serving. What the skeptic has right, and a first step that requires no belief." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=87" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* field guide article — built on the Main & Machine tokens in styles.css */
+.gtable-wrap{ overflow-x:auto; margin:1.6em 0; border:1px solid var(--line); background:var(--paper-card); }
+.gtable{ width:100%; border-collapse:collapse; font-size:var(--fs-16); line-height:1.5; }
+.gtable th{ font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--tx-faint); text-align:left; padding:12px 14px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.gtable td{ padding:12px 14px; border-bottom:1px solid var(--line-soft); color:var(--tx-mute); vertical-align:top; min-width:120px; }
+.gtable tr:last-child td{ border-bottom:0; }
+.gtable .us td{ background:#fff; color:var(--tx); box-shadow:inset 3px 0 0 var(--accent); }
+.gtable td b{ color:var(--tx); }
+.gtable-note{ font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-faint); margin-top:-0.6em; }
+.prose .check{ list-style:none; padding-left:0; counter-reset:ck; }
+.prose .check li{ counter-increment:ck; position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--line-soft); }
+.prose .check li::before{ content:counter(ck,decimal-leading-zero); position:absolute; left:0; top:14px; font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.08em; color:var(--accent-text); }
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "Article",
+      "@id": "https://www.mainandmachine.com/guides/ai-for-the-skeptical-owner/#article",
+      "headline": "AI for the Skeptical Business Owner",
+      "description": "A guide that takes the AI skeptic's side first: most projects fail, the hype is self-serving, models make things up — then shows what waiting quietly costs and the first step that requires no belief.",
+      "url": "https://www.mainandmachine.com/guides/ai-for-the-skeptical-owner/",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "author": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "publisher": { "@id": "https://www.mainandmachine.com/#org" },
+      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" },
+        { "@type": "ListItem", "position": 3, "name": "AI for the skeptical owner", "item": "https://www.mainandmachine.com/guides/ai-for-the-skeptical-owner/" }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="/js/pa"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
+</script>
+
+<!-- FAQ-JSONLD:auto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do most AI projects really fail?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Boston Consulting Group's 2024 study found 78% of companies that spent on AI saw essentially nothing move; only 22% turned the spending into measurable results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a small business actually need AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not necessarily, and for many businesses not yet. The cost of waiting is modeled, not guaranteed — but repetitive manual work compounds quietly through hiring cycles, so it is worth measuring before dismissing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What can an AI skeptic try without committing money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take the free 14-question AI-Ready Score (about 7 minutes, no sales call), work through a free readiness checklist, and run one $25-a-month tool with a named owner for 90 days. If nothing sticks, stop — that result is real information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is skepticism a problem when adopting AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The opposite. Demanding proof, rejecting vendor magic, and keeping a named person accountable are the traits that separate working projects from the 78% that move nothing."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="section paper pagehero" data-screen-label="The skeptical owner">
+  <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/guides/">The Field Guide</a>
+      <span class="sep">/</span>
+      <span>For the skeptic</span>
+    </div>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">The Field Guide / 14</span>
+        <h1 class="h2 mt-s">You’re skeptical of AI. What if <span class="accent-tx">you’re right?</span></h1>
+        <p class="lead mt-s">Most of what you suspect about AI is true, and this guide starts by proving it. Then it shows the one thing the skeptic risks — and the first step that requires believing nothing.</p>
+      </div>
+      <div class="statrail crop" aria-label="Guide details">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>No. 14</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">8 min</span></div>
+        <div class="statrail__row"><span class="statrail__k">Spend that moved nothing</span><span class="statrail__v">78% (BCG, 2024)</span></div>
+        <div class="statrail__row"><span class="statrail__k">First step costs</span><span class="statrail__v accent-tx">$0</span></div>
+        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v">July 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE BODY ============ -->
+<section class="section paper-2" data-screen-label="Skeptic guide body">
+  <div class="wrap">
+    <article class="prose">
+
+      <h2>What does the skeptic already have right about AI?</h2>
+      <p>Most of it. Most AI projects fail, the hype cycle is self-serving, the models make things up, vendors sell adjectives, and your business runs fine today — every one of those statements is true, and we say so while selling AI implementation for a living.</p>
+      <p>This guide is not a conversion attempt dressed as empathy. It takes your side first, with sources, because the skeptic’s objections are the best available checklist for doing this work well. Then it asks the only question skepticism cannot answer on its own: what does being right cost if you hold the position forever? And it ends with a first step that requires believing nothing — because a skeptic should not be asked to.</p>
+
+      <h2>Do most AI projects really fail?</h2>
+      <p>Yes. Boston Consulting Group’s 2024 study <em>Where’s the Value in AI?</em> found that 78% of companies that spent on AI saw essentially nothing move; only 22% turned the spending into measurable results.</p>
+      <p>We publish that number on our own homepage, in large type, because pretending otherwise would be a strange way to open a relationship. The failures are not mysterious, either. Projects fail when the workflow was never documented, when nobody owned the output, when the tool was bought before the problem was named, and when the vendor’s incentive was the sale rather than the result. Notice what is on that list and what is not: the model is rarely the thing that failed. The buying process was. A skeptic who refuses to buy that way is not behind — they are inoculated.</p>
+      <p>The most common failure has a shape worth knowing: pilot purgatory. The demo dazzles, because demos run on curated examples. Then the pilot meets real files — the PDF scanned sideways, the customer who emails in fragments, the spreadsheet with three naming conventions — and the accuracy that looked effortless on stage needs a person checking every output. Nobody kills the pilot, because nobody wants to have bought it; it just stops being mentioned. Multiply that by a few thousand companies and you get 78%. The skeptic watching a demo and thinking “but our files are a mess” is not cynical. They are doing the analysis the pilot skipped.</p>
+
+      <h2>Is the hype as self-serving as it looks?</h2>
+      <p>Yes. Nearly everyone shouting about AI is paid when you believe them — vendors, media, consultants, and yes, firms like ours — and the industry has been announcing imminent transformation since 1956.</p>
+      <p>The Ampersand essay <a href="/blog/seventy-years-of-overnight-success/">Seventy Years of Overnight Success</a> walks through that history: the field has run boom-and-bust cycles of promise and disappointment for seven decades, and knowing that history is the best vaccine against this decade’s adjectives. The models’ flaws are real too, and documented, not skeptic paranoia: they generate plausible text rather than verified truth, which is why they confidently invent things — <a href="/blog/why-the-machine-makes-things-up/">Why the Machine Makes Things Up</a> explains the mechanism in plain English, and <a href="/blog/what-the-machine-cannot-do/">What the Machine Cannot Do</a> draws the boundary lines that vendors tend to airbrush. If a salesperson has never volunteered those limitations to you, you have learned something about the salesperson.</p>
+      <p>The tell is the parts of speech. When a seller cannot name the workflow, the hours, or the price, they sell adjectives instead — “revolutionary,” “seamless,” “intelligent.” A pitch that survives translation into nouns and numbers — this workflow, these hours, this price, this run cost — is rare enough to be its own signal, in either direction.</p>
+
+      <h2>So what does the skeptic risk by being right too long?</h2>
+      <p>A quiet, compounding drag — nothing dramatic, which is exactly why it is easy to dismiss. Our published model puts repetitive manual work at $4,000 per employee per year in professional services; that is a model, not a threat, but the shape it describes is real: hours leak weekly, and the leak is invisible on any single day.</p>
+      <p>The drag compounds through hiring cycles. A <a href="/industries/professional-services/">20-person firm</a> carrying ordinary administrative friction eventually hires its next person partly to absorb that friction — then carries the friction and the salary. Nothing about this appears in a P&amp;L line called “waste”; it appears as everyone being busy. Meanwhile, the competitor wins you would need to see to change your mind are structurally invisible: a firm that cut its proposal turnaround from four days to one does not issue a press release about it. Quiet workflow wins do not make the trade journal. The skeptic’s evidence stream — announcements, demos, hype — is precisely the stream that working systems never appear in. You will hear nothing right up until you notice everything.</p>
+
+      <h2>Why is skepticism exactly the trait that makes AI projects succeed?</h2>
+      <p>Because the projects that fail, fail from believing: vendor magic accepted at the demo, proof never demanded, no named person accountable for the output. The skeptic’s reflexes — show me, measure it, who owns this — are not obstacles to AI adoption; they are its operating requirements.</p>
+      <p>That is not flattery; it is our own build posture. Every system we ship must be explainable, questionable, and overrulable by a person who owns it — the machine is never the answer to “why did this happen.” The largest system we have published, <a href="/work/marcus/">MARCUS</a> — 14 AI agents across 7 departments of an SBA lender, drawing on roughly 840 source documents — was built in the order a skeptic would insist on: lowest-risk workflows first, highest-risk last, after the system had earned trust it could point to. Nothing sends, files, posts, or pays without human approval; it runs entirely on the client’s premises; PII is stripped before any model reads a document; and every action lands in a tamper-evident audit log. None of that architecture comes from believing in AI. All of it comes from refusing to. The people accountable for that posture have their names on <a href="/about/">the about page</a>, which is where accountability belongs — with a person, not a product.</p>
+      <p>Skepticism also cashes out in paperwork. The buyer who demands a fixed price in writing before work begins, an explicit out-of-scope list, and a named human approval point is doing skepticism as procurement — and those are precisely the terms that separate working projects from the 78%. If you ever want that instinct translated into a document, <a href="/guides/how-to-scope-an-ai-project/">the scoping guide</a> is skepticism in template form.</p>
+
+      <h2>What does a skeptic-shaped first step look like?</h2>
+      <p>One that requires believing nothing and risks almost nothing. Everything below is self-serve, produces its own evidence, and can be abandoned without a phone call.</p>
+      <ol class="check">
+        <li><b>Take the free AI-Ready Score.</b> <a href="/score">Fourteen questions, about 7 minutes</a>, a 0–100 score. No sales call follows it. The point is a baseline: a number you generated about your own operation, against which every future claim — ours included — can be checked.</li>
+        <li><b>Work through the readiness checklist.</b> The <a href="/guides/ai-readiness-checklist/">20-point checklist</a> takes an afternoon, with no vendor in the room. The point is sequencing: it tells you whether your operation could even use a working system yet, which is a different question from whether the technology works.</li>
+        <li><b>Run one $25-a-month tool with one named owner.</b> One person, one job — drafting replies, summarizing calls — for 90 days. The point is evidence at stakes you can ignore: small enough that no belief is required, real enough that the result means something about your files, not a vendor’s demo set.</li>
+        <li><b>If nothing sticks, stop.</b> A clean negative is real information about your business, and it cost you about $75. The point is that stopping is a legitimate outcome — which is more than most $50,000 AI projects can say for themselves.</li>
+      </ol>
+      <p>Note what is absent: no discovery call, no demo, no proposal. If a number ever matters, <a href="/pricing/">every price we charge is published</a> — audits $3,500–$8,500, implementation $12,000–$45,000 fixed in writing — so even the pricing can be inspected without talking to anyone. A skeptic should never have to sit through a meeting to learn a number, and on this site you do not.</p>
+
+      <h2>What if the right answer is still “don’t buy”?</h2>
+      <p>Then don’t. Plenty of businesses should not buy AI this year, and we wrote <a href="/guides/signs-you-are-not-ready-for-ai/">a whole guide on the signs you are not ready</a> because saying so is cheaper for everyone than a failed project. That guide also carries a 90-day preparation plan costing about $25 a month, built for exactly this position.</p>
+      <p>If the protocol above leaves you unconvinced, that is a legitimate result — keep the $75 lesson and revisit in a year. If it leaves you with one workflow you suspect is worth a harder look, the <a href="/book/">30-minute assessment</a> is the next-smallest step: a senior advisor walks the workflow with you and gives you a straight read, including “wait” when that is the true answer. Free. No obligation. No pitch. And bring the skepticism with you — <a href="/services/">everything we sell</a> was designed to survive it, and the questions you are already inclined to ask are the ones we think every buyer should ask everyone, us included. We reply within 24 hours.</p>
+
+    </article>
+  </div>
+</section>
+
+<!-- ============ START HERE (ink) ============ -->
+
+<!-- FAQ:auto -->
+<section class="section paper-2" data-screen-label="Skeptic FAQ">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">For the skeptic.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">Do most AI projects really fail?</span><span class="q-pm">+</span></summary>
+          <p>Yes. Boston Consulting Group's 2024 study found 78% of companies that spent on AI saw essentially nothing move; only 22% turned the spending into measurable results.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">Does a small business actually need AI?</span><span class="q-pm">+</span></summary>
+          <p>Not necessarily, and for many businesses not yet. The cost of waiting is modeled, not guaranteed — but repetitive manual work compounds quietly through hiring cycles, so it is worth measuring before dismissing.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">What can an AI skeptic try without committing money?</span><span class="q-pm">+</span></summary>
+          <p>Take the free 14-question AI-Ready Score (about 7 minutes, no sales call), work through a free readiness checklist, and run one $25-a-month tool with a named owner for 90 days. If nothing sticks, stop — that result is real information.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Is skepticism a problem when adopting AI?</span><span class="q-pm">+</span></summary>
+          <p>The opposite. Demanding proof, rejecting vendor magic, and keeping a named person accountable are the traits that separate working projects from the 78% that move nothing.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
+<section class="section ink final" data-screen-label="Skeptic start">
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2 class="h2 mt-s">Bring the skepticism <span class="accent-tx">with you.</span></h2>
+    <p class="lead mt-s">Thirty minutes with a senior advisor who expects to be questioned. If the right answer for your business is wait, that is the answer you will hear. We reply within 24 hours.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--secondary btn--lg" href="/security/">How we build for skeptics <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
+
+<script src="/js/nav.js?v=5"></script>
+<script src="/js/analytics.js?v=2"></script>
+</body>
+</html>

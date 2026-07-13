@@ -46,6 +46,11 @@ spent the money. Nothing moved.
 
 turn AI spending into measurable results.
 
+spent
+moved
+
+We exist for the 22% .
+
 Source: Boston Consulting Group, Where’s the Value in AI? , 2024.
 
 There is a second failure nobody mentions: AI that technically works but buries why decisions get made and turns your best people into ticket-closers.
@@ -238,7 +243,7 @@ Services
 
 # Three ways in.
 
-An audit that maps where AI actually pays, a sprint that builds the highest-payback workflow, and managed services that keeps it healthy. Fixed prices, quoted in writing before we start.
+An audit that maps where AI actually pays, a sprint that builds the highest-payback workflow, and managed services that keeps it healthy. Fixed prices, quoted in writing before we start. Not sure whether your problem needs an agent, an automation, or an integration? Sort the three in nine minutes .
 
 Not sure which? Book a free assessment →
 
@@ -285,7 +290,7 @@ We start where the work actually happens. Where the time goes, where the money l
 
 What comes out is a phased plan you own outright. Build it with us, build it with another firm, build it in-house. The plan is yours either way, priced and sequenced so you can act on it without us in the room.
 
-And sometimes the right call is to wait a quarter. When the numbers say so, the audit says so, in writing. You will not be talked into building something your own data does not support.
+And sometimes the right call is to wait a quarter. When the numbers say so, the audit says so, in writing. You will not be talked into building something your own data does not support. What the audit contains — and deliberately doesn’t — is spelled out in the audit guide .
 
 ### Who it’s for
 
@@ -598,13 +603,13 @@ Fair questions
 ## How much does AI implementation cost?
 
 01 How much does AI implementation cost for a small business? +
-The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026 .
+The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026 ; for the monthly costs after the build, see What AI Automation Costs to Run .
 
 02 What does the AI Readiness Audit include? +
 A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.
 
 03 Why fixed prices instead of hourly? +
-Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs. If you are comparing firms, the ten questions in How to Choose an AI Consultant include this one.
+Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs. If you are comparing firms, the ten questions in How to Choose an AI Consultant include this one — and a scope a vendor can’t inflate keeps the number fixed after you choose.
 
 04 What happens after the 90 days? +
 Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: a monthly retainer you can cancel any month it stops earning its keep. Whether to keep a retainer, name an internal owner, or hire is worked through in AI Consultant vs. In-House Hire .
@@ -690,7 +695,7 @@ Businesses move. We tune, extend, and retire systems as the work changes, so wha
 
 ## What happens in the first 90 days?
 
-Thirteen weeks, three movements: discover, build, hand off. The exact price is quoted in writing before week 1; see the Implementation Sprint spec or the price list .
+Thirteen weeks, three movements: discover, build, hand off. The exact price is quoted in writing before week 1; see the Implementation Sprint spec or the price list . The week-by-week version — including why two-week promises stall — is in the timeline guide .
 
 Weeks 1–2
 Discover
@@ -774,7 +779,7 @@ A professor, an entrepreneur, and an operator: 26 years in service of Main Stree
 Christopher Myers
 CEO, B:Side Capital + Fund · Founder & Chairman, Main & Machine · Professor, ASU W.P. Carey · Author
 
-Read his essay Seventy Years of Overnight Success , or see how every build runs in the method .
+Read his essay Seventy Years of Overnight Success , or see how every build runs in the method . Skeptical of AI generally? Good — start here .
 
 Christopher has spent 26 years backing Main Street, today as CEO of B:Side Capital and Fund , a professor of entrepreneurship at ASU’s W.P. Carey School, and the author of several books on small business. Main & Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building.
 
@@ -1244,7 +1249,7 @@ MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender
 
 Read the MARCUS case study →
 
-Have a security questionnaire? Send it, or bring your IT reviewer to the free 30-minute assessment. The person answering is the founder who is accountable for the build — and “that control doesn’t apply to your workflow” is an answer we’ll put in writing too.
+Have a security questionnaire? Send it, or bring your IT reviewer to the free 30-minute assessment. The person answering is the founder who is accountable for the build — and “that control doesn’t apply to your workflow” is an answer we’ll put in writing too. The plain-English version of the cloud-versus-on-prem call is in where your AI data actually goes .
 
 Book the free assessment →
 
@@ -1492,7 +1497,7 @@ The incentives are the whole story. An hourly consultant is paid for time spent;
 
 ## Where do our prices sit, exactly?
 
-At the published bottom of the boutique band. The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks; the AI Implementation Sprint runs $12,000–$45,000, fixed in writing, over 4 to 12 weeks — about 90 days per workflow; Managed Services is a monthly retainer with no lock-in.
+At the published bottom of the boutique band. The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks; the AI Implementation Sprint runs $12,000–$45,000, fixed in writing, over 4 to 12 weeks — about 90 days per workflow ; Managed Services is a monthly retainer with no lock-in.
 
 Three things are deliberately not in those prices. There is no discovery-call gauntlet — the numbers are on one page , and you just read them. There is no strategy-deck line item; we implement, and a plan you cannot execute is a poster. And there is no dependency by design: your team is trained to run what we build, and you own all of it at handoff. If you want to see what the audit deliverable actually looks like before spending a dollar, two redacted pages of a real one are published . Every engagement starts with a free 30-minute assessment, and we reply within 24 hours.
 
@@ -1500,7 +1505,7 @@ Three things are deliberately not in those prices. There is no discovery-call ga
 
 Plan for roughly $15,000–$55,000 in year one if you build: an audit plus one implementation sprint, at our prices. Budget zero for strategy decks, and treat any year-one number above $150,000 as an enterprise price that wandered into the wrong meeting.
 
-Two smaller lines belong in the budget too. Running costs: the tools and model usage behind a working system typically land between $50 and $500 a month for a small business — real money, but a fraction of what the manual work cost. And maintenance: models and vendors shift, so either someone in-house watches the system or a retainer does. Ours is monthly with no lock-in, priced by what is running.
+Two smaller lines belong in the budget too. Running costs: the tools and model usage behind a working system typically land between $50 and $500 a month for a small business — real money, but a fraction of what the manual work cost. If you are weighing whether a $25-a-month subscription is enough instead, that question has its own guide . And maintenance: models and vendors shift, so either someone in-house watches the system or a retainer does. Ours is monthly with no lock-in, priced by what is running.
 
 Whether the build budget returns anything depends on your workflows, not the consultant’s slides — our ROI calculator shows the assumptions we use, in the open, and the audit exists to replace those assumptions with your real numbers. Sometimes the audit’s answer is “wait a quarter,” in writing, and the sprint money stays in your pocket. Before you spend anything, run the 20-point readiness checklist — it is free and takes an afternoon. And when you start taking meetings, bring the ten vetting questions to every one of them, including ours.
 
@@ -1635,7 +1640,7 @@ AI is an investment with a payback period, not a lottery ticket. These checks co
 
 ## How do you score it?
 
-Sixteen or more: you are ready to build, and your problem is choosing what first — an audit will rank the options by payback. Ten to fifteen: you are ready to map but not yet to build; start with the audit, or work the failed checks yourself first. Nine or fewer: wait.
+Sixteen or more: you are ready to build, and your problem is choosing what first — an audit will rank the options by payback. Ten to fifteen: you are ready to map but not yet to build; start with the audit, or work the failed checks yourself first. Nine or fewer: wait. The long version of “wait” — the signs themselves, and a 90-day plan that costs almost nothing — is in Signs You Are Not Ready for AI .
 
 One pattern is worth naming because it is so common: a business that scores eighteen on workflows and economics but fails points 11 through 15 — the team section. That firm will buy a good system and starve it, because nobody has the hours to review what it drafts. If your zeros cluster in one section, fix that section before anything else; a lopsided score fails in more expensive ways than a low one.
 
@@ -1790,7 +1795,7 @@ None of these people are stupid, and some are not even dishonest — hype is a m
 
 Because we would rather be disqualified by a sharp buyer than hired by a confused one. A client who chose us against a real standard stays; a client who was dazzled churns — so the standard is good business, not virtue.
 
-It is also the standard we already signed. Our method page lists what we promise and what we refuse to promise, and this guide is that list turned into questions anyone can ask any firm. Use it on us first: book the free 30-minute assessment and ask all ten. If you are still comparing, Guide 01 prices the whole market and Guide 03 runs the hire-or-engage math .
+It is also the standard we already signed. Our method page lists what we promise and what we refuse to promise, and this guide is that list turned into questions anyone can ask any firm. Use it on us first: book the free 30-minute assessment and ask all ten. If you are still comparing, Guide 01 prices the whole market and Guide 03 runs the hire-or-engage math . Once you choose, two companions keep the engagement straight: a scope a vendor can’t inflate , and exactly what an audit should hand you .
 
 Fair questions
 

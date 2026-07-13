@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Agents vs. Automations vs. Integrations | Main &amp; Machine</title>
+<meta name="description" content="Agent, automation, integration — three different tools sold as one word. Plain definitions, a three-question decision test, and which one your problem needs." />
+<link rel="canonical" href="https://www.mainandmachine.com/guides/ai-agents-vs-automations-vs-integrations/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="AI Agents vs. Automations vs. Integrations | Main &amp; Machine" />
+<meta property="og:description" content="Agent, automation, integration — three different tools sold as one word. Plain definitions, a three-question decision test, and which one your problem needs." />
+<meta property="og:url" content="https://www.mainandmachine.com/guides/ai-agents-vs-automations-vs-integrations/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine. Agents vs. automations vs. integrations." />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Agents vs. Automations vs. Integrations | Main &amp; Machine" />
+<meta name="twitter:description" content="Agent, automation, integration — three different tools sold as one word. Plain definitions, a three-question decision test, and which one your problem needs." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=87" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* field guide article — built on the Main & Machine tokens in styles.css */
+.gtable-wrap{ overflow-x:auto; margin:1.6em 0; border:1px solid var(--line); background:var(--paper-card); }
+.gtable{ width:100%; border-collapse:collapse; font-size:var(--fs-16); line-height:1.5; }
+.gtable th{ font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--tx-faint); text-align:left; padding:12px 14px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.gtable td{ padding:12px 14px; border-bottom:1px solid var(--line-soft); color:var(--tx-mute); vertical-align:top; min-width:120px; }
+.gtable tr:last-child td{ border-bottom:0; }
+.gtable .us td{ background:#fff; color:var(--tx); box-shadow:inset 3px 0 0 var(--accent); }
+.gtable td b{ color:var(--tx); }
+.gtable-note{ font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-faint); margin-top:-0.6em; }
+.prose .check{ list-style:none; padding-left:0; counter-reset:ck; }
+.prose .check li{ counter-increment:ck; position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--line-soft); }
+.prose .check li::before{ content:counter(ck,decimal-leading-zero); position:absolute; left:0; top:14px; font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.08em; color:var(--accent-text); }
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "Article",
+      "@id": "https://www.mainandmachine.com/guides/ai-agents-vs-automations-vs-integrations/#article",
+      "headline": "AI Agents vs. Automations vs. Integrations",
+      "description": "Agent, automation, integration — three different tools sold as one word. Plain definitions, a three-question decision test, and which one your problem needs.",
+      "url": "https://www.mainandmachine.com/guides/ai-agents-vs-automations-vs-integrations/",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "author": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "publisher": { "@id": "https://www.mainandmachine.com/#org" },
+      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" },
+        { "@type": "ListItem", "position": 3, "name": "Agents vs. automations vs. integrations", "item": "https://www.mainandmachine.com/guides/ai-agents-vs-automations-vs-integrations/" }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="/js/pa"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
+</script>
+
+<!-- FAQ-JSONLD:auto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between an AI agent and an automation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An automation is a fixed rule that runs every time — if X, then Y, deterministic. An agent reads context and drafts judgment-shaped work for a person to approve; it interprets rather than follows a rule."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an integration?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two systems finally talking to each other: data moves automatically between them and no judgment is involved. It is usually the cheapest of the three, and sometimes free with a native connector."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do most small businesses need an AI agent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually not. Most businesses that ask for an agent need an automation — cheaper to build, more reliable in production, and finished sooner. Agents earn their cost only where the work genuinely requires reading and judgment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are AI agents more expensive to build than automations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Within our AI Implementation Sprint band of $12,000–$45,000, fixed in writing before work begins, integration-and-automation work sits toward the bottom and agent work toward the top."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="section paper pagehero" data-screen-label="Agents vs. automations vs. integrations">
+  <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/guides/">The Field Guide</a>
+      <span class="sep">/</span>
+      <span>Agents vs. automations</span>
+    </div>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">The Field Guide / 06</span>
+        <h1 class="h2 mt-s">Agents, automations, integrations: which one does <span class="accent-tx">your problem need?</span></h1>
+        <p class="lead mt-s">Vendors use the three words interchangeably because it lets them sell you the expensive one. They are different tools at different prices, and the right one depends on the shape of your problem.</p>
+      </div>
+      <div class="statrail crop" aria-label="Guide details">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>No. 06</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">8 min</span></div>
+        <div class="statrail__row"><span class="statrail__k">Words defined</span><span class="statrail__v">Three</span></div>
+        <div class="statrail__row"><span class="statrail__k">Usual answer</span><span class="statrail__v accent-tx">An automation</span></div>
+        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v">July 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE BODY ============ -->
+<section class="section paper-2" data-screen-label="Guide body">
+  <div class="wrap">
+    <article class="prose">
+
+      <h2>What is the difference between an integration, an automation, and an agent?</h2>
+      <p>An integration is two systems finally talking — data moves, nothing decides. An automation is a fixed rule that runs every time — if X, then Y, no interpretation; an agent is software that reads context and drafts judgment-shaped work for a person to approve.</p>
+      <p>Those are three genuinely different tools, at three genuinely different prices, and the market sells them under one blurred word because the blur favors the seller. The expensive thing gets pitched to problems the cheap thing would solve. This guide defines each one in plain English, gives you a three-question test to sort your own problem, and puts the costs side by side — including the pattern we see most often: a business asking for an agent when what it needs is an automation. If the vocabulary fog runs deeper than these three words, the Ampersand essay <a href="/blog/sorting-the-vocabulary/">Sorting the Vocabulary</a> clears the rest of it.</p>
+
+      <h2>What is an integration?</h2>
+      <p>An integration is two systems finally talking to each other: data moves automatically from one to the other, and no judgment is involved anywhere. When the invoice posts in your billing tool, the same figures appear in your accounting system without anyone retyping them.</p>
+      <p>Integrations are the least glamorous of the three and routinely the best return per dollar, because the problem they solve — a person hand-carrying data between two screens — is pure waste with no judgment in it worth preserving. New customer in the CRM appears on the email list; closed job in the field app appears in payroll. Many integrations need no consultant at all: if both tools offer a native connector, switching it on is an afternoon, and anyone who quotes you five figures for that afternoon should be shown the door. The failure mode is quiet rather than dramatic — a renamed field or an expired credential stops the sync, and nobody notices until the books do not reconcile. Good integrations are built with an alert for exactly that silence.</p>
+
+      <h2>What is an automation?</h2>
+      <p>An automation is a fixed rule that runs every single time: if X happens, do Y. It is deterministic — same input, same output, no interpretation, no judgment.</p>
+      <p>When the job closes, send the review request. When the intake form arrives, create the client folder, name it by the convention, and notify the assigned manager. Automations are the workhorse of small-business efficiency because most operational drudgery really is rule-shaped, and a rule executed by software runs at 2 a.m. without complaint and never skips a step. That determinism is the strength and the failure mode in one: an automation cannot notice that the world stopped matching its rule. If the form adds a field or the edge case walks in, the rule keeps firing — correctly by its own lights, wrongly by yours. The fix is design, not intelligence: route anything that does not match the pattern to a person instead of guessing.</p>
+
+      <h2>What is an AI agent?</h2>
+      <p>An agent is software that reads context — a document, an email thread, a customer record — and drafts judgment-shaped work for a person to approve. Where an automation follows a rule, an agent interprets a situation.</p>
+      <p>That interpretive step is what you are paying for, and it is real. An agent can read a rambling customer email, pull the relevant account history, and draft a response that fits both — work that has no fixed rule because every input is different. It is also why agents carry a failure mode the other two do not: they can be confidently wrong, which is why serious deployments keep a person on the approval step. Our largest published build works exactly this way — <a href="/work/marcus/">MARCUS</a>, 14 agents across 7 departments at B:Side Capital, an SBA lender, grounded in roughly 840 source documents. Nothing it produces sends, files, posts, or pays without human approval; the agents draft, the people decide. For the longer treatment of what the word does and does not mean, read <a href="/blog/what-an-agent-actually-is/">What an Agent Actually Is</a>.</p>
+
+      <h2>How do you decide which one your problem needs?</h2>
+      <p>Ask three questions about the task. Is it the same every time? Does it require reading or judgment? Does it cross systems?</p>
+      <p>The answers sort almost everything. If the task is identical every time and needs no judgment, it is an automation — and if the only problem is data stranded between two systems, it is just an integration. If the task requires reading something and forming a view — summarizing, drafting, triaging by meaning rather than by field value — it is agent work, with a person approving the output. Real workflows usually chain all three. Take <a href="/industries/construction/">job paperwork at a construction firm</a>: photos and permits filed to the right job folder the moment they arrive is an automation; those records flowing into the accounting system is an integration; a readable end-of-week summary drafted from the superintendent’s daily logs is an agent, checked by the person who signs it. One workflow, three tools, each doing the part it is actually good at.</p>
+      <p>A useful heuristic when the answers feel murky: look at the last ten times the task was done. If nine of them were identical, you are looking at an automation for the nine and a routing rule that sends the tenth to a person — not an agent for all ten. Businesses consistently overestimate how much judgment their routine work contains, because the people doing it remember the exceptions and forget the repetition. The last ten instances do not misremember anything.</p>
+
+      <h2>How do the three compare side by side?</h2>
+      <p>One table, four columns. Read the failure-mode column twice — it is the one vendors skip.</p>
+      <div class="gtable-wrap">
+        <table class="gtable">
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>What it is</th>
+              <th>When it fits</th>
+              <th>Failure mode</th>
+              <th>Typical relative cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Integration</b></td>
+              <td>Two systems talking; data moves, nothing decides</td>
+              <td>A person is retyping data between two screens</td>
+              <td>Silent sync failure — nobody notices until the numbers disagree</td>
+              <td>Cheapest; sometimes free with native connectors</td>
+            </tr>
+            <tr>
+              <td><b>Automation</b></td>
+              <td>A fixed rule that runs every time, deterministically</td>
+              <td>The task is identical every time and needs no judgment</td>
+              <td>The world changes; the rule keeps firing anyway</td>
+              <td>Middle; most small-business wins live here</td>
+            </tr>
+            <tr>
+              <td><b>AI agent</b></td>
+              <td>Software that reads context and drafts work for a person to approve</td>
+              <td>The task requires reading and judgment, at real volume</td>
+              <td>Confidently wrong output — which is why a human approves</td>
+              <td>Most involved to build and to run</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gtable-note">Relative costs, not quotes. Within our published sprint band, integration-and-automation work sits toward the bottom and agent work toward the top.</p>
+
+      <h2>What does each one cost to build?</h2>
+      <p>Integrations are usually the cheapest, automations the middle, and agents the most involved. Within our published <a href="/services/#sprint">AI Implementation Sprint</a> band — $12,000–$45,000, quoted as a fixed price in writing before work begins — integration-heavy builds land near the bottom and agent builds near the top.</p>
+      <p>The cost gap is not markup; it is genuinely different work. An integration is plumbing between known fittings. An automation adds rule design and edge-case handling. An agent adds all of that plus teaching the model your business — grounding it in your documents, testing it against your real inputs, and building the approval step that keeps its judgment on a leash. It also carries the highest running cost of the three, since agents burn tokens every time they read something; the companion guide <a href="/guides/what-ai-automation-costs-to-run/">What AI automation costs to run</a> itemizes that monthly bill. And say it plainly: if your problem is one native connector, you do not need us or anyone — turn the connector on. The full price list, for everything that does need building, is on <a href="/pricing/">one page</a>; the wider market of hourly rates and boutique bands is mapped in <a href="/guides/ai-consultant-cost/">What an AI consultant costs</a>.</p>
+
+      <h2>Do you actually need an agent?</h2>
+      <p>Usually not. Most businesses that ask us for an agent need an automation — it is cheaper to build, more reliable in production, and finished sooner.</p>
+      <p>“Agent” is the fashionable word, so it is the word buyers arrive with. But when we map the workflow, the task underneath is very often rule-shaped: the exceptions people swear require judgment turn out to be four cases, and four cases is a rule, not a judgment. A deterministic system that does the same right thing every time beats a probabilistic one that is impressive on Tuesdays — and it never needs its output double-checked. Choosing the agent where the rule belongs means paying the agent tax forever: higher build cost, higher running cost, and a review step on work that never needed reviewing. Agents earn their cost where the work genuinely requires reading: unstructured documents, messy correspondence, triage by meaning. That is a real category, just a smaller one than the marketing implies. Sorting your workflows into these bins is precisely what an <a href="/services/#audit">AI Readiness Audit</a> does — $3,500–$8,500, 2–4 weeks, and the deliverable names the tool for each workflow, including the ones that should stay manual. If you want a rougher cut first, the free 30-minute assessment gets you a straight verbal read, and we reply within 24 hours.</p>
+
+    </article>
+  </div>
+</section>
+
+
+<!-- FAQ:auto -->
+<section class="section paper-2" data-screen-label="Agents vs. automations FAQ">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">Sorting the three words.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">What is the difference between an AI agent and an automation?</span><span class="q-pm">+</span></summary>
+          <p>An automation is a fixed rule that runs every time — if X, then Y, deterministic. An agent reads context and drafts judgment-shaped work for a person to approve; it interprets rather than follows a rule.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">What is an integration?</span><span class="q-pm">+</span></summary>
+          <p>Two systems finally talking to each other: data moves automatically between them and no judgment is involved. It is usually the cheapest of the three, and sometimes free with a native connector.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Do most small businesses need an AI agent?</span><span class="q-pm">+</span></summary>
+          <p>Usually not. Most businesses that ask for an agent need an automation — cheaper to build, more reliable in production, and finished sooner. Agents earn their cost only where the work genuinely requires reading and judgment.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Are AI agents more expensive to build than automations?</span><span class="q-pm">+</span></summary>
+          <p>Yes. Within our AI Implementation Sprint band of $12,000–$45,000, fixed in writing before work begins, integration-and-automation work sits toward the bottom and agent work toward the top.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
+<!-- ============ START HERE (ink) ============ -->
+<section class="section ink final" data-screen-label="Start here">
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2 class="h2 mt-s">Not sure which one <span class="accent-tx">your workflow is?</span></h2>
+    <p class="lead mt-s">The free 30-minute assessment sorts it: a senior advisor walks your workflows and tells you which need an agent, which need a rule, and which just need two systems talking. We reply within 24 hours.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--secondary btn--lg" href="/services/">Compare the services <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
+
+<script src="/js/nav.js?v=5"></script>
+<script src="/js/analytics.js?v=2"></script>
+</body>
+</html>

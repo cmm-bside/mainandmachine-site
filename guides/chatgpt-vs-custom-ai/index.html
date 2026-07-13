@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChatGPT vs. Custom AI for Business | Main &amp; Machine</title>
+<meta name="description" content="ChatGPT at $20–$30 a seat wins for individual work. Custom AI at $12,000–$45,000 wins when work is repeatable, cross-system, and unattended. The line between." />
+<link rel="canonical" href="https://www.mainandmachine.com/guides/chatgpt-vs-custom-ai/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="ChatGPT vs. Custom AI for Business | Main &amp; Machine" />
+<meta property="og:description" content="ChatGPT at $20–$30 a seat wins for individual work. Custom AI at $12,000–$45,000 wins when work is repeatable, cross-system, and unattended. The line between." />
+<meta property="og:url" content="https://www.mainandmachine.com/guides/chatgpt-vs-custom-ai/" />
+<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Main &amp; Machine. ChatGPT subscriptions vs. custom AI." />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ChatGPT vs. Custom AI for Business | Main &amp; Machine" />
+<meta name="twitter:description" content="ChatGPT at $20–$30 a seat wins for individual work. Custom AI at $12,000–$45,000 wins when work is repeatable, cross-system, and unattended. The line between." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
+<link rel="stylesheet" href="/styles.css?v=87" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* field guide article — built on the Main & Machine tokens in styles.css */
+.gtable-wrap{ overflow-x:auto; margin:1.6em 0; border:1px solid var(--line); background:var(--paper-card); }
+.gtable{ width:100%; border-collapse:collapse; font-size:var(--fs-16); line-height:1.5; }
+.gtable th{ font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--tx-faint); text-align:left; padding:12px 14px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.gtable td{ padding:12px 14px; border-bottom:1px solid var(--line-soft); color:var(--tx-mute); vertical-align:top; min-width:120px; }
+.gtable tr:last-child td{ border-bottom:0; }
+.gtable .us td{ background:#fff; color:var(--tx); box-shadow:inset 3px 0 0 var(--accent); }
+.gtable td b{ color:var(--tx); }
+.gtable-note{ font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-faint); margin-top:-0.6em; }
+.prose .check{ list-style:none; padding-left:0; counter-reset:ck; }
+.prose .check li{ counter-increment:ck; position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--line-soft); }
+.prose .check li::before{ content:counter(ck,decimal-leading-zero); position:absolute; left:0; top:14px; font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.08em; color:var(--accent-text); }
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ],
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "image": "https://www.mainandmachine.com/og-image.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$45,000",
+      "areaServed": "US",
+      "slogan": "The machine belongs to Main Street.",
+      "address": [
+        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      ],
+      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+    },
+    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "Article",
+      "@id": "https://www.mainandmachine.com/guides/chatgpt-vs-custom-ai/#article",
+      "headline": "ChatGPT Subscriptions vs. Custom AI: When Does Each Win?",
+      "description": "ChatGPT and Copilot at $20–$30 a seat win for individual productivity. Custom systems at $12,000–$45,000 win when the work is repeatable, cross-system, and unattended. Where the line sits.",
+      "url": "https://www.mainandmachine.com/guides/chatgpt-vs-custom-ai/",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "author": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "publisher": { "@id": "https://www.mainandmachine.com/#org" },
+      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" },
+        { "@type": "ListItem", "position": 3, "name": "ChatGPT vs. custom AI", "item": "https://www.mainandmachine.com/guides/chatgpt-vs-custom-ai/" }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="/js/pa"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
+</script>
+
+<!-- FAQ-JSONLD:auto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is a ChatGPT subscription enough for a small business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For individual work — drafting, research, brainstorming — yes, and you should exhaust the $20–$30 seat before buying anything custom. It stalls where work is repeatable, spans multiple systems, must run unattended, or needs an audit trail."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does custom AI cost compared to ChatGPT seats?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Twenty seats run about $6,000 a year at $25 per user per month. A custom system is an AI Implementation Sprint at $12,000–$45,000, fixed in writing before work begins, plus typically $50–$500 a month to run."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do ChatGPT rollouts fail in small businesses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because seats get bought without any workflow being redesigned around them, so adoption fades within weeks and the licenses become shelfware. That outcome is evidence a change was never planned, not evidence AI failed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should you try ChatGPT before hiring an AI consultant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A month of seats for your heaviest writers and researchers is the cheapest AI readiness test that exists — and if nobody uses the $25 tool, do not buy the $25,000 system, because the constraint is adoption, not capability."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item">Every engagement starts with the free assessment</span>
+      <span class="ticker__item">Human-centric AI for Main Street</span>
+      <span class="ticker__item">Denver · Phoenix · Remote</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="section paper pagehero" data-screen-label="ChatGPT vs custom AI">
+  <div class="wrap">
+    <div class="crumb">
+      <a href="/">Main &amp; Machine</a>
+      <span class="sep">/</span>
+      <a href="/guides/">The Field Guide</a>
+      <span class="sep">/</span>
+      <span>ChatGPT vs. custom</span>
+    </div>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">The Field Guide / 10</span>
+        <h1 class="h2 mt-s">ChatGPT subscriptions vs. custom AI: when does <span class="accent-tx">each win?</span></h1>
+        <p class="lead mt-s">A $25 seat and a $25,000 build are not competitors; they are different tools for different work. Here is the line between them, drawn plainly.</p>
+      </div>
+      <div class="statrail crop" aria-label="Guide details">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>No. 10</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">9 min</span></div>
+        <div class="statrail__row"><span class="statrail__k">Subscriptions</span><span class="statrail__v">$20–$30/user/mo</span></div>
+        <div class="statrail__row"><span class="statrail__k">Custom build</span><span class="statrail__v accent-tx">$12,000–$45,000</span></div>
+        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v">July 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE BODY ============ -->
+<section class="section paper-2" data-screen-label="Subscription guide body">
+  <div class="wrap">
+    <article class="prose">
+
+      <h2>Is a ChatGPT subscription enough for your business?</h2>
+      <p>For a real slice of your work, yes — and you should exhaust that slice before spending a dollar on anything custom. For another slice, no subscription will ever be enough, because the work is repeatable, spans systems, and has to run when nobody is typing.</p>
+      <p>This guide is not a pitch against the $25 seat. ChatGPT, Claude, and Copilot subscriptions are the best money-for-capability trade in the history of business software, and any consultant who waves you past them toward a custom build is optimizing for their invoice. But the seats have a shape, and so does your work. Where the shapes match, subscribe. Where they do not, no amount of seats will close the gap. The rest of this guide draws that line precisely enough to spend against.</p>
+
+      <h2>Where do subscriptions genuinely win?</h2>
+      <p>Subscriptions win wherever one person, in the moment, applies judgment to words: drafting, research, brainstorming, summarizing, editing. If the work starts and ends inside one head in one sitting, a $20–$30 seat is the right tool and the custom build is overkill.</p>
+      <p>The pattern in that list is worth naming. Each task is <i>attended</i> — a human is present, steering, and checking the output before it goes anywhere. That human supplies the two things the subscription lacks: context about your business and accountability for the result. A partner drafting a proposal with Claude, an office manager turning meeting notes into an SOP, an owner pressure-testing a pricing idea — all of it works on day one, with no integration and no consultant. Most people just use the tools badly at first; the fix is technique, not technology. <a href="/blog/how-to-talk-to-the-machine/">How to Talk to the Machine</a> covers the prompting habits that separate a mediocre seat from a productive one.</p>
+
+      <p>The same logic covers Copilot inside Office and Gemini inside Workspace: they make the documents and spreadsheets a person is already working on go faster, and they are worth the seat fee for exactly those people. What they do not do — despite the marketing — is run your operation. The seat is an assistant for a human; it is not a replacement for a workflow, and the vendors’ own pricing tells you they know it.</p>
+
+      <h2>Where do subscriptions stall?</h2>
+      <p>Subscriptions stall where the work is repeatable, cross-system, unattended, or auditable. Those four words describe most of the operational cost in a small business, and a chat window addresses none of them.</p>
+      <ul class="check">
+        <li><b>Repeatable.</b> The same task, every day, the same way. A chat tool makes a human faster at doing it again; it never makes the task stop arriving on a human’s desk.</li>
+        <li><b>Cross-system.</b> The work lives in your CRM, your inbox, and your accounting software at once. A subscription can see whatever you paste into it, and nothing else.</li>
+        <li><b>Unattended.</b> The work must run at 6 a.m., on the 40th invoice, when nobody is prompting. Subscriptions only work while a person is driving.</li>
+        <li><b>Auditable.</b> Someone — a regulator, a customer, a bookkeeper — will later ask what was done and why. Chat history is not an audit trail.</li>
+      </ul>
+      <p>Test any workflow against those four. Zero marks: buy seats and move on. Two or more: you have found a candidate for a system rather than a subscription.</p>
+
+      <h2>What does custom AI cost — and what do you get?</h2>
+      <p>A custom build runs $12,000–$45,000 at our published prices — an <a href="/services/#sprint">AI Implementation Sprint</a>, fixed in writing before work begins, 4 to 12 weeks, roughly 90 days per workflow — plus running costs that typically land between $50 and $500 a month. What you get is not a smarter chat window; it is a workflow that executes without you.</p>
+      <p>Concretely: a system connected to your actual tools, carrying your actual rules — what a good answer looks like, who approves what, which customer gets which tone — running on schedule or on trigger, logging what it did, and escalating to a human when it is unsure. Teaching the system your business is most of the work, and it is why the build costs what it costs; <a href="/blog/teaching-the-machine-your-business/">Teaching the Machine Your Business</a> explains where that effort actually goes. The trade is simple: the subscription makes a person faster, and the system makes the work happen without the person. Those are different products, priced accordingly.</p>
+
+      <p>Note what the custom price does not buy: it does not buy a smarter employee, and it does not replace the subscriptions. The two spend lines coexist. Most businesses that build a system keep the seats too, because the drafting and thinking work never went away — the system took the repetitive operational load, and the seats kept making individuals faster at everything else. Budgeting them as rivals is the first mistake; they are a floor and a ceiling.</p>
+
+      <h2>What is the trap in the middle?</h2>
+      <p>The trap is buying seats as if they were a system: “we bought 20 licenses and adoption died by March.” Subscriptions without workflow design become shelfware, and the failure gets blamed on AI rather than on the absence of a plan.</p>
+      <p>Run the arithmetic without flinching. Twenty seats at $25 a month is $6,000 a year — real money, but small against what unattended workflows cost you. Our <a href="/calculator/">ROI calculator</a> models manual work at roughly $4,000 per employee per year in professional services — a modeled figure, stated as one, not a promise — which puts a 20-person firm’s manual-work bill an order of magnitude above the seat bill. The seats were never going to touch that number, because nobody redesigned any workflow around them; everyone was simply invited to be individually clever, and by week six most people had drifted back to the old way. The shelfware outcome is not evidence that AI failed. It is evidence that a tool was purchased and a change was not.</p>
+
+      <h2>How do subscriptions and custom systems compare, side by side?</h2>
+      <p>One table, four axes: what it costs, what it is for, who operates it, and — the column vendors skip — when it fails.</p>
+      <div class="gtable-wrap">
+        <table class="gtable">
+          <thead>
+            <tr>
+              <th>&nbsp;</th>
+              <th>Cost</th>
+              <th>What it&rsquo;s for</th>
+              <th>Who operates it</th>
+              <th>When it fails</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Subscription (ChatGPT, Claude, Copilot)</b></td>
+              <td>$20–$30 per user per month</td>
+              <td>Individual judgment work: drafting, research, brainstorming</td>
+              <td>Each employee, hands on the keyboard</td>
+              <td>When the work is repeatable, cross-system, or must run unattended</td>
+            </tr>
+            <tr class="us">
+              <td><b>Custom system (Implementation Sprint)</b></td>
+              <td>$12,000–$45,000 fixed build + $50–$500/mo to run</td>
+              <td>Whole workflows: intake, follow-up, reporting, document handling</td>
+              <td>The system runs; your team supervises and approves</td>
+              <td>When it is built before the workflow is understood — which is what <a href="/services/#audit">the audit</a> exists to prevent</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gtable-note">Build prices are our published list on <a href="/pricing/">the pricing page</a>; subscription prices are the vendors’ standard business tiers, July 2026.</p>
+
+      <p>The remedy costs almost nothing: pick two or three tasks people already do — the weekly client update, the first draft of every proposal — and write down how the tool is used for each, by name, in the team’s own words. That half-page of workflow design is the difference between seats that compound and seats that expire. Tools do not adopt themselves; tasks adopt tools.</p>
+
+      <h2>Should you start with subscriptions?</h2>
+      <p>Yes — genuinely, not as a consolation prize. A month of seats for the people who write and research the most is the cheapest AI readiness test that exists, and it costs less than one hour of anyone’s consulting.</p>
+      <p>Watch what happens next, because the result is diagnostic either way. If the tools spread on their own — people trading prompts, using them without being told to — you have appetite, and the question becomes which workflows deserve a system. If the seats sit idle, that is the finding: if nobody uses the $25 tool, do not buy the $25,000 system, because the constraint is adoption, not capability, and a bigger invoice will not fix it. Either outcome is worth far more than the seat fees. This is us telling you not to hire us yet, and meaning it.</p>
+
+      <h2>How do you know when it is time to build?</h2>
+      <p>When you can name the workflow, count its hours, and watch subscriptions fail to dent it. If a <a href="/industries/professional-services/">professional-services firm</a> still assembles every proposal by hand across four systems after six months of well-used seats, the seats are not the answer — the workflow is the project.</p>
+      <p>The sequence that works: seats first, then measurement, then a build aimed at the two or three workflows the measurement exposed. That middle step is what an <a href="/services/#audit">AI Readiness Audit</a> does formally — $3,500–$8,500, 2 to 4 weeks, and the deliverable is yours whichever builder you use. What the system costs to keep running afterward — tokens, tools, maintenance — is its own topic, covered in <a href="/guides/what-ai-automation-costs-to-run/">what AI automation costs to run</a>, and the wider price landscape is in <a href="/guides/ai-consultant-cost/">what an AI consultant costs</a>. Or skip ahead: <a href="/book/">book the free 30-minute assessment</a>, name the workflow that will not die, and we will tell you plainly whether it is a seats problem or a system problem. We reply within 24 hours.</p>
+
+    </article>
+  </div>
+</section>
+
+
+<!-- FAQ:auto -->
+<section class="section paper-2" data-screen-label="Subscription guide FAQ">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">Seats versus systems.</h2>
+        <div class="faq__aside" style="margin-top:28px;">
+          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">Is a ChatGPT subscription enough for a small business?</span><span class="q-pm">+</span></summary>
+          <p>For individual work — drafting, research, brainstorming — yes, and you should exhaust the $20–$30 seat before buying anything custom. It stalls where work is repeatable, spans multiple systems, must run unattended, or needs an audit trail.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">What does custom AI cost compared to ChatGPT seats?</span><span class="q-pm">+</span></summary>
+          <p>Twenty seats run about $6,000 a year at $25 per user per month. A custom system is an AI Implementation Sprint at $12,000–$45,000, fixed in writing before work begins, plus typically $50–$500 a month to run.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Why do ChatGPT rollouts fail in small businesses?</span><span class="q-pm">+</span></summary>
+          <p>Because seats get bought without any workflow being redesigned around them, so adoption fades within weeks and the licenses become shelfware. That outcome is evidence a change was never planned, not evidence AI failed.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Should you try ChatGPT before hiring an AI consultant?</span><span class="q-pm">+</span></summary>
+          <p>Yes. A month of seats for your heaviest writers and researchers is the cheapest AI readiness test that exists — and if nobody uses the $25 tool, do not buy the $25,000 system, because the constraint is adoption, not capability.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
+<!-- ============ START HERE (ink) ============ -->
+<section class="section ink final" data-screen-label="Start here">
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2 class="h2 mt-s">Seats problem, or <span class="accent-tx">system problem?</span></h2>
+    <p class="lead mt-s">Bring us the workflow that will not die. In 30 minutes, a senior advisor tells you whether a $25 subscription or a scoped build is the right tool — including when the answer is “don’t build.” We reply within 24 hours.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--secondary btn--lg" href="/calculator/">Run the ROI calculator <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
+          <h2>Plain-English AI for Main Street, every week.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
+
+<script src="/js/nav.js?v=5"></script>
+<script src="/js/analytics.js?v=2"></script>
+</body>
+</html>

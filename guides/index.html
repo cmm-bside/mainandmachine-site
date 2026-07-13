@@ -41,7 +41,7 @@
 .gcards{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border:1px solid var(--line); background:var(--paper-card); margin-top: var(--block-gap); }
 .gcard{ position:relative; display:block; padding: var(--s-32) var(--s-24); border-right:1px solid var(--line); border-bottom:1px solid var(--line); color:inherit; text-decoration:none; transition:background .18s var(--ease); }
 .gcard:nth-child(2n){ border-right:0; }
-.gcard:nth-child(n+3){ border-bottom:0; }
+.gcard:nth-last-child(-n+2){ border-bottom:0; } /* last row only — count-agnostic */
 .gcard:hover{ background:#fff; box-shadow:inset 0 3px 0 var(--accent); }
 .gcard__no{ font-family:var(--mono); font-size: var(--fs-13); color:var(--tx-faint); letter-spacing:.12em; }
 .gcard h3{ font-size: var(--fs-20); line-height:1.18; margin: var(--s-12) 0; }
@@ -50,7 +50,7 @@
 @media (max-width:760px){
   .gcards{ grid-template-columns:1fr; }
   .gcard{ border-right:0; }
-  .gcard:nth-child(n+3){ border-bottom:1px solid var(--line); }
+  .gcard:nth-last-child(-n+2){ border-bottom:1px solid var(--line); }
   .gcard:last-child{ border-bottom:0; }
 }
 </style>
@@ -95,7 +95,17 @@
         { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-consultant-cost/#article" },
         { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-readiness-checklist/#article" },
         { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-consultant-vs-in-house/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/how-to-choose-an-ai-consultant/#article" }
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/how-to-choose-an-ai-consultant/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/what-ai-automation-costs-to-run/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-agents-vs-automations-vs-integrations/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/what-is-an-ai-readiness-audit/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-data-cloud-vs-on-prem/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/chatgpt-vs-custom-ai/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/signs-you-are-not-ready-for-ai/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/how-to-scope-an-ai-project/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-roi-math-small-business/#article" },
+        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-for-the-skeptical-owner/#article" }
       ]
     },
     {
@@ -222,7 +232,7 @@
       </div>
       <div class="statrail crop" aria-label="Field Guide at a glance">
         <div class="statrail__bar"><span>Field Guide</span><span><b>v.2026</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Guides</span><span class="statrail__v">04</span></div>
+        <div class="statrail__row"><span class="statrail__k">Guides</span><span class="statrail__v">14</span></div>
         <div class="statrail__row"><span class="statrail__k">Format</span><span class="statrail__v accent-tx">Answer-first</span></div>
         <div class="statrail__row"><span class="statrail__k">Prices cited</span><span class="statrail__v">Published</span></div>
         <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v">July 2026</span></div>
@@ -236,7 +246,7 @@
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">Four guides</span>
+        <span class="kicker">Fourteen guides</span>
         <h2 class="h2 mt-s">Start with the question <span class="accent-tx">you actually have.</span></h2>
       </div>
       <p class="lead">Each guide does one job. The first two sentences under every heading answer the heading’s question, so you can skim for the number you came for and leave.</p>
@@ -266,6 +276,66 @@
         <p>Ten questions to ask any firm before you sign — including us. The good ones answer in plain English; the hype merchants answer in adjectives.</p>
         <span class="gcard__meta">8 min · Vetting</span>
       </a>
+      <a class="gcard" href="/guides/what-ai-automation-costs-to-run/">
+        <span class="gcard__no">Guide 05</span>
+        <h3>What AI automation costs to run.</h3>
+        <p>The monthly reality after the build: tokens, tools, maintenance — the $50–$500 band and what drives it. Including the case where running costs say don’t automate.</p>
+        <span class="gcard__meta">8 min · Running costs</span>
+      </a>
+      <a class="gcard" href="/guides/ai-agents-vs-automations-vs-integrations/">
+        <span class="gcard__no">Guide 06</span>
+        <h3>Agents vs. automations vs. integrations.</h3>
+        <p>Three words vendors use interchangeably, three different price tags. A decision path for which one your problem actually needs — often the cheaper one.</p>
+        <span class="gcard__meta">9 min · Sorting</span>
+      </a>
+      <a class="gcard" href="/guides/how-long-ai-implementation-takes/">
+        <span class="gcard__no">Guide 07</span>
+        <h3>How long AI implementation takes.</h3>
+        <p>Ninety days per workflow, week by week — and what the two-week promise actually delivers. What makes builds faster, and what quietly stalls them.</p>
+        <span class="gcard__meta">9 min · Timeline</span>
+      </a>
+      <a class="gcard" href="/guides/what-is-an-ai-readiness-audit/">
+        <span class="gcard__no">Guide 08</span>
+        <h3>The AI readiness audit, defined.</h3>
+        <p>What $3,500–$8,500 buys, what it deliberately doesn’t, and the redacted sample you can read before spending a dollar. Sometimes the finding is “wait.”</p>
+        <span class="gcard__meta">8 min · The audit</span>
+      </a>
+      <a class="gcard" href="/guides/ai-data-cloud-vs-on-prem/">
+        <span class="gcard__no">Guide 09</span>
+        <h3>Where your AI data actually goes.</h3>
+        <p>Cloud, on-prem, and the middle path — matched to what’s actually in your documents. Written for the owner who signs the vendor agreement.</p>
+        <span class="gcard__meta">9 min · Data</span>
+      </a>
+      <a class="gcard" href="/guides/chatgpt-vs-custom-ai/">
+        <span class="gcard__no">Guide 10</span>
+        <h3>ChatGPT subscriptions vs. custom AI.</h3>
+        <p>The $25 seat wins more often than a consultant should admit. Where subscriptions genuinely stall, and the shelfware trap between the two.</p>
+        <span class="gcard__meta">8 min · Tools</span>
+      </a>
+      <a class="gcard" href="/guides/signs-you-are-not-ready-for-ai/">
+        <span class="gcard__no">Guide 11</span>
+        <h3>Signs you are not ready for AI.</h3>
+        <p>Six signs the money would be wasted — and a 90-day plan that costs almost nothing instead. The guide that tells you not to hire us yet.</p>
+        <span class="gcard__meta">9 min · Readiness</span>
+      </a>
+      <a class="gcard" href="/guides/how-to-scope-an-ai-project/">
+        <span class="gcard__no">Guide 12</span>
+        <h3>How to scope a project a vendor can’t inflate.</h3>
+        <p>The clauses that stop scope creep before it starts, the inflation patterns to catch in any proposal, and a template you can copy.</p>
+        <span class="gcard__meta">9 min · Procurement</span>
+      </a>
+      <a class="gcard" href="/guides/ai-roi-math-small-business/">
+        <span class="gcard__no">Guide 13</span>
+        <h3>The real ROI math, published.</h3>
+        <p>Our calculator’s whole model in the open — per-industry rates, one worked example, and everything that breaks it. A model, never a promise.</p>
+        <span class="gcard__meta">9 min · ROI</span>
+      </a>
+      <a class="gcard" href="/guides/ai-for-the-skeptical-owner/">
+        <span class="gcard__no">Guide 14</span>
+        <h3>For the owner who is skeptical of AI.</h3>
+        <p>You might be right — most projects fail. Why skepticism is the trait that makes builds succeed, and a first step that requires no belief at all.</p>
+        <span class="gcard__meta">8 min · Skeptics</span>
+      </a>
     </div>
   </div>
 </section>
@@ -279,8 +349,6 @@
     </div>
   </div>
 </section>
-
-
 <!-- FAQ:auto -->
 <section class="section paper-2" data-screen-label="Field Guide FAQ">
   <div class="wrap">

@@ -104,7 +104,7 @@ ${imgKnownSize ? `<meta property="og:image:width" content="1200" />
 <link rel="icon" type="image/svg+xml" href="${FAVICON}" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <!-- Privacy-friendly analytics by Plausible -->
-<script async src="/js/pa.js"></script>
+<script async src="/js/pa"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init({ endpoint: "/api/event", formSubmissions: false })

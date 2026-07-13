@@ -1,4 +1,5 @@
-// First-party proxy for the Plausible tracker script, so ad-blockers that
+// Serves /js/pa (Pages Functions strip the .js extension from this file's
+// route). First-party proxy for the Plausible tracker script, so ad-blockers that
 // blanket-block plausible.io don't blind analytics. Serves the site-specific
 // pa-* build (which pins domain=mainandmachine.com internally) from our own
 // origin; pages point plausible.init() at the /api/event proxy next door.

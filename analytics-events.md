@@ -2,7 +2,8 @@
 
 Cookieless Plausible, served **first-party** so ad-blockers don't blind us:
 
-- `/js/pa.js` → `functions/js/pa.js` proxies the site's Plausible tracker
+- `/js/pa` → `functions/js/pa.js` (Pages Functions strip the extension from
+  the route) proxies the site's Plausible tracker
   (`plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js`, edge-cached 6h; upstream
   outage degrades to a no-op script, never a broken page).
 - `/api/event` → `functions/api/event.js` proxies the beacon, forwarding the
@@ -80,7 +81,7 @@ booked), `calendly_booked / unique visitors` (the number that matters).
 Open plausible.io → mainandmachine.com dashboard → "Realtime", plus DevTools
 Network filtered to `/api/event`, then:
 
-- [ ] Any page: request to `/js/pa.js` is 200 **from www.mainandmachine.com**
+- [ ] Any page: request to `/js/pa` is 200 **from www.mainandmachine.com**
       (not plausible.io); a `pageview` POST to `/api/event` returns 202.
 - [ ] With uBlock Origin ON: both requests still succeed (that's the proxy's
       whole job).

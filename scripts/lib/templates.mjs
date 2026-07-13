@@ -209,7 +209,7 @@ export function nav() {
       </span>
       <a href="/work/">Proof</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/score">Your Score</a>
+      <a href="/score/">Your Score</a>
       <a href="/method/">Method</a>
       <a href="/about/">Who We Are</a>
       <a href="/blog/" class="is-active" aria-current="page">Blog</a>
@@ -259,7 +259,7 @@ export function footer() {
       <div class="foot__col">
         <h2>More</h2>
         <ul>
-          <li><a href="/score">AI-Ready Score</a></li>
+          <li><a href="/score/">AI-Ready Score</a></li>
           <li><a href="/industries/">Who this is for</a></li>
           <li><a href="/calculator/">ROI calculator</a></li>
           <li><a href="/guides/">The Field Guide</a></li>

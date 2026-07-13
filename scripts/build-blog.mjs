@@ -30,6 +30,7 @@ import {
 	SITEMAP_PATH,
 	STATIC_ROUTES,
 	PROXIED_ROUTES,
+	PROXIED_LASTMOD,
 	EXCLUDED_POST_SLUGS,
 	POST_TOPICS,
 	POST_TOPIC_FALLBACK,
@@ -574,7 +575,7 @@ ${items}
 function seoMeta(route, isPost) {
 	if (route === "/") return { changefreq: "weekly", priority: "1.0" };
 	if (route === "/book/") return { changefreq: "monthly", priority: "1.0" };
-	if (route === "/score") return { changefreq: "monthly", priority: "0.8" }; // primary conversion page, linked from the main nav
+	if (route === "/score/") return { changefreq: "monthly", priority: "0.8" }; // primary conversion page, linked from the main nav
 	if (route === "/blog/") return { changefreq: "weekly", priority: "0.8" };
 	if (route === "/blog/archive/") return { changefreq: "monthly", priority: "0.5" };
 	if (route === "/privacy/" || route === "/terms/") return { changefreq: "yearly", priority: "0.3" };
@@ -604,8 +605,8 @@ function renderSitemap(posts) {
 	) || null;
 	const entries = [
 		...STATIC_ROUTES.map((route) => ({ route, isPost: false, lastmod: pageDates[route] || null })),
-		// Proxied routes have no local file, so no git-derived lastmod.
-		...PROXIED_ROUTES.map((route) => ({ route, isPost: false, lastmod: null })),
+		// Proxied routes have no local file; lastmod is pinned in PROXIED_LASTMOD.
+		...PROXIED_ROUTES.map((route) => ({ route, isPost: false, lastmod: PROXIED_LASTMOD[route] || null })),
 		{ route: "/blog/", isPost: false, lastmod: newestPost },
 		{ route: "/blog/archive/", isPost: false, lastmod: newestPost },
 		...posts.map((p) => ({ route: p.url, isPost: true, lastmod: p.updatedAt || p.publishedAt || null })),

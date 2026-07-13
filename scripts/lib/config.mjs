@@ -84,9 +84,13 @@ export const STATIC_ROUTES = [
 // Routes reverse-proxied from another origin (lib/score-proxy.mjs): sitemapped
 // like static routes but with no local index.html, so check-seo exempts them
 // from disk parity and instead asserts they made it into the sitemap.
-// Canonical form is slash-less — the Next.js score app 308s /score/ → /score,
-// and every internal link, the sitemap, and the injected canonical use /score.
-export const PROXIED_ROUTES = ["/score"];
+// Canonical form is TRAILING-SLASH (/score/), like every other page — the
+// proxy 301s bare /score and serves /score/ directly; every internal link,
+// the sitemap, and the injected canonical use /score/.
+export const PROXIED_ROUTES = ["/score/"];
+// Proxied routes have no local file for git-derived dates; lastmod is pinned
+// here to the proxied app's last content deploy. Bump when the app ships.
+export const PROXIED_LASTMOD = { "/score/": "2026-07-13" };
 
 // On-disk pages that are deliberately NOT sitemapped: post-conversion pages
 // that only exist as redirect targets (each must carry a robots noindex meta

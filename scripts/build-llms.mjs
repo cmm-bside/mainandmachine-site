@@ -119,7 +119,7 @@ before work begins.
 
 ## Free tools
 
-- [The AI-Ready Score](/score) — free seven-minute self-assessment:
+- [The AI-Ready Score](/score/) — free seven-minute self-assessment:
   fourteen questions across three phases (Map, Prove, Expand). You get a
   0–100 score and the one constraint to fix first. No sales call.
 - [ROI calculator](/calculator/) — rough year-one ranges by industry and

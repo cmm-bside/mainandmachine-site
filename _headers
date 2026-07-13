@@ -105,9 +105,16 @@
   Content-Type: image/x-icon
   Cache-Control: public, max-age=604800
 
-# llms.txt — plain text for LLM/agent consumption
+# GEO files — llms.txt (fact sheet), llms-full.txt (page text), facts.json
+# (structured) for LLM/agent consumption; all regenerate from site-facts.json
 /llms.txt
   Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+/facts.json
+  Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=3600
 
 # App icons

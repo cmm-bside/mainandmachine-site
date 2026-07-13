@@ -275,6 +275,17 @@ const fullOut = `# ${COMPANY.name} — llms-full.txt
 ${sections.join("\n\n")}
 `;
 
-fs.writeFileSync(path.join(ROOT, "llms.txt"), out);
-fs.writeFileSync(path.join(ROOT, "llms-full.txt"), fullOut);
-console.log(`[llms:build] llms.txt + llms-full.txt (${sections.length} pages) generated from src/data/company.mjs`);
+// /facts.json — the same canonical facts as machine-readable JSON, for
+// agents that prefer structured output over the llms.txt fact sheet.
+const { _meta, ...facts } = COMPANY;
+const factsOut = {
+  _meta: {
+    source: "https://www.mainandmachine.com/facts.json",
+    description: "Canonical business facts for Main & Machine, generated from the same source of truth as llms.txt. Human-readable fact sheet: /llms.txt · full page text: /llms-full.txt",
+    generatedFrom: "src/data/site-facts.json",
+    schemaVersion: _meta?.schemaVersion ?? 1,
+  },
+  ...facts,
+};
+fs.writeFileSync(path.join(ROOT, "facts.json"), JSON.stringify(factsOut, null, 2) + "\n");
+console.log(`[llms:build] llms.txt + llms-full.txt (${sections.length} pages) + facts.json generated from src/data/site-facts.json`);

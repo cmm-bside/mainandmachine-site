@@ -42,10 +42,16 @@ prerendered at deploy time from beehiiv:
 
 ## Canonical business facts — NEVER vary these, anywhere
 
-The machine-readable source of truth is **`src/data/company.mjs`**. Generated surfaces
-(blog templates, build scripts, the Pages Function, emails) must import it; the static
-HTML pages are guarded by **`scripts/check-facts.mjs`**, which fails the build if these
-facts drift. If a fact appears in more than 2 places in code, centralize it there.
+The machine-readable source of truth is **`src/data/site-facts.json`** (re-exported as
+`COMPANY` by `src/data/company.mjs` — generated surfaces import the module, never the
+JSON directly). Edit a price/timeline/contact fact in the JSON, then run
+`npm run facts:render && npm run llms:build` (both run in build:static): render-facts
+stamps every `data-fact="…"` span in committed HTML (pricing cards, footers), and
+llms:build regenerates llms.txt, llms-full.txt, and the public /facts.json.
+Guards: `scripts/check-facts.mjs` fails the build if static pages drift, and
+`scripts/check-llms.mjs` fails it if llms.txt links 404 in the build output or carry a
+price token that isn't canonical/whitelisted. If a fact appears in more than 2 places
+in code, centralize it in the JSON and tag the HTML with `data-fact`.
 
 - Company: Main & Machine
 - One-liner: AI consulting & implementation for small and mid-size business

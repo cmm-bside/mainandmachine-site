@@ -12,3 +12,8 @@
 # functions/s/[[path]].js (origin = SCORE_ORIGIN env var). Served same-origin,
 # no redirect. Do NOT add a /score or /s redirect here; it would pre-empt the
 # Functions. The /s/* QR contract is permanent — never drop those routes.
+
+# Report links emailed before the app's basePath /score (2026-07) pointed at
+# apex /report/<token>, which the apex never served. Persistent report URLs
+# now live at /score/report/<token>; rescue the old form.
+/report/*  /score/report/:splat  301

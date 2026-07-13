@@ -104,10 +104,10 @@ ${imgKnownSize ? `<meta property="og:image:width" content="1200" />
 <link rel="icon" type="image/svg+xml" href="${FAVICON}" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js"></script>
+<script async src="/js/pa.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
 </script>
 ${extraHead}
 ${ld}
@@ -317,6 +317,6 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
 // Scripts shared by every blog page: mobile nav + subscribe enhancement + search.
 export function pageScripts() {
 	return `<script src="/js/nav.js?v=3"></script>
-<script src="/js/analytics.js?v=1"></script>
+<script src="/js/analytics.js?v=2"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

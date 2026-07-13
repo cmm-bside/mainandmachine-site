@@ -259,10 +259,10 @@ select.input:invalid { color: var(--tx-faint); }
 .faq--book .faq__aside h3 { font-size: var(--fs-20); }
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js"></script>
+<script async src="/js/pa.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
 </script>
 </head>
 <body>
@@ -795,7 +795,7 @@ select.input:invalid { color: var(--tx-faint); }
     var done = false;
     function go(){ if(done) return; done = true; window.location.href = '/book/thanks/'; }
     if(typeof window.plausible === 'function'){
-      window.plausible('form_submitted', { callback: go });
+      window.plausible('booking_form_submitted', { props: { page: '/book/' }, callback: go });
       setTimeout(go, 400); // never let a blocked beacon hold the redirect
     } else {
       go();
@@ -838,7 +838,7 @@ select.input:invalid { color: var(--tx-faint); }
     f.addEventListener('load', function(){
       if(loadedFired) return;
       loadedFired = true;
-      if(typeof window.plausible === 'function') window.plausible('calendly_loaded');
+      if(typeof window.plausible === 'function') window.plausible('calendly_loaded', { props: { page: '/book/' } });
     });
     if(iframe){ mount.replaceChild(f, iframe); } else { mount.appendChild(f); }
     iframe = f;
@@ -866,7 +866,7 @@ select.input:invalid { color: var(--tx-faint); }
   window.addEventListener('message', function(e){
     if(e.origin !== 'https://calendly.com') return;
     if(e.data && e.data.event === 'calendly.event_scheduled'){
-      if(typeof window.plausible === 'function') window.plausible('calendly_booked');
+      if(typeof window.plausible === 'function') window.plausible('calendly_booked', { props: { page: '/book/' } });
     }
   });
 })();
@@ -876,6 +876,6 @@ select.input:invalid { color: var(--tx-faint); }
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=1"></script>
+<script src="/js/analytics.js?v=2"></script>
 </body>
 </html>

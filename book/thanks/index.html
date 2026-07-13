@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="/styles.css?v=84" />
+<link rel="stylesheet" href="/styles.css?v=85" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -142,10 +142,10 @@ select.input:invalid { color: var(--tx-faint); }
 .btn[disabled] { opacity: .55; cursor: not-allowed; }
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-Yipfpj7KIiywp6RYmahGL.js"></script>
+<script async src="/js/pa.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
 </script>
 </head>
 <body>
@@ -479,6 +479,6 @@ select.input:invalid { color: var(--tx-faint); }
 </script>
 
 <script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=1"></script>
+<script src="/js/analytics.js?v=2"></script>
 </body>
 </html>

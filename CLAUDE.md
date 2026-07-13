@@ -113,8 +113,15 @@ panel — it dilutes the CTA.
   those pages; never fake one.
 - Fill the TODO stats in `/work/` (Build 001 "sample week") from real logs, and replace
   the sample-audit placeholder content after the next real audit. Do not invent numbers.
-- `sameAs` arrays in JSON-LD are TODO: add the LinkedIn company page + founder
-  profiles + press URLs when available (see `orgJsonLd()` in templates.mjs).
+- `sameAs` arrays: founder profiles are DONE (LinkedIn, X, Entrepreneur, ASU
+  faculty profile, Amazon author page, bside.org — mirrored in every Person
+  JSON-LD emitter + the /about/ verify block). Still TODO when real URLs
+  exist: press-coverage URLs, GitHub org, Crunchbase (see `PERSON_SAMEAS` in
+  templates.mjs).
+- Testimonials: `data/testimonials.json` → rendered on / and /work/ by
+  `scripts/build-testimonials.mjs` ONLY for entries with `permission: true`
+  (written sign-off on file); zero entries = no section. Same contract as the
+  proof shelf.
 - If a verifiably true Q3 build-slot count exists, the topbar banner can say
   "Two Q3 build slots remain" instead of the generic line (see index.html topbar).
 - After deploy: resubmit sitemap.xml in Search Console and request indexing on the

@@ -1,0 +1,30 @@
+name: Lighthouse budgets (post-deploy)
+
+# Performance budgets, asserted against the LIVE site after each deploy:
+#   LCP < 2.0s · CLS < 0.05 · TBT < 150ms  (desktop preset, median of 3 runs)
+# on /, /pricing/, /book/, and /score/ — see lighthouserc.json. A regression
+# fails this workflow loudly. Runs after the Pages deploy lands (same delay
+# pattern as the smoke test), and on demand: gh workflow run lighthouse.yml
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: lighthouse
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # Give the Cloudflare Pages deploy time to land before measuring.
+      - name: Wait for deploy
+        run: sleep 180
+      - name: Run Lighthouse CI
+        run: npx --yes @lhci/cli@0.14.x autorun --config=lighthouserc.json

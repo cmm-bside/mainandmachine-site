@@ -31,12 +31,12 @@
 #                             — 'self': /js/*.js + Cloudflare /cdn-cgi/ email-decode;
 #                               'unsafe-inline': inline init blocks + onclick="window.print()";
 #                               plausible.io: analytics loader
-#   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com
-#                             — 'self': styles.css; 'unsafe-inline': 157 inline style=
-#                               attrs + <style> blocks; googleapis: Google Fonts CSS
+#   style-src 'self' 'unsafe-inline'
+#                             — 'self': styles.css; 'unsafe-inline': inline style=
+#                               attrs + <style> blocks (fonts self-hosted, no CDN CSS)
 #   img-src 'self' data:      — 'self': og-image/icons/content; data:: SVG film-grain
 #                               in styles.css, inline SVG icons, SVG favicon
-#   font-src 'self' https://fonts.gstatic.com — Google Fonts woff2 files
+#   font-src 'self'           — self-hosted subsetted woff2 in /fonts/
 #   connect-src 'self' https://plausible.io https://formspree.io
 #                             — 'self': /api/book-assessment + /blog-data/*.json;
 #                               plausible.io: event beacons; formspree.io: careers form
@@ -74,16 +74,22 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Permissions-Policy: geolocation=(), microphone=(), camera=()
-  Content-Security-Policy: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
-  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
+  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
 
-# styles.css is cache-busted via ?v=N in index.html, so it can cache for a while
+# Versioned assets: styles.css and /js/* are cache-busted via ?v=N (bump
+# ASSET_VERSION + the page refs on every change — enforced convention), and
+# /fonts/* files are renamed if their content ever changes. All three are
+# therefore safe at max-age=1y immutable: the URL changes when the bytes do.
 /styles.css
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
 
 # shared JS is cache-busted via ?v=N in the pages that load it
 /js/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 
 # Blog search/teaser data — short cache, refreshed on every deploy
 /blog-data/*

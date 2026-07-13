@@ -679,6 +679,14 @@ function breadcrumbLd(pairs) {
 // topped up with the most recent other posts so the result always has `n`.
 function relatedPosts(post, allPosts, n) {
 	const others = allPosts.filter((p) => p.slug !== post.slug);
+	// Explicit editorial pairs (POST_TOPICS[slug].related) win; slugs that
+	// don't resolve (unpublished/renamed) are skipped and the tag-scored
+	// fallback below tops the list up to n — future essays keep working
+	// before they're mapped.
+	const explicit = ((POST_TOPICS[post.slug] && POST_TOPICS[post.slug].related) || [])
+		.map((slug) => others.find((p) => p.slug === slug))
+		.filter(Boolean);
+	if (explicit.length >= n) return explicit.slice(0, n);
 	const myTags = new Set((POST_TOPICS[post.slug] && POST_TOPICS[post.slug].tags) || []);
 	const scored = others
 		.map((p) => {

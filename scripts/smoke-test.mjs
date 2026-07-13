@@ -62,8 +62,9 @@ const book = await get(`${BASE}/book/`);
 for (const s of ["Is it really free?", "Fair questions.", "What happens · 30 minutes", "Who you’ll talk to", "Christopher Myers"]) {
   if (!book.body.includes(s)) fail(`/book/: missing "${s}"`);
 }
+// Six FAQ items since 2026-07 — keep in lockstep with scripts/check-book.mjs.
 const nums = [...book.body.matchAll(/<summary><span class="q-no">(\d{2})<\/span>/g)].map((m) => m[1]);
-if (nums.join(",") !== "01,02,03,04,05") fail(`/book/: FAQ numbering is [${nums.join(",")}], expected [01..05]`);
+if (nums.join(",") !== "01,02,03,04,05,06") fail(`/book/: FAQ numbering is [${nums.join(",")}], expected [01..06]`);
 
 if (errors.length) {
   console.error(`[smoke:test] FAILED with ${errors.length} issue(s):`);

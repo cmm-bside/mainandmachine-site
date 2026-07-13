@@ -50,6 +50,19 @@ import {
 } from "./lib/templates.mjs";
 import { structureArticle, renderToc, renderArticleBody } from "./lib/article.mjs";
 
+// Scoped styles for the prev/next chronological nav (blog-only component —
+// kept out of styles.css so it needs no site-wide cache-buster bump).
+const ESSAY_PN_STYLE = `<style>
+.essay__pn{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media(max-width:620px){ .essay__pn{ grid-template-columns:1fr; } }
+.essay__pn-cell{ display:flex; flex-direction:column; gap:8px; padding:20px 22px; border:1px solid var(--line); background:var(--paper-card); color:inherit; text-decoration:none; transition:background .18s var(--ease); }
+a.essay__pn-cell:hover{ background:#fff; box-shadow:inset 0 3px 0 var(--accent); }
+.essay__pn-cell--next{ text-align:right; align-items:flex-end; }
+.essay__pn-cell--empty{ border:0; background:none; }
+.essay__pn-cell b{ font-size:var(--fs-16); font-weight:700; line-height:1.3; letter-spacing:-0.01em; }
+</style>`;
+
+
 const RECENT_ON_HOME = 6;
 const ARCHIVE_BATCH = 12;
 
@@ -423,6 +436,11 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	// Related posts: score other posts by shared topic tags, then fall back to
 	// recency so there are always two. Keeps the blog from being an island.
 	const readNext = relatedPosts(post, allPosts, 2);
+	// Chronological neighbors (oldest -> newest by display date).
+	const chrono = [...allPosts].sort((a, b) => (a.publishedAt || "").localeCompare(b.publishedAt || ""));
+	const ci = chrono.findIndex((p) => p.slug === post.slug);
+	const prevPost = ci > 0 ? chrono[ci - 1] : null;
+	const nextPost = ci >= 0 && ci < chrono.length - 1 ? chrono[ci + 1] : null;
 	// Contextual internal link to the most relevant service/industry page.
 	const seeAlso = (POST_TOPICS[post.slug] && POST_TOPICS[post.slug].cta) || POST_TOPIC_FALLBACK;
 
@@ -492,6 +510,17 @@ ${proseInner}
   </div>
 </article>
 
+${(prevPost || nextPost)
+	? `<section class="section paper" data-screen-label="Essay navigation">
+  <div class="wrap">
+    <nav class="essay__pn" aria-label="Chronological essay navigation">
+      ${prevPost ? `<a class="essay__pn-cell" href="${prevPost.url}" rel="prev"><span class="tick-lbl">← Earlier</span><b>${esc(prevPost.title)}</b></a>` : `<span class="essay__pn-cell essay__pn-cell--empty" aria-hidden="true"></span>`}
+      ${nextPost ? `<a class="essay__pn-cell essay__pn-cell--next" href="${nextPost.url}" rel="next"><span class="tick-lbl">Later →</span><b>${esc(nextPost.title)}</b></a>` : `<span class="essay__pn-cell essay__pn-cell--empty" aria-hidden="true"></span>`}
+    </nav>
+  </div>
+</section>`
+	: ""}
+
 ${readNext.length
 	? `<section class="section paper-2" data-screen-label="Keep reading">
   <div class="wrap">
@@ -528,6 +557,7 @@ ${pageScripts()}`;
 		canonical,
 		ogImage: og,
 		ogType: "article",
+		extraHead: ESSAY_PN_STYLE,
 		jsonLd: [blogPostingLd, breadcrumbLdObj, orgJsonLd()],
 	})}
 <body>
@@ -662,14 +692,18 @@ function relatedPosts(post, allPosts, n) {
 			(b.p.publishedAt || "").localeCompare(a.p.publishedAt || ""),
 		)
 		.map((s) => s.p);
-	const picked = scored.slice(0, n);
+	const picked = [...explicit];
+	for (const p of scored) {
+		if (picked.length >= n) break;
+		if (!picked.includes(p)) picked.push(p);
+	}
 	if (picked.length < n) {
 		for (const p of others) {
 			if (picked.length >= n) break;
 			if (!picked.includes(p)) picked.push(p);
 		}
 	}
-	return picked;
+	return picked.slice(0, n);
 }
 
 function readingMinutes(searchText, bodyHtml) {

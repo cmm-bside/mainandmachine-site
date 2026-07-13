@@ -130,21 +130,21 @@ export const POST_DATE_OVERRIDES = {
 // fall back to a generic services link + most-recent related posts, so the blog
 // never breaks when beehiiv adds a new essay — enrich this map when it does.
 export const POST_TOPICS = {
-	"how-to-smell-the-hype":            { tags: ["hype", "judgment", "readiness"],        cta: { href: "/guides/how-to-scope-an-ai-project/", label: "Scope a project a vendor can't inflate" } },
-	"the-prediction-engine":           { tags: ["fundamentals", "how-it-works"],         cta: { href: "/services/", label: "What we actually build" } },
-	"how-the-machine-learns":          { tags: ["fundamentals", "how-it-works"],         cta: { href: "/services/#audit", label: "The AI Readiness Audit" } },
-	"the-currency-of-the-machine":     { tags: ["fundamentals", "cost"],                 cta: { href: "/guides/what-ai-automation-costs-to-run/", label: "What AI costs to run, monthly" } },
-	"why-everything-happened-at-once": { tags: ["history", "adoption"],                  cta: { href: "/services/", label: "What we actually build" } },
-	"the-buildings-behind-the-intelligence": { tags: ["infrastructure", "how-it-works"], cta: { href: "/services/", label: "What we actually build" } },
-	"sorting-the-vocabulary":          { tags: ["fundamentals", "vocabulary"],           cta: { href: "/guides/ai-agents-vs-automations-vs-integrations/", label: "Agents vs. automations vs. integrations" } },
-	"why-the-machine-makes-things-up": { tags: ["reliability", "risk"],                  cta: { href: "/guides/ai-for-the-skeptical-owner/", label: "AI for the skeptical owner" } },
-	"how-to-talk-to-the-machine":      { tags: ["usage", "practical"],                   cta: { href: "/guides/chatgpt-vs-custom-ai/", label: "ChatGPT vs. custom AI" } },
-	"what-an-agent-actually-is":       { tags: ["agents", "implementation"],             cta: { href: "/guides/ai-agents-vs-automations-vs-integrations/", label: "Which one your problem needs" } },
-	"teaching-the-machine-your-business": { tags: ["agents", "data", "customization"],   cta: { href: "/guides/how-long-ai-implementation-takes/", label: "How long implementation takes" } },
-	"open-models-closed-models":       { tags: ["models", "strategy"],                   cta: { href: "/guides/ai-data-cloud-vs-on-prem/", label: "Where your AI data actually goes" } },
-	"where-your-data-goes":            { tags: ["data", "privacy", "security"],          cta: { href: "/guides/ai-data-cloud-vs-on-prem/", label: "Cloud vs. on-prem for your data" } },
-	"what-the-machine-cannot-do":      { tags: ["judgment", "limits"],                   cta: { href: "/guides/ai-for-the-skeptical-owner/", label: "AI for the skeptical owner" } },
-	"seventy-years-of-overnight-success": { tags: ["history", "adoption"],               cta: { href: "/services/", label: "What we actually build" } },
+	"how-to-smell-the-hype":            { tags: ["hype", "judgment", "readiness"], related: ["what-the-machine-cannot-do", "sorting-the-vocabulary"],        cta: { href: "/guides/how-to-scope-an-ai-project/", label: "Scope a project a vendor can't inflate" } },
+	"the-prediction-engine":           { tags: ["fundamentals", "how-it-works"], related: ["how-the-machine-learns", "why-the-machine-makes-things-up"],         cta: { href: "/services/", label: "What we actually build" } },
+	"how-the-machine-learns":          { tags: ["fundamentals", "how-it-works"], related: ["the-prediction-engine", "teaching-the-machine-your-business"],         cta: { href: "/services/#audit", label: "The AI Readiness Audit" } },
+	"the-currency-of-the-machine":     { tags: ["fundamentals", "cost"], related: ["the-buildings-behind-the-intelligence", "open-models-closed-models"],                 cta: { href: "/guides/what-ai-automation-costs-to-run/", label: "What AI costs to run, monthly" } },
+	"why-everything-happened-at-once": { tags: ["history", "adoption"], related: ["seventy-years-of-overnight-success", "the-buildings-behind-the-intelligence"],                  cta: { href: "/services/", label: "What we actually build" } },
+	"the-buildings-behind-the-intelligence": { tags: ["infrastructure", "how-it-works"], related: ["the-currency-of-the-machine", "why-everything-happened-at-once"], cta: { href: "/guides/what-ai-automation-costs-to-run/", label: "What this infrastructure costs you monthly" } },
+	"sorting-the-vocabulary":          { tags: ["fundamentals", "vocabulary"], related: ["what-an-agent-actually-is", "how-to-smell-the-hype"],           cta: { href: "/guides/ai-agents-vs-automations-vs-integrations/", label: "Agents vs. automations vs. integrations" } },
+	"why-the-machine-makes-things-up": { tags: ["reliability", "risk"], related: ["what-the-machine-cannot-do", "the-prediction-engine"],                  cta: { href: "/guides/ai-for-the-skeptical-owner/", label: "AI for the skeptical owner" } },
+	"how-to-talk-to-the-machine":      { tags: ["usage", "practical"], related: ["teaching-the-machine-your-business", "why-the-machine-makes-things-up"],                   cta: { href: "/guides/chatgpt-vs-custom-ai/", label: "ChatGPT vs. custom AI" } },
+	"what-an-agent-actually-is":       { tags: ["agents", "implementation"], related: ["sorting-the-vocabulary", "teaching-the-machine-your-business"],             cta: { href: "/guides/ai-agents-vs-automations-vs-integrations/", label: "Which one your problem needs" } },
+	"teaching-the-machine-your-business": { tags: ["agents", "data", "customization"], related: ["what-an-agent-actually-is", "how-to-talk-to-the-machine"],   cta: { href: "/guides/how-long-ai-implementation-takes/", label: "How long implementation takes" } },
+	"open-models-closed-models":       { tags: ["models", "strategy"], related: ["where-your-data-goes", "the-currency-of-the-machine"],                   cta: { href: "/guides/ai-data-cloud-vs-on-prem/", label: "Where your AI data actually goes" } },
+	"where-your-data-goes":            { tags: ["data", "privacy", "security"], related: ["open-models-closed-models", "teaching-the-machine-your-business"],          cta: { href: "/guides/ai-data-cloud-vs-on-prem/", label: "Cloud vs. on-prem for your data" } },
+	"what-the-machine-cannot-do":      { tags: ["judgment", "limits"], related: ["why-the-machine-makes-things-up", "how-to-smell-the-hype"],                   cta: { href: "/guides/ai-for-the-skeptical-owner/", label: "AI for the skeptical owner" } },
+	"seventy-years-of-overnight-success": { tags: ["history", "adoption"], related: ["why-everything-happened-at-once", "how-to-smell-the-hype"],               cta: { href: "/guides/ai-for-the-skeptical-owner/", label: "AI for the skeptical owner" } },
 };
 // Fallback contextual link for any unmapped post.
 export const POST_TOPIC_FALLBACK = { href: "/services/", label: "What we actually build" };

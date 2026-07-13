@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" />
-<link rel="stylesheet" href="styles.css?v=85" />
+<link rel="stylesheet" href="styles.css?v=86" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -40,8 +40,9 @@
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <!--
   GEO/entity trust signals — sameAs profile links live in the JSON-LD below.
+  Confirmed 2026-07: ASU faculty profile, Amazon author page, bside.org (see /about/ verify block).
   Still unconfirmed (add to the relevant sameAs array only when a real URL exists — do not invent):
-  GitHub org, Crunchbase, author/speaker profiles (Amazon author page, etc.).
+  GitHub org, Crunchbase, speaker profiles.
   NOTE: JSON-LD cannot contain comments — keep TODOs here in this HTML comment, never inside the <script> block.
 -->
 <script type="application/ld+json">
@@ -82,7 +83,10 @@
       "sameAs": [
         "https://www.linkedin.com/in/cmyers85/",
         "https://x.com/Chris_myers",
-        "https://www.entrepreneur.com/author/christopher-myers"
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
       ]
     },
     {
@@ -452,6 +456,9 @@
 </section>
 
 <!-- ============ 06 WHERE ARE YOU ============ -->
+<!-- TESTIMONIALS: rendered by scripts/build-testimonials.mjs — do not hand-edit -->
+<!-- /TESTIMONIALS -->
+
 <section class="section paper-2" id="paths" data-screen-label="Where are you">
   <div class="wrap">
     <div class="head-block">
@@ -557,7 +564,7 @@
     </div>
     <div class="foot__bottom">
       <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
-      <span class="links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
     </div>
   </div>
 </footer>

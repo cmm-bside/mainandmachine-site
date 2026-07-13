@@ -1,0 +1,4 @@
+{
+  "_rules": "Proof-shelf rule (CLAUDE.md): a quote renders on / and /work/ ONLY when permission is true, meaning the client's written sign-off is on file. Zero permissioned quotes = the 'What clients say' section does not exist on either page — no placeholders. Rendered at build by scripts/build-testimonials.mjs; never hand-edit the rendered sections. Fields: quote (string), name (string), role (string), company (string), permission (boolean), date (YYYY-MM-DD, when the sign-off was received).",
+  "testimonials": []
+}

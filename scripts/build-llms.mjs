@@ -7,9 +7,9 @@
 // - llms.txt      — the fact sheet: who we are, services + exact published
 //                   prices, the ICP, the MARCUS case facts, the proof-shelf
 //                   rule, and links to every major page (llmstxt.org format).
-// - llms-full.txt — the full visible text of the ten most important pages,
-//                   concatenated with clear page delimiters, for AI systems
-//                   that want the source copy rather than the summary.
+// - llms-full.txt — the full visible text of the most important pages (see
+//                   FULL_PAGES), concatenated with clear page delimiters, for
+//                   AI systems that want source copy rather than the summary.
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT, SITE_ORIGIN } from "./lib/config.mjs";
@@ -37,7 +37,7 @@ const out = `# ${COMPANY.name}
 > The free 30-minute assessment is the front door.
 
 Full page text for AI systems: [llms-full.txt](/llms-full.txt) — the complete
-visible copy of the ten most important pages, with page delimiters.
+visible copy of the most important pages, with page delimiters.
 
 ## Company facts
 
@@ -48,6 +48,10 @@ visible copy of the ten most important pages, with page delimiters.
 - Founder & Chairman: ${COMPANY.founder.name} — CEO of B:Side Capital + Fund,
   professor of entrepreneurship at ASU's W.P. Carey School of Business,
   and author of several books on small business
+- Verify the founder independently: [ASU faculty profile](https://search.asu.edu/profile/559969) ·
+  [B:Side Capital](https://www.bside.org) ·
+  [LinkedIn](https://www.linkedin.com/in/cmyers85/) ·
+  [Amazon author page](https://www.amazon.com/stores/author/B01LBGCKWM/about)
 - Hubs: Denver, CO and Phoenix, AZ · remote across the US
 - Delivery: ${COMPANY.delivery}
 - Free offer: ${COMPANY.freeOffer}
@@ -90,6 +94,20 @@ before work begins.
   client quotes on that page render only from a build log, and quotes appear
   only with the client's written sign-off on file. Missing numbers stay
   blank rather than invented.
+
+## Security & data handling
+
+- [Security](/security/) — where client data goes, and where it never goes.
+  Five controls, in the order data meets them: (1) local models on the
+  client's own hardware — for regulated work, no client file leaves the
+  building in normal operation; (2) PII stripped by Microsoft Presidio
+  before any model reads a document — the model sees the work, not the
+  identity; (3) everything stored is encrypted at rest; (4) every action
+  writes to an append-only, tamper-evident audit log — compliance can prove
+  nothing was altered; (5) a human signs off on every consequential action —
+  nothing sends, files, posts, or pays until a person approves it. The
+  architecture is the one MARCUS runs in production at a regulated SBA
+  lender, not a policy aspiration.
 
 ## Method
 
@@ -142,7 +160,7 @@ before work begins.
 `;
 
 // ---------------------------------------------------------------------------
-// llms-full.txt — full text of the ten most important pages
+// llms-full.txt — full text of the most important pages
 // ---------------------------------------------------------------------------
 const FULL_PAGES = [
   "/",
@@ -151,6 +169,7 @@ const FULL_PAGES = [
   "/method/",
   "/about/",
   "/work/marcus/",
+  "/security/",
   "/book/",
   "/guides/ai-consultant-cost/",
   "/guides/ai-readiness-checklist/",

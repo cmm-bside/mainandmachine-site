@@ -145,6 +145,9 @@ const PERSON_SAMEAS = [
 	"https://www.linkedin.com/in/cmyers85/",
 	"https://x.com/Chris_myers",
 	"https://www.entrepreneur.com/author/christopher-myers",
+	"https://search.asu.edu/profile/559969",
+	"https://www.amazon.com/stores/author/B01LBGCKWM/about",
+	"https://www.bside.org",
 ];
 // Pass { searchAction: true } on pages whose search honors ?q= (the blog
 // index) to emit a WebSite SearchAction (sitelinks searchbox).

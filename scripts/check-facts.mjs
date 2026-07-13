@@ -46,6 +46,7 @@ const ALL_PAGES = [
   "guides/ai-consultant-vs-in-house/index.html",
   "guides/how-to-choose-an-ai-consultant/index.html",
   "calculator/index.html",
+  "security/index.html",
   "contact/index.html",
   "careers/index.html",
   "privacy/index.html",

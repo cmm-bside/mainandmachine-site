@@ -1,5 +1,5 @@
 # Main & Machine — llms-full.txt
-# The complete visible text of the 10 most important pages on
+# The complete visible text of the 11 most important pages on
 # https://www.mainandmachine.com/ , concatenated with page delimiters.
 # The condensed fact sheet lives at https://www.mainandmachine.com/llms.txt
 # Canonical business facts: AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue).
@@ -782,6 +782,16 @@ As chairman, he pairs his own senior judgment with a team of AI-native builders 
 
 Our founder’s work has been covered in: Forbes The Wall Street Journal The New York Times Inc. TechCrunch MSNBC Fox Business
 
+Don’t take the bio’s word for it
+
+- ASU W.P. Carey faculty profile search.asu.edu
+
+- B:Side Capital — the lender he runs bside.org
+
+- LinkedIn linkedin.com/in/cmyers85
+
+- The books, on the shelf amazon.com — author page
+
 02 / The team
 
 ## The build team is young on purpose.
@@ -1137,6 +1147,136 @@ You’re reading it
 More client stories are clearing review as each client signs off on the numbers.
 
 ========================================================================
+PAGE: Security & Data Handling | Main & Machine
+URL: https://www.mainandmachine.com/security/
+SUMMARY: On-prem local models, PII stripped before any model reads a document, encryption at rest, a tamper-evident audit log, and a human sign-off on every action.
+========================================================================
+
+Main & Machine
+/
+Security & data handling
+
+Security & data handling
+
+# Where your data goes — and where it never goes.
+
+This page is written for the person who reviews vendors for a living: your IT lead, your compliance officer, your fractional CISO. It describes the architecture our builds inherit — the same one running a regulated lender’s back office today. Bring your security questionnaire; the answers below are the ones we put in writing.
+
+The architecture In production
+
+Models Local · on-prem
+
+PII Stripped pre-model
+
+Storage Encrypted at rest
+
+Audit log Append-only chain
+
+Actions Human-approved
+
+01 / The controls
+
+## Five controls, in the order your data meets them.
+
+Most AI vendors ask you to trust their cloud. We built the opposite: a stack where the sensitive thing stays put and every step leaves evidence.
+
+C-01
+
+### Local models, on your hardware.
+
+For regulated work, the models that read your documents run on a machine in your own building , not someone else’s cloud. In normal operation, nothing about a client file is sent to an outside service. When a cloud model is genuinely the right tool for a workflow, that trade-off is stated in the fixed quote — in writing, before work begins — and you decide.
+
+Deployment: on-prem by default for regulated data
+
+C-02
+
+### PII is stripped before any model reads a document.
+
+Microsoft Presidio — an open-source PII engine you can inspect yourself — detects and removes names, Social Security numbers, and account numbers first. The model sees the work, not the identity. This isn’t a policy promise; it’s a pipeline stage the document physically passes through.
+
+Engine: Microsoft Presidio · runs before model ingestion
+
+C-03
+
+### Everything stored is encrypted at rest.
+
+Documents, extracted data, and work products are fully encrypted where they sit. A copied disk is a useless disk.
+
+Scope: all stored documents and derived data
+
+C-04
+
+### Every action writes to an append-only, tamper-evident log.
+
+Each action the system takes is appended to an audit log secured as a tamper-evident chain : entries can be added, never edited or deleted. When your auditor asks what happened, compliance can prove nothing was altered — not assert it, prove it.
+
+Property: append-only · chained · verifiable
+
+C-05
+
+### A person signs off on every consequential action.
+
+Nothing sends, files, posts, or pays until a person approves it. The system shows its work — what it did, what it’s asking for, the source it relied on — and a person approves, sends it back, or escalates. While a request waits, nothing moves.
+
+Rule: the machine prepares; people decide
+
+02 / The other half of the page title
+
+## What never happens.
+
+- No client file leaves your network in normal operation on a regulated deployment.
+
+- No model reads raw PII. Identity is stripped before ingestion, not redacted after.
+
+- No action fires on its own. Send, file, post, pay — all of it waits for a human approval.
+
+- No number comes from a model’s memory. Eligibility, credit, price — those come from your systems of record.
+
+- No quiet edits. The audit log only grows; it cannot be rewritten.
+
+- No resold software. We’re vendor-neutral — nothing on this page depends on you buying a product we profit from.
+
+03 / Not a policy document
+
+## This architecture is running right now.
+
+MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one.
+
+Read the MARCUS case study →
+
+Have a security questionnaire? Send it, or bring your IT reviewer to the free 30-minute assessment. The person answering is the founder who is accountable for the build — and “that control doesn’t apply to your workflow” is an answer we’ll put in writing too.
+
+Book the free assessment →
+
+Fair questions
+
+## What compliance asks.
+
+### Something we didn’t cover?
+
+Ask it directly. Security questions land with the founder, not a sales queue.
+
+Ask a security question →
+
+01 Does our data leave our building? +
+For regulated work, no — the models run on your own hardware, and in normal operation no client file leaves your network. That is how MARCUS runs at a regulated SBA lender today. When a cloud model is the right call for a workflow, we say so in the written quote and you decide.
+
+02 Do AI models see our customers’ personal information? +
+No. Microsoft Presidio detects and removes names, Social Security numbers, and account numbers before any model reads a document. The model sees the work, not the identity.
+
+03 How is stored data protected? +
+Everything stored is encrypted at rest, and every action the system takes is written to an append-only audit log secured as a tamper-evident chain.
+
+04 Can we audit what the system did? +
+Yes. The audit log is append-only and tamper-evident: entries can be added but never edited or deleted, so compliance can prove nothing was altered after the fact.
+
+05 Can the AI act on its own? +
+No. Nothing sends, files, posts, or pays until a person approves it. The system never decides eligibility, credit, or price — those numbers come from your systems of record, never from a model’s memory.
+
+06 Has this architecture run in a regulated environment? +
+Yes. MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, entirely on-prem. The case is published with the client’s written permission.
+
+========================================================================
 PAGE: Free 30-Minute AI Assessment for Small Business | Main & Machine
 URL: https://www.mainandmachine.com/book/
 SUMMARY: A senior advisor walks your workflows and shows where AI pays, what it's worth, and when to wait. Free, no pitch, reply within 24 hours.
@@ -1150,7 +1290,7 @@ The AI Opportunity Assessment
 
 # 30 minutes. No pitch. A straight answer.
 
-Tell us a little about your business and we will set up a free 30-minute assessment. A senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth, including when the smart move is to wait a quarter.
+Pick a time below and it’s booked. Or send the form and we’ll reach out within 24 hours. Either way, a senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth, including when the smart move is to wait a quarter.
 
 Assessment Free
 
@@ -1160,7 +1300,17 @@ Length 30 minutes
 
 Format Call · remote
 
-You hear back Within 24 hours
+Scheduling Instant · pick below
+
+Pick a time now Fastest
+
+What is eating your team’s time? (optional — rides along with your booking)
+
+The advisor reads this before your call. One line is plenty.
+
+Pick a slot and it’s booked. The calendar invite and confirmation arrive from Calendly right away.
+
+Prefer we reach out? Use the form — we email within 24 hours
 
 Assessment request * required
 
@@ -1212,55 +1362,6 @@ You’ll leave knowing what’s worth doing and what isn’t, and we’ll never 
 
 If the assessment finds nothing worth building, we say so and you keep the notes. That’s the whole transaction.
 
-Request received Logged
-
-Reference MM-2026-0000
-
-## Thanks. You’re in the queue.
-
-We’ve got your request. A senior advisor will email you within 24 hours to set a time for your 30-minute assessment.
-
-Reaching out to —
-
-Via —
-
-For —
-
-+
-Help us prep: 30 seconds, optional
-
-None of this is required. It just makes your 30 minutes sharper.
-
-Got it. Filed with your request. It’ll be in front of the advisor before the call.
-
-Now
-
-### Request logged
-
-Your details land in front of a senior advisor the same day.
-
-Within 24 hours
-
-### We email you
-
-A short note proposing a few times that work, in your preferred channel.
-
-The call
-
-### 30 focused minutes
-
-We walk your workflows and show you where AI pays.
-
-After
-
-### You decide
-
-Build with us, sit tight, or walk away. Your call.
-
-Want it on the calendar now? Pick a time →
-Read The Ampersand while you wait →
-Back to the site
-
 Before you book
 
 ## Fair questions.
@@ -1269,7 +1370,7 @@ Before you book
 
 You don’t have to be sure about AI to book. The whole point of the assessment is to find out. In 30 minutes.
 
-Jump to the form →
+Pick a time →
 
 01 What exactly is the assessment? +
 A free 30-minute working session with a senior advisor. We walk your workflows: where the time goes, what it costs, what a machine could carry. You leave with a plain-language read on where AI pays in your business and a rough dollar range. It ends there unless you want more. We reply within 24 hours to set a time.

@@ -24,7 +24,7 @@
     var manual = emp * r.manual;
     var revenue = emp * r.revenue;
     var total = manual + revenue;
-    var implementation = Math.min(45000, Math.max(12000, 720 * emp));
+    var implementation = Math.min(60000, Math.max(18000, 720 * emp));
     return { r:r, emp:emp, manual:manual, revenue:revenue, total:total, implementation:implementation, roi: total - implementation };
   }
 

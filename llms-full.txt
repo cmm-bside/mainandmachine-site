@@ -15,16 +15,18 @@ AI implementation for small & mid-size business
 
 # The machine belongs to Main Street.
 
-Other AI firms hand you a deck. We build the working systems that run inside your business, at a fixed price.
+Other AI firms hand you a deck. We build the working systems that run inside your business. Fixed price, quoted in writing. Live in about 90 days — or we keep building at no charge until it is.
 
-Get your AI-Ready Score →
-Book a free assessment
+Book a free assessment →
+Get your AI-Ready Score
 
-Seven minutes. Free. A straight answer.
+30 minutes with a senior advisor. Free. A straight answer.
 
 Spec Sheet v.2026
 
 Audits from $3,500
+
+Guarantee Live in 90 days
 
 Approach Human-centric
 
@@ -102,6 +104,8 @@ Timeline
 Fixed price
 $3,500–$8,500
 
+100% of the fee credits toward a sprint signed within 60 days.
+
 ### AI Readiness Audit
 
 Most businesses start here.
@@ -116,9 +120,11 @@ Timeline
 4 to 12 weeks
 
 Fixed quote after scoping
-$12,000–$45,000
+$18,000–$60,000
 
 Exact price quoted in writing before work begins. It does not move after we start.
+
+Guaranteed live in 90 days, or we keep building at no charge.
 
 ### AI Implementation Sprint
 
@@ -134,7 +140,7 @@ Timeline
 Ongoing
 
 Retainer
-Monthly
+From $1,500/month
 
 ### Managed Services
 
@@ -144,7 +150,7 @@ We keep what we built healthy, watch what changes, and evolve the systems as you
 
 Read the full spec →
 
-Every path here starts with the same free 30-minute assessment.
+Every path here starts with the same free 30-minute assessment. Need the whole back office carried? MARCUS-class builds run from $95,000 — we take two a year.
 
 The same numbers, pointed at your business
 
@@ -232,7 +238,7 @@ Get your score →
 ========================================================================
 PAGE: AI Services for Small Business: Audit, Sprint, Managed
 URL: https://www.mainandmachine.com/services/
-SUMMARY: Custom agents, automations and integrations for small business. Audits from $3,500, sprints to $45,000, about 90 days. Denver, Phoenix and remote US.
+SUMMARY: Custom agents, automations and integrations for small business. Audits from $3,500, sprints to $60,000, about 90 days. Denver, Phoenix and remote US.
 ========================================================================
 
 Main & Machine
@@ -251,9 +257,9 @@ Price list Published
 
 Audits $3,500–$8,500
 
-Sprints $12,000–$45,000
+Sprints $18,000–$60,000
 
-Managed Monthly · no lock-in
+Managed From $1,500/mo · no lock-in
 
 Delivery ~90 days
 
@@ -272,9 +278,11 @@ What it delivers
 
 AI Readiness Audit : $3,500–$8,500 : 2 to 4 weeks : A workflow map and a phased plan you own. The handful of places AI actually pays.
 
-AI Implementation Sprint : $12,000–$45,000 : 4 to 12 weeks : The highest-payback workflow built, tested in your operation, and handed to your team.
+AI Implementation Sprint : $18,000–$60,000 : 4 to 12 weeks : The highest-payback workflow built, tested in your operation, and handed to your team.
 
-Managed Services : Monthly · no lock-in : Ongoing : Monitoring, maintenance, and new automations as the work changes.
+Managed Services : From $1,500/mo : Ongoing : Monitoring, maintenance, and new automations as the work changes.
+
+There is a fourth, rarer door: The Full Back Office — a MARCUS-class, multi-department build. From $95,000 , two taken per year.
 
 Service 01 · 2–4 weeks · $3,500–$8,500
 
@@ -288,7 +296,7 @@ Two to four weeks inside your real operation. Not a survey. Not a maturity model
 
 We start where the work actually happens. Where the time goes, where the money leaks, where a person is doing work a machine should be doing. We walk the workflows with the people who run them and put a cost on each one, so the plan rests on your numbers instead of someone’s framework.
 
-What comes out is a phased plan you own outright. Build it with us, build it with another firm, build it in-house. The plan is yours either way, priced and sequenced so you can act on it without us in the room.
+What comes out is a phased plan you own outright. Build it with us, build it with another firm, build it in-house. The plan is yours either way, priced and sequenced so you can act on it without us in the room. And if you do build with us, the audit pays you back: 100% of the fee credits toward a sprint signed within 60 days.
 
 And sometimes the right call is to wait a quarter. When the numbers say so, the audit says so, in writing. You will not be talked into building something your own data does not support. What the audit contains — and deliberately doesn’t — is spelled out in the audit guide .
 
@@ -319,7 +327,7 @@ See the full price list →
 
 01 What is the AI Readiness Audit? + Two to four weeks inside your real operation. We map your workflows, put a cost on each one, and hand you a phased plan you own, whether or not you build it with us.
 
-02 How much does the AI Readiness Audit cost? + $3,500–$8,500, quoted as a fixed price in writing before work begins. The exact number depends on the size and complexity of your operation.
+02 How much does the AI Readiness Audit cost? + $3,500–$8,500, quoted as a fixed price in writing before work begins. The exact number depends on the size and complexity of your operation. 100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 03 How long does the audit take? + 2 to 4 weeks.
 
@@ -327,7 +335,7 @@ See the full price list →
 
 05 What if the audit says don’t build? + Then it says so, in writing. Sometimes the right call is to wait a quarter. You will not be talked into a build your own numbers do not support. To gauge readiness before spending anything, run the 20-point readiness checklist yourself.
 
-Service 02 · 4–12 weeks · $12,000–$45,000
+Service 02 · 4–12 weeks · $18,000–$60,000
 
 ## AI Implementation Sprint.
 
@@ -342,6 +350,8 @@ A sprint takes the workflows worth automating and builds the thing that fixes th
 One team runs it from kickoff to handoff. The advisor who scopes your sprint is the one who builds it; no junior team quietly takes over after you sign. Each workflow lands in about 90 days, because a project without a deadline is a project that dies.
 
 And before any of it starts, you get the exact price in writing. It does not move after we start. Handoff means your team trained to run all of it, and ownership of all of it.
+
+If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
 ### Who it’s for
 
@@ -367,9 +377,9 @@ See the full price list →
 
 ### Questions about the sprint
 
-01 What is the AI Implementation Sprint? + A fixed-scope build of the highest-payback workflow your audit surfaced, typically 4 to 12 weeks, about 90 days per workflow.
+01 What is the AI Implementation Sprint? + A fixed-scope build of the highest-payback workflow your audit surfaced, typically 4 to 12 weeks, about 90 days per workflow. Guaranteed: if a scoped workflow is not live within 90 days, we keep building at no charge until it is.
 
-02 How much does an Implementation Sprint cost? + $12,000–$45,000, quoted as a fixed price in writing before any work begins. For how that compares to the wider market, see What an AI Consultant Costs in 2026 .
+02 How much does an Implementation Sprint cost? + $18,000–$60,000, quoted as a fixed price in writing before any work begins. For how that compares to the wider market, see What an AI Consultant Costs in 2026 .
 
 03 How long does a sprint take? + 4 to 12 weeks, depending on scope.
 
@@ -415,9 +425,9 @@ See the full price list →
 
 ### Questions about managed services
 
-01 What are Managed Services? + Ongoing monitoring and maintenance for what we build, keeping the system healthy after handoff. A monthly retainer with no lock-in.
+01 What are Managed Services? + Ongoing monitoring and maintenance for what we build, keeping the system healthy after handoff. From $1,500 a month, no lock-in, and 12 months cost the price of 10 when paid annually.
 
-02 How much do Managed Services cost? + A monthly retainer with no lock-in; the amount depends on what is running. The audit and sprint that lead here run $3,500–$8,500 and $12,000–$45,000 respectively.
+02 How much do Managed Services cost? + From $1,500 a month with no lock-in; the exact amount depends on what is running. Pay annually and 12 months cost the price of 10. The audit and sprint that lead here run $3,500–$8,500 and $18,000–$60,000 respectively.
 
 03 Is Managed Services required? + No. It is optional, never required. You can run what we build yourself. The hire-or-engage math behind that choice is in AI Consultant vs. In-House Hire .
 
@@ -467,7 +477,7 @@ A fixed price, quoted in writing before we start, and a straight answer within 2
 ========================================================================
 PAGE: AI Consulting Pricing: Fixed, Published, No Discovery Call
 URL: https://www.mainandmachine.com/pricing/
-SUMMARY: Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page.
+SUMMARY: Audits $3,500–$8,500. Implementation sprints $18,000–$60,000, fixed quote in writing. The full price list, on the page.
 ========================================================================
 
 Main & Machine
@@ -484,11 +494,13 @@ Price list : Published
 
 Audits : $3,500–$8,500
 
-Sprints : $12,000–$45,000
+Sprints : $18,000–$60,000
 
-Managed : Monthly · no lock-in
+Managed : From $1,500/mo · no lock-in
 
 Quote : Fixed, in writing
+
+Guarantee : Live in 90 days
 
 The price list
 
@@ -505,6 +517,8 @@ Timeline
 
 Fixed price
 $3,500–$8,500
+
+100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 ### AI Readiness Audit
 
@@ -530,9 +544,11 @@ Timeline
 4 to 12 weeks
 
 Fixed quote after scoping
-$12,000–$45,000
+$18,000–$60,000
 
 Exact price quoted in writing before work begins. It does not move after we start.
+
+If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
 ### AI Implementation Sprint
 
@@ -558,7 +574,9 @@ Timeline
 Ongoing
 
 Retainer
-Monthly
+From $1,500/month
+
+Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.
 
 ### Managed Services
 
@@ -580,39 +598,87 @@ Read the full spec →
 
 Every path here starts with the same free 30-minute assessment . Want a rough number first? Run the calculator .
 
+The high end
+
+## The Full Back Office.
+
+The MARCUS class: what we build when a business wants the whole back office carried, not one workflow.
+
+Two per year
+
+04
+
+Timeline
+One to two quarters
+
+Scoped individually
+From $95,000
+
+Quoted in writing after scoping, like everything else here. We take two of these a year, because one accountable operator runs every build.
+
+### The Full Back Office
+
+A MARCUS-class build.
+
+Agents across every department that needs one, built from your own process documents, running on-prem or in a private deployment where the data demands it. The published reference is MARCUS: 14 agents across 7 departments for a regulated lender.
+
+What you leave with
+
+- Agents across the operation, one per real job
+
+- Private by design where the data demands it
+
+- An approval queue: people decide, always
+
+- Your team trained, everything owned by you
+
+Read the MARCUS build →
+
+### The guarantee, in one sentence.
+
+If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+
+Book a free assessment →
+
 The math
 
 ## Same rigor. A fraction of the bill.
 
 The Big Four do versions of this work with half-million-dollar minimums. We built the same discipline for Main Street.
 
-Our largest engagement
-$45,000
+Our largest standard sprint
+$60,000
 
-A full Implementation Sprint, fixed in writing before we start.
+A full Implementation Sprint, fixed in writing before we start — and guaranteed live in 90 days.
 
 vs
 
 A Big Four minimum
 $500,000+
 
-More than ten times the cost, before the work begins. Our largest engagement is less than their kickoff meeting.
+Eight times the cost, before the work begins. Our largest standard sprint costs less than their kickoff meeting.
 
 Fair questions
 
 ## How much does AI implementation cost?
 
 01 How much does AI implementation cost for a small business? +
-The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026 ; for the monthly costs after the build, see What AI Automation Costs to Run .
+The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in, and a Full Back Office build starts at $95,000. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026 ; for the monthly costs after the build, see What AI Automation Costs to Run .
 
-02 What does the AI Readiness Audit include? +
+02 Is there a guarantee? +
+Yes, on delivery: if a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. The scope is fixed in writing before work begins, so the guarantee is against a spec both sides can read. We do not guarantee ROI numbers — nobody honestly can — but we do guarantee the thing you paid for shows up and runs.
+
+03 Does the audit fee count toward a build? +
+Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. If the audit leads to a build, the diagnosis effectively costs you nothing.
+
+04 What does the AI Readiness Audit include? +
 A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.
 
-03 Why fixed prices instead of hourly? +
+05 Why fixed prices instead of hourly? +
 Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs. If you are comparing firms, the ten questions in How to Choose an AI Consultant include this one — and a scope a vendor can’t inflate keeps the number fixed after you choose.
 
-04 What happens after the 90 days? +
-Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: a monthly retainer you can cancel any month it stops earning its keep. Whether to keep a retainer, name an internal owner, or hire is worked through in AI Consultant vs. In-House Hire .
+06 What happens after the 90 days? +
+Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: from $1,500 a month, cancel any month it stops earning its keep, and pay annually for 12 months at the price of 10. Whether to keep a retainer, name an internal owner, or hire is worked through in AI Consultant vs. In-House Hire .
 
 ### Want exact numbers?
 
@@ -1130,7 +1196,7 @@ If the stakes are real
 
 ## If you can document how your business works, we can build the machine that runs it.
 
-MARCUS is what Main & Machine builds when the stakes are real: private, auditable, built from your own processes, and designed so your people stay in control the whole way through. If that’s the kind of system your business needs, let’s talk.
+MARCUS is what Main & Machine builds when the stakes are real: private, auditable, built from your own processes, and designed so your people stay in control the whole way through. Builds in this class are published on the price list as The Full Back Office — from $95,000, two taken per year. If that’s the kind of system your business needs, let’s talk.
 
 Start a conversation →
 Explore more client stories
@@ -1367,6 +1433,8 @@ You’ll leave knowing what’s worth doing and what isn’t, and we’ll never 
 
 If the assessment finds nothing worth building, we say so and you keep the notes. That’s the whole transaction.
 
+And if we do build: a scoped workflow that is not live within 90 days gets built at no charge until it is. The guarantee is on delivery, in writing.
+
 Before you book
 
 ## Fair questions.
@@ -1398,7 +1466,7 @@ They go to us so we can prepare for your call. That’s all. Your details never 
 ========================================================================
 PAGE: What an AI Consultant Costs in 2026 | Main & Machine
 URL: https://www.mainandmachine.com/guides/ai-consultant-cost/
-SUMMARY: What AI consultants charge in 2026: hourly rates, boutique project fees, Big Four minimums — and where our published $3,500–$45,000 fixed prices sit.
+SUMMARY: What AI consultants charge in 2026: hourly rates, boutique project fees, Big Four minimums — and where our published $3,500–$60,000 fixed prices sit.
 ========================================================================
 
 Main & Machine
@@ -1419,7 +1487,7 @@ Reading time 8 min
 
 Market range $100/hr–$1M+
 
-Our range $3,500–$45,000
+Our range $3,500–$60,000
 
 Updated July 2026
 
@@ -1427,7 +1495,7 @@ Updated July 2026
 
 Anywhere from $100 an hour to more than $1 million a project, depending on the shape of the firm you hire. Independent consultants typically bill $100–$300 an hour, specialist boutiques price projects from roughly $10,000 to $150,000, and the global firms start in the mid six figures.
 
-That spread is not noise. You are buying genuinely different things at each tier: a person’s time at the bottom, a scoped build in the middle, and an institution’s process at the top. Our own prices sit at the low end of the boutique band and are published in full: an AI Readiness Audit runs $3,500–$8,500, and an AI Implementation Sprint runs $12,000–$45,000, quoted as a fixed price in writing before work begins. The rest of this guide shows you the whole shelf so you know what you are choosing between.
+That spread is not noise. You are buying genuinely different things at each tier: a person’s time at the bottom, a scoped build in the middle, and an institution’s process at the top. Our own prices sit at the low end of the boutique band and are published in full: an AI Readiness Audit runs $3,500–$8,500, and an AI Implementation Sprint runs $18,000–$60,000, quoted as a fixed price in writing before work begins. The rest of this guide shows you the whole shelf so you know what you are choosing between.
 
 ## What do hourly AI consultants charge?
 
@@ -1483,7 +1551,7 @@ You learn the price
 
 : Main & Machine
 : Fixed price, in writing, before work begins
-: Audit $3,500–$8,500 · Sprint $12,000–$45,000
+: Audit $3,500–$8,500 · Sprint $18,000–$60,000
 : 5–100 person businesses
 : Right now, on the pricing page
 
@@ -1497,13 +1565,13 @@ The incentives are the whole story. An hourly consultant is paid for time spent;
 
 ## Where do our prices sit, exactly?
 
-At the published bottom of the boutique band. The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks; the AI Implementation Sprint runs $12,000–$45,000, fixed in writing, over 4 to 12 weeks — about 90 days per workflow ; Managed Services is a monthly retainer with no lock-in.
+At the published bottom of the boutique band. The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks; the AI Implementation Sprint runs $18,000–$60,000, fixed in writing, over 4 to 12 weeks — about 90 days per workflow ; Managed Services runs from $1,500 a month with no lock-in.
 
 Three things are deliberately not in those prices. There is no discovery-call gauntlet — the numbers are on one page , and you just read them. There is no strategy-deck line item; we implement, and a plan you cannot execute is a poster. And there is no dependency by design: your team is trained to run what we build, and you own all of it at handoff. If you want to see what the audit deliverable actually looks like before spending a dollar, two redacted pages of a real one are published . Every engagement starts with a free 30-minute assessment, and we reply within 24 hours.
 
 ## How should a small business budget for AI in 2026?
 
-Plan for roughly $15,000–$55,000 in year one if you build: an audit plus one implementation sprint, at our prices. Budget zero for strategy decks, and treat any year-one number above $150,000 as an enterprise price that wandered into the wrong meeting.
+Plan for roughly $21,500–$68,500 in year one if you build: an audit plus one implementation sprint, at our prices — with 100% of the audit fee credited toward the sprint when it is signed within 60 days. Budget zero for strategy decks, and treat any year-one number above $150,000 as an enterprise price that wandered into the wrong meeting.
 
 Two smaller lines belong in the budget too. Running costs: the tools and model usage behind a working system typically land between $50 and $500 a month for a small business — real money, but a fraction of what the manual work cost. If you are weighing whether a $25-a-month subscription is enough instead, that question has its own guide . And maintenance: models and vendors shift, so either someone in-house watches the system or a retainer does. Ours is monthly with no lock-in, priced by what is running.
 
@@ -1523,7 +1591,7 @@ Read the price list →
 Independent AI consultants typically bill $100–$300 an hour; specialists with deep machine-learning backgrounds run $200–$500. The total depends on hours, which almost nobody quotes in advance — which is why we price fixed instead.
 
 02 How much should a small business budget for AI consulting? +
-Roughly $15,000–$55,000 in year one at our published prices: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $12,000–$45,000, fixed in writing before work begins.
+Roughly $21,500–$68,500 in year one at our published prices: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins — with 100% of the audit fee credited toward the sprint when it is signed within 60 days.
 
 03 Why are Big Four AI engagements so expensive? +
 They are built for enterprises: layers of analysts, governance frameworks, and brand assurance. Engagements commonly start around $250,000 — rational at 40,000 employees, mismatched at 40.
@@ -1574,7 +1642,7 @@ Updated July 2026
 
 Documented workflows, data somebody can actually export, one named person with time to review what a machine produces, and a number on what the manual work costs you. That is the whole secret — not a data science team, not a bigger budget, not a platform migration.
 
-The twenty checks below test exactly those four things. They are the same questions we ask in the first week of a paid AI Readiness Audit , published here because you can run most of them yourself. A business that passes fifteen of these will get more from a $12,000 build than an unprepared one gets from a $200,000 engagement.
+The twenty checks below test exactly those four things. They are the same questions we ask in the first week of a paid AI Readiness Audit , published here because you can run most of them yourself. A business that passes fifteen of these will get more from a $18,000 build than an unprepared one gets from a $200,000 engagement.
 
 ## How do you use this checklist?
 
@@ -1632,7 +1700,7 @@ AI is an investment with a payback period, not a lottery ticket. These checks co
 
 - You can name the three workflows that cost the most. Not the most annoying — the most expensive. They are frequently not the same list.
 
-- You have a budget range, even a soft one. For scale: our audits run $3,500–$8,500 and sprints $12,000–$45,000, fixed in writing. If those numbers are unthinkable, the answer is “not yet,” and that is a fine answer.
+- You have a budget range, even a soft one. For scale: our audits run $3,500–$8,500 and sprints $18,000–$60,000, fixed in writing. If those numbers are unthinkable, the answer is “not yet,” and that is a fine answer.
 
 - You expect ranges, not guarantees. Anyone who promises exact ROI is selling something other than results. We publish our assumptions ; a promise dressed as a number is a red flag.
 
@@ -1725,7 +1793,7 @@ Run the meeting the same way every time: same questions, same order, answers wri
 
 ### 1. What will this cost, and when do I learn the exact number?
 
-A builder gives you a range now and a fixed price in writing before work begins. Anyone who needs three discovery calls to produce a number is already billing you; the meetings are the meter. Our ranges are published — $3,500–$8,500 for an audit, $12,000–$45,000 for a sprint — and the whole market’s ranges are in Guide 01 , so you will know if a quote is an outlier.
+A builder gives you a range now and a fixed price in writing before work begins. Anyone who needs three discovery calls to produce a number is already billing you; the meetings are the meter. Our ranges are published — $3,500–$8,500 for an audit, $18,000–$60,000 for a sprint — and the whole market’s ranges are in Guide 01 , so you will know if a quote is an outlier.
 
 Bad answer: “Every engagement is unique — let’s schedule a discovery workshop.”
 
@@ -1817,7 +1885,7 @@ Guaranteed ROI numbers, transformation promised in weeks, prices only available 
 No — and a guarantee is itself a red flag. Real results depend on your execution, so a serious firm quotes ranges and publishes its assumptions.
 
 04 What should you own at the end of an AI project? +
-Everything: the systems, credentials, documentation, and prompts, with your team trained to run them. Ongoing help should be optional — ours is a monthly retainer with no lock-in.
+Everything: the systems, credentials, documentation, and prompts, with your team trained to run them. Ongoing help should be optional — ours is a monthly retainer from $1,500 with no lock-in.
 
 Start here
 

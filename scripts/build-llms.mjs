@@ -31,8 +31,9 @@ const out = `# ${COMPANY.name}
 
 > AI consulting and implementation for small and mid-size businesses
 > (${COMPANY.audience.headcount} employees, ${COMPANY.audience.revenue} revenue). Fixed-price audits $3,500–$8,500;
-> implementation sprints $12,000–$45,000, fixed quote in writing, delivered
-> in ~90 days per workflow. Hubs in Denver, CO and Phoenix, AZ; remote across
+> implementation sprints $18,000–$60,000, fixed quote in writing, delivered
+> in ~90 days per workflow. Every scoped workflow is guaranteed live within
+> 90 days or we keep building at no charge. Hubs in Denver, CO and Phoenix, AZ; remote across
 > the US. Founded by ${COMPANY.founder.name}.
 > The free 30-minute assessment is the front door.
 
@@ -67,16 +68,21 @@ before work begins.
 - [${audit.name}](/services/#audit): $3,500–$8,500, 2–4 weeks.
   A workflow map of your real operations, the handful of places AI actually
   pays, and a phased plan you own outright — whether or not you build with us.
-- [${sprint.name}](/services/#sprint): $12,000–$45,000 fixed quote,
+- [${sprint.name}](/services/#sprint): $18,000–$60,000 fixed quote,
   4–12 weeks. Working agents, automations, and integrations built inside
   your real operation, with your team trained to run them. About 90 days
-  per workflow.
-- [${managed.name}](/services/#managed): monthly retainer, no lock-in.
+  per workflow. Guarantee: if a scoped workflow is not live within 90 days,
+  we keep building at no charge until it is.
+- [${managed.name}](/services/#managed): from $1,500/month, no lock-in.
   Monitoring and maintenance on every deployed system; leave any month it
-  stops paying.
+  stops paying. Pay annually and 12 months cost the price of 10.
+- The Full Back Office: from $95,000 — a MARCUS-class, multi-department
+  build. Two taken per year.
+- Audit-to-sprint credit: 100% of the audit fee credits toward a sprint
+  signed within 60 days, up to 25% of the sprint price.
 - [Pricing](/pricing/) — the full price list, on the page. Our largest
-  engagement ($45,000) is less than a Big Four kickoff meeting ($500,000+
-  minimums).
+  standard sprint ($60,000) is roughly a tenth of a Big Four kickoff
+  meeting ($500,000+ minimums).
 - [Sample audit deliverable](/services/sample-audit/) — the artifact you buy,
   shown before you buy it.
 
@@ -287,5 +293,7 @@ const factsOut = {
   },
   ...facts,
 };
+fs.writeFileSync(path.join(ROOT, "llms.txt"), out);
+fs.writeFileSync(path.join(ROOT, "llms-full.txt"), fullOut);
 fs.writeFileSync(path.join(ROOT, "facts.json"), JSON.stringify(factsOut, null, 2) + "\n");
 console.log(`[llms:build] llms.txt + llms-full.txt (${sections.length} pages) + facts.json generated from src/data/site-facts.json`);

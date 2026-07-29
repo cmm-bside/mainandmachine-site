@@ -59,8 +59,17 @@ in code, centralize it in the JSON and tag the HTML with `data-fact`.
 - Founder & Chairman: Christopher Myers (also CEO of B:Side Capital + Fund;
   professor of entrepreneurship at ASU W.P. Carey; author)
 - Services + prices: AI Readiness Audit $3,500–$8,500 (2–4 weeks) ·
-  AI Implementation Sprint $12,000–$45,000 fixed quote (4–12 weeks) ·
-  Managed Services, monthly retainer, no lock-in
+  AI Implementation Sprint $18,000–$60,000 fixed quote (4–12 weeks) ·
+  Managed Services from $1,500/month, no lock-in (annual = 12 months for
+  the price of 10, unused months refunded) ·
+  The Full Back Office (MARCUS-class, multi-department) from $95,000,
+  two per year
+- Guarantee (delivery, never ROI): if a scoped workflow is not live in the
+  client's operation within 90 days, we keep building at no charge until it
+  is. The retired sprint band $12,000–$45,000 is a FORBIDDEN token
+  (check-facts fails on it).
+- Rollover: 100% of the audit fee credits toward a sprint signed within
+  60 days, up to 25% of the sprint price
 - Delivery: ~90 days per workflow, fixed price quoted in writing before work
 - Free offer: 30-minute AI Opportunity Assessment, reply within 24 hours
 - Locations: Denver, CO and Phoenix, AZ hubs; remote across the US
@@ -128,8 +137,12 @@ panel — it dilutes the CTA.
   `scripts/build-testimonials.mjs` ONLY for entries with `permission: true`
   (written sign-off on file); zero entries = no section. Same contract as the
   proof shelf.
-- If a verifiably true Q3 build-slot count exists, the topbar banner can say
-  "Two Q3 build slots remain" instead of the generic line (see index.html topbar).
+- The topbar banner now carries a verifiable slot count from
+  `buildSlots` in site-facts.json (stamped via `data-fact="build-slots"`).
+  KEEP IT CURRENT: when a slot is sold or the quarter rolls over, edit the
+  JSON and run `npm run facts:render`. A stale count violates the
+  no-unverifiable-scarcity rule — if it can't be kept current, remove the
+  span rather than let it drift.
 - After deploy: resubmit sitemap.xml in Search Console and request indexing on the
   new pages.
 
@@ -142,3 +155,24 @@ requires the client's written approval on file. The "A sample week" strip
 renders only when `week_of` and all three numbers are non-null; "In their
 words" renders only signed-off quotes. `placeholders:check` fails any build
 whose rendered pages contain TODO/TBD/TKTK/lorem ipsum/XXX in visible text.
+
+## SEO content pipeline (cloud agent + /publish-seo)
+
+A scheduled cloud agent researches competitors/SERPs monthly and writes article
+drafts to `/Users/christophermyers/Documents/Operations/Main & Machine/` as
+`DRAFT-<slug>.md` (lifecycle: `DRAFT-` ready → `STAGED-` on a review branch →
+`PUBLISHED-` live). Ampersand-format essays are staged as Beehiiv drafts, never
+committed here (the blog is prerendered from beehiiv at deploy).
+
+- `/publish-seo` stages pending drafts on a `seo/<YYYY-MM>` branch: builds pages
+  per this file's conventions (head pattern, `@graph` JSON-LD with canonical
+  `@id`s, `data-fact` spans, STATIC_ROUTES + ALL_PAGES registration), runs
+  `seo:check`/`facts:check`/`head:check`/`placeholders:check`, and opens a PR.
+  It never merges. Chris's review of the branch is the voice/claims gate.
+- `/publish-seo done` (run after merging) marks staged drafts `PUBLISHED-` so
+  the cloud agent never re-drafts them.
+- After each merged batch: resubmit sitemap.xml in Google Search Console;
+  publish the matching Beehiiv draft; when a new essay publishes, enrich
+  `POST_TOPICS` in `scripts/lib/config.mjs`.
+- If a draft's facts contradict `src/data/site-facts.json`, the command stops on
+  that draft and reports; canonical facts win until Chris says otherwise.

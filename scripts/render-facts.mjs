@@ -38,9 +38,17 @@ const usd = (n) => "$" + n.toLocaleString("en-US");
 export const FACT_VALUES = {
   "price-audit": svc("audit").price,
   "price-sprint": svc("sprint").price,
+  "price-managed": svc("managed").price,
+  "price-backoffice": svc("backoffice").price,
   "timeline-audit": svc("audit").timeline,
   "timeline-sprint": svc("sprint").timeline,
+  "timeline-backoffice": svc("backoffice").timeline,
   "audit-floor": usd(svc("audit").priceLow) + "+",
+  "sprint-ceiling": usd(svc("sprint").priceHigh),
+  "guarantee": COMPANY.guarantee,
+  "rollover": COMPANY.rollover,
+  "annual-managed": COMPANY.annualManaged,
+  "build-slots": COMPANY.buildSlots.line,
   "phone": COMPANY.phone,
   "email": COMPANY.email,
 };

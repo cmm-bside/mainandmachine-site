@@ -41,20 +41,38 @@ export const COMPANY = {
     {
       "key": "sprint",
       "name": "AI Implementation Sprint",
-      "price": "$12,000–$45,000",
-      "priceLow": 12000,
-      "priceHigh": 45000,
+      "price": "$18,000–$60,000",
+      "priceLow": 18000,
+      "priceHigh": 60000,
       "timeline": "4 to 12 weeks",
-      "note": "Fixed quote in writing before work begins"
+      "note": "Fixed quote in writing before work begins",
+      "guarantee": "If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is."
     },
     {
       "key": "managed",
       "name": "Managed Services",
-      "price": "Monthly retainer",
+      "price": "From $1,500/month",
+      "priceLow": 1500,
       "timeline": "Ongoing",
-      "note": "No lock-in"
+      "note": "No lock-in · annual pays for 10 months, not 12"
+    },
+    {
+      "key": "backoffice",
+      "name": "The Full Back Office",
+      "price": "From $95,000",
+      "priceLow": 95000,
+      "timeline": "One to two quarters",
+      "note": "A MARCUS-class, multi-department build. Two taken per year."
     }
   ],
+  "guarantee": "If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.",
+  "rollover": "100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.",
+  "annualManaged": "Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.",
+  "buildSlots": {
+    "quarter": "Q4",
+    "remaining": 4,
+    "line": "Four Q4 build slots remain"
+  },
   "runningCosts": "$50–$500/month typical (tools + model usage) for a small business",
   "delivery": "~90 days per workflow, fixed price quoted in writing before work",
   "freeOffer": "30-minute AI Opportunity Assessment, reply within 24 hours",

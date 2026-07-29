@@ -4,14 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AI Consulting Pricing: Fixed, Published, No Discovery Call</title>
-<meta name="description" content="Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page." />
+<meta name="description" content="Audits $3,500–$8,500. Implementation sprints $18,000–$60,000, fixed quote in writing. The full price list, on the page." />
 <link rel="canonical" href="https://www.mainandmachine.com/pricing/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
 <meta property="og:title" content="AI Consulting Pricing: Fixed, Published, No Discovery Call" />
-<meta property="og:description" content="Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page." />
+<meta property="og:description" content="Audits $3,500–$8,500. Implementation sprints $18,000–$60,000, fixed quote in writing. The full price list, on the page." />
 <meta property="og:url" content="https://www.mainandmachine.com/pricing/" />
 <meta property="og:image" content="https://www.mainandmachine.com/images/og/pricing.png" />
 <meta property="og:image:type" content="image/png" />
@@ -22,7 +22,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="AI Consulting Pricing: Fixed, Published, No Discovery Call" />
-<meta name="twitter:description" content="Audits $3,500–$8,500. Implementation sprints $12,000–$45,000, fixed quote in writing. The full price list, on the page." />
+<meta name="twitter:description" content="Audits $3,500–$8,500. Implementation sprints $18,000–$60,000, fixed quote in writing. The full price list, on the page." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/pricing.png" />
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
@@ -31,7 +31,7 @@
 <style>
 /* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
 /* 1. Price/range values never wrap. Stepped down one size so the widest range
-   ($12,000–$45,000) fits the 220px meta column on a single line. */
+   ($18,000–$60,000) fits the 220px meta column on a single line. */
 .svc__price { white-space: nowrap; font-size: var(--fs-16); }
 /* 2. Uniform price-table row heights (desktop 3-column table only — stacks <921px).
    grid-auto-rows:1fr keeps the three rows equal at every width, unlike a fixed
@@ -69,7 +69,7 @@
       "image": "https://www.mainandmachine.com/og-image.png",
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
-      "priceRange": "$3,500–$45,000",
+      "priceRange": "$3,500–$60,000",
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
@@ -89,12 +89,17 @@
           {
             "@type": "Offer",
             "itemOffered": { "@id": "https://www.mainandmachine.com/services/#service-sprint" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 12000, "maxPrice": 45000, "priceCurrency": "USD" }
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 18000, "maxPrice": 60000, "priceCurrency": "USD" }
           },
           {
             "@type": "Offer",
             "itemOffered": { "@id": "https://www.mainandmachine.com/services/#service-managed" },
-            "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "USD", "description": "Monthly retainer, no lock-in" }
+            "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 1500, "priceCurrency": "USD", "unitText": "month", "description": "From $1,500/month, no lock-in" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@id": "https://www.mainandmachine.com/pricing/#service-backoffice" },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 95000, "priceCurrency": "USD", "description": "From $95,000, scoped and quoted individually in writing" }
           }
         ]
       }
@@ -130,7 +135,7 @@
         "@type": "Offer",
         "url": "https://www.mainandmachine.com/pricing/",
         "priceCurrency": "USD",
-        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 12000, "maxPrice": 45000, "priceCurrency": "USD" }
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 18000, "maxPrice": 60000, "priceCurrency": "USD" }
       }
     },
     {
@@ -147,7 +152,24 @@
         "@type": "Offer",
         "url": "https://www.mainandmachine.com/pricing/",
         "priceCurrency": "USD",
-        "priceSpecification": { "@type": "UnitPriceSpecification", "priceCurrency": "USD", "unitText": "month", "description": "Monthly retainer, no lock-in" }
+        "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 1500, "priceCurrency": "USD", "unitText": "month", "description": "From $1,500/month, no lock-in" }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.mainandmachine.com/pricing/#service-backoffice",
+      "name": "The Full Back Office",
+      "serviceType": "AI back-office implementation",
+      "description": "A MARCUS-class, multi-department build: agents across the operation, on-prem or private deployment where the data demands it, people approving every consequential action. Two taken per year. From $95,000, scoped and quoted individually in writing.",
+      "url": "https://www.mainandmachine.com/pricing/#backoffice",
+      "provider": { "@id": "https://www.mainandmachine.com/#org" },
+      "areaServed": "US",
+      "audience": { "@type": "BusinessAudience", "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)" },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.mainandmachine.com/pricing/",
+        "priceCurrency": "USD",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 95000, "priceCurrency": "USD" }
       }
     },
     { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
@@ -165,7 +187,17 @@
         {
           "@type": "Question",
           "name": "How much does AI implementation cost for a small business?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026." }
+          "acceptedAnswer": { "@type": "Answer", "text": "The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in, and a Full Back Office build starts at $95,000. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a guarantee?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, on delivery: if a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. The scope is fixed in writing before work begins, so the guarantee is against a spec both sides can read. We do not guarantee ROI numbers — nobody honestly can — but we do guarantee the thing you paid for shows up and runs." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the audit fee count toward a build?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. If the audit leads to a build, the diagnosis effectively costs you nothing." }
         },
         {
           "@type": "Question",
@@ -180,7 +212,7 @@
         {
           "@type": "Question",
           "name": "What happens after the 90 days?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift — a monthly retainer you can cancel any month it stops earning its keep. Whether to keep a retainer, name an internal owner, or hire is worked through in AI Consultant vs. In-House Hire." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift — from $1,500 a month, cancel any month it stops earning its keep. Pay annually and 12 months cost the price of 10, with unused months refunded if you leave. Whether to keep a retainer, name an internal owner, or hire is worked through in AI Consultant vs. In-House Hire." }
         }
       ]
     }
@@ -201,13 +233,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> Booking now for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -268,9 +300,10 @@
       <dl class="statrail crop" aria-label="Pricing at a glance">
         <div class="statrail__bar"><dt>Price list</dt><dd><b>Published</b></dd></div>
         <div class="statrail__row"><dt class="statrail__k">Audits</dt><dd class="statrail__v accent-tx" data-fact="price-audit">$3,500–$8,500</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Sprints</dt><dd class="statrail__v" data-fact="price-sprint">$12,000–$45,000</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Managed</dt><dd class="statrail__v">Monthly · no lock-in</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Sprints</dt><dd class="statrail__v" data-fact="price-sprint">$18,000–$60,000</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Managed</dt><dd class="statrail__v">From $1,500/mo · no lock-in</dd></div>
         <div class="statrail__row"><dt class="statrail__k">Quote</dt><dd class="statrail__v">Fixed, in writing</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Guarantee</dt><dd class="statrail__v accent-tx">Live in 90 days</dd></div>
       </dl>
     </div>
   </div>
@@ -295,6 +328,7 @@
           <div class="svc__price" data-fact="timeline-audit">2 to 4 weeks</div>
           <span class="tick-lbl" style="margin-top:14px;">Fixed price</span>
           <div class="svc__price" data-fact="price-audit">$3,500–$8,500</div>
+          <p class="svc__note">100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</p>
         </div>
         <div class="svc__main">
           <h3><a href="/services/#audit">AI Readiness Audit</a></h3>
@@ -318,8 +352,9 @@
           <span class="tick-lbl">Timeline</span>
           <div class="svc__price" data-fact="timeline-sprint">4 to 12 weeks</div>
           <span class="tick-lbl" style="margin-top:14px;">Fixed quote after scoping</span>
-          <div class="svc__price" data-fact="price-sprint">$12,000–$45,000</div>
+          <div class="svc__price" data-fact="price-sprint">$18,000–$60,000</div>
           <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
+          <p class="svc__note accent-tx" data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</p>
         </div>
         <div class="svc__main">
           <h3><a href="/services/#sprint">AI Implementation Sprint</a></h3>
@@ -343,7 +378,8 @@
           <span class="tick-lbl">Timeline</span>
           <div class="svc__price">Ongoing</div>
           <span class="tick-lbl" style="margin-top:14px;">Retainer</span>
-          <div class="svc__price">Monthly</div>
+          <div class="svc__price" data-fact="price-managed">From $1,500/month</div>
+          <p class="svc__note" data-fact="annual-managed">Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.</p>
         </div>
         <div class="svc__main">
           <h3><a href="/services/#managed">Managed Services</a></h3>
@@ -367,6 +403,54 @@
 </section>
 
 
+<!-- ============ THE HIGH END ============ -->
+<section class="section paper" id="backoffice" data-screen-label="The Full Back Office">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">The high end</span>
+        <h2 class="h2 mt-s">The Full <span class="accent-tx">Back Office.</span></h2>
+      </div>
+      <p class="lead">The MARCUS class: what we build when a business wants the whole back office carried, not one workflow.</p>
+    </div>
+    <div class="svc">
+      <div class="svc__item svc__item--feature crop">
+        <span class="svc__tab">Two per year</span>
+        <div class="svc__meta">
+          <div class="svc__no">04</div>
+          <span class="tick-lbl">Timeline</span>
+          <div class="svc__price" data-fact="timeline-backoffice">One to two quarters</div>
+          <span class="tick-lbl" style="margin-top:14px;">Scoped individually</span>
+          <div class="svc__price" data-fact="price-backoffice">From $95,000</div>
+          <p class="svc__note">Quoted in writing after scoping, like everything else here. We take two of these a year, because one accountable operator runs every build.</p>
+        </div>
+        <div class="svc__main">
+          <h3><a href="/work/marcus/">The Full Back Office</a></h3>
+          <div class="svc__tagline">A MARCUS-class build.</div>
+          <p>Agents across every department that needs one, built from your own process documents, running on-prem or in a private deployment where the data demands it. The published reference is MARCUS: 14 agents across 7 departments for a regulated lender.</p>
+        </div>
+        <div class="svc__list">
+          <span class="tick-lbl">What you leave with</span>
+          <ul>
+            <li>Agents across the operation, one per real job</li>
+            <li>Private by design where the data demands it</li>
+            <li>An approval queue: people decide, always</li>
+            <li>Your team trained, everything owned by you</li>
+          </ul>
+          <a class="svc__cta" href="/work/marcus/">Read the MARCUS build &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="faq-strip">
+      <div class="faq-strip__copy">
+        <h3>The guarantee, in one sentence.</h3>
+        <p data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</p>
+      </div>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ THE MATH (ink) ============ -->
 <section class="section ink" data-screen-label="The math">
   <div class="wrap">
@@ -379,15 +463,15 @@
     </div>
     <div class="math-vs">
       <div class="math-vs__col">
-        <span class="tick-lbl">Our largest engagement</span>
-        <div class="math-vs__num">$45,000</div>
-        <p>A full Implementation Sprint, fixed in writing before we start.</p>
+        <span class="tick-lbl">Our largest standard sprint</span>
+        <div class="math-vs__num" data-fact="sprint-ceiling">$60,000</div>
+        <p>A full Implementation Sprint, fixed in writing before we start — and guaranteed live in 90 days.</p>
       </div>
       <span class="math-vs__sep">vs</span>
       <div class="math-vs__col">
         <span class="tick-lbl">A Big Four minimum</span>
         <div class="math-vs__num math-vs__num--them">$500,000+</div>
-        <p>More than ten times the cost, before the work begins. Our largest engagement is less than their kickoff meeting.</p>
+        <p>Eight times the cost, before the work begins. Our largest standard sprint costs less than their kickoff meeting.</p>
       </div>
     </div>
   </div>
@@ -404,19 +488,27 @@
       <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">How much does AI implementation cost for a small business?</span><span class="q-pm">+</span></summary>
-          <p>The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. Managed Services is an optional monthly retainer with no lock-in. For how our numbers compare to the wider market — hourly, boutique, Big Four — see <a href="/guides/ai-consultant-cost/">What an AI Consultant Costs in 2026</a>; for the monthly costs after the build, see <a href="/guides/what-ai-automation-costs-to-run/">What AI Automation Costs to Run</a>.</p>
+          <p>The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in, and a Full Back Office build starts at $95,000. For how our numbers compare to the wider market — hourly, boutique, Big Four — see <a href="/guides/ai-consultant-cost/">What an AI Consultant Costs in 2026</a>; for the monthly costs after the build, see <a href="/guides/what-ai-automation-costs-to-run/">What AI Automation Costs to Run</a>.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">What does the AI Readiness Audit include?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">02</span><span class="q-tx">Is there a guarantee?</span><span class="q-pm">+</span></summary>
+          <p>Yes, on delivery: if a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. The scope is fixed in writing before work begins, so the guarantee is against a spec both sides can read. We do not guarantee ROI numbers — nobody honestly can — but we do guarantee the thing you paid for shows up and runs.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Does the audit fee count toward a build?</span><span class="q-pm">+</span></summary>
+          <p>Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. If the audit leads to a build, the diagnosis effectively costs you nothing.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">What does the AI Readiness Audit include?</span><span class="q-pm">+</span></summary>
           <p>A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.</p>
         </details>
         <details>
-          <summary><span class="q-no">03</span><span class="q-tx">Why fixed prices instead of hourly?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">05</span><span class="q-tx">Why fixed prices instead of hourly?</span><span class="q-pm">+</span></summary>
           <p>Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs. If you are comparing firms, the ten questions in <a href="/guides/how-to-choose-an-ai-consultant/">How to Choose an AI Consultant</a> include this one — and <a href="/guides/how-to-scope-an-ai-project/">a scope a vendor can’t inflate</a> keeps the number fixed after you choose.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">What happens after the 90 days?</span><span class="q-pm">+</span></summary>
-          <p>Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: a monthly retainer you can cancel any month it stops earning its keep. Whether to keep a retainer, name an internal owner, or hire is worked through in <a href="/guides/ai-consultant-vs-in-house/">AI Consultant vs. In-House Hire</a>.</p>
+          <summary><span class="q-no">06</span><span class="q-tx">What happens after the 90 days?</span><span class="q-pm">+</span></summary>
+          <p>Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: from $1,500 a month, cancel any month it stops earning its keep, and pay annually for 12 months at the price of 10. Whether to keep a retainer, name an internal owner, or hire is worked through in <a href="/guides/ai-consultant-vs-in-house/">AI Consultant vs. In-House Hire</a>.</p>
         </details>
       </div>
     </div>

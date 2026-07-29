@@ -76,6 +76,7 @@ const FORBIDDEN = [
   /\(480\)\s*805-9983/, // phone must be 480-805-9983, not (480) 805-9983
   /Denvor|Pheonix/, // spelling drift
   /Featured in/, // press credit is always attributed to the founder
+  /\$12,000–\$45,000/, // retired sprint band (pre-2026-07 repricing) — canonical is $18,000–$60,000
 ];
 
 for (const page of CONTACT_PAGES) {
@@ -93,7 +94,7 @@ for (const page of CONTACT_PAGES) {
 for (const page of PRICING_PAGES) {
   const html = read(page);
   if (!html) continue;
-  for (const value of ["$3,500", "$8,500", "$12,000", "$45,000"]) {
+  for (const value of ["$3,500", "$8,500", "$18,000", "$60,000", "$95,000", "$1,500"]) {
     if (!html.includes(value)) fail(`${page}: missing canonical price ${value}`);
   }
 }

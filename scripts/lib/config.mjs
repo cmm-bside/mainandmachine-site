@@ -48,6 +48,7 @@ export const STATIC_ROUTES = [
 	"/about/",
 	"/services/",
 	"/services/sample-audit/",
+	"/services/builds/",
 	"/industries/",
 	"/industries/professional-services/",
 	"/industries/retail/",

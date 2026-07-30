@@ -30,6 +30,7 @@ const ALL_PAGES = [
   "about/index.html",
   "services/index.html",
   "services/sample-audit/index.html",
+  "services/builds/index.html",
   "industries/index.html",
   "industries/professional-services/index.html",
   "industries/retail/index.html",

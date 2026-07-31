@@ -77,7 +77,7 @@ before work begins.
   Monitoring and maintenance on every deployed system; leave any month it
   stops paying. Pay annually and 12 months cost the price of 10.
 - The Full Back Office: from $95,000 — a MARCUS-class, multi-department
-  build. Two taken per year.
+  build. Four taken per year.
 - Audit-to-sprint credit: 100% of the audit fee credits toward a sprint
   signed within 60 days, up to 25% of the sprint price.
 - [Pricing](/pricing/) — the full price list, on the page. Our largest

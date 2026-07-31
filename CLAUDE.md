@@ -63,7 +63,7 @@ in code, centralize it in the JSON and tag the HTML with `data-fact`.
   Managed Services from $1,500/month, no lock-in (annual = 12 months for
   the price of 10, unused months refunded) ·
   The Full Back Office (MARCUS-class, multi-department) from $95,000,
-  two per year
+  four per year
 - Guarantee (delivery, never ROI): if a scoped workflow is not live in the
   client's operation within 90 days, we keep building at no charge until it
   is. The retired sprint band $12,000–$45,000 is a FORBIDDEN token

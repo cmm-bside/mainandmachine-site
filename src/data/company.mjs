@@ -62,7 +62,7 @@ export const COMPANY = {
       "price": "From $95,000",
       "priceLow": 95000,
       "timeline": "One to two quarters",
-      "note": "A MARCUS-class, multi-department build. Two taken per year."
+      "note": "A MARCUS-class, multi-department build. Four taken per year."
     }
   ],
   "guarantee": "If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.",

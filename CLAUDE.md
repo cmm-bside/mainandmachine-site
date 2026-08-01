@@ -18,7 +18,13 @@ prerendered at deploy time from beehiiv:
 - **`npm run build:static`** = `blog:fetch` (pull posts from beehiiv into `blog-data/`)
   → `blog:build` (prerender `/blog/*`, `rss.xml`, `sitemap.xml`) → `llms:build`
   (regenerate `llms.txt` from the facts file — never hand-edit `llms.txt`)
-  → `seo:check` → `facts:check`. Generated blog artifacts are **gitignored** — never
+  → `seo:check` → `facts:check` → `llms:check` → `head:check` →
+  `placeholders:check` → `links:check` → `book:check`.
+  **`blog:build` FAILS on a zero-post index** — an empty fetch used to prerender
+  an empty archive and 404 every committed `/blog/<slug>/` link with a green
+  build. Local dev without a beehiiv key must say so out loud:
+  `ALLOW_EMPTY_BLOG=1 npm run blog:build` (never in CI/deploy; `postinstall`
+  sets it because it runs before any fetch). Generated blog artifacts are **gitignored** — never
   hand-edit `blog/`, `blog-data/`, `sitemap.xml`, or `src/data/blog-posts.js`; edit
   `scripts/lib/templates.mjs` and `scripts/build-blog.mjs` instead. New static pages
   must be added to `STATIC_ROUTES` in `scripts/lib/config.mjs` (sitemap) and to
@@ -52,6 +58,15 @@ Guards: `scripts/check-facts.mjs` fails the build if static pages drift, and
 `scripts/check-llms.mjs` fails it if llms.txt links 404 in the build output or carry a
 price token that isn't canonical/whitelisted. If a fact appears in more than 2 places
 in code, centralize it in the JSON and tag the HTML with `data-fact`.
+
+`data-fact` values are derived in **one** place, `scripts/lib/fact-values.mjs`,
+imported by both the writer (`render-facts.mjs`) and the reader
+(`check-facts.mjs`). check-facts re-derives every value and compares the stamped
+span byte-for-byte, so **editing site-facts.json without re-running
+`facts:render` now fails the build.** Service `note` fields can't be stamped
+(they're prose inside JSON-LD descriptions), so they get two guards instead:
+every *countable* clause ("Four taken per year") must appear verbatim on some
+surface, and no surface may state the same phrase with a different number.
 
 - Company: Main & Machine
 - One-liner: AI consulting & implementation for small and mid-size business
@@ -133,28 +148,76 @@ panel — it dilutes the CTA.
   JSON-LD emitter + the /about/ verify block). Still TODO when real URLs
   exist: press-coverage URLs, GitHub org, Crunchbase (see `PERSON_SAMEAS` in
   templates.mjs).
-- Testimonials: `data/testimonials.json` → rendered on / and /work/ by
-  `scripts/build-testimonials.mjs` ONLY for entries with `permission: true`
+- Testimonials: `data/testimonials.json` → rendered by `scripts/build-testimonials.mjs`
+  on / and /work/ (full section), /work/marcus/results/ (featured B:Side quote),
+  and /book/ (rail one-liner) ONLY for entries with `permission: true`
   (written sign-off on file); zero entries = no section. Same contract as the
   proof shelf.
-- The topbar banner now carries a verifiable slot count from
-  `buildSlots` in site-facts.json (stamped via `data-fact="build-slots"`).
-  KEEP IT CURRENT: when a slot is sold or the quarter rolls over, edit the
-  JSON and run `npm run facts:render`. A stale count violates the
-  no-unverifiable-scarcity rule — if it can't be kept current, remove the
-  span rather than let it drift.
+- The topbar banner carries a verifiable, **dated** slot count from
+  `buildSlots` in site-facts.json (stamped via `data-fact="build-slots"` as
+  "Four Q4 build slots remain (counted YYYY-MM-DD)"). KEEP IT CURRENT: when a
+  slot is sold or the quarter rolls over, edit `remaining`/`line` AND
+  `countedOn` in the JSON, then run `npm run facts:render`.
+  `scripts/check-facts.mjs` FAILS the build once `countedOn` is more than
+  **21 days** old — that is deliberate: a stale count is unverifiable
+  scarcity, the exact pattern `/guides/how-to-choose-an-ai-consultant/`
+  red-flags in other firms. To stop maintaining it, delete the
+  `data-fact="build-slots"` span from the ticker in every page rather than
+  letting the date drift.
 - After deploy: resubmit sitemap.xml in Search Console and request indexing on the
   new pages.
 
 ## Proof shelf rule
 
-Numbers and quotes on /work come only from `data/build-log.json`, rendered by
-`scripts/build-work.mjs` at build time (between the BUILD-LOG markers in
-`work/index.html`). Never hand-edit rendered figures. `signed_off: true`
-requires the client's written approval on file. The "A sample week" strip
-renders only when `week_of` and all three numbers are non-null; "In their
-words" renders only signed-off quotes. `placeholders:check` fails any build
-whose rendered pages contain TODO/TBD/TKTK/lorem ipsum/XXX in visible text.
+Numbers and quotes on the proof surfaces come only from `data/build-log.json`,
+rendered by `scripts/build-work.mjs` at build time between BUILD-LOG markers.
+Never hand-edit rendered figures. `signed_off: true` requires the client's
+written approval on file. The "A sample week" strip renders only when `week_of`
+and all three numbers are non-null; "In their words" renders only signed-off
+quotes.
+
+`build-work.mjs` stamps **every** page that carries a marker — currently
+`index.html`, `/work/`, `/work/marcus/`, `/work/marcus/results/`,
+`/industries/professional-services/` and `/security/`. Region names:
+`MARCUS-SCORECARD`, `MARCUS-SCORECARD-COMPACT`, `MARCUS-HOME`,
+`MARCUS-FIGS-01`…`-07`, `MARCUS-BA`, `MARCUS-BOUNDARY`, `MARCUS-WINDOW`,
+`MARCUS-INLINE-<PAGE>` (inline regions inject no whitespace, so they can sit
+mid-sentence), plus the legacy `STATS` / `QUOTES`.
+
+The MARCUS block carries `measurement_window`, `window_note`, `signed_off`,
+an `approval` object (who approved, when, on what basis), and figures as
+`{key, value, unit, desc, source}`. **Every number on
+`/work/marcus/results/` renders from that file — none is typed into the HTML.**
+Section prose (kicker, headline, body, "How it's sold") is authored copy in the
+page; if prose ever restates a figure, the figure must also exist in the data
+with the same value. `marcus.signed_off: false` withholds every MARCUS figure
+site-wide rather than shipping an unapproved number.
+
+The measurement-window disclosure line is rendered from data too, deliberately:
+it is the differentiation, so it can never drift from the figures it qualifies. `placeholders:check` fails any build
+whose rendered pages contain TODO/TBD/TKTK/lorem ipsum/XXX/Fixture/fictional/
+placeholder/"to be added"/pro-forma/"illustrative targets" in visible text
+(text nodes plus `alt`/`title`/`aria-label` — tag markup is stripped, so an
+`<input placeholder="…">` is not a hit).
+
+## Build guards (added after the 2026-07-31 audit)
+
+Each of these exists because something shipped wrong once and nothing objected:
+
+- `links:check` (`scripts/check-internal-links.mjs`) — offline; every internal
+  href in committed HTML must resolve to a file in the build output, a
+  `PROXIED_ROUTES` entry, or a slug present in `blog-data/index.json`. It fails
+  loudly on a zero-post index while pages link to posts. Not to be confused with
+  `scripts/check-links.mjs`, which crawls the **live** origin over the network
+  to audit redirect hops after a deploy and is not part of the build.
+- `head:check` — meta descriptions under **40** chars are a hard ERROR (stub
+  detection); under 70 stays advisory. `dateModified` earlier than
+  `datePublished` in any JSON-LD block is an ERROR.
+- `facts:check` — see the facts section above: stamped span verification plus
+  countable-claim guards.
+- All guards skip `LOCAL_SCRATCH_DIRS` (`scripts/lib/config.mjs`) so a stale
+  local copy of the site can't flood the checks with phantom failures — that
+  noise is how people learn to ignore a red build.
 
 ## SEO content pipeline (cloud agent + /publish-seo)
 

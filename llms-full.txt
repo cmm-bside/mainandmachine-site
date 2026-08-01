@@ -40,20 +40,20 @@ Hubs Denver & Phoenix
 
 Most companies that spend on AI see almost nothing change. We exist to fix that.
 
-78%
+74%
 
-spent the money. Nothing moved.
+spent the money and have yet to show tangible value.
 
-22%
+26%
 
-turn AI spending into measurable results.
+built the capability to get past proofs of concept.
 
 spent
 moved
 
-We exist for the 22% .
+We exist for the 26% .
 
-Source: Boston Consulting Group, Where’s the Value in AI? , 2024.
+Source: Boston Consulting Group, Where’s the Value in AI? , October 2024 — a survey of 1,000 executives across 59 countries.
 
 There is a second failure nobody mentions: AI that technically works but buries why decisions get made and turns your best people into ticket-closers.
 
@@ -86,15 +86,15 @@ C: Integrations & data
 We make your data do something instead of sitting in five systems that do not talk to each other.
 
 Example builds
-See example builds →
-
-One we can name: MARCUS runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA & CDFI lender. It runs entirely in-house, with no borrower file leaving the building. Read the build →
+Browse the build catalog →
 
 03 / How to work with us
 
 ## Three ways in. Priced in plain numbers.
 
 You will not have to sit through three discovery calls to learn what something costs. Here is the short version. The price list has every line item.
+
+Most start here
 
 01
 
@@ -108,7 +108,7 @@ $3,500–$8,500
 
 ### AI Readiness Audit
 
-Most businesses start here.
+Where AI pays, in writing.
 
 We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
 
@@ -128,7 +128,7 @@ Guaranteed live in 90 days, or we keep building at no charge.
 
 ### AI Implementation Sprint
 
-We build the working systems.
+The 90-Day Workflow.
 
 Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
 
@@ -144,13 +144,15 @@ From $1,500/month
 
 ### Managed Services
 
-Optional, never required.
+The month-to-month.
 
 We keep what we built healthy, watch what changes, and evolve the systems as your business does.
 
 Read the full spec →
 
-Every path here starts with the same free 30-minute assessment. Need the whole back office carried? MARCUS-class builds run from $95,000 — we take two a year.
+Every path here starts with the same free 30-minute assessment.
+
+The ceiling: when a business wants the whole back office carried rather than one workflow, that is a MARCUS-class build — From $95,000 , four a year. Everything above is where most businesses start.
 
 The same numbers, pointed at your business
 
@@ -190,7 +192,15 @@ For 25 people
 
 A model, not a promise. We run your real numbers in the free assessment.
 
-04 / Who builds this
+04 / Proof it works
+
+## One build we can name, and the numbers it returned.
+
+MARCUS runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA & CDFI lender — entirely in-house, with no borrower file leaving the building. Year one, measured off the audit log:
+
+Read the year-one results → · the whole proof shelf
+
+05 / Who builds this
 
 ## Christopher Myers.
 
@@ -205,7 +215,7 @@ Who builds this, and why the name matters →
 
 Our founder’s work has been covered in: Forbes The Wall Street Journal The New York Times Inc. TechCrunch MSNBC Fox Business
 
-05 / Where are you?
+06 / Where are you?
 
 ## Pick the door that fits you today.
 
@@ -221,9 +231,9 @@ Book a free assessment →
 
 02 / Decided
 
-### I already know what I want built.
+### Skip the audit — scope a sprint.
 
-Skip the audit. Book a scoping call and we will quote a fixed-price Implementation Sprint in writing.
+You already know what you want built. Book a scoping call and we quote a fixed-price Implementation Sprint in writing — no audit in between.
 
 Scope a sprint →
 
@@ -282,7 +292,7 @@ AI Implementation Sprint : $18,000–$60,000 : 4 to 12 weeks : The highest-payba
 
 Managed Services : From $1,500/mo : Ongoing : Monitoring, maintenance, and new automations as the work changes.
 
-There is a fourth, rarer door: The Full Back Office — a MARCUS-class, multi-department build. From $95,000 , two taken per year.
+There is a fourth, rarer door: The Full Back Office — a MARCUS-class, multi-department build. From $95,000 , four taken per year.
 
 Service 01 · 2–4 weeks · $3,500–$8,500
 
@@ -395,7 +405,9 @@ We keep what we built healthy, watch what changes, and evolve the systems as you
 
 ### What it is
 
-Models shift. Vendors change their APIs and their prices. A workflow that ran clean in March can drift by September. Managed Services means someone is watching for that before it costs you anything: monitoring on every deployed system, maintenance when the ground moves underneath it, and new automations as the work itself changes.
+Models shift. Vendors change their APIs and their prices. A workflow that ran clean in March can drift by September. And the failure is silent: nothing crashes, the system just starts being confidently wrong until a customer notices. Managed Services means someone is watching for that before it costs you anything.
+
+Concretely, every month: the tests we wrote for your build keep running against the live system, and you can see the results. Model and vendor changes get patched before they reach you. Anything your team flags as wrong becomes tuning, included. A standing block of build time goes to the automation you thought of after handoff. And you get one page — what ran, what it caught, what changed — in plain numbers.
 
 A retainer should survive on usefulness, not paperwork. If we are not earning the fee in a given month, you should be able to act on that immediately. So you can.
 
@@ -413,11 +425,15 @@ We manage what we build, so the road here runs through the audit and the sprint 
 
 What the retainer covers
 
-- Monitoring on every deployed system
+- Continuous testing on every deployed system
 
-- Maintenance as models and vendors shift
+- Patching as models and vendors shift
 
-- New automations as the work changes
+- Tuning when your team flags a miss
+
+- A build block for new automations, monthly
+
+- A one-page monthly report, plain numbers
 
 - No lock-in: leave whenever it stops paying
 
@@ -463,7 +479,33 @@ Before The same job shows a different status in your CRM, your billing tool, and
 
 After One integration keeps them in sync, so every system shows the same source of truth and your team stops reconciling by hand.
 
-Illustrative builds, not client claims. Patterns, not specific clients. For one we actually shipped, 14 AI agents across 7 departments for a regulated lender, see the MARCUS teardown .
+Illustrative builds, not client claims. Patterns, not specific clients. For one we actually shipped, 14 AI agents across 7 departments for a regulated lender, see the MARCUS teardown . For the full parts list, front of house to back of house, see the build catalog .
+
+The parts list
+
+## Every system we build, priced.
+
+AI receptionists, intake and billing agents, automations, integrations — ordered like parts, not commissioned like software.
+
+Browse the build catalog →
+
+The math
+
+## Same rigor. A fraction of the bill.
+
+The Big Four do versions of this work with half-million-dollar minimums. We built the same discipline for Main Street.
+
+Our largest standard sprint
+$60,000
+
+A full Implementation Sprint, fixed in writing before we start — and guaranteed live in 90 days.
+
+vs
+
+A Big Four engagement, as quoted to buyers
+$500,000+
+
+Eight times the cost, before the work begins. Our largest standard sprint costs less than their kickoff meeting. That figure is what buyers report being quoted — the global firms publish no minimums.
 
 Start here
 Every path here starts with the same free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. We reply within 24 hours.
@@ -502,111 +544,15 @@ Quote : Fixed, in writing
 
 Guarantee : Live in 90 days
 
-The price list
+The ceiling
 
-## What each one costs.
+## The ceiling: from $95,000, four a year.
 
-Audit, sprint, retainer: every price fixed and quoted in writing before any work begins.
+The MARCUS class, and the top of the price list. Start here so every number below it has a scale to sit against — most businesses do not buy this one.
 
-Most start here
+Four per year
 
 01
-
-Timeline
-2 to 4 weeks
-
-Fixed price
-$3,500–$8,500
-
-100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
-
-### AI Readiness Audit
-
-Most businesses start here.
-
-We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
-
-What you leave with
-
-- A workflow map of your real operations
-
-- The handful of places AI actually pays
-
-- A phased plan you own outright
-
-- A straight read on whether to build at all
-
-Read the full spec →
-
-02
-
-Timeline
-4 to 12 weeks
-
-Fixed quote after scoping
-$18,000–$60,000
-
-Exact price quoted in writing before work begins. It does not move after we start.
-
-If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
-
-### AI Implementation Sprint
-
-We build the working systems.
-
-Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
-
-What you leave with
-
-- Working agents built to your workflow
-
-- Automations across your existing stack
-
-- Integrations into one source of truth
-
-- Your team trained to run all of it
-
-Read the full spec →
-
-03
-
-Timeline
-Ongoing
-
-Retainer
-From $1,500/month
-
-Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.
-
-### Managed Services
-
-Optional, never required.
-
-We keep what we built healthy, watch what changes, and evolve the systems as your business does.
-
-What you leave with
-
-- Monitoring on every deployed system
-
-- Maintenance as models and vendors shift
-
-- New automations as the work changes
-
-- No lock-in: leave whenever it stops paying
-
-Read the full spec →
-
-Every path here starts with the same free 30-minute assessment . Want a rough number first? Run the calculator .
-
-The high end
-
-## The Full Back Office.
-
-The MARCUS class: what we build when a business wants the whole back office carried, not one workflow.
-
-Two per year
-
-04
 
 Timeline
 One to two quarters
@@ -614,7 +560,7 @@ One to two quarters
 Scoped individually
 From $95,000
 
-Quoted in writing after scoping, like everything else here. We take two of these a year, because one accountable operator runs every build.
+Quoted in writing after scoping, like everything else here. We take four of these a year, because one accountable operator runs every build.
 
 ### The Full Back Office
 
@@ -640,6 +586,104 @@ If a scoped workflow is not live in your operation within 90 days, we keep build
 
 Book a free assessment →
 
+The price list
+
+## And the three ways most businesses start.
+
+Audit, sprint, retainer: every price fixed and quoted in writing before any work begins. The audit is where most businesses start.
+
+Most start here
+
+02
+
+Timeline
+2 to 4 weeks
+
+Fixed price
+$3,500–$8,500
+
+100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+
+### AI Readiness Audit
+
+Where AI pays, in writing.
+
+We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
+
+What you leave with
+
+- A workflow map of your real operations
+
+- The handful of places AI actually pays
+
+- A phased plan you own outright
+
+- A straight read on whether to build at all
+
+Read the full spec →
+
+03
+
+Timeline
+4 to 12 weeks
+
+Fixed quote after scoping
+$18,000–$60,000
+
+Exact price quoted in writing before work begins. It does not move after we start.
+
+If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+
+### AI Implementation Sprint
+
+The 90-Day Workflow.
+
+Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
+
+What you leave with
+
+- Working agents built to your workflow
+
+- Automations across your existing stack
+
+- Integrations into one source of truth
+
+- Your team trained to run all of it
+
+Read the full spec →
+
+04
+
+Timeline
+Ongoing
+
+Retainer
+From $1,500/month
+
+Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.
+
+### Managed Services
+
+The month-to-month.
+
+We keep what we built healthy, watch what changes, and evolve the systems as your business does.
+
+What you leave with
+
+- Continuous testing on every deployed system
+
+- Patching as models and vendors shift
+
+- Tuning, plus a monthly build block
+
+- A one-page monthly report, plain numbers
+
+- No lock-in: leave whenever it stops paying
+
+Read the full spec →
+
+Every path here starts with the same free 30-minute assessment . Want a rough number first? Run the calculator .
+
 The math
 
 ## Same rigor. A fraction of the bill.
@@ -653,10 +697,10 @@ A full Implementation Sprint, fixed in writing before we start — and guarantee
 
 vs
 
-A Big Four minimum
+A Big Four engagement, as quoted to buyers
 $500,000+
 
-Eight times the cost, before the work begins. Our largest standard sprint costs less than their kickoff meeting.
+Eight times the cost, before the work begins. Our largest standard sprint costs less than their kickoff meeting. That figure is what buyers report being quoted — the global firms publish no minimums.
 
 Fair questions
 
@@ -961,6 +1005,30 @@ The team : 14 AI agents
 
 Runs : In-house, on-prem
 
+Year one, measured
+
+## A year in, here is what it actually returned.
+
+1,240 hrs
+
+Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work.
+
+93 %
+
+Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck.
+
+0
+
+Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists.
+
+100 %
+
+Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted.
+
+Measurement window: the first 90 days of full-fleet operation. Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.
+
+Read the year-one results →
+
 Who we built it for
 
 Type : SBA 504 · CDFI
@@ -1196,10 +1264,14 @@ If the stakes are real
 
 ## If you can document how your business works, we can build the machine that runs it.
 
-MARCUS is what Main & Machine builds when the stakes are real: private, auditable, built from your own processes, and designed so your people stay in control the whole way through. Builds in this class are published on the price list as The Full Back Office — from $95,000, two taken per year. If that’s the kind of system your business needs, let’s talk.
+MARCUS is what Main & Machine builds when the stakes are real: private, auditable, built from your own processes, and designed so your people stay in control the whole way through. Builds in this class are published on the price list as The Full Back Office — from $95,000, four taken per year. If that’s the kind of system your business needs, let’s talk.
 
 Start a conversation →
 Explore more client stories
+
+The guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+
+The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. See the price list →
 
 Proof
 
@@ -1311,13 +1383,17 @@ Rule: the machine prepares; people decide
 
 ## This architecture is running right now.
 
-MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one.
+MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: ( the year-one results ).
 
 Read the MARCUS case study →
 
 Have a security questionnaire? Send it, or bring your IT reviewer to the free 30-minute assessment. The person answering is the founder who is accountable for the build — and “that control doesn’t apply to your workflow” is an answer we’ll put in writing too. The plain-English version of the cloud-versus-on-prem call is in where your AI data actually goes .
 
 Book the free assessment →
+
+The guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+
+The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. See the price list →
 
 Fair questions
 
@@ -1427,6 +1503,10 @@ You leave with a clear read. That’s where it ends unless you want more.
 
 Founder & Chairman. The person who scopes your work is the one accountable for the build. 26 years backing Main Street.
 
+## Why it’s free
+
+Scoping is the work. We quote a fixed price in writing before anything starts, and you cannot quote a fixed price without knowing what you are quoting. The first thirty minutes is unavoidable — we just don’t charge for it.
+
 ## The promise
 
 You’ll leave knowing what’s worth doing and what isn’t, and we’ll never pad the list to win the work. Substance over sales.
@@ -1493,13 +1573,13 @@ Updated July 2026
 
 ## What does an AI consultant cost in 2026?
 
-Anywhere from $100 an hour to more than $1 million a project, depending on the shape of the firm you hire. Independent consultants typically bill $100–$300 an hour, specialist boutiques price projects from roughly $10,000 to $150,000, and the global firms start in the mid six figures.
+Anywhere from $100 an hour to more than $1 million a project, depending on the shape of the firm you hire. In the quotes our clients show us, independent consultants bill roughly $100–$300 an hour, specialist boutiques price projects from about $10,000 to $150,000, and the global firms start in the mid six figures.
 
 That spread is not noise. You are buying genuinely different things at each tier: a person’s time at the bottom, a scoped build in the middle, and an institution’s process at the top. Our own prices sit at the low end of the boutique band and are published in full: an AI Readiness Audit runs $3,500–$8,500, and an AI Implementation Sprint runs $18,000–$60,000, quoted as a fixed price in writing before work begins. The rest of this guide shows you the whole shelf so you know what you are choosing between.
 
 ## What do hourly AI consultants charge?
 
-Independent AI consultants generally bill $100–$300 an hour, and specialists with deep machine-learning or data-engineering backgrounds run $200–$500. The rate is only half the number that matters; the other half is hours, and almost nobody quotes those in advance.
+Independent AI consultants generally bill $100–$300 an hour in the proposals we see, and specialists with deep machine-learning or data-engineering backgrounds run $200–$500. The rate is only half the number that matters; the other half is hours, and almost nobody quotes those in advance.
 
 Run the arithmetic on a real project. A modest automation build — intake handling, invoice follow-up, a data sync — is commonly 150 to 400 hours of work once meetings, revisions, and testing are counted. At $250 an hour, that is $37,500 to $100,000, and you learn the true figure only when it stops climbing. Hourly billing is not dishonest; plenty of good people work this way. But the structure puts every unknown on your side of the table. When the project runs long, the consultant earns more. You would not let a contractor rebuild your kitchen on those terms.
 
@@ -1507,7 +1587,7 @@ The Ampersand essay The Currency of the Machine covers why AI work in particular
 
 ## What do the big firms charge for AI consulting?
 
-Big Four and global-consultancy AI engagements commonly start around $250,000 and pass $500,000 before anything ships; multi-year transformation programs run into the millions. For an enterprise wiring AI through 40,000 employees and a compliance department, that can be entirely rational.
+Big Four and global-consultancy AI engagements, in the quotes buyers have brought us, start around $250,000 and pass $500,000 before anything ships; multi-year transformation programs run into the millions. For an enterprise wiring AI through 40,000 employees and a compliance department, that can be entirely rational.
 
 What you are paying for is scale and cover: layers of analysts, governance frameworks, and a brand that reassures a board. None of that is fake — it is just built for a different customer. A 30-person firm inside one of those engagements is a rounding error, and rounding errors get the junior team. As our pricing page puts it: our largest engagement costs less than their kickoff meeting. If you are 5 to 100 people, this tier is not your market, and being priced out of it costs you nothing.
 
@@ -1567,7 +1647,7 @@ The incentives are the whole story. An hourly consultant is paid for time spent;
 
 At the published bottom of the boutique band. The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks; the AI Implementation Sprint runs $18,000–$60,000, fixed in writing, over 4 to 12 weeks — about 90 days per workflow ; Managed Services runs from $1,500 a month with no lock-in.
 
-Three things are deliberately not in those prices. There is no discovery-call gauntlet — the numbers are on one page , and you just read them. There is no strategy-deck line item; we implement, and a plan you cannot execute is a poster. And there is no dependency by design: your team is trained to run what we build, and you own all of it at handoff. If you want to see what the audit deliverable actually looks like before spending a dollar, two redacted pages of a real one are published . Every engagement starts with a free 30-minute assessment, and we reply within 24 hours.
+Three things are deliberately not in those prices. There is no discovery-call gauntlet — the numbers are on one page , and you just read them. There is no strategy-deck line item; we implement, and a plan you cannot execute is a poster. And there is no dependency by design: your team is trained to run what we build, and you own all of it at handoff. If you want to see what the audit deliverable actually looks like before spending a dollar, two pages of a sample built to the real template are published . Every engagement starts with a free 30-minute assessment, and we reply within 24 hours.
 
 ## How should a small business budget for AI in 2026?
 
@@ -1576,6 +1656,9 @@ Plan for roughly $21,500–$68,500 in year one if you build: an audit plus one i
 Two smaller lines belong in the budget too. Running costs: the tools and model usage behind a working system typically land between $50 and $500 a month for a small business — real money, but a fraction of what the manual work cost. If you are weighing whether a $25-a-month subscription is enough instead, that question has its own guide . And maintenance: models and vendors shift, so either someone in-house watches the system or a retainer does. Ours is monthly with no lock-in, priced by what is running.
 
 Whether the build budget returns anything depends on your workflows, not the consultant’s slides — our ROI calculator shows the assumptions we use, in the open, and the audit exists to replace those assumptions with your real numbers. Sometimes the audit’s answer is “wait a quarter,” in writing, and the sprint money stays in your pocket. Before you spend anything, run the 20-point readiness checklist — it is free and takes an afternoon. And when you start taking meetings, bring the ten vetting questions to every one of them, including ours.
+
+Where these numbers come from. No industry body surveys AI consulting rates, and the global firms do not publish engagement minimums. Every figure on this page is what we see in the market — competing proposals buyers bring to us, and the quotes we lose. Treat them as a working map, not a statistic. The one number here that is not a market observation is ours: our own price list , published in full.
+Our own systems are itemized and priced in the build catalog .
 
 Fair questions
 
@@ -1607,6 +1690,10 @@ The free 30-minute assessment is where ranges become a fixed quote in writing. A
 
 Book a free assessment →
 Read the full price list →
+
+A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
+
+— Christopher Myers, Founder
 
 ========================================================================
 PAGE: The AI Readiness Checklist: 20 Points | Main & Machine
@@ -1751,6 +1838,10 @@ Fourteen questions, a 0–100 score, and the one constraint to fix first. No sal
 Get your AI-Ready Score →
 Book a free assessment →
 
+A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
+
+— Christopher Myers, Founder
+
 ========================================================================
 PAGE: How to Choose an AI Consultant | Main & Machine
 URL: https://www.mainandmachine.com/guides/how-to-choose-an-ai-consultant/
@@ -1847,7 +1938,7 @@ Bad answer: “Most clients stay on our platform long-term.”
 
 ### 10. Show me something you built.
 
-Not slides — a build, with a name on it, and what it does. One verifiable system beats fifty logos on a credentials page. Ours are public: MARCUS, 14 agents running a regulated lender’s back office , and two redacted pages of a real audit deliverable . Ask every firm for their equivalent.
+Not slides — a build, with a name on it, and what it does. One verifiable system beats fifty logos on a credentials page. Ours is public: MARCUS, 14 agents running a regulated lender’s back office . That is the something-we-built. Separately, so you can see the paperwork before you buy it, two pages of a sample audit show the exact template and depth of the deliverable — a representative workflow, not a client’s. Ask every firm for their equivalent of both.
 
 Bad answer: “We’ve delivered AI transformation for leading brands across verticals.”
 
@@ -1895,3 +1986,7 @@ Start here
 
 Book a free assessment →
 Read our method first →
+
+A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
+
+— Christopher Myers, Founder

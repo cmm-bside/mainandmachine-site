@@ -28,9 +28,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
@@ -42,30 +42,12 @@
    Page-scoped (mk-) so it never collides with global classes.
    ========================================================= */
 
-/* ---- type helpers ---- */
-.mk-display{ font-size: clamp(var(--fs-39), 6.4vw, var(--fs-78)); line-height: .99; letter-spacing: -.022em; font-weight: 900; margin: 0; text-wrap: balance; }
-.mk-body{ font-size: var(--fs-20); line-height: 1.62; color: var(--tx-mute); }
-.ink .mk-body{ color: var(--dtx-mute); }
-.mk-body strong{ color: var(--tx); font-weight: 700; }
-.ink .mk-body strong{ color: #fff; }
-.mk-note{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); letter-spacing: .02em; }
-.mk-overline{ font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 16px; }
-.ink .mk-overline{ color: var(--accent-ink); }
-
 /* ---- hero ---- */
 .mk-hero{ display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
 @media (max-width: 880px){ .mk-hero{ grid-template-columns: 1fr; } .mk-hero__card{ max-width: 460px; } }
 .mk-hero h1{ margin: 22px 0; }
+.mk-hero .hero__cta{ margin-top: 30px; }
 .mk-hero .lead{ max-width: 48ch; }
-.mk-cta{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 30px; }
-
-/* ---- shared two-column body ---- */
-.mk-2col{ display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); }
-@media (max-width: 760px){ .mk-2col{ grid-template-columns: 1fr; gap: 10px; } }
-
-/* ---- head + intro split ---- */
-.mk-headsplit{ display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: end; }
-@media (max-width: 820px){ .mk-headsplit{ grid-template-columns: 1fr; gap: 16px; } }
 
 /* ---- client ---- */
 .mk-client{ display: grid; grid-template-columns: 320px 1fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
@@ -75,7 +57,7 @@
 .mk-punch{ font-size: clamp(var(--fs-20), 2.3vw, var(--fs-31)); font-weight: 800; letter-spacing: -.02em; line-height: 1.14; margin: 30px 0 0; }
 
 /* ---- problem brief ---- */
-.mk-brief{ border-left: 2px solid var(--accent-ink); padding: 6px 0 6px 26px; margin: 40px 0 0; font-size: clamp(var(--fs-20), 2.5vw, var(--fs-31)); font-weight: 800; letter-spacing: -.02em; line-height: 1.18; max-width: 26ch; color: #fff; }
+.mk-brief{ border-left: 2px solid var(--accent-ink); padding: 6px 0 6px 26px; margin: 40px 0 0; font-size: clamp(var(--fs-20), 2.5vw, var(--fs-31)); font-weight: 800; letter-spacing: -.02em; line-height: 1.18; max-width: 26ch; color: var(--dtx); }
 
 /* ---- four surfaces ---- */
 .mk-surfaces{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 18px; }
@@ -119,7 +101,7 @@ dl.mk-stats{ margin-bottom: 0; }
 .mk-agents{ display: flex; flex-wrap: wrap; gap: 0; }
 .mk-agent{ flex: 1 1 0; min-width: 190px; padding: 20px 22px; border-right: 1px solid var(--line-soft); display: flex; flex-direction: column; gap: 6px; transition: background .15s var(--ease); }
 .mk-agent:last-child{ border-right: 0; }
-.mk-agent:hover{ background: #fff; }
+.mk-agent:hover{ background: var(--surface-hi); }
 .mk-agent .i{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); letter-spacing: .06em; }
 .mk-agent .t{ font-weight: 700; font-size: var(--fs-16); letter-spacing: -.01em; line-height: 1.16; }
 .mk-agent .src{ margin-top: 4px; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .04em; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; }
@@ -139,13 +121,13 @@ dl.mk-stats{ margin-bottom: 0; }
 .mk-layers{ display: grid; gap: 14px; }
 .mk-layer{ border: 1px solid var(--dline); padding: 22px 24px; display: grid; grid-template-columns: 38px 1fr; gap: 18px; align-items: start; background: var(--ink-2); }
 .mk-layer .ln{ font-family: var(--mono); font-size: var(--fs-13); color: var(--accent-ink); padding-top: 3px; }
-.mk-layer h3{ font-weight: 800; font-size: var(--fs-20); letter-spacing: -.01em; color: #fff; margin: 0 0 5px; }
+.mk-layer h3{ font-weight: 800; font-size: var(--fs-20); letter-spacing: -.01em; color: var(--dtx); margin: 0 0 5px; }
 .mk-layer p{ font-size: var(--fs-16); color: var(--dtx-mute); line-height: 1.52; margin: 0; }
 .mk-closet{ border: 1.5px solid var(--dline); padding: 22px; position: relative; }
 .mk-closet__tag{ font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--dtx-faint); display: flex; justify-content: space-between; margin-bottom: 18px; }
 .mk-box{ border: 1px solid var(--dline); padding: 16px 18px; margin-bottom: 12px; background: rgba(0,0,0,.25); }
 .mk-box:last-of-type{ margin-bottom: 0; }
-.mk-box h4{ font-weight: 700; font-size: var(--fs-16); color: #fff; letter-spacing: -.01em; margin: 0; }
+.mk-box h4{ font-weight: 700; font-size: var(--fs-16); color: var(--dtx); letter-spacing: -.01em; margin: 0; }
 .mk-box .d{ font-family: var(--mono); font-size: var(--fs-12); color: var(--dtx-faint); letter-spacing: .04em; margin-top: 4px; }
 .mk-box--core{ border-color: rgba(236,108,61,.5); background: rgba(189,69,31,.12); }
 .mk-box--core h4{ color: var(--accent-ink); }
@@ -174,7 +156,7 @@ dl.mk-stats{ margin-bottom: 0; }
 /* ---- closing CTA ---- */
 .mk-closer h2{ max-width: 18ch; margin: 14px 0 22px; }
 .mk-closer .lead{ max-width: 56ch; margin-bottom: 32px; }
-.mk-closer .mk-cta{ margin-top: 0; }
+.mk-closer .hero__cta{ margin-top: 0; }
 
 /* ---- more stories ---- */
 .mk-storieshead{ display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
@@ -185,7 +167,7 @@ dl.mk-stats{ margin-bottom: 0; }
 .mk-story .tag{ font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
 .mk-story--feat .tag{ color: var(--accent-ink); }
 .mk-story h3{ font-weight: 800; font-size: var(--fs-20); letter-spacing: -.015em; line-height: 1.14; margin: 16px 0 10px; }
-.mk-story--feat h3{ color: #fff; }
+.mk-story--feat h3{ color: var(--dtx); }
 .mk-story p{ font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.5; margin: 0; }
 .mk-story--feat p{ color: var(--dtx-mute); }
 .mk-story .go{ margin-top: auto; padding-top: 22px; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .04em; color: var(--tx-mute); }
@@ -215,31 +197,92 @@ dl.mk-stats{ margin-bottom: 0; }
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "Article",
       "headline": "MARCUS: a private AI back office for B:Side Capital",
       "url": "https://www.mainandmachine.com/work/marcus/",
       "datePublished": "2026-06-24",
-      "dateModified": "2026-07-12",
+      "dateModified": "2026-07-31",
       "description": "Main & Machine built MARCUS — 14 AI agents that run a regulated lender's back office entirely on-prem, with no borrower file leaving the building.",
       "about": "AI implementation for a regulated SBA 504 / CDFI lender",
-      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" },
-      "author": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
-      "publisher": { "@id": "https://www.mainandmachine.com/#org" }
+      "isPartOf": {
+        "@id": "https://www.mainandmachine.com/#website"
+      },
+      "author": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      },
+      "publisher": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/og/work.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.mainandmachine.com/work/marcus/"
+      },
+      "articleSection": "Client results"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Proof", "item": "https://www.mainandmachine.com/work/" },
-        { "@type": "ListItem", "position": 3, "name": "MARCUS", "item": "https://www.mainandmachine.com/work/marcus/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Proof",
+          "item": "https://www.mainandmachine.com/work/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MARCUS",
+          "item": "https://www.mainandmachine.com/work/marcus/"
+        }
       ]
     }
   ]
@@ -297,13 +340,13 @@ dl.mk-stats{ margin-bottom: 0; }
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -348,7 +391,7 @@ dl.mk-stats{ margin-bottom: 0; }
 <main id="main" tabindex="-1">
 
 <!-- ============ 1 · HERO ============ -->
-<section class="section paper" data-screen-label="MARCUS hero">
+<section class="section paper">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
@@ -360,13 +403,13 @@ dl.mk-stats{ margin-bottom: 0; }
     <div class="mk-hero" style="margin-top: clamp(24px, 4vw, 44px);">
       <div>
         <span class="kicker">Client story · B:Side Capital</span>
-        <h1 class="mk-display">We built a team of AI agents that runs a lender’s back office, <span class="accent-tx">without a single file leaving the building.</span></h1>
+        <h1 class="h-hero h-hero--story">We built a team of AI agents that runs a lender’s back office, <span class="accent-tx">without a single file leaving the building.</span></h1>
         <p class="lead">B:Side Capital, an SBA 504 and CDFI lender, came to us with hundreds of process documents and one hard requirement: automate the repetitive work, but never give up control of the data or the decisions. We built MARCUS to do exactly that.</p>
-        <div class="mk-cta">
+        <div class="hero__cta">
           <a class="btn btn--primary btn--lg" href="/book/">Build something like MARCUS <span class="arr">→</span></a>
           <a class="btn btn--secondary btn--lg" href="#solution">See how it works</a>
         </div>
-        <p class="mk-note" style="margin-top: 22px;">Private by design. Auditable by default. Built from their own process. Published with permission.</p>
+        <p class="hero__note" style="margin-top: 22px;">Private by design. Auditable by default. Built from their own process. Published with permission.</p>
       </div>
       <div class="mk-hero__card">
         <dl class="statrail crop" aria-label="MARCUS case facts">
@@ -382,8 +425,42 @@ dl.mk-stats{ margin-bottom: 0; }
   </div>
 </section>
 
+<!-- ============ 1b · YEAR-ONE RESULTS ============ -->
+<section class="section ink section--tight">
+  <div class="wrap">
+    <span class="kicker">Year one, measured</span>
+    <h2 class="h2 mt-s">A year in, here is what it actually returned.</h2>
+    <!-- BUILD-LOG:MARCUS-SCORECARD-COMPACT — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
+      <div class="scoregrid scoregrid--compact">
+        <div class="score" data-figure="hours-returned">
+          <div class="score__n tick-num">1,240<small>hrs</small></div>
+          <p class="score__d">Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work.</p>
+        </div>
+        <div class="score" data-figure="weekly-adoption">
+          <div class="score__n tick-num">93<small>%</small></div>
+          <p class="score__d">Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck.</p>
+        </div>
+        <div class="score" data-figure="identifiers-out">
+          <div class="score__n tick-num">0</div>
+          <p class="score__d">Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists.</p>
+        </div>
+        <div class="score" data-figure="human-approved">
+          <div class="score__n tick-num">100<small>%</small></div>
+          <p class="score__d">Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted.</p>
+        </div>
+      </div>
+<!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
+    <!-- BUILD-LOG:MARCUS-WINDOW — rendered from data/build-log.json. Never hand-edit. -->
+        <p class="window-note">Measurement window: the first 90 days of full-fleet operation. Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.</p>
+<!-- /BUILD-LOG:MARCUS-WINDOW -->
+    <div class="hero__cta" style="margin-top:28px;">
+      <a class="btn btn--primary" href="/work/marcus/results/">Read the year-one results <span class="arr">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 2 · THE CLIENT ============ -->
-<section class="section paper-2" data-screen-label="Who we built it for">
+<section class="section paper-2">
   <div class="wrap">
     <span class="kicker">Who we built it for</span>
     <div class="mk-client" style="margin-top: 28px;">
@@ -398,7 +475,7 @@ dl.mk-stats{ margin-bottom: 0; }
         </dl>
       </div>
       <div>
-        <p class="mk-body">B:Side Capital is a mission-driven lender, an SBA 504 and CDFI institution whose work touches sensitive borrower financials at every step: intake, eligibility, underwriting support, funding, portfolio monitoring, and the high-stakes work of servicing distressed loans. It’s a business where a single mishandled document isn’t an inconvenience; it’s a compliance event.</p>
+        <p class="lead lead--loose">B:Side Capital is a mission-driven lender, an SBA 504 and CDFI institution whose work touches sensitive borrower financials at every step: intake, eligibility, underwriting support, funding, portfolio monitoring, and the high-stakes work of servicing distressed loans. It’s a business where a single mishandled document isn’t an inconvenience; it’s a compliance event.</p>
         <p class="mk-punch">That’s the kind of environment most AI tools quietly avoid. <span class="accent-tx">It’s the kind we build for.</span></p>
       </div>
     </div>
@@ -406,37 +483,37 @@ dl.mk-stats{ margin-bottom: 0; }
 </section>
 
 <!-- ============ 3 · THE CHALLENGE ============ -->
-<section class="section ink" data-screen-label="The problem">
+<section class="section ink">
   <div class="wrap">
     <span class="kicker">The problem</span>
-    <div class="mk-headsplit" style="margin-top: 22px;">
+    <div class="head-block" style="margin-top: 22px;">
       <h2 class="h2">Lending runs on preparation. That’s where the days disappear.</h2>
       <div></div>
     </div>
-    <div class="mk-2col" style="margin-top: 46px;">
-      <p class="mk-body">Before anyone can make a decision, someone has to gather the documents, pull the reports, run the checks, and draft the paperwork. The same steps, over and over, across seven departments. That preparation is where the bottlenecks form.</p>
-      <p class="mk-body">The obvious fix, feed it all to a cloud AI, was a non-starter. Borrower data can’t leave a controlled environment. Eligibility, credit, and pricing can’t be decided by a black box. And every action a regulator might ask about has to be provable, after the fact, down to the source.</p>
+    <div class="prose-2" style="margin-top: 46px;">
+      <p class="lead lead--loose">Before anyone can make a decision, someone has to gather the documents, pull the reports, run the checks, and draft the paperwork. The same steps, over and over, across seven departments. That preparation is where the bottlenecks form.</p>
+      <p class="lead lead--loose">The obvious fix, feed it all to a cloud AI, was a non-starter. Borrower data can’t leave a controlled environment. Eligibility, credit, and pricing can’t be decided by a black box. And every action a regulator might ask about has to be provable, after the fact, down to the source.</p>
     </div>
-    <p class="mk-overline" style="margin-top: 48px;">The brief, in one line</p>
+    <p class="kicker kicker--plain" style="margin-top: 48px;">The brief, in one line</p>
     <p class="mk-brief">Take the prep off our people’s plate, without ever taking them out of control.</p>
   </div>
 </section>
 
 <!-- ============ 4 · THE SOLUTION / MEET MARCUS ============ -->
-<section id="solution" class="section paper" data-screen-label="The solution — Meet MARCUS">
+<section id="solution" class="section paper">
   <div class="wrap">
-    <div class="mk-headsplit" style="align-items: end;">
+    <div class="head-block" style="align-items: end;">
       <div>
         <span class="kicker">The solution</span>
-        <h2 class="mk-display" style="font-size: clamp(var(--fs-49), 7vw, var(--fs-78)); margin-top: 18px;">Meet <span class="accent-tx">MARCUS.</span></h2>
+        <h2 class="h-hero h-hero--story" style="font-size: clamp(var(--fs-49), 7vw, var(--fs-78)); margin-top: 18px;">Meet <span class="accent-tx">MARCUS.</span></h2>
       </div>
       <div>
-        <p class="mk-body">MARCUS is not an app B:Side’s team had to learn. It’s a colleague that lives inside the tools they already use: Slack, their lending systems, the browser. It does the gathering, checking, and drafting, then hands finished, organized work to a person to approve.</p>
-        <p class="mk-body" style="margin-bottom: 0;">Built entirely from B:Side’s own process documentation, every step MARCUS takes traces back to how the institution already works. Nothing was invented.</p>
+        <p class="lead lead--loose">MARCUS is not an app B:Side’s team had to learn. It’s a colleague that lives inside the tools they already use: Slack, their lending systems, the browser. It does the gathering, checking, and drafting, then hands finished, organized work to a person to approve.</p>
+        <p class="lead lead--loose" style="margin-bottom: 0;">Built entirely from B:Side’s own process documentation, every step MARCUS takes traces back to how the institution already works. Nothing was invented.</p>
       </div>
     </div>
 
-    <p class="mk-overline" style="margin-top: clamp(48px, 6vw, 72px);">Four surfaces the team already knows</p>
+    <p class="kicker kicker--plain" style="margin-top: clamp(48px, 6vw, 72px);">Four surfaces the team already knows</p>
     <div class="mk-surfaces">
       <div class="mk-surface">
         <div class="n">01</div>
@@ -485,12 +562,12 @@ dl.mk-stats{ margin-bottom: 0; }
 </section>
 
 <!-- ============ 5 · SCOPE & DEPTH — AGENT MAP ============ -->
-<section class="section paper-2" data-screen-label="Scope and depth — agent map">
+<section class="section paper-2">
   <div class="wrap">
     <span class="kicker">Built from their work, not our assumptions</span>
-    <div class="mk-headsplit" style="margin-top: 22px;">
+    <div class="head-block" style="margin-top: 22px;">
       <h2 class="h2">We didn’t bring a template. <span class="accent-tx">We read everything.</span></h2>
-      <p class="mk-body" style="margin-bottom: 0;">Before we wrote a line of code, we reviewed roughly 840 files across every division of the business. From that, we mapped fourteen distinct agents, each one doing a specific, real job, each one citing the exact operations document it came from.</p>
+      <p class="lead lead--loose" style="margin-bottom: 0;">Before we wrote a line of code, we reviewed roughly 840 files across every division of the business. From that, we mapped fourteen distinct agents, each one doing a specific, real job, each one citing the exact operations document it came from.</p>
     </div>
 
     <div class="mk-life">
@@ -552,24 +629,24 @@ dl.mk-stats{ margin-bottom: 0; }
 
     <div class="mk-buildorder">
       <div>
-        <p class="mk-overline">How it was built</p>
-        <p class="mk-body" style="margin-bottom: 0;">We built it the way you’d actually want a system this consequential built: in order, one capability at a time, each piece proven on real files before the next one shipped.</p>
+        <p class="kicker kicker--plain">How it was built</p>
+        <p class="lead lead--loose" style="margin-bottom: 0;">We built it the way you’d actually want a system this consequential built: in order, one capability at a time, each piece proven on real files before the next one shipped.</p>
       </div>
       <div>
-        <p class="mk-overline">Highest exposure, built last</p>
-        <p class="mk-body" style="margin-bottom: 0;">The most delicate work, payment relief and loan resolution, was deliberately built last, once trust in the system was already established.</p>
+        <p class="kicker kicker--plain">Highest exposure, built last</p>
+        <p class="lead lead--loose" style="margin-bottom: 0;">The most delicate work, payment relief and loan resolution, was deliberately built last, once trust in the system was already established.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ 6 · PRIVACY & CONTROL ============ -->
-<section class="section ink" data-screen-label="Privacy and control architecture">
+<section class="section ink">
   <div class="wrap">
     <span class="kicker">Your data never leaves the building</span>
-    <div class="mk-headsplit" style="margin-top: 22px;">
+    <div class="head-block" style="margin-top: 22px;">
       <h2 class="h2">The whole system runs in-house. <span class="accent-tx">On purpose.</span></h2>
-      <p class="mk-body" style="margin-bottom: 0;">Most AI vendors ask you to trust their cloud. We did the opposite. MARCUS runs on a single secured machine in B:Side’s own server closet. The models that read borrower documents run right there, in the building.</p>
+      <p class="lead lead--loose" style="margin-bottom: 0;">Most AI vendors ask you to trust their cloud. We did the opposite. MARCUS runs on a single secured machine in B:Side’s own server closet. The models that read borrower documents run right there, in the building.</p>
     </div>
 
     <div class="mk-priv">
@@ -607,16 +684,16 @@ dl.mk-stats{ margin-bottom: 0; }
         <div class="mk-ext">⛌&nbsp;&nbsp;<b>No borrower file leaves this box in normal operation.</b></div>
       </div>
     </div>
-    <p class="mk-body" style="margin-top: 46px; max-width: 62ch;">This is what makes MARCUS usable in a regulated lending environment at all, and it’s the part most teams can’t build.</p>
+    <p class="lead lead--loose" style="margin-top: 46px; max-width: 62ch;">This is what makes MARCUS usable in a regulated lending environment at all, and it’s the part most teams can’t build.</p>
   </div>
 </section>
 
 <!-- ============ 7 · OPERATING PRINCIPLE ============ -->
-<section class="section paper" data-screen-label="The operating principle">
+<section class="section paper">
   <div class="wrap">
     <span class="kicker">One rule behind everything</span>
     <h2 class="h2" style="max-width: 18ch; margin-top: 22px;">MARCUS prepares the work. <span class="accent-tx">People decide.</span></h2>
-    <p class="mk-body" style="max-width: 64ch; margin-top: 22px;">Nothing sends, files, posts, or pays until a person approves it. MARCUS never decides eligibility, credit, or price. Those numbers come from systems, never from memory. Every request arrives the same way.</p>
+    <p class="lead lead--loose" style="max-width: 64ch; margin-top: 22px;">Nothing sends, files, posts, or pays until a person approves it. MARCUS never decides eligibility, credit, or price. Those numbers come from systems, never from memory. Every request arrives the same way.</p>
 
     <div class="mk-flow">
       <div class="mk-flow__step">
@@ -645,34 +722,38 @@ dl.mk-stats{ margin-bottom: 0; }
 </section>
 
 <!-- ============ 8 · OUTCOME ============ -->
-<section class="section paper-2" data-screen-label="What changed">
+<section class="section paper-2">
   <div class="wrap">
     <span class="kicker">What changed</span>
     <div class="mk-outcome" style="margin-top: 28px;">
       <h2 class="h2">B:Side’s people get their day back for the work only people can do.</h2>
       <div>
-        <p class="mk-body">With the preparation handled, the team is free for the relationships, the customer service, and the judgment calls that actually move a deal. The repetitive prep that used to create bottlenecks now arrives finished, organized, and named the way the team already does it, ready for a human to review.</p>
-        <p class="mk-body" style="margin-bottom: 0;"><strong>The result is an institution that moves faster without giving up an ounce of control, compliance, or trust.</strong></p>
+        <p class="lead lead--loose">With the preparation handled, the team is free for the relationships, the customer service, and the judgment calls that actually move a deal. The repetitive prep that used to create bottlenecks now arrives finished, organized, and named the way the team already does it, ready for a human to review.</p>
+        <p class="lead lead--loose" style="margin-bottom: 0;"><strong>The result is an institution that moves faster without giving up an ounce of control, compliance, or trust.</strong></p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ 9 · CLOSING CTA ============ -->
-<section class="section paper" data-screen-label="Closing CTA">
+<section class="section paper">
   <div class="wrap mk-closer">
     <span class="kicker">If the stakes are real</span>
-    <h2 class="mk-display" style="font-size: clamp(var(--fs-39), 5.4vw, var(--fs-78));">If you can document how your business works, <span class="accent-tx">we can build the machine that runs it.</span></h2>
+    <h2 class="h-hero h-hero--story" style="font-size: clamp(var(--fs-39), 5.4vw, var(--fs-78));">If you can document how your business works, <span class="accent-tx">we can build the machine that runs it.</span></h2>
     <p class="lead">MARCUS is what Main &amp; Machine builds when the stakes are real: private, auditable, built from your own processes, and designed so your people stay in control the whole way through. Builds in this class are published on the price list as <a href="/pricing/#backoffice">The Full Back Office</a> — from $95,000, four taken per year. If that’s the kind of system your business needs, let’s talk.</p>
-    <div class="mk-cta">
+    <div class="hero__cta">
       <a class="btn btn--primary btn--lg" href="/book/">Start a conversation <span class="arr">→</span></a>
       <a class="btn btn--secondary btn--lg" href="#more-stories">Explore more client stories</a>
     </div>
+      <div class="reversal">
+        <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
+        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list &rarr;</a></p>
+      </div>
   </div>
 </section>
 
 <!-- ============ MORE STORIES ============ -->
-<section id="more-stories" class="section paper-2" data-screen-label="More client stories">
+<section id="more-stories" class="section paper-2">
   <div class="wrap">
     <div class="mk-storieshead">
       <div>
@@ -699,8 +780,8 @@ dl.mk-stats{ margin-bottom: 0; }
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -713,9 +794,9 @@ dl.mk-stats{ margin-bottom: 0; }
       </div>
       <div class="foot__top">
       <div class="foot__brand">
-        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">
@@ -772,7 +853,7 @@ dl.mk-stats{ margin-bottom: 0; }
 </footer>
 
 <!-- ============ REVEAL ANIMATION ============ -->
-<script defer src="/js/reveal.js?v=53" data-reveal-targets=".mk-hero > *,.mk-client > *,.mk-headsplit > *,.mk-2col > *,.mk-surfaces > *,.mk-stats > *,.mk-map,.mk-buildorder > *,.mk-priv > *,.mk-flow > *,.mk-rules > *,.mk-outcome > *,.mk-closer > *,.mk-storieshead > *,.mk-stories > *,.foot__top > *"></script>
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".mk-hero > *,.mk-client > *,.head-block > *,.prose-2 > *,.mk-surfaces > *,.mk-stats > *,.mk-map,.mk-buildorder > *,.mk-priv > *,.mk-flow > *,.mk-rules > *,.mk-outcome > *,.mk-closer > *,.mk-storieshead > *,.mk-stories > *,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=5"></script>
 <script src="/js/analytics.js?v=2"></script>

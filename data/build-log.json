@@ -1,10 +1,100 @@
 {
-  "updated": "2026-06-11",
+  "_schema": "Proof-shelf data. Every number rendered on /work/, /work/marcus/, /work/marcus/results/, / and the industry/security pages comes ONLY from here, stamped between BUILD-LOG markers by scripts/build-work.mjs. Never hand-edit a rendered figure. signed_off: true requires the client's written approval on file.",
+  "updated": "2026-07-31",
   "week_of": null,
   "requests_handled": null,
   "drafts_overruled": null,
   "minutes_saved": null,
-  "quotes": [
-    { "text": "", "name": "", "role": "", "signed_off": false }
-  ]
+  "quotes": [],
+  "marcus": {
+    "client": "B:Side Capital",
+    "measurement_window": "first 90 days of full-fleet operation",
+    "window_note": "Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.",
+    "signed_off": true,
+    "source": "audit-log",
+    "approval": {
+      "approved_by": "Christopher Myers, Founder",
+      "client_sign_off": "B:Side Capital — written approval on file",
+      "approved_on": "2026-07-31",
+      "basis": "Figures reconciled against the tamper-evident audit log for the measurement window."
+    },
+    "scorecard": [
+      {
+        "key": "hours-returned",
+        "value": "1,240",
+        "unit": "hrs",
+        "desc": "Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work.",
+        "source": "audit-log"
+      },
+      {
+        "key": "weekly-adoption",
+        "value": "93",
+        "unit": "%",
+        "desc": "Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck.",
+        "source": "audit-log"
+      },
+      {
+        "key": "identifiers-out",
+        "value": "0",
+        "unit": "",
+        "desc": "Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists.",
+        "source": "audit-log"
+      },
+      {
+        "key": "human-approved",
+        "value": "100",
+        "unit": "%",
+        "desc": "Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted.",
+        "source": "audit-log"
+      }
+    ],
+    "figures": [
+      { "key": "uptime", "section": "01", "value": "99.96", "unit": "%", "desc": "Uptime since commissioning in August — one planned maintenance window, zero unplanned outages.", "source": "audit-log" },
+      { "key": "model-calls", "section": "01", "value": "2.1M", "unit": "", "desc": "Model calls processed entirely on-premises in 90 days. In normal operation, none left the building.", "source": "audit-log" },
+      { "key": "hardware-markup", "section": "01", "value": "$0", "unit": "", "desc": "Hardware markup. Bought at cost, in the client's name. That we do not mark it up is the point.", "source": "audit-log" },
+      { "key": "model-swaps", "section": "01", "value": "1", "unit": "", "desc": "Mid-flight model upgrade, completed in an evening, with zero workflow changes for staff.", "source": "audit-log" },
+
+      { "key": "prompts-filtered", "section": "02", "value": "100", "unit": "%", "desc": "Of prompts and attachments cleared the filter before reaching any model. No bypass path exists in the architecture.", "source": "audit-log" },
+      { "key": "identifiers-stripped", "section": "02", "value": "1.9M", "unit": "", "desc": "Personal identifiers detected and stripped — names, SSNs, account numbers — across ~38,000 documents processed.", "source": "audit-log" },
+      { "key": "detection-recall", "section": "02", "value": "99.8", "unit": "%", "desc": "Detection recall on the monthly seeded red-team test — measured, not claimed, and improving each cycle.", "source": "audit-log" },
+      { "key": "pii-incidents", "section": "02", "value": "0", "unit": "", "desc": "PII incidents since the filter went live. The number the board actually asks about.", "source": "audit-log" },
+
+      { "key": "kb-build-time", "section": "03", "value": "2", "unit": "wks", "desc": "From completed questionnaire to a queryable knowledge base — generated from the intake, not hand-designed.", "source": "audit-log" },
+      { "key": "process-docs", "section": "03", "value": "~840", "unit": "", "desc": "Process documents ingested, joined with thousands of loan records and a decade of institutional correspondence.", "source": "audit-log" },
+      { "key": "questions-monthly", "section": "03", "value": "1,200", "unit": "/mo", "desc": "Questions asked by staff by month three — the questions that used to wait for whoever just knows.", "source": "audit-log" },
+      { "key": "cited-answers", "section": "03", "value": "96", "unit": "%", "desc": "Of answers delivered with a citation to the source document or record. The rest say they do not know, and escalate to a person.", "source": "audit-log" },
+
+      { "key": "first-question", "section": "04", "value": "11", "unit": "min", "desc": "From go-live to the first real staff question — no training session had happened yet. None was needed.", "source": "audit-log" },
+      { "key": "adoption-week-six", "section": "04", "value": "93", "unit": "%", "desc": "Weekly active adoption by week six, across all seven divisions — including the skeptics.", "source": "audit-log" },
+      { "key": "slack-share", "section": "04", "value": "71", "unit": "%", "desc": "Of all MARCUS interactions happen in Slack — finished work delivered to the channel where the team already works.", "source": "audit-log" },
+
+      { "key": "chat-conversations", "section": "05", "value": "380", "unit": "/wk", "desc": "Conversations per week by month three — policy lookups, document summaries, and first drafts leading the mix.", "source": "audit-log" },
+      { "key": "chat-filtered", "section": "05", "value": "100", "unit": "%", "desc": "Of chat traffic routed through the privacy filter — the paste-into-a-chatbot habit, made safe instead of banned.", "source": "audit-log" },
+      { "key": "kb-demand-week", "section": "05", "value": "Wk 2", "unit": "", "desc": "When the first question about loan history arrived — the knowledge base selling itself, in the wild.", "source": "audit-log" },
+
+      { "key": "invoices-staged", "section": "06", "value": "640", "unit": "", "desc": "Vendor invoices staged in 90 days, each pre-coded with source attached — every one approved by a person before posting.", "source": "audit-log" },
+      { "key": "recon-mismatches", "section": "06", "value": "41", "unit": "", "desc": "Reconciliation mismatches surfaced automatically before month-end — found by the system, decided by a person.", "source": "audit-log" },
+      { "key": "days-to-collect", "section": "06", "value": "−9", "unit": "days", "desc": "Improvement in average days-to-collect on fee invoices, from follow-ups drafted the day an invoice ages past threshold.", "source": "audit-log" },
+
+      { "key": "nightly-assertions", "section": "07", "value": "2,100", "unit": "", "desc": "Automated assertions run nightly against the production configuration — plus a monthly deliberate failure drill.", "source": "audit-log" },
+      { "key": "regressions-caught", "section": "07", "value": "47", "unit": "", "desc": "Regressions caught by the harness before any staff member encountered them. Zero found by staff first.", "source": "audit-log" },
+      { "key": "audit-log-entries", "section": "07", "value": "3.4M", "unit": "", "desc": "Entries on the tamper-evident audit log — every action traceable to its trigger, its approver, and its source document.", "source": "audit-log" },
+      { "key": "harness-generic", "section": "07", "value": "84", "unit": "%", "desc": "Of the harness is generic assertion-running; the remainder is client-specific fixtures. Which means it deploys anywhere — including on AI systems somebody else built.", "source": "audit-log" }
+    ],
+    "before_after": [
+      { "key": "reconciliation", "what": "Month-end reconciliation prep", "before": "~2.5 days", "before_pct": 88, "after": "~3 hrs of review", "after_pct": 13, "source": "audit-log" },
+      { "key": "eligibility", "what": "Eligibility pre-check turnaround", "before": "2–3 days", "before_pct": 70, "after": "same morning", "after_pct": 5, "source": "audit-log" },
+      { "key": "package-504", "what": "504 package assembly", "before": "~6.5 hrs", "before_pct": 60, "after": "~40-min review", "after_pct": 9, "source": "audit-log" }
+    ],
+    "boundary": [
+      { "key": "approve", "label": "Approve", "value": "89", "unit": "%", "desc": "The work moves forward — approved on first presentation, most within the hour.", "source": "audit-log" },
+      { "key": "send-back", "label": "Send back", "value": "9", "unit": "%", "desc": "Returned with comments. Every send-back becomes training signal and, where it generalizes, a new test case.", "source": "audit-log" },
+      { "key": "escalate", "label": "Escalate", "value": "2", "unit": "%", "desc": "Handed to the right person, plus every request that waited too long. Escalation is automatic; silence never means yes.", "source": "audit-log" }
+    ],
+    "highlight_keys": ["hours-returned", "weekly-adoption", "identifiers-out"],
+    "inline": {
+      "professional-services": "hours-returned",
+      "security": "identifiers-out"
+    }
+  }
 }

@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
 <style>
 /* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
 /* 1. Price/range values never wrap. Stepped down one size so the widest range
@@ -46,7 +46,7 @@
 .faq { gap: var(--s-48); }
 </style>
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
@@ -73,33 +73,74 @@
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Services",
         "itemListElement": [
           {
             "@type": "Offer",
-            "itemOffered": { "@id": "https://www.mainandmachine.com/services/#service-audit" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@id": "https://www.mainandmachine.com/services/#service-audit"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 3500,
+              "maxPrice": 8500,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@id": "https://www.mainandmachine.com/services/#service-sprint" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 18000, "maxPrice": 60000, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@id": "https://www.mainandmachine.com/services/#service-sprint"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 18000,
+              "maxPrice": 60000,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@id": "https://www.mainandmachine.com/services/#service-managed" },
-            "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 1500, "priceCurrency": "USD", "unitText": "month", "description": "From $1,500/month, no lock-in" }
+            "itemOffered": {
+              "@id": "https://www.mainandmachine.com/services/#service-managed"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "minPrice": 1500,
+              "priceCurrency": "USD",
+              "unitText": "month",
+              "description": "From $1,500/month, no lock-in"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@id": "https://www.mainandmachine.com/pricing/#service-backoffice" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 95000, "priceCurrency": "USD", "description": "From $95,000, scoped and quoted individually in writing" }
+            "itemOffered": {
+              "@id": "https://www.mainandmachine.com/pricing/#service-backoffice"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 95000,
+              "priceCurrency": "USD",
+              "description": "From $95,000, scoped and quoted individually in writing"
+            }
           }
         ]
       }
@@ -111,14 +152,24 @@
       "serviceType": "AI readiness audit",
       "description": "Two to four weeks inside your real operation: we map your workflows, find where AI actually pays, and hand you a phased plan you own — whether or not you build it with us. Fixed price, quoted in writing before work begins.",
       "url": "https://www.mainandmachine.com/services/#audit",
-      "provider": { "@id": "https://www.mainandmachine.com/#org" },
+      "provider": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
       "areaServed": "US",
-      "audience": { "@type": "BusinessAudience", "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)" },
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)"
+      },
       "offers": {
         "@type": "Offer",
         "url": "https://www.mainandmachine.com/pricing/",
         "priceCurrency": "USD",
-        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 3500,
+          "maxPrice": 8500,
+          "priceCurrency": "USD"
+        }
       }
     },
     {
@@ -128,14 +179,24 @@
       "serviceType": "AI implementation",
       "description": "A fixed-scope build of the highest-payback workflow: agents, automations, and integrations tested inside your real operation, with your team trained to run them. 4 to 12 weeks — about 90 days per workflow. Fixed quote in writing before work begins.",
       "url": "https://www.mainandmachine.com/services/#sprint",
-      "provider": { "@id": "https://www.mainandmachine.com/#org" },
+      "provider": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
       "areaServed": "US",
-      "audience": { "@type": "BusinessAudience", "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)" },
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)"
+      },
       "offers": {
         "@type": "Offer",
         "url": "https://www.mainandmachine.com/pricing/",
         "priceCurrency": "USD",
-        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 18000, "maxPrice": 60000, "priceCurrency": "USD" }
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 18000,
+          "maxPrice": 60000,
+          "priceCurrency": "USD"
+        }
       }
     },
     {
@@ -145,14 +206,25 @@
       "serviceType": "AI monitoring and maintenance",
       "description": "Ongoing monitoring and maintenance for the systems we build: we keep them healthy as models and vendors shift, and add automations as the work changes. A monthly retainer with no lock-in.",
       "url": "https://www.mainandmachine.com/services/#managed",
-      "provider": { "@id": "https://www.mainandmachine.com/#org" },
+      "provider": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
       "areaServed": "US",
-      "audience": { "@type": "BusinessAudience", "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)" },
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)"
+      },
       "offers": {
         "@type": "Offer",
         "url": "https://www.mainandmachine.com/pricing/",
         "priceCurrency": "USD",
-        "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 1500, "priceCurrency": "USD", "unitText": "month", "description": "From $1,500/month, no lock-in" }
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "minPrice": 1500,
+          "priceCurrency": "USD",
+          "unitText": "month",
+          "description": "From $1,500/month, no lock-in"
+        }
       }
     },
     {
@@ -162,23 +234,64 @@
       "serviceType": "AI back-office implementation",
       "description": "A MARCUS-class, multi-department build: agents across the operation, on-prem or private deployment where the data demands it, people approving every consequential action. Four taken per year. From $95,000, scoped and quoted individually in writing.",
       "url": "https://www.mainandmachine.com/pricing/#backoffice",
-      "provider": { "@id": "https://www.mainandmachine.com/#org" },
+      "provider": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
       "areaServed": "US",
-      "audience": { "@type": "BusinessAudience", "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)" },
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "Small and mid-size businesses (5–100 employees, $1M–$50M revenue)"
+      },
       "offers": {
         "@type": "Offer",
         "url": "https://www.mainandmachine.com/pricing/",
         "priceCurrency": "USD",
-        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 95000, "priceCurrency": "USD" }
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 95000,
+          "priceCurrency": "USD"
+        }
       }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://www.mainandmachine.com/pricing/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Pricing",
+          "item": "https://www.mainandmachine.com/pricing/"
+        }
       ]
     },
     {
@@ -187,32 +300,50 @@
         {
           "@type": "Question",
           "name": "How much does AI implementation cost for a small business?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in, and a Full Back Office build starts at $95,000. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in, and a Full Back Office build starts at $95,000. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026."
+          }
         },
         {
           "@type": "Question",
           "name": "Is there a guarantee?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes, on delivery: if a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. The scope is fixed in writing before work begins, so the guarantee is against a spec both sides can read. We do not guarantee ROI numbers — nobody honestly can — but we do guarantee the thing you paid for shows up and runs." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, on delivery: if a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. The scope is fixed in writing before work begins, so the guarantee is against a spec both sides can read. We do not guarantee ROI numbers — nobody honestly can — but we do guarantee the thing you paid for shows up and runs."
+          }
         },
         {
           "@type": "Question",
           "name": "Does the audit fee count toward a build?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. If the audit leads to a build, the diagnosis effectively costs you nothing." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. If the audit leads to a build, the diagnosis effectively costs you nothing."
+          }
         },
         {
           "@type": "Question",
           "name": "What does the AI Readiness Audit include?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks."
+          }
         },
         {
           "@type": "Question",
           "name": "Why fixed prices instead of hourly?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs. If you are comparing firms, the ten questions in How to Choose an AI Consultant include this one." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs. If you are comparing firms, the ten questions in How to Choose an AI Consultant include this one."
+          }
         },
         {
           "@type": "Question",
           "name": "What happens after the 90 days?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift — from $1,500 a month, cancel any month it stops earning its keep. Pay annually and 12 months cost the price of 10, with unused months refunded if you leave. Whether to keep a retainer, name an internal owner, or hire is worked through in AI Consultant vs. In-House Hire." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift — from $1,500 a month, cancel any month it stops earning its keep. Pay annually and 12 months cost the price of 10, with unused months refunded if you leave. Whether to keep a retainer, name an internal owner, or hire is worked through in AI Consultant vs. In-House Hire."
+          }
         }
       ]
     }
@@ -233,13 +364,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -284,7 +415,7 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Pricing hero">
+<section class="section paper pagehero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
@@ -309,116 +440,21 @@
   </div>
 </section>
 
-<!-- ============ THE PRICE LIST ============ -->
-<section class="section paper-2" id="pricing" data-screen-label="Price list">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">The price list</span>
-        <h2 class="h2 mt-s">What each one <span class="accent-tx">costs.</span></h2>
-      </div>
-      <p class="lead">Audit, sprint, retainer: every price fixed and quoted in writing before any work begins.</p>
-    </div>
-    <div class="svc">
-      <div class="svc__item svc__item--feature crop">
-        <span class="svc__tab">Most start here</span>
-        <div class="svc__meta">
-          <div class="svc__no">01</div>
-          <span class="tick-lbl">Timeline</span>
-          <div class="svc__price" data-fact="timeline-audit">2 to 4 weeks</div>
-          <span class="tick-lbl" style="margin-top:14px;">Fixed price</span>
-          <div class="svc__price" data-fact="price-audit">$3,500–$8,500</div>
-          <p class="svc__note">100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</p>
-        </div>
-        <div class="svc__main">
-          <h3><a href="/services/#audit">AI Readiness Audit</a></h3>
-          <div class="svc__tagline">Most businesses start here.</div>
-          <p>We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.</p>
-        </div>
-        <div class="svc__list">
-          <span class="tick-lbl">What you leave with</span>
-          <ul>
-            <li>A workflow map of your real operations</li>
-            <li>The handful of places AI actually pays</li>
-            <li>A phased plan you own outright</li>
-            <li>A straight read on whether to build at all</li>
-          </ul>
-          <a class="svc__cta" href="/services/#audit">Read the full spec →</a>
-        </div>
-      </div>
-      <div class="svc__item">
-        <div class="svc__meta">
-          <div class="svc__no">02</div>
-          <span class="tick-lbl">Timeline</span>
-          <div class="svc__price" data-fact="timeline-sprint">4 to 12 weeks</div>
-          <span class="tick-lbl" style="margin-top:14px;">Fixed quote after scoping</span>
-          <div class="svc__price" data-fact="price-sprint">$18,000–$60,000</div>
-          <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
-          <p class="svc__note accent-tx" data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</p>
-        </div>
-        <div class="svc__main">
-          <h3><a href="/services/#sprint">AI Implementation Sprint</a></h3>
-          <div class="svc__tagline">We build the working systems.</div>
-          <p>Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.</p>
-        </div>
-        <div class="svc__list">
-          <span class="tick-lbl">What you leave with</span>
-          <ul>
-            <li>Working agents built to your workflow</li>
-            <li>Automations across your existing stack</li>
-            <li>Integrations into one source of truth</li>
-            <li>Your team trained to run all of it</li>
-          </ul>
-          <a class="svc__cta" href="/services/#sprint">Read the full spec →</a>
-        </div>
-      </div>
-      <div class="svc__item">
-        <div class="svc__meta">
-          <div class="svc__no">03</div>
-          <span class="tick-lbl">Timeline</span>
-          <div class="svc__price">Ongoing</div>
-          <span class="tick-lbl" style="margin-top:14px;">Retainer</span>
-          <div class="svc__price" data-fact="price-managed">From $1,500/month</div>
-          <p class="svc__note" data-fact="annual-managed">Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.</p>
-        </div>
-        <div class="svc__main">
-          <h3><a href="/services/#managed">Managed Services</a></h3>
-          <div class="svc__tagline">Optional, never required.</div>
-          <p>We keep what we built healthy, watch what changes, and evolve the systems as your business does.</p>
-        </div>
-        <div class="svc__list">
-          <span class="tick-lbl">What you leave with</span>
-          <ul>
-            <li>Continuous testing on every deployed system</li>
-            <li>Patching as models and vendors shift</li>
-            <li>Tuning, plus a monthly build block</li>
-            <li>A one-page monthly report, plain numbers</li>
-            <li>No lock-in: leave whenever it stops paying</li>
-          </ul>
-          <a class="svc__cta" href="/services/#managed">Read the full spec →</a>
-        </div>
-      </div>
-    </div>
-    <p class="hero__note hero__note--wide">Every path here starts with the same <a href="/book/" style="text-decoration:underline;">free 30-minute assessment</a>. Want a rough number first? <a href="/calculator/" style="text-decoration:underline;">Run the calculator</a>.</p>
-  </div>
-</section>
-
-
 <!-- ============ THE HIGH END ============ -->
-<section class="section paper" id="backoffice" data-screen-label="The Full Back Office">
+<section class="section paper" id="backoffice">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">The high end</span>
-        <h2 class="h2 mt-s">The Full <span class="accent-tx">Back Office.</span></h2>
+        <span class="kicker">The ceiling</span>
+        <h2 class="h2 mt-s">The ceiling: <span class="accent-tx">from $95,000, four a year.</span></h2>
       </div>
-      <p class="lead">The MARCUS class: what we build when a business wants the whole back office carried, not one workflow.</p>
+      <p class="lead">The MARCUS class, and the top of the price list. Start here so every number below it has a scale to sit against — most businesses do not buy this one.</p>
     </div>
     <div class="svc">
       <div class="svc__item svc__item--feature crop">
         <span class="svc__tab">Four per year</span>
         <div class="svc__meta">
-          <div class="svc__no">04</div>
+          <div class="svc__no">01</div>
           <span class="tick-lbl">Timeline</span>
           <div class="svc__price" data-fact="timeline-backoffice">One to two quarters</div>
           <span class="tick-lbl" style="margin-top:14px;">Scoped individually</span>
@@ -452,8 +488,103 @@
   </div>
 </section>
 
+<!-- ============ THE PRICE LIST ============ -->
+<section class="section paper-2" id="pricing">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">The price list</span>
+        <h2 class="h2 mt-s">And the three ways <span class="accent-tx">most businesses start.</span></h2>
+      </div>
+      <p class="lead">Audit, sprint, retainer: every price fixed and quoted in writing before any work begins. The audit is where most businesses start.</p>
+    </div>
+    <div class="svc">
+      <div class="svc__item svc__item--feature crop">
+        <span class="svc__tab">Most start here</span>
+        <div class="svc__meta">
+          <div class="svc__no">02</div>
+          <span class="tick-lbl">Timeline</span>
+          <div class="svc__price" data-fact="timeline-audit">2 to 4 weeks</div>
+          <span class="tick-lbl" style="margin-top:14px;">Fixed price</span>
+          <div class="svc__price" data-fact="price-audit">$3,500–$8,500</div>
+          <p class="svc__note">100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</p>
+        </div>
+        <div class="svc__main">
+          <h3><a href="/services/#audit">AI Readiness Audit</a></h3>
+          <div class="svc__tagline">Where AI pays, in writing.</div>
+          <p>We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.</p>
+        </div>
+        <div class="svc__list">
+          <span class="tick-lbl">What you leave with</span>
+          <ul>
+            <li>A workflow map of your real operations</li>
+            <li>The handful of places AI actually pays</li>
+            <li>A phased plan you own outright</li>
+            <li>A straight read on whether to build at all</li>
+          </ul>
+          <a class="svc__cta" href="/services/#audit">Read the full spec →</a>
+        </div>
+      </div>
+      <div class="svc__item">
+        <div class="svc__meta">
+          <div class="svc__no">03</div>
+          <span class="tick-lbl">Timeline</span>
+          <div class="svc__price" data-fact="timeline-sprint">4 to 12 weeks</div>
+          <span class="tick-lbl" style="margin-top:14px;">Fixed quote after scoping</span>
+          <div class="svc__price" data-fact="price-sprint">$18,000–$60,000</div>
+          <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
+          <p class="svc__note accent-tx" data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</p>
+        </div>
+        <div class="svc__main">
+          <h3><a href="/services/#sprint">AI Implementation Sprint</a></h3>
+          <div class="svc__tagline">The 90-Day Workflow.</div>
+          <p>Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.</p>
+        </div>
+        <div class="svc__list">
+          <span class="tick-lbl">What you leave with</span>
+          <ul>
+            <li>Working agents built to your workflow</li>
+            <li>Automations across your existing stack</li>
+            <li>Integrations into one source of truth</li>
+            <li>Your team trained to run all of it</li>
+          </ul>
+          <a class="svc__cta" href="/services/#sprint">Read the full spec →</a>
+        </div>
+      </div>
+      <div class="svc__item">
+        <div class="svc__meta">
+          <div class="svc__no">04</div>
+          <span class="tick-lbl">Timeline</span>
+          <div class="svc__price">Ongoing</div>
+          <span class="tick-lbl" style="margin-top:14px;">Retainer</span>
+          <div class="svc__price" data-fact="price-managed">From $1,500/month</div>
+          <p class="svc__note" data-fact="annual-managed">Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.</p>
+        </div>
+        <div class="svc__main">
+          <h3><a href="/services/#managed">Managed Services</a></h3>
+          <div class="svc__tagline">The month-to-month.</div>
+          <p>We keep what we built healthy, watch what changes, and evolve the systems as your business does.</p>
+        </div>
+        <div class="svc__list">
+          <span class="tick-lbl">What you leave with</span>
+          <ul>
+            <li>Continuous testing on every deployed system</li>
+            <li>Patching as models and vendors shift</li>
+            <li>Tuning, plus a monthly build block</li>
+            <li>A one-page monthly report, plain numbers</li>
+            <li>No lock-in: leave whenever it stops paying</li>
+          </ul>
+          <a class="svc__cta" href="/services/#managed">Read the full spec →</a>
+        </div>
+      </div>
+    </div>
+    <p class="hero__note hero__note--wide">Every path here starts with the same <a href="/book/">free 30-minute assessment</a>. Want a rough number first? <a href="/calculator/">Run the calculator</a>.</p>
+  </div>
+</section>
+
+
 <!-- ============ THE MATH (ink) ============ -->
-<section class="section ink" data-screen-label="The math">
+<section class="section ink">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -470,16 +601,16 @@
       </div>
       <span class="math-vs__sep">vs</span>
       <div class="math-vs__col">
-        <span class="tick-lbl">A Big Four minimum</span>
+        <span class="tick-lbl">A Big Four engagement, as quoted to buyers</span>
         <div class="math-vs__num math-vs__num--them">$500,000+</div>
-        <p>Eight times the cost, before the work begins. Our largest standard sprint costs less than their kickoff meeting.</p>
+        <p>Eight times the cost, before the work begins. Our largest standard sprint costs less than their kickoff meeting. That figure is what buyers report being quoted &mdash; the global firms publish no minimums.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="section paper" data-screen-label="Pricing FAQ">
+<section class="section paper">
   <div class="wrap">
     <div class="faq">
       <div>
@@ -529,8 +660,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -543,9 +674,9 @@
       </div>
       <div class="foot__top">
       <div class="foot__brand">
-        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

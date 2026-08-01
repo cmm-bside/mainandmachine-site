@@ -27,9 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
@@ -152,19 +152,68 @@
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.mainandmachine.com/services/" },
-        { "@type": "ListItem", "position": 3, "name": "Sample audit", "item": "https://www.mainandmachine.com/services/sample-audit/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://www.mainandmachine.com/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sample audit",
+          "item": "https://www.mainandmachine.com/services/sample-audit/"
+        }
       ]
     }
   ]
@@ -188,7 +237,7 @@
       "name": "What is this page?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Two redacted pages from a real AI Readiness Audit deliverable, so you can read the document instead of a description of it."
+        "text": "Two pages of a representative sample, built to the template a real AI Readiness Audit ends in, so you can read the document instead of a description of it. A redacted page from real client work replaces it after the next engagement."
       }
     },
     {
@@ -218,13 +267,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -269,7 +318,7 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Sample audit hero">
+<section class="section paper pagehero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
@@ -282,7 +331,7 @@
       <div>
         <span class="kicker">Sample audit</span>
         <h1 class="h2 mt-s">This is the artifact <span class="accent-tx">you buy.</span></h1>
-        <p class="lead mt-s">Most firms describe their deliverable. We’d rather you read it. Below are two pages from a sample AI Readiness Audit: the same document, redacted, that a real engagement ends in. What the audit is — and deliberately isn’t — is defined in <a href="/guides/what-is-an-ai-readiness-audit/">the audit guide</a>.</p>
+        <p class="lead mt-s">Most firms describe their deliverable. We’d rather you read it. Below are two pages of a representative sample, built to the template a real AI Readiness Audit ends in. The workflow is composed, not a client’s — after the next engagement, a redacted page from real client work replaces it. What the audit is — and deliberately isn’t — is defined in <a href="/guides/what-is-an-ai-readiness-audit/">the audit guide</a>.</p>
       </div>
       <div class="statrail crop" aria-label="Audit at a glance">
         <div class="statrail__bar"><span>The audit</span><span><b>Spec</b></span></div>
@@ -295,20 +344,20 @@
 </section>
 
 <!-- ============ THE DOCUMENT ============ -->
-<section class="section paper-2" data-screen-label="Sample document">
+<section class="section paper-2">
   <div class="wrap">
     <div class="docs">
 
       <!-- ---- Page 1: redacted workflow map ---- -->
       <article class="doc crop">
         <div class="doc__bar">
-          <span><b>Page 1 / 2</b> · Redacted workflow map</span>
+          <span><b>Page 1 / 2</b> · Sample workflow map</span>
           <span>AI Readiness Audit · Sample</span>
         </div>
         <div class="doc__body">
           <h2>Workflow map: client intake</h2>
-          <p class="doc__sub">A fictional-but-typical intake workflow. Client-identifying details are redacted; the structure is what you’re buying.</p>
-          <!-- TODO(owner): replace with a real redacted page after the next audit -->
+          <p class="doc__sub">A representative intake workflow, built to the real deliverable template. The workflow is composed, not a client’s; the structure and the depth are what you’re buying. A redacted page from a real audit replaces this after the next engagement.</p>
+          <!-- TODO(owner): replace with a redacted page from a real audit after the next engagement -->
           <div class="map-wrap">
             <table class="map">
               <thead>
@@ -364,8 +413,8 @@
         </div>
         <div class="doc__body">
           <h2>Where AI pays: ranked</h2>
-          <p class="doc__sub">The handful of places worth building, in order. Effort and payoff are stated as ranges. Never dollar promises.</p>
-          <!-- TODO(owner): replace with a real redacted page after the next audit -->
+          <p class="doc__sub">The handful of places worth building, in order. Effort and payoff are stated as ranges. Never dollar promises. Representative, like page 1 — the ranking method is what a real audit hands you.</p>
+          <!-- TODO(owner): replace with a redacted page from a real audit after the next engagement -->
           <ol class="rank">
             <li>
               <span class="rank__no">01</span>
@@ -409,14 +458,14 @@
   </div>
 </section>
 <!-- FAQ:auto -->
-<section class="section paper-2" data-screen-label="Sample audit FAQ">
+<section class="section paper-2">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
         <h2 class="h2 mt-s">About this sample document.</h2>
-        <div class="faq__aside" style="margin-top:28px;">
-          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+        <div class="faq__aside">
+          <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
           <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
         </div>
@@ -424,7 +473,7 @@
       <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">What is this page?</span><span class="q-pm">+</span></summary>
-          <p>Two redacted pages from a real AI Readiness Audit deliverable, so you can read the document instead of a description of it.</p>
+          <p>Two pages of a representative sample, built to the template a real AI Readiness Audit ends in, so you can read the document instead of a description of it. A redacted page from real client work replaces it after the next engagement.</p>
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">What does the full audit cost?</span><span class="q-pm">+</span></summary>
@@ -441,15 +490,25 @@
 <!-- /FAQ:auto -->
 
 <!-- ============ START HERE (ink) ============ -->
-<section class="section ink final" data-screen-label="Start here">
+<section class="section ink final">
   <div class="wrap">
-    <div class="closer" style="margin-top:0;">
-      <span class="kicker">Start here</span>
-      <p>The version of this document with your workflows in it starts with a <b>free 30-minute assessment</b>. No pitch. A straight read on whether the audit is even worth buying.</p>
-      <p class="hero__note" style="color:var(--dtx-mute);">This is the <a href="/services/#audit" style="text-decoration:underline;color:inherit;">AI Readiness Audit</a> deliverable. See <a href="/pricing/" style="text-decoration:underline;color:inherit;">what it costs</a>, or a build one led to in <a href="/work/marcus/" style="text-decoration:underline;color:inherit;">the MARCUS case</a>.</p>
-      <div class="hero__cta" style="margin-top:28px;">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+    <div class="final__cta">
+      <div class="closer" style="margin-top:0;">
+        <span class="kicker">Start here</span>
+        <p>The version of this document with your workflows in it starts with a <b>free 30-minute assessment</b>. No pitch. A straight read on whether the audit is even worth buying.</p>
+        <p class="hero__note" style="color:var(--dtx-mute);">This is the <a href="/services/#audit">AI Readiness Audit</a> deliverable. See <a href="/pricing/">what it costs</a>, or a build one led to in <a href="/work/marcus/">the MARCUS case</a>.</p>
+        <div class="hero__cta" style="margin-top:28px;">
+          <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+        </div>
+      <div class="reversal">
+        <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
+        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list &rarr;</a></p>
       </div>
+      </div>
+    </div>
+    <div class="final__promise">
+      <p>A fixed price, quoted in writing before we start, and a straight answer within 24 hours.</p>
+      <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
 </section>
@@ -460,8 +519,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -474,9 +533,9 @@
       </div>
       <div class="foot__top">
       <div class="foot__brand">
-        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

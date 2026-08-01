@@ -6,6 +6,19 @@ import { COMPANY } from "../../src/data/company.mjs";
 
 export const ROOT = process.cwd();
 
+// Top-level dirs that exist only on a developer's machine and never reach the
+// deploy output. Every guard skips these: a stale local copy of the site
+// otherwise floods the checks with phantom failures, which is how people learn
+// to ignore a red build.
+export const LOCAL_SCRATCH_DIRS = new Set([
+	"node_modules",
+	"scratchpad",
+	"audit",
+	"reports",
+	"_to_delete",
+	"kobo_downloads",
+]);
+
 // --- Site identity (sourced from src/data/company.mjs) ---
 export { COMPANY };
 export const SITE_ORIGIN = COMPANY.origin;
@@ -13,8 +26,15 @@ export const SITE_HOST = COMPANY.origin.replace(/^https?:\/\//, "");
 export const BRAND = COMPANY.name;
 export const BLOG_NAME = "The Ampersand";
 export const AUTHOR = COMPANY.founder.name;
-export const BLOG_DESCRIPTION =
-	"Free weekly essays from Christopher Myers on building durable things in a noisy time.";
+// Cadence claim must match what actually ships. Publishing paused after the
+// June 2026 essay; "weekly" was retired rather than left to drift. Restore it
+// here (and in templates.mjs / build-llms.mjs / smoke-test.mjs) if it resumes.
+export const BLOG_CADENCE = "a few times a month";
+export const BLOG_DESCRIPTION = `Free essays from Christopher Myers on building durable things in a noisy time, ${BLOG_CADENCE}.`;
+// Cadence-free variant for the /blog/ archive <meta description>, which
+// head:check caps at 160 chars. Makes no cadence claim rather than a stale one.
+export const BLOG_DESCRIPTION_META =
+	"Essays from Christopher Myers on building durable things in a noisy time.";
 // Fallback social image when a post has no usable cover. PNG (1200x630) —
 // SVG og:images are not rendered by LinkedIn/X/Facebook/iMessage previews.
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
@@ -59,6 +79,7 @@ export const STATIC_ROUTES = [
 	"/phoenix/",
 	"/work/",
 	"/work/marcus/",
+	"/work/marcus/results/",
 	"/guides/",
 	"/guides/ai-consultant-cost/",
 	"/guides/ai-readiness-checklist/",
@@ -151,4 +172,4 @@ export const POST_TOPICS = {
 export const POST_TOPIC_FALLBACK = { href: "/services/", label: "What we actually build" };
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "90";
+export const ASSET_VERSION = "95";

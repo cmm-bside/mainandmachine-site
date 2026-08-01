@@ -25,7 +25,9 @@ industry keys, and coarse bands (score band, headcount band). Never a name,
 email, phone, free-text answer, raw score, or dollar output. Custom events
 change ONLY by editing `js/analytics.js` (static site) or
 `lib/analytics.ts` (Score app) — no inline one-offs, except the /book/ page's
-booking trio which lives in `book/index.html` next to the code it measures.
+booking trio which lives in `book/index.html` next to the code it measures, and
+`booking_details_added`, which lives in `book/thanks/index.html` for the same
+reason (it measures the stage-2 form on that page).
 
 ## The funnel
 
@@ -43,6 +45,8 @@ booking trio which lives in `book/index.html` next to the code it measures.
 | intent | `cta_book_click` | `page`, `location` (+ `score-report` from the app's report door) | any `/book` link clicked in a known region | both |
 | intent | `calendly_loaded` | `page` | the /book/ inline scheduler iframe first renders | `book/index.html` |
 | intent | `booking_form_submitted` | `page` | /book/ fallback form accepted (fires before the redirect to /book/thanks/) | `book/index.html` |
+| engagement | `calculator_emailed` | `page`, `industry`, `team_band` | "Email me this estimate" submitted on /calculator/ or a guide worksheet. No email in the props. | `js/analytics.js` |
+| booked | `booking_details_added` | `page` | stage-2 prep details accepted on /book/thanks/ (post-booking enrichment) | `book/thanks/index.html` |
 | **booked** | `calendly_booked` | `page` (+ `band` from the app) | Calendly's `calendly.event_scheduled` postMessage — a real slot on the calendar | both |
 | audience | `newsletter_subscribed` | `page` | any beehiiv subscribe form submitted (closest observable moment; beehiiv confirms in its own tab) | `js/analytics.js` |
 
@@ -55,8 +59,8 @@ booked), `calendly_booked / unique visitors` (the number that matters).
 1. Goals → add custom events: `cta_score_click`, `cta_book_click`,
    `score_started`, `score_completed`, `calculator_interacted`,
    `guide_read`, `calendly_loaded`, `booking_form_submitted`,
-   `calendly_booked`, `newsletter_subscribed`. Mark `calendly_booked` as
-   the conversion.
+   `calendly_booked`, `newsletter_subscribed`, `calculator_emailed`,
+   `booking_details_added`. Mark `calendly_booked` as the conversion.
 2. Funnels (if on a plan with funnels): visit → `score_started` →
    `score_completed` → `cta_book_click` → `calendly_booked`.
 3. GA4 (Score app only) is unchanged — `score_complete` stays the key event
@@ -99,6 +103,11 @@ Network filtered to `/api/event`, then:
       → `calendly_booked` (cancel the booking after).
 - [ ] /book/: submit the fallback form → `booking_form_submitted`, then the
       /book/thanks/ redirect.
+- [ ] /book/: book a slot in the embed → `calendly_booked`, then a redirect to
+      `/book/thanks/?via=calendly` showing "You're booked" (not the 24-hour copy).
+- [ ] /book/thanks/: submit the stage-2 prep form → `booking_details_added`.
+- [ ] /calculator/: submit "Email me this estimate" → `calculator_emailed` with
+      industry + band; confirm the POST body contains **no email address**.
 - [ ] /score: land → pageview with `u` = the /score URL; start → `score_started`;
       finish → `score_completed` with `band` only (inspect the POST body —
       no answers, no email, no raw score).

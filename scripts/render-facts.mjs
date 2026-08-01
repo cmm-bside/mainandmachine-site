@@ -7,6 +7,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/config.mjs";
+import { factValues } from "./lib/fact-values.mjs";
 
 // Read the source of truth directly (not via company.mjs — this script
 // GENERATES company.mjs, so it must not depend on it).
@@ -31,27 +32,9 @@ if (fs.readFileSync(modulePath, "utf8") !== MODULE) {
   console.log("[facts:render] src/data/company.mjs regenerated from site-facts.json");
 }
 
-const svc = (key) => COMPANY.services.find((s) => s.key === key);
-const usd = (n) => "$" + n.toLocaleString("en-US");
-
-// The vocabulary: every data-fact key a page may carry.
-export const FACT_VALUES = {
-  "price-audit": svc("audit").price,
-  "price-sprint": svc("sprint").price,
-  "price-managed": svc("managed").price,
-  "price-backoffice": svc("backoffice").price,
-  "timeline-audit": svc("audit").timeline,
-  "timeline-sprint": svc("sprint").timeline,
-  "timeline-backoffice": svc("backoffice").timeline,
-  "audit-floor": usd(svc("audit").priceLow) + "+",
-  "sprint-ceiling": usd(svc("sprint").priceHigh),
-  "guarantee": COMPANY.guarantee,
-  "rollover": COMPANY.rollover,
-  "annual-managed": COMPANY.annualManaged,
-  "build-slots": COMPANY.buildSlots.line,
-  "phone": COMPANY.phone,
-  "email": COMPANY.email,
-};
+// The vocabulary: every data-fact key a page may carry. Derived in
+// scripts/lib/fact-values.mjs so check-facts.mjs reads the same definition.
+export const FACT_VALUES = factValues(COMPANY);
 
 function* htmlFiles(dir, prefix = "") {
   const SKIP = new Set(["node_modules", "blog", "blog-data", "audit", "scratchpad", ".git", "src", "scripts", "functions", "emails", "images", "js", "fonts", "reports"]);

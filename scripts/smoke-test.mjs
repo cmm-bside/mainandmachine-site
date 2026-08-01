@@ -16,7 +16,7 @@ const fail = (m) => errors.push(m);
 const OLD_BUILD_MARKERS = ["limited slots", 'href="/#work"', "<title>Book an Assessment"];
 // Every current non-blog page carries this banner; blog pages carry their own.
 const CURRENT_BANNER = 'class="ticker"';
-const BLOG_BANNER = "free weekly essays";
+const BLOG_BANNER = "free essays, a few times a month";
 
 async function get(url) {
   const res = await fetch(url, { headers: { "cache-control": "no-cache" }, redirect: "manual" });

@@ -27,9 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
@@ -75,42 +75,130 @@
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "CollectionPage",
       "@id": "https://www.mainandmachine.com/guides/#collection",
       "name": "The Field Guide",
       "description": "Practical answers to AI buying questions, with Main & Machine's real published prices as the spine.",
       "url": "https://www.mainandmachine.com/guides/",
-      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" },
+      "isPartOf": {
+        "@id": "https://www.mainandmachine.com/#website"
+      },
       "hasPart": [
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-consultant-cost/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-readiness-checklist/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-consultant-vs-in-house/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/how-to-choose-an-ai-consultant/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/what-ai-automation-costs-to-run/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-agents-vs-automations-vs-integrations/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/what-is-an-ai-readiness-audit/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-data-cloud-vs-on-prem/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/chatgpt-vs-custom-ai/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/signs-you-are-not-ready-for-ai/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/how-to-scope-an-ai-project/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-roi-math-small-business/#article" },
-        { "@type": "Article", "@id": "https://www.mainandmachine.com/guides/ai-for-the-skeptical-owner/#article" }
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/ai-consultant-cost/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/ai-readiness-checklist/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/ai-consultant-vs-in-house/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/how-to-choose-an-ai-consultant/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/what-ai-automation-costs-to-run/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/ai-agents-vs-automations-vs-integrations/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/what-is-an-ai-readiness-audit/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/ai-data-cloud-vs-on-prem/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/chatgpt-vs-custom-ai/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/signs-you-are-not-ready-for-ai/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/how-to-scope-an-ai-project/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/ai-roi-math-small-business/#article"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.mainandmachine.com/guides/ai-for-the-skeptical-owner/#article"
+        }
       ]
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "The Field Guide", "item": "https://www.mainandmachine.com/guides/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Field Guide",
+          "item": "https://www.mainandmachine.com/guides/"
+        }
       ]
     }
   ]
@@ -142,7 +230,7 @@
       "name": "How is the Field Guide different from The Ampersand?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The Ampersand is weekly essays on how the machine works and what it means. The Field Guide answers commercial questions with numbers. Read the essays to understand; read the guides to decide."
+        "text": "The Ampersand is essays on how the machine works and what it means, a few times a month. The Field Guide answers commercial questions with numbers. Read the essays to understand; read the guides to decide."
       }
     },
     {
@@ -164,13 +252,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -215,7 +303,7 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="The Field Guide">
+<section class="section paper pagehero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
@@ -240,7 +328,7 @@
 </section>
 
 <!-- ============ THE GUIDES ============ -->
-<section class="section paper-2" data-screen-label="The guides">
+<section class="section paper-2">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -295,7 +383,7 @@
       <a class="gcard" href="/guides/what-is-an-ai-readiness-audit/">
         <span class="gcard__no">Guide 08</span>
         <h3>The AI readiness audit, defined.</h3>
-        <p>What $3,500–$8,500 buys, what it deliberately doesn’t, and the redacted sample you can read before spending a dollar. Sometimes the finding is “wait.”</p>
+        <p>What $3,500–$8,500 buys, what it deliberately doesn’t, and the sample deliverable you can read before spending a dollar. Sometimes the finding is “wait.”</p>
         <span class="gcard__meta">8 min · The audit</span>
       </a>
       <a class="gcard" href="/guides/ai-data-cloud-vs-on-prem/">
@@ -339,23 +427,23 @@
 </section>
 
 <!-- ============ GUIDE VS ESSAY (ink) ============ -->
-<section class="section ink" data-screen-label="Guides and essays">
+<section class="section ink">
   <div class="wrap">
     <div class="closer" style="margin-top:0;">
       <span class="kicker">Two shelves, one library</span>
-      <p>These guides answer buying questions; <a href="/blog/" style="text-decoration:underline;">The Ampersand</a> answers understanding questions — how the machine works, what it cannot do, why everything happened at once. Read the guides when you are deciding. Read the essays when you want the decision to be a good one. Both are free, and neither ends in a countdown timer.</p>
+      <p>These guides answer buying questions; <a href="/blog/">The Ampersand</a> answers understanding questions — how the machine works, what it cannot do, why everything happened at once. Read the guides when you are deciding. Read the essays when you want the decision to be a good one. Both are free, and neither ends in a countdown timer.</p>
     </div>
   </div>
 </section>
 <!-- FAQ:auto -->
-<section class="section paper-2" data-screen-label="Field Guide FAQ">
+<section class="section paper-2">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
         <h2 class="h2 mt-s">About the Field Guide.</h2>
-        <div class="faq__aside" style="margin-top:28px;">
-          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+        <div class="faq__aside">
+          <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
           <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
         </div>
@@ -367,7 +455,7 @@
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">How is the Field Guide different from The Ampersand?</span><span class="q-pm">+</span></summary>
-          <p>The Ampersand is weekly essays on how the machine works and what it means. The Field Guide answers commercial questions with numbers. Read the essays to understand; read the guides to decide.</p>
+          <p>The Ampersand is essays on how the machine works and what it means, a few times a month. The Field Guide answers commercial questions with numbers. Read the essays to understand; read the guides to decide.</p>
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">Are the prices in these guides real?</span><span class="q-pm">+</span></summary>
@@ -380,13 +468,19 @@
 <!-- /FAQ:auto -->
 
 <!-- ============ START HERE (ink) ============ -->
-<section class="section ink final" data-screen-label="Start here">
+<section class="section ink final">
   <div class="wrap">
-    <span class="kicker">Start here</span>
-    <h2 class="h2 mt-s">Prefer answers about <span class="accent-tx">your business?</span></h2>
-    <p class="lead mt-s">30 minutes with a senior advisor who walks your workflows and tells you what is worth automating, and what is not. We reply within 24 hours.</p>
-    <div class="hero__cta">
-      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+    <div class="final__cta">
+      <span class="kicker">Start here</span>
+      <h2 class="h2 mt-s">Prefer answers about <span class="accent-tx">your business?</span></h2>
+      <p class="lead mt-s">30 minutes with a senior advisor who walks your workflows and tells you what is worth automating, and what is not. We reply within 24 hours.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="final__promise">
+      <p>A fixed price, quoted in writing before we start, and a straight answer within 24 hours.</p>
+      <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
 </section>
@@ -397,8 +491,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -411,9 +505,9 @@
       </div>
       <div class="foot__top">
       <div class="foot__brand">
-        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

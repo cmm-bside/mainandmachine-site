@@ -3,6 +3,9 @@
 
 User-agent: *
 Allow: /
+# Persistent client-report tokens and QR short links — never index.
+Disallow: /score/report/
+Disallow: /s/
 # The booking API is POST-only and has nothing to index.
 Disallow: /api/
 

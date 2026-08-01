@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="styles.css?v=90" />
+<link rel="stylesheet" href="styles.css?v=95" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -61,31 +61,85 @@
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      },
       "sameAs": [
         "https://www.linkedin.com/company/main-and-machine/",
         "https://x.com/mainandmachine"
-      ]
+      ],
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": 25
+      },
+      "knowsAbout": [
+        "AI consulting",
+        "AI implementation",
+        "Business process automation",
+        "AI readiness assessment",
+        "On-premise AI deployment",
+        "Retrieval-augmented generation",
+        "Small business operations",
+        "Workflow automation"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "cmyers@mainandmachine.com",
+        "telephone": "+1-480-805-9983",
+        "areaServed": "US",
+        "availableLanguage": "English"
+      }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.mainandmachine.com/blog/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
     {
       "@type": "Person",
       "@id": "https://www.mainandmachine.com/#person-cmyers",
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
-      "worksFor": { "@id": "https://www.mainandmachine.com/#org" },
-      "affiliation": { "@id": "https://www.mainandmachine.com/#asu" },
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "affiliation": {
+        "@id": "https://www.mainandmachine.com/#asu"
+      },
       "sameAs": [
         "https://www.linkedin.com/in/cmyers85/",
         "https://x.com/Chris_myers",
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org"
-      ]
+        "https://www.bside.org",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
+      ],
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
     },
     {
       "@type": "EducationalOrganization",
@@ -117,6 +171,46 @@
 })();
 </script>
 <script defer src="/js/hero-machine.js?v=5"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does it cost to work with Main & Machine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every price is published. The AI Readiness Audit runs $3,500–$8,500 over 2 to 4 weeks. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long before something is actually running?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About 90 days per workflow. An audit is 2 to 4 weeks; a build is 4 to 12. If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the guarantee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. It is a delivery guarantee, not an ROI promise — we never promise a return number."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do we need to be technical to work with you?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We build from your existing process documents and train your team to run what we ship. Every system we build can be explained, questioned, and overruled by a person who owns it — you do not need an engineer on staff."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -125,13 +219,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item"><a href="/score/" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Every engagement starts with the free assessment — get your AI-Ready Score →</a></span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item"><a href="/score/" tabindex="-1" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Every engagement starts with the free assessment — get your AI-Ready Score →</a></span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -193,9 +287,9 @@
         </h1>
         <span class="hm-baseline" aria-hidden="true"></span>
         <p class="lead">Other AI firms hand you a deck. We build the working systems that run inside your business. Fixed price, quoted in writing. Live in about 90 days — or we keep building at no charge until it is.</p>
-        <div class="hero__cta">
+        <div class="hero__cta hero__cta--weighted">
           <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-          <a class="btn btn--secondary btn--lg" href="/score/">Get your AI-Ready Score</a>
+          <a class="btn btn--secondary btn--lg hero__cta-alt" href="/score/">Get your AI-Ready Score</a>
         </div>
         <p class="hero__note">30 minutes with a senior advisor. Free. A straight answer.</p>
       </div>
@@ -223,15 +317,15 @@
     </div>
     <div class="failstat crop">
       <div class="failstat__hero">
-        <div class="tick-num failstat__big">78%</div>
-        <p class="failstat__cap">spent the money. Nothing moved.</p>
+        <div class="tick-num failstat__big">74%</div>
+        <p class="failstat__cap">spent the money and have yet to show tangible value.</p>
       </div>
       <div class="failstat__counter">
-        <div class="tick-num failstat__sm">22%</div>
-        <p class="failstat__cap failstat__cap--sm">turn AI spending into measurable results.</p>
+        <div class="tick-num failstat__sm">26%</div>
+        <p class="failstat__cap failstat__cap--sm">built the capability to get past proofs of concept.</p>
       </div>
       <div class="failstat__aside">
-        <div class="failstat__ratio" role="img" aria-label="A bar split 78 to 22: seventy-eight percent of AI spending moves nothing; twenty-two percent produces measurable results.">
+        <div class="failstat__ratio" role="img" aria-label="A bar split 74 to 26: seventy-four percent of companies have yet to show tangible value from AI; twenty-six percent have built the capability to move beyond proofs of concept.">
           <span class="failstat__ratio-spent"></span>
           <span class="failstat__ratio-moved"></span>
         </div>
@@ -239,10 +333,10 @@
           <span>spent</span>
           <span>moved</span>
         </div>
-        <p class="failstat__kicker">We exist for the <b>22%</b>.</p>
+        <p class="failstat__kicker">We exist for the <b>26%</b>.</p>
       </div>
     </div>
-    <p class="stat-source">Source: Boston Consulting Group, <em>Where’s the Value in AI?</em>, 2024.</p>
+    <p class="stat-source">Source: Boston Consulting Group, <a href="https://www.bcg.com/publications/2024/wheres-value-in-ai" rel="nofollow noopener" target="_blank" style="color:inherit;"><em>Where’s the Value in AI?</em></a>, October 2024 — a survey of 1,000 executives across 59 countries.</p>
     <div class="prose-2">
       <div>
         <p style="color:var(--dtx-mute);">There is a second failure nobody mentions: AI that technically works but buries why decisions get made and turns your best people into ticket-closers.</p>
@@ -289,12 +383,11 @@
         <span class="tick-lbl">Example builds</span>
         <span class="tick-lbl"><a href="/services/builds/">Browse the build catalog →</a></span>
       </div>
-      <p class="builds__note" style="margin-top:16px;padding-top:16px;border-top:1px solid var(--line);color:var(--tx);"><b style="color:var(--tx);">One we can name:</b> <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a> runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA &amp; CDFI lender. It runs entirely in-house, with no borrower file leaving the building. <a href="/work/marcus/" style="text-decoration:underline;">Read the build →</a></p>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 PRICING SUMMARY ============ -->
+<!-- ============ 03 PRICING SUMMARY ============ -->
 <section class="section paper-2" id="pricing" data-screen-label="Pricing">
   <div class="wrap">
     <div class="head-block">
@@ -306,6 +399,7 @@
     </div>
     <div class="svc">
       <div class="svc__item svc__item--feature crop">
+        <span class="svc__tab">Most start here</span>
         <div class="svc__meta">
           <div class="svc__no">01</div>
           <span class="tick-lbl">Timeline</span>
@@ -316,7 +410,7 @@
         </div>
         <div class="svc__main">
           <h3><a href="/services/#audit">AI Readiness Audit</a></h3>
-          <div class="svc__tagline">Most businesses start here.</div>
+          <div class="svc__tagline">Where AI pays, in writing.</div>
           <p>We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.</p>
         </div>
         <div class="svc__list">
@@ -335,7 +429,7 @@
         </div>
         <div class="svc__main">
           <h3><a href="/services/#sprint">AI Implementation Sprint</a></h3>
-          <div class="svc__tagline">We build the working systems.</div>
+          <div class="svc__tagline">The 90-Day Workflow.</div>
           <p>Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.</p>
         </div>
         <div class="svc__list">
@@ -352,7 +446,7 @@
         </div>
         <div class="svc__main">
           <h3><a href="/services/#managed">Managed Services</a></h3>
-          <div class="svc__tagline">Optional, never required.</div>
+          <div class="svc__tagline">The month-to-month.</div>
           <p>We keep what we built healthy, watch what changes, and evolve the systems as your business does.</p>
         </div>
         <div class="svc__list">
@@ -360,7 +454,8 @@
         </div>
       </div>
     </div>
-    <p class="hero__note hero__note--wide">Every path here starts with the same free 30-minute assessment. Need the whole back office carried? <a href="/pricing/#backoffice" style="text-decoration:underline;">MARCUS-class builds run from $95,000</a> — we take four a year.</p>
+    <p class="hero__note hero__note--wide">Every path here starts with the same free 30-minute assessment.</p>
+    <p class="hero__note hero__note--wide" style="margin-top:var(--s-32);"><b>The ceiling:</b> when a business wants the whole back office carried rather than one workflow, that is a MARCUS-class build &mdash; <a href="/pricing/#backoffice"><span data-fact="price-backoffice">From $95,000</span></a>, four a year. Everything above is where most businesses start.</p>
   </div>
 </section>
 
@@ -437,12 +532,42 @@
   </div>
 </section>
 
+<!-- ============ 04 PROOF ============ -->
+<section class="section paper" id="proof">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">04 / Proof it works</span>
+        <h2 class="h2 mt-s">One build we can name, <span class="accent-tx">and the numbers it returned.</span></h2>
+      </div>
+      <p class="lead">MARCUS runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA &amp; CDFI lender — entirely in-house, with no borrower file leaving the building. Year one, measured off the audit log:</p>
+    </div>
+    <!-- BUILD-LOG:MARCUS-HOME — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
+          <div class="bstat">
+            <div class="bstat__i" data-figure="hours-returned">
+              <span class="bstat__n tick-num">1,240<small>hrs</small></span>
+              <span class="tick-lbl">Prep hours returned, 90 days</span>
+            </div>
+            <div class="bstat__i" data-figure="weekly-adoption">
+              <span class="bstat__n tick-num">93<small>%</small></span>
+              <span class="tick-lbl">Weekly use by week six</span>
+            </div>
+            <div class="bstat__i" data-figure="identifiers-out">
+              <span class="bstat__n tick-num">0</span>
+              <span class="tick-lbl">Identifiers sent outside</span>
+            </div>
+          </div>
+<!-- /BUILD-LOG:MARCUS-HOME -->
+    <p class="builds__note" style="margin-top:var(--s-24);"><a href="/work/marcus/results/">Read the year-one results &rarr;</a> &middot; <a href="/work/">the whole proof shelf</a></p>
+  </div>
+</section>
+
 <!-- ============ 05 WHO BUILDS THIS ============ -->
 <section class="section paper" id="about" data-screen-label="Who builds this">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">04 / Who builds this</span>
+        <span class="kicker">05 / Who builds this</span>
         <h2 class="h2 mt-s">Christopher Myers.</h2>
       </div>
       <p class="lead">A professor, an entrepreneur, and an operator: 26 years in service of Main Street.</p>
@@ -461,7 +586,10 @@
       <div class="bio__prose">
         <p>He’s <b>CEO of B:Side Capital and Fund</b>, a professor at ASU’s W.P. Carey School, and an author with 26 years backing Main Street. He pairs that judgment with a team of <b>AI-native builders</b> who never had to unlearn the old way. One name owns every build.</p>
         <p><a class="svc__cta" href="/about/">Who builds this, and why the name matters →</a></p>
-        <div class="bio__press">Our founder’s work has been covered in: <span class="press-list"><span>Forbes</span><span>The Wall Street Journal</span><span>The New York Times</span><span>Inc.</span><span>TechCrunch</span><span>MSNBC</span><span>Fox Business</span></span></div>
+        <!-- Press links verified 2026-07-31: Forbes = founder contributor page; Inc. = founder author page;
+     TechCrunch + Fox Business = BodeTree coverage naming Christopher Myers as founder/CEO.
+     WSJ / NYT / MSNBC: no verifiable URL found - they stay unlinked. Never link without a real URL. -->
+        <div class="bio__press">Our founder’s work has been covered in: <span class="press-list"><span><a href="https://www.forbes.com/sites/chrismyers/" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Forbes</a></span><span>The Wall Street Journal</span><span>The New York Times</span><span><a href="https://www.inc.com/author/chris-myers" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Inc.</a></span><span><a href="https://techcrunch.com/2013/04/17/bodetree-a-startup-making-small-business-finance-less-boring-raises-1-4-million/" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">TechCrunch</a></span><span>MSNBC</span><span><a href="https://www.foxbusiness.com/features/bodetree-crunching-numbers-for-the-little-guy" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Fox Business</a></span></span></div>
       </div>
     </div>
   </div>
@@ -475,7 +603,7 @@
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">05 / Where are you?</span>
+        <span class="kicker">06 / Where are you?</span>
         <h2 class="h2 mt-s">Pick the door that <span class="accent-tx">fits you today.</span></h2>
       </div>
       <p class="lead">Three doors. No wrong answer.</p>
@@ -489,8 +617,8 @@
       </div>
       <div class="path">
         <span class="path__no">02 / Decided</span>
-        <h3>I already know what I want built.</h3>
-        <p>Skip the audit. Book a scoping call and we will quote a fixed-price Implementation Sprint in writing.</p>
+        <h3>Skip the audit — scope a sprint.</h3>
+        <p>You already know what you want built. Book a scoping call and we quote a fixed-price Implementation Sprint in writing — no audit in between.</p>
         <a class="btn btn--ghost path__cta" href="/book/?service=sprint">Scope a sprint →</a>
       </div>
       <div class="path">
@@ -509,8 +637,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>

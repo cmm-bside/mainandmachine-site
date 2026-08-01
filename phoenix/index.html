@@ -27,9 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
@@ -49,34 +49,85 @@
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
-      "areaServed": { "@type": "City", "name": "Phoenix", "containedInPlace": { "@type": "State", "name": "Arizona" } },
+      "areaServed": {
+        "@type": "City",
+        "name": "Phoenix",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "Arizona"
+        }
+      },
       "slogan": "The machine belongs to Main Street.",
-      "parentOrganization": { "@id": "https://www.mainandmachine.com/#org" },
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "parentOrganization": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Services",
         "itemListElement": [
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Readiness Audit", "serviceType": "AI readiness audit", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#audit" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Readiness Audit",
+              "serviceType": "AI readiness audit",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#audit"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 3500,
+              "maxPrice": 8500,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Implementation Sprint", "serviceType": "AI implementation", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#sprint" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 18000, "maxPrice": 60000, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Implementation Sprint",
+              "serviceType": "AI implementation",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#sprint"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 18000,
+              "maxPrice": 60000,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "Managed Services", "serviceType": "AI monitoring and maintenance", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#managed" },
-            "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 1500, "priceCurrency": "USD", "unitText": "month", "description": "From $1,500/month, no lock-in" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Managed Services",
+              "serviceType": "AI monitoring and maintenance",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#managed"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "minPrice": 1500,
+              "priceCurrency": "USD",
+              "unitText": "month",
+              "description": "From $1,500/month, no lock-in"
+            }
           }
         ]
       }
     },
     {
-      "@type": "Organization",
+      "@type": "ProfessionalService",
       "@id": "https://www.mainandmachine.com/#org",
       "sameAs": [
         "https://www.linkedin.com/company/main-and-machine/",
@@ -87,16 +138,47 @@
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "logo": "https://www.mainandmachine.com/icon-512.png",
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      },
       "areaServed": "US"
     },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman" },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Phoenix", "item": "https://www.mainandmachine.com/phoenix/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Phoenix",
+          "item": "https://www.mainandmachine.com/phoenix/"
+        }
       ]
     },
     {
@@ -104,23 +186,43 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Where is Main & Machine located?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We run two hubs: Denver, Colorado and Phoenix, Arizona. Remote work covers businesses across the rest of the US." }
+          "name": "Do you actually meet in person around the Valley?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and in person means at your place: your office in Tempe, your restaurant in Old Town, your job trailer in Chandler, your practice in Mesa. There is no Phoenix storefront and we will not invent one. When distance wins we work remotely, at the same fixed prices."
+          }
         },
         {
           "@type": "Question",
-          "name": "Do you meet in person in Phoenix?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We run workshops and working sessions at your shop in and around Phoenix. When distance wins, we work remotely — same method, same fixed prices." }
+          "name": "We are a restaurant group. What would you build first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Almost always the invoice stack. Thirty-odd supplier invoices a week arriving as email, PDF and photographs, coded and matched against what was actually delivered, with price changes and short-ships flagged in the week they happen instead of the quarter they surface in. Tip reporting and health-department documentation usually follow."
+          }
         },
         {
           "@type": "Question",
-          "name": "Do you work with businesses outside Colorado and Arizona?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We work remotely with businesses across the US. The hubs are where we meet in person; the work itself travels fine." }
+          "name": "We are a growing medical or dental practice. Can you touch patient data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only inside your environment. The models run on hardware in your building, so a record read by that machine has not left the practice, and a Presidio-class filter strips identifiers before any model reads a document. HIPAA also requires a signed business associate agreement before any vendor handles PHI — settle that in the first thirty minutes, not after scoping. We build nothing clinical."
+          }
         },
         {
           "@type": "Question",
-          "name": "How much does it cost?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $18,000–$60,000, with the exact price quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in." }
+          "name": "Arizona lien deadlines are tight. Does that fit the construction build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the reason contractors call. The twenty-day preliminary notice, pay applications, waivers per tier and certified payroll are the usual first scope — trivial paperwork when it happens on time and expensive when it does not. The machine assembles and chases; a person signs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does it cost in Phoenix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The same as everywhere else, because the prices are published rather than quoted per market. The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in."
+          }
         }
       ]
     }
@@ -141,13 +243,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -192,7 +294,7 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Phoenix hero">
+<section class="section paper pagehero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
@@ -202,49 +304,49 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Phoenix, Arizona</span>
-        <h1 class="h2 mt-s">AI consulting in Phoenix, built for the <span class="accent-tx">5–100 person shop.</span></h1>
-        <p class="lead mt-s">We build with Phoenix businesses face to face: workshops at your shop, with the people who actually run the work, not a vendor on a screen. <a href="/denver/" style="text-decoration:underline;">Denver</a> is our other hub, and remote covers the rest of the US. The method and the prices stay the same wherever you sit.</p>
+        <h1 class="h2 mt-s">AI implementation in Phoenix, <span class="accent-tx">at the speed the Valley is growing.</span></h1>
+        <p class="lead mt-s">We work with Valley businesses in person &mdash; your office in Tempe, your restaurant in Old Town, your job trailer in Chandler &mdash; and the build runs on hardware you own.</p>
       </div>
       <div class="statrail crop" aria-label="Phoenix at a glance">
         <div class="statrail__bar"><span>At a glance</span><span><b>Phoenix</b></span></div>
         <div class="statrail__row"><span class="statrail__k">Hub</span><span class="statrail__v accent-tx">Phoenix, AZ</span></div>
-        <div class="statrail__row"><span class="statrail__k">Other hub</span><span class="statrail__v">Denver, CO</span></div>
-        <div class="statrail__row"><span class="statrail__k">Coverage</span><span class="statrail__v">Remote across the US</span></div>
-        <div class="statrail__row"><span class="statrail__k">Audits</span><span class="statrail__v">From $3,500</span></div>
+        <div class="statrail__row"><span class="statrail__k">Clusters</span><span class="statrail__v ">Hospitality &middot; construction &middot; healthcare</span></div>
+        <div class="statrail__row"><span class="statrail__k">Regulated pattern</span><span class="statrail__v ">On-prem, PHI stays put</span></div>
+        <div class="statrail__row"><span class="statrail__k">Coverage</span><span class="statrail__v ">Valley-wide in person, remote across the US</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ SERVICES AND PRICES ============ -->
-<section class="section paper-2" id="services" data-screen-label="Phoenix services">
+<section class="section paper-2" id="services">
   <div class="wrap">
     <div class="head-block">
       <div>
         <span class="kicker">Services &amp; prices</span>
-        <h2 class="h2 mt-s">Same services. Same <span class="accent-tx">published prices.</span></h2>
+        <h2 class="h2 mt-s">Growth changes the queue, <span class="accent-tx">not the price.</span></h2>
       </div>
-      <p class="lead">The price list does not change by zip code. Audits, sprints, and managed services read the same in Phoenix as they do anywhere else we work.</p>
+      <p class="lead">Phoenix gets the same three engagements and the same published numbers as everywhere else. What changes is the order &mdash; the Valley usually needs the weekly pile carried before anything else.</p>
     </div>
     <div class="svc">
       <div class="svc__item svc__item--feature crop">
         <div class="svc__meta">
           <div class="svc__no">01</div>
           <span class="tick-lbl">Timeline</span>
-          <div class="svc__price">2 to 4 weeks</div>
+          <div class="svc__price" data-fact="timeline-audit">2 to 4 weeks</div>
           <span class="tick-lbl" style="margin-top:14px;">Fixed price</span>
-          <div class="svc__price">$3,500–$8,500</div>
+          <div class="svc__price" data-fact="price-audit">$3,500–$8,500</div>
         </div>
         <div class="svc__main">
           <h3><a href="/services/#audit">AI Readiness Audit</a></h3>
-          <div class="svc__tagline">Most businesses start here.</div>
-          <p>We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.</p>
+          <div class="svc__tagline">Where AI pays, in writing.</div>
+          <p>We walk the operation as it actually runs &mdash; the line, the trailer, the front desk &mdash; and map where the hours go. You leave with the handful of places AI pays and a phased plan you own, built or not.</p>
         </div>
         <div class="svc__list">
           <span class="tick-lbl">What you leave with</span>
           <ul>
-            <li>A workflow map of your real operations</li>
-            <li>The handful of places AI actually pays</li>
+            <li>A workflow map of your real operation</li>
+            <li>Where the back office is losing the week</li>
             <li>A phased plan you own outright</li>
             <li>A straight read on whether to build at all</li>
           </ul>
@@ -255,21 +357,21 @@
         <div class="svc__meta">
           <div class="svc__no">02</div>
           <span class="tick-lbl">Timeline</span>
-          <div class="svc__price">4 to 12 weeks</div>
+          <div class="svc__price" data-fact="timeline-sprint">4 to 12 weeks</div>
           <span class="tick-lbl" style="margin-top:14px;">Fixed quote after scoping</span>
-          <div class="svc__price">$18,000–$60,000</div>
+          <div class="svc__price" data-fact="price-sprint">$18,000–$60,000</div>
           <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
         </div>
         <div class="svc__main">
           <h3><a href="/services/#sprint">AI Implementation Sprint</a></h3>
-          <div class="svc__tagline">We build the working systems.</div>
-          <p>Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.</p>
+          <div class="svc__tagline">The 90-Day Workflow.</div>
+          <p>Agents, automations and integrations tested inside your real operation. For most Valley clients the first build is the pile that arrives faster than the staffing does &mdash; supplier invoices, intake, lien notices.</p>
         </div>
         <div class="svc__list">
           <span class="tick-lbl">What you leave with</span>
           <ul>
             <li>Working agents built to your workflow</li>
-            <li>Automations across your existing stack</li>
+            <li>The weekly pile read, coded and staged</li>
             <li>Integrations into one source of truth</li>
             <li>Your team trained to run all of it</li>
           </ul>
@@ -282,108 +384,114 @@
           <span class="tick-lbl">Timeline</span>
           <div class="svc__price">Ongoing</div>
           <span class="tick-lbl" style="margin-top:14px;">Retainer</span>
-          <div class="svc__price">Monthly</div>
+          <div class="svc__price" data-fact="price-managed">From $1,500/month</div>
         </div>
         <div class="svc__main">
           <h3><a href="/services/#managed">Managed Services</a></h3>
-          <div class="svc__tagline">Optional, never required.</div>
-          <p>We keep what we built healthy, watch what changes, and evolve the systems as your business does.</p>
+          <div class="svc__tagline">The month-to-month.</div>
+          <p>We keep what we built healthy through seasonal swing and growth &mdash; the two things that break a Valley back office. Cancel any month it stops earning its keep.</p>
         </div>
         <div class="svc__list">
           <span class="tick-lbl">What you leave with</span>
           <ul>
             <li>Monitoring on every deployed system</li>
             <li>Maintenance as models and vendors shift</li>
-            <li>New automations as the work changes</li>
+            <li>New automations as the season turns</li>
             <li>No lock-in: leave whenever it stops paying</li>
           </ul>
           <a class="svc__cta" href="/services/#managed">Read the full spec →</a>
         </div>
       </div>
     </div>
-    <p class="hero__note">Full detail on every engagement is on the <a href="/pricing/" style="text-decoration:underline;">pricing page</a>.</p>
+    <p class="hero__note hero__note--wide">Same prices in Phoenix as anywhere else &mdash; they are published rather than quoted per market. Full detail is on the <a href="/pricing/">pricing page</a>.</p>
   </div>
 </section>
 
 <!-- ============ THE FIVE INDUSTRIES ============ -->
-<section class="section paper" data-screen-label="Phoenix industries">
+<!-- ============ LOCAL CLUSTERS ============ -->
+<section class="section paper">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">Who this is for</span>
-        <h2 class="h2 mt-s">Built for the businesses <span class="accent-tx">big consulting forgets.</span></h2>
+        <span class="kicker">The Valley</span>
+        <h2 class="h2 mt-s">What growth does <span class="accent-tx">to a back office.</span></h2>
       </div>
-      <p class="lead">The five industries where we see the clearest wins.</p>
+      <p class="lead">Three clusters where the Valley&rsquo;s expansion outruns the paperwork behind it.</p>
     </div>
-    <div class="industries">
-      <div class="ind">
-        <span class="ind__no">01</span>
-        <div class="ind__name">Professional services <span>Law, accounting, insurance, consulting, financial advisory.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">12 to 80</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Intake, billing, matters</span></div>
-        <a class="ind__go" href="/industries/professional-services/">Professional services →</a>
+    <div class="prose-2">
+      <div>
+        <h3>Hospitality and food service</h3>
+        <p>Metro Phoenix adds restaurants, resorts and event venues faster than most markets, and every one of them runs on a back office designed for a smaller version of itself. Thirty supplier invoices a week arriving as email, PDF and photographs. Tip reporting assembled the night before payroll. Health-department documentation on clipboards until an inspector asks. The seasonal swing between winter visitor volume and August makes every one of those problems twice as expensive to staff for.</p>
+        <p><a href="/industries/hospitality/">More on this &rarr;</a></p>
       </div>
-      <div class="ind">
-        <span class="ind__no">02</span>
-        <div class="ind__name">Retail &amp; e-commerce <span>Physical, online, omnichannel operators.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">5 to 60</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Inventory, support, merch</span></div>
-        <a class="ind__go" href="/industries/retail/">Retail &amp; e-commerce →</a>
+      <div>
+        <h3>Construction riding the build-out</h3>
+        <p>The residential and commercial build-out across the Valley has the same shape as the Front Range&rsquo;s but a different tempo: more subs, faster cycles, and Arizona&rsquo;s own lien-notice deadlines to hit. The twenty-day preliminary notice is the kind of paperwork that is trivial when it happens on time and expensive when it does not. Pay applications, waivers and certified payroll are the usual first build.</p>
+        <p><a href="/industries/construction/">More on this &rarr;</a></p>
       </div>
-      <div class="ind">
-        <span class="ind__no">03</span>
-        <div class="ind__name">Healthcare &amp; wellness <span>Practices, clinics, wellness businesses.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">8 to 50</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Scheduling, intake, coding</span></div>
-        <a class="ind__go" href="/industries/healthcare/">Healthcare &amp; wellness →</a>
+      <div>
+        <h3>Healthcare practices, multiplying</h3>
+        <p>The Valley&rsquo;s population growth shows up first in medical and dental practices &mdash; new locations, new providers, and an administrative load that scales faster than the clinical one. Intake, eligibility, prior authorization, and the coding backlog. This is the cluster where the on-premise question matters most: PHI stays in the practice&rsquo;s environment because the machine sits in the practice&rsquo;s building.</p>
+        <p><a href="/industries/healthcare/">More on this &rarr;</a></p>
       </div>
-      <div class="ind">
-        <span class="ind__no">04</span>
-        <div class="ind__name">Construction &amp; trades <span>HVAC, plumbing, electrical, general contracting.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">10 to 100</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Dispatch, invoicing, bids</span></div>
-        <a class="ind__go" href="/industries/construction/">Construction &amp; trades →</a>
+    </div>
+    <p class="builds__note" style="margin-top:var(--s-32);">In person means in person: your office in Tempe, your restaurant in Old Town, your job trailer in Chandler. We do not keep a storefront here and will not pretend to &mdash; we come to you, or we do it over a call.</p>
+  </div>
+</section>
+
+<!-- ============ LOCAL PROOF ============ -->
+<section class="section ink">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">What regulated looks like</span>
+        <h2 class="h2 mt-s">Built for data <span class="accent-tx">that cannot leave the building.</span></h2>
       </div>
-      <div class="ind">
-        <span class="ind__no">05</span>
-        <div class="ind__name">Hospitality &amp; food service <span>Restaurants, hotels, catering, venues.</span></div>
-        <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">15 to 100</span></div>
-        <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Staffing, reservations, ops</span></div>
-        <a class="ind__go" href="/industries/hospitality/">Hospitality &amp; food service →</a>
+      <p class="lead">One build, published with permission, with the numbers off the log.</p>
+    </div>
+    <div class="prose-2">
+      <div><p style="color:var(--dtx-mute);">The system we point Valley healthcare and finance operators at is MARCUS, built for an SBA 504 and CDFI lender: 14 AI agents across 7 departments, running on the client&rsquo;s own hardware, identifiers stripped before any model reads a document, every action written to a tamper-evident log. It is a lender rather than a practice, but the constraint is identical &mdash; records that regulators expect to stay put. Read <a href="/work/marcus/">how it was built</a>, or <a href="/security/">the security architecture on its own</a>.</p></div>
+      <div>
+        <!-- BUILD-LOG:MARCUS-SCORECARD-COMPACT — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
+        <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="section paper-2" data-screen-label="Phoenix FAQ">
+<section class="section paper-2">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
         <h2 class="h2 mt-s">Working with us in Phoenix.</h2>
-        <div class="faq__aside" style="margin-top:28px;">
-          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
-          <p>The full price list is published: audits, sprints, managed services, all on one page.</p>
+        <div class="faq__aside">
+          <h3 class="accent-tx">Want the Phoenix numbers?</h3>
+          <p>They are the same numbers as everywhere else, published in full &mdash; audits, sprints and retainers on one page.</p>
           <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
         </div>
       </div>
       <div class="faq__list">
         <details>
-          <summary><span class="q-no">01</span><span class="q-tx">Where is Main &amp; Machine located?</span><span class="q-pm">+</span></summary>
-          <p>We run two hubs: Denver, Colorado and Phoenix, Arizona. Remote work covers businesses across the rest of the US.</p>
+          <summary><span class="q-no">01</span><span class="q-tx">Do you actually meet in person around the Valley?</span><span class="q-pm">+</span></summary>
+          <p>Yes, and in person means at your place: your office in Tempe, your restaurant in Old Town, your job trailer in Chandler, your practice in Mesa. There is no Phoenix storefront and we will not invent one. When distance wins we work remotely, at the same fixed prices.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">Do you meet in person in Phoenix?</span><span class="q-pm">+</span></summary>
-          <p>Yes. We run workshops and working sessions at your shop in and around Phoenix. When distance wins, we work remotely. Same method, same fixed prices.</p>
+          <summary><span class="q-no">02</span><span class="q-tx">We are a restaurant group. What would you build first?</span><span class="q-pm">+</span></summary>
+          <p>Almost always the invoice stack. Thirty-odd supplier invoices a week arriving as email, PDF and photographs, coded and matched against what was actually delivered, with price changes and short-ships flagged in the week they happen instead of the quarter they surface in. Tip reporting and health-department documentation usually follow.</p>
         </details>
         <details>
-          <summary><span class="q-no">03</span><span class="q-tx">Do you work with businesses outside Colorado and Arizona?</span><span class="q-pm">+</span></summary>
-          <p>Yes. We work remotely with businesses across the US. The hubs are where we meet in person; the work itself travels fine.</p>
+          <summary><span class="q-no">03</span><span class="q-tx">We are a growing medical or dental practice. Can you touch patient data?</span><span class="q-pm">+</span></summary>
+          <p>Only inside your environment. The models run on hardware in your building, so a record read by that machine has not left the practice, and a Presidio-class filter strips identifiers before any model reads a document. HIPAA also requires a signed business associate agreement before any vendor handles PHI — settle that in the first thirty minutes, not after scoping. We build nothing clinical.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
-          <p>The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $18,000–$60,000, with the exact price quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in.</p>
+          <summary><span class="q-no">04</span><span class="q-tx">Arizona lien deadlines are tight. Does that fit the construction build?</span><span class="q-pm">+</span></summary>
+          <p>It is the reason contractors call. The twenty-day preliminary notice, pay applications, waivers per tier and certified payroll are the usual first scope — trivial paperwork when it happens on time and expensive when it does not. The machine assembles and chases; a person signs.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">05</span><span class="q-tx">How much does it cost in Phoenix?</span><span class="q-pm">+</span></summary>
+          <p>The same as everywhere else, because the prices are published rather than quoted per market. The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in.</p>
         </details>
       </div>
     </div>
@@ -391,16 +499,22 @@
 </section>
 
 <!-- ============ FINAL CTA ============ -->
-<section class="section ink final" data-screen-label="Start here">
+<section class="section ink final">
   <div class="wrap">
-    <span class="kicker">Start here</span>
-    <h2 class="h2 mt-s">30 minutes. <span class="accent-tx">A straight answer.</span></h2>
-    <p class="lead mt-s">Book a free AI Opportunity Assessment: 30 minutes on your real workflows, in person in Phoenix or over a call. You leave knowing whether there is a real opportunity and what it is worth.</p>
-    <div class="hero__cta">
-      <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-      <a class="btn btn--secondary btn--lg" href="/denver/">Also in Denver →</a>
+    <div class="final__cta">
+      <span class="kicker">Start here</span>
+      <h2 class="h2 mt-s">30 minutes. <span class="accent-tx">A straight answer.</span></h2>
+      <p class="lead mt-s">Book a free AI Opportunity Assessment: 30 minutes on your real workflows, in person in Phoenix or over a call. You leave knowing whether there is a real opportunity and what it is worth.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+        <a class="btn btn--secondary btn--lg" href="/denver/">Also in Denver →</a>
+      </div>
+      <p class="hero__note" style="color:var(--dtx-mute);">Free. No obligation. No pitch. We reply within 24 hours.</p>
     </div>
-    <p class="hero__note" style="color:var(--dtx-mute);">Free. No obligation. No pitch. We reply within 24 hours.</p>
+    <div class="final__promise">
+      <p>A fixed price, quoted in writing before we start, and a straight answer within 24 hours.</p>
+      <span class="final__sig">&mdash; Christopher Myers, Founder</span>
+    </div>
   </div>
 </section>
 
@@ -410,8 +524,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -424,9 +538,9 @@
       </div>
       <div class="foot__top">
       <div class="foot__brand">
-        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

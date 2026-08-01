@@ -24,7 +24,8 @@
 <link rel="preconnect" href="https://calendly.com" />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -45,15 +46,49 @@
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
       "areaServed": "US",
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Book a free assessment", "item": "https://www.mainandmachine.com/book/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Book a free assessment",
+          "item": "https://www.mainandmachine.com/book/"
+        }
       ]
     },
     {
@@ -62,32 +97,50 @@
         {
           "@type": "Question",
           "name": "What exactly is the assessment?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A free 30-minute working session with a senior advisor. We walk your workflows: where the time goes, what it costs, what a machine could carry. You leave with a plain-language read on where AI pays in your business and a rough dollar range. It ends there unless you want more. We reply within 24 hours to set a time." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A free 30-minute working session with a senior advisor. We walk your workflows: where the time goes, what it costs, what a machine could carry. You leave with a plain-language read on where AI pays in your business and a rough dollar range. It ends there unless you want more. We reply within 24 hours to set a time."
+          }
         },
         {
           "@type": "Question",
           "name": "Is it really free?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — no card, no catch. 30 minutes with a senior advisor, a clear read on your business, and that's it. We do this because the businesses worth building with tend to start here." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — no card, no catch. 30 minutes with a senior advisor, a clear read on your business, and that's it. We do this because the businesses worth building with tend to start here."
+          }
         },
         {
           "@type": "Question",
           "name": "What if AI isn't right for my business?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Then we'll tell you. Sometimes the answer is \"wait a quarter,\" or \"you don't need us for this.\" You'll leave with 30 minutes back and a clear answer, which is more than most firms hand out." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Then we'll tell you. Sometimes the answer is \"wait a quarter,\" or \"you don't need us for this.\" You'll leave with 30 minutes back and a clear answer, which is more than most firms hand out."
+          }
         },
         {
           "@type": "Question",
           "name": "Do I need to prepare anything?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No — come as you are. It helps if you can speak to how the work moves day to day: where the time goes, where things pile up. That's all the prep there is." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — come as you are. It helps if you can speak to how the work moves day to day: where the time goes, where things pile up. That's all the prep there is."
+          }
         },
         {
           "@type": "Question",
           "name": "Who actually shows up to the call?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A senior advisor — the person who would scope and build your project, not a junior rep reading off a script." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A senior advisor — the person who would scope and build your project, not a junior rep reading off a script."
+          }
         },
         {
           "@type": "Question",
           "name": "What happens to the details I submit?",
-          "acceptedAnswer": { "@type": "Answer", "text": "They go to us so we can prepare for your call — that's all. Your details never enter a marketing list, and if we never work together they go nowhere at all." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They go to us so we can prepare for your call — that's all. Your details never enter a marketing list, and if we never work together they go nowhere at all."
+          }
         }
       ]
     }
@@ -150,7 +203,7 @@
 .field .opt { color: var(--tx-faint); text-transform: none; letter-spacing: .03em; font-size: var(--fs-12); }
 
 .input {
-  font-family: var(--sans); font-size: var(--fs-16); color: var(--tx); background: #fff;
+  font-family: var(--sans); font-size: var(--fs-16); color: var(--tx); background: var(--surface-hi);
   border: 1px solid var(--line); padding: 14px 15px; width: 100%; height: 52px;
   transition: border-color .15s var(--ease), box-shadow .15s var(--ease); border-radius: 0;
 }
@@ -164,7 +217,11 @@ select.input {
   background-repeat: no-repeat; background-position: right 15px center;
 }
 select.input:invalid { color: var(--tx-faint); }
-.field.err .input { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+/* Focus vs. error must be distinguishable. Focus keeps the rust ring; an
+   errored field gets a deeper border plus a solid INSET left rule — a different
+   shape, not just a shade, so it does not rely on colour alone (WCAG 1.4.1). */
+.field.err .input { border-color: var(--accent-deep); box-shadow: inset 4px 0 0 var(--accent-deep); }
+.field.err .input:focus { border-color: var(--accent); box-shadow: inset 4px 0 0 var(--accent-deep), 0 0 0 3px var(--accent-soft); }
 .field__hint { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); letter-spacing: .02em; line-height: 1.6; }
 .field__err { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-text); letter-spacing: .02em; display: none; }
 .field.err .field__err { display: block; }
@@ -173,7 +230,7 @@ select.input:invalid { color: var(--tx-faint); }
 .hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
 
 /* segmented control — preferred contact */
-.seg { display: flex; border: 1px solid var(--line); background: #fff; }
+.seg { display: flex; border: 1px solid var(--line); background: var(--surface-hi); }
 .seg__opt { flex: 1; position: relative; }
 .seg__opt input { position: absolute; opacity: 0; pointer-events: none; }
 .seg__opt span {
@@ -270,13 +327,13 @@ select.input:invalid { color: var(--tx-faint); }
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -375,6 +432,7 @@ select.input:invalid { color: var(--tx-faint); }
       <!-- FORM -->
       <div class="formcard crop">
         <div class="formcard__bar"><span>Assessment request</span><span><b>*</b> required</span></div>
+        <p class="calc-context" id="calcContext" hidden></p>
         <div class="formcard__body">
           <form id="assessForm" novalidate>
 
@@ -436,9 +494,9 @@ select.input:invalid { color: var(--tx-faint); }
               <div class="fgroup__head"><span class="fgroup__no">C</span><span class="fgroup__t">Proof</span></div>
               <div class="frow frow--1">
                 <div class="field">
-                  <label for="workflows">What is eating your team’s time? <span class="req">*</span></label>
-                  <textarea class="input" id="workflows" name="workflows" placeholder="The repetitive, manual, or slow workflows you’d most love to hand off." aria-describedby="workflows-hint" required></textarea>
-                  <span class="field__hint" id="workflows-hint">Intake, billing, scheduling, data entry, quoting. A sentence or two is plenty.</span>
+                  <label for="workflows">What is eating your team’s time? <span class="opt">(optional)</span></label>
+                  <textarea class="input" id="workflows" name="workflows" placeholder="The repetitive, manual, or slow workflows you’d most love to hand off." aria-describedby="workflows-hint"></textarea>
+                  <span class="field__hint" id="workflows-hint">Intake, billing, scheduling, data entry, quoting. Leave it blank if you’d rather just talk — that’s all the prep there is.</span>
                   <span class="field__err">Tell us a little about the work. Even one line helps.</span>
                 </div>
               </div>
@@ -490,6 +548,13 @@ select.input:invalid { color: var(--tx-faint); }
           </div>
         </div>
 
+        <!-- TESTIMONIALS:RAIL — rendered by scripts/build-testimonials.mjs — do not hand-edit -->
+<!-- /TESTIMONIALS:RAIL -->
+
+        <div class="panel">
+          <h2 class="panel__t">Why it&rsquo;s free</h2>
+          <p>Scoping is the work. We quote a fixed price in writing before anything starts, and you cannot quote a fixed price without knowing what you are quoting. The first thirty minutes is unavoidable &mdash; we just don&rsquo;t charge for it.</p>
+        </div>
         <div class="panel panel--ink">
           <h2 class="panel__t">The promise</h2>
           <p>You’ll leave knowing what’s worth doing and what isn’t, and we’ll never pad the list to win the work. <b>Substance over sales.</b></p>
@@ -552,8 +617,8 @@ select.input:invalid { color: var(--tx-faint); }
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -702,7 +767,6 @@ select.input:invalid { color: var(--tx-faint); }
     {id:'email', test:function(v){ return validEmail(v); }},
     {id:'phone', test:phoneOk},
     {id:'company', test:function(v){ return v.trim().length > 0; }},
-    {id:'workflows', test:function(v){ return v.trim().length > 0; }}
   ];
 
   // clear error as the user fixes a field
@@ -787,7 +851,8 @@ select.input:invalid { color: var(--tx-faint); }
         recap: server.recap || {},
         name: payload.name,
         email: payload.email,
-        company: payload.company
+        company: payload.company,
+        workflows: payload.workflows || ''
       }));
     } catch (e) { /* private mode — thanks page falls back to generic copy */ }
 
@@ -865,7 +930,16 @@ select.input:invalid { color: var(--tx-faint); }
   window.addEventListener('message', function(e){
     if(e.origin !== 'https://calendly.com') return;
     if(e.data && e.data.event === 'calendly.event_scheduled'){
-      if(typeof window.plausible === 'function') window.plausible('calendly_booked', { props: { page: '/book/' } });
+      // Booked people were previously left staring at the embed's own
+      // confirmation with nowhere to go. Send them to the same thanks page the
+      // form path uses, flagged so it can drop the "we'll email you" framing.
+      var toThanks = function(){ window.location.assign('/book/thanks/?via=calendly'); };
+      if(typeof window.plausible === 'function'){
+        window.plausible('calendly_booked', { props: { page: '/book/' }, callback: toThanks });
+        setTimeout(toThanks, 1200); // never strand them if the beacon stalls
+      } else {
+        toThanks();
+      }
     }
   });
 })();

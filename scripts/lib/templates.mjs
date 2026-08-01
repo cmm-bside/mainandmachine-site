@@ -10,7 +10,7 @@ import {
 } from "./config.mjs";
 
 const FAVICON =
-	"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E";
+	"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E";
 
 // --- escaping -------------------------------------------------------------
 export function esc(s) {
@@ -116,13 +116,13 @@ export function topbar() {
 	return `<div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)}: free weekly essays</span>
+      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)}: free essays, a few times a month</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)}: free weekly essays</span>
+      <span class="ticker__item"><span class="dot">●</span> ${esc(BLOG_NAME)}: free essays, a few times a month</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -146,6 +146,15 @@ const PERSON_SAMEAS = [
 	"https://search.asu.edu/profile/559969",
 	"https://www.amazon.com/stores/author/B01LBGCKWM/about",
 	"https://www.bside.org",
+	// Press author profiles, verified 2026-07-31 (bios match: BodeTree
+	// cofounder/CEO -> B:Side). Coverage ARTICLES (TechCrunch, Fox Business)
+	// are linked in the .bio__press strips on / and /about/, not here —
+	// sameAs is for profile pages of the person, not stories about him.
+	// WSJ / NYT / MSNBC: asserted in his Inc. bio but no verifiable URL found
+	// as of 2026-07-31 — those outlets stay UNLINKED in the press strip. Do
+	// not add or link them without a real URL.
+	"https://www.forbes.com/sites/chrismyers/",
+	"https://www.inc.com/author/chris-myers",
 ];
 // Pass { searchAction: true } on pages whose search honors ?q= (the blog
 // index) to emit a WebSite SearchAction (sitelinks searchbox).
@@ -163,7 +172,7 @@ export function orgJsonLd({ searchAction = false } = {}) {
 		"@context": "https://schema.org",
 		"@graph": [
 			{
-				"@type": "Organization",
+				"@type": "ProfessionalService",
 				"@id": `${origin}/#org`,
 				name: COMPANY.name,
 				url: `${origin}/`,
@@ -180,6 +189,7 @@ export function orgJsonLd({ searchAction = false } = {}) {
 				"@id": `${origin}/#person-cmyers`,
 				name: COMPANY.founder.name,
 				jobTitle: "Founder & Chairman",
+				image: `${origin}/images/christopher-myers-hedcut.png`,
 				worksFor: { "@id": `${origin}/#org` },
 				sameAs: PERSON_SAMEAS,
 			},
@@ -228,9 +238,9 @@ export function footer() {
   <div class="wrap">
       <div class="foot__top">
       <div class="foot__brand">
-        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
       </div>
@@ -275,9 +285,23 @@ export function footer() {
         </ul>
       </div>
     </div>
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">${esc(BLOG_NAME)} · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to ${attr(BLOG_NAME)}">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+    </div>
     <div class="foot__bottom">
       <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
-      <span class="links"><a href="/">Home</a><a href="/blog/">Writing</a><a href="/blog/rss.xml">RSS</a></span>
+      <span class="links"><a href="/">Home</a><a href="/blog/">Writing</a><a href="/blog/rss.xml">RSS</a><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></span>
     </div>
   </div>
 </footer>`;
@@ -288,16 +312,16 @@ export function footer() {
 export function subscribeBand(subscribeUrl, publicationUrl) {
 	const action = subscribeUrl || "#";
 	const archive = publicationUrl || subscribeUrl || "#";
-	return `<section class="section ink" data-screen-label="Subscribe">
+	return `<section class="section ink">
   <div class="wrap">
     <div class="news">
       <div class="subcard crop">
-        <div class="tick-lbl"><span>${esc(BLOG_NAME)} / free</span><span>Weekly</span></div>
+        <div class="tick-lbl"><span>${esc(BLOG_NAME)} / free</span><span>A few times a month</span></div>
         <h3>Read before you ever pick up the phone.</h3>
-        <p class="lead" style="font-size:15px;">Free weekly essays. One field. No sales pitches.</p>
+        <p class="lead" style="font-size:15px;">Free essays, a few times a month. One field. No sales pitches.</p>
         <form class="subform" data-beehiiv-subscribe action="${attr(action)}" method="get" target="_blank">
           <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
-          <button class="btn btn--primary" type="submit">Get the weekly essay →</button>
+          <button class="btn btn--primary" type="submit">Get the essays →</button>
         </form>
         <p style="font-family:var(--mono);font-size:11px;color:var(--dtx-faint);margin-top:14px;line-height:1.6;">Delivered by beehiiv. No spam, unsubscribe anytime.</p>
       </div>
@@ -317,7 +341,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
 
 // Scripts shared by every blog page: mobile nav + subscribe enhancement + search.
 export function pageScripts() {
-	return `<script src="/js/nav.js?v=3"></script>
+	return `<script src="/js/nav.js?v=5"></script>
 <script src="/js/analytics.js?v=2"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

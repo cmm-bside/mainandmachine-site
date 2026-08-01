@@ -8,6 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/config.mjs";
 import { COMPANY } from "../src/data/company.mjs";
+import { factValues, serviceNotes, countableClauses, contradictionPattern } from "./lib/fact-values.mjs";
 
 const errors = [];
 const fail = (m) => errors.push(m);
@@ -41,6 +42,7 @@ const ALL_PAGES = [
   "phoenix/index.html",
   "work/index.html",
   "work/marcus/index.html",
+  "work/marcus/results/index.html",
   "guides/index.html",
   "guides/ai-consultant-cost/index.html",
   "guides/ai-readiness-checklist/index.html",
@@ -108,6 +110,107 @@ for (const page of [...ALL_PAGES, "llms.txt"]) {
   }
 }
 
+// --- Stamped data-fact spans must match the facts file ----------------------
+// render-facts.mjs WRITES these spans; nothing used to CHECK them, so editing
+// site-facts.json and forgetting `npm run facts:render` shipped stale numbers
+// with a green build. Re-derive every value and compare byte-for-byte.
+const FACT_VALUES = factValues(COMPANY);
+const SPAN_RE = /<[a-z][^>]*\bdata-fact="([a-z-]+)"[^>]*>([^<]*)</g;
+let spansChecked = 0;
+for (const page of ALL_PAGES) {
+  const html = read(page);
+  if (!html) continue;
+  for (const [, key, text] of html.matchAll(SPAN_RE)) {
+    const expected = FACT_VALUES[key];
+    if (expected === undefined) {
+      fail(`${page}: unknown data-fact key "${key}" (not in scripts/lib/fact-values.mjs)`);
+      continue;
+    }
+    spansChecked++;
+    if (text !== expected)
+      fail(
+        `${page}: data-fact="${key}" is "${text}" but site-facts.json says "${expected}" — ` +
+          `run \`npm run facts:render\``
+      );
+  }
+}
+
+// --- Service `note` fields must survive into the copy -----------------------
+// Notes are prose ("Four taken per year", "No lock-in · annual pays for 10
+// months, not 12") embedded inside JSON-LD descriptions and list items, so
+// they cannot be stamped into a data-fact span. Guard them two ways instead:
+//
+//   presence      — every COUNTABLE clause of a note ("Four taken per year")
+//                   must appear verbatim on some surface, so changing the count
+//                   in the JSON without updating the copy fails. Descriptive
+//                   clauses are exempt; prose may paraphrase those.
+//   contradiction — no surface may state the same phrase with a DIFFERENT
+//                   count. This is the drift the 2026-07-31 audit found: the
+//                   back-office note read "Four taken per year" while a stale
+//                   artifact still said "Two", and nothing failed.
+const NOTE_SURFACES = [...ALL_PAGES, "llms.txt", "llms-full.txt"];
+const noteCorpus = NOTE_SURFACES.map((p) => ({ page: p, html: read(p) })).filter((x) => x.html);
+let notesChecked = 0;
+
+function guardCountablePhrase(phrase, label) {
+  notesChecked++;
+  if (!noteCorpus.some(({ html }) => html.includes(phrase)))
+    fail(
+      `site-facts.json: ${label} claims "${phrase}" but no page says it — ` +
+        `update the copy to match the facts file (or the facts file to match reality)`
+    );
+  const contradiction = contradictionPattern(phrase);
+  if (!contradiction) return;
+  for (const { page, html } of noteCorpus) {
+    const hit = contradiction.exec(html);
+    if (hit) fail(`${page}: "${hit[0].trim()}" contradicts the canonical ${label} "${phrase}"`);
+  }
+}
+
+for (const { key, name, note } of serviceNotes(COMPANY)) {
+  for (const clause of countableClauses(note))
+    guardCountablePhrase(clause, `services["${key}"].note (${name})`);
+}
+
+// --- Build-slot count must stay verifiable ---------------------------------
+// The ticker publishes a slot count, which is scarcity language — allowed only
+// while it is specific AND current (CLAUDE.md: no unverifiable scarcity; the
+// choose-a-consultant guide red-flags exactly this pattern in other firms).
+// The rendered span carries the date it was counted; this guard fails the
+// build once that date goes stale, forcing a recount or removal of the span.
+const SLOT_STAMP_MAX_AGE_DAYS = 21;
+const slots = COMPANY.buildSlots || {};
+const countedOn = slots.countedOn;
+
+// The prose count and the machine count must agree: `remaining: 4` with a
+// line reading "Two Q4 build slots remain" is the drift this catches.
+const NUMBER_WORDS = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
+const expectedWord = NUMBER_WORDS[slots.remaining];
+if (expectedWord === undefined) {
+  fail(`site-facts.json: buildSlots.remaining (${JSON.stringify(slots.remaining)}) is not a whole number 0–10`);
+} else if (!new RegExp(`^${expectedWord}\\b`, "i").test(String(slots.line || ""))) {
+  fail(
+    `site-facts.json: buildSlots.line ("${slots.line}") does not start with "${expectedWord}" ` +
+      `to match buildSlots.remaining (${slots.remaining})`
+  );
+}
+// The slot line is itself a countable claim: it must appear on the pages that
+// stamp it, and no surface may advertise a different count.
+guardCountablePhrase(String(slots.line || ""), "buildSlots.line");
+
+if (!/^\d{4}-\d{2}-\d{2}$/.test(countedOn || "")) {
+  fail(`site-facts.json: buildSlots.countedOn must be a YYYY-MM-DD date (got ${JSON.stringify(countedOn)})`);
+} else {
+  const ageDays = Math.floor((Date.now() - Date.parse(`${countedOn}T00:00:00Z`)) / 86_400_000);
+  if (ageDays > SLOT_STAMP_MAX_AGE_DAYS) {
+    fail(
+      `site-facts.json: buildSlots.countedOn (${countedOn}) is ${ageDays} days old — ` +
+        `max ${SLOT_STAMP_MAX_AGE_DAYS}. Recount the slots and update the date, or drop the ` +
+        `data-fact="build-slots" span from the ticker. A stale count is unverifiable scarcity.`
+    );
+  }
+}
+
 // --- JSON-LD: every block must parse, and entity facts must match ----------
 const ORG_ID = `${COMPANY.origin}/#org`;
 const PERSON_ID = `${COMPANY.origin}/#person-cmyers`;
@@ -162,4 +265,4 @@ if (errors.length) {
   for (const e of errors) console.error("  - " + e);
   process.exit(1);
 }
-console.log(`[facts:check] OK — facts + JSON-LD consistent across ${ALL_PAGES.length} pages.`);
+console.log(`[facts:check] OK — facts + JSON-LD consistent across ${ALL_PAGES.length} pages (${spansChecked} data-fact span(s), ${notesChecked} countable claim(s) verified).`);

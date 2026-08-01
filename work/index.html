@@ -27,9 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
@@ -100,28 +100,78 @@
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "CollectionPage",
       "name": "Proof",
       "url": "https://www.mainandmachine.com/work/",
       "description": "Client stories published only when the numbers are verified and the client signs off.",
-      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" },
+      "isPartOf": {
+        "@id": "https://www.mainandmachine.com/#website"
+      },
       "hasPart": [
-        { "@type": "Article", "name": "MARCUS — a private AI back office for B:Side Capital", "url": "https://www.mainandmachine.com/work/marcus/" }
+        {
+          "@type": "Article",
+          "name": "MARCUS — a private AI back office for B:Side Capital",
+          "url": "https://www.mainandmachine.com/work/marcus/"
+        }
       ]
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Proof", "item": "https://www.mainandmachine.com/work/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Proof",
+          "item": "https://www.mainandmachine.com/work/"
+        }
       ]
     }
   ]
@@ -141,13 +191,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -192,7 +242,7 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Proof hero">
+<section class="section paper pagehero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
@@ -218,7 +268,7 @@
 </section>
 
 <!-- ============ FOUNDER NOTE ============ -->
-<section class="section paper-2" data-screen-label="Why we built it for ourselves first">
+<section class="section paper-2">
   <div class="wrap">
     <div class="foundernote crop">
       <span class="foundernote__tag">Why we lead with our own company</span>
@@ -231,7 +281,7 @@
 </section>
 
 <!-- ============ ANCHOR CASE: MARCUS ============ -->
-<section class="section paper" data-screen-label="Anchor case — MARCUS">
+<section class="section paper">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -269,7 +319,7 @@
       <div class="story-feat__rail">
         <div class="story-feat__row"><span>Client</span><b>B:Side Capital</b></div>
         <div class="story-feat__row"><span>Sector</span><b>SBA 504 / CDFI</b></div>
-        <div class="story-feat__row"><span>The team</span><b style="color:var(--accent-ink);">14 AI agents</b></div>
+        <div class="story-feat__row"><span>The team</span><b>14 AI agents</b></div>
         <div class="story-feat__row"><span>Footprint</span><b>7 departments</b></div>
         <div class="story-feat__row"><span>Runs</span><b>On-prem</b></div>
       </div>
@@ -278,13 +328,13 @@
 </section>
 
 <!-- ============ THE STANDARD ============ -->
-<section class="section paper-2" data-screen-label="The shelf rule">
+<section class="section paper-2">
   <div class="wrap">
     <div class="pagehero__grid">
       <div>
         <span class="kicker">02 / The shelf rule</span>
         <h2 class="h2 mt-s">Client work goes up the same way: <span class="accent-tx">verified, and signed off.</span></h2>
-        <p class="lead mt-s">MARCUS we can open up because it’s ours. Everyone else’s work goes on this shelf by one rule: we publish a client story only when the numbers are verified and the client signs off in writing. No borrowed logos, no rounded-up results, nothing here we can’t stand behind. More are clearing review now.</p>
+        <p class="lead mt-s">MARCUS we can open up because it’s ours. Everyone else’s work goes on this shelf by one rule: we publish a client story only when the numbers are verified and the client signs off in writing. No borrowed logos, no rounded-up results, nothing here we can’t stand behind. Here is what the first one measured:</p>
       </div>
       <div class="statrail crop" aria-label="Shelf rules at a glance">
         <div class="statrail__bar"><span>Shelf rules</span><span><b>One standard</b></span></div>
@@ -293,6 +343,27 @@
         <div class="statrail__row"><span class="statrail__k">Borrowed logos</span><span class="statrail__v">None</span></div>
       </div>
     </div>
+    <!-- BUILD-LOG:MARCUS-SCORECARD-COMPACT — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
+      <div class="scoregrid scoregrid--compact">
+        <div class="score" data-figure="hours-returned">
+          <div class="score__n tick-num">1,240<small>hrs</small></div>
+          <p class="score__d">Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work.</p>
+        </div>
+        <div class="score" data-figure="weekly-adoption">
+          <div class="score__n tick-num">93<small>%</small></div>
+          <p class="score__d">Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck.</p>
+        </div>
+        <div class="score" data-figure="identifiers-out">
+          <div class="score__n tick-num">0</div>
+          <p class="score__d">Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists.</p>
+        </div>
+        <div class="score" data-figure="human-approved">
+          <div class="score__n tick-num">100<small>%</small></div>
+          <p class="score__d">Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted.</p>
+        </div>
+      </div>
+<!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
+    <p class="builds__note" style="margin-top:20px;"><a href="/work/marcus/results/">Read the MARCUS year-one results →</a></p>
   </div>
 </section>
 
@@ -300,13 +371,17 @@
 <!-- /TESTIMONIALS -->
 
 <!-- ============ START HERE (ink) ============ -->
-<section class="section ink final" data-screen-label="Start here">
+<section class="section ink final">
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
       <p class="lead mt-s">Want your operation on this shelf? It starts with a <b>free 30-minute assessment</b>: a senior advisor walks three of your workflows and tells you what’s worth building, if anything.</p>
       <div class="hero__cta">
         <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      </div>
+      <div class="reversal">
+        <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
+        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list &rarr;</a></p>
       </div>
     </div>
     <div class="final__promise">
@@ -322,8 +397,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -336,9 +411,9 @@
       </div>
       <div class="foot__top">
       <div class="foot__brand">
-        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

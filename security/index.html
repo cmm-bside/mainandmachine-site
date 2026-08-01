@@ -23,7 +23,8 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine — where Main Street meets the machine" />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -44,23 +45,59 @@
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
       "areaServed": "US",
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "WebPage",
       "@id": "https://www.mainandmachine.com/security/#webpage",
       "url": "https://www.mainandmachine.com/security/",
       "name": "Security & Data Handling",
       "description": "On-prem local models, PII stripped before any model reads a document, encryption at rest, a tamper-evident audit log, and a human sign-off on every action.",
-      "isPartOf": { "@id": "https://www.mainandmachine.com/#website" }
+      "isPartOf": {
+        "@id": "https://www.mainandmachine.com/#website"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Security & data handling", "item": "https://www.mainandmachine.com/security/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Security & data handling",
+          "item": "https://www.mainandmachine.com/security/"
+        }
       ]
     },
     {
@@ -69,32 +106,50 @@
         {
           "@type": "Question",
           "name": "Does our data leave our building?",
-          "acceptedAnswer": { "@type": "Answer", "text": "For regulated work, no — the models run on your own hardware, and in normal operation no client file leaves your network. That is how MARCUS runs at a regulated SBA lender today. When a cloud model is the right call for a workflow, we say so in the written quote and you decide." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For regulated work, no — the models run on your own hardware, and in normal operation no client file leaves your network. That is how MARCUS runs at a regulated SBA lender today. When a cloud model is the right call for a workflow, we say so in the written quote and you decide."
+          }
         },
         {
           "@type": "Question",
           "name": "Do AI models see our customers' personal information?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Microsoft Presidio detects and removes names, Social Security numbers, and account numbers before any model reads a document. The model sees the work, not the identity." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Microsoft Presidio detects and removes names, Social Security numbers, and account numbers before any model reads a document. The model sees the work, not the identity."
+          }
         },
         {
           "@type": "Question",
           "name": "How is stored data protected?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Everything stored is encrypted at rest, and every action the system takes is written to an append-only audit log secured as a tamper-evident chain." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Everything stored is encrypted at rest, and every action the system takes is written to an append-only audit log secured as a tamper-evident chain."
+          }
         },
         {
           "@type": "Question",
           "name": "Can we audit what the system did?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The audit log is append-only and tamper-evident: entries can be added but never edited or deleted, so compliance can prove nothing was altered after the fact." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The audit log is append-only and tamper-evident: entries can be added but never edited or deleted, so compliance can prove nothing was altered after the fact."
+          }
         },
         {
           "@type": "Question",
           "name": "Can the AI act on its own?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Nothing sends, files, posts, or pays until a person approves it. The system never decides eligibility, credit, or price — those numbers come from your systems of record, never from a model's memory." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Nothing sends, files, posts, or pays until a person approves it. The system never decides eligibility, credit, or price — those numbers come from your systems of record, never from a model's memory."
+          }
         },
         {
           "@type": "Question",
           "name": "Has this architecture run in a regulated environment?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, entirely on-prem. The case is published with the client's written permission." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, entirely on-prem. The case is published with the client's written permission."
+          }
         }
       ]
     }
@@ -162,13 +217,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -320,7 +375,7 @@
         <span class="kicker">03 / Not a policy document</span>
         <h2 class="h2 mt-s">This architecture is running <span class="accent-tx">right now.</span></h2>
       </div>
-      <p class="lead">MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one.</p>
+      <p class="lead">MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: <!-- BUILD-LOG:MARCUS-INLINE-SECURITY — rendered from data/build-log.json. Never hand-edit. --><b>0</b><!-- /BUILD-LOG:MARCUS-INLINE-SECURITY --> (<a href="/work/marcus/results/">the year-one results</a>).</p>
     </div>
     <a class="btn btn--secondary btn--lg" href="/work/marcus/">Read the MARCUS case study <span class="arr">→</span></a>
   </div>
@@ -332,6 +387,10 @@
     <div class="reviewer crop">
       <p><b>Have a security questionnaire?</b> Send it, or bring your IT reviewer to the free 30-minute assessment. The person answering is the founder who is accountable for the build — and “that control doesn’t apply to your workflow” is an answer we’ll put in writing too. The plain-English version of the cloud-versus-on-prem call is in <a href="/guides/ai-data-cloud-vs-on-prem/">where your AI data actually goes</a>.</p>
       <a class="btn btn--primary btn--lg" href="/book/">Book the free assessment <span class="arr">→</span></a>
+      <div class="reversal">
+        <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
+        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list &rarr;</a></p>
+      </div>
     </div>
   </div>
 </section>
@@ -385,8 +444,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>

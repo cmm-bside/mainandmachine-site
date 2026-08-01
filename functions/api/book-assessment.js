@@ -15,9 +15,10 @@
 // Local dev:  npx wrangler pages dev . --binding RESEND_API_KEY=...
 // Logic-only test (no network):  npm run test:book
 
-import { validateSubmission, validateDetails, makeReferenceId, firstNameOf, contactVia, formatStamp } from "../../emails/lib.js";
+import { validateSubmission, validateDetails, validateEstimate, makeReferenceId, firstNameOf, contactVia, formatStamp } from "../../emails/lib.js";
 import { renderAutoresponderHtml, renderAutoresponderText } from "../../emails/assessment-autoresponder.js";
 import { renderInternalHtml, renderInternalText, internalSubject, renderDetailsHtml, renderDetailsText, detailsSubject } from "../../emails/assessment-internal.js";
+import { renderEstimateHtml, renderEstimateText, estimateSubject } from "../../emails/estimate.js";
 
 const DEFAULT_FROM = "Main & Machine <hello@mainandmachine.com>";
 const DEFAULT_NOTIFY = "cmyers@mainandmachine.com,akester@mainandmachine.com";
@@ -51,6 +52,13 @@ export async function onRequestPost(context) {
   // --- stage 2: optional prep details appended after the confirmation screen ---
   if (body.stage === "details") {
     return handleDetails(body, env);
+  }
+
+  // --- stage 3: "email me this estimate" from the calculator / guide worksheets ---
+  // Not a gate: the calculator's numbers are on screen either way. This just
+  // sends a copy, so it needs an email and the inputs — nothing else.
+  if (body.stage === "estimate") {
+    return handleEstimate(body, env);
   }
 
   // --- spam: min fill time ---
@@ -179,6 +187,53 @@ async function handleDetails(body, env) {
   }
 
   return json({ ok: true, referenceId: data.referenceId });
+}
+
+async function handleEstimate(body, env) {
+  const { ok, errors, data } = validateEstimate(body);
+  if (!ok) {
+    return json({ ok: false, error: "Please check your email address.", errors }, 422);
+  }
+
+  const apiKey = env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not set");
+    return json({ ok: false, error: "Email is not configured. Please email us directly." }, 500);
+  }
+
+  const from = env.MAIL_FROM || DEFAULT_FROM;
+  const notifyTo = (env.LEAD_NOTIFY_TO || DEFAULT_NOTIFY).split(",").map((s) => s.trim()).filter(Boolean);
+
+  // Log the shape, never the address — same discipline as the other stages.
+  console.log(`[estimate] ${data.source || "calculator"} — ${data.industry || "?"} / ${data.team || "?"}`);
+
+  try {
+    await sendEmail(apiKey, {
+      from,
+      to: [data.email],
+      subject: estimateSubject(data),
+      html: renderEstimateHtml(data),
+      text: renderEstimateText(data),
+    });
+  } catch (e) {
+    console.error("estimate email failed", e);
+    return json({ ok: false, error: "We couldn't send that just now. The numbers are still on the page." }, 502);
+  }
+
+  // Quiet internal copy so a real request is visible without a CRM.
+  try {
+    await sendEmail(apiKey, {
+      from,
+      to: notifyTo,
+      reply_to: data.email,
+      subject: `Estimate requested — ${data.industry || "unspecified"} / ${data.team || "?"}`,
+      text: renderEstimateText(data) + `\n\nRequested by: ${data.email}\nSource: ${data.source || "calculator"}`,
+    });
+  } catch (e) {
+    console.error("estimate internal copy failed", e);
+  }
+
+  return json({ ok: true });
 }
 
 // Anything other than POST.

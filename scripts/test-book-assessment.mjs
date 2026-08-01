@@ -14,9 +14,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
-  validateSubmission, validateDetails, makeReferenceId, firstNameOf, contactVia, formatStamp,
+  validateSubmission, validateDetails,
+  validateEstimate, makeReferenceId, firstNameOf, contactVia, formatStamp,
 } from "../emails/lib.js";
 import { renderAutoresponderHtml, renderAutoresponderText } from "../emails/assessment-autoresponder.js";
+import { renderEstimateHtml, renderEstimateText, estimateSubject } from "../emails/estimate.js";
 import {
   renderInternalHtml, renderInternalText, internalSubject,
   renderDetailsHtml, renderDetailsText, detailsSubject,
@@ -86,6 +88,36 @@ if (detBadRef.ok) fail("details with bad reference id was wrongly accepted");
 else pass("details with bad reference id rejected");
 
 // 2. render
+// --- stage 3: "email me this estimate" -------------------------------------
+const estimateSample = {
+  stage: "estimate",
+  email: "jordan@rivera.co",
+  industry: "Professional services",
+  team: "24",
+  hours: "6",
+  annual: "$96,000",
+  source: "/calculator/",
+};
+const est = validateEstimate(estimateSample);
+est.ok ? pass("estimate: valid payload accepted") : fail(`estimate rejected: ${JSON.stringify(est.errors)}`);
+const estBad = validateEstimate({ ...estimateSample, email: "nope" });
+!estBad.ok && estBad.errors.email ? pass("estimate: bad email rejected") : fail("estimate: bad email should be rejected");
+const estLong = validateEstimate({ ...estimateSample, industry: "x".repeat(200) });
+!estLong.ok && estLong.errors.industry ? pass("estimate: over-long field rejected") : fail("estimate: over-long field should be rejected");
+const estNoInputs = validateEstimate({ stage: "estimate", email: "jordan@rivera.co" });
+estNoInputs.ok ? pass("estimate: email alone is enough (no gate)") : fail("estimate: email alone should be accepted");
+const estSubj = estimateSubject(est.data);
+estSubj.includes("$96,000") ? pass(`estimate: subject carries the number ("${estSubj}")`) : fail("estimate: subject missing the number");
+const estHtml = renderEstimateHtml(est.data);
+const estText = renderEstimateText(est.data);
+estHtml.includes("$96,000") && estHtml.includes("/calculator/#assumptions") && estHtml.includes("90 days")
+  ? pass("estimate HTML: number + assumptions link + guarantee present")
+  : fail("estimate HTML: missing number, assumptions link, or guarantee");
+estText.includes("$96,000") && estText.includes("/book/")
+  ? pass("estimate text: number + booking link present")
+  : fail("estimate text: missing number or booking link");
+!/\shref="\/(?!\/)/.test(estHtml) ? pass("estimate HTML: no relative links") : fail("estimate HTML: relative link found (breaks in email)");
+
 const now = new Date();
 const referenceId = makeReferenceId(now);
 const stamp = formatStamp(now);
@@ -96,6 +128,8 @@ pass(`reference id: ${referenceId}`);
 pass(`contact via: ${contactVia(data)}`);
 
 const files = {
+  "estimate.html": estHtml,
+  "estimate.txt": estText,
   "autoresponder.html": renderAutoresponderHtml(emailData),
   "autoresponder.txt": renderAutoresponderText(emailData),
   "internal.html": renderInternalHtml(data, meta),

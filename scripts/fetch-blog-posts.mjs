@@ -43,8 +43,13 @@ const BODY_SEARCH_CAP = 2000; // searchText length in per-post body files
 // ---------------------------------------------------------------------------
 export async function run() {
 	if (!BEEHIIV_API_KEY) {
+		// Still a graceful fallback so `npm install` and offline work succeed,
+		// but blog:build now REFUSES to prerender an empty archive unless
+		// ALLOW_EMPTY_BLOG=1 is set explicitly — a silent empty fetch used to
+		// sail through the whole pipeline (2026-07-31 audit).
 		console.warn(
-			"[blog:fetch] BEEHIIV_API_KEY not set — writing an empty blog (graceful fallback).",
+			"[blog:fetch] BEEHIIV_API_KEY not set — writing an empty blog.\n" +
+				"             blog:build will FAIL on this unless you set ALLOW_EMPTY_BLOG=1 (local dev only).",
 		);
 		writeEmpty();
 		return;

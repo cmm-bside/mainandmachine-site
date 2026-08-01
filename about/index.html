@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -56,55 +56,141 @@
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Services",
         "itemListElement": [
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Readiness Audit", "serviceType": "AI readiness audit", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#audit" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Readiness Audit",
+              "serviceType": "AI readiness audit",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#audit"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 3500,
+              "maxPrice": 8500,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Implementation Sprint", "serviceType": "AI implementation", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#sprint" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 18000, "maxPrice": 60000, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Implementation Sprint",
+              "serviceType": "AI implementation",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#sprint"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 18000,
+              "maxPrice": 60000,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "Managed Services", "serviceType": "AI monitoring and maintenance", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#managed" },
-            "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 1500, "priceCurrency": "USD", "unitText": "month", "description": "From $1,500/month, no lock-in" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Managed Services",
+              "serviceType": "AI monitoring and maintenance",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#managed"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "minPrice": 1500,
+              "priceCurrency": "USD",
+              "unitText": "month",
+              "description": "From $1,500/month, no lock-in"
+            }
           }
         ]
       }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
     {
       "@type": "Person",
       "@id": "https://www.mainandmachine.com/#person-cmyers",
       "sameAs": [
         "https://www.linkedin.com/in/cmyers85/",
         "https://x.com/Chris_myers",
-        "https://www.entrepreneur.com/author/christopher-myers"
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
-      "worksFor": { "@id": "https://www.mainandmachine.com/#org" },
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
       "affiliation": [
-        { "@type": "Organization", "name": "B:Side Capital + Fund" },
-        { "@type": "CollegeOrUniversity", "name": "ASU W.P. Carey School of Business" }
+        {
+          "@type": "Organization",
+          "name": "B:Side Capital + Fund"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "ASU W.P. Carey School of Business"
+        }
       ],
-      "knowsAbout": ["small business", "AI implementation", "SBA lending", "entrepreneurship"]
+      "knowsAbout": [
+        "small business",
+        "AI implementation",
+        "SBA lending",
+        "entrepreneurship"
+      ],
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Who we are", "item": "https://www.mainandmachine.com/about/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Who we are",
+          "item": "https://www.mainandmachine.com/about/"
+        }
       ]
     }
   ]
@@ -124,13 +210,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -227,7 +313,10 @@
       <div class="bio__prose">
         <p>Christopher has spent 26 years backing Main Street, today as <b>CEO of B:Side Capital and Fund</b>, a professor of entrepreneurship at ASU’s W.P. Carey School, and the author of several books on small business. Main &amp; Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building.</p>
         <p>As chairman, he pairs his own senior judgment with a team of <b>AI-native builders</b>: digital natives who never had to unlearn the old way. One operator stays accountable for every build. The future doesn’t belong to the people who can do what AI does; it belongs to the people who can take what the machine produces and <b>be accountable for it.</b></p>
-        <div class="bio__press">Our founder’s work has been covered in: <span class="press-list"><span>Forbes</span><span>The Wall Street Journal</span><span>The New York Times</span><span>Inc.</span><span>TechCrunch</span><span>MSNBC</span><span>Fox Business</span></span></div>
+        <!-- Press links verified 2026-07-31: Forbes = founder contributor page; Inc. = founder author page;
+     TechCrunch + Fox Business = BodeTree coverage naming Christopher Myers as founder/CEO.
+     WSJ / NYT / MSNBC: no verifiable URL found - they stay unlinked. Never link without a real URL. -->
+        <div class="bio__press">Our founder’s work has been covered in: <span class="press-list"><span><a href="https://www.forbes.com/sites/chrismyers/" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Forbes</a></span><span>The Wall Street Journal</span><span>The New York Times</span><span><a href="https://www.inc.com/author/chris-myers" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Inc.</a></span><span><a href="https://techcrunch.com/2013/04/17/bodetree-a-startup-making-small-business-finance-less-boring-raises-1-4-million/" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">TechCrunch</a></span><span>MSNBC</span><span><a href="https://www.foxbusiness.com/features/bodetree-crunching-numbers-for-the-little-guy" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Fox Business</a></span></span></div>
         <div class="bio__verify">
           <span class="tick-lbl">Don’t take the bio’s word for it</span>
           <ul>
@@ -340,8 +429,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>

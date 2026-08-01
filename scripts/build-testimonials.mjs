@@ -1,18 +1,33 @@
 #!/usr/bin/env node
-// Render "What clients say" on / and /work/ from data/testimonials.json.
+// Render client quotes from data/testimonials.json — the ONE source.
 //
 // The proof-shelf rule, enforced in code: a quote renders ONLY with
 // permission: true (the client's written sign-off on file). Zero
-// permissioned quotes → NOTHING renders — no placeholder, no empty shell;
-// the section does not exist. This is the single path for these quotes —
-// never hand-edit the rendered regions.
-// Idempotent: regions are rewritten between TESTIMONIALS markers every run.
+// permissioned quotes -> NOTHING renders anywhere — no placeholder, no
+// empty shell. Removing permission: true removes the quote from every
+// surface on the next rebuild. Never hand-edit the rendered regions.
+//
+// Surfaces (all driven by markers, all rewritten on every run):
+//   FULL     /  and  /work/            — "In their words." section, all signed quotes
+//   FEATURED /work/marcus/results/     — one B:Side-attributed quote only (featured:
+//                                        true wins, else first B:Side quote). A quote
+//                                        from any other client NEVER renders on the
+//                                        MARCUS page — wrong attribution is worse
+//                                        than no quote.
+//   RAIL     /book/                    — one-line version in the booking rail
+//                                        (uses `short` if present, else the full quote
+//                                        — never machine-truncated)
+//
+// Optional fields per entry: featured (boolean), short (string, a client-approved
+// shorter cut of the same quote — part of the same written sign-off).
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/config.mjs";
 
 const DATA = path.join(ROOT, "data", "testimonials.json");
-const PAGES = [path.join(ROOT, "index.html"), path.join(ROOT, "work", "index.html")];
+const FULL_PAGES = [path.join(ROOT, "index.html"), path.join(ROOT, "work", "index.html")];
+const RESULTS_PAGE = path.join(ROOT, "work", "marcus", "results", "index.html");
+const BOOK_PAGE = path.join(ROOT, "book", "index.html");
 
 const esc = (s) =>
   String(s == null ? "" : s)
@@ -25,9 +40,12 @@ const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
 const signed = (data.testimonials || []).filter(
   (t) => t && t.permission === true && t.quote && t.name,
 );
+const cite = (t) =>
+  `${esc(t.name)}${t.role ? ` — ${esc(t.role)}` : ""}${t.company ? `, ${esc(t.company)}` : ""}`;
 
-const SECTION = signed.length
-  ? `<section class="section paper-2" data-screen-label="What clients say">
+// ---- FULL section (/ and /work/) ----
+const FULL_SECTION = signed.length
+  ? `<section class="section paper-2">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -38,27 +56,65 @@ const SECTION = signed.length
     </div>
     <div class="testi">
 ${signed
-  .map(
-    (t) => `      <blockquote>${esc(t.quote)}<cite>${esc(t.name)}${t.role ? ` — ${esc(t.role)}` : ""}${t.company ? `, ${esc(t.company)}` : ""}</cite></blockquote>`,
-  )
+  .map((t) => `      <blockquote>${esc(t.quote)}<cite>${cite(t)}</cite></blockquote>`)
   .join("\n")}
     </div>
   </div>
 </section>`
   : "";
 
-for (const page of PAGES) {
-  let html = fs.readFileSync(page, "utf8");
-  const re = /(<!-- TESTIMONIALS: rendered by scripts\/build-testimonials\.mjs — do not hand-edit -->)[\s\S]*?(<!-- \/TESTIMONIALS -->)/;
+// ---- FEATURED quote (results page): B:Side-attributed only ----
+const bside = signed.filter((t) => /b[:\s-]?side/i.test(t.company || ""));
+const feat = bside.find((t) => t.featured === true) || bside[0] || null;
+const FEATURED_SECTION = feat
+  ? `<section class="section paper-2">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">In their words</span>
+        <h2 class="h2 mt-s">The client, on the record.</h2>
+      </div>
+      <p class="lead">Written sign-off on file — the same rule as every number above.</p>
+    </div>
+    <div class="testi">
+      <blockquote>${esc(feat.quote)}<cite>${cite(feat)}</cite></blockquote>
+    </div>
+  </div>
+</section>`
+  : "";
+
+// ---- RAIL panel (/book/) ----
+const railQuote = feat || signed[0] || null;
+const RAIL_PANEL = railQuote
+  ? `<div class="panel">
+          <h2 class="panel__t">From a client</h2>
+          <p>“${esc(railQuote.short || railQuote.quote)}”</p>
+          <p style="margin-top:12px;"><b>— ${cite(railQuote)}</b></p>
+        </div>`
+  : "";
+
+let failures = 0;
+function stamp(file, re, content, label) {
+  let html = fs.readFileSync(file, "utf8");
   if (!re.test(html)) {
-    console.error(`[testimonials:build] ${path.relative(ROOT, page)}: markers missing`);
-    process.exitCode = 1;
-    continue;
+    console.error(`[testimonials:build] ${path.relative(ROOT, file)}: ${label} markers missing`);
+    failures += 1;
+    return;
   }
-  html = html.replace(re, `$1${SECTION ? `\n${SECTION}\n` : "\n"}$2`);
-  fs.writeFileSync(page, html);
+  html = html.replace(re, (_, open, close) => `${open}${content ? `\n${content}\n` : "\n"}${close}`);
+  fs.writeFileSync(file, html);
 }
 
+const RE_FULL =
+  /(<!-- TESTIMONIALS: rendered by scripts\/build-testimonials\.mjs — do not hand-edit -->)[\s\S]*?(<!-- \/TESTIMONIALS -->)/;
+const RE_RAIL =
+  /(<!-- TESTIMONIALS:RAIL — rendered by scripts\/build-testimonials\.mjs — do not hand-edit -->)[\s\S]*?(<!-- \/TESTIMONIALS:RAIL -->)/;
+
+for (const page of FULL_PAGES) stamp(page, RE_FULL, FULL_SECTION, "FULL");
+stamp(RESULTS_PAGE, RE_FULL, FEATURED_SECTION, "FEATURED");
+stamp(BOOK_PAGE, RE_RAIL, RAIL_PANEL, "RAIL");
+if (failures) process.exitCode = 1;
+
 console.log(
-  `[testimonials:build] ${signed.length} signed-off quote(s) → ${signed.length ? "section rendered" : "section absent (no permissioned quotes — correct empty state)"} on / and /work/`,
+  `[testimonials:build] ${signed.length} signed-off quote(s) — full: ${FULL_SECTION ? "rendered" : "absent"} (/, /work/) · featured: ${FEATURED_SECTION ? "rendered" : "absent"} (results) · rail: ${RAIL_PANEL ? "rendered" : "absent"} (/book/)${signed.length ? "" : " — correct empty state"}`,
 );

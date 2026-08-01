@@ -15,6 +15,7 @@ import {
 	STATIC_ROUTES,
 	PROXIED_ROUTES,
 	NOINDEX_ROUTES,
+	LOCAL_SCRATCH_DIRS,
 } from "./lib/config.mjs";
 
 const errors = [];
@@ -122,7 +123,7 @@ for (const route of NOINDEX_ROUTES) {
 		fail(`sitemap: noindex route ${route} must not be listed`);
 }
 // every public page on disk must be declared in STATIC_ROUTES (or NOINDEX_ROUTES)
-const IGNORE_TOP = new Set(["node_modules", "scratchpad", "blog", "reports", "audit", "emails", "images", "blog-data", "src", "scripts", "functions", "js"]);
+const IGNORE_TOP = new Set([...LOCAL_SCRATCH_DIRS, "blog", "emails", "images", "blog-data", "src", "scripts", "functions", "js"]);
 const staticSet = new Set([...STATIC_ROUTES, ...NOINDEX_ROUTES]);
 (function walk(dir, prefix) {
 	for (const name of fs.readdirSync(dir)) {

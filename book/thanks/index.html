@@ -24,7 +24,8 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -45,16 +46,55 @@
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
       "areaServed": "US",
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" }
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Book a free assessment", "item": "https://www.mainandmachine.com/book/" },
-        { "@type": "ListItem", "position": 3, "name": "Request received", "item": "https://www.mainandmachine.com/book/thanks/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Book a free assessment",
+          "item": "https://www.mainandmachine.com/book/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Request received",
+          "item": "https://www.mainandmachine.com/book/thanks/"
+        }
       ]
     }
   ]
@@ -153,13 +193,13 @@ select.input:invalid { color: var(--tx-faint); }
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -221,17 +261,17 @@ select.input:invalid { color: var(--tx-faint); }
         <h1 class="h2" id="confirmTitle">Thanks. You’re in the queue.</h1>
         <p class="lead" id="confirmLede">Your request is in front of the advisor who prepares your call. Here is exactly what happens next.</p>
 
-        <div class="confirm__recap">
+        <div class="confirm__recap" id="confirmMeta">
           <div><span class="tick-lbl">Who replies</span><b>Christopher Myers — the advisor on your call</b></div>
           <div><span class="tick-lbl">When</span><b>Within 24 hours</b></div>
           <div><span class="tick-lbl">From</span><b>cmyers@mainandmachine.com</b></div>
         </div>
-        <p class="confirm__spam">A short note proposing a few times that work. Add <b>cmyers@mainandmachine.com</b> to your contacts so it never lands in spam.</p>
+        <p class="confirm__spam" id="confirmSpam">A short note proposing a few times that work. Add <b>cmyers@mainandmachine.com</b> to your contacts so it never lands in spam.</p>
 
         <!-- the faster path -->
-        <div class="faster">
+        <div class="faster" id="faster">
           <p><b>Don’t want to wait for the email?</b> The same 30 minutes, on the calendar right now. Booked in about a minute.</p>
-          <a class="btn btn--primary btn--lg" href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">Pick a time now <span class="arr">→</span></a>
+          <a class="btn btn--primary btn--lg" id="fasterLink" href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">Pick a time now <span class="arr">→</span></a>
         </div>
 
         <!-- STAGE 2 — optional prep details, appended to the same submission -->
@@ -316,8 +356,13 @@ select.input:invalid { color: var(--tx-faint); }
         </div>
 
         <div class="confirm__cta">
-          <a class="btn btn--primary btn--lg" href="/blog/">Read The Ampersand while you wait <span class="arr">→</span></a>
           <a class="btn btn--secondary btn--lg" href="/">Back to the site</a>
+          <p class="confirm__aside">Or <a href="/blog/">read The Ampersand</a> while you wait.</p>
+        </div>
+
+        <div class="reversal" id="confirmProof">
+          <p><b>What we build:</b> MARCUS returned <b>1,240 hrs</b> of staff preparation in its first 90 days of full-fleet operation, with zero borrower identifiers sent to an outside model. <a href="/work/marcus/results/">Read the year-one results &rarr;</a></p>
+          <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
         </div>
       </div>
     </div>
@@ -331,8 +376,8 @@ select.input:invalid { color: var(--tx-faint); }
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -411,7 +456,41 @@ select.input:invalid { color: var(--tx-faint); }
   // no personalization, no prep form — the expectations copy stands alone.
   var data = null;
   try { data = JSON.parse(sessionStorage.getItem('mm:book-confirm') || 'null'); } catch (e) {}
+
+  // Arrived straight from the Calendly embed: the slot is already booked, so
+  // the "we'll email you within 24 hours" framing is wrong.
+  var viaCalendly = /(?:^|[?&])via=calendly(?:&|$)/.test(location.search);
+  if (viaCalendly) {
+    var t = document.getElementById('confirmTitle');
+    if (t) t.textContent = 'You\u2019re booked.';
+    var lede = document.getElementById('confirmLede');
+    if (lede) lede.textContent = 'The slot is on the calendar and the invite is in your inbox. Here is what happens between now and then.';
+    ['confirmMeta','confirmSpam','faster'].forEach(function(id){
+      var el = document.getElementById(id); if (el) el.hidden = true;
+    });
+    var tl = document.querySelectorAll('.tl');
+    if (tl.length >= 4) {
+      tl[0].querySelector('.tl__t').textContent = 'Now';
+      tl[0].querySelector('h3').textContent = 'It\u2019s on the calendar';
+      tl[0].querySelector('p').textContent = 'Check your inbox for the invite. Move or cancel it any time from that email.';
+      tl[1].querySelector('.tl__t').textContent = 'Before the call';
+      tl[1].querySelector('h3').textContent = 'We read your prep';
+      tl[1].querySelector('p').textContent = 'Anything you add below goes to the advisor who prepares your 30 minutes.';
+    }
+  }
+
   if(!data || !data.referenceId) return;
+
+  var fasterLink = document.getElementById('fasterLink');
+  if (fasterLink) {
+    try {
+      var u = new URL(fasterLink.href);
+      if (data.name)  u.searchParams.set('name', data.name);
+      if (data.email) u.searchParams.set('email', data.email);
+      if (data.workflows) u.searchParams.set('a1', data.workflows);
+      fasterLink.href = u.toString();
+    } catch (e) { /* leave the plain link */ }
+  }
 
   var first = (String(data.name || '').split(/\s+/)[0]) || '';
   if(first){ document.getElementById('confirmTitle').textContent = 'Thanks, ' + first + '. You’re in the queue.'; }
@@ -465,6 +544,7 @@ select.input:invalid { color: var(--tx-faint); }
     .then(function(res){ return res.json(); })
     .then(function(body){
       if(!body || !body.ok){ throw new Error((body && body.error) || 'Could not add that just now.'); }
+      if(typeof window.plausible === 'function'){ window.plausible('booking_details_added', { props: { page: '/book/thanks/' } }); }
       prep.classList.add('prep--done');
     })
     .catch(function(err){

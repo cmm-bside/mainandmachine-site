@@ -14,6 +14,7 @@
  *   calculator_interacted { page, industry, team_band }   once per page load
  *   newsletter_subscribed { page }             beehiiv form submit
  *   guide_read            { page, guide }      75% scroll depth, once
+ *   calculator_emailed    { page, industry, team_band }  estimate emailed to self
  */
 (function () {
   function fire(name, props) {
@@ -22,6 +23,17 @@
     }
   }
   var PAGE = location.pathname;
+
+  // Coarse headcount bands — the no-PII contract allows the band, never the
+  // number. Shared by calculator_interacted and calculator_emailed.
+  function teamBand(v) {
+    v = Number(v) || 0;
+    if (v <= 10) return "1\u201310";
+    if (v <= 25) return "11\u201325";
+    if (v <= 50) return "26\u201350";
+    if (v <= 100) return "51\u2013100";
+    return "100+";
+  }
 
   /* ---------- CTA clicks: /book and /score links, placement-tagged ------- */
   function placementOf(a) {
@@ -69,14 +81,6 @@
       ["bandIndustry", "bandRange"],
     ];
     var fired = false;
-    function teamBand(v) {
-      v = Number(v) || 0;
-      if (v <= 10) return "1–10";
-      if (v <= 25) return "11–25";
-      if (v <= 50) return "26–50";
-      if (v <= 100) return "51–100";
-      return "100+";
-    }
     pairs.forEach(function (p) {
       var sel = document.getElementById(p[0]);
       var range = document.getElementById(p[1]);
@@ -94,6 +98,20 @@
       range.addEventListener("input", onFirstTouch);
     });
   })();
+
+  /* ---------- calculator_emailed: "email me this estimate" -------------- */
+  // One handler for every .estimate-form on the site (the ROI calculator and
+  // the guide worksheets). Props carry the industry + coarse band only — never
+  // the address and never the dollar output, per the no-PII contract.
+  document.addEventListener("submit", function (e) {
+    var form = e.target.closest && e.target.closest(".estimate-form");
+    if (!form) return;
+    fire("calculator_emailed", {
+      page: PAGE,
+      industry: form.getAttribute("data-industry") || "",
+      team_band: teamBand(form.getAttribute("data-team") || 0),
+    });
+  }, true);
 
   /* ---------- newsletter_subscribed: beehiiv subscribe forms ------------- */
   // Fires on submit (the form GETs to beehiiv in a new tab, so submit is the

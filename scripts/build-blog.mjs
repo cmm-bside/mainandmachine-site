@@ -19,6 +19,7 @@ import {
 	BRAND,
 	BLOG_NAME,
 	BLOG_DESCRIPTION,
+	BLOG_DESCRIPTION_META,
 	AUTHOR,
 	DEFAULT_OG_IMAGE,
 	DATA_MODULE_PATH,
@@ -56,7 +57,7 @@ const ESSAY_PN_STYLE = `<style>
 .essay__pn{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 @media(max-width:620px){ .essay__pn{ grid-template-columns:1fr; } }
 .essay__pn-cell{ display:flex; flex-direction:column; gap:8px; padding:20px 22px; border:1px solid var(--line); background:var(--paper-card); color:inherit; text-decoration:none; transition:background .18s var(--ease); }
-a.essay__pn-cell:hover{ background:#fff; box-shadow:inset 0 3px 0 var(--accent); }
+a.essay__pn-cell:hover{ background:var(--surface-hi); box-shadow:inset 0 3px 0 var(--accent); }
 .essay__pn-cell--next{ text-align:right; align-items:flex-end; }
 .essay__pn-cell--empty{ border:0; background:none; }
 .essay__pn-cell b{ font-size:var(--fs-16); font-weight:700; line-height:1.3; letter-spacing:-0.01em; }
@@ -66,8 +67,42 @@ a.essay__pn-cell:hover{ background:#fff; box-shadow:inset 0 3px 0 var(--accent);
 const RECENT_ON_HOME = 6;
 const ARCHIVE_BATCH = 12;
 
+// An empty blog is almost never intentional. It means blog:fetch could not
+// reach beehiiv (missing/expired BEEHIIV_API_KEY, API outage, wrong
+// publication id) and returned nothing — and building anyway ships a site
+// whose entire essay archive 404s, with ~22 committed links pointing into the
+// hole. That is exactly what the 2026-07-31 audit found, so it is now fatal.
+//
+// Local development legitimately has no API key. That case must be stated out
+// loud rather than inferred from an empty result:
+//
+//   ALLOW_EMPTY_BLOG=1 npm run blog:build
+const ALLOW_EMPTY_BLOG = process.env.ALLOW_EMPTY_BLOG === "1";
+
 async function main() {
 	const { posts, meta } = await loadData();
+
+	// Canonical order: newest first, enforced at render time. The fetch file is
+	// usually already sorted, but dateOverride re-stamps publishedAt after the
+	// fetch-time sort, which once shipped an archive with a month split in two
+	// and a stale "Latest dispatch" (2026-07-31 audit). The featured card, the
+	// month groups, RSS, and the sitemap must all agree — so sort here, always.
+	posts.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
+
+	if (posts.length === 0 && !ALLOW_EMPTY_BLOG) {
+		console.error(
+			"[blog:build] FAILED — the blog index contains 0 posts.\n" +
+				"  The beehiiv fetch returned nothing, so this build would ship an empty\n" +
+				"  archive and 404 every committed /blog/<slug>/ link.\n" +
+				"    · deploy:      set BEEHIIV_API_KEY + BEEHIIV_PUBLICATION_ID, re-run `npm run blog:fetch`\n" +
+				"    · local dev:   ALLOW_EMPTY_BLOG=1 npm run blog:build  (never in CI/deploy)"
+		);
+		process.exit(1);
+	}
+	if (posts.length === 0) {
+		console.warn("[blog:build] ALLOW_EMPTY_BLOG=1 — building an empty blog. Do not deploy this output.");
+	}
+
 	const subscribeUrl = meta.subscribeUrl || "";
 	const publicationUrl = meta.publicationUrl || "";
 
@@ -187,12 +222,12 @@ function searchBar(placeholder) {
 
 function emptyState(subscribeUrl) {
 	const cta = subscribeUrl
-		? `<a class="btn btn--primary btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Get the weekly essay →</a>`
+		? `<a class="btn btn--primary btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Get the essays →</a>`
 		: "";
 	return `<div class="feed__empty crop">
   <span class="kicker kicker--plain">${esc(BLOG_NAME)}</span>
   <h2 class="h2 mt-s">The first dispatch is on its way.</h2>
-  <p class="lead">Free weekly essays on building durable things in a noisy time. No hype, no funnels. Subscribe and you’ll get the first one the moment it’s out.</p>
+  <p class="lead">Free essays on building durable things in a noisy time, a few times a month. No hype, no funnels. Subscribe and you’ll get the first one the moment it’s out.</p>
   ${cta}
 </div>`;
 }
@@ -235,7 +270,7 @@ ${rest.length
 	const body = `${topbar()}
 ${nav()}
 <main id="main" tabindex="-1">
-<section class="section section--tight paper" data-screen-label="${esc(BLOG_NAME)}">
+<section class="section section--tight paper">
   <div class="wrap">
     <div class="head-block" style="align-items:flex-end;">
       <div>
@@ -248,7 +283,7 @@ ${nav()}
   </div>
 </section>
 
-<section class="section paper-2" data-screen-label="Recent writing">
+<section class="section paper-2">
   <div class="wrap">
     <div id="blog-feed" class="feed">${feed}</div>
   </div>
@@ -260,10 +295,10 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		// no "| BRAND" suffix and "Free weekly" → "Weekly": the archive <title>
-		// must stay ≤60 chars and the description ≤160 (head:check limits).
+		// no "| BRAND" suffix, and the cadence-free BLOG_DESCRIPTION_META: the
+		// archive <title> must stay ≤60 chars and the description ≤160 (head:check).
 		title: `${BLOG_NAME}: Plain-English AI Essays for Business Owners`,
-		description: `${BLOG_NAME}: ${BLOG_DESCRIPTION.replace(/^Free weekly/, "Weekly")} Human-centric AI, small business, and the judgment no model has.`,
+		description: `${BLOG_NAME}: ${BLOG_DESCRIPTION_META} Human-centric AI, small business, and the judgment no model has.`,
 		canonical: `${SITE_ORIGIN}/blog/`,
 		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,
 		jsonLd: [blogLd, orgJsonLd({ searchAction: true })],
@@ -367,7 +402,7 @@ ${topBatches.length > 1 ? moreBtn("top") : ""}</div>`;
 	const body = `${topbar()}
 ${nav()}
 <main id="main" tabindex="-1">
-<section class="section section--tight paper" data-screen-label="Archive">
+<section class="section section--tight paper">
   <div class="wrap">
     <div class="head-block" style="align-items:flex-end;">
       <div>
@@ -380,7 +415,7 @@ ${nav()}
   </div>
 </section>
 
-<section class="section paper-2" data-screen-label="Archive">
+<section class="section paper-2">
   <div class="wrap">
     <div id="blog-feed">${content}</div>
   </div>
@@ -392,7 +427,7 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `Essay Archive | ${BLOG_NAME} | ${BRAND}`,
+		title: `Essay Archive | ${BLOG_NAME}`,
 		description: `Every essay from ${BLOG_NAME}: ${BLOG_DESCRIPTION}`,
 		canonical: `${SITE_ORIGIN}/blog/archive/`,
 		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,
@@ -481,7 +516,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 ${topbar()}
 ${nav()}
 <main id="main" tabindex="-1">
-<article class="section paper" data-screen-label="${esc(BLOG_NAME)}">
+<article class="section paper">
   <div class="wrap essay${hasToc ? "" : " essay--solo"}">
     <a class="essay__back" href="/blog/">← ${esc(BLOG_NAME)}</a>
     <header class="essay__head">
@@ -511,7 +546,7 @@ ${proseInner}
 </article>
 
 ${(prevPost || nextPost)
-	? `<section class="section paper" data-screen-label="Essay navigation">
+	? `<section class="section paper">
   <div class="wrap">
     <nav class="essay__pn" aria-label="Chronological essay navigation">
       ${prevPost ? `<a class="essay__pn-cell" href="${prevPost.url}" rel="prev"><span class="tick-lbl">← Earlier</span><b>${esc(prevPost.title)}</b></a>` : `<span class="essay__pn-cell essay__pn-cell--empty" aria-hidden="true"></span>`}
@@ -522,7 +557,7 @@ ${(prevPost || nextPost)
 	: ""}
 
 ${readNext.length
-	? `<section class="section paper-2" data-screen-label="Keep reading">
+	? `<section class="section paper-2">
   <div class="wrap">
     <div class="essay__next">
       <div class="feed__bar"><span class="tick-lbl">Keep reading</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent-text)">Archive →</a></div>
@@ -532,7 +567,7 @@ ${readNext.length
 </section>`
 	: ""}
 
-<section class="section paper" data-screen-label="Work with us">
+<section class="section paper">
   <div class="wrap">
     <div class="essay__cta essay__cta--panel crop">
       <span class="kicker kicker--plain">Main &amp; Machine</span>
@@ -552,7 +587,7 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `${post.seoTitle || post.title} | ${BLOG_NAME} | ${BRAND}`,
+		title: `${post.seoTitle || post.title} | ${BLOG_NAME}`,
 		description: post.seoDescription || post.excerpt,
 		canonical,
 		ogImage: og,

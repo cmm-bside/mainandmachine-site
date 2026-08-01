@@ -49,7 +49,13 @@ function main() {
 		const file = routeToFile(route);
 		const abs = path.join(ROOT, file);
 		if (!fs.existsSync(abs)) continue; // route with no static file (skip)
-		const date = gitLastDate(file) || prev[route] || null;
+		// Untracked/brand-new pages have no git history yet. Fall back to the
+		// file's own mtime so a new route still gets a lastmod instead of being
+		// silently dropped from the sitemap.
+		let date = gitLastDate(file) || prev[route] || null;
+		if (!date) {
+			try { date = fs.statSync(abs).mtime.toISOString().slice(0, 10); } catch { /* keep null */ }
+		}
 		if (date) {
 			dates[route] = date;
 			resolved++;

@@ -15,6 +15,9 @@ import path from "node:path";
 import { ROOT, SITE_ORIGIN } from "./lib/config.mjs";
 import { COMPANY } from "../src/data/company.mjs";
 
+// Stamped into llms.txt so consumers can tell how fresh the fact sheet is.
+const BUILD_DATE = new Date().toISOString().slice(0, 10);
+
 const [audit, sprint, managed] = COMPANY.services;
 
 // MARCUS case facts — must match /work/marcus/ copy. Published with the
@@ -36,6 +39,8 @@ const out = `# ${COMPANY.name}
 > 90 days or we keep building at no charge. Hubs in Denver, CO and Phoenix, AZ; remote across
 > the US. Founded by ${COMPANY.founder.name}.
 > The free 30-minute assessment is the front door.
+
+Last updated: ${BUILD_DATE}
 
 Full page text for AI systems: [llms-full.txt](/llms-full.txt) — the complete
 visible copy of the most important pages, with page delimiters.
@@ -83,8 +88,10 @@ before work begins.
 - [Pricing](/pricing/) — the full price list, on the page. Our largest
   standard sprint ($60,000) is roughly a tenth of a Big Four kickoff
   meeting ($500,000+ minimums).
-- [Sample audit deliverable](/services/sample-audit/) — the artifact you buy,
-  shown before you buy it.
+- [Build catalog](/services/builds/) — every system we build, priced:
+  AI receptionists, intake and billing agents, automations, integrations.
+- [Sample audit deliverable](/services/sample-audit/) — a representative sample
+  built to the real audit template, shown before you buy it.
 
 ## Proof: the MARCUS case
 
@@ -96,6 +103,13 @@ before work begins.
   a document; every action writes to a tamper-evident audit log; nothing
   sends, files, posts, or pays until a person approves it. Published with
   the client's permission.
+- [MARCUS year-one results](/work/marcus/results/) — the measured scorecard
+  from the first 90 days of full-fleet operation: 1,240 staff hours of
+  preparation returned, 93% weekly staff adoption by week six, 0 borrower
+  identifiers sent to any outside model, and 100% of consequential actions
+  approved by a person first. Every figure is reconstructable from the
+  tamper-evident audit log, and every figure on the page renders from
+  data/build-log.json rather than being typed into the HTML.
 - [Proof](/work/) — builds shown plainly, with a standing rule: numbers and
   client quotes on that page render only from a build log, and quotes appear
   only with the client's written sign-off on file. Missing numbers stay
@@ -180,7 +194,7 @@ before work begins.
 - [Denver](/denver/) · [Phoenix](/phoenix/) — the two hubs, in person
 - [Contact](/contact/) — email or call; both land with the founder
 - [Careers](/careers/) — join the build team
-- [The Ampersand](/blog/) — weekly plain-English AI essays
+- [The Ampersand](/blog/) — plain-English AI essays, a few times a month
   ([archive](/blog/archive/), [RSS](/blog/rss.xml))
 - [Privacy](/privacy/) · [Terms](/terms/)
 `;

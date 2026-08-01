@@ -39,14 +39,14 @@ function visibleBlock(label, heading, items) {
 		)
 		.join("\n");
 	return `\n<!-- FAQ:auto -->
-<section class="section paper-2" data-screen-label="${esc(label)}">
+<section class="section paper-2">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
         <h2 class="h2 mt-s">${esc(heading)}</h2>
-        <div class="faq__aside" style="margin-top:28px;">
-          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+        <div class="faq__aside">
+          <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
           <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
         </div>
@@ -63,18 +63,14 @@ ${details}
 // Insert the visible FAQ just before the final CTA (so the FAQ precedes the
 // closing ask, matching the city pages), falling back to before the footer.
 function visibleInsertIndex(html) {
-	const labelIdx = html.indexOf('data-screen-label="Start here"');
-	if (labelIdx !== -1) {
-		const secStart = html.lastIndexOf("<section", labelIdx);
-		const commentStart = html.lastIndexOf("<!-- ", labelIdx);
-		// Prefer the comment banner above the section if it's adjacent.
-		if (commentStart !== -1 && secStart !== -1 && commentStart < secStart && secStart - commentStart < 200) {
-			return commentStart;
-		}
-		if (secStart !== -1) return secStart;
-	}
 	const finalSec = html.indexOf('<section class="section ink final"');
-	if (finalSec !== -1) return finalSec;
+	if (finalSec !== -1) {
+		// Prefer the comment banner above the section if it's adjacent, so the
+		// injected FAQ lands above the banner rather than between it and its section.
+		const commentStart = html.lastIndexOf("<!-- ", finalSec);
+		if (commentStart !== -1 && finalSec - commentStart < 200) return commentStart;
+		return finalSec;
+	}
 	return html.indexOf("<footer");
 }
 

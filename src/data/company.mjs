@@ -71,7 +71,9 @@ export const COMPANY = {
   "buildSlots": {
     "quarter": "Q4",
     "remaining": 4,
-    "line": "Four Q4 build slots remain"
+    "line": "Four Q4 build slots remain",
+    "_countedOn": "Date the count was last verified by hand (YYYY-MM-DD). facts:render stamps it into the ticker so the claim is dated, not vague; check-facts.mjs FAILS the build once it is more than 21 days old. Recount, update this date, run npm run facts:render.",
+    "countedOn": "2026-07-30"
   },
   "runningCosts": "$50–$500/month typical (tools + model usage) for a small business",
   "delivery": "~90 days per workflow, fixed price quoted in writing before work",
@@ -97,5 +99,17 @@ export const COMPANY = {
     "TechCrunch",
     "MSNBC",
     "Fox Business"
+  ],
+  "_foundingDate_note": "Set foundingDate to the real YYYY or YYYY-MM-DD and the org JSON-LD will emit it. Left null deliberately — never guess a founding date.",
+  "foundingDate": null,
+  "knowsAbout": [
+    "AI consulting",
+    "AI implementation",
+    "Business process automation",
+    "AI readiness assessment",
+    "On-premise AI deployment",
+    "Retrieval-augmented generation",
+    "Small business operations",
+    "Workflow automation"
   ]
 };

@@ -27,9 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
@@ -56,40 +56,129 @@
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Services",
         "itemListElement": [
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Readiness Audit", "serviceType": "AI readiness audit", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#audit" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Readiness Audit",
+              "serviceType": "AI readiness audit",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#audit"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 3500,
+              "maxPrice": 8500,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Implementation Sprint", "serviceType": "AI implementation", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#sprint" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 18000, "maxPrice": 60000, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Implementation Sprint",
+              "serviceType": "AI implementation",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#sprint"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 18000,
+              "maxPrice": 60000,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "Managed Services", "serviceType": "AI monitoring and maintenance", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#managed" },
-            "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 1500, "priceCurrency": "USD", "unitText": "month", "description": "From $1,500/month, no lock-in" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Managed Services",
+              "serviceType": "AI monitoring and maintenance",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#managed"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "minPrice": 1500,
+              "priceCurrency": "USD",
+              "unitText": "month",
+              "description": "From $1,500/month, no lock-in"
+            }
           }
         ]
       }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Who this is for", "item": "https://www.mainandmachine.com/industries/" },
-        { "@type": "ListItem", "position": 3, "name": "Hospitality & food service", "item": "https://www.mainandmachine.com/industries/hospitality/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Who this is for",
+          "item": "https://www.mainandmachine.com/industries/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Hospitality & food service",
+          "item": "https://www.mainandmachine.com/industries/hospitality/"
+        }
       ]
     }
   ]
@@ -113,15 +202,31 @@
       "name": "What can AI do for a hospitality operation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Usually the manual reconciliation across POS, scheduling, and ordering, plus guest communication and the repetitive coordination between systems."
+        "text": "The back-office paper that piles up while you run service: supplier invoices coded and matched to deliveries, tip reporting and allocation prepared for payroll, health-department documentation kept current, and the weekly cost-of-goods picture assembled without anyone keying it twice."
       }
     },
     {
       "@type": "Question",
-      "name": "How much does it cost?",
+      "name": "What about the Monday invoice stack?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins and guaranteed live within 90 days."
+        "text": "That is usually the first build. Invoices arrive by email, PDF, and photo from a dozen suppliers. An agent reads each one, codes it, matches it to what was actually delivered, flags the price changes and short-ships that would otherwise pass unnoticed, and stages it for approval. Nothing posts until a manager approves it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it handle tip reporting and health-department paper?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tip reporting and allocation get prepared from the POS data you already have, in the format payroll needs. Health-department documentation — temperature logs, cleaning schedules, certification expiry — gets tracked and the gaps flagged before an inspector finds them. A person signs off; the machine keeps the calendar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost for a restaurant group?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins and guaranteed live within 90 days. For most operators the first build is the invoice stack, because it is the one that quietly moves food cost."
       }
     },
     {
@@ -129,7 +234,7 @@
       "name": "How long does it take?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "An audit is 2 to 4 weeks; a build is 4 to 12."
+        "text": "An audit is 2 to 4 weeks. A first build is 4 to 12, and the guarantee is that a scoped workflow is live within 90 days or we keep building at no charge until it is."
       }
     },
     {
@@ -151,13 +256,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -202,7 +307,7 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Hospitality hero">
+<section class="section paper pagehero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
@@ -214,7 +319,7 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Industries / 05</span>
-        <h1 class="h2 mt-s">AI for hospitality, built for the <span class="accent-tx">5–100 person shop.</span></h1>
+        <h1 class="h2 mt-s">You run service. <span class="accent-tx">Let the back office run itself.</span></h1>
         <p class="lead mt-s">Restaurants, hotels, catering, and venues: operations that live or die on who shows up tonight and what got prepped before the doors opened.</p>
       </div>
       <div class="statrail crop" aria-label="Hospitality at a glance">
@@ -229,7 +334,7 @@
 </section>
 
 <!-- ============ THE CLEAREST WINS ============ -->
-<section class="section paper-2" data-screen-label="The clearest wins">
+<section class="section paper-2">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -242,7 +347,7 @@
       <div class="diff">
         <span class="tick-lbl">01 · Staffing</span>
         <h3>The schedule is drafted against the week you are actually about to have.</h3>
-        <p>Schedules get built from last week’s memory while covers swing with weather, events, and season. An automation drafts the schedule from your real patterns, and the manager still signs off on every shift and every swap. How that pattern-finding works is the subject of <a href="/blog/how-the-machine-learns/" style="text-decoration:underline;">How the Machine Learns</a>.</p>
+        <p>Schedules get built from last week’s memory while covers swing with weather, events, and season. An automation drafts the schedule from your real patterns, and the manager still signs off on every shift and every swap. How that pattern-finding works is the subject of <a href="/blog/how-the-machine-learns/">How the Machine Learns</a>.</p>
       </div>
       <div class="diff">
         <span class="tick-lbl">02 · Reservations</span>
@@ -259,52 +364,62 @@
 </section>
 
 <!-- ============ WHICH SERVICE FITS FIRST (ink) ============ -->
-<section class="section ink" data-screen-label="Which service fits first">
+<section class="section ink">
   <div class="wrap">
     <div class="closer" style="margin-top:0;">
       <span class="kicker">Which service fits first</span>
-      <p>For most operators the right first move is the <a href="/services/#audit" style="text-decoration:underline;">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go before anyone builds anything. Pricing is published, in plain numbers: <a href="/pricing/" style="text-decoration:underline;">audits run $3,500–$8,500; sprints $18,000–$60,000, fixed quote in writing</a>.</p>
+      <p>For most operators the right first move is the <a href="/services/#audit">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go before anyone builds anything. Pricing is published, in plain numbers: <a href="/pricing/">audits run $3,500–$8,500; sprints $18,000–$60,000, fixed quote in writing</a>.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ AN EXAMPLE BUILD ============ -->
-<section class="section paper" data-screen-label="An example build">
+<!-- ============ TWO WINS, DRAWN TO SCALE ============ -->
+<section class="section paper">
   <div class="wrap">
     <div class="head-block">
       <div>
-        <span class="kicker">An example build</span>
-        <h2 class="h2 mt-s">One build, <span class="accent-tx">drawn to scale.</span></h2>
+        <span class="kicker">The clearest wins</span>
+        <h2 class="h2 mt-s">Two piles every operator knows. <span class="accent-tx">Drawn before and after.</span></h2>
       </div>
-      <p class="lead">Of the example builds on our homepage, this is the one that maps most directly onto an operation reconciling POS, scheduling, and ordering by hand.</p>
+      <p class="lead">Illustrative vignettes, not client claims. In both, the machine prepares and the manager who knows the room decides.</p>
     </div>
     <div class="builds">
       <div class="builds__bar">
-        <span class="tick-lbl">Example builds</span>
-        <span class="tick-lbl">What “agents, automations &amp; integrations” look like in practice</span>
+        <span class="tick-lbl">Two wins, drawn to scale</span>
+        <span class="tick-lbl">Illustrative, not client claims</span>
       </div>
       <div class="builds__grid">
         <div class="build">
-          <span class="build__no">03</span>
-          <span class="tick-lbl">Operations data sync</span>
-          <h3>One operating view across the tools you already pay for.</h3>
-          <p>Connects CRM, billing, and project software so the same job shows the same status everywhere. No more reconciling five screens by hand.</p>
-          <span class="build__win">The win: one reliable picture instead of five that disagree.</span>
+          <span class="build__no">01</span>
+          <span class="tick-lbl">Monday, the invoice stack</span>
+          <h3>The week&rsquo;s invoices are coded and matched before you open.</h3>
+          <p><b>Before.</b> Monday morning and there are thirty-one invoices: produce three times last week, protein twice, dry goods, linen, beer and wine on separate accounts, and two that arrived as photos on somebody&rsquo;s phone. The manager keys them into the accounting system between deliveries, codes them by memory, and does not catch that the protein supplier raised the price eleven percent or that Thursday&rsquo;s produce was short two cases against the ticket. Food cost drifts a point and nobody can say which week it started.</p>
+          <p><b>After.</b> Every invoice &mdash; emailed, PDF, or photographed &mdash; is read on arrival, coded to the right account, and matched line by line against what was actually received. Price changes above your threshold get flagged with the prior price beside them. Short-ships get flagged against the delivery ticket. The week&rsquo;s cost-of-goods picture assembles itself. A manager approves the batch; nothing posts to the books unapproved.</p>
+          <span class="build__win">The win: the price creep and the short-ships get caught in the week they happen, not in the quarter they show up.</span>
+        </div>
+        <div class="build">
+          <span class="build__no">02</span>
+          <span class="tick-lbl">Payroll and the inspector</span>
+          <h3>Tip reporting and health-department paper stop being fire drills.</h3>
+          <p><b>Before.</b> Tip allocation is worked out on a spreadsheet the night before payroll, from POS exports somebody has to remember to pull. Temperature logs and cleaning schedules live on clipboards; certification expiry is discovered when an inspector asks.</p>
+          <p><b>After.</b> Tip reporting and allocation are prepared from the POS data in the format payroll needs, ready to review rather than assemble. Health-department documentation is tracked continuously, with expiring certifications and missing log entries surfaced before an inspection rather than during one. A person signs; the machine keeps the calendar.</p>
+          <span class="build__win">The win: two recurring fire drills become two reviews.</span>
         </div>
       </div>
-      <p class="builds__note">Illustrative builds, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, a private AI back office for a regulated lender.</p>
+      <p class="builds__note">Illustrative builds, not client claims. What we would actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/">MARCUS</a>, a private AI back office for a regulated lender &mdash; the same architecture, a different set of nouns.</p>
     </div>
   </div>
 </section>
 <!-- FAQ:auto -->
-<section class="section paper-2" data-screen-label="Industry FAQ">
+<section class="section paper-2">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
-        <h2 class="h2 mt-s">AI for hospitality operations.</h2>
-        <div class="faq__aside" style="margin-top:28px;">
-          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+        <h2 class="h2 mt-s">AI for restaurants and hospitality operators.</h2>
+        <div class="faq__aside">
+          <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
           <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
         </div>
@@ -312,18 +427,26 @@
       <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">What can AI do for a hospitality operation?</span><span class="q-pm">+</span></summary>
-          <p>Usually the manual reconciliation across POS, scheduling, and ordering, plus guest communication and the repetitive coordination between systems.</p>
+          <p>The back-office paper that piles up while you run service: supplier invoices coded and matched to deliveries, tip reporting and allocation prepared for payroll, health-department documentation kept current, and the weekly cost-of-goods picture assembled without anyone keying it twice.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
-          <p>The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins and guaranteed live within 90 days.</p>
+          <summary><span class="q-no">02</span><span class="q-tx">What about the Monday invoice stack?</span><span class="q-pm">+</span></summary>
+          <p>That is usually the first build. Invoices arrive by email, PDF, and photo from a dozen suppliers. An agent reads each one, codes it, matches it to what was actually delivered, flags the price changes and short-ships that would otherwise pass unnoticed, and stages it for approval. Nothing posts until a manager approves it.</p>
         </details>
         <details>
-          <summary><span class="q-no">03</span><span class="q-tx">How long does it take?</span><span class="q-pm">+</span></summary>
-          <p>An audit is 2 to 4 weeks; a build is 4 to 12.</p>
+          <summary><span class="q-no">03</span><span class="q-tx">Does it handle tip reporting and health-department paper?</span><span class="q-pm">+</span></summary>
+          <p>Tip reporting and allocation get prepared from the POS data you already have, in the format payroll needs. Health-department documentation — temperature logs, cleaning schedules, certification expiry — gets tracked and the gaps flagged before an inspector finds them. A person signs off; the machine keeps the calendar.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">Do you work remotely or on-site?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">04</span><span class="q-tx">How much does it cost for a restaurant group?</span><span class="q-pm">+</span></summary>
+          <p>The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins and guaranteed live within 90 days. For most operators the first build is the invoice stack, because it is the one that quietly moves food cost.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">05</span><span class="q-tx">How long does it take?</span><span class="q-pm">+</span></summary>
+          <p>An audit is 2 to 4 weeks. A first build is 4 to 12, and the guarantee is that a scoped workflow is live within 90 days or we keep building at no charge until it is.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">06</span><span class="q-tx">Do you work remotely or on-site?</span><span class="q-pm">+</span></summary>
           <p>We run two hubs — Denver, Colorado and Phoenix, Arizona — for in-person work, and we work remotely with businesses across the US. Same method, same fixed prices either way.</p>
         </details>
       </div>
@@ -333,13 +456,19 @@
 <!-- /FAQ:auto -->
 
 <!-- ============ START HERE (ink) ============ -->
-<section class="section ink final" data-screen-label="Start here">
+<section class="section ink final">
   <div class="wrap">
-    <span class="kicker">Start here</span>
-    <h2 class="h2 mt-s">See the wins in <span class="accent-tx">hospitality.</span></h2>
-    <p class="lead mt-s">30 minutes with a senior advisor who walks your staffing, reservations, and ops workflows and tells you what is worth automating, and what is not.</p>
-    <div class="hero__cta">
-      <a class="btn btn--primary btn--lg" href="/book/?industry=hospitality">Book a free assessment <span class="arr">→</span></a>
+    <div class="final__cta">
+      <span class="kicker">Start here</span>
+      <h2 class="h2 mt-s">See the wins in <span class="accent-tx">hospitality.</span></h2>
+      <p class="lead mt-s">30 minutes with a senior advisor who walks your staffing, reservations, and ops workflows and tells you what is worth automating, and what is not.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--lg" href="/book/?industry=hospitality">Book a free assessment <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="final__promise">
+      <p>A fixed price, quoted in writing before we start, and a straight answer within 24 hours.</p>
+      <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
 </section>
@@ -350,8 +479,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -364,9 +493,9 @@
       </div>
       <div class="foot__top">
       <div class="foot__brand">
-        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

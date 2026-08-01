@@ -19,7 +19,7 @@
 //             (or HEAD_CHECK_STRICT=1), which promotes warnings to errors.
 import fs from "node:fs";
 import path from "node:path";
-import { ROOT, SITE_ORIGIN } from "./lib/config.mjs";
+import { ROOT, SITE_ORIGIN, LOCAL_SCRATCH_DIRS } from "./lib/config.mjs";
 
 const STRICT = process.argv.includes("--strict") || process.env.HEAD_CHECK_STRICT === "1";
 
@@ -27,6 +27,10 @@ const STRICT = process.argv.includes("--strict") || process.env.HEAD_CHECK_STRIC
 const TITLE_MAX = 60;
 const DESC_MIN = 70;
 const DESC_MAX = 160;
+// Below this a description is not "short", it is a stub — the fixture pages the
+// 2026-07-31 audit found shipped with descriptions like "Fixture A." (10 chars)
+// and no guard objected. Hard ERROR, not an advisory length warning.
+const DESC_HARD_MIN = 40;
 
 // Required social tags.
 const OG_REQUIRED = ["og:title", "og:description", "og:image", "og:url", "og:type"];
@@ -34,8 +38,8 @@ const TW_REQUIRED = ["twitter:card", "twitter:title", "twitter:description", "tw
 
 // Dirs that never contain publishable site pages.
 const IGNORE_TOP = new Set([
-  "node_modules", "scratchpad", "src", "scripts", "functions",
-  "emails", "reports", "audit", "blog-data", "images", "js", ".git",
+  ...LOCAL_SCRATCH_DIRS, "src", "scripts", "functions",
+  "emails", "blog-data", "images", "js", ".git",
 ]);
 
 const errors = [];
@@ -68,8 +72,12 @@ function metaContent(html, attr, val) {
   // <meta name="x" content="y"> or <meta property="x" content="y"> (attr order agnostic)
   const re = new RegExp(`<meta[^>]*\\b${attr}=["']${val.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["'][^>]*>`, "gi");
   return matchAll(re, html).map((m) => {
-    const c = m[0].match(/\bcontent=["']([^"']*)["']/i);
-    return c ? c[1] : "";
+    // Match the quote style explicitly. A naive ["']([^"']*)["'] truncates at
+    // the first apostrophe inside a double-quoted value, which made
+    // "You're skeptical of AI…" measure as 3 characters and turned the length
+    // checks below into noise.
+    const c = m[0].match(/\bcontent=(?:"([^"]*)"|'([^']*)')/i);
+    return c ? c[1] ?? c[2] ?? "" : "";
   });
 }
 
@@ -111,7 +119,9 @@ for (const { file, route } of pages) {
     const d = decode(descs[0].trim());
     if (!d) fail(page, "empty meta description");
     else {
-      if (d.length < DESC_MIN) warn(page, `meta description ${d.length} chars < ${DESC_MIN}: "${d}"`);
+      if (d.length < DESC_HARD_MIN)
+        fail(page, `meta description is a stub — ${d.length} chars < ${DESC_HARD_MIN}: "${d}"`);
+      else if (d.length < DESC_MIN) warn(page, `meta description ${d.length} chars < ${DESC_MIN}: "${d}"`);
       if (d.length > DESC_MAX) warn(page, `meta description ${d.length} chars > ${DESC_MAX}: "${d}"`);
       (descriptions.get(d) || descriptions.set(d, []).get(d)).push(page);
     }
@@ -161,6 +171,21 @@ for (const { file, route } of pages) {
         if (n["@type"] && typeof n["@id"] === "string") {
           if (ids.has(n["@id"])) fail(page, `duplicate @id in graph: ${n["@id"]}`);
           ids.add(n["@id"]);
+        }
+        // A page cannot have been modified before it was published. Google reads
+        // dateModified for freshness, so an inverted pair is both a lie and a
+        // ranking signal pointed the wrong way — usually a hand-edited date.
+        if (n.datePublished && n.dateModified) {
+          const pub = Date.parse(n.datePublished);
+          const mod = Date.parse(n.dateModified);
+          if (Number.isNaN(pub)) fail(page, `JSON-LD datePublished is unparseable: "${n.datePublished}"`);
+          else if (Number.isNaN(mod)) fail(page, `JSON-LD dateModified is unparseable: "${n.dateModified}"`);
+          else if (mod < pub)
+            fail(
+              page,
+              `JSON-LD dateModified (${n.dateModified}) is before datePublished (${n.datePublished})` +
+                (n["@id"] ? ` on ${n["@id"]}` : "")
+            );
         }
         for (const v of Object.values(n)) visit(v);
       }

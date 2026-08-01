@@ -27,9 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=90" />
+<link rel="stylesheet" href="/styles.css?v=95" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
@@ -56,40 +56,129 @@
       "areaServed": "US",
       "slogan": "The machine belongs to Main Street.",
       "address": [
-        { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
-        { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        }
       ],
-      "founder": { "@id": "https://www.mainandmachine.com/#person-cmyers" },
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Services",
         "itemListElement": [
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Readiness Audit", "serviceType": "AI readiness audit", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#audit" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3500, "maxPrice": 8500, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Readiness Audit",
+              "serviceType": "AI readiness audit",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#audit"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 3500,
+              "maxPrice": 8500,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "AI Implementation Sprint", "serviceType": "AI implementation", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#sprint" },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 18000, "maxPrice": 60000, "priceCurrency": "USD" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Implementation Sprint",
+              "serviceType": "AI implementation",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#sprint"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 18000,
+              "maxPrice": 60000,
+              "priceCurrency": "USD"
+            }
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "Managed Services", "serviceType": "AI monitoring and maintenance", "provider": { "@id": "https://www.mainandmachine.com/#org" }, "url": "https://www.mainandmachine.com/services/#managed" },
-            "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 1500, "priceCurrency": "USD", "unitText": "month", "description": "From $1,500/month, no lock-in" }
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Managed Services",
+              "serviceType": "AI monitoring and maintenance",
+              "provider": {
+                "@id": "https://www.mainandmachine.com/#org"
+              },
+              "url": "https://www.mainandmachine.com/services/#managed"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "minPrice": 1500,
+              "priceCurrency": "USD",
+              "unitText": "month",
+              "description": "From $1,500/month, no lock-in"
+            }
           }
         ]
       }
     },
-    { "@type": "WebSite", "@id": "https://www.mainandmachine.com/#website", "name": "Main & Machine", "url": "https://www.mainandmachine.com/" },
-    { "@type": "Person", "@id": "https://www.mainandmachine.com/#person-cmyers", "sameAs": ["https://www.linkedin.com/in/cmyers85/", "https://x.com/Chris_myers", "https://www.entrepreneur.com/author/christopher-myers", "https://search.asu.edu/profile/559969", "https://www.amazon.com/stores/author/B01LBGCKWM/about", "https://www.bside.org"], "name": "Christopher Myers", "jobTitle": "Founder & Chairman", "worksFor": { "@id": "https://www.mainandmachine.com/#org" } },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org"
+      ],
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Main & Machine", "item": "https://www.mainandmachine.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Who this is for", "item": "https://www.mainandmachine.com/industries/" },
-        { "@type": "ListItem", "position": 3, "name": "Professional services", "item": "https://www.mainandmachine.com/industries/professional-services/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Who this is for",
+          "item": "https://www.mainandmachine.com/industries/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Professional services",
+          "item": "https://www.mainandmachine.com/industries/professional-services/"
+        }
       ]
     }
   ]
@@ -183,13 +272,13 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="ticker__track">
     <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
     </div>
     <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
+      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
       <span class="ticker__item">Every engagement starts with the free assessment</span>
       <span class="ticker__item">Human-centric AI for Main Street</span>
       <span class="ticker__item">Denver · Phoenix · Remote</span>
@@ -234,7 +323,7 @@
 <main id="main" tabindex="-1">
 
 <!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero" data-screen-label="Professional services hero">
+<section class="section paper pagehero">
   <div class="wrap">
     <div class="crumb">
       <a href="/">Main &amp; Machine</a>
@@ -261,14 +350,14 @@
 </section>
 
 <!-- ============ THE CLEAREST WINS ============ -->
-<section class="section paper-2" data-screen-label="The clearest wins">
+<section class="section paper-2">
   <div class="wrap">
     <div class="head-block">
       <div>
         <span class="kicker">The clearest wins</span>
         <h2 class="h2 mt-s">Where does AI actually pay in <span class="accent-tx">professional services?</span></h2>
       </div>
-      <p class="lead">Three places, in our experience. Each one is drawn out below as a before-and-after — illustrative vignettes, not client claims. In every one, the machine drafts and chases; the person who knows the client decides. How that handoff gets taught is the subject of <a href="/blog/teaching-the-machine-your-business/" style="text-decoration:underline;">Teaching the Machine Your Business</a>.</p>
+      <p class="lead">Three places, in our experience. Each one is drawn out below as a before-and-after — illustrative vignettes, not client claims. In every one, the machine drafts and chases; the person who knows the client decides. How that handoff gets taught is the subject of <a href="/blog/teaching-the-machine-your-business/">Teaching the Machine Your Business</a>.</p>
     </div>
     <div class="builds">
       <div class="builds__bar">
@@ -301,30 +390,30 @@
           <span class="build__win">The win: status questions cost a minute, not an afternoon.</span>
         </div>
       </div>
-      <p class="builds__note">Illustrative vignettes, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, a private AI back office for a regulated lender.</p>
+      <p class="builds__note">Illustrative vignettes, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. The one build we can name is <a href="/work/marcus/">MARCUS</a>, a private AI back office for a regulated lender — it returned <!-- BUILD-LOG:MARCUS-INLINE-PROFESSIONAL-SERVICES — rendered from data/build-log.json. Never hand-edit. --><b>1,240 hrs</b><!-- /BUILD-LOG:MARCUS-INLINE-PROFESSIONAL-SERVICES --> of staff preparation time in its first 90 days of full-fleet operation (<a href="/work/marcus/results/">the year-one results</a>).</p>
     </div>
   </div>
 </section>
 
 <!-- ============ WHICH SERVICE FITS FIRST (ink) ============ -->
-<section class="section ink" data-screen-label="Which service fits first">
+<section class="section ink">
   <div class="wrap">
     <div class="closer" style="margin-top:0;">
       <span class="kicker">Which service fits first</span>
-      <p>For most firms the right first move is the <a href="/services/#audit" style="text-decoration:underline;">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go before anyone builds anything. For a firm shaped like yours, that usually means four questions — where intake time goes, what unbilled work is aging, which systems disagree about matter status, and which documents get rebuilt from scratch when they should be assembled. Two redacted pages of a real audit deliverable are published at <a href="/services/sample-audit/" style="text-decoration:underline;">the sample audit</a>, so you can read the document before you spend a dollar. Pricing is published, in plain numbers: <a href="/pricing/" style="text-decoration:underline;">audits run $3,500–$8,500; sprints $18,000–$60,000, fixed quote in writing</a>.</p>
+      <p>For most firms the right first move is the <a href="/services/#audit">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go before anyone builds anything. For a firm shaped like yours, that usually means four questions — where intake time goes, what unbilled work is aging, which systems disagree about matter status, and which documents get rebuilt from scratch when they should be assembled. Two pages of a sample audit are published at <a href="/services/sample-audit/">the sample audit</a> — built to the exact template a real engagement ends in — so you can read the document before you spend a dollar. Pricing is published, in plain numbers: <a href="/pricing/">audits run $3,500–$8,500; sprints $18,000–$60,000, fixed quote in writing</a>.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ WHAT THIS COSTS ============ -->
-<section class="section paper" data-screen-label="What this costs">
+<section class="section paper">
   <div class="wrap">
     <div class="head-block">
       <div>
         <span class="kicker">The numbers</span>
         <h2 class="h2 mt-s">What this costs for a <span class="accent-tx">firm your size.</span></h2>
       </div>
-      <p class="lead">Our <a href="/calculator/?industry=professional-services&amp;team=25" style="text-decoration:underline;">ROI calculator</a> models professional services with two round assumptions: $4,000 a year of repetitive manual work per employee, and $2,000 a year of lost revenue per employee — capacity your people cannot bill because the wrapper work eats it. Here is the model worked for a 25-person firm.</p>
+      <p class="lead">Our <a href="/calculator/?industry=professional-services&amp;team=25">ROI calculator</a> models professional services with two round assumptions: $4,000 a year of repetitive manual work per employee, and $2,000 a year of lost revenue per employee — capacity your people cannot bill because the wrapper work eats it. Here is the model worked for a 25-person firm.</p>
     </div>
     <div class="builds">
       <div class="builds__bar">
@@ -351,29 +440,29 @@
           <p>At this size the model prices the Implementation Sprint at $18,000 — inside the published $18,000–$60,000 range, and fixed in writing before work begins. $150,000 minus $18,000 leaves +$132,000.</p>
         </div>
       </div>
-      <p class="builds__note">A model, not a promise. The savings are assumptions you can see above, not your books. The whole model is published — with what breaks it — in <a href="/guides/ai-roi-math-small-business/" style="text-decoration:underline;">the ROI math guide</a>. <a href="/calculator/?industry=professional-services&amp;team=25" style="text-decoration:underline;">Run it at your own headcount →</a> Then we run your real numbers in the free assessment.</p>
+      <p class="builds__note">A model, not a promise. The savings are assumptions you can see above, not your books. The whole model is published — with what breaks it — in <a href="/guides/ai-roi-math-small-business/">the ROI math guide</a>. <a href="/calculator/?industry=professional-services&amp;team=25">Run it at your own headcount →</a> Then we run your real numbers in the free assessment.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ FOR THE REGULATED (ink) ============ -->
-<section class="section ink" data-screen-label="How a regulated firm should think about this">
+<section class="section ink">
   <div class="wrap">
     <div class="closer" style="margin-top:0;">
       <span class="kicker">How a regulated firm should think about this</span>
-      <p>If your first objection is confidentiality, you are thinking about this correctly. A firm holding privileged files has the same problem as a lender holding borrower files — and a lender is the strongest analogy we can offer. <a href="/work/marcus/" style="text-decoration:underline;">MARCUS</a>, the system we built for B:Side Capital, runs entirely on the client’s own hardware: PII is stripped before any model reads a document, and every action writes to a tamper-evident log. That is the pattern a regulated firm should demand from any vendor, ours included: ask where the model runs, what it sees before redaction, and who can prove what happened afterward. A vendor who cannot answer those three in plain English has answered them. Where your files go, and where they should never go, is the subject of <a href="/blog/where-your-data-goes/" style="text-decoration:underline;">Where Your Data Goes</a>.</p>
+      <p>If your first objection is confidentiality, you are thinking about this correctly. A firm holding privileged files has the same problem as a lender holding borrower files — and a lender is the strongest analogy we can offer. <a href="/work/marcus/">MARCUS</a>, the system we built for B:Side Capital, runs entirely on the client’s own hardware: PII is stripped before any model reads a document, and every action writes to a tamper-evident log. That is the pattern a regulated firm should demand from any vendor, ours included: ask where the model runs, what it sees before redaction, and who can prove what happened afterward. A vendor who cannot answer those three in plain English has answered them. Where your files go, and where they should never go, is the subject of <a href="/blog/where-your-data-goes/">Where Your Data Goes</a>.</p>
     </div>
   </div>
 </section>
 <!-- FAQ:auto -->
-<section class="section paper-2" data-screen-label="Industry FAQ">
+<section class="section paper-2">
   <div class="wrap">
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
         <h2 class="h2 mt-s">AI for professional services firms.</h2>
-        <div class="faq__aside" style="margin-top:28px;">
-          <h3 class="accent-tx" style="color:var(--accent-ink);">Want the numbers?</h3>
+        <div class="faq__aside">
+          <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
           <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
         </div>
@@ -418,13 +507,19 @@
 <!-- /FAQ:auto -->
 
 <!-- ============ START HERE (ink) ============ -->
-<section class="section ink final" data-screen-label="Start here">
+<section class="section ink final">
   <div class="wrap">
-    <span class="kicker">Start here</span>
-    <h2 class="h2 mt-s">See the wins in <span class="accent-tx">professional services.</span></h2>
-    <p class="lead mt-s">30 minutes with a senior advisor who walks your intake, billing, and matter workflows and tells you what is worth automating, and what is not — in person from our <a href="/denver/" style="text-decoration:underline;">Denver</a> and <a href="/phoenix/" style="text-decoration:underline;">Phoenix</a> hubs, or remote anywhere in the US.</p>
-    <div class="hero__cta">
-      <a class="btn btn--primary btn--lg" href="/book/?industry=professional-services">Book a free assessment <span class="arr">→</span></a>
+    <div class="final__cta">
+      <span class="kicker">Start here</span>
+      <h2 class="h2 mt-s">See the wins in <span class="accent-tx">professional services.</span></h2>
+      <p class="lead mt-s">30 minutes with a senior advisor who walks your intake, billing, and matter workflows and tells you what is worth automating, and what is not — in person from our <a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a> hubs, or remote anywhere in the US.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--lg" href="/book/?industry=professional-services">Book a free assessment <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="final__promise">
+      <p>A fixed price, quoted in writing before we start, and a straight answer within 24 hours.</p>
+      <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
 </section>
@@ -435,8 +530,8 @@
   <div class="wrap">
     <div class="foot__signup">
         <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free weekly</span>
-          <h2>Plain-English AI for Main Street, every week.</h2>
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
@@ -449,9 +544,9 @@
       </div>
       <div class="foot__top">
       <div class="foot__brand">
-        <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

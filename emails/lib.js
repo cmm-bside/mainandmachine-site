@@ -85,6 +85,33 @@ export function validateDetails(raw) {
   return { ok: Object.keys(errors).length === 0, errors, data };
 }
 
+// --- stage 3: "email me this estimate" from the ROI calculator / guides ------
+// No gate: the numbers stay on screen whether or not this is used. We collect
+// an email and the inputs that produced the estimate, nothing else.
+export const ESTIMATE_FIELDS = [
+  { key: "industry", label: "Industry" },
+  { key: "team", label: "Team size" },
+  { key: "hours", label: "Hours per person per week" },
+  { key: "annual", label: "Modelled annual cost" },
+  { key: "source", label: "Where they asked" },
+];
+
+export function validateEstimate(raw) {
+  const src = raw && typeof raw === "object" ? raw : {};
+  const data = {};
+  for (const f of ESTIMATE_FIELDS) {
+    data[f.key] = typeof src[f.key] === "string" ? src[f.key].trim() : String(src[f.key] ?? "").trim();
+  }
+  data.email = typeof src.email === "string" ? src.email.trim() : "";
+
+  const errors = {};
+  if (!isValidEmail(data.email)) errors.email = "A valid email is required.";
+  for (const f of ESTIMATE_FIELDS) {
+    if (data[f.key].length > 120) errors[f.key] = "Too long.";
+  }
+  return { ok: Object.keys(errors).length === 0, errors, data };
+}
+
 export function firstNameOf(name) {
   const n = String(name || "").trim();
   return n.split(/\s+/)[0] || n;

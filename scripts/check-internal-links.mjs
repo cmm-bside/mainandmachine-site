@@ -94,6 +94,10 @@ const HREF_RE = /\b(?:href|action)=["']([^"']+)["']/gi;
 let checked = 0;
 let blogPostLinks = 0;
 const dangling = new Map(); // target -> Set(pages)
+// Distinct post slugs each surface references — the two sets the publication
+// -identity guard below compares against what the fetch actually returned.
+const htmlSlugs = new Set();
+const emailSlugs = new Set();
 const note = (target, page) =>
 	(dangling.get(target) || dangling.set(target, new Set()).get(target)).add(page);
 
@@ -116,6 +120,7 @@ for (const file of pages) {
 		const blogPost = /^\/blog\/([a-z0-9-]+)\/$/.exec(target);
 		if (blogPost) {
 			blogPostLinks++;
+			htmlSlugs.add(blogPost[1]);
 			if (!blogSlugs.has(blogPost[1])) note(target, page);
 			continue;
 		}
@@ -199,7 +204,19 @@ for (const [label, body] of emailBodies) {
 				continue;
 			}
 			blogPostLinks++;
-			if (!blogSlugs.has(post[1])) note(target, label);
+			emailSlugs.add(post[1]);
+			// An email slug gets its own error rather than joining the dangling
+			// pile. A dead link in a page is a bad link; a dead link in the
+			// autoresponder is a dead link mailed to someone who just asked to
+			// buy something, and it cannot be fixed after send. Three of these
+			// shipped for months because this check only ever compared against
+			// an index that could itself be empty.
+			if (!blogSlugs.has(post[1]))
+				fail(
+					`${label}: /blog/${post[1]}/ is not in blog-data/index.json — ` +
+						`an email template must never link a post that does not exist. ` +
+						`Fix the slug in emails/blog-picks.js, or fix the fetch if the index is wrong.`
+				);
 			continue;
 		}
 
@@ -207,10 +224,32 @@ for (const [label, body] of emailBodies) {
 	}
 }
 
+// --- publication-identity guard ---------------------------------------------
+// The index is not just "a list of posts" — it has to be a list of THE RIGHT
+// posts. On 2026-08-01 the fetch briefly returned a two-post publication (one
+// of them literally slugged "test") while committed pages linked 15 essays.
+// Every essay link on the site would have 404'd.
+//
+// Comparing counts catches that even when the index is non-empty, which the
+// zero-post guard below cannot: a wrong-but-populated publication is the
+// failure mode a "did we get anything?" check waves through.
+const postCount = blogSlugs.size;
+if (htmlSlugs.size > 0 && postCount > 0 && postCount < htmlSlugs.size) {
+	const missing = [...htmlSlugs].filter((sl) => !blogSlugs.has(sl)).sort();
+	fail(
+		`blog-data/index.json holds ${postCount} post(s) but committed pages reference ` +
+			`${htmlSlugs.size} distinct /blog/<slug>/ essays — the index cannot be the publication this ` +
+			`site was built against.\n` +
+			`      Almost certainly BEEHIIV_PUBLICATION_ID points at the wrong (or a new, empty) ` +
+			`publication.\n` +
+			`      Present in the index: ${[...blogSlugs].sort().slice(0, 8).join(", ")}\n` +
+			`      Linked but absent (${missing.length}): ${missing.slice(0, 8).join(", ")}${missing.length > 8 ? ", …" : ""}`
+	);
+}
+
 // --- fixture-shipping guard -------------------------------------------------
 // A zero-post index with live post links means the fetch failed. Report that
 // root cause instead of ~22 identical dangling-link errors.
-const postCount = blogSlugs.size;
 if (blogPostLinks > 0 && postCount === 0) {
 	fail(
 		blogIndexRead

@@ -35,6 +35,7 @@ import {
 	EXCLUDED_POST_SLUGS,
 	POST_TOPICS,
 	POST_TOPIC_FALLBACK,
+	BEEHIIV_SUBSCRIBE_FALLBACK,
 } from "./lib/config.mjs";
 import {
 	esc,
@@ -246,7 +247,8 @@ function searchBar(placeholder) {
 <div id="blog-results" class="feed" hidden></div>`;
 }
 
-function emptyState(subscribeUrl) {
+function emptyState(subscribeUrlRaw) {
+	const subscribeUrl = subscribeUrlRaw || BEEHIIV_SUBSCRIBE_FALLBACK;
 	const cta = subscribeUrl
 		? `<a class="btn btn--primary btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Get the essays →</a>`
 		: "";

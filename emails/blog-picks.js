@@ -1,8 +1,13 @@
-// "Read while you wait" — the three Ampersand posts featured in the autoresponder.
+// "Read while you wait" — the Ampersand posts featured in the autoresponder.
 //
-// EDIT THIS FILE when you publish new posts you'd rather feature. These are the
-// three from the reference design. They are referenced by ABSOLUTE URL because
-// relative URLs do not load in email.
+// EDIT THIS FILE when you publish new posts you'd rather feature, and CHECK THE
+// SLUGS AGAINST THE LIVE ARCHIVE when you do. The three that shipped here
+// originally came from the reference design and were never real: they 404'd on
+// the live site for as long as the autoresponder existed, in the one email that
+// reaches the highest-intent reader we have. links:check now fails the build on
+// a slug that is not in blog-data/index.json, so this cannot repeat silently.
+//
+// They are referenced by ABSOLUTE URL because relative URLs do not load in email.
 //
 // `thumb` is an absolute image URL for the 132px-wide thumbnail cell. Leave it
 // empty ("") to fall back to the branded M&M placeholder block (matches the
@@ -21,26 +26,29 @@ export const postUrl = (slug) => `${SITE_ORIGIN}/blog/${slug}/`;
 
 export const blogPicks = [
   {
-    slug: "most-of-your-workflows-dont-need-ai",
-    category: "AI & Judgment",
-    title: "Most of your workflows don't need AI.",
-    blurb: "Discernment is the whole job — knowing the handful of places automation quietly pays.",
+    // Verified against the live archive 2026-08-01 (200 at /blog/<slug>/).
+    // Chosen for someone waiting on an assessment: how to judge claims, where
+    // the limits are, and what happens to their data — in that order.
+    slug: "how-to-smell-the-hype",
+    category: "Judgment",
+    title: "How to Smell the Hype",
+    blurb: "A field guide to evaluating AI claims, for owners who will hear a thousand of them this year.",
     thumb: "",
     plate: "#14110c",
   },
   {
-    slug: "buy-boring-build-rare",
-    category: "The Method",
-    title: "Buy Boring, Build Rare",
-    blurb: "Most of what a small business needs already exists for forty dollars a month. We only build the thing that's actually yours.",
+    slug: "what-the-machine-cannot-do",
+    category: "Limits",
+    title: "What the Machine Cannot Do",
+    blurb: "After two years of lists about what AI can do, the more valuable list is the other one.",
     thumb: "",
     plate: "#211d18",
   },
   {
-    slug: "what-we-killed-in-the-audit",
-    category: "Field Notes",
-    title: "What We Killed in the Audit",
-    blurb: "Four automations a client asked for, and why we talked them out of every one. The honest “no” is the most valuable line item.",
+    slug: "where-your-data-goes",
+    category: "Data & Privacy",
+    title: "Where Your Data Goes",
+    blurb: "The most important AI policy in your company is the answer to one question: what happens to what we type in?",
     thumb: "",
     plate: "#14110c",
   },

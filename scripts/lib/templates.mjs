@@ -7,6 +7,7 @@ import {
 	ASSET_VERSION,
 	DEFAULT_OG_IMAGE,
 	COMPANY,
+	BEEHIIV_SUBSCRIBE_FALLBACK,
 } from "./config.mjs";
 
 const FAVICON =
@@ -295,7 +296,7 @@ export function footer() {
           <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
         </div>
         <div>
-          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to ${attr(BLOG_NAME)}">
+          <form class="signup" data-beehiiv-subscribe action="${attr(BEEHIIV_SUBSCRIBE_FALLBACK)}" method="get" target="_blank" aria-label="Subscribe to ${attr(BLOG_NAME)}">
             <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
             <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
           </form>
@@ -313,8 +314,11 @@ export function footer() {
 // Subscribe band (ink). subscribeUrl is wired into the form action; blog.js
 // enhances submit to carry the email. Falls back to "#" when unconfigured.
 export function subscribeBand(subscribeUrl, publicationUrl) {
-	const action = subscribeUrl || "#";
-	const archive = publicationUrl || subscribeUrl || "#";
+	// Bake a real URL at build time. blog.js may still rewrite this to a
+	// publication-specific value, but that is an enhancement, not the thing
+	// that makes the form work: action="#" posted the reader back to the page.
+	const action = subscribeUrl || BEEHIIV_SUBSCRIBE_FALLBACK;
+	const archive = publicationUrl || subscribeUrl || BEEHIIV_SUBSCRIBE_FALLBACK;
 	return `<section class="section ink">
   <div class="wrap">
     <div class="news">

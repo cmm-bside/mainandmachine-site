@@ -39,6 +39,12 @@ export function factValues(COMPANY) {
 		"build-slots": `${COMPANY.buildSlots.line} (counted ${COMPANY.buildSlots.countedOn})`,
 		"phone": COMPANY.phone,
 		"email": COMPANY.email,
+		// The named-offer layer (audit/NAMING-MEMO-2026-08-01.md). Stamped so a
+		// name can never drift from site-facts.json — the SKU names in
+		// `services` are a separate, unchanged set and are NOT stamped here.
+		"name-audit": COMPANY.namedOffers.audit,
+		"name-sprint": COMPANY.namedOffers.sprint,
+		"name-managed": COMPANY.namedOffers.managed,
 	};
 }
 

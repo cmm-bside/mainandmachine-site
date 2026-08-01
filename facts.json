@@ -60,6 +60,12 @@
       "note": "A MARCUS-class, multi-department build. Four taken per year."
     }
   ],
+  "_namedOffers_note": "The customer-facing NAME layer, per audit/NAMING-MEMO-2026-08-01.md. These are NOT the SKUs: the SKU names in `services` above are what appears in H3s, JSON-LD Service nodes, page titles and invoices, and they do not change. These names live in taglines and running prose only, so the layer is reversible by deleting this object and the data-fact spans that read it. check-facts.mjs fails the build if a rendered name differs from the string here.",
+  "namedOffers": {
+    "audit": "The Blueprint",
+    "sprint": "The 90-Day Build",
+    "managed": "The Service Contract"
+  },
   "guarantee": "If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.",
   "rollover": "100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.",
   "annualManaged": "Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.",

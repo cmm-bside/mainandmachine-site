@@ -83,6 +83,9 @@ export function renderEstimateHtml(data) {
             <p style="margin:10px 0 0;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:#c9c1b4;">
               ${escapeHtml(COMPANY.rollover)}
             </p>
+            <p style="margin:10px 0 0;font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:#9a9286;">
+              In our shorthand: 100% of your ${escapeHtml(COMPANY.namedOffers.audit.replace(/^The /, ""))} fee credits toward your ${escapeHtml(COMPANY.namedOffers.sprint.replace(/^The /, ""))}, up to 25% of the Build&rsquo;s price.
+            </p>
           </td></tr>
         </table>
       </td></tr>
@@ -130,6 +133,7 @@ export function renderEstimateText(data) {
     "THE GUARANTEE",
     COMPANY.guarantee,
     COMPANY.rollover,
+    `In our shorthand: 100% of your ${COMPANY.namedOffers.audit.replace(/^The /, "")} fee credits toward your ${COMPANY.namedOffers.sprint.replace(/^The /, "")}, up to 25% of the Build's price.`,
     "",
     `Book a free 30-minute assessment: ${SITE_ORIGIN}/book/`,
     "Free. No obligation. No pitch. We reply within 24 hours.",

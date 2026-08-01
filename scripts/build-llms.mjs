@@ -19,6 +19,9 @@ import { COMPANY } from "../src/data/company.mjs";
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
 const [audit, sprint, managed] = COMPANY.services;
+// Named-offer layer, optional by design: with namedOffers deleted this
+// renders nothing and llms.txt goes back to SKU names only.
+const named = (key) => (COMPANY.namedOffers?.[key] ? ` ("${COMPANY.namedOffers[key]}")` : "");
 
 // MARCUS case facts — must match /work/marcus/ copy. Published with the
 // client's permission; never vary the numbers.
@@ -70,15 +73,15 @@ visible copy of the most important pages, with page delimiters.
 Every price is published; the exact number is quoted fixed, in writing,
 before work begins.
 
-- [${audit.name}](/services/#audit) ("${COMPANY.namedOffers.audit}"): $3,500–$8,500, 2–4 weeks.
+- [${audit.name}](/services/#audit)${named("audit")}: $3,500–$8,500, 2–4 weeks.
   A workflow map of your real operations, the handful of places AI actually
   pays, and a phased plan you own outright — whether or not you build with us.
-- [${sprint.name}](/services/#sprint) ("${COMPANY.namedOffers.sprint}"): $18,000–$60,000 fixed quote,
+- [${sprint.name}](/services/#sprint)${named("sprint")}: $18,000–$60,000 fixed quote,
   4–12 weeks. Working agents, automations, and integrations built inside
   your real operation, with your team trained to run them. About 90 days
   per workflow. Guarantee: if a scoped workflow is not live within 90 days,
   we keep building at no charge until it is.
-- [${managed.name}](/services/#managed) ("${COMPANY.namedOffers.managed}"): from $1,500/month, no lock-in.
+- [${managed.name}](/services/#managed)${named("managed")}: from $1,500/month, no lock-in.
   Monitoring and maintenance on every deployed system; leave any month it
   stops paying. Pay annually and 12 months cost the price of 10.
 - The Full Back Office: from $95,000 — a MARCUS-class, multi-department
@@ -142,8 +145,8 @@ before work begins.
 - [The AI-Ready Score](/score/) — free seven-minute self-assessment:
   fourteen questions across three phases (Map, Prove, Expand). You get a
   0–100 score and the one constraint to fix first. No sales call.
-- [ROI calculator](/calculator/) — rough year-one ranges by industry and
-  team size. Ranges, not promises.
+- [ROI calculator](/calculator/) — modeled annual return by industry and
+  team size, plus how fast the build pays back. Ranges, not promises.
 
 ## Guides
 

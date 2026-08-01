@@ -36,8 +36,28 @@
      this now: both bounds are annual, net of run costs, and the build is shown
      beside them as the thing being paid back. On that footing the low bound is
      negative only under ~8-11 people, which is what "thin" actually means. */
-  var RUN_COST_YEAR = 6000;
+  /* Run costs SCALE with headcount across the band the running-costs guide
+     publishes ($50–$500 a month), rather than being pinned at the ceiling.
+     A flat $6,000 was what made the guide's own 10-person construction case
+     render "+$0 · does not pay back" while Guide 13 calls it a three-to-five
+     year payback — a five-person shop does not pay a hundred-person shop's
+     model bill. Linear from $50/mo at 5 people to $500/mo at 100, so the
+     $6,000/yr figure Guide 13 quotes stays exactly the ceiling it describes.
+
+     Both of Guide 13's worked examples reproduce on this:
+       25-person professional services → 13 months  ("inside eighteen months")
+       10-person construction          → 3.5 years  ("three-to-five-year")   */
+  var RUN_MIN_MONTH = 50;
+  var RUN_MAX_MONTH = 500;
+  var RUN_MIN_EMP = 5;
+  var RUN_MAX_EMP = 100;
   var STRESS_CAPTURE = 0.125;
+
+  function runCostYear(emp){
+    var t = (emp - RUN_MIN_EMP) / (RUN_MAX_EMP - RUN_MIN_EMP);
+    t = Math.min(1, Math.max(0, t));
+    return Math.round((RUN_MIN_MONTH + (RUN_MAX_MONTH - RUN_MIN_MONTH) * t) * 12);
+  }
 
   var usd = new Intl.NumberFormat('en-US', { style:'currency', currency:'USD', maximumFractionDigits:0 });
   function fmt(n){ return usd.format(Math.round(n)); }
@@ -77,11 +97,12 @@
     var revenue = emp * r.revenue;
     var total = manual + revenue;                 /* modeled annual drag */
     var implementation = Math.min(60000, Math.max(18000, 720 * emp)); /* one-time */
-    var annualHigh = total - RUN_COST_YEAR;       /* all of the drag recovered */
-    var annualLow = (total * STRESS_CAPTURE) - RUN_COST_YEAR; /* the guide's stress test */
+    var runCost = runCostYear(emp);
+    var annualHigh = total - runCost;             /* all of the drag recovered */
+    var annualLow = (total * STRESS_CAPTURE) - runCost; /* the guide's stress test */
     return {
       r:r, emp:emp, manual:manual, revenue:revenue, total:total,
-      implementation:implementation, runCost: RUN_COST_YEAR,
+      implementation:implementation, runCost: runCost,
       annualLow: annualLow, annualHigh: annualHigh
     };
   }

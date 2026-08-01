@@ -173,6 +173,30 @@ for (const { key, name, note } of serviceNotes(COMPANY)) {
     guardCountablePhrase(clause, `services["${key}"].note (${name})`);
 }
 
+// --- the rollover CONDITION ---------------------------------------------------
+// The canonical rollover is conditional: the credit applies to a sprint
+// "signed within 60 days". When the offer-naming layer restated it in the
+// site's own shorthand, the condition was dropped and the site briefly
+// promised an open-ended credit on five surfaces including two emails.
+//
+// A missing clause is not a number contradiction, so contradictionPattern
+// cannot see it. This is the guard for it: any sentence that credits a fee
+// toward a build must carry the window.
+const ROLLOVER_WINDOW = /signed\s+within\s+60\s+days/i;
+const CREDIT_CLAUSE = /100%[^.<]{0,140}?credits?\s+toward[^.<]{0,160}/gi;
+guardCountablePhrase(COMPANY.rollover.replace(/\.$/, ""), "rollover");
+for (const { page, html } of noteCorpus) {
+  const visible = html.replace(/<script[\s\S]*?<\/script>/g, "");
+  for (const m of visible.matchAll(CREDIT_CLAUSE)) {
+    const clause = m[0].replace(/\s+/g, " ").trim();
+    if (!ROLLOVER_WINDOW.test(clause))
+      fail(
+        `${page}: "${clause}" states the audit credit without its condition — ` +
+          `the canonical rollover is only good for a sprint "signed within 60 days"`
+      );
+  }
+}
+
 // --- Build-slot count must stay verifiable ---------------------------------
 // The ticker publishes a slot count, which is scarcity language — allowed only
 // while it is specific AND current (CLAUDE.md: no unverifiable scarcity; the
@@ -292,18 +316,43 @@ for (const page of ALL_PAGES) {
 //      keeping it out of the SKUs is that deleting namedOffers should be
 //      enough to remove it, and a hand-typed instance defeats that.
 const NAMED = COMPANY.namedOffers || {};
-// Variants that are wrong specifically BECAUSE the real name exists.
+// Bare form: "Blueprint" without the article, as in "your Blueprint fee".
+const bare = (n) => (n || "").replace(/^The\s+/, "");
+// Variants that are wrong specifically BECAUSE the real name exists. Both the
+// "The"-prefixed and the bare form are checked: prose says "your Blueprint fee
+// credits toward your 90-Day Build", so a typo there was invisible to a guard
+// that only looked for the article form.
+// Case-SENSITIVE throughout: "the blueprint" lowercase is the ordinary English
+// word and appears legitimately on /work/marcus/ ("every step in the blueprint
+// cites the operations document"). Only capitalised, name-shaped uses count.
 const NAME_VARIANTS = [
-  [/\bThe\s+90[-\s]?Day\s+Build\b/g, NAMED.sprint],
-  // Case-SENSITIVE: "the blueprint" lowercase is the ordinary English word and
-  // appears legitimately on /work/marcus/ ("every step in the blueprint cites
-  // the operations document"). Only a capitalised, name-shaped use is checked.
-  [/\bThe\s+Blue\s?print\b/g, NAMED.audit],
-  [/\bThe\s+Service\s+Contract\b/g, NAMED.managed],
+  [/\b(?:The\s+)?90[-\s]?Day\s+Build\b/g, NAMED.sprint],
+  [/\b(?:The\s+)?Blue\s?print\b/g, NAMED.audit],
+  [/\b(?:The\s+)?Service\s+Contract\b/g, NAMED.managed],
 ];
-for (const page of ALL_PAGES) {
-  const html = read(page);
-  if (!html) continue;
+// The emails are not committed HTML, so ALL_PAGES misses them — and they are
+// the surfaces most likely to carry a hand-typed name, because their copy is
+// written in JS string literals rather than markup. Render them and check the
+// output, the way check-internal-links.mjs does for links.
+let NAME_SURFACES = ALL_PAGES.map((p) => [p, read(p)]).filter(([, h]) => h);
+try {
+  const [auto, est] = await Promise.all([
+    import("../emails/assessment-autoresponder.js"),
+    import("../emails/estimate.js"),
+  ]);
+  const d = { firstName: "Sample", referenceId: "MM-0000-0000", name: "Sample Lead", email: "s@example.com" };
+  const e = { industry: "Professional services", team: "24", hours: "6", annual: "$96,000" };
+  NAME_SURFACES = NAME_SURFACES.concat([
+    ["emails/assessment-autoresponder.js (html)", auto.renderAutoresponderHtml(d)],
+    ["emails/assessment-autoresponder.js (text)", auto.renderAutoresponderText(d)],
+    ["emails/estimate.js (html)", est.renderEstimateHtml(e)],
+    ["emails/estimate.js (text)", est.renderEstimateText(e)],
+  ]);
+} catch (err) {
+  fail(`email templates could not be rendered for the named-offer check: ${err.message}`);
+}
+
+for (const [page, html] of NAME_SURFACES) {
   const visible = html
     .replace(/<script[\s\S]*?<\/script>/g, "")
     .replace(/<style[\s\S]*?<\/style>/g, "")
@@ -312,7 +361,7 @@ for (const page of ALL_PAGES) {
     if (!canonical) continue;
     for (const m of visible.matchAll(re)) {
       const seen = m[0].replace(/\s+/g, " ");
-      if (seen !== canonical)
+      if (seen !== canonical && seen !== bare(canonical))
         fail(
           `${page}: named offer "${seen}" is not the canonical "${canonical}" ` +
             `from namedOffers in src/data/site-facts.json`
@@ -332,8 +381,11 @@ for (const page of ALL_PAGES) {
   }
   // Voice rule: no named offer more than 3 times on a page.
   for (const canonical of Object.values(NAMED)) {
-    const n = visible.split(canonical).length - 1;
-    if (n > 3) fail(`${page}: named offer "${canonical}" appears ${n} times (max 3 per page)`);
+    // Count BOTH forms. Counting only "The Blueprint" let /services/ carry
+    // four mentions while reporting two.
+    const re = new RegExp(`\\b(?:The\\s+)?${bare(canonical).replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+")}\\b`, "g");
+    const n = (visible.match(re) || []).length;
+    if (n > 3) fail(`${page}: named offer "${canonical}" appears ${n} times counting bare forms (max 3 per page)`);
   }
 }
 

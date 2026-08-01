@@ -186,19 +186,19 @@ Law, accounting, insurance, consulting, financial advisory.
 Modeled return / year
 For 25 people
 
-+$12,750–+$144,000
++$17,013–+$148,263
 
 a year, net of run costs — stress-tested low end to full-recovery high end
 
 - Total opportunity $150,000
 
-- Run costs / year up to -$6,000
+- Run costs / year -$1,737
 
 - Sprint investment (one-time) -$18,000
 
-- Payback on that build 2–17 months
+- Payback on that build 1–13 months
 
-A model, not a promise. Both ends are annual and net of run costs; the sprint is a one-time cost the return pays back. The high end assumes the build recovers all of the modeled drag, the low end applies the ROI guide’s stress test. On thin cases the low end goes negative — that is the model telling you to wait. We run your real numbers in the free assessment.
+A model, not a promise. Both ends are annual and net of run costs; the sprint is a one-time cost the return pays back. The high end assumes the build recovers all of the modeled drag, the low end applies the ROI guide’s stress test. On thin cases the payback stretches to years rather than months — that is the model telling you to wait. We run your real numbers in the free assessment.
 
 04 / Proof it works
 
@@ -325,7 +325,7 @@ Two to four weeks inside your real operation — the AI Readiness Audit, and we 
 
 We start where the work actually happens. Where the time goes, where the money leaks, where a person is doing work a machine should be doing. We walk the workflows with the people who run them and put a cost on each one, so the plan rests on your numbers instead of someone’s framework.
 
-What comes out is a phased plan you own outright. Build it with us, build it with another firm, build it in-house. The plan is yours either way, priced and sequenced so you can act on it without us in the room. And if you do build with us, the Blueprint pays you back: 100% of your Blueprint fee credits toward your 90-Day Build, up to 25% of the Build’s price.
+What comes out is a phased plan you own outright. Build it with us, build it with another firm, build it in-house. The plan is yours either way, priced and sequenced so you can act on it without us in the room. And if you do build with us, it pays you back: 100% of your Blueprint fee credits toward your 90-Day Build signed within 60 days, up to 25% of the Build’s price.
 
 And sometimes the right call is to wait a quarter. When the numbers say so, the audit says so, in writing. You will not be talked into building something your own data does not support. What the audit contains — and deliberately doesn’t — is spelled out in the audit guide .
 
@@ -625,13 +625,13 @@ Timeline
 Fixed price
 $3,500–$8,500
 
-100% of your Blueprint fee credits toward your 90-Day Build, up to 25% of the Build’s price.
+100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 ### AI Readiness Audit
 
 The Blueprint — most businesses start here. You leave holding it, whether or not we build it.
 
-We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
+We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us. In our shorthand: 100% of your Blueprint fee credits toward your 90-Day Build signed within 60 days, up to 25% of the Build’s price.
 
 What you leave with
 

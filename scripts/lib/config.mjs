@@ -42,6 +42,13 @@ export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
 // --- Beehiiv (read from env only; never commit the key) ---
 export const BEEHIIV_API_KEY = process.env.BEEHIIV_API_KEY || "";
 export const BEEHIIV_PUBLICATION_ID = process.env.BEEHIIV_PUBLICATION_ID || "";
+// The publication's own subscribe page. This is the SAME URL the footer form on
+// every committed page posts to, so it lives here rather than being hardcoded
+// twice. The generated blog forms fall back to it when a fetch produced no
+// meta.subscribeUrl — previously they shipped action="#" and depended entirely
+// on a runtime JS rewrite, which meant a subscribe form that did nothing at all
+// with JS off or before blog.js ran.
+export const BEEHIIV_SUBSCRIBE_FALLBACK = "https://theampersand.beehiiv.com/subscribe";
 // Optional explicit subscribe URL; otherwise derived from a post's web_url host.
 export const BEEHIIV_SUBSCRIBE_URL = process.env.BEEHIIV_SUBSCRIBE_URL || "";
 

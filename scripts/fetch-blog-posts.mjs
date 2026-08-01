@@ -19,6 +19,8 @@ import { pathToFileURL } from "node:url";
 import sanitizeHtml from "sanitize-html";
 import imageSize from "image-size";
 import {
+	ROOT,
+	LOCAL_SCRATCH_DIRS,
 	SITE_HOST,
 	SITE_ORIGIN,
 	BLOG_NAME,
@@ -70,6 +72,9 @@ export async function run() {
 	// Self-host every image (hero + inline) so nothing hotlinks beehiiv's S3.
 	await localizeImages(posts);
 
+	// Nothing is written until we are sure this is the right publication.
+	assertPublicationIdentity(posts);
+
 	const publicationUrl = derivePublicationUrl(posts);
 	const subscribeUrl = deriveSubscribeUrl(publicationUrl);
 
@@ -77,6 +82,69 @@ export async function run() {
 	console.log(
 		`[blog:fetch] Wrote ${posts.length} post(s). publicationUrl=${publicationUrl || "(none)"}`,
 	);
+}
+
+// ---------------------------------------------------------------------------
+// Publication identity
+// ---------------------------------------------------------------------------
+// "Did the API return posts?" is not the same question as "did it return OUR
+// posts?". On 2026-08-01 this fetch pulled a two-post publication — one of them
+// slugged "test" — while the committed pages linked 15 essays by name. Every
+// essay link on the site would have 404'd, and the build would have been green
+// the whole way down, because a non-empty result looks like success.
+//
+// The committed HTML is the assertion: those slugs were written by hand against
+// a real archive, so at least one of them MUST come back. Zero overlap means we
+// are pointed somewhere else. We check before writing anything, so a wrong
+// publication never reaches blog:build or the blog-data/ on disk.
+const HREF_BLOG_RE = /(?:href|action)="(?:https:\/\/[^"/]+)?\/blog\/([a-z0-9-]+)\/"/g;
+const NON_PRODUCTION_SLUGS = new Set(["test", "testing", "draft", "untitled", "hello-world"]);
+// /blog/archive/ matches the slug shape but is a route blog:build always emits,
+// not a post. Counting it would inflate the expected set and let a publication
+// that happened to contain "archive" satisfy the overlap test.
+const BLOG_NON_POST_SEGMENTS = new Set(["archive", "rss.xml"]);
+
+function committedPostSlugs() {
+	const skip = new Set([...LOCAL_SCRATCH_DIRS, "blog", "blog-data", "node_modules", "emails"]);
+	const found = new Set();
+	(function walk(dir, top = true) {
+		for (const name of fs.readdirSync(dir)) {
+			if (top && skip.has(name)) continue;
+			if (name.startsWith(".")) continue;
+			const fp = path.join(dir, name);
+			if (fs.statSync(fp).isDirectory()) walk(fp, false);
+			else if (name.endsWith(".html"))
+				for (const [, slug] of fs.readFileSync(fp, "utf8").matchAll(HREF_BLOG_RE))
+					if (!BLOG_NON_POST_SEGMENTS.has(slug)) found.add(slug);
+		}
+	})(ROOT);
+	return found;
+}
+
+function assertPublicationIdentity(posts) {
+	const linked = committedPostSlugs();
+	if (!linked.size) return; // no committed essay links to verify against
+
+	const returned = new Set(posts.map((p) => p.slug));
+	const overlap = [...linked].filter((slug) => returned.has(slug));
+	if (overlap.length) return;
+
+	const junk = [...returned].filter((slug) => NON_PRODUCTION_SLUGS.has(slug));
+	console.error(
+		`[blog:fetch] ABORTED — wrong publication.\n` +
+			`  BEEHIIV_PUBLICATION_ID returned ${posts.length} post(s), and NOT ONE of them is a slug this\n` +
+			`  site links to. Committed pages reference ${linked.size} essay(s) by name; the overlap is zero.\n` +
+			(junk.length
+				? `  The result contains ${junk.map((j) => `"${j}"`).join(", ")} — a placeholder post, which is a\n` +
+					`  strong sign this is a new or scratch publication rather than The Ampersand.\n`
+				: "") +
+			`  Returned: ${[...returned].slice(0, 8).join(", ") || "(none)"}\n` +
+			`  Expected at least one of: ${[...linked].sort().slice(0, 8).join(", ")}\n` +
+			`\n` +
+			`  Fix BEEHIIV_PUBLICATION_ID (and BEEHIIV_API_KEY, which scopes it) in the Cloudflare Pages\n` +
+			`  project so they point at the publication holding the essay archive. Nothing was written.`,
+	);
+	process.exit(1);
 }
 
 // ---------------------------------------------------------------------------
@@ -536,7 +604,7 @@ function writeEmpty() {
 	});
 }
 
-export { normalizePost, extractArticle, sanitizeArticle, localizeImages };
+export { normalizePost, extractArticle, sanitizeArticle, localizeImages, committedPostSlugs, assertPublicationIdentity };
 
 // Run only when invoked directly (not when imported by a test).
 if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {

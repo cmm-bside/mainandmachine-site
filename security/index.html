@@ -23,7 +23,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine — where Main Street meets the machine" />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="stylesheet" href="/styles.css?v=98" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -64,7 +64,9 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org"
+        "https://www.bside.org",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
@@ -184,7 +186,7 @@
 .control { display: grid; grid-template-columns: 64px 1fr; gap: 18px; padding: clamp(22px, 3vw, 30px); border-top: 1px solid var(--line); }
 .control:first-child { border-top: 0; }
 .control__no { font-family: var(--mono); font-size: var(--fs-13); color: var(--accent-text); letter-spacing: .1em; padding-top: 3px; }
-.control h3 { font-size: clamp(var(--fs-18), 2vw, var(--fs-22)); font-weight: 800; letter-spacing: -0.01em; margin-bottom: 8px; }
+.control h3 { font-size: clamp(var(--fs-16), 2vw, var(--fs-20)); font-weight: 800; letter-spacing: -0.01em; margin-bottom: 8px; }
 .control p { color: var(--tx-mute); line-height: 1.6; max-width: 62ch; }
 .control p b { color: var(--tx); font-weight: 700; }
 .control .impl { display: block; margin-top: 10px; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .06em; color: var(--tx-faint); }
@@ -375,7 +377,7 @@
         <span class="kicker">03 / Not a policy document</span>
         <h2 class="h2 mt-s">This architecture is running <span class="accent-tx">right now.</span></h2>
       </div>
-      <p class="lead">MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: <!-- BUILD-LOG:MARCUS-INLINE-SECURITY — rendered from data/build-log.json. Never hand-edit. --><b>0</b><!-- /BUILD-LOG:MARCUS-INLINE-SECURITY --> (<a href="/work/marcus/results/">the year-one results</a>).</p>
+      <p class="lead">MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: <!-- BUILD-LOG:MARCUS-INLINE-SECURITY — rendered from data/build-log.json. Never hand-edit. --><b>0</b><!-- /BUILD-LOG:MARCUS-INLINE-SECURITY --> (<a href="/work/marcus/results/">the measured results</a>).</p>
     </div>
     <a class="btn btn--secondary btn--lg" href="/work/marcus/">Read the MARCUS case study <span class="arr">→</span></a>
   </div>

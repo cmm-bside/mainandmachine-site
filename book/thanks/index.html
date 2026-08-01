@@ -24,7 +24,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="stylesheet" href="/styles.css?v=98" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -65,7 +65,9 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org"
+        "https://www.bside.org",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
@@ -145,26 +147,7 @@
 .faster p b { color: var(--dtx); font-weight: 700; }
 
 /* form-card fields reused by the prep form (subset of /book/'s system) */
-.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.frow + .frow { margin-top: 16px; }
-.frow--1 { grid-template-columns: 1fr; }
 @media (max-width: 560px) { .frow { grid-template-columns: 1fr; } }
-.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.field > label { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--tx-mute); }
-.input {
-  font-family: var(--sans); font-size: var(--fs-16); color: var(--tx); background: #fff;
-  border: 1px solid var(--line); padding: 14px 15px; width: 100%; height: 52px;
-  transition: border-color .15s var(--ease), box-shadow .15s var(--ease); border-radius: 0;
-}
-.input::placeholder { color: var(--tx-faint); }
-.input:hover { border-color: rgba(29,24,18,0.30); }
-.input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-select.input {
-  appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 42px;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%236f675c' stroke-width='1.6'/></svg>");
-  background-repeat: no-repeat; background-position: right 15px center;
-}
-select.input:invalid { color: var(--tx-faint); }
 
 /* stage 2: optional prep details */
 .prep { margin-top: 30px; border: 1px solid var(--line); background: var(--paper-card); padding: clamp(20px, 3vw, 28px); color: var(--tx); }
@@ -361,7 +344,7 @@ select.input:invalid { color: var(--tx-faint); }
         </div>
 
         <div class="reversal" id="confirmProof">
-          <p><b>What we build:</b> MARCUS returned <b>1,240 hrs</b> of staff preparation in its first 90 days of full-fleet operation, with zero borrower identifiers sent to an outside model. <a href="/work/marcus/results/">Read the year-one results &rarr;</a></p>
+          <p><b>What we build:</b> MARCUS returned <!-- BUILD-LOG:MARCUS-INLINE-BOOK-THANKS — rendered from data/build-log.json. Never hand-edit. --><b>1,240 hrs</b><!-- /BUILD-LOG:MARCUS-INLINE-BOOK-THANKS --> of staff preparation in its first 90 days of full-fleet operation, with zero borrower identifiers sent to an outside model. <a href="/work/marcus/results/">Read the measured results &rarr;</a></p>
           <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
         </div>
       </div>
@@ -460,7 +443,9 @@ select.input:invalid { color: var(--tx-faint); }
   // Arrived straight from the Calendly embed: the slot is already booked, so
   // the "we'll email you within 24 hours" framing is wrong.
   var viaCalendly = /(?:^|[?&])via=calendly(?:&|$)/.test(location.search);
+  var cal = null;
   if (viaCalendly) {
+    try { cal = JSON.parse(sessionStorage.getItem('mm:calendly-booking') || 'null'); } catch (e) {}
     var t = document.getElementById('confirmTitle');
     if (t) t.textContent = 'You\u2019re booked.';
     var lede = document.getElementById('confirmLede');
@@ -479,7 +464,16 @@ select.input:invalid { color: var(--tx-faint); }
     }
   }
 
-  if(!data || !data.referenceId) return;
+  // Two ways to reach the prep form. The form path has a reference id and the
+  // submitter's identity; the Calendly path has neither — only the invitee URI
+  // captured from the embed. Both are allowed to submit; the server tells them
+  // apart and the internal email says which one it was. The alternative was a
+  // timeline that promised "anything you add below" above a form that only
+  // existed for half the people reading it.
+  if (!data || !data.referenceId) {
+    if (viaCalendly) wirePrep({ via: 'calendly', calendly: cal });
+    return;
+  }
 
   var fasterLink = document.getElementById('fasterLink');
   if (fasterLink) {
@@ -503,56 +497,74 @@ select.input:invalid { color: var(--tx-faint); }
       'Your request is in front of the advisor who prepares your call. We’ll reach you via ' + via + '. Here is exactly what happens next.';
   }
 
-  // Stage 2 — optional "help us prep" details, appended to the same submission.
-  var prep = document.getElementById('prep');
-  var prepForm = document.getElementById('prepForm');
-  prep.hidden = false;
-  var prepBtn = document.getElementById('prepBtn');
-  var prepStatus = document.getElementById('prepStatus');
-  function val(id){ var el = document.getElementById(id); return el ? el.value : ''; }
-
-  prepForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    var details = {
-      industry: val('industry'),
-      team: val('team'),
-      revenue: val('revenue'),
-      website: val('website').trim(),
-      heard: val('heard')
-    };
-    var hasAny = Object.keys(details).some(function(k){ return details[k] !== ''; });
-    if(!hasAny){
-      prepStatus.textContent = 'Pick or fill in at least one field. Or skip it entirely.';
-      return;
-    }
-    prepStatus.textContent = '';
-    prepBtn.disabled = true;
-    prepBtn.innerHTML = 'Adding…';
-
-    fetch('/api/book-assessment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(Object.assign({
-        stage: 'details',
-        referenceId: data.referenceId,
-        name: data.name,
-        email: data.email,
-        company: data.company,
-        company_url: ''
-      }, details))
-    })
-    .then(function(res){ return res.json(); })
-    .then(function(body){
-      if(!body || !body.ok){ throw new Error((body && body.error) || 'Could not add that just now.'); }
-      if(typeof window.plausible === 'function'){ window.plausible('booking_details_added', { props: { page: '/book/thanks/' } }); }
-      prep.classList.add('prep--done');
-    })
-    .catch(function(err){
-      prepBtn.disabled = false;
-      prepBtn.innerHTML = 'Add it to my request <span class="arr">→</span>';
-      prepStatus.textContent = err.message || 'Could not add that just now. Your request is already in.';
-    });
+  wirePrep({
+    referenceId: data.referenceId,
+    name: data.name,
+    email: data.email,
+    company: data.company
   });
+
+  // Stage 2 — optional "help us prep" details. `ident` is whatever identifies
+  // this booking to the server: a reference id from the form path, or
+  // via:'calendly' plus the invitee URI from the embed path.
+  function wirePrep(ident){
+    var prep = document.getElementById('prep');
+    var prepForm = document.getElementById('prepForm');
+    if(!prep || !prepForm) return;
+    prep.hidden = false;
+    var prepBtn = document.getElementById('prepBtn');
+    var prepStatus = document.getElementById('prepStatus');
+    function val(id){ var el = document.getElementById(id); return el ? el.value : ''; }
+
+    prepForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var details = {
+        industry: val('industry'),
+        team: val('team'),
+        revenue: val('revenue'),
+        website: val('website').trim(),
+        heard: val('heard')
+      };
+      var hasAny = Object.keys(details).some(function(k){ return details[k] !== ''; });
+      if(!hasAny){
+        prepStatus.textContent = 'Pick or fill in at least one field. Or skip it entirely.';
+        return;
+      }
+      prepStatus.textContent = '';
+      prepBtn.disabled = true;
+      prepBtn.innerHTML = 'Adding…';
+
+      var payload = { stage: 'details', company_url: '' };
+      if (ident.via === 'calendly') {
+        payload.via = 'calendly';
+        payload.calendlyInvitee = (ident.calendly && ident.calendly.invitee) || '';
+        payload.calendlyEvent = (ident.calendly && ident.calendly.event) || '';
+        payload.bookedAt = (ident.calendly && ident.calendly.at) || new Date().toISOString();
+      } else {
+        payload.referenceId = ident.referenceId;
+        payload.name = ident.name;
+        payload.email = ident.email;
+        payload.company = ident.company;
+      }
+
+      fetch('/api/book-assessment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.assign(payload, details))
+      })
+      .then(function(res){ return res.json(); })
+      .then(function(body){
+        if(!body || !body.ok){ throw new Error((body && body.error) || 'Could not add that just now.'); }
+        if(typeof window.plausible === 'function'){ window.plausible('booking_details_added', { props: { page: '/book/thanks/' } }); }
+        prep.classList.add('prep--done');
+      })
+      .catch(function(err){
+        prepBtn.disabled = false;
+        prepBtn.innerHTML = 'Add it to my request <span class="arr">→</span>';
+        prepStatus.textContent = err.message || 'Could not add that just now. Your booking is already in.';
+      });
+    });
+  }
 })();
 </script>
 

@@ -118,10 +118,49 @@ export function internalSubject(data) {
 // --- Stage-2 follow-up: optional prep details, appended to an existing lead. ---
 // Sent as a second internal email carrying the same reference id so the thread
 // is easy to reconcile; the lead itself already landed with the stage-1 email.
+//
+// EXCEPT on the Calendly path, where there is no stage-1 email and no
+// reference: the person booked straight from the embed, so all we have is the
+// invitee URI Calendly hands the parent window. Those emails say so at the top
+// rather than printing an empty reference and letting it read like a bug.
+
+// Who this belongs to, in one line, honestly.
+function identityOf(data, meta) {
+  if (data.via === "calendly") {
+    return {
+      calendly: true,
+      who: "A Calendly booker",
+      label: "Calendly booking — no reference id",
+      // The URI is the only reliable join key; the timestamp is the fallback.
+      key: data.calendlyInvitee || data.calendlyEvent || "",
+      bookedAt: data.bookedAt || "",
+      note:
+        "This came from someone who booked directly in the Calendly embed, so there is " +
+        "no assessment reference and no name or email — Calendly does not put those in " +
+        "the browser payload. Match it to the booking using the invitee URI below (or " +
+        "the booking timestamp), then file it with that calendar event.",
+    };
+  }
+  return {
+    calendly: false,
+    who: data.name,
+    label: `Reference ${meta.referenceId || data.referenceId || ""}`,
+    key: meta.referenceId || data.referenceId || "",
+    bookedAt: "",
+    note:
+      `Optional details ${data.name} added after submitting. File with the original ` +
+      "request — same reference id.",
+  };
+}
 
 export function renderDetailsHtml(data, meta) {
-  const ref = escapeHtml(meta.referenceId || data.referenceId || "");
+  const who = identityOf(data, meta);
+  const ref = escapeHtml(who.label);
   const stamp = escapeHtml(meta.stamp || "");
+  const heading = escapeHtml(data.company || who.who);
+  const subhead = who.calendly
+    ? "Booked in the Calendly embed"
+    : `${escapeHtml(data.name)} · appended to reference <span style="color:#B83E22;">${escapeHtml(who.key)}</span>`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -132,7 +171,7 @@ export function renderDetailsHtml(data, meta) {
 <title>Assessment prep details</title>
 </head>
 <body style="margin:0; padding:0; background:#3a352d;">
-  <div style="display:none; max-height:0; overflow:hidden; opacity:0;">${escapeHtml(data.company)} added prep details. Ref ${ref}.</div>
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0;">${heading} added prep details. ${ref}.</div>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#3a352d;">
     <tr>
       <td align="center" style="padding:16px 12px 40px;">
@@ -145,8 +184,8 @@ export function renderDetailsHtml(data, meta) {
                 <tr>
                   <td style="padding:26px 32px;">
                     <div style="font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#a59c8e;">Prep details added</div>
-                    <div style="margin-top:8px; font-family:Georgia,serif; font-size:24px; font-weight:700; color:#f4efe4; letter-spacing:-0.01em;">${escapeHtml(data.company)}</div>
-                    <div style="margin-top:6px; font-family:Georgia,serif; font-size:15px; color:#a59c8e;">${escapeHtml(data.name)} · appended to reference <span style="color:#B83E22;">${ref}</span></div>
+                    <div style="margin-top:8px; font-family:Georgia,serif; font-size:24px; font-weight:700; color:#f4efe4; letter-spacing:-0.01em;">${heading}</div>
+                    <div style="margin-top:6px; font-family:Georgia,serif; font-size:15px; color:#a59c8e;">${subhead}</div>
                   </td>
                 </tr>
               </table>
@@ -157,9 +196,19 @@ export function renderDetailsHtml(data, meta) {
             <td style="padding:22px 32px 0;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fbf8f1; border:1px solid rgba(32,28,23,0.14);">
                 <tr>
-                  <td style="padding:14px 16px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#6f675c;">Reference <b style="color:#B83E22;">${ref}</b></td>
+                  <td style="padding:14px 16px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#6f675c;"><b style="color:#B83E22;">${ref}</b></td>
                   <td align="right" style="padding:14px 16px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.04em; color:#978d7f;">${stamp}</td>
-                </tr>
+                </tr>${
+                  who.calendly
+                    ? `
+                <tr>
+                  <td colspan="2" style="padding:0 16px 14px; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; line-height:1.7; letter-spacing:.02em; color:#6f675c; word-break:break-all;">
+                    Invitee URI: <b style="color:#201c17;">${escapeHtml(who.key || "— not captured —")}</b><br />
+                    Booked at: <b style="color:#201c17;">${escapeHtml(who.bookedAt || "— unknown —")}</b>
+                  </td>
+                </tr>`
+                    : ""
+                }
               </table>
             </td>
           </tr>
@@ -174,7 +223,7 @@ ${rows(data, DETAIL_FIELDS)}
 
           <tr>
             <td style="padding:16px 32px 30px;">
-              <p style="margin:0; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.04em; line-height:1.7; color:#6f675c;">Optional details ${escapeHtml(data.name)} added after submitting. File with the original request — same reference id. Submitted via <a href="${SITE_ORIGIN}/book/" style="color:#B83E22; text-decoration:none;">mainandmachine.com/book</a>.</p>
+              <p style="margin:0; font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.04em; line-height:1.7; color:#6f675c;">${escapeHtml(who.note)} Submitted via <a href="${SITE_ORIGIN}/book/thanks/" style="color:#B83E22; text-decoration:none;">mainandmachine.com/book/thanks</a>.</p>
             </td>
           </tr>
 
@@ -187,19 +236,28 @@ ${rows(data, DETAIL_FIELDS)}
 }
 
 export function renderDetailsText(data, meta) {
+  const who = identityOf(data, meta);
   const out = [
-    `ASSESSMENT PREP DETAILS — ${data.company} (${data.name})`,
-    `Reference: ${meta.referenceId || data.referenceId}`,
+    `ASSESSMENT PREP DETAILS — ${data.company || who.who}`,
+    who.label,
+  ];
+  if (who.calendly) {
+    out.push(`Invitee URI: ${who.key || "— not captured —"}`, `Booked at: ${who.bookedAt || "— unknown —"}`);
+  }
+  out.push(
     `Submitted: ${meta.stamp}`,
     "",
     ...DETAIL_FIELDS.map((f) => `${f.label}: ${data[f.key] || "—"}`),
     "",
-    "Optional details added after the original request — file with the same reference id.",
-    `Submitted via ${SITE_ORIGIN}/book/`,
-  ];
+    who.note,
+    `Submitted via ${SITE_ORIGIN}/book/thanks/`
+  );
   return out.join("\n");
 }
 
 export function detailsSubject(data) {
+  if (data.via === "calendly") {
+    return `Prep details added — Calendly booking (no reference)${data.company ? ` — ${data.company}` : ""}`;
+  }
   return `Prep details added — ${data.company} (${data.referenceId})`;
 }

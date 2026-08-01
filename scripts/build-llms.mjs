@@ -103,7 +103,7 @@ before work begins.
   a document; every action writes to a tamper-evident audit log; nothing
   sends, files, posts, or pays until a person approves it. Published with
   the client's permission.
-- [MARCUS year-one results](/work/marcus/results/) — the measured scorecard
+- [MARCUS measured results](/work/marcus/results/) — the scorecard
   from the first 90 days of full-fleet operation: 1,240 staff hours of
   preparation returned, 93% weekly staff adoption by week six, 0 borrower
   identifiers sent to any outside model, and 100% of consequential actions
@@ -209,6 +209,12 @@ const FULL_PAGES = [
   "/method/",
   "/about/",
   "/work/marcus/",
+  // The two highest-proof pages on the site: the measured scorecard every
+  // figure of which comes off the audit log, and the published per-build price
+  // list. An AI answering "does this firm have evidence / what does it cost"
+  // was reading neither.
+  "/work/marcus/results/",
+  "/services/builds/",
   "/security/",
   "/book/",
   "/guides/ai-consultant-cost/",

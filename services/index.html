@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="stylesheet" href="/styles.css?v=98" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -67,7 +67,7 @@
 }
 .case__results { padding: clamp(22px, 3vw, 30px); border-bottom: 1px solid var(--line); }
 .case__results > .tick-lbl { display: block; margin-bottom: 16px; }
-.case__stats { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: #fff; }
+.case__stats { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: var(--paper-card); }
 @media (max-width: 560px) { .case__stats { grid-template-columns: 1fr; } }
 .case__stat { padding: 16px 18px; border-right: 1px solid var(--line); }
 .case__stat:last-child { border-right: 0; }
@@ -75,7 +75,7 @@
 .case__stat .tick-lbl { display: block; margin-bottom: 8px; }
 .case__stat .stat-val { font-family: var(--mono); font-size: var(--fs-20); font-weight: 700; letter-spacing: .04em; color: var(--accent); }
 .case__caption { margin-top: 14px; font-family: var(--mono); font-size: var(--fs-12); line-height: 1.6; color: var(--tx-mute); max-width: 64ch; }
-.case__log { border: 1px solid var(--line); background: #fff; padding: 18px 20px; }
+.case__log { border: 1px solid var(--line); background: var(--paper-card); padding: 18px 20px; }
 .case__log .tick-lbl { display: block; margin-bottom: 8px; }
 .case__log p { font-size: var(--fs-16); line-height: 1.6; color: var(--tx-mute); max-width: 64ch; }
 .case__quote { padding: clamp(22px, 3vw, 30px); }
@@ -282,7 +282,9 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org"
+        "https://www.bside.org",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
@@ -747,7 +749,7 @@
         <span class="kicker">The math</span>
         <h2 class="h2 mt-s">Same rigor. <span class="accent-tx">A fraction of the bill.</span></h2>
       </div>
-      <p class="lead">The Big Four do versions of this work with half-million-dollar minimums. We built the same discipline for Main Street.</p>
+      <p class="lead">The Big Four do versions of this work at prices buyers report starting around half a million. We built the same discipline for Main Street.</p>
     </div>
     <div class="math-vs">
       <div class="math-vs__col">
@@ -859,7 +861,7 @@
 </footer>
 
 <!-- ============ REVEAL ANIMATION ============ -->
-<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.diffs > .diff,.svc__item,.case,.builds__grid > .build,.artifact > *,.final .wrap > *,.foot__top > *"></script>
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.diffs > .diff,.svc__item,.case,.artifact > *,.final .wrap > *,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=5"></script>
 <script src="/js/analytics.js?v=2"></script>

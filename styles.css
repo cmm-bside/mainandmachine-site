@@ -355,7 +355,12 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 
 /* problem-section stat: one dominant 78% (bright, largest) + a subordinate flame 22% counterpoint (~half weight) */
 .failstat{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:clamp(28px,5vw,72px); padding:clamp(28px,4vw,44px) clamp(24px,3vw,36px); background:var(--ink-2); border:1px solid var(--dline); }
-.failstat__big{ font-size:clamp(var(--fs-76),13vw,var(--fs-110)); line-height:0.82; color:var(--dtx); }
+/* Deliberately a fixed size, not a clamp: the elevation layer aliases both
+   --fs-76 and --fs-110 to --fs-78, so the old clamp(76,13vw,110) had equal
+   endpoints and the 13vw middle term could never win. Stating the fixed
+   value says what actually renders. The <=600px rule below IS a live clamp
+   (49px floor, 20vw, 78px ceiling) and stays one. */
+.failstat__big{ font-size:var(--fs-78); line-height:0.82; color:var(--dtx); }
 .failstat__sm{ font-size:clamp(var(--fs-31),4.2vw,var(--fs-49)); line-height:0.9; color:var(--accent-ink); }
 .failstat__cap{ font-size:var(--fs-16); color:var(--dtx); margin-top:var(--s-12); max-width:24ch; line-height:1.35; }
 .failstat__cap--sm{ font-size: var(--fs-13); color:var(--dtx-mute); max-width:22ch; }
@@ -370,7 +375,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .failstat__ratio-lbls span:last-child{ flex:26; color:var(--accent-ink); }
 .failstat__kicker{ margin-top:var(--s-12); font-size:var(--fs-20); font-weight:700; letter-spacing:-0.01em; color:var(--dtx); }
 .failstat__kicker b{ color:var(--accent-ink); font-weight:800; }
-@media (max-width:600px){ .failstat__big{ font-size:clamp(var(--fs-49),20vw,var(--fs-110)); } .failstat__aside{ margin-left:0; } }
+@media (max-width:600px){ .failstat__big{ font-size:clamp(var(--fs-49),20vw,var(--fs-78)); } .failstat__aside{ margin-left:0; } }
 
 /* =========================================================
    ROI CALCULATOR (blueprint / machine)
@@ -554,7 +559,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 }
 .feed__featured-img.is-empty::after, .feed__card-img.is-empty::after {
   content: "&"; position: absolute; inset: 0; display: grid; place-items: center;
-  font-family: var(--sans); font-weight: 900; font-size: clamp(var(--fs-49),8vw,var(--fs-110));
+  font-family: var(--sans); font-weight: 900; font-size: clamp(var(--fs-49),8vw,var(--fs-78));
   color: transparent; -webkit-text-stroke: 2px rgba(32,28,23,0.14);
 }
 
@@ -636,7 +641,8 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
 @media (max-width: 920px){ .foot__top { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px){ .foot__top { grid-template-columns: 1fr; } }
 .foot__brand p { color: var(--dtx-mute); font-size: var(--fs-13); max-width: 32ch; margin: 18px 0 24px; }
-/* SCOPE / DELIVERY / AUDITS micro-stats — three equal columns, hairline, aligned */
+/* SCOPE / AUDITS micro-stats — two equal columns, hairline, aligned.
+   (A DELIVERY column was planned and never shipped; the markup carries two.) */
 .foot__brand .entity__stats { display:grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin: 30px 0 0; padding-top: var(--s-16); border-top: 1px solid var(--dline); }
 .foot__brand .entity__stats > div { display:flex; flex-direction:column; gap: var(--s-8); }
 .foot__brand .entity__stats .tick-lbl { display:block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--mono-on-dark); }
@@ -1008,7 +1014,7 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 /* ---- the math ---- */
 .math{ display:grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px,4vw,56px); align-items:stretch; }
 .math__fig{ background:var(--ink); color:var(--dtx); padding: clamp(34px,4vw,52px); display:flex; flex-direction:column; justify-content:center; }
-.math__big{ font-weight:900; font-size: clamp(var(--fs-49),9vw,var(--fs-110)); letter-spacing:-.045em; line-height:.85; color:var(--accent-ink); }
+.math__big{ font-weight:900; font-size: clamp(var(--fs-49),9vw,var(--fs-78)); letter-spacing:-.045em; line-height:.85; color:var(--accent-ink); }
 .math__cap{ font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.12em; text-transform:uppercase; color:var(--dtx-mute); margin-top:var(--s-16); }
 .math__side{ display:flex; flex-direction:column; justify-content:center; }
 .math__side p{ font-size: var(--fs-16); line-height:1.6; color:var(--tx-mute); }
@@ -1086,13 +1092,20 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .roi__nethead{ display:flex; align-items:baseline; justify-content:space-between; gap:var(--s-16);
   font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.12em; text-transform:uppercase; }
 .roi__nethead span:last-child{ color: var(--tx-label); letter-spacing:.1em; }
-.roi__big{ margin-top:var(--s-12); font-weight:900; font-size: clamp(var(--fs-39),6.5vw,var(--fs-49));
-  line-height:.9; letter-spacing:-.045em; color: var(--accent); }
+/* The output is a range, not a point (see js/roi.js — the low end is the ROI
+   guide's stress test with run costs against it). Two figures and an en dash
+   need a smaller type size than the single number this slot used to hold, and
+   they must be allowed to wrap on a narrow card rather than overflow it. */
+.roi__big{ margin-top:var(--s-12); font-weight:900; font-size: clamp(var(--fs-25),3.6vw,var(--fs-39));
+  line-height:1.02; letter-spacing:-.035em; color: var(--accent); overflow-wrap:break-word; }
+.roi__bigunit{ margin-top:var(--s-8); font-family:var(--mono); font-size:var(--fs-12);
+  letter-spacing:.06em; line-height:1.5; color: var(--tx-faint); }
+.ink .roi__bigunit{ color: var(--dtx-faint); }
 .roi__disclaim{ margin-top:var(--s-16); font-size: var(--fs-13); line-height:1.5; color: var(--tx-mute); }
 
 .roi__foot{ display:flex; align-items:center; justify-content:space-between; gap:var(--s-16);
   padding: var(--s-12) var(--s-16); border-top:1px solid var(--line); background: var(--paper-2);
-  font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.12em; text-transform:uppercase; color: var(--tx-faint); }
+  font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.12em; text-transform:uppercase; color: var(--tx-mute); } /* --tx-faint is 4.34:1 on paper-2 */
 .roi__foot b{ color: var(--tx); font-weight:700; }
 @media(max-width:520px){ .roi__bar, .roi__foot{ flex-direction:column; align-items:flex-start; gap:var(--s-4); } }
 
@@ -1518,9 +1531,28 @@ h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
   outline-offset: 2px;
   border-radius: var(--r-sm);
 }
-/* Cream ring on dark surfaces (rust is invisible on near-black) */
+/* Cream ring on dark surfaces — the rust ring is 3.23:1 on near-black, under
+   the 3:1 WCAG 1.4.11 floor once antialiasing is counted and unusable in
+   practice.
+   THIS IS LIST 4 OF THE DARK SURFACE CASCADE (see that block, ~line 1745).
+   It lived only on .ink/.foot/.topbar for a long time, so every CTA inside a
+   component that paints ITSELF dark — rather than carrying .ink — kept the
+   rust ring: the FAQ asides on 13 guide pages, the FAQ strips, the featured
+   service card, the ink rail panels on /book/. 24 pages, keyboard-only, which
+   is exactly the audience that cannot afford an invisible focus ring.
+   ADDING A DARK COMPONENT: add it here as well as to lists 1 and 2. */
 .ink :focus-visible, .foot :focus-visible, .topbar :focus-visible,
-[data-hero-machine] :focus-visible {
+[data-hero-machine] :focus-visible,
+.svc__item--feature :focus-visible,
+.arg--amp :focus-visible,
+.failstat :focus-visible,
+.promise__col--dont :focus-visible,
+.math__fig :focus-visible,
+.faq__aside :focus-visible,
+.faq-strip :focus-visible,
+.subcard :focus-visible,
+.tl :focus-visible,
+.panel--ink :focus-visible {
   outline-color: var(--paper);
 }
 
@@ -1623,7 +1655,7 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 .timeline90 { display: flex; margin-top: var(--s-48); border: 1px solid var(--hairline); border-radius: var(--r-md); overflow: hidden; }
 .timeline90__seg { flex: 1; padding: clamp(var(--s-24), 2.4vw, var(--s-32)); border-left: 1px solid var(--hairline); min-width: 0; } /* even thirds */
 .timeline90__seg:first-child { border-left: 0; }
-.timeline90__weeks { display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--rust); }
+.timeline90__weeks { display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); } /* --rust is 4.13:1 on the cream band — under 4.5 */
 .timeline90__phase { display: block; font-weight: 700; font-size: var(--fs-20); letter-spacing: -0.01em; margin: var(--s-8) 0 var(--s-4); color: var(--ink); }
 .timeline90__seg p { font-size: var(--fs-13); color: var(--tx-mute); line-height: 1.4; }
 @media (max-width: 680px){ .timeline90 { flex-direction: column; } .timeline90__seg { border-left: 0; border-top: 1px solid var(--hairline); } .timeline90__seg:first-child { border-top: 0; } }
@@ -1741,9 +1773,20 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
    27 × color:var(--accent-ink), 41 × the footer logo, and so on. Listing the
    self-darkening components alongside .ink here closes it in one place.
 
-   ADDING A DARK COMPONENT: add its selector to BOTH lists below (the surface
-   list and the link list). CSS has no selector variables, so the list is
-   written out; keeping it in one block is what makes that maintainable.
+   ADDING A DARK COMPONENT: there are THREE lists below, plus a fourth that
+   lives in the a11y section because that is where focus styling belongs:
+     1. text + label colours  — always; this is what makes .accent-tx and the
+                                mono labels legible on the dark surface.
+     2. body-copy link affordance — only if the component contains running
+                                copy with links in it (WCAG 1.4.1 underlines).
+     3. footer logo — a single .logo.ink rule, not a list; nothing to add.
+     4. FOCUS RING — always, and it is NOT in this block. Search for
+                     "LIST 4 OF THE DARK SURFACE CASCADE" (~line 1530). Focus
+                     does not inherit its way out of this: the default ring is
+                     rust, which is 3.23:1 on near-black. Skipping list 4 is
+                     how 24 pages shipped an invisible keyboard focus ring.
+   CSS has no selector variables, so the lists are written out; keeping them
+   cross-referenced is what makes that maintainable.
    ========================================================= */
 
 /* ---- 1. text + label colours on every dark surface ---- */
@@ -1850,9 +1893,14 @@ p a:not(.btn):hover,
 
 /* =========================================================
    FORM SYSTEM — the site's one set of form components
-   Promoted 2026-07-31 from /book/'s page-scoped block, which
-   /careers/ had independently reimplemented as .cr-field /
-   .cr-grid / .cr-card. Both pages now use these.
+   Promoted 2026-07-31 from /book/'s page-scoped block.
+   ADOPTION IS PARTIAL. /book/ and /book/thanks/ use these.
+   /careers/ does NOT: it still runs its own .cr-field /
+   .cr-grid / .cr-card, defined in a page-scoped <style>
+   block on that page (~84 rules), which is the duplication
+   this promotion was meant to end. Porting /careers/ over is
+   the outstanding half of the job — until it happens, a change
+   here does not reach the careers form.
 
    Contract: a control is .input regardless of tag (input,
    textarea, select). A wrapper is .field. Invalid state is
@@ -1961,7 +2009,15 @@ select.input:invalid { color: var(--tx-faint); }
 .btn[disabled] { opacity: .55; cursor: not-allowed; }
 .btn[disabled]:hover { transform: none; background: var(--accent); }
 
-/* ---- send states ---- */
+/* ---- send states ----
+   The CARD owns the state, the form system reacts. Targeting `form` rather
+   than the individual row/footer classes keeps this working for any page that
+   wraps a <form> in a .formcard, which is why /careers/ needed no page rules
+   of its own once it migrated off .cr-card. */
+.formcard.is-sending form { opacity: .5; pointer-events: none; }
+.formcard.is-sent form { display: none; }
+.formcard.is-sent .formstatus.success { display: block; }
+.formcard.is-error .formstatus.error { display: block; }
 .formstatus { display: none; }
 .formstatus.success { padding: 14px 0; }
 .formstatus.success .icon { width: 52px; height: 52px; border: 2px solid var(--go-deep); color: var(--go-deep); display: grid; place-items: center; font-size: var(--fs-25); margin-bottom: 22px; }
@@ -2012,9 +2068,14 @@ select.input:invalid { color: var(--tx-faint); }
 
 /* =========================================================
    RISK REVERSAL — the guarantee + audit-credit pair.
-   One component, placed beside the primary CTA on every page
-   that asks for a decision. Facts come from data-fact spans,
-   so the wording can never drift from site-facts.json.
+   One component, placed beside the primary CTA. It is on nine
+   pages, not all of them: /book/, /book/thanks/, /calculator/,
+   /contact/, /security/, /work/, /work/marcus/,
+   /work/marcus/results/ and /services/sample-audit/.
+   Notably NOT on /pricing/ or /services/, which do ask for a
+   decision — add it there rather than editing this comment.
+   Facts come from data-fact spans, so the wording can never
+   drift from site-facts.json.
    ========================================================= */
 .reversal { margin-top: var(--s-24); padding-top: var(--s-16); border-top: 1px solid var(--line); max-width: 62ch; }
 .reversal p { margin: 0; font-family: var(--mono); font-size: var(--fs-12); line-height: 1.65; color: var(--tx-mute); }
@@ -2036,18 +2097,21 @@ select.input:invalid { color: var(--tx-faint); }
 .ink .estimate-form > label { color: var(--dtx-mute); }
 .ink .estimate-form__note { color: var(--dtx-faint); }
 
-/* Hero CTA weighting: on a phone the two buttons read as equal choices, which
-   blunts the primary intent. Below 620px the primary goes full-width and the
-   secondary drops to a text link — same two doors, honest hierarchy. */
+/* Hero CTA weighting: two equal-looking buttons read as an equal choice, which
+   blunts the primary intent. The secondary is a text link at EVERY width — a
+   desktop visitor deserves the same honest hierarchy a phone visitor gets, and
+   the two doors are not equally weighted in the first place. Below 620px the
+   primary also goes full-width and the pair stacks. */
 .hero__cta--weighted { align-items: center; }
+.hero__cta--weighted .hero__cta-alt {
+  border: 0; background: none; padding: 0; width: auto;
+  font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em;
+  text-decoration: underline; text-underline-offset: 3px; color: var(--accent-text);
+}
+.ink .hero__cta--weighted .hero__cta-alt { color: var(--accent-ink); }
+.hero__cta--weighted .hero__cta-alt:hover { background: none; color: var(--accent-deep); }
 @media (max-width: 620px) {
   .hero__cta--weighted { flex-direction: column; align-items: stretch; gap: var(--s-12); }
   .hero__cta--weighted .btn--primary { width: 100%; justify-content: center; }
-  .hero__cta--weighted .hero__cta-alt {
-    border: 0; background: none; padding: 0; width: auto; align-self: flex-start;
-    font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em;
-    text-decoration: underline; text-underline-offset: 3px; color: var(--accent-text);
-  }
-  .ink .hero__cta--weighted .hero__cta-alt { color: var(--accent-ink); }
-  .hero__cta--weighted .hero__cta-alt:hover { background: none; color: var(--accent-deep); }
+  .hero__cta--weighted .hero__cta-alt { align-self: flex-start; }
 }

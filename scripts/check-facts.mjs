@@ -9,6 +9,7 @@ import path from "node:path";
 import { ROOT } from "./lib/config.mjs";
 import { COMPANY } from "../src/data/company.mjs";
 import { factValues, serviceNotes, countableClauses, contradictionPattern } from "./lib/fact-values.mjs";
+import { PERSON_SAMEAS } from "./lib/templates.mjs";
 
 const errors = [];
 const fail = (m) => errors.push(m);
@@ -249,6 +250,27 @@ for (const page of ALL_PAGES) {
       }
       if (t === "Person" && node.name === COMPANY.founder.name && node["@id"] && node["@id"] !== PERSON_ID)
         fail(`${page}: person node @id "${node["@id"]}" should be ${PERSON_ID}`);
+      // One entity, one claim set. The founder's Person node is the same
+      // entity on all ~40 pages, so its sameAs must be byte-identical
+      // everywhere — including order, which is part of the emitted JSON.
+      // This drifted once already: / and /about/ carried 8 profiles while the
+      // other 37 pages carried 6, so search engines saw two different claims
+      // about one @id. PERSON_SAMEAS in templates.mjs is the source of truth;
+      // hand-editing a page out of sync now fails the build.
+      if (t === "Person" && node["@id"] === PERSON_ID) {
+        const got = Array.isArray(node.sameAs) ? node.sameAs : [];
+        if (JSON.stringify(got) !== JSON.stringify(PERSON_SAMEAS)) {
+          const missing = PERSON_SAMEAS.filter((u) => !got.includes(u));
+          const extra = got.filter((u) => !PERSON_SAMEAS.includes(u));
+          const why = missing.length || extra.length
+            ? `${missing.length ? `missing ${missing.join(", ")}` : ""}${missing.length && extra.length ? "; " : ""}${extra.length ? `unexpected ${extra.join(", ")}` : ""}`
+            : "same links, different order";
+          fail(
+            `${page}: Person sameAs has ${got.length} entr(ies), expected the canonical ${PERSON_SAMEAS.length} ` +
+              `from PERSON_SAMEAS in scripts/lib/templates.mjs — ${why}`
+          );
+        }
+      }
     });
   }
   // Subpages (anything but the homepage and legal/404) must carry a BreadcrumbList.

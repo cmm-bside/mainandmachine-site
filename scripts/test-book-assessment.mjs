@@ -17,7 +17,9 @@ import {
   validateSubmission, validateDetails,
   validateEstimate, makeReferenceId, firstNameOf, contactVia, formatStamp,
 } from "../emails/lib.js";
-import { renderAutoresponderHtml, renderAutoresponderText } from "../emails/assessment-autoresponder.js";
+import { renderAutoresponderHtml, renderAutoresponderText, CALENDLY_URL } from "../emails/assessment-autoresponder.js";
+import { COMPANY } from "../src/data/company.mjs";
+import { MARCUS } from "../src/data/proof.mjs";
 import { renderEstimateHtml, renderEstimateText, estimateSubject } from "../emails/estimate.js";
 import {
   renderInternalHtml, renderInternalText, internalSubject,
@@ -87,6 +89,52 @@ const detBadRef = validateDetails({ ...detailsSample, referenceId: "nope" });
 if (detBadRef.ok) fail("details with bad reference id was wrongly accepted");
 else pass("details with bad reference id rejected");
 
+// --- the Calendly prep path -------------------------------------------------
+// Someone who books in the embed has no reference id and no email: Calendly's
+// postMessage carries only the invitee/event URIs. /book/thanks/ promises them
+// a prep form, so the server has to accept that shape.
+const calSample = {
+  stage: "details",
+  via: "calendly",
+  calendlyInvitee: "https://api.calendly.com/scheduled_events/ABC123/invitees/DEF456",
+  calendlyEvent: "https://api.calendly.com/scheduled_events/ABC123",
+  bookedAt: "2026-08-01T17:04:11.000Z",
+  industry: "Professional services",
+  team: "11–25",
+};
+const cal = validateDetails(calSample);
+cal.ok
+  ? pass("details: Calendly booking accepted with no reference id and no email")
+  : fail(`details: Calendly booking rejected — ${JSON.stringify(cal.errors)}`);
+
+const calEmpty = validateDetails({ stage: "details", via: "calendly", calendlyInvitee: calSample.calendlyInvitee });
+calEmpty.ok ? fail("details: empty Calendly submission wrongly accepted") : pass("details: empty Calendly submission rejected");
+
+// via must be exactly 'calendly' — anything else still needs a real reference.
+const calSpoof = validateDetails({ ...calSample, via: "whatever" });
+calSpoof.ok ? fail("details: unknown `via` bypassed the reference requirement") : pass("details: unknown `via` still requires a reference id");
+
+const calLong = validateDetails({ ...calSample, calendlyInvitee: "x".repeat(400) });
+calLong.ok ? fail("details: over-long invitee URI accepted") : pass("details: over-long invitee URI rejected");
+
+// The internal email must SAY it cannot be auto-matched, and carry the join key.
+const calMeta = { referenceId: "", stamp: "1 Aug 2026, 11:04 MST" };
+const calSubj = detailsSubject(cal.data);
+const calHtml = renderDetailsHtml(cal.data, calMeta);
+const calText = renderDetailsText(cal.data, calMeta);
+calSubj.includes("Calendly") && !calSubj.includes("undefined")
+  ? pass(`details email: Calendly subject reads honestly ("${calSubj}")`)
+  : fail(`details email: bad Calendly subject ("${calSubj}")`);
+calHtml.includes("DEF456") && calText.includes("DEF456")
+  ? pass("details email: invitee URI present as the join key")
+  : fail("details email: invitee URI missing — the booking cannot be matched");
+calText.includes("no assessment reference") && calHtml.includes("no assessment reference")
+  ? pass("details email: states plainly that there is no reference to match")
+  : fail("details email: does not disclose the missing reference");
+!/Reference:\s*$|\(undefined\)|Ref \./.test(calText)
+  ? pass("details email: no empty reference artifacts")
+  : fail("details email: prints a blank reference");
+
 // 2. render
 // --- stage 3: "email me this estimate" -------------------------------------
 const estimateSample = {
@@ -122,16 +170,59 @@ const now = new Date();
 const referenceId = makeReferenceId(now);
 const stamp = formatStamp(now);
 const meta = { referenceId, stamp };
-const emailData = { firstName: firstNameOf(data.name), referenceId };
+const emailData = { firstName: firstNameOf(data.name), referenceId, name: data.name, email: data.email };
 
 pass(`reference id: ${referenceId}`);
 pass(`contact via: ${contactVia(data)}`);
 
+// --- the autoresponder ------------------------------------------------------
+// This is the email that reaches the highest-intent reader on the site, during
+// the 24-hour wait. Every load-bearing element is asserted here because there
+// is no build guard for email bodies — the only thing standing between a broken
+// autoresponder and a lead's inbox is this file.
+const autoHtml = renderAutoresponderHtml(emailData);
+const autoText = renderAutoresponderText(emailData);
+
+// The scheduler must be the one /book/ actually embeds. Two copies of a URL
+// drift; this fails the moment they do.
+const bookHtml = fs.readFileSync(path.join(__dirname, "..", "book", "index.html"), "utf8");
+const embedded = /data-cal-url="([^"]+)"/.exec(bookHtml);
+embedded && embedded[1] === CALENDLY_URL
+  ? pass(`scheduler URL matches the /book/ embed (${CALENDLY_URL})`)
+  : fail(`scheduler URL drift: email has ${CALENDLY_URL}, /book/ embeds ${embedded ? embedded[1] : "nothing"}`);
+
+for (const [label, body] of [["HTML", autoHtml], ["text", autoText]]) {
+  const has = (needle) => body.includes(needle);
+  has(CALENDLY_URL) ? pass(`autoresponder ${label}: scheduler link present`) : fail(`autoresponder ${label}: no scheduler link`);
+  has(encodeURIComponent(sample.email))
+    ? pass(`autoresponder ${label}: scheduler prefilled with the submitted email`)
+    : fail(`autoresponder ${label}: scheduler is not prefilled`);
+  has(COMPANY.guarantee) ? pass(`autoresponder ${label}: guarantee verbatim from COMPANY`) : fail(`autoresponder ${label}: guarantee missing or reworded`);
+  has(COMPANY.rollover) ? pass(`autoresponder ${label}: audit credit verbatim from COMPANY`) : fail(`autoresponder ${label}: rollover missing or reworded`);
+  has(COMPANY.email) ? pass(`autoresponder ${label}: reply address is canonical`) : fail(`autoresponder ${label}: canonical email missing`);
+  has("/work/marcus/results/") ? pass(`autoresponder ${label}: proof link present`) : fail(`autoresponder ${label}: no link to the measured results`);
+  has("/pricing/") ? pass(`autoresponder ${label}: price-list link present`) : fail(`autoresponder ${label}: no link to /pricing/`);
+  // The proof line is data, not prose: it must carry the signed-off figure.
+  const hours = MARCUS.figures["hours-returned"];
+  if (MARCUS.signedOff) {
+    has(hours.value) ? pass(`autoresponder ${label}: proof line carries the build-log figure`) : fail(`autoresponder ${label}: proof figure missing`);
+  } else {
+    !has("MARCUS,") ? pass(`autoresponder ${label}: unsigned build log → proof line withheld`) : fail(`autoresponder ${label}: shipped an unapproved figure`);
+  }
+}
+
+// Blog links must carry the trailing slash; /blog/<slug> without it is a 308.
+!/\/blog\/[a-z0-9-]+(?![a-z0-9-/])/.test(autoHtml.replace(/\/blog\/[a-z0-9-]+\//g, ""))
+  ? pass("autoresponder HTML: every /blog/<slug>/ link has a trailing slash")
+  : fail("autoresponder HTML: a /blog/<slug> link is missing its trailing slash");
+!/\shref="\/(?!\/)/.test(autoHtml) ? pass("autoresponder HTML: no relative links") : fail("autoresponder HTML: relative link found (breaks in email)");
+!autoHtml.includes("hello@mainandmachine.com") ? pass("autoresponder: no stale hello@ address") : fail("autoresponder: still carries the non-canonical hello@ address");
+
 const files = {
   "estimate.html": estHtml,
   "estimate.txt": estText,
-  "autoresponder.html": renderAutoresponderHtml(emailData),
-  "autoresponder.txt": renderAutoresponderText(emailData),
+  "autoresponder.html": autoHtml,
+  "autoresponder.txt": autoText,
   "internal.html": renderInternalHtml(data, meta),
   "internal.txt": renderInternalText(data, meta),
   "details.html": renderDetailsHtml(det.data, meta),

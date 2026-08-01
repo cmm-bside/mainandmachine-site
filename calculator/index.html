@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="stylesheet" href="/styles.css?v=98" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -98,7 +98,9 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org"
+        "https://www.bside.org",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
@@ -253,6 +255,7 @@
               <li><span>Manual work / employee</span><span class="mono tab" id="calcAManual">$4,000/yr</span></li>
               <li><span>Lost revenue / employee</span><span class="mono tab" id="calcARevenue">$2,000/yr</span></li>
               <li><span>Sprint investment</span><span class="mono tab" id="calcAImpl">$18,000</span></li>
+              <li><span>Run costs (tools + model usage)</span><span class="mono tab" id="calcARun">up to $6,000/yr</span></li>
             </ul>
           </div>
         </div>
@@ -264,15 +267,17 @@
             <li><span>Repetitive manual work</span><span class="mono tab roi__pos" id="calcManual">+$100,000</span></li>
             <li><span>Lost revenue (capacity)</span><span class="mono tab roi__pos" id="calcRevenue">+$50,000</span></li>
             <li><span>Sprint investment</span><span class="mono tab roi__neg" id="calcImpl">-$18,000</span></li>
+            <li><span>Run costs / year</span><span class="mono tab roi__neg" id="calcRun">up to -$6,000</span></li>
           </ul>
           <div class="roi__net">
             <div class="roi__nethead">
               <span class="accent-tx">Projected ROI / Year 1</span>
               <span id="calcFor">For 25 people</span>
             </div>
-            <div class="roi__big tab" id="calcRoi">+$132,000</div>
+            <div class="roi__big tab" id="calcRoi">-$5,250–+$132,000</div>
+            <p class="roi__bigunit">modeled range — stress-tested low end to raw-model high end</p>
           </div>
-          <p class="roi__disclaim">A model, not a promise. The sprint cost is our published price; the savings are round assumptions you can see above, not your books. We run your real numbers in the free assessment, then commit to fixed scope in writing. The full model — every rate, a worked example, and what breaks it — is published in <a href="/guides/ai-roi-math-small-business/">the ROI math guide</a>; what a live system costs monthly is in <a href="/guides/what-ai-automation-costs-to-run/">the running-costs guide</a>.</p>
+          <p class="roi__disclaim">A model, not a promise. The range is the point: the high end assumes the build recovers all of the modeled drag, the low end applies the ROI guide&rsquo;s stress test &mdash; half the drag, a quarter of it captured &mdash; with a full year of run costs against it. On a small team the low end goes negative, which is the model telling you to wait. The sprint cost is our published price; the savings are round assumptions you can see above, not your books. We run your real numbers in the free assessment, then commit to fixed scope in writing. The full model — every rate, a worked example, and what breaks it — is published in <a href="/guides/ai-roi-math-small-business/">the ROI math guide</a>; what a live system costs monthly is in <a href="/guides/what-ai-automation-costs-to-run/">the running-costs guide</a>.</p>
         </div>
       </div>
 
@@ -392,7 +397,7 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.roi,.roi-sharebar,.roi__cta,.foot__top > *"></script>
 
 <!-- ============ SHARED ESTIMATE MODEL (rates + math live in one file, used here and on the homepage band) ============ -->
-<script src="/js/roi.js?v=1"></script>
+<script src="/js/roi.js?v=2"></script>
 
 <!-- ============ URL STATE (runs before the calculator so its first update() reflects the URL) ============ -->
 <script>
@@ -426,7 +431,9 @@
     revenue:  document.getElementById('calcRevenue'),
     impl:     document.getElementById('calcImpl'),
     roi:      document.getElementById('calcRoi'),
-    total:    document.getElementById('calcTotal')
+    total:    document.getElementById('calcTotal'),
+    aRun:     document.getElementById('calcARun'),
+    run:      document.getElementById('calcRun')
   };
 
   function paintStatic(m){
@@ -443,8 +450,10 @@
     els.manual.textContent  = signed(v.manual);
     els.revenue.textContent = signed(v.revenue);
     els.impl.textContent    = signed(-v.implementation);
-    els.roi.textContent     = (v.roi >= 0 ? '+' : '') + fmt(v.roi);
+    els.roi.textContent     = MMRoi.band(v);
     els.total.textContent   = fmt(v.total);
+    if(els.aRun) els.aRun.textContent = 'up to ' + fmt(v.runCost) + '/yr';
+    if(els.run)  els.run.textContent  = 'up to ' + signed(-v.runCost);
   }
 
   var animate = MMRoi.animator(paintNumbers);

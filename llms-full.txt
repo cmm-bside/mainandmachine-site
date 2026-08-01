@@ -1,12 +1,12 @@
 # Main & Machine — llms-full.txt
-# The complete visible text of the 11 most important pages on
+# The complete visible text of the 13 most important pages on
 # https://www.mainandmachine.com/ , concatenated with page delimiters.
 # The condensed fact sheet lives at https://www.mainandmachine.com/llms.txt
 # Canonical business facts: AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue).
 # Contact: cmyers@mainandmachine.com · 480-805-9983 · Denver, CO & Phoenix, AZ.
 
 ========================================================================
-PAGE: AI Consulting & Implementation for Small Business | Main & Machine
+PAGE: AI Consulting for Small Business | Main & Machine
 URL: https://www.mainandmachine.com/
 SUMMARY: Working AI agents and automations inside your business, at a fixed price quoted in writing before we start. Denver, Phoenix & remote across the US.
 ========================================================================
@@ -33,6 +33,8 @@ Approach Human-centric
 Builds Agents · Automations · Integrations
 
 Hubs Denver & Phoenix
+
+Updated July 2026
 
 01 / The problem with most AI work
 
@@ -184,21 +186,34 @@ Law, accounting, insurance, consulting, financial advisory.
 Projected ROI / Year 1
 For 25 people
 
-+$132,000
+-$5,250–+$132,000
+
+modeled range — stress-tested low end to raw-model high end
 
 - Total opportunity $150,000
 
 - Sprint investment -$18,000
 
-A model, not a promise. We run your real numbers in the free assessment.
+- Run costs / year up to -$6,000
+
+A model, not a promise. The low end is the ROI guide’s stress test with run costs against it; the high end assumes the build recovers all of the modeled drag. We run your real numbers in the free assessment.
 
 04 / Proof it works
 
 ## One build we can name, and the numbers it returned.
 
-MARCUS runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA & CDFI lender — entirely in-house, with no borrower file leaving the building. Year one, measured off the audit log:
+MARCUS runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA & CDFI lender — entirely in-house, with no borrower file leaving the building. The first 90 days of full-fleet operation, measured off the audit log:
 
-Read the year-one results → · the whole proof shelf
+1,240 hrs
+Prep hours returned, 90 days
+
+93 %
+Weekly use by week six
+
+0
+Identifiers sent outside
+
+Read the measured results → · the whole proof shelf
 
 05 / Who builds this
 
@@ -493,7 +508,7 @@ The math
 
 ## Same rigor. A fraction of the bill.
 
-The Big Four do versions of this work with half-million-dollar minimums. We built the same discipline for Main Street.
+The Big Four do versions of this work at prices buyers report starting around half a million. We built the same discipline for Main Street.
 
 Our largest standard sprint
 $60,000
@@ -688,7 +703,7 @@ The math
 
 ## Same rigor. A fraction of the bill.
 
-The Big Four do versions of this work with half-million-dollar minimums. We built the same discipline for Main Street.
+The Big Four do versions of this work at prices buyers report starting around half a million. We built the same discipline for Main Street.
 
 Our largest standard sprint
 $60,000
@@ -731,7 +746,7 @@ The assessment is where ranges become a fixed quote in writing: 30 minutes, free
 Book a free assessment →
 
 ========================================================================
-PAGE: How We Implement AI: Discover, Build, Evolve | Main & Machine
+PAGE: AI Implementation: Discover, Build, Evolve | Main & Machine
 URL: https://www.mainandmachine.com/method/
 SUMMARY: Discover, build, evolve: one senior team from kickoff to handoff, working systems in about 90 days. Denver, Phoenix and remote across the US.
 ========================================================================
@@ -880,6 +895,8 @@ Hubs : Denver & Phoenix
 
 Build team : ~25 AI-native
 
+Updated : July 2026
+
 01 / The founder
 
 ## Christopher Myers.
@@ -1005,7 +1022,9 @@ The team : 14 AI agents
 
 Runs : In-house, on-prem
 
-Year one, measured
+Updated : July 2026
+
+First 90 days, measured
 
 ## A year in, here is what it actually returned.
 
@@ -1027,7 +1046,7 @@ Of consequential actions approved by a person before anything sent, filed, poste
 
 Measurement window: the first 90 days of full-fleet operation. Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.
 
-Read the year-one results →
+Read the measured results →
 
 Who we built it for
 
@@ -1290,6 +1309,486 @@ You’re reading it
 More client stories are clearing review as each client signs off on the numbers.
 
 ========================================================================
+PAGE: MARCUS: 1,240 Hours Returned in 90 Days | Main & Machine
+URL: https://www.mainandmachine.com/work/marcus/results/
+SUMMARY: MARCUS results: 1,240 staff hours returned in 90 days, 93% weekly adoption, zero borrower identifiers sent to an outside model. Every figure off the audit log.
+========================================================================
+
+Main & Machine
+/
+Proof
+/
+MARCUS
+/
+Measured results
+
+Client results · B:Side Capital · First 90 days
+
+# Fourteen agents. Seven departments. Zero files that ever left the building.
+
+B:Side Capital — an SBA 504 and CDFI lender — asked us to wire what they already had into something that could be asked questions: on a machine they own, behind a filter they control. B:Side is our founder’s own company; MARCUS ran on his money and his name before we offered a version of it to anyone else. We commissioned the server in February 2026 and brought MARCUS up in waves across a 90-day implementation sprint, which passed its end-of-sprint go/no-go review in May 2026. These are the measured numbers from the first 90 days of full-fleet operation after that review.
+
+Build something like MARCUS →
+Read how it was built
+
+Results file : MARCUS · first 90 days
+
+Client : B:Side Capital
+
+Window : First 90 days of full-fleet operation
+
+Published : 31 July 2026
+
+Verified by : Audit log
+
+Signed off : Christopher Myers, in both capacities — founder of Main & Machine and CEO of B:Side Capital. Written approval on file.
+
+01 / The headline scorecard
+
+## Four numbers the board asked for. All four came off the log.
+
+1,240 hrs
+
+Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work.
+
+93 %
+
+Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck.
+
+0
+
+Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists.
+
+100 %
+
+Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted.
+
+Measurement window: the first 90 days of full-fleet operation. Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.
+
+02 / The frame
+
+## We didn’t sell them software. We wired what they had into something that can be asked questions.
+
+Seven pieces, built in order, each proven on real files before the next one shipped.
+
+B:Side already had the data, the front door, and the books — process documents by the hundred, a team living in Slack, systems of record for loans and accounting. What they didn’t have was a way to ask any of it a question, or a way to hand it the preparation work, without borrower data leaving a controlled environment.
+
+So we built the seven things below, in order, each one proven on real files before the next shipped. The highest-exposure work — funds movement, distressed assets — was deliberately built last, behind the strictest gates, once trust was established. Here is what each piece did.
+
+03 / Private AI server
+Every other AI vendor rents you access to a machine in someone else’s building. We put the machine in theirs.
+
+## One box, in a locked room, with B:Side’s name on the invoice.
+
+Specified, procured, installed, and configured to run open-source models locally — bought in B:Side’s name, their property from day one, at cost, with zero markup. An owner who can’t evaluate a model architecture can absolutely evaluate a box in a locked room. It also settled the data question before it was asked.
+
+We have already swapped the local model once for a newer one — better answers, same workflows, nobody retrained. Once the machine is yours and the filter is in place, the model is just a part you replace.
+
+99.96 %
+
+Uptime since commissioning in February 2026 — one planned maintenance window, zero unplanned outages.
+
+2.1M
+
+Model calls processed entirely on-premises in 90 days. In normal operation, none left the building.
+
+$0
+
+Hardware markup. Bought at cost, in the client's name. That we do not mark it up is the point.
+
+1
+
+Mid-flight model upgrade, completed in an evening, with zero workflow changes for staff.
+
+How it’s sold: hardware at cost in the client’s name · fixed configuration fee by workload tier · monthly care for patching, updates, and the replacement path.
+
+04 / Data privacy filter
+Their people were already pasting customer data into a chatbot. This is how that stopped being a problem.
+
+## Every prompt, every document, scrubbed before any model reads it.
+
+The filter sits between every person and every model. Prompts and attachments are scanned, personal identifiers stripped, and only then forwarded — to the local model or a commercial one, B:Side’s choice per task. Files get read, scrubbed, and passed through as clean text. There is no route around it, which is why the compliance answer is a design fact rather than a policy hope.
+
+We don’t take the filter’s accuracy on faith. A seeded set of documents carrying known, planted identifiers runs against it every month — and every miss becomes a new test case.
+
+Once it was in place, “model of your choice” became a feature instead of a risk: routine work routes to the local model, heavier reasoning to a commercial one, on scrubbed text only.
+
+100 %
+
+Of prompts and attachments cleared the filter before reaching any model. No bypass path exists in the architecture.
+
+1.9M
+
+Personal identifiers detected and stripped — names, SSNs, account numbers — across ~38,000 documents processed.
+
+99.8 %
+
+Detection recall on the monthly seeded red-team test — measured, not claimed, and improving each cycle.
+
+0
+
+PII incidents since the filter went live. The number the board actually asks about.
+
+How it’s sold: fixed install + monthly. It closes like a security purchase, not a transformation project — and it sells standalone to companies with no interest in agents at all.
+
+05 / Company knowledge base
+The company remembers more than any one person in it. This is where that memory went so it could be asked questions.
+
+## Everything B:Side knows, in one place, in a form the machine can use.
+
+Structured loan records on one side; process documents, correspondence, and policies on the other — joined so a single question can cross both. A lender has loans and findings the way a contractor has jobs and change orders: same shape, different nouns.
+
+We didn’t design their memory from scratch. B:Side answered the knowledge-base questionnaire — core entity, event stream, document sources, access rules — in one working session, and that answer sheet generated the tables, indexes, ingestion pipeline, and read tools. It is what turned a six-week build into two.
+
+2 wks
+
+From completed questionnaire to a queryable knowledge base — generated from the intake, not hand-designed.
+
+~840
+
+Process documents ingested, joined with thousands of loan records and a decade of institutional correspondence.
+
+1,200 /mo
+
+Questions asked by staff by month three — the questions that used to wait for whoever just knows.
+
+96 %
+
+Of answers delivered with a citation to the source document or record. The rest say they do not know, and escalate to a person.
+
+How it’s sold: fixed build fee, tiered by source-system and entity count. The anchor of the line.
+
+06 / Where the work arrives
+The best interface is the one their people were already staring at.
+
+## No new app. No new login. The first question came eleven minutes after go-live.
+
+MARCUS lives inside B:Side’s Slack. Work arrives as messages; approvals happen where the conversation already is. Every owner who has been burned by software was burned by adoption, not capability — so we killed the adoption objection before it could be raised.
+
+The entire rollout, per division, was a twenty-minute introduction. There was no training deck, because there was nothing new to learn.
+
+11 min
+
+From go-live to the first real staff question — no training session had happened yet. None was needed.
+
+93 %
+
+Weekly active adoption by week six, across all seven divisions — including the skeptics.
+
+71 %
+
+Of all MARCUS interactions happen in Slack — finished work delivered to the channel where the team already works.
+
+How it’s sold: fixed and thin, bundled with the knowledge base by default. Mostly configuration — its job is to make the knowledge base feel real in week one. It did.
+
+07 / A workspace of their own
+A chat tool for the whole company — except the company owns it, and nothing leaves the building.
+
+## A branded workspace for everyone who just wants to ask something.
+
+Slack is for teams who want finished work delivered to them. The chat workspace is for the other moments — drafting, summarizing, looking something up — connected to the knowledge base, running on B:Side’s server, behind B:Side’s filter. Staff opened it the way they would open any chat tool, because that is exactly what it looks like.
+
+And the pattern we predicted happened on schedule: in week two, someone asked it about last year’s loans. Before the knowledge base was connected, it couldn’t answer. That single unanswered question did more to sell the knowledge base internally than any pitch we could have made.
+
+380 /wk
+
+Conversations per week by month three — policy lookups, document summaries, and first drafts leading the mix.
+
+100 %
+
+Of chat traffic routed through the privacy filter — the paste-into-a-chatbot habit, made safe instead of banned.
+
+Wk 2
+
+When the first question about loan history arrived — the knowledge base selling itself, in the wild.
+
+How it’s sold: fixed setup + monthly care. Paired with the privacy filter, it is the most natural first purchase in the line.
+
+08 / Connected to the books
+The books already knew the answer. This is what it took to ask.
+
+## Reconciliation prepared. Invoices staged. Receivables chased. Nothing posted until a person approves.
+
+The accounting connector let MARCUS see the books: month-end reconciliation arrives prepared with exceptions flagged, vendor invoices arrive pre-coded with the source attached, aging receivables get follow-ups drafted the day they cross the threshold. A person approves every entry before anything posts — that is not a limitation, it is the design.
+
+The connector code is a durable internal library; the deployment is the billable event. Build it once, deploy it against every client.
+
+Month-end reconciliation prep
+
+before · ~2.5 days
+
+after · ~3 hrs of review
+
+Eligibility pre-check turnaround
+
+before · 2–3 days
+
+after · same morning
+
+504 package assembly
+
+before · ~6.5 hrs
+
+after · ~40-min review
+
+Bar lengths are proportional to time. “After” figures are human review time — the preparation itself happens before anyone sits down.
+
+640
+
+Vendor invoices staged in 90 days, each pre-coded with source attached — every one approved by a person before posting.
+
+41
+
+Reconciliation mismatches surfaced automatically before month-end — found by the system, decided by a person.
+
+−9 days
+
+Improvement in average days-to-collect on fee invoices, from follow-ups drafted the day an invoice ages past threshold.
+
+How it’s sold: fixed price per connector, from a published catalog — ordering parts, not commissioning software. See the build catalog .
+
+09 / Proof it still works
+Anyone can demo an AI. We show ours failing, on purpose, on a schedule.
+
+## Every break gets found by the tests, not by their staff.
+
+Every night, a stress harness runs against B:Side’s live configuration — eligibility edge cases, malformed documents, planted identifiers, adversarial prompts — and posts the results to a dashboard B:Side’s own team reads. When something breaks, the harness finds it before a staff member does. That is not a promise; it is a count we can show you.
+
+Behind every action sits the audit trail: an append-only, hash-chained log. When a question comes up about what MARCUS did and why, the answer is a lookup, not an investigation.
+
+2,100
+
+Automated assertions run nightly against the production configuration — plus a monthly deliberate failure drill.
+
+47
+
+Regressions caught by the harness before any staff member encountered them. Zero found by staff first.
+
+3.4M
+
+Entries on the tamper-evident audit log — every action traceable to its trigger, its approver, and its source document.
+
+84 %
+
+Of the harness is generic assertion-running; the remainder is client-specific fixtures. Which means it deploys anywhere — including on AI systems somebody else built.
+
+How it’s sold: bundled with every build, never optional — it is the differentiation. Plus a standalone fixed-fee assessment for systems built elsewhere: the only item in the line sellable to someone who is not a client yet.
+
+10 / One rule behind everything
+
+## MARCUS prepares the work. People decide.
+
+Nothing sends, files, posts, or pays until a person approves it. While a request waits, nothing moves.
+
+MARCUS never decides eligibility, credit, or price — those numbers come from systems, never from memory. Across the measurement window, every consequential action passed through a human approval: approve, send back, or escalate.
+
+Escalation is automatic, including for anything that has waited too long. Silence never means yes.
+
+Approve
+89 %
+
+The work moves forward — approved on first presentation, most within the hour.
+
+Send back
+9 %
+
+Returned with comments. Every send-back becomes training signal and, where it generalizes, a new test case.
+
+Escalate
+2 %
+
+Handed to the right person, plus every request that waited too long. Escalation is automatic; silence never means yes.
+
+Start here
+You already have the data, the front door, and the books. We wire them into something you can ask — on a machine you own, behind a filter you control, with your people approving every consequential action. Every path here starts with the same free 30-minute assessment, and we reply within 24 hours.
+
+Book a free assessment →
+See what a build like this costs
+
+The guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+
+The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. See the price list →
+
+A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
+
+— Christopher Myers, Founder
+
+========================================================================
+PAGE: AI Build Catalog: Receptionists, Agents & Automations
+URL: https://www.mainandmachine.com/services/builds/
+SUMMARY: Every system we build, priced: AI receptionists, intake and billing agents, automations and integrations. Fixed prices, published, no discovery call.
+========================================================================
+
+Main & Machine
+/
+Services
+/
+The Build Catalog
+
+The build catalog
+
+# What we build.
+
+The stock parts. Front of house: systems that answer, book, and follow up while you work. Back of house: the private machinery they run on. Everything here is delivered through the same three services , at the prices already published — and the catalog is a record of what we build, not a limit on it.
+
+Ask which parts your business needs →
+
+Priced through Three services
+
+Audits $3,500–$8,500
+
+Sprints $18,000–$60,000
+
+Managed From $1,500/month
+
+Delivery ~90 days
+
+Front of house
+
+## The systems your customers meet.
+
+Revenue-side builds. Fast to ship, visible the first week, and countable in work that used to slip. Most businesses start with one of these.
+
+Answering
+
+### 24/7 AI receptionist
+
+Before The phone rings while everyone is on a job. The caller gets voicemail, and most people won’t leave one.
+
+After Every call answered. The common questions handled, the appointment booked, the urgent ones routed to a person — and a transcript in your inbox by morning.
+
+Booking
+
+### Website chat & booking agent
+
+Before Your website answers nothing. A visitor with a question at 9pm leaves and forgets you by breakfast.
+
+After The agent answers the way your best employee would — trained on your services, prices, and policies — and books the visitor straight onto your calendar.
+
+Follow-up
+
+### Instant lead response
+
+Before A lead lands Friday night and waits in the inbox until Monday. By then they’ve hired someone else.
+
+After Every lead gets a real reply in under a minute, then follow-ups drafted in your voice until they answer or ask you to stop.
+
+Recovery
+
+### Missed-call text-back
+
+Before A call you couldn’t take is just gone. No name, no number worth chasing, no second chance.
+
+After The caller gets an immediate text: who you are, when you’ll call back, and a link to book. The smallest build here, and one of the most effective.
+
+Reputation
+
+### Review & reputation agent
+
+Before Happy customers forget to leave reviews. Unhappy ones don’t.
+
+After It asks at the right moment after the job, routes the unhappy ones to you privately first, and drafts your reply to every review that lands.
+
+And so on
+
+### If it runs on a phone, a form, an inbox, or a calendar…
+
+…it can be built this way. These five are what most businesses ask for first, not the edge of the list. The audit finds yours.
+
+Illustrative builds, not client claims. What we’d actually build is whatever your free assessment shows is worth building first.
+
+Back of house
+
+## The machinery behind it.
+
+The private systems the front of house runs on — built once, owned by you. This is the MARCUS class of work sold in parts: most businesses need two or three of these, not all seven. Want the whole thing carried? That is The Full Back Office — From $95,000 , four taken per year.
+
+The hardware
+
+### Private AI server
+
+A machine in your building, bought in your name, configured to run open-source AI models locally. Other vendors rent you a seat on their server. This one is your property from the first day.
+
+The gatekeeper
+
+### Data privacy filter
+
+Sits between your people and any AI model. Personal information is stripped from prompts and documents before anything leaves — then the cleaned text goes to a local model or a commercial one. Your choice, because the filter makes the model swappable.
+
+The memory
+
+### Company knowledge base
+
+Everything the company knows, in a form AI can use: the structured records and the emails, notes, and policies around them, joined so one question can cross both. Your business remembers more than any one person in it. This is where that memory goes so it can be asked.
+
+The front door
+
+### Slack & Teams integration
+
+The system lives where your team already works. No new app, no new login, no training deck. Finished work arrives in the channel, and a person approves it there.
+
+The workspace
+
+### Private company chat
+
+Your own chat interface: on your server, behind your filter, connected to your knowledge base. What your staff wanted from the consumer chatbots, without the part where your customer data leaves the building.
+
+The plumbing
+
+### Business system connectors
+
+QuickBooks first, because that is where Main Street keeps its books. Reconciliation prepared, invoices chased, reports drafted — nothing posts until a person approves it. More connectors as your stack requires.
+
+The receipts
+
+### Testing & monitoring
+
+Stress tests that run against your system on a schedule, results on a dashboard you can open yourself, and an audit trail behind every action. Included with every build, because a system nobody is testing is a system nobody should trust.
+
+The rule
+
+### It prepares. You decide.
+
+Every build in this catalog obeys the same rule: the system gathers, checks, and drafts. Nothing sends, files, posts, or pays until a person approves it. The final judgment stays with someone who owns it.
+
+Patterns, not client claims — except one we can name: MARCUS , 14 AI agents across 7 departments for a regulated lender, runs on every part of this list.
+
+How to buy any of it
+
+## One catalog. The same three doors.
+
+Nothing here is bought off a shelf. Every item arrives through the services you already know, at the published prices .
+
+01 · The audit picks
+
+### AI Readiness Audit
+
+Maps your workflows and names which catalog items actually pay — and which don’t. $3,500–$8,500 , and the plan is yours whether or not you build with us.
+
+02 · The sprint builds
+
+### AI Implementation Sprint
+
+Builds the chosen items inside your real operation, at a fixed quote in writing: $18,000–$60,000 .
+
+If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+
+03 · The retainer keeps it true
+
+### Managed Services
+
+An AI system does not sit still: models change, vendors change, your business changes. Every month it gets tested, patched, corrected, and extended — with a one-page report of what ran and what it caught. From $1,500/month , no lock-in.
+
+Start here
+Every path here starts with the same free 30-minute assessment. A senior advisor walks your workflows and tells you which of these is worth building, and which is not. We reply within 24 hours.
+
+Book a free assessment →
+
+A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
+
+— Christopher Myers, Founder
+
+========================================================================
 PAGE: Security & Data Handling | Main & Machine
 URL: https://www.mainandmachine.com/security/
 SUMMARY: On-prem local models, PII stripped before any model reads a document, encryption at rest, a tamper-evident audit log, and a human sign-off on every action.
@@ -1383,7 +1882,7 @@ Rule: the machine prepares; people decide
 
 ## This architecture is running right now.
 
-MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: ( the year-one results ).
+MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: 0 ( the measured results ).
 
 Read the MARCUS case study →
 
@@ -1424,7 +1923,7 @@ No. Nothing sends, files, posts, or pays until a person approves it. The system 
 Yes. MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, entirely on-prem. The case is published with the client’s written permission.
 
 ========================================================================
-PAGE: Free 30-Minute AI Assessment for Small Business | Main & Machine
+PAGE: Book a Free 30-Minute AI Assessment | Main & Machine
 URL: https://www.mainandmachine.com/book/
 SUMMARY: A senior advisor walks your workflows and shows where AI pays, what it's worth, and when to wait. Free, no pitch, reply within 24 hours.
 ========================================================================
@@ -1513,7 +2012,7 @@ You’ll leave knowing what’s worth doing and what isn’t, and we’ll never 
 
 If the assessment finds nothing worth building, we say so and you keep the notes. That’s the whole transaction.
 
-And if we do build: a scoped workflow that is not live within 90 days gets built at no charge until it is. The guarantee is on delivery, in writing.
+And if we do build, the guarantee is on delivery, in writing — the exact terms sit under the form.
 
 Before you book
 
@@ -1546,7 +2045,7 @@ They go to us so we can prepare for your call. That’s all. Your details never 
 ========================================================================
 PAGE: What an AI Consultant Costs in 2026 | Main & Machine
 URL: https://www.mainandmachine.com/guides/ai-consultant-cost/
-SUMMARY: What AI consultants charge in 2026: hourly rates, boutique project fees, Big Four minimums — and where our published $3,500–$60,000 fixed prices sit.
+SUMMARY: What AI consultants charge in 2026: hourly rates, boutique project fees, Big Four quotes — and where our published $3,500–$60,000 fixed prices sit.
 ========================================================================
 
 Main & Machine
@@ -1559,7 +2058,7 @@ The Field Guide / 01
 
 # What an AI consultant costs in 2026.
 
-Most firms make you book a call to learn a number. Here is the whole market instead — hourly rates, boutique projects, Big Four minimums — and exactly where we sit in it.
+Most firms make you book a call to learn a number. Here is the whole market instead — hourly rates, boutique projects, Big Four quotes — and exactly where we sit in it.
 
 Field Guide No. 01
 
@@ -1639,7 +2138,7 @@ Market ranges are typical 2026 figures for US firms, stated for comparison — n
 
 ## Why does fixed-price beat hourly for AI work?
 
-Because AI projects carry more scope uncertainty than almost any other consulting work, and hourly billing hands every ounce of that uncertainty to you. A fixed price forces the seller to scope before selling — and scoping first is precisely the discipline that makes AI projects succeed.
+Because AI projects carry more scope uncertainty than almost any other consulting work, and hourly billing hands every ounce of that uncertainty to you. A fixed price forces the seller to scope before selling — and scoping first is precisely the discipline that makes AI projects succeed. RAND interviewed 65 data scientists and engineers for The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed and identified five root causes of failure; only one of the five is a genuinely technical limitation. The other four — the problem chosen badly, the data not ready, the deployment underfunded, the technology chased from the bottom up — are scoping and leadership failures. Which is to say: buying failures.
 
 The incentives are the whole story. An hourly consultant is paid for time spent; a fixed-price builder is paid for finishing. When the model misbehaves in week six — and some week, it will — one of those two parties absorbs the surprise. That is why our engagements start with the audit: two to four weeks of mapping where the hours actually go, so the sprint that follows is priced on knowledge instead of hope. The number is quoted in writing before work begins and does not move after we start.
 
@@ -1653,7 +2152,7 @@ Three things are deliberately not in those prices. There is no discovery-call ga
 
 Plan for roughly $21,500–$68,500 in year one if you build: an audit plus one implementation sprint, at our prices — with 100% of the audit fee credited toward the sprint when it is signed within 60 days. Budget zero for strategy decks, and treat any year-one number above $150,000 as an enterprise price that wandered into the wrong meeting.
 
-Two smaller lines belong in the budget too. Running costs: the tools and model usage behind a working system typically land between $50 and $500 a month for a small business — real money, but a fraction of what the manual work cost. If you are weighing whether a $25-a-month subscription is enough instead, that question has its own guide . And maintenance: models and vendors shift, so either someone in-house watches the system or a retainer does. Ours is monthly with no lock-in, priced by what is running.
+Two smaller lines belong in the budget too. Running costs: the tools and model usage behind a working system typically land between $50 and $500 a month for a small business — that band is ours, from the systems we run, but the model rates underneath it are public. Anthropic publishes a per-million-token price for every model it sells , input and output billed separately, so you can price the usage half of the bill yourself before anyone quotes you. Real money either way, but a fraction of what the manual work cost. If you are weighing whether a $25-a-month subscription is enough instead, that question has its own guide . And maintenance: models and vendors shift, so either someone in-house watches the system or a retainer does. Ours is monthly with no lock-in, priced by what is running.
 
 Whether the build budget returns anything depends on your workflows, not the consultant’s slides — our ROI calculator shows the assumptions we use, in the open, and the audit exists to replace those assumptions with your real numbers. Sometimes the audit’s answer is “wait a quarter,” in writing, and the sprint money stays in your pocket. Before you spend anything, run the 20-point readiness checklist — it is free and takes an afternoon. And when you start taking meetings, bring the ten vetting questions to every one of them, including ours.
 

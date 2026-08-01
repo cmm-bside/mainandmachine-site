@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="stylesheet" href="/styles.css?v=98" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -95,9 +95,9 @@ dl.mk-stats{ margin-bottom: 0; }
 .mk-dept{ display: grid; grid-template-columns: 210px 1fr; align-items: stretch; border-bottom: 1px solid var(--line); }
 .mk-dept:last-child{ border-bottom: 0; }
 .mk-dept__l{ padding: 22px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 7px; justify-content: center; background: var(--paper-2); }
-.mk-dept__l .i{ font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; color: var(--accent); }
+.mk-dept__l .i{ font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; color: var(--accent-text); }
 .mk-dept__l .n{ font-weight: 800; font-size: var(--fs-16); letter-spacing: -.01em; line-height: 1.12; }
-.mk-dept__l .c{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); }
+.mk-dept__l .c{ font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-mute); }
 .mk-agents{ display: flex; flex-wrap: wrap; gap: 0; }
 .mk-agent{ flex: 1 1 0; min-width: 190px; padding: 20px 22px; border-right: 1px solid var(--line-soft); display: flex; flex-direction: column; gap: 6px; transition: background .15s var(--ease); }
 .mk-agent:last-child{ border-right: 0; }
@@ -229,7 +229,9 @@ dl.mk-stats{ margin-bottom: 0; }
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org"
+        "https://www.bside.org",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
@@ -419,16 +421,17 @@ dl.mk-stats{ margin-bottom: 0; }
           <div class="statrail__row"><dt class="statrail__k">Footprint</dt><dd class="statrail__v">7 departments</dd></div>
           <div class="statrail__row"><dt class="statrail__k">The team</dt><dd class="statrail__v accent-tx">14 AI agents</dd></div>
           <div class="statrail__row"><dt class="statrail__k">Runs</dt><dd class="statrail__v">In-house, on-prem</dd></div>
+          <div class="statrail__row"><dt class="statrail__k">Updated</dt><dd class="statrail__v"><time datetime="2026-07-31">July 2026</time></dd></div>
         </dl>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 1b · YEAR-ONE RESULTS ============ -->
+<!-- ============ 1b · MEASURED RESULTS ============ -->
 <section class="section ink section--tight">
   <div class="wrap">
-    <span class="kicker">Year one, measured</span>
+    <span class="kicker">First 90 days, measured</span>
     <h2 class="h2 mt-s">A year in, here is what it actually returned.</h2>
     <!-- BUILD-LOG:MARCUS-SCORECARD-COMPACT — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
       <div class="scoregrid scoregrid--compact">
@@ -454,7 +457,7 @@ dl.mk-stats{ margin-bottom: 0; }
         <p class="window-note">Measurement window: the first 90 days of full-fleet operation. Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.</p>
 <!-- /BUILD-LOG:MARCUS-WINDOW -->
     <div class="hero__cta" style="margin-top:28px;">
-      <a class="btn btn--primary" href="/work/marcus/results/">Read the year-one results <span class="arr">&rarr;</span></a>
+      <a class="btn btn--primary" href="/work/marcus/results/">Read the measured results <span class="arr">&rarr;</span></a>
     </div>
   </div>
 </section>

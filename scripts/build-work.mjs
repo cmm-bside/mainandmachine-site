@@ -178,6 +178,40 @@ ${signed
       </div>`
   : "";
 
+// --- the runtime mirror -----------------------------------------------------
+// Emails render at request time inside a Worker, which cannot read
+// data/build-log.json. Same problem site-facts.json has, so the same answer:
+// generate a runtime-agnostic ESM module, exactly as company.mjs is generated
+// from the facts JSON. This is what makes the kill switch reach the inbox —
+// signed_off:false emits an empty `figures`, and every surface that reads this
+// module drops its MARCUS numbers rather than sending an unapproved one.
+const PROOF_MODULE = path.join(ROOT, "src", "data", "proof.mjs");
+const proof = {
+  signedOff: marcusReady,
+  client: mk.client || "",
+  measurementWindow: mk.measurement_window || "",
+  figures: marcusReady
+    ? Object.fromEntries(
+        [...scorecard, ...(mk.figures || [])].map((f) => [
+          f.key,
+          { value: f.value, unit: f.unit || "", desc: f.desc || "" },
+        ])
+      )
+    : {},
+};
+const proofSource = `// GENERATED from data/build-log.json by scripts/build-work.mjs — DO NOT EDIT.
+// Edit the JSON, then run: npm run work:build (build:static runs it).
+//
+// Runtime-agnostic on purpose: imported by the email templates and the
+// Cloudflare Pages Functions, which cannot read the JSON at request time.
+// When marcus.signed_off is false, \`figures\` is empty — a reader with no
+// figure must omit the claim, never fall back to a remembered number.
+export const MARCUS = ${JSON.stringify(proof, null, 2)};
+`;
+const proofChanged =
+  !fs.existsSync(PROOF_MODULE) || fs.readFileSync(PROOF_MODULE, "utf8") !== proofSource;
+if (proofChanged) fs.writeFileSync(PROOF_MODULE, proofSource);
+
 // --- stamp every page -------------------------------------------------------
 const PAGES = [
   "index.html",
@@ -187,6 +221,7 @@ const PAGES = [
   "industries/professional-services/index.html",
   "security/index.html",
   "services/index.html",
+  "book/thanks/index.html",
 ];
 
 let stamped = 0;
@@ -222,6 +257,7 @@ for (const rel of PAGES) {
 
 console.log(
   `[work:build] ${stamped} region(s) stamped across ${touched.length} file(s)` +
+    ` · src/data/proof.mjs ${proofChanged ? "rewritten" : "unchanged"}` +
     ` · marcus: ${marcusReady ? `${scorecard.length} scorecard + ${(mk.figures || []).length} figures (signed off)` : "not signed off — figures withheld"}` +
     ` · sample week: ${statsReady ? `week of ${log.week_of}` : "empty state (log is running)"}` +
     ` · quotes: ${signed.length} signed-off`

@@ -104,7 +104,8 @@ export async function onRequestPost(context) {
   // Log the lead so the reference id is real and traceable (visible in CF logs / tail).
   console.log(`[assessment] ${referenceId} ${stamp} — ${data.company} (${data.name} <${data.email}>)`);
 
-  const emailData = { firstName: firstNameOf(data.name), referenceId };
+  // name + email ride along so the autoresponder can prefill the scheduler.
+  const emailData = { firstName: firstNameOf(data.name), referenceId, name: data.name, email: data.email };
   const meta = { referenceId, stamp };
 
   // --- send both emails ---
@@ -170,23 +171,30 @@ async function handleDetails(body, env) {
   const from = env.MAIL_FROM || DEFAULT_FROM;
   const notifyTo = (env.LEAD_NOTIFY_TO || DEFAULT_NOTIFY).split(",").map((s) => s.trim()).filter(Boolean);
 
-  console.log(`[assessment-details] ${data.referenceId} ${meta.stamp} — ${data.company} (${data.name} <${data.email}>)`);
+  // The Calendly path has no reference, name, or email — only the invitee URI
+  // the embed handed us. Log what we actually have rather than a row of blanks.
+  console.log(
+    data.via === "calendly"
+      ? `[assessment-details] calendly ${meta.stamp} — invitee ${data.calendlyInvitee || "(none)"} booked ${data.bookedAt || "(unknown)"}`
+      : `[assessment-details] ${data.referenceId} ${meta.stamp} — ${data.company} (${data.name} <${data.email}>)`
+  );
 
   try {
     await sendEmail(apiKey, {
       from,
       to: notifyTo,
-      reply_to: data.email,
+      // Nothing to reply to on the Calendly path; Resend rejects an empty one.
+      ...(data.email ? { reply_to: data.email } : {}),
       subject: detailsSubject(data),
       html: renderDetailsHtml(data, meta),
       text: renderDetailsText(data, meta),
     });
   } catch (e) {
     console.error("details email failed", e);
-    return json({ ok: false, error: "We couldn't add that just now — but your request is already in." }, 502);
+    return json({ ok: false, error: "We couldn't add that just now — but your booking is already in." }, 502);
   }
 
-  return json({ ok: true, referenceId: data.referenceId });
+  return json({ ok: true, referenceId: data.referenceId, via: data.via || "" });
 }
 
 async function handleEstimate(body, env) {

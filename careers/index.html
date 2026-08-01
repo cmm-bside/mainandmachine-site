@@ -23,7 +23,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: Human-centric AI for Main Street." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="stylesheet" href="/styles.css?v=98" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -64,7 +64,9 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org"
+        "https://www.bside.org",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
@@ -155,67 +157,19 @@
 .cr-aside__row .v { color: var(--tx-mute); letter-spacing: .01em; }
 .cr-aside__row .v b { color: var(--tx); font-weight: 700; }
 .cr-after { margin-top: var(--s-32); border-top: 1px solid var(--line); padding-top: var(--s-24); }
-.cr-after__lbl { display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute); margin-bottom: var(--s-20); }
-.cr-after__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-20); }
-.cr-after__step { display: grid; grid-template-columns: 26px 1fr; gap: 14px; align-items: start; }
-.cr-after__n { font-family: var(--mono); font-size: var(--fs-12); color: var(--rust); letter-spacing: .08em; padding-top: 2px; }
-.cr-after__t { display: block; font-weight: 700; font-size: var(--fs-16); color: var(--tx); letter-spacing: -0.01em; margin-bottom: 3px; }
-.cr-after__d { display: block; font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.5; }
-
-.cr-card { background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--r-md); padding: clamp(24px, 4vw, 44px); position: relative; }
-.cr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }
-.cr-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.cr-field.full { grid-column: 1 / -1; }
-.cr-field label { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--tx-mute); }
-.cr-field:not(.full) label { white-space: nowrap; } /* two-up labels never wrap → inputs stay aligned */
-.cr-field label .req { color: var(--rust); }
-.cr-field label .opt { color: var(--tx-faint); text-transform: none; letter-spacing: .02em; }
-.cr-field input[type="text"],
-.cr-field input[type="email"],
-.cr-field input[type="tel"],
-.cr-field input[type="url"],
-.cr-field textarea {
-  font-family: var(--sans); font-size: var(--fs-16); color: var(--tx);
-  background: #fff; border: 1.5px solid var(--line);
-  padding: 14px 15px; width: 100%; border-radius: 0;
-  transition: border-color .15s var(--ease), box-shadow .15s var(--ease);
-}
-.cr-field textarea { resize: vertical; min-height: 132px; line-height: 1.55; }
-.cr-field input:hover, .cr-field textarea:hover { border-color: rgba(29,24,18,0.30); }
-.cr-field input:focus, .cr-field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-.cr-field input::placeholder, .cr-field textarea::placeholder { color: var(--tx-faint); }
-.cr-field .err { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-deep); letter-spacing: .02em; display: none; }
-.cr-field.invalid input, .cr-field.invalid textarea { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-.cr-field.invalid .err { display: block; }
+.cr-after__lbl { display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute); margin-bottom: var(--s-16); }
 
 /* résumé drop zone */
-.cr-file { position: relative; border: 1.5px dashed var(--line); background: #fff; padding: 20px 18px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: border-color .15s var(--ease), background .15s var(--ease); }
-.cr-file:hover { border-color: var(--accent); }
-.cr-file.has-file { border-style: solid; border-color: var(--accent); }
 .cr-file__icon { width: 40px; height: 40px; flex: none; border: 1.5px solid var(--tx); display: grid; place-items: center; font-family: var(--mono); font-size: var(--fs-12); font-weight: 700; color: var(--tx); }
-.cr-file.has-file .cr-file__icon { border-color: var(--accent); color: var(--accent); }
 .cr-file__text { font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.35; min-width: 0; }
 .cr-file__text b { color: var(--tx); font-weight: 700; word-break: break-word; }
 .cr-file__text .sub { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); display: block; margin-top: 3px; text-transform: uppercase; }
 /* the input overlays the whole drop zone: native click + drag target, ≥44px */
-.cr-file input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
-.cr-file:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 
 .cr-foot { margin-top: 28px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
 .cr-foot .privacy { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); letter-spacing: .02em; max-width: 38ch; line-height: 1.5; }
 
 /* send states */
-.cr-status { display: none; }
-.cr-card.is-sending .cr-grid, .cr-card.is-sending .cr-foot { opacity: .5; pointer-events: none; }
-.cr-card.is-sent .cr-grid, .cr-card.is-sent .cr-foot { display: none; }
-.cr-card.is-sent .cr-status.success { display: block; }
-.cr-status.success { padding: 14px 0; }
-.cr-status.success .icon { width: 52px; height: 52px; border: 2px solid #2e6b3f; color: #2e6b3f; display: grid; place-items: center; font-size: var(--fs-25); margin-bottom: 22px; }
-.cr-status.success h3 { font-size: var(--fs-25); letter-spacing: -0.02em; margin-bottom: 10px; }
-.cr-status.success p { color: var(--tx-mute); font-size: var(--fs-16); max-width: 46ch; }
-.cr-status.error { margin-top: 20px; border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 11px 14px; font-family: var(--mono); font-size: var(--fs-13); line-height: 1.5; color: var(--accent-deep); }
-.cr-card.is-error .cr-status.error { display: block; }
-.cr-card.is-error .cr-status.error a { color: inherit; }
 
 @media (max-width: 560px) { .cr-grid { grid-template-columns: 1fr; } }
 </style>
@@ -380,62 +334,62 @@
         </div>
         <div class="cr-after">
           <span class="cr-after__lbl">What happens after you apply</span>
-          <ol class="cr-after__steps">
-            <li class="cr-after__step">
-              <span class="cr-after__n">01</span>
-              <div><span class="cr-after__t">The founder reads it</span><span class="cr-after__d">No keyword filter, no auto-reject. A real person reads every application, usually within a few days.</span></div>
+          <ol class="steps">
+            <li class="step">
+              <span class="step__no">01</span>
+              <div><span class="step__t">The founder reads it</span><span class="step__d">No keyword filter, no auto-reject. A real person reads every application, usually within a few days.</span></div>
             </li>
-            <li class="cr-after__step">
-              <span class="cr-after__n">02</span>
-              <div><span class="cr-after__t">A straight reply</span><span class="cr-after__d">If we see a fit, we reach out to talk. If we don’t, we’ll tell you. No silent rejections.</span></div>
+            <li class="step">
+              <span class="step__no">02</span>
+              <div><span class="step__t">A straight reply</span><span class="step__d">If we see a fit, we reach out to talk. If we don’t, we’ll tell you. No silent rejections.</span></div>
             </li>
-            <li class="cr-after__step">
-              <span class="cr-after__n">03</span>
-              <div><span class="cr-after__t">A real conversation</span><span class="cr-after__d">We walk through something you’ve actually built. No trick questions, no whiteboard gauntlet.</span></div>
+            <li class="step">
+              <span class="step__no">03</span>
+              <div><span class="step__t">A real conversation</span><span class="step__d">We walk through something you’ve actually built. No trick questions, no whiteboard gauntlet.</span></div>
             </li>
           </ol>
         </div>
       </div>
 
-      <div class="cr-card crop" id="formCard">
+      <div class="formcard crop" id="formCard">
         <form id="applyForm" novalidate>
-          <div class="cr-grid">
-            <div class="cr-field">
+          <div class="frow">
+            <div class="field">
               <label for="f-name">Full name <span class="req">*</span></label>
-              <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Jordan Rivera" required aria-describedby="err-name" />
-              <span class="err" id="err-name">Please enter your name.</span>
+              <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Jordan Rivera" required aria-describedby="err-name" class="input" />
+              <span class="field__err" id="err-name">Please enter your name.</span>
             </div>
-            <div class="cr-field">
+            <div class="field">
               <label for="f-email">Email <span class="req">*</span></label>
-              <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@email.com" required aria-describedby="err-email" />
-              <span class="err" id="err-email">Please enter a valid email.</span>
+              <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@email.com" required aria-describedby="err-email" class="input" />
+              <span class="field__err" id="err-email">Please enter a valid email.</span>
             </div>
-            <div class="cr-field">
+            <div class="field">
               <label for="f-phone">Phone <span class="opt">(optional)</span></label>
-              <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(480) 555-0123" />
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(480) 555-0123" class="input" />
             </div>
-            <div class="cr-field">
+            <div class="field">
               <label for="f-link">LinkedIn or portfolio <span class="req">*</span></label>
-              <input type="url" id="f-link" name="link" placeholder="https://" required aria-describedby="err-link" />
-              <span class="err" id="err-link">Please add a link to your work or profile.</span>
+              <input type="url" id="f-link" name="link" placeholder="https://" required aria-describedby="err-link" class="input" />
+              <span class="field__err" id="err-link">Please add a link to your work or profile.</span>
             </div>
-            <div class="cr-field full">
+            <div class="field full">
               <label for="f-source">Where did you hear about us? <span class="opt">(optional)</span></label>
-              <input type="text" id="f-source" name="source" placeholder="A friend, LinkedIn, an event…" />
+              <input type="text" id="f-source" name="source" placeholder="A friend, LinkedIn, an event…" class="input" />
             </div>
-            <div class="cr-field full">
+            <div class="field full">
               <label for="f-resume">Résumé <span class="opt">(optional)</span></label>
-              <label class="cr-file" id="fileDrop" for="f-resume">
-                <span class="cr-file__icon" id="ficon">PDF</span>
-                <span class="cr-file__text" id="ftext"><b>Choose a file</b> or drag it here<span class="sub">PDF, DOC, or DOCX. 10MB max</span></span>
+              <label class="filedrop" id="fileDrop" for="f-resume">
+                <span class="filedrop__icon" id="ficon">PDF</span>
+                <span class="filedrop__text" id="ftext"><b>Choose a file</b> or drag it here<span class="sub">PDF, DOC, or DOCX. 10MB max</span></span>
                 <input type="file" id="f-resume" name="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-describedby="fileErr" />
               </label>
-              <span class="err" id="fileErr">That file is too large or not a supported type.</span>
+              <span class="field__err" id="fileErr">That file is too large or not a supported type.</span>
             </div>
-            <div class="cr-field full">
+            <div class="field full">
               <label for="f-note">Cover note <span class="req">*</span></label>
-              <textarea id="f-note" name="message" placeholder="What are you great at, what have you built, and why does this work pull at you?" required aria-describedby="err-note"></textarea>
-              <span class="err" id="err-note">Please tell us a little about you.</span>
+              <textarea class="input" id="f-note" name="message" placeholder="What are you great at, what have you built, and why does this work pull at you?" required aria-describedby="err-note"></textarea>
+              <span class="field__err" id="err-note">Please tell us a little about you.</span>
             </div>
           </div>
 
@@ -444,10 +398,10 @@
             <p class="privacy">We use your details only to consider your application. We never share them.</p>
           </div>
 
-          <p class="cr-status error" id="errorMsg">Something went wrong sending your application. Please email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a> directly, or try again.</p>
+          <p class="formstatus error" id="errorMsg">Something went wrong sending your application. Please email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a> directly, or try again.</p>
         </form>
 
-        <div class="cr-status success">
+        <div class="formstatus success">
           <div class="icon">✓</div>
           <h3>Application received.</h3>
           <p>Thanks for reaching out. Your application is on its way to the founder. If we see a fit, we’ll be in touch by email. We read every one.</p>
@@ -562,7 +516,7 @@ var FORMSPREE_ENDPOINT = "xnjkjyew";
     return (n / 1048576).toFixed(1) + ' MB';
   }
   function showFile(file) {
-    var field = fileInput.closest('.cr-field');
+    var field = fileInput.closest('.field');
     if (!file) {
       fileDrop.classList.remove('has-file');
       ftext.innerHTML = '<b>Choose a file</b> or drag it here<span class="sub">PDF, DOC, or DOCX. 10MB max</span>';
@@ -570,13 +524,13 @@ var FORMSPREE_ENDPOINT = "xnjkjyew";
       return;
     }
     if (file.size > MAX_BYTES) {
-      field.classList.add('invalid');
+      field.classList.add('err');
       fileInput.setAttribute('aria-invalid', 'true');
       fileInput.value = '';
       showFile(null);
       return;
     }
-    field.classList.remove('invalid');
+    field.classList.remove('err');
     fileInput.removeAttribute('aria-invalid');
     fileDrop.classList.add('has-file');
     var ext = (file.name.split('.').pop() || 'FILE').toUpperCase().slice(0, 4);
@@ -608,16 +562,16 @@ var FORMSPREE_ENDPOINT = "xnjkjyew";
     ];
     reqs.forEach(function (r) {
       var el = document.getElementById(r.id);
-      var field = el.closest('.cr-field');
-      if (!r.test(el.value)) { field.classList.add('invalid'); el.setAttribute('aria-invalid', 'true'); ok = false; }
-      else { field.classList.remove('invalid'); el.removeAttribute('aria-invalid'); }
+      var field = el.closest('.field');
+      if (!r.test(el.value)) { field.classList.add('err'); el.setAttribute('aria-invalid', 'true'); ok = false; }
+      else { field.classList.remove('err'); el.removeAttribute('aria-invalid'); }
     });
     return ok;
   }
   // clear error styling as the user fixes a field
   form.addEventListener('input', function (e) {
-    var field = e.target.closest('.cr-field');
-    if (field && field.classList.contains('invalid')) { field.classList.remove('invalid'); if (e.target.removeAttribute) e.target.removeAttribute('aria-invalid'); }
+    var field = e.target.closest('.field');
+    if (field && field.classList.contains('err')) { field.classList.remove('err'); if (e.target.removeAttribute) e.target.removeAttribute('aria-invalid'); }
   });
 
   // ---- submit ----
@@ -625,7 +579,7 @@ var FORMSPREE_ENDPOINT = "xnjkjyew";
     e.preventDefault();
     card.classList.remove('is-error');
     if (!validate()) {
-      var firstBad = form.querySelector('.cr-field.invalid input, .cr-field.invalid textarea');
+      var firstBad = form.querySelector('.field.err input, .field.err textarea');
       if (firstBad) firstBad.focus();
       return;
     }

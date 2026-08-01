@@ -35,7 +35,10 @@ const decode = (s) =>
   s.replace(/<[^>]+>/g, "")
    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&mdash;/g, "—")
-   .replace(/&rsquo;/g, "’").replace(/&nbsp;/g, " ")
+   .replace(/&rsquo;/g, "’").replace(/&lsquo;/g, "‘")
+   .replace(/&ldquo;/g, "“").replace(/&rdquo;/g, "”")
+   .replace(/&middot;/g, "·").replace(/&ndash;/g, "–").replace(/&hellip;/g, "…")
+   .replace(/&nbsp;/g, " ")
    .replace(/\s+/g, " ").trim();
 
 function readPage(route) {

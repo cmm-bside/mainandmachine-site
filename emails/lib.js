@@ -62,8 +62,21 @@ export function validateSubmission(raw) {
   return { ok: Object.keys(errors).length === 0, errors, data };
 }
 
-// Stage-2 validation — everything optional, but the reference back to the
-// original submission must look sane and at least one detail must be present.
+// Stage-2 validation — everything optional, but the submission must identify
+// WHICH booking it belongs to, and at least one detail must be present.
+//
+// Two identities are valid, because there are two ways to book:
+//
+//   form path      referenceId (MM-####-####) + a valid email. We minted the
+//                  reference ourselves and know who they are.
+//   Calendly path  via:'calendly'. Calendly's event_scheduled postMessage
+//                  carries the invitee and event URIs but NOT the name or
+//                  email — those are behind their API. So there is no
+//                  reference and no address to validate; the invitee URI (or,
+//                  failing that, the booking timestamp) is the join key, and
+//                  the internal email says plainly that it must be matched by
+//                  hand. Requiring a reference here is what made the
+//                  confirmation page promise a prep form it never showed.
 export function validateDetails(raw) {
   const src = raw && typeof raw === "object" ? raw : {};
   const data = {};
@@ -73,10 +86,23 @@ export function validateDetails(raw) {
   for (const k of ["referenceId", "name", "email", "company"]) {
     data[k] = typeof src[k] === "string" ? src[k].trim() : "";
   }
+  for (const k of ["via", "calendlyInvitee", "calendlyEvent", "bookedAt"]) {
+    data[k] = typeof src[k] === "string" ? src[k].trim() : "";
+  }
 
   const errors = {};
-  if (!/^MM-\d{4}-\d{4}$/.test(data.referenceId)) errors.referenceId = "Missing reference.";
-  if (!isValidEmail(data.email)) errors.email = "A valid email is required.";
+  const viaCalendly = data.via === "calendly";
+
+  if (viaCalendly) {
+    // No reference and no email to check — the identity IS the Calendly event.
+    for (const k of ["calendlyInvitee", "calendlyEvent", "bookedAt"]) {
+      if (data[k].length > 300) errors[k] = "Too long.";
+    }
+  } else {
+    if (!/^MM-\d{4}-\d{4}$/.test(data.referenceId)) errors.referenceId = "Missing reference.";
+    if (!isValidEmail(data.email)) errors.email = "A valid email is required.";
+  }
+
   if (!DETAIL_FIELDS.some((f) => data[f.key])) errors.details = "Nothing to add.";
   for (const f of DETAIL_FIELDS) {
     if (data[f.key].length > 300) errors[f.key] = "Too long.";

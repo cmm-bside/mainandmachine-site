@@ -178,11 +178,20 @@ quotes.
 
 `build-work.mjs` stamps **every** page that carries a marker — currently
 `index.html`, `/work/`, `/work/marcus/`, `/work/marcus/results/`,
-`/industries/professional-services/` and `/security/`. Region names:
+`/industries/professional-services/`, `/security/`, `/services/` and
+`/book/thanks/`. Region names:
 `MARCUS-SCORECARD`, `MARCUS-SCORECARD-COMPACT`, `MARCUS-HOME`,
 `MARCUS-FIGS-01`…`-07`, `MARCUS-BA`, `MARCUS-BOUNDARY`, `MARCUS-WINDOW`,
 `MARCUS-INLINE-<PAGE>` (inline regions inject no whitespace, so they can sit
 mid-sentence), plus the legacy `STATS` / `QUOTES`.
+
+`build-work.mjs` also generates **`src/data/proof.mjs`** — a runtime-agnostic
+ESM mirror of the signed-off figures, exactly as `company.mjs` mirrors the facts
+JSON. Emails and Pages Functions render inside a Worker and cannot read
+`data/build-log.json`, so they import that module instead of hardcoding a
+number. `signed_off: false` emits an empty `figures` map and every reader must
+omit the claim (the assessment autoresponder drops its whole proof block).
+Never hand-edit it; run `npm run work:build`.
 
 The MARCUS block carries `measurement_window`, `window_note`, `signed_off`,
 an `approval` object (who approved, when, on what basis), and figures as
@@ -207,14 +216,27 @@ Each of these exists because something shipped wrong once and nothing objected:
 - `links:check` (`scripts/check-internal-links.mjs`) — offline; every internal
   href in committed HTML must resolve to a file in the build output, a
   `PROXIED_ROUTES` entry, or a slug present in `blog-data/index.json`. It fails
-  loudly on a zero-post index while pages link to posts. Not to be confused with
+  loudly on a zero-post index while pages link to posts. It also **renders every
+  email template in `emails/` and checks the output the same way** — rendered,
+  not source-scanned, because the URLs are built from `${SITE_ORIGIN}/…`
+  template literals. Emails additionally must write `/blog/<slug>/` with the
+  trailing slash: without it Cloudflare answers a 308 some mail clients drop,
+  and after `blog:build` the slashless path still resolves on disk, so nothing
+  else would catch it. Not to be confused with
   `scripts/check-links.mjs`, which crawls the **live** origin over the network
   to audit redirect hops after a deploy and is not part of the build.
 - `head:check` — meta descriptions under **40** chars are a hard ERROR (stub
   detection); under 70 stays advisory. `dateModified` earlier than
-  `datePublished` in any JSON-LD block is an ERROR.
+  `datePublished` in any JSON-LD block is an ERROR. A `<title>` over **60
+  chars is an ERROR** too — measured on the DECODED title, so `&amp;` counts
+  as the one character it renders as, not four.
 - `facts:check` — see the facts section above: stamped span verification plus
-  countable-claim guards.
+  countable-claim guards. It also holds every hand-embedded **Person `sameAs`**
+  to `PERSON_SAMEAS` in `scripts/lib/templates.mjs`, exactly and in order: one
+  `@id` is one entity, so all ~40 pages must make the same claim about it.
+  (They didn't — `/` and `/about/` shipped 8 profiles while 37 pages shipped 6.)
+  Add a profile to `PERSON_SAMEAS` and the build fails until every page carries
+  it.
 - All guards skip `LOCAL_SCRATCH_DIRS` (`scripts/lib/config.mjs`) so a stale
   local copy of the site can't flood the checks with phantom failures — that
   noise is how people learn to ignore a red build.

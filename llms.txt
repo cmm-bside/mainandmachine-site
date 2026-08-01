@@ -71,7 +71,7 @@ before work begins.
   a document; every action writes to a tamper-evident audit log; nothing
   sends, files, posts, or pays until a person approves it. Published with
   the client's permission.
-- [MARCUS year-one results](/work/marcus/results/) — the measured scorecard
+- [MARCUS measured results](/work/marcus/results/) — the scorecard
   from the first 90 days of full-fleet operation: 1,240 staff hours of
   preparation returned, 93% weekly staff adoption by week six, 0 borrower
   identifiers sent to any outside model, and 100% of consequential actions

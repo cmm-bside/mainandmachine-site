@@ -12,11 +12,12 @@
 //
 // Two severities:
 //   ERROR   — structural defects (missing/duplicate/broken tags, bad canonical,
-//             unresolved images, JSON-LD parse/@id, cross-page collisions).
+//             unresolved images, JSON-LD parse/@id, cross-page collisions),
+//             a <title> over 60 decoded chars, and a description under 40.
 //             These ALWAYS exit non-zero — wire this into CI / a pre-commit hook.
-//   WARNING — advisory SEO length limits (title >60, description <70 / >160).
-//             Reported but do not fail the build, UNLESS run with --strict
-//             (or HEAD_CHECK_STRICT=1), which promotes warnings to errors.
+//   WARNING — advisory description length (<70 / >160). Reported but do not
+//             fail the build, UNLESS run with --strict (or HEAD_CHECK_STRICT=1),
+//             which promotes warnings to errors.
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT, SITE_ORIGIN, LOCAL_SCRATCH_DIRS } from "./lib/config.mjs";
@@ -107,7 +108,11 @@ for (const { file, route } of pages) {
     if (titleTags.length > 1) fail(page, `${titleTags.length} <title> tags (expected 1)`);
     const title = decode(titleTags[0][1].trim());
     if (!title) fail(page, "empty <title>");
-    if (title.length > TITLE_MAX) warn(page, `<title> ${title.length} chars > ${TITLE_MAX}: "${title}"`);
+    // ERROR, not advisory: a title Google truncates is a title nobody chose.
+    // Length is measured on the DECODED title — "&amp;" is four characters in
+    // the source and one on the results page, and the SERP is what counts.
+    if (title.length > TITLE_MAX)
+      fail(page, `<title> ${title.length} chars > ${TITLE_MAX} (decoded): "${title}"`);
     if (title) (titles.get(title) || titles.set(title, []).get(title)).push(page);
   }
 

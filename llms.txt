@@ -110,8 +110,8 @@ before work begins.
 - [The AI-Ready Score](/score/) — free seven-minute self-assessment:
   fourteen questions across three phases (Map, Prove, Expand). You get a
   0–100 score and the one constraint to fix first. No sales call.
-- [ROI calculator](/calculator/) — rough year-one ranges by industry and
-  team size. Ranges, not promises.
+- [ROI calculator](/calculator/) — modeled annual return by industry and
+  team size, plus how fast the build pays back. Ranges, not promises.
 
 ## Guides
 

@@ -42,9 +42,16 @@ export function factValues(COMPANY) {
 		// The named-offer layer (audit/NAMING-MEMO-2026-08-01.md). Stamped so a
 		// name can never drift from site-facts.json — the SKU names in
 		// `services` are a separate, unchanged set and are NOT stamped here.
-		"name-audit": COMPANY.namedOffers.audit,
-		"name-sprint": COMPANY.namedOffers.sprint,
-		"name-managed": COMPANY.namedOffers.managed,
+		//
+		// REVERSIBILITY IS THE DESIGN CONTRACT: delete `namedOffers` from
+		// site-facts.json and every stamped span falls back to its SKU name, so
+		// `facts:render` strips the layer out of the HTML and the build stays
+		// green with SKU names only. Reading the object unguarded would have
+		// thrown a TypeError instead, which would have made the layer
+		// un-deletable — the opposite of what the memo promised.
+		"name-audit": COMPANY.namedOffers?.audit ?? svc("audit").name,
+		"name-sprint": COMPANY.namedOffers?.sprint ?? svc("sprint").name,
+		"name-managed": COMPANY.namedOffers?.managed ?? svc("managed").name,
 	};
 }
 
@@ -74,12 +81,25 @@ export function countableClauses(note) {
 // variant. Returns a regex matching the phrase with ANY number word other
 // than the canonical one, or null when the phrase does not start with a count.
 export function contradictionPattern(phrase) {
-	const m = /^([A-Z][a-z]+)\b(.*)$/.exec(phrase.trim());
+	const trimmed = phrase.trim();
+	const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+");
+
+	// Digit-led claims — "100% of your audit fee credits toward…", "25% of the
+	// sprint price". These were invisible to this function, which only knew
+	// number WORDS, so the most-quoted number on the site (the rollover
+	// percentage) had no contradiction guard at all.
+	const digits = /^(\d[\d,]*%?)\b([\s\S]*)$/.exec(trimmed);
+	if (digits) {
+		const [, canonical, rest] = digits;
+		// Same sentence, any other leading number = a contradiction.
+		return new RegExp(`\\b(?!${esc(canonical)}\\b)\\d[\\d,]*%?${esc(rest)}`, "i");
+	}
+
+	const m = /^([A-Z][a-z]+)\b(.*)$/.exec(trimmed);
 	if (!m) return null;
 	const [, first, rest] = m;
 	const canonical = NUMBER_WORDS.find((w) => w.toLowerCase() === first.toLowerCase());
 	if (!canonical) return null;
 	const others = NUMBER_WORDS.filter((w) => w !== canonical);
-	const escaped = rest.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+");
-	return new RegExp(`\\b(${others.join("|")})${escaped}`, "i");
+	return new RegExp(`\\b(${others.join("|")})${esc(rest)}`, "i");
 }

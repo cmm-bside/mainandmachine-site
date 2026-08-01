@@ -24,3 +24,6 @@ emails/preview/
 # local scratch / verification artifacts — never committed
 scratchpad/
 audit/
+
+# FUSE temp artifacts — stale duplicates that got committed once already
+.fuse_hidden*

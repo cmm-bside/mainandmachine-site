@@ -7,9 +7,10 @@
 // network to audit redirect hops after a deploy. This one touches no network,
 // so it is deterministic enough to gate the build.
 //
-// Every same-origin href in committed HTML must resolve to something the
-// deploy actually serves: a file in the build output, a proxied route, or a
-// blog post that really exists in the fetched index.
+// Every same-origin href in committed HTML — and every same-origin URL in a
+// rendered email body — must resolve to something the deploy actually serves:
+// a file in the build output, a proxied route, or a blog post that really
+// exists in the fetched index.
 //
 // Why it exists: ~22 hardcoded /blog/<slug>/ links live in the guides and
 // industry pages, pointing at essays the blog pipeline generates at deploy
@@ -123,6 +124,89 @@ for (const file of pages) {
 	}
 }
 
+// --- email templates --------------------------------------------------------
+// The walk above skips emails/ — they are not committed HTML — but they carry
+// the same /blog/<slug>/ links, and a dead one lands in the inbox of the
+// highest-intent reader the site has, during the 24-hour wait. Nothing checked
+// them: the autoresponder shipped three /blog/<slug> URLs with no trailing
+// slash for as long as it existed.
+//
+// We RENDER the templates rather than regex their source, because the URLs are
+// built from template literals (`${SITE_ORIGIN}/blog/${slug}/`) that a source
+// scan cannot resolve. Emails must use absolute URLs, so scanning each rendered
+// body for same-origin absolute URLs covers the HTML hrefs, the plain-text
+// bodies, and the image sources in one pass.
+const EMAIL_SUBMISSION = {
+	name: "Sample Lead",
+	email: "sample@example.com",
+	phone: "(555) 010-0000",
+	contact: "Either",
+	company: "Sample Co.",
+	workflows: "Fixture text for link checking.",
+	interest: "",
+};
+const EMAIL_META = { referenceId: "MM-0000-0000", stamp: "fixture" };
+
+let emailBodies = [];
+try {
+	const [auto, estimate, internal] = await Promise.all([
+		import("../emails/assessment-autoresponder.js"),
+		import("../emails/estimate.js"),
+		import("../emails/assessment-internal.js"),
+	]);
+	const autoData = {
+		firstName: "Sample",
+		referenceId: EMAIL_META.referenceId,
+		name: EMAIL_SUBMISSION.name,
+		email: EMAIL_SUBMISSION.email,
+	};
+	const estData = { industry: "Professional services", team: "24", hours: "6", annual: "$96,000" };
+	const detailsData = { ...EMAIL_SUBMISSION, ...EMAIL_META, industry: "Professional services" };
+	emailBodies = [
+		["emails/assessment-autoresponder.js (html)", auto.renderAutoresponderHtml(autoData)],
+		["emails/assessment-autoresponder.js (text)", auto.renderAutoresponderText(autoData)],
+		["emails/estimate.js (html)", estimate.renderEstimateHtml(estData)],
+		["emails/estimate.js (text)", estimate.renderEstimateText(estData)],
+		["emails/assessment-internal.js (html)", internal.renderInternalHtml(EMAIL_SUBMISSION, EMAIL_META)],
+		["emails/assessment-internal.js (text)", internal.renderInternalText(EMAIL_SUBMISSION, EMAIL_META)],
+		["emails/assessment-internal.js (details html)", internal.renderDetailsHtml(detailsData, EMAIL_META)],
+		["emails/assessment-internal.js (details text)", internal.renderDetailsText(detailsData, EMAIL_META)],
+	];
+} catch (e) {
+	fail(`email templates could not be rendered for link checking: ${e.message}`);
+}
+
+// Same-origin absolute URL, up to the first quote/whitespace/angle bracket.
+const ABS_URL_RE = new RegExp(`${SITE_ORIGIN.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^"'\\s<>)]*)`, "g");
+
+for (const [label, body] of emailBodies) {
+	for (const [, rawPath] of body.matchAll(ABS_URL_RE)) {
+		// Trailing sentence punctuation is prose, not part of the URL.
+		const target = rawPath.replace(/[.,;:]+$/, "").split("#")[0].split("?")[0];
+		if (!target || target === "/") continue;
+		checked++;
+
+		if (proxied.has(target)) continue;
+		if (BLOG_NON_POST.has(target)) continue;
+
+		if (target.startsWith("/blog/")) {
+			// Site canon is /blog/<slug>/. Without the slash Cloudflare answers a
+			// 308 that some mail clients will not follow — and after blog:build the
+			// slashless path still resolves on disk, so nothing else would catch it.
+			const post = /^\/blog\/([a-z0-9-]+)\/$/.exec(target);
+			if (!post) {
+				fail(`${label}: ${target} must be /blog/<slug>/ with a trailing slash`);
+				continue;
+			}
+			blogPostLinks++;
+			if (!blogSlugs.has(post[1])) note(target, label);
+			continue;
+		}
+
+		if (!resolvesOnDisk(target)) note(target, label);
+	}
+}
+
 // --- fixture-shipping guard -------------------------------------------------
 // A zero-post index with live post links means the fetch failed. Report that
 // root cause instead of ~22 identical dangling-link errors.
@@ -130,10 +214,10 @@ const postCount = blogSlugs.size;
 if (blogPostLinks > 0 && postCount === 0) {
 	fail(
 		blogIndexRead
-			? `blog-data/index.json reports ${blogMeta.count ?? 0} posts, but committed pages link to ` +
-					`${blogPostLinks} /blog/<slug>/ URL(s) — the beehiiv fetch returned nothing and every ` +
-					`essay link would 404. Check BEEHIIV_API_KEY / BEEHIIV_PUBLICATION_ID. Do not deploy this build.`
-			: `blog-data/index.json is missing or unreadable, but committed pages link to ` +
+			? `blog-data/index.json reports ${blogMeta.count ?? 0} posts, but committed pages and email ` +
+					`templates link to ${blogPostLinks} /blog/<slug>/ URL(s) — the beehiiv fetch returned nothing ` +
+					`and every essay link would 404. Check BEEHIIV_API_KEY / BEEHIIV_PUBLICATION_ID. Do not deploy this build.`
+			: `blog-data/index.json is missing or unreadable, but committed pages and email templates link to ` +
 					`${blogPostLinks} /blog/<slug>/ URL(s) — run \`npm run blog:fetch\` first.`
 	);
 }
@@ -146,6 +230,7 @@ if (errors.length) {
 	process.exit(1);
 }
 console.log(
-	`[links:check] OK — ${checked} internal link(s) across ${pages.length} page(s) resolve ` +
+	`[links:check] OK — ${checked} internal link(s) across ${pages.length} page(s) ` +
+		`and ${emailBodies.length} rendered email body/bodies resolve ` +
 		`(${blogPostLinks} pointing at ${postCount} live blog post(s)).`
 );

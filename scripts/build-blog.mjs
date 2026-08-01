@@ -67,6 +67,32 @@ a.essay__pn-cell:hover{ background:var(--surface-hi); box-shadow:inset 0 3px 0 v
 const RECENT_ON_HOME = 6;
 const ARCHIVE_BATCH = 12;
 
+// The ONE place a post's "last modified" is decided — JSON-LD dateModified,
+// the sitemap <lastmod>, and the visible "Updated" stamp all call this.
+//
+// They used to derive it independently, and beehiiv makes that dangerous:
+// neither field it gives us is a modification time. `publish_date` is when the
+// post went out; `displayed_date` is an editorial display date the author can
+// set to anything, including EARLIER than publication. fetch-blog-posts.mjs
+// maps them with opposite precedence —
+//
+//   publishedAt = publish_date   || displayed_date
+//   updatedAt   = displayed_date || publish_date
+//
+// — so a post with a backdated displayed_date emitted dateModified BEFORE
+// datePublished (a head:check ERROR) while the sitemap advertised that same
+// earlier day as <lastmod>, disagreeing with the page it pointed at.
+//
+// Clamping here fixes both at once: a modification can never predate
+// publication, and every surface reads the same value.
+function modifiedOf(post) {
+	const pub = post.publishedAt || "";
+	const upd = post.updatedAt || "";
+	if (!pub) return upd || undefined;
+	if (!upd) return pub;
+	return upd > pub ? upd : pub;
+}
+
 // An empty blog is almost never intentional. It means blog:fetch could not
 // reach beehiiv (missing/expired BEEHIIV_API_KEY, API outage, wrong
 // publication id) and returned nothing — and building anyway ships a site
@@ -250,7 +276,7 @@ function renderHome(posts, { subscribeUrl, publicationUrl }) {
 			headline: p.title,
 			url: `${SITE_ORIGIN}${p.url}`,
 			datePublished: p.publishedAt || undefined,
-			dateModified: p.updatedAt || p.publishedAt || undefined,
+			dateModified: modifiedOf(p),
 		})),
 	};
 
@@ -456,7 +482,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 		url: canonical,
 		mainEntityOfPage: canonical,
 		datePublished: post.publishedAt || undefined,
-		dateModified: post.updatedAt || post.publishedAt || undefined,
+		dateModified: modifiedOf(post),
 		author: { "@id": `${SITE_ORIGIN}/#person-cmyers` },
 		publisher: { "@id": `${SITE_ORIGIN}/#org` },
 		image: absUrl(post.heroImage ? post.heroImage.assetUrl : DEFAULT_OG_IMAGE),
@@ -504,8 +530,8 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	// Freshness stamp: only when the update landed on a later calendar day than
 	// publication (beehiiv touches updatedAt on trivial saves).
 	const updatedStamp =
-		post.updatedAt && post.publishedAt && post.updatedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
-			? `Updated ${formatDate(post.updatedAt)}`
+		post.publishedAt && modifiedOf(post).slice(0, 10) > post.publishedAt.slice(0, 10)
+			? `Updated ${formatDate(modifiedOf(post))}`
 			: "";
 	const metaRow = [esc(AUTHOR), esc(formatDate(post.publishedAt)), updatedStamp ? esc(updatedStamp) : "", `${minutes} min read`, topic ? esc(topic) : ""]
 		.filter(Boolean)
@@ -665,7 +691,7 @@ function renderSitemap(posts) {
 	const pageDates = loadPageDates();
 	// /blog and /blog/archive track the newest post's date.
 	const newestPost = posts.reduce(
-		(acc, p) => (p.updatedAt || p.publishedAt || "") > acc ? (p.updatedAt || p.publishedAt) : acc,
+		(acc, p) => (modifiedOf(p) || "") > acc ? modifiedOf(p) : acc,
 		"",
 	) || null;
 	const entries = [
@@ -674,7 +700,7 @@ function renderSitemap(posts) {
 		...PROXIED_ROUTES.map((route) => ({ route, isPost: false, lastmod: PROXIED_LASTMOD[route] || null })),
 		{ route: "/blog/", isPost: false, lastmod: newestPost },
 		{ route: "/blog/archive/", isPost: false, lastmod: newestPost },
-		...posts.map((p) => ({ route: p.url, isPost: true, lastmod: p.updatedAt || p.publishedAt || null })),
+		...posts.map((p) => ({ route: p.url, isPost: true, lastmod: modifiedOf(p) || null })),
 	];
 	const body = entries
 		.map(({ route, isPost, lastmod }) => {

@@ -10,8 +10,14 @@ const COST =
 	"The AI Readiness Audit runs $3,500–$8,500, and 100% of the fee credits toward a sprint signed within 60 days. An AI Implementation Sprint runs $18,000–$60,000, quoted as a fixed price in writing before any work begins — and if a scoped workflow is not live within 90 days, we keep building at no charge until it is. Managed Services runs from $1,500 a month with no lock-in.";
 const COST_SHORT =
 	"The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins and guaranteed live within 90 days.";
-const REMOTE =
-	"We run two hubs — Denver, Colorado and Phoenix, Arizona — for in-person work, and we work remotely with businesses across the US. Same method, same fixed prices either way.";
+// NOTE: there is deliberately no shared REMOTE / TIMELINE answer any more.
+// One constant reused across six pages produced six byte-identical answers,
+// which is duplicate content in the eyes of both a crawler and a reader. The
+// FACTS (two hubs, remote across the US, 2–4 weeks, 4–12 weeks, 90 days) stay
+// identical everywhere and are guarded by check-facts.mjs; the prose around
+// them is written per page. Reach for a shared constant only when the answer
+// genuinely has no page-specific angle — see COST / COST_SHORT below, which
+// are quoted price lists where varying the wording would be worse.
 const TIMELINE =
 	"An AI Readiness Audit takes 2 to 4 weeks. An AI Implementation Sprint runs 4 to 12 weeks — about 90 days per workflow. Managed Services is ongoing.";
 const FREE =
@@ -183,7 +189,7 @@ export const FAQ = {
 			{ q: "Which industries do you work with?", a: "Professional services, retail, healthcare, construction, and hospitality — small and mid-size businesses, roughly 5 to 100 people and $1M to $50M in revenue." },
 			{ q: "Does the approach change by industry?", a: "The method is the same — map the work, price the opportunities, build the highest-payback one. What changes is which workflows pay first." },
 			{ q: "How much does it cost?", a: COST },
-			{ q: "Do you work remotely?", a: REMOTE },
+			{ q: "Do you work remotely?", a: "Both. Denver, Colorado and Phoenix, Arizona are our two hubs for in-person work; everywhere else in the US is remote. Whichever it is, the method and the fixed prices are the same." },
 		],
 	},
 	"industries/professional-services/index.html": {
@@ -196,7 +202,7 @@ export const FAQ = {
 			{ q: "What happens to billable-hour economics?", a: "The hours you bill are judgment hours, and those stay human. What the machine takes is the non-billable wrapper — intake write-ups, chasing invoices, reconciling status — so more of the week is billable in the first place. On flat-fee work, the same recovered capacity shows up as margin." },
 			{ q: "How much does it cost?", a: COST_SHORT },
 			{ q: "How long does it take?", a: "An audit is 2 to 4 weeks; a build is 4 to 12." },
-			{ q: "Do you work remotely or on-site?", a: REMOTE },
+			{ q: "Do you work remotely or on-site?", a: "Firms near our Denver, Colorado or Phoenix, Arizona hubs can put us in the conference room; everyone else in the US works with us remotely. Reading how matters actually move rarely requires a room, and the fixed prices do not change either way." },
 			{ q: "Is there a real example?", a: "The closest published case is MARCUS — 14 AI agents we built for B:Side Capital, a regulated lender." },
 		],
 	},
@@ -208,8 +214,8 @@ export const FAQ = {
 			{ q: "What does reconciliation across channels actually mean?", a: "Your POS says one count, the webstore says another, and the marketplace says a third. An agent pulls all three plus the receiving records, finds the lines that disagree, proposes which is right and why, and stages the corrections. A person approves before any count is written back." },
 			{ q: "Will it change prices or place orders on its own?", a: "No. It prepares the reorder and flags the margin problem; a person decides. Nothing is purchased, repriced, or listed until someone approves it, and every approval is in the audit log." },
 			{ q: "How much does it cost for a retailer?", a: COST_SHORT + " For most retailers the first build is reconciliation, because oversell and dead stock are the two costs nobody has time to chase." },
-			{ q: "How long does it take?", a: "An audit is 2 to 4 weeks. A first build is 4 to 12, and the guarantee is that a scoped workflow is live within 90 days or we keep building at no charge until it is." },
-			{ q: "Do you work remotely or on-site?", a: REMOTE },
+			{ q: "How long does it take?", a: "The audit is 2 to 4 weeks. The first build is 4 to 12, and it carries the delivery guarantee: live within 90 days, or we keep building at no charge until it is." },
+			{ q: "Do you work remotely or on-site?", a: "We keep hubs in Denver, Colorado and Phoenix, Arizona, so a shop within reach of either gets on-site time; the rest of the US is remote. Walking a stockroom in person helps once — the reconciliation work that follows runs the same remotely, at the same fixed price." },
 		],
 	},
 	"industries/healthcare/index.html": {
@@ -221,8 +227,8 @@ export const FAQ = {
 			{ q: "What about HIPAA and a business associate agreement?", a: "HIPAA requires a signed business associate agreement before any vendor handles PHI on your behalf — true of us and of every vendor you are considering. Settle it before scoping, not after; raise it in the first thirty minutes of the free assessment. We hold no HIPAA certification and claim none, because no such certification exists for a vendor to hold. What we can show you is the on-premise architecture and the audit log behind it." },
 			{ q: "Will it touch clinical decisions?", a: "No. We do not build systems that diagnose, triage, interpret an image or a lab result, adjust a dose, or decide medical necessity. That is a design rule, not a launch limitation. Nothing sends, files, posts, or bills until a licensed person approves it." },
 			{ q: "How much does it cost for a practice?", a: COST_SHORT + " For a practice, the first build is usually intake or the coding backlog — whichever your assessment shows is costing more." },
-			{ q: "How long does it take?", a: "An audit is 2 to 4 weeks. A first build is 4 to 12, and the guarantee is that a scoped workflow is live within 90 days or we keep building at no charge until it is." },
-			{ q: "Do you work remotely or on-site?", a: REMOTE },
+			{ q: "How long does it take?", a: "Plan on 2 to 4 weeks for the audit and 4 to 12 for the first build, scheduled around clinic hours rather than against them. The guarantee holds either way: live within 90 days, or we keep building at no charge until it is." },
+			{ q: "Do you work remotely or on-site?", a: "Practices near Denver, Colorado or Phoenix, Arizona can have us on-site; elsewhere in the US we work remotely. On-premise hardware ships to your building and gets installed either way, and the fixed prices do not change with the zip code." },
 		],
 	},
 	"industries/construction/index.html": {
@@ -233,8 +239,8 @@ export const FAQ = {
 			{ q: "Will it work with how the field actually reports?", a: "That is the point. Foremen send photos and texts, not structured data. The agent reads what comes in, matches it to the cost code and the job, and drafts the document — a person in the office approves before anything goes to the GC or the owner." },
 			{ q: "What about lien waivers and compliance paper?", a: "Waiver status is tracked per subcontractor per pay period, with the conditional and unconditional versions drafted and the missing ones chased automatically. Certified payroll and prevailing-wage records get assembled from the same source data rather than rebuilt by hand each cycle. A person signs everything." },
 			{ q: "How much does it cost for a contractor?", a: COST_SHORT + " For most contractors the first build pays for itself on the pay-application cycle alone." },
-			{ q: "How long does it take?", a: "An audit is 2 to 4 weeks. A first build is 4 to 12, and the guarantee is that a scoped workflow is live within 90 days or we keep building at no charge until it is." },
-			{ q: "Do you work remotely or on-site?", a: REMOTE },
+			{ q: "How long does it take?", a: "The audit runs 2 to 4 weeks and the first build 4 to 12, usually scoped to land between billing cycles. It is guaranteed: live within 90 days, or we keep building at no charge until it is." },
+			{ q: "Do you work remotely or on-site?", a: "Denver, Colorado and Phoenix, Arizona are the two hubs we travel from; contractors elsewhere in the US work with us remotely. The job site is not where this work happens — the paperwork is — and the fixed prices are the same wherever you build." },
 		],
 	},
 	"industries/hospitality/index.html": {
@@ -245,8 +251,8 @@ export const FAQ = {
 			{ q: "What about the Monday invoice stack?", a: "That is usually the first build. Invoices arrive by email, PDF, and photo from a dozen suppliers. An agent reads each one, codes it, matches it to what was actually delivered, flags the price changes and short-ships that would otherwise pass unnoticed, and stages it for approval. Nothing posts until a manager approves it." },
 			{ q: "Does it handle tip reporting and health-department paper?", a: "Tip reporting and allocation get prepared from the POS data you already have, in the format payroll needs. Health-department documentation — temperature logs, cleaning schedules, certification expiry — gets tracked and the gaps flagged before an inspector finds them. A person signs off; the machine keeps the calendar." },
 			{ q: "How much does it cost for a restaurant group?", a: COST_SHORT + " For most operators the first build is the invoice stack, because it is the one that quietly moves food cost." },
-			{ q: "How long does it take?", a: "An audit is 2 to 4 weeks. A first build is 4 to 12, and the guarantee is that a scoped workflow is live within 90 days or we keep building at no charge until it is." },
-			{ q: "Do you work remotely or on-site?", a: REMOTE },
+			{ q: "How long does it take?", a: "Audit: 2 to 4 weeks. First build: 4 to 12. Both sit behind the same delivery guarantee — live within 90 days, or we keep building at no charge until it is." },
+			{ q: "Do you work remotely or on-site?", a: "Operators near our Denver, Colorado and Phoenix, Arizona hubs get in-person time; the rest of the US is remote. Either way the work runs off the invoices and POS exports you already have, and the fixed prices do not move." },
 		],
 	},
 };

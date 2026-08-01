@@ -106,6 +106,12 @@ Network filtered to `/api/event`, then:
 - [ ] /book/: book a slot in the embed → `calendly_booked`, then a redirect to
       `/book/thanks/?via=calendly` showing "You're booked" (not the 24-hour copy).
 - [ ] /book/thanks/: submit the stage-2 prep form → `booking_details_added`.
+- [ ] /book/thanks/?via=calendly (reached by booking in the embed, not by typing
+      the URL): the prep form is **visible**, and submitting it fires the same
+      `booking_details_added`. The POST carries `via:"calendly"` and the invitee
+      URI instead of a reference id — Calendly does not expose the invitee's name
+      or email to the parent window, so the internal email says the booking must
+      be matched by hand. Same event, same props: no new event for this path.
 - [ ] /calculator/: submit "Email me this estimate" → `calculator_emailed` with
       industry + band; confirm the POST body contains **no email address**.
 - [ ] /score: land → pageview with `u` = the /score URL; start → `score_started`;

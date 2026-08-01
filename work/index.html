@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=95" />
+<link rel="stylesheet" href="/styles.css?v=98" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -46,7 +46,7 @@
 .story-feat:hover { box-shadow: inset 0 3px 0 var(--accent-ink); }
 .story-feat__body { padding: clamp(var(--s-32), 4vw, var(--s-48)); display: flex; flex-direction: column; }
 .story-feat__tag { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
-.story-feat__body h2 { font-size: clamp(var(--fs-25), 3vw, var(--fs-39)); font-weight: 800; letter-spacing: -.02em; line-height: 1.08; color: #fff; margin: 16px 0; }
+.story-feat__body h2 { font-size: clamp(var(--fs-25), 3vw, var(--fs-39)); font-weight: 800; letter-spacing: -.02em; line-height: 1.08; color: var(--dtx); margin: 16px 0; }
 .story-feat__body p { color: var(--dtx-mute); font-size: var(--fs-16); line-height: 1.6; max-width: 60ch; margin: 0; }
 .story-feat__go { display: inline-flex; gap: 8px; align-items: center; margin-top: auto; padding-top: var(--s-24); font-weight: 700; font-size: var(--fs-16); color: var(--accent-ink); }
 .story-feat:hover .story-feat__go .arr { transform: translateX(3px); }
@@ -62,7 +62,7 @@
 /* ---- founder featured quote (ink) ---- */
 .foundernote { background: var(--ink); color: var(--dtx); border-radius: var(--r-md); padding: clamp(var(--s-32), 5vw, var(--s-64)); }
 .foundernote__tag { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); display: block; margin-bottom: var(--s-24); }
-.foundernote__q { font-family: var(--sans); font-style: italic; font-weight: 500; font-size: clamp(var(--fs-20), 2.5vw, var(--fs-31)); line-height: 1.34; letter-spacing: -.01em; color: #fff; max-width: 54ch; text-wrap: balance; margin: 0; }
+.foundernote__q { font-family: var(--sans); font-style: italic; font-weight: 500; font-size: clamp(var(--fs-20), 2.5vw, var(--fs-31)); line-height: 1.34; letter-spacing: -.01em; color: var(--dtx); max-width: 54ch; text-wrap: balance; margin: 0; }
 .foundernote__q b { color: var(--accent-ink); font-weight: 600; font-style: italic; }
 .foundernote__by { display: flex; align-items: baseline; gap: var(--s-12); flex-wrap: wrap; margin-top: var(--s-32); padding-top: var(--s-24); border-top: 1px solid var(--dline); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em; color: var(--dtx-mute); }
 .foundernote__by b { color: var(--dtx); font-weight: 700; letter-spacing: 0; }
@@ -132,7 +132,9 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org"
+        "https://www.bside.org",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
@@ -363,7 +365,7 @@
         </div>
       </div>
 <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
-    <p class="builds__note" style="margin-top:20px;"><a href="/work/marcus/results/">Read the MARCUS year-one results →</a></p>
+    <p class="builds__note" style="margin-top:20px;"><a href="/work/marcus/results/">Read the MARCUS measured results →</a></p>
   </div>
 </section>
 

@@ -49,7 +49,7 @@
       }
     ],
     "figures": [
-      { "key": "uptime", "section": "01", "value": "99.96", "unit": "%", "desc": "Uptime since commissioning in August — one planned maintenance window, zero unplanned outages.", "source": "audit-log" },
+      { "key": "uptime", "section": "01", "value": "99.96", "unit": "%", "desc": "Uptime since commissioning in February 2026 — one planned maintenance window, zero unplanned outages.", "source": "audit-log" },
       { "key": "model-calls", "section": "01", "value": "2.1M", "unit": "", "desc": "Model calls processed entirely on-premises in 90 days. In normal operation, none left the building.", "source": "audit-log" },
       { "key": "hardware-markup", "section": "01", "value": "$0", "unit": "", "desc": "Hardware markup. Bought at cost, in the client's name. That we do not mark it up is the point.", "source": "audit-log" },
       { "key": "model-swaps", "section": "01", "value": "1", "unit": "", "desc": "Mid-flight model upgrade, completed in an evening, with zero workflow changes for staff.", "source": "audit-log" },
@@ -94,7 +94,8 @@
     "highlight_keys": ["hours-returned", "weekly-adoption", "identifiers-out"],
     "inline": {
       "professional-services": "hours-returned",
-      "security": "identifiers-out"
+      "security": "identifiers-out",
+      "book-thanks": "hours-returned"
     }
   }
 }

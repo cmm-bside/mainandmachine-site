@@ -139,7 +139,10 @@ const ORG_SAMEAS = [
 	"https://www.linkedin.com/company/main-and-machine/",
 	"https://x.com/mainandmachine",
 ];
-const PERSON_SAMEAS = [
+// Exported so check-facts.mjs can hold every hand-embedded Person block to it.
+// One entity, one claim set: if you add a profile here, `npm run facts:check`
+// fails every static page until it carries the same list in the same order.
+export const PERSON_SAMEAS = [
 	"https://www.linkedin.com/in/cmyers85/",
 	"https://x.com/Chris_myers",
 	"https://www.entrepreneur.com/author/christopher-myers",

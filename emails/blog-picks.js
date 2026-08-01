@@ -13,6 +13,12 @@
 
 export const SITE_ORIGIN = "https://www.mainandmachine.com";
 
+// Post URLs are built HERE and nowhere else. Site canon is /blog/<slug>/ with a
+// trailing slash; without it Cloudflare answers 308 and some mail clients drop
+// the redirect, so the highest-intent reader we have gets a dead link. Every
+// URL this returns is validated against blog-data/index.json by links:check.
+export const postUrl = (slug) => `${SITE_ORIGIN}/blog/${slug}/`;
+
 export const blogPicks = [
   {
     slug: "most-of-your-workflows-dont-need-ai",

@@ -514,20 +514,21 @@
         <div class="roi__output">
           <div class="roi__net">
             <div class="roi__nethead">
-              <span class="accent-tx">Projected ROI / Year 1</span>
+              <span class="accent-tx">Modeled return / year</span>
               <span id="bandFor">For 25 people</span>
             </div>
-            <div class="roi__big tab" id="bandRoi">-$5,250–+$132,000</div>
-            <p class="roi__bigunit">modeled range — stress-tested low end to raw-model high end</p>
+            <div class="roi__big tab" id="bandRoi">+$12,750–+$144,000</div>
+            <p class="roi__bigunit">a year, net of run costs — stress-tested low end to full-recovery high end</p>
           </div>
           <div class="roi__assume">
             <ul>
               <li><span>Total opportunity</span><span class="mono tab" id="bandTotal">$150,000</span></li>
-              <li><span>Sprint investment</span><span class="mono tab" id="bandImpl">-$18,000</span></li>
               <li><span>Run costs / year</span><span class="mono tab" id="bandRun">up to -$6,000</span></li>
+              <li><span>Sprint investment (one-time)</span><span class="mono tab" id="bandImpl">-$18,000</span></li>
+              <li><span>Payback on that build</span><span class="mono tab" id="bandPayback">2–17 months</span></li>
             </ul>
           </div>
-          <p class="roi__disclaim">A model, not a promise. The low end is the <a href="/guides/ai-roi-math-small-business/">ROI guide&rsquo;s</a> stress test with run costs against it; the high end assumes the build recovers all of the modeled drag. We run your real numbers in the free assessment.</p>
+          <p class="roi__disclaim">A model, not a promise. Both ends are annual and net of run costs; the sprint is a one-time cost the return pays back. The high end assumes the build recovers all of the modeled drag, the low end applies the <a href="/guides/ai-roi-math-small-business/">ROI guide&rsquo;s</a> stress test. On thin cases the low end goes negative &mdash; that is the model telling you to wait. We run your real numbers in the free assessment.</p>
         </div>
       </div>
     </div>
@@ -717,7 +718,7 @@
 <script defer src="/js/reveal.js?v=53"></script>
 
 <!-- ============ CALCULATOR BAND (slim) — model shared with /calculator/ via /js/roi.js ============ -->
-<script src="/js/roi.js?v=2"></script>
+<script src="/js/roi.js?v=3"></script>
 <script>
 (function(){
   var sel = document.getElementById('bandIndustry');
@@ -732,11 +733,13 @@
     roi:   document.getElementById('bandRoi'),
     total: document.getElementById('bandTotal'),
     impl:  document.getElementById('bandImpl'),
-    run:   document.getElementById('bandRun')
+    run:   document.getElementById('bandRun'),
+    payback: document.getElementById('bandPayback')
   };
 
   function paint(v){
     els.roi.textContent   = MMRoi.band(v);
+    if(els.payback) els.payback.textContent = MMRoi.paybackLabel(v);
     els.total.textContent = MMRoi.fmt(v.total);
     els.impl.textContent  = MMRoi.signed(-v.implementation);
     if(els.run) els.run.textContent = 'up to ' + MMRoi.signed(-v.runCost);
@@ -774,7 +777,7 @@
           if (start === null) start = now;
           var t = Math.min(1, (now - start) / dur), eased = 1 - Math.pow(1 - t, 3);
           if (t < 1) {
-            els.roi.textContent = MMRoi.signed(m.roiHigh * eased);
+            els.roi.textContent = MMRoi.signed(m.annualHigh * eased);
             requestAnimationFrame(tick);
           } else {
             els.roi.textContent = MMRoi.band(m);

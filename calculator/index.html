@@ -266,18 +266,19 @@
           <ul class="roi__rows">
             <li><span>Repetitive manual work</span><span class="mono tab roi__pos" id="calcManual">+$100,000</span></li>
             <li><span>Lost revenue (capacity)</span><span class="mono tab roi__pos" id="calcRevenue">+$50,000</span></li>
-            <li><span>Sprint investment</span><span class="mono tab roi__neg" id="calcImpl">-$18,000</span></li>
             <li><span>Run costs / year</span><span class="mono tab roi__neg" id="calcRun">up to -$6,000</span></li>
+            <li><span>Sprint investment (one-time)</span><span class="mono tab roi__neg" id="calcImpl">-$18,000</span></li>
+            <li><span>Payback on that build</span><span class="mono tab" id="calcPayback">2–17 months</span></li>
           </ul>
           <div class="roi__net">
             <div class="roi__nethead">
-              <span class="accent-tx">Projected ROI / Year 1</span>
+              <span class="accent-tx">Modeled return / year</span>
               <span id="calcFor">For 25 people</span>
             </div>
-            <div class="roi__big tab" id="calcRoi">-$5,250–+$132,000</div>
-            <p class="roi__bigunit">modeled range — stress-tested low end to raw-model high end</p>
+            <div class="roi__big tab" id="calcRoi">+$12,750–+$144,000</div>
+            <p class="roi__bigunit">a year, net of run costs — stress-tested low end to full-recovery high end</p>
           </div>
-          <p class="roi__disclaim">A model, not a promise. The range is the point: the high end assumes the build recovers all of the modeled drag, the low end applies the ROI guide&rsquo;s stress test &mdash; half the drag, a quarter of it captured &mdash; with a full year of run costs against it. On a small team the low end goes negative, which is the model telling you to wait. The sprint cost is our published price; the savings are round assumptions you can see above, not your books. We run your real numbers in the free assessment, then commit to fixed scope in writing. The full model — every rate, a worked example, and what breaks it — is published in <a href="/guides/ai-roi-math-small-business/">the ROI math guide</a>; what a live system costs monthly is in <a href="/guides/what-ai-automation-costs-to-run/">the running-costs guide</a>.</p>
+          <p class="roi__disclaim">A model, not a promise. Both ends are annual, net of run costs, and the sprint is a one-time cost the return pays back &mdash; the same comparison <a href="/guides/ai-roi-math-small-business/">Guide 13</a> makes. The high end assumes the build recovers all of the modeled drag; the low end applies the guide&rsquo;s stress test, half the drag with a quarter of that captured. On thin cases the low end goes negative &mdash; that is the model telling you to wait, and Guide 13 shows the full math. The sprint cost is our published price; the savings are round assumptions you can see above, not your books. We run your real numbers in the free assessment, then commit to fixed scope in writing. The full model — every rate, a worked example, and what breaks it — is published in <a href="/guides/ai-roi-math-small-business/">the ROI math guide</a>; what a live system costs monthly is in <a href="/guides/what-ai-automation-costs-to-run/">the running-costs guide</a>.</p>
         </div>
       </div>
 
@@ -309,7 +310,7 @@
         <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
         <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list &rarr;</a></p>
       </div>
-      <p>A 25-person firm that automates the right handful of workflows commonly nets around this in year one, after our fee. <b style="color:var(--tx);">If your numbers don’t work, we’ll tell you.</b></p>
+      <p>The two ends are not a forecast and neither is a typical result: the high end assumes the build recovers all of the modeled drag, the low end applies the stress test in <a href="/guides/ai-roi-math-small-business/">Guide 13</a>. Where you land is what the assessment is for. <b style="color:var(--tx);">If your numbers don’t work, we’ll tell you.</b></p>
     </div>
     <p class="roi__note" style="margin-top:var(--s-16);">Cost is half the question. Find out if you’re ready — <a href="/score/">get your AI-Ready Score →</a></p>
   </div>
@@ -397,7 +398,7 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.roi,.roi-sharebar,.roi__cta,.foot__top > *"></script>
 
 <!-- ============ SHARED ESTIMATE MODEL (rates + math live in one file, used here and on the homepage band) ============ -->
-<script src="/js/roi.js?v=2"></script>
+<script src="/js/roi.js?v=3"></script>
 
 <!-- ============ URL STATE (runs before the calculator so its first update() reflects the URL) ============ -->
 <script>
@@ -431,6 +432,7 @@
     revenue:  document.getElementById('calcRevenue'),
     impl:     document.getElementById('calcImpl'),
     roi:      document.getElementById('calcRoi'),
+    payback:  document.getElementById('calcPayback'),
     total:    document.getElementById('calcTotal'),
     aRun:     document.getElementById('calcARun'),
     run:      document.getElementById('calcRun')
@@ -451,6 +453,7 @@
     els.revenue.textContent = signed(v.revenue);
     els.impl.textContent    = signed(-v.implementation);
     els.roi.textContent     = MMRoi.band(v);
+    if(els.payback) els.payback.textContent = MMRoi.paybackLabel(v);
     els.total.textContent   = fmt(v.total);
     if(els.aRun) els.aRun.textContent = 'up to ' + fmt(v.runCost) + '/yr';
     if(els.run)  els.run.textContent  = 'up to ' + signed(-v.runCost);

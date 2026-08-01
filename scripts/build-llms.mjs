@@ -70,15 +70,15 @@ visible copy of the most important pages, with page delimiters.
 Every price is published; the exact number is quoted fixed, in writing,
 before work begins.
 
-- [${audit.name}](/services/#audit): $3,500–$8,500, 2–4 weeks.
+- [${audit.name}](/services/#audit) ("${COMPANY.namedOffers.audit}"): $3,500–$8,500, 2–4 weeks.
   A workflow map of your real operations, the handful of places AI actually
   pays, and a phased plan you own outright — whether or not you build with us.
-- [${sprint.name}](/services/#sprint): $18,000–$60,000 fixed quote,
+- [${sprint.name}](/services/#sprint) ("${COMPANY.namedOffers.sprint}"): $18,000–$60,000 fixed quote,
   4–12 weeks. Working agents, automations, and integrations built inside
   your real operation, with your team trained to run them. About 90 days
   per workflow. Guarantee: if a scoped workflow is not live within 90 days,
   we keep building at no charge until it is.
-- [${managed.name}](/services/#managed): from $1,500/month, no lock-in.
+- [${managed.name}](/services/#managed) ("${COMPANY.namedOffers.managed}"): from $1,500/month, no lock-in.
   Monitoring and maintenance on every deployed system; leave any month it
   stops paying. Pay annually and 12 months cost the price of 10.
 - The Full Back Office: from $95,000 — a MARCUS-class, multi-department

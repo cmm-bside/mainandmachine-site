@@ -183,6 +183,7 @@ ${
                   <div style="font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#a59c8e;">The guarantee</div>
                   <p style="margin:14px 0 0; font-family:Georgia,serif; font-size:15px; line-height:1.6; color:${PAPER};">${escapeHtml(COMPANY.guarantee)}</p>
                   <p style="margin:10px 0 0; font-family:Georgia,serif; font-size:15px; line-height:1.6; color:#c9c1b4;">${escapeHtml(COMPANY.rollover)}</p>
+                  <p style="margin:10px 0 0; font-family:Georgia,serif; font-size:14px; line-height:1.6; color:#a59c8e;">In our shorthand: 100% of your ${escapeHtml(COMPANY.namedOffers.audit.replace(/^The /, ""))} fee credits toward your ${escapeHtml(COMPANY.namedOffers.sprint.replace(/^The /, ""))}, up to 25% of the Build&rsquo;s price.</p>
                 </td></tr>
               </table>
             </td>
@@ -273,6 +274,7 @@ export function renderAutoresponderText(data) {
     "THE GUARANTEE",
     COMPANY.guarantee,
     COMPANY.rollover,
+    `In our shorthand: 100% of your ${COMPANY.namedOffers.audit.replace(/^The /, "")} fee credits toward your ${COMPANY.namedOffers.sprint.replace(/^The /, "")}, up to 25% of the Build's price.`,
     "",
     "Every price we charge is published, and the assessment is not a prerequisite",
     `for reading it — the whole price list, no call required: ${SITE_ORIGIN}/pricing/`,

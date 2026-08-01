@@ -278,6 +278,65 @@ for (const page of ALL_PAGES) {
   if (needsCrumbs && !/"BreadcrumbList"/.test(html)) fail(`${page}: missing BreadcrumbList JSON-LD`);
 }
 
+// --- named-offer layer -------------------------------------------------------
+// audit/NAMING-MEMO-2026-08-01.md put a customer-facing NAME on three SKUs.
+// The names are stamped from site-facts.json into data-fact="name-*" spans, so
+// the stamped-span check above already catches drift there. This catches the
+// other half: a name typed by hand into prose.
+//
+// Two failure shapes, both silent without this:
+//   1. a near-miss variant ("the 90 Day Build", "the Blueprint plan") that
+//      reads fine and quietly forks the vocabulary the memo is trying to make
+//      compound through repetition;
+//   2. a name that survives after the layer is retired — the whole point of
+//      keeping it out of the SKUs is that deleting namedOffers should be
+//      enough to remove it, and a hand-typed instance defeats that.
+const NAMED = COMPANY.namedOffers || {};
+// Variants that are wrong specifically BECAUSE the real name exists.
+const NAME_VARIANTS = [
+  [/\bThe\s+90[-\s]?Day\s+Build\b/g, NAMED.sprint],
+  // Case-SENSITIVE: "the blueprint" lowercase is the ordinary English word and
+  // appears legitimately on /work/marcus/ ("every step in the blueprint cites
+  // the operations document"). Only a capitalised, name-shaped use is checked.
+  [/\bThe\s+Blue\s?print\b/g, NAMED.audit],
+  [/\bThe\s+Service\s+Contract\b/g, NAMED.managed],
+];
+for (const page of ALL_PAGES) {
+  const html = read(page);
+  if (!html) continue;
+  const visible = html
+    .replace(/<script[\s\S]*?<\/script>/g, "")
+    .replace(/<style[\s\S]*?<\/style>/g, "")
+    .replace(/<!--[\s\S]*?-->/g, "");
+  for (const [re, canonical] of NAME_VARIANTS) {
+    if (!canonical) continue;
+    for (const m of visible.matchAll(re)) {
+      const seen = m[0].replace(/\s+/g, " ");
+      if (seen !== canonical)
+        fail(
+          `${page}: named offer "${seen}" is not the canonical "${canonical}" ` +
+            `from namedOffers in src/data/site-facts.json`
+        );
+    }
+  }
+  // A name must never reach a <title> or meta description: the SKU names carry
+  // the search intent this quarter (memo, step 6).
+  const head = html.slice(0, html.indexOf("</head>") + 1);
+  for (const canonical of Object.values(NAMED)) {
+    const title = /<title>([\s\S]*?)<\/title>/.exec(head);
+    if (title && title[1].includes(canonical))
+      fail(`${page}: named offer "${canonical}" must not appear in <title> (SKU names carry search intent)`);
+    const desc = /<meta name="description" content="([^"]*)"/.exec(head);
+    if (desc && desc[1].includes(canonical))
+      fail(`${page}: named offer "${canonical}" must not appear in the meta description`);
+  }
+  // Voice rule: no named offer more than 3 times on a page.
+  for (const canonical of Object.values(NAMED)) {
+    const n = visible.split(canonical).length - 1;
+    if (n > 3) fail(`${page}: named offer "${canonical}" appears ${n} times (max 3 per page)`);
+  }
+}
+
 // --- llms.txt must match its generator -------------------------------------
 // build:static runs llms:build immediately before this check, so a mismatch
 // here means someone hand-edited llms.txt — regenerate instead.

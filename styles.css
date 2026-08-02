@@ -292,6 +292,32 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
   .wrap.nav__inner { position: static; }
 }
 
+/* ---- desktop nav fit (2026-08-02) ----
+   The full nav row wanted 1225px of content — logo 213 + links 686 + CTA 270,
+   plus gaps — inside a `.wrap` whose content box is a FIXED 1096px at every
+   viewport ≥1160px. It overflowed its own container by 129px at EVERY width
+   from 1141px (where the drawer hands over) upward. Two symptoms, one cause:
+   a horizontal scrollbar from 1141px to ~1345px, and above that no scrollbar
+   but the CTA still painting ~130px outside the content column, out of line
+   with every section below it.
+
+   Raising the drawer breakpoint would NOT have fixed this. The container is
+   capped at --maxw, so a wider viewport never gives the nav more room — it
+   only pushes the spill into the page margin where it stops being a
+   scrollbar. The row has to actually fit 1096px.
+
+   Tightened to 1057px — 39px of headroom, enough to survive a label edit.
+   17px was oversized for chrome in any case: the utility bar above it is 12px
+   and every other label on the site is 11–14px. Scoped to min-width so the
+   ≤1140px drawer keeps its own 17px type and 48px touch rows, which the
+   mobile sweep asserts. Placed after that block so source order is decided,
+   not left to two (0,1,1) rules in different media queries. */
+@media (min-width: 1141px){
+  .nav__inner { gap: var(--s-16); }
+  .nav__links { gap: var(--s-16); margin-left: 0; }
+  .nav__links a, .nav__menu a { font-size: var(--t-sm); }
+}
+
 /* logo / wordmark */
 .logo { display: inline-flex; align-items: center; gap: var(--s-12); }
 .logo__plate {

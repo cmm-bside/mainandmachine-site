@@ -222,6 +222,39 @@ At ≤768px only the first clause shows.
   `topbar()` in `scripts/lib/templates.mjs` for blog pages. Change both.
 - `/privacy/`, `/terms/` and `/404.html` carry no utility bar, by existing design.
 
+### Desktop nav fit (2026-08-02)
+
+The nav row **overflowed its own container by 129px at every width ≥1141px**,
+where the mobile drawer hands over. Logo 213 + links 686 + CTA 270 + gaps =
+1225px of content inside a `.wrap` whose content box is a fixed **1096px**.
+
+Two symptoms, one cause: a horizontal scrollbar from 1141px to ~1345px, and
+above that no scrollbar but the CTA still painting ~130px outside the content
+column, out of line with every section below it. Only the scrollbar was ever
+noticed, which is why this read as a narrow-band bug rather than a permanent
+misalignment.
+
+- **Raising the drawer breakpoint would NOT have fixed it.** The container is
+  capped at `--maxw`, so a wider viewport never gives the nav more room — it
+  only pushes the spill into the page margin where it stops being a scrollbar.
+  The row has to actually fit 1096px. Same reasoning rules out "just show the
+  hamburger sooner".
+- Fixed in one `@media (min-width: 1141px)` block: `--s-16` gaps on both
+  `.nav__inner` and `.nav__links`, no `margin-left` on the links, and nav
+  labels at `--t-sm`. **1225px → 1057px, 39px of headroom** — enough to
+  survive a label edit. 17px was oversized for chrome anyway; the utility bar
+  above it is 12px and every other label on the site is 11–14px.
+- **Scoped to `min-width` on purpose.** The ≤1140px drawer sets its own
+  `font-size: var(--fs-16)` and 48px touch rows, which `sweep:mobile` asserts.
+  Both rules are (0,1,1), so the block is placed AFTER the drawer block —
+  source order decides, not luck.
+- Verified: **215 route×width checks** (43 routes × 1141/1200/1280/1345/1440)
+  with zero page overflow and zero nav-past-container. At 1440 the CTA's right
+  edge is 1268px — exactly the content column's right edge (172 + 1096).
+- Auditing this: measure the nav against its container's CONTENT box, not the
+  viewport. Viewport-only overflow checks call this clean at 1440 and above,
+  which is where it was actually still broken — just invisibly.
+
 ### Text wrapping (2026-08-01)
 
 `h1, h2, h3, .h1, .h2 { text-wrap: balance }` and `p, li, dd { text-wrap: pretty }`

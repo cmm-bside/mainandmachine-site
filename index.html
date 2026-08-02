@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="styles.css?v=110" />
+<link rel="stylesheet" href="styles.css?v=111" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -170,7 +170,7 @@
   if(dest){ window.location.replace(dest); }
 })();
 </script>
-<script defer src="/js/hero-machine.js?v=5"></script>
+<script defer src="/js/hero-machine.js?v=6"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -367,11 +367,9 @@
     </div>
 
     <!-- proof: concrete example builds -->
-    <div class="builds">
-      <div class="builds__bar">
-        <span class="tick-lbl">Example builds</span>
-        <span class="tick-lbl"><a href="/services/builds/">Browse the build catalog <span class="arr">&#8594;</span></a></span>
-      </div>
+    <div class="buildstrip">
+      <span class="tick-lbl">Example builds</span>
+      <a class="buildstrip__go" href="/services/builds/">Browse the build catalog <span class="arr">&#8594;</span></a>
     </div>
   </div>
 </section>
@@ -386,7 +384,7 @@
       </div>
       <p class="lead">You will not have to sit through three discovery calls to learn what something costs. Here is the short version. <a href="/pricing/">The price list</a> has every line item.</p>
     </div>
-    <div class="svc">
+    <div class="svc svc--2col">
       <div class="svc__item svc__item--feature crop">
         <span class="svc__tab">Most start here</span>
         <div class="svc__meta">
@@ -395,14 +393,12 @@
           <div class="svc__price" data-fact="timeline-audit">2 to 4 weeks</div>
           <span class="tick-lbl" style="margin-top:14px;">Fixed price</span>
           <div class="svc__price" data-fact="price-audit">$3,500–$8,500</div>
-          <p class="svc__note">100% of the fee credits toward a sprint signed within 60 days.</p>
         </div>
         <div class="svc__main">
           <h3><a href="/services/#audit">AI Readiness Audit</a></h3>
           <div class="svc__tagline"><span data-fact="name-audit">The Blueprint</span> &mdash; most businesses start here. You leave holding it, whether or not we build it.</div>
           <p>We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.</p>
-        </div>
-        <div class="svc__list">
+          <p class="svc__note">100% of the fee credits toward a sprint signed within 60 days.</p>
           <a class="svc__cta" href="/services/#audit">Read the full spec <span class="arr">&#8594;</span></a>
         </div>
       </div>
@@ -413,15 +409,13 @@
           <div class="svc__price" data-fact="timeline-sprint">4 to 12 weeks</div>
           <span class="tick-lbl" style="margin-top:14px;">Fixed quote after scoping</span>
           <div class="svc__price" data-fact="price-sprint">$18,000–$60,000</div>
-          <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
-          <p class="svc__note accent-tx">Guaranteed live in 90 days, or we keep building at no charge.</p>
         </div>
         <div class="svc__main">
           <h3><a href="/services/#sprint">AI Implementation Sprint</a></h3>
           <div class="svc__tagline"><span data-fact="name-sprint">The 90-Day Build</span> &mdash; live in your operation in about 90 days, or we keep building free until it is.</div>
           <p>Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.</p>
-        </div>
-        <div class="svc__list">
+          <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
+          <p class="svc__note accent-tx">Guaranteed live in 90 days, or we keep building at no charge.</p>
           <a class="svc__cta" href="/services/#sprint">Read the full spec <span class="arr">&#8594;</span></a>
         </div>
       </div>
@@ -437,8 +431,6 @@
           <h3><a href="/services/#managed">Managed Services</a></h3>
           <div class="svc__tagline"><span data-fact="name-managed">The Service Contract</span> &mdash; machines need maintenance. No lock-in; annual is 12 months for the price of 10, unused months refunded.</div>
           <p>We keep what we built healthy, watch what changes, and evolve the systems as your business does.</p>
-        </div>
-        <div class="svc__list">
           <a class="svc__cta" href="/services/#managed">Read the full spec <span class="arr">&#8594;</span></a>
         </div>
       </div>
@@ -550,7 +542,7 @@
             </div>
           </div>
 <!-- /BUILD-LOG:MARCUS-HOME -->
-    <p class="builds__note" style="margin-top:var(--s-24);"><a href="/work/marcus/results/">Read the measured results <span class="arr">&#8594;</span></a> &middot; <a href="/work/">the whole proof shelf</a></p>
+    <p class="builds__note builds__note--action"><a href="/work/marcus/results/">Read the measured results <span class="arr">&#8594;</span></a></p>
   </div>
 </section>
 

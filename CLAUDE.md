@@ -389,12 +389,27 @@ intro paragraph right" pattern:
 - Inline `style="align-items:…"` / one-off margins were stripped from 13 pages —
   an inline style outranks the component and silently reintroduces a variant.
 
-**Pricing rows** (`.svc__item`) are `220px 1fr 360px` on every row, so the two
-internal dividers form continuous vertical lines (verified at x=393 and x=907
-on all four pricing tables). Dividers are `--rule` on light rows and
-`--rule-dark` on the dark feature card (was `--dline`, a translucent hairline).
-When auditing this, exclude out-of-flow children: `.svc__tab` is an absolutely
-positioned chip and reads as a phantom fourth grid cell.
+**Pricing rows** (`.svc__item`) come in TWO track sets, one per table, never
+mixed inside a table — every row of a given table has identical geometry, and
+the dark feature row differs only in colour, never in track sizing:
+
+- **`220px 1fr 360px`** (default) — `/pricing/`, `/denver/`, `/phoenix/`. The
+  third column earns its width there: it carries a labelled "What you leave
+  with" list. Dividers form continuous vertical lines at x=393 and x=907.
+- **`220px 1fr`** (`.svc--2col`, 2026-08-02) — the homepage. See the pricing-row
+  section below for why.
+
+Dividers are `--rule` on light rows and `--rule-dark` on the dark feature card
+(was `--dline`, a translucent hairline). When auditing this, exclude
+out-of-flow children: `.svc__tab` is an absolutely positioned chip and reads as
+a phantom fourth grid cell.
+
+**`.svc--2col`'s track rule MUST stay inside `@media (min-width: 921px)`.** The
+stack rule is a plain `.svc__item` at (0,1,0) inside a max-width query, and a
+media query adds no specificity — so a bare `.svc--2col .svc__item` at (0,2,0)
+wins at every width and the rows never stack. That put a 220px rail beside a
+157px column on a 320px phone: 130px of horizontal overflow on a site whose
+mobile sweep is green. Same trap as the `--section-y` overrides.
 
 ### Card typography — three tiers (2026-08-01)
 
@@ -444,10 +459,14 @@ foot of `styles.css`.
 | eyebrow → H2 | `--s-2` | 16 |
 | H2 → intro | `--s-3` | 24 |
 
-- **Every** `<section>` takes `--section-y`. All per-section overrides are gone
-  (`.final`, `.calcband`, `.section--tight`, `.hero`, `.pagehero`, `.bookhero`,
-  `.sechero`, `.cr-hero`). `.section--tight` is now a no-op class kept in the
-  markup on two pages. Add a padding override only for a genuine thin banner.
+- **Every** `<section>` takes `--section-y`, with exactly ONE named exception
+  (below). The old per-section overrides are gone (`.final`, `.calcband`,
+  `.section--tight`, `.pagehero`, `.bookhero`, `.sechero`, `.cr-hero`).
+  `.section--tight` is now a no-op class kept in the markup on two pages. Add a
+  padding override only for a genuine thin banner.
+- **The exception: `.hero` (homepage) takes a flat 96px** — see the homepage
+  hero section below. It is named in `SECTION_Y_EXEMPT` in `scripts/qa-matrix.mjs`,
+  so a *second* section drifting off `--section-y` still fails the check.
 - Card padding needs **no media query**: `--s-4` already steps 40 → 24 at 768px
   from the foundation layer, so `padding: var(--s-4)` is the whole rule.
 - The 24px sibling gap applies to card collections ONLY. Deliberately excluded,
@@ -468,6 +487,310 @@ foot of `styles.css`.
   `<main>` — no `.wrap` gutter (they rendered at x=0, edge to edge) and no
   section padding at all. Re-nested. If you see content starting flush at the
   viewport edge, check for a stray `</section>`.
+
+### Homepage hero — sized to the viewport (tightened 2026-08-02)
+
+The hero is the one section that answers to the SCREEN rather than to the
+sitewide rhythm: nav bottom → first dark band must fit inside one 900px
+viewport. It was 953px at 1440×900, so the dark band's top edge was below the
+fold and the hero read as unfinished rather than as composed. **Now 811px.**
+
+| | before | after |
+|---|---|---|
+| nav bottom → eyebrow | 168.31px | **96px** |
+| spec-card top − H1 cap top | −4.91px | **0.00px** |
+| microcopy bottom → section bottom | 160px | **96px** |
+| hero bottom @1440×900 | 953.08px | **811.41px** |
+
+- **`.hero { padding-block: var(--s-96) }`** — flat, not the `--section-y`
+  ladder. 96px is where `--section-y` itself lands at ≤768px, so the hero just
+  reaches that step early. Nothing below the hero moved.
+- **The eyebrow's 8.31px of phantom leading is gone.** `.kicker` is
+  `inline-flex`, so it baseline-aligned inside a line box of the column's
+  inherited 26.86px line-height and its border box sat 8.31px BELOW the padding
+  edge — 160px of padding rendered as a 168px gap. The FLUSH-TOP EYEBROWS rule
+  makes it block-level `flex` with `line-height: var(--eyebrow-lh)` (1.2, the
+  label leading the card TIER 1 already uses), so the measured gap IS the
+  padding. The selector is an explicit `:is(.hero, .calcband__intro)` list —
+  any eyebrow that STARTS A COLUMN which has to line up with something needs
+  it; everywhere else `.kicker` stays inline by design, where it can share a
+  line with other content.
+- **The spec card's top offset is a formula, not a number.** It was a flat
+  `margin-top: 46px` tuned at one width, which drifted −1.98px → −5.12px across
+  941–1500px because the H1 is `clamp(--fs-49, 5.6vw, --fs-78)` and its cap
+  moves with the font size. Now
+  `calc(var(--eyebrow-h) + var(--s-2) + 0.0998 * var(--h-hero-size))`:
+  eyebrow height + the eyebrow→H1 step + the headline's own ink inset
+  (half-leading at line-height .98 plus Archivo's ascent-box-to-cap gap, which
+  measures **0.0998em** and therefore has to scale). Lands within **0.21px** at
+  every width from 941 to 1920.
+- **`--h-hero-size` is the clamp, named once** and used by both `.h-hero` and
+  `.hero__headline`. The card does arithmetic on it, so a second copy of the
+  clamp would silently knock the card off the cap height.
+- **Measure the cap, not the line box.** `getBoundingClientRect().top` on the
+  heading is ~8px above the ink at this size. The cap top is
+  `lineBoxTop + (lineHeight − (fontBoundingBoxAscent + fontBoundingBoxDescent))/2
+  + fontBoundingBoxAscent − actualBoundingBoxAscent`, via a canvas
+  `measureText` with the element's computed font. Align to the rect and the card
+  sits 8px high while every number says it is correct.
+- Grid texture raised 4.5% → **6%** (`js/hero-machine.js`). Less empty field is
+  left, so what remains has to read as a drawn surface, not leftover space. The
+  registration ticks stay at 14% — they are the mark, the grid is the texture.
+- Below 940px the hero stacks and none of this applies; the card alignment rule
+  is already inside `@media (min-width: 941px)`.
+- **Known, pre-existing, NOT from this pass:** the homepage has 37px of
+  horizontal overflow at 1280px wide. It is identical at the previous commit.
+  `sweep:mobile` covers 320/390/430 and `qa:matrix` renders 1440/1024/768/375,
+  so 1280 is in nobody's grid.
+
+### Homepage pricing rows — two columns (2026-08-02)
+
+The homepage's third column held one "Read the full spec →" link in a 360px
+track and nothing else. Those rows are now `.svc--2col` (`220px 1fr`), the link
+moved to the foot of the description column, and the price fine print
+(`.svc__note`) moved out of the rail into the description column with it.
+
+**The empty third column was a symptom, not the cause.** Measured naturally at
+1440: the 220px rail was the TALLEST column in rows 01 and 02 (285 and 423px)
+while the description needed only 236px. At the rail's 171px of content width,
+row 02's two fine-print sentences wrapped to 3 and 4 lines (87px + 65px) and
+`$18,000–$60,000` broke across two lines. Collapsing to two columns *alone*
+made it worse, not better — it widened the residual void from 356px to 872px,
+because the slack simply moved into a wider column. Moving the fine print out
+of the rail is what balances them: the description becomes the taller column in
+every row, and the leftover slack lands in the 220px rail, too narrow to read
+as a panel.
+
+| | before | after |
+|---|---|---|
+| table height | 945px | **817px** (−13.5%) |
+| row 02 height | 424px | **305px** (−28%) |
+| total dead area | 507k px² | **421k px²** (−17%) |
+| row 02 dead area | 256k px² | **158k px²** (−38%) |
+| largest panel-void (01/02/03) | 300 / 452 / 300 px | **432 / 320 / 196 px** |
+
+- **The brief's acceptance bar — no empty region wider than 200px — is not
+  met, and is not reachable at this row width.** Any horizontal band with no
+  ink is as wide as its column minus that ink. The narrowest column is 220px,
+  and the elements at a column's foot are a 165px action link and a one-line
+  note in an 810px column. Rows 01 and 03 improved; **row 01's largest void got
+  WORSE** (300 → 432px) because its description column is now 874px wide and
+  its bottom band is short. Getting under 200px needs either a narrower
+  container for this section or Option B's three-item INCLUDES list, which
+  needs copy that does not exist yet.
+- **`margin-top: auto` on the action link was tried and rejected.** Bottom-
+  anchoring it only moves the slack from below the link to above it, as a
+  full-column-width gap — the "internal dead space" the brief rules out. In
+  flow is better on both the metric and the eye.
+- The link needs `margin-top: calc(var(--s-24) - 14px)` for a 24px VISIBLE gap:
+  the tap-target rule (`.svc__cta, .path__cta, .feed__archive`) sets
+  `padding-block: 14px; margin-block: -14px` and, being later in source, its
+  margin-block beats `.svc__cta`'s own margin-top outright. In the old
+  third-column layout nothing sat above the link, so the collapse was invisible.
+- `.svc__note`'s 24ch cap is a RAIL measure and must be lifted in the
+  description column or the sentences wrap exactly as they did before.
+- Prose is capped at **80ch** — the top of the readable band. Uncapped, 1fr
+  gives 810px of content, about 95 characters. Uncapping also made row 03 worse
+  (void 228 → 672px), so the cap is doing real work, not just readability.
+- **No `min-height` exists on these rows and none was added** — heights hug
+  content (275 / 305 / 237, all different).
+- **Auditing empty space: count TEXT and replaced elements only.** Treating a
+  background or a border as "content" marks every bordered grid cell as full —
+  `.svc__meta` and `.svc__main` both carry `border-right`, so the 3-column
+  layout measured as 30% dead when only its one unbordered cell was being
+  looked at. An area with a background painted on it is still empty.
+
+### Homepage calculator band (rebalanced 2026-08-02)
+
+`.calcband__grid` is `align-items: start`, not `center`. Centering a 297px text
+block against the 1031px ROI card put the eyebrow **375px below** the band's
+padding edge: the card started at the top of the band, the text started most of
+the way down it, and the two columns read as unrelated. Start-aligning puts the
+eyebrow and the card's top border on the same y — measured **0.00px apart** at
+every two-column width (901→1920).
+
+- **Nothing was inflating the band.** `padding-block` was already plain
+  `var(--section-y)` (160/120/96) and there is no `min-height`. The band's
+  1351px is entirely the card's 1031px + padding, and start-aligning does not
+  change it — it redistributes the slack.
+- **The card is contained, at every width.** Its bottom sits exactly one
+  `--section-y` above the band's, so there is no overlap into `#proof` and
+  nothing to cap.
+- **Top-aligning DOUBLES the largest empty run on the left**, from 367px (a
+  centred block splits its slack evenly above and below) to **715px** in one
+  run under the CTAs. That is the direct, unavoidable consequence of the
+  alignment, and it means the "no empty dark region taller than 200px" bar is
+  NOT met. `.deco-grid--left` (`inset: 0`, masked to the left half) is what
+  keeps that run reading as a drawn surface rather than a hole — do not remove
+  it from this section.
+- CTAs sit `--s-64` below the intro, in flow. They are deliberately NOT pinned
+  to the band bottom: pinning turns one 715px run into a 779px one, because the
+  gap opens above them instead.
+- **Why the card can't just be shorter:** it is `.roi--slim` in a 464px track,
+  which stacks inputs over output. Its height is real content — inputs 320,
+  output 559 (net 146 + assumptions 137 + disclaimer 168), bar 69. There is no
+  slack in it.
+- **The costed option, not applied:** widening the card's track shortens it,
+  because it is cramped at 464px (the header bar, the "Modeled return / year"
+  label and the big number each wrap to two lines).
+
+  | tracks | card | card h | band h | left void | CTAs |
+  |---|---|---|---|---|---|
+  | `1.1fr .9fr` (now) | 464 | 1031 | 1351 | **715** | side by side |
+  | `1fr 1fr` | 516 | 945 | 1265 | 508 | stacked |
+  | `.85fr 1.15fr` | 593 | 903 | 1223 | **466** | stacked |
+
+  The big win needs the text column below **526px**, which is the width the two
+  CTAs need to sit side by side — so every meaningful reduction stacks them.
+  That is a design decision, not a defect, which is why it is recorded here
+  rather than shipped.
+
+### Homepage proof stat strip (amplified 2026-08-02)
+
+`.bstat` went from three loose 32px figures with a 24px gap to a **hairline
+grid** — one row, 1px `--rule` between the cells, a rule above and below, no
+outer left/right border so the strip runs the full container width and the
+first figure sits flush with the H2.
+
+| | before | after |
+|---|---|---|
+| value | 32px / weight 900 | **72px @1440** / weight 800 / `-0.03em` |
+| unit (`hrs`, `%`) | 17.6px (`.55em`) | **24px** (`calc(1em / 3)`) |
+| value → label gap | 4px | **8px** |
+| intro → strip | 64px | 64px (unchanged) |
+| strip → action link | 40px + a rule | **64px**, no rule |
+| links in section | 2 | **1** |
+
+- **`.bstat` had to move out of the 24px sibling-gap `:is()` list** in the
+  VERTICAL RHYTHM LAYER and into that block's hairline-grid exclusion comment.
+  That rule is later in source than `.bstat`'s own `gap: 0`, so leaving it
+  would have silently reopened 24px holes in the separator lines.
+- **The value size stays fluid — `clamp(44px, 5vw, 72px)`.** 5vw is exactly
+  72px at 1440. It cannot be a flat 72px: "1,240" + "hrs" is ~245px at that
+  size and the cell is only ~215px wide at a 900px viewport, so it would
+  overflow the strip on the way down to the 900px stack breakpoint.
+- The unit is `calc(1em / 3)` rather than a literal 24px so it stays
+  proportional as the value scales.
+- **Stacked (≤900px) the separator turns 90°**: `border-left` becomes
+  `border-top`, or a full-width row carries a stray vertical tick.
+- The markup is GENERATED — `REGIONS["MARCUS-HOME"]` in `scripts/build-work.mjs`
+  between the `BUILD-LOG:MARCUS-HOME` markers. It already had the right shape
+  (`.bstat__n` with a nested `<small>`, then `.tick-lbl`), so this was a
+  CSS-only change and `work:build` stays idempotent. The action-link `<p>` sits
+  OUTSIDE the markers and is hand-editable.
+- **`.builds__note` is a shared note bar on eight pages** — bordered, padded,
+  running prose. The proof section's instance carries nothing but a STYLE B
+  action link, where that chrome would draw a second rule 64px under the
+  strip's own bottom rule. `.builds__note--action` strips it. A modifier, not
+  an `#id` override, because the base component is shared.
+- The deleted second link (`/work/`, "the whole proof shelf") is **not
+  orphaned** — `/work/` is still reached from the nav and the footer. The
+  surviving link keeps its `/work/marcus/results/` href, which is what its
+  label says; repointing it at `/work/` would make the label lie.
+
+### Homepage build-catalog strip (flattened 2026-08-02)
+
+`.buildstrip` replaces a `.builds` panel (40px card padding + `--paper-card` +
+its own border) whose only content was a `.builds__bar` carrying its own
+border-bottom and gradient — a box inside a box, for one label and one link.
+
+    <div class="buildstrip">
+      <span class="tick-lbl">Example builds</span>
+      <a class="buildstrip__go" href="/services/builds/">Browse the build catalog →</a>
+    </div>
+
+1px `--rule` top and bottom, no left/right border, transparent at rest,
+`padding-block: 24px`, `justify-content: space-between`, and it sits in the
+standard `.wrap` so it measures 1096px inside the 1160px container. Hover fills
+the band with `--paper-tan` and nudges the arrow 2px. **Zero nested containers.**
+
+- **`.builds` itself is untouched** — six industry pages use it as designed,
+  with build cards under the bar. Only the homepage had the degenerate
+  empty-panel case.
+- **The whole strip is clickable via a stretched `::after` on the small `<a>`,
+  NOT by wrapping the row in one anchor.** This is the load-bearing decision.
+  The LINK SYSTEM selects STYLE B with `a:not(.btn):has(.arr)`, a SUBTREE test,
+  so a strip-wide anchor would pull mono + uppercase + 12px + accent onto the
+  `.tick-lbl` and onto any body-font description added later — the exact
+  cascade the block-link exclusion exists to stop. Keeping the `<a>` small
+  means it takes STYLE B from the system with **no new rules**, holds the
+  accessible name to "Browse the build catalog" rather than the whole row, and
+  leaves a future description alone. Verified: label renders 11px
+  `--ink-muted`, action renders 12px mono uppercase `--accent-text`, undecorated.
+- **The `::after` belongs to the `<a>`, so hovering anywhere on the strip is
+  also hovering the `<a>`** — STYLE B's own `:hover .arr` nudge already covers
+  the full band and needs no separate rule. Confirmed by hovering 30px in, over
+  the label: arrow goes `none` → `translateX(2px)`.
+- Hit-tested at 1440/1024/768/620/430/320: all four corners, the centre and the
+  mid-left point resolve to the link.
+- Hover state is AA-clean: `--ink-muted` on `--paper-tan` is 4.62:1,
+  `--accent-text` 4.67:1. `qa:matrix`'s contrast column only samples the REST
+  state, so a hover fill has to be checked by hand.
+- **No description was added.** The brief allowed one "if one exists" and none
+  does — the old bar carried only the label and the link. Copy for it would
+  have to be written, not lifted; the closest existing line is the catalog
+  page's own "The stock parts." `.buildstrip__desc` is defined and ready
+  (body face, `margin-right: auto` so it sits center-LEFT beside the label
+  rather than being centred by `space-between`).
+- Below 620px the row stacks; `space-between` has no free space to distribute
+  there, so the action would otherwise sit flush under the label.
+- The old bar coloured its first label `--accent-text`. The strip uses the
+  standard muted `.tick-lbl` so the single accent belongs to the affordance,
+  per the link system's rule that accent marks the action.
+
+### Homepage "Pick the door" cards (normalized 2026-08-02)
+
+`.paths` was a hairline grid — one bordered container, `gap: 0`, a
+`border-right` on each `.path`. Those shared walls are what read as a stray
+divider beside "Scope a sprint" and a left rule on "Get your score". It is now
+**three separate cards**: a full 1px `--ink` border each, `--s-4` padding, 24px
+gap, no container border, no internal rules left to be stray.
+
+| | before | after |
+|---|---|---|
+| card border | shared container + `border-right` | **1px `--ink`, all four sides** |
+| gap | 0 (shared walls) | **24px** |
+| padding | 32px hand-set | **`--s-4`** (40 / 24 ≤768) |
+| CTA width | 250.2 / 180.3 / 180.3 | **267.33 / 267.33 / 267.34** |
+| CTA baseline | already aligned | aligned, spread **0.00px** |
+| `min-height` | 340px | none — cards hug content |
+
+- **`.paths` moved OUT of the hairline-grid exclusion in the VERTICAL RHYTHM
+  LAYER and INTO its card-collection gap list; `.path` was added to the
+  card-padding list.** Exactly the reverse of `.bstat`'s move the same day.
+  Both lists sit later in the file than the component, so leaving `.paths` in
+  the exclusion would have kept `gap: 0` and left the walls shared.
+- **`align-self: stretch` is what makes the buttons pixel-identical.** The
+  cards are equal grid tracks, so a stretched button is the same width in all
+  three whatever the label says; `flex-start` sized each to its own copy. The
+  residual 0.01px spread at 1440 is the browser splitting a 1048px row three
+  ways — sub-device-pixel, not a layout difference.
+- **`.path p` lost `flex: 1`.** That made the PROSE absorb the card's free
+  space and pinned the button as a side effect. `margin-top: auto` on the
+  button claims the space directly, so it sits between the copy and the button.
+- **`.path__cta` was removed from the 44px tap-target rule**
+  (`.svc__cta, .path__cta, .feed__archive { padding-block: 14px; margin-block:
+  -14px }`). That rule grows a small inline text link without moving its
+  glyphs; `.path__cta` is a real `.btn` with a 52px box, already past the
+  floor. The padding did nothing (border-box) while `margin-block: -14px` —
+  later in source than `.path__cta`'s own `margin-top` — silently overrode it
+  to **−14px** and pulled the button up into the copy.
+- **The track minimum is load-bearing, not cosmetic.**
+  `repeat(auto-fit, minmax(min(330px, 100%), 1fr))`. `.btn` is
+  `white-space: nowrap` and a flex item's auto min-width is its min-content, so
+  "Book a free assessment" stays 250.2px wide however narrow the card gets.
+  330px = that button + 2 × `--s-4`, so a card only joins a multi-column row if
+  the button actually fits. Widening the padding 32 → 40 and adding a 24px gap
+  would otherwise have overflowed the card at 1024 — a width `qa:matrix`
+  renders. auto-fit now steps 3 → 2 → 1 on its own (3 down to 1120, 2 to 768,
+  1 below ~700) and the old hard 860px breakpoint is gone.
+  `min(330px, 100%)` is the auto-fit overflow guard: a bare `minmax(330px,1fr)`
+  holds a 330px track inside a 280px container and scrolls the page sideways at
+  320px.
+- Verified at 17 widths from 320 to 1440: the CTA sits inside its card's
+  content box at every one, height is exactly 52px down to 390px, and the
+  row-1 baseline spread is 0.00px throughout. At 320px the label wraps to
+  67.06px off the 52px min-height — the documented sub-620px button behaviour.
 
 ### Contrast / dark surfaces (pass run 2026-08-01)
 
@@ -674,7 +997,8 @@ Each of these exists because something shipped wrong once and nothing objected:
 - `qa:matrix` (`scripts/qa-matrix.mjs`) — the design-system consistency matrix,
   rendered across every route at 1440/1024/768/375. Eight checks: two link
   treatments, two button variants on one 52px box, `padding-block:
-  var(--section-y)` on every section, nothing under 11px, WCAG AA on every
+  var(--section-y)` on every section bar the `SECTION_Y_EXEMPT` homepage hero,
+  nothing under 11px, WCAG AA on every
   text/background pair, heading widows against the documented budget, one
   1160px container, and utility-bar + footer DOM identity across pages. Like
   `sweep:mobile` and `mono:check` it needs Playwright, so it is not in

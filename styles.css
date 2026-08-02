@@ -112,9 +112,9 @@ a { color: inherit; text-decoration: none; }
 .ink .eyebrow { color: var(--dtx-mute); }
 
 h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-wrap: balance; }
-.h-hero { font-size: clamp(var(--fs-49),5.6vw,var(--fs-78)); font-weight: 900; letter-spacing: -0.022em; line-height: 0.98; }
+.h-hero { font-size: var(--h-hero-size); font-weight: 900; letter-spacing: -0.022em; line-height: 0.98; }
 /* hero headline: capped so it can't balloon; max-width holds it to ~3 lines */
-.hero__headline { font-size: clamp(var(--fs-49), 5.6vw, var(--fs-78)); line-height: 0.98; letter-spacing: -0.022em; max-width: 12ch; }
+.hero__headline { font-size: var(--h-hero-size); line-height: 0.98; letter-spacing: -0.022em; max-width: 12ch; }
 /* section headings: capped display size + intentional wrap (not ragged) */
 .h2     { font-size: var(--fs-39); line-height: 1.0; letter-spacing: -0.02em; max-width: 18ch; text-wrap: balance; }
 .h3     { font-size: var(--fs-20); line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; }
@@ -310,7 +310,28 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 /* =========================================================
    HERO
    ========================================================= */
-/* .hero takes --section-y from .section like every other major section. */
+/* The one documented exception to "every <section> takes --section-y" (see the
+   VERTICAL RHYTHM LAYER at the foot of this file). The homepage hero has a
+   constraint no other section has: it must fit between the nav and the first
+   dark band inside one 900px viewport, so it is sized to the screen rather
+   than to the sitewide rhythm. 96px is the --s-96 step, which is also what
+   --section-y itself becomes at ≤768px — the hero simply reaches that step
+   early. Everything below the hero is untouched.
+   NOTE: this is padding on the SECTION BOX. For the top gap to measure 96px
+   to the eyebrow as well, the eyebrow's line-box leading has to go — see the
+   FLUSH-TOP EYEBROWS rule below. */
+.hero { padding-block: var(--s-96); }
+/* FLUSH-TOP EYEBROWS. `.kicker` is an inline-flex, so it baseline-aligns
+   inside a line box of the column's inherited 26.86px line-height and its
+   border box lands 8.31px BELOW the padding edge. Anywhere an eyebrow starts a
+   column that has to line up with something — the hero's nav gap, the
+   calculator band's card top — that phantom 8.31px is the difference between
+   the measured geometry and the declared geometry. Block-level flex removes
+   the line box entirely: same glyphs, same 8px bar, same gap, but the box top
+   IS the padding edge.
+   Listed explicitly rather than applied to every .kicker: elsewhere the
+   eyebrow is inline by design, where it can share a line with other content. */
+:is(.hero, .calcband__intro) .kicker { display: flex; line-height: var(--eyebrow-lh); }
 .hero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (max-width: 940px) { .hero__grid { grid-template-columns: 1fr; gap: var(--s-48); } }
 .hero h1 { margin: 12px 0 10px; }
@@ -349,16 +370,40 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
    superseded by the component's 900px one. */
 .head-block { margin-bottom: var(--block-gap); }
 
-.paths { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; border: 1px solid var(--line); }
-@media (max-width: 860px){ .paths { grid-template-columns: 1fr; } }
-.path { padding: var(--s-32) var(--s-32) var(--s-32); border-right: 1px solid var(--line); display: flex; flex-direction: column; min-height: 340px; background: var(--paper-card); transition: background .2s; }
-.path:last-child { border-right: 0; }
+/* ---- "Pick the door" cards ----
+   THREE SEPARATE CARDS, not a hairline grid. This was one bordered container
+   with `gap: 0` and a border-right on each card, so the walls were shared and
+   card 2's right rule read as a stray divider beside "Scope a sprint" / a left
+   rule on "Get your score". Now: each card owns a full 1px --ink border, the
+   24px gap and the --s-4 padding both come from the VERTICAL RHYTHM LAYER
+   (.paths is in its card-collection gap list, .path in its card-padding list),
+   and there are no internal rules left to be stray.
+
+   The track minimum is not cosmetic. The widest CTA is "Book a free
+   assessment" — 250.2px, and .btn is `white-space: nowrap`, so a flex item's
+   auto min-width keeps it 250.2px wide no matter how narrow the card gets.
+   330px = that button + 2 × --s-4 padding, so a card is only ever placed in a
+   multi-column row if the button actually fits inside it. auto-fit then drops
+   3 -> 2 -> 1 on its own and the old hard 860px breakpoint is gone.
+   `min(330px, 100%)` is the auto-fit overflow guard: a bare minmax(330px,1fr)
+   keeps a 330px track inside a 280px container and scrolls the page sideways
+   at 320px. Below 620px the BUTTONS block already lets the label wrap off a
+   52px min-height, which covers the narrowest cards. */
+.paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr)); }
+.path { border: 1px solid var(--ink); display: flex; flex-direction: column; background: var(--paper-card); transition: background .2s; }
 .path:hover { background: var(--surface-hi); }
-@media (max-width: 860px){ .path { border-right:0; border-bottom: 1px solid var(--line);} .path:last-child{border-bottom:0;} }
 .path__no { font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .12em; color: var(--accent-text); text-transform: uppercase; }
 .path h3 { margin: var(--s-24) 0 var(--s-12); font-size: var(--fs-25); line-height: 1.12; font-weight: 800; }
-.path p { color: var(--tx-mute); font-size: var(--fs-16); flex: 1; }
-.path__cta { margin-top: var(--s-24); align-self: flex-start; }
+/* No `flex: 1` on the paragraph: that made the PROSE absorb the card's free
+   space, which pins the button to the bottom as a side effect. The button
+   claims the space itself with `margin-top: auto`, so the free space is
+   visibly between the copy and the button, where it belongs. */
+.path p { color: var(--tx-mute); font-size: var(--fs-16); }
+/* `stretch` is what makes the three buttons pixel-identical: the cards are
+   equal-width grid tracks, so a stretched button is the same width in all
+   three regardless of label length. `flex-start` sized each one to its own
+   copy (250.2 / 180.3 / 180.3). `margin-top: auto` puts them on one baseline. */
+.path__cta { margin-top: auto; align-self: stretch; }
 
 /* =========================================================
    COMPETITORS (ink) + data
@@ -434,6 +479,64 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .svc__item--feature .svc__list li::before { color: var(--accent-ink); }
 .svc__cta { margin-top: var(--s-24); font-weight: 700; font-size: var(--fs-13); display:inline-flex; gap:var(--s-8); align-items:center; color: var(--accent-text); }
 .svc__item--feature .svc__cta { color: var(--accent-ink); }
+
+/* ---- .svc--2col: the rail + description variant ----
+   The default row is `220px 1fr 360px`, and the third column earns its width
+   on /pricing/, /denver/ and /phoenix/, where it carries a labelled "What you
+   leave with" list. On the HOMEPAGE that column held one action link and
+   nothing else — a 360px panel that was empty for 245 of its 285px. Those rows
+   drop to two columns and the link moves to the foot of the description.
+
+   Applied by a container class, not by `:has(.svc__list ul)`, so the geometry
+   is declared rather than inferred from whether someone happened to author a
+   list. Both variants keep IDENTICAL geometry across their own rows: the
+   feature row differs only in colour, never in track sizing.
+
+   THE TRACK RULE MUST BE INSIDE A MIN-WIDTH QUERY. The stack rule below 920px
+   is plain `.svc__item` at (0,1,0); a media query adds no specificity, so a
+   bare `.svc--2col .svc__item` at (0,2,0) outranks it at EVERY width and the
+   rows never stack. That shipped a 220px rail beside a 157px column on a
+   320px phone — 130px of horizontal overflow, on a site whose mobile sweep is
+   green. Same trap as the --section-y overrides at the foot of this file. */
+@media (min-width: 921px){
+  .svc--2col .svc__item { grid-template-columns: 220px 1fr; }
+  .svc--2col .svc__main { border-right: 0; }
+}
+/* The description column is a flex column so the action link and the fine
+   print sit in a controlled order under the prose. Deliberately NOT
+   `margin-top:auto` on the link: bottom-anchoring it only moves the slack
+   from below the link to above it, as a full-column-width gap, which is the
+   "internal dead space" the brief rules out. */
+.svc--2col .svc__main { display: flex; flex-direction: column; }
+/* 24px of VISIBLE gap above the link, then the row's bottom padding. The
+   literal has to be 24 − 14 because the tap-target rule further down this file
+   (.svc__cta, .path__cta, .feed__archive) gives the link `padding-block: 14px;
+   margin-block: -14px` to reach 44px without moving the glyphs — and being
+   later in source, its margin-block wins outright over .svc__cta's own
+   margin-top. In the old third-column layout the link was the only thing in
+   its cell, so nothing was above it and the collapse was invisible. */
+.svc--2col .svc__main .svc__cta { align-self: flex-start; margin-top: calc(var(--s-24) - 14px); }
+/* The price fine print moved OUT of the rail and into the description column.
+   It reads as a term of the offer either way, and it is what makes the two
+   columns balance: at the rail's 171px of content those two sentences wrapped
+   to 3 and 4 lines (87px + 65px) and drove row 02 to 424px tall while the
+   description needed 236px — a 187px × 872px void that no amount of moving
+   the action link could close. At 80ch they are one line each, the
+   description becomes the taller column in every row, and the leftover slack
+   lands in the 220px rail, where it is too narrow to read as a panel.
+   The 24ch cap is a rail measure and has to be lifted here or they wrap the
+   same way in the wider column. */
+.svc--2col .svc__main .svc__note { max-width: 80ch; margin-top: var(--s-16); }
+.svc--2col .svc__main .svc__note + .svc__note { margin-top: var(--s-8); }
+.svc--2col .svc__main > :last-child { margin-bottom: 0; }
+/* Measure cap at the TOP of the readable band. 1fr is 874px here, and 810px of
+   content is ~95 characters — well past the 45–80ch the rest of the site holds
+   to (.lead is 62ch, .svc__note 24ch). This is not only a readability cap:
+   uncapped, rows 01/02 measured the same and row 03 got materially WORSE (its
+   largest void went 228 → 672px), because one-line prose in a very wide column
+   leaves a short, wide band underneath. The h3 and the action link are not
+   capped — neither is running copy. */
+.svc--2col :is(.svc__tagline, .svc__main p) { max-width: 80ch; }
 
 /* =========================================================
    HOW WE WORK (ink)
@@ -782,6 +885,18 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
      aliasing it to the fluid --t-hero would nest clamp inside clamp. */
   --fs-78:84px;
   --fs-61:  var(--t-2xl);   /* 0 usages — kept so legacy refs resolve */
+  /* The homepage hero headline's fluid size, named ONCE because a second
+     element has to do arithmetic on it: the spec card's top offset scales
+     with this value (see the .statrail rule). Two copies of the clamp would
+     drift the card off the cap height the first time either is edited. */
+  --h-hero-size: clamp(var(--fs-49), 5.6vw, var(--fs-78));
+  /* Leading for FLUSH-TOP EYEBROWS (the hero's, the calculator band's), pinned
+     rather than inherited from body's 1.58 for the same reason as above: the
+     hero spec card's offset is measured from the bottom of that box, so its
+     height has to be a value the stylesheet knows. 1.2 is the label leading the
+     CARD TYPOGRAPHY tier already uses. */
+  --eyebrow-lh: 1.2;
+  --eyebrow-h: calc(var(--eyebrow-lh) * var(--t-label));
 
   /* ---- spacing: px-named scale (318 usages) ---- */
   /* Retained alongside the step scale above. --s-04 is 4px: the step scale
@@ -994,10 +1109,23 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   font-family: var(--mono); font-size: var(--fs-13); letter-spacing:.12em; text-transform:uppercase; color: var(--tx-mute); }
 .statrail__bar b{ color: var(--tx-mute); font-weight:700; } /* header value = muted dark mono; rust is reserved for status rows */
 .statrail__row{ transition: background .15s; }
-/* Spec-card rule: top edge aligns to the H1 first-line cap height. Only when the
-   hero is side-by-side (cards stack under the H1 below 940px, where it's moot). */
+/* Spec-card rule: the card's TOP BORDER sits on the H1's cap height — level
+   with the top of "The machine", not above the eyebrow. Only when the hero is
+   side-by-side (cards stack under the H1 below 940px, where it's moot).
+   The offset is two parts, and it cannot be one fixed number:
+     - fixed:  the eyebrow's own height (--eyebrow-h) + the eyebrow→H1
+               step (--s-2, from the VERTICAL RHYTHM LAYER);
+     - fluid:  the headline's ink inset — half-leading at line-height .98 plus
+               the gap between Archivo's ascent box and its painted cap. That
+               measures 0.0998 of the font size, so it scales with the clamp.
+   The old flat 46px was tuned at one width and drifted 5px across the
+   941–1500px range where the clamp is still growing. Measured against the
+   painted cap top (canvas actualBoundingBoxAscent, not the line box, which
+   sits ~8px high) it now lands within 0.2px at every width in that range. */
 @media (min-width: 941px){
-  .hero__grid > .statrail { margin-top: 46px; }
+  .hero__grid > .statrail {
+    margin-top: calc(var(--eyebrow-h) + var(--s-2) + 0.0998 * var(--h-hero-size));
+  }
   .pagehero__grid > .statrail { margin-top: 52px; }
 }
 .statrail__row:hover{ background: color-mix(in srgb, var(--accent) 5%, transparent); }
@@ -1222,12 +1350,27 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .ink .roi .accent-tx{ color: var(--accent); }
 
 /* ---- homepage calculator band: ONE balanced 2-col grid; slim card stacks ---- */
-/* .calcband takes the standard rhythm; the responsive step comes from --section-y. */
-.calcband__grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:var(--s-64); align-items:center; }
+/* .calcband takes the standard rhythm; the responsive step comes from --section-y.
+   The band carries NO height of its own — no min-height, and padding-block is
+   plain var(--section-y) from .section. Its 1351px comes entirely from the
+   card, which is 1031px tall because .roi--slim stacks inputs over output in a
+   464px column (see below). Nothing here inflates it.
+
+   align-items: START, not center. Centering a 297px text block against a
+   1031px card pushed the eyebrow 375px below the band's padding edge, so the
+   left column appeared to start most of the way down the band while the card
+   started at the top — the two columns read as unrelated. Start-aligning is
+   what makes both columns begin on the same y. It does NOT change the band's
+   height; it redistributes the slack (was 375 above / 527 below the text) to
+   one run beneath the text column, which is what .deco-grid--left is for. */
+.calcband__grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:var(--s-64); align-items:start; }
 @media(max-width:900px){ .calcband__grid{ grid-template-columns:1fr; gap:var(--s-48); } }
 .calcband__intro{ min-width:0; }
 .calcband__intro .lead{ max-width:46ch; }
-.calcband__intro .roi__cta{ margin-top:var(--s-32); }
+/* 64px below the intro, not 32. The CTAs are never pinned to the band bottom —
+   they stay in flow directly under the copy they belong to, and the leftover
+   dark space falls below them. */
+.calcband__intro .roi__cta{ margin-top:var(--s-64); }
 /* the slim embed sits in a ~510px column: stack inputs over output so the
    select shows its full value, the note reads at measure, and the big number
    sits on the same grid as the rows beneath it */
@@ -1262,6 +1405,56 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 /* =========================================================
    EXAMPLE BUILDS — concrete proof module (section 03)
    ========================================================= */
+/* ---- homepage build-catalog strip ----
+   Replaces a padded .builds panel (40px card padding + --paper-card + its own
+   border) whose ONLY content was a .builds__bar carrying its own border-bottom
+   and gradient — a box inside a box, holding one label and one link. .builds
+   itself is untouched: six industry pages use it as designed, with build cards
+   under the bar.
+
+   The whole strip is the click target via a stretched pseudo-element on the
+   action link — NOT by wrapping the row in one big <a>. That distinction is
+   load-bearing here. The LINK SYSTEM selects STYLE B with
+   `a:not(.btn):has(.arr)`, which is a SUBTREE test, so a strip-wide anchor
+   would pull mono + uppercase + 12px + accent onto the label and onto any
+   body-font description added later — exactly the cascade the block-link
+   exclusion further down exists to stop, and exactly how /work/'s teardown
+   card once rendered its h2 in uppercase Space Mono. Keeping the <a> small
+   lets it take STYLE B from the system unmodified, holds the accessible name
+   to "Browse the build catalog" instead of the whole row, and leaves a future
+   description alone.
+   Because the ::after belongs to the <a>, a pointer anywhere on the strip is
+   also hovering the <a> — so STYLE B's own `:hover .arr` nudge already covers
+   the full band and needs no separate rule. */
+.buildstrip{
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--s-24);
+  padding-block: var(--s-24);
+  border-block: 1px solid var(--rule);
+  margin-top: var(--block-gap);
+  transition: background .18s var(--ease);
+}
+.buildstrip:hover{ background: var(--paper-tan); }
+/* the strip, not the words, is the target */
+.buildstrip__go::after{ content:""; position:absolute; inset:0; }
+/* Optional one-line description, sentence case in the body face — the only
+   element in this row that is NOT a label. Every property the label and the
+   action set is restated so it can never inherit either treatment. `auto`
+   keeps it beside the label (center-LEFT) rather than centred, which is what
+   space-between would do to a third child. */
+.buildstrip__desc{
+  font-family: var(--sans); font-size: var(--t-sm); font-weight: 400;
+  text-transform: none; letter-spacing: normal;
+  color: var(--ink-muted); margin-right: auto;
+}
+/* Stacked, space-between has no free space to distribute and the action would
+   sit directly under the label with no separation. */
+@media (max-width: 620px){
+  .buildstrip{ flex-direction: column; align-items: flex-start; gap: var(--s-12); }
+  .buildstrip__desc{ margin-right: 0; }
+}
+
 .builds{ border:1px solid var(--line); margin-top: var(--block-gap); background:var(--paper-card); }
 .builds__bar{
   display:flex; justify-content:space-between; align-items:center; gap:var(--s-16);
@@ -1287,6 +1480,13 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
   padding: var(--s-16) var(--s-24); border-top:1px solid var(--line);
   font-family:var(--sans); font-size: var(--t-sm); letter-spacing:normal; line-height:1.6; color:var(--tx-label);
 }
+/* .builds__note is a NOTE BAR on eight pages — bordered, padded, running prose.
+   Where it carries nothing but a STYLE B action link (the homepage proof
+   section), the bar chrome is wrong: its border-top would draw a second rule
+   64px under the stat strip's own bottom rule. Strip it to just the link and
+   let the 64px do the separating. A modifier, not an #id override, because the
+   base component is shared. */
+.builds__note--action{ padding:0; border-top:0; margin-top: var(--s-64); }
 
 /* citation under the 22%/78% stat pair (dark section) */
 .stat-source{
@@ -1704,7 +1904,13 @@ h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
 /* "Inc." is 23px wide — under the 24px floor. The outlets sit on a 1.6em gap
    with an 8px-margin middot between them, so ±4px cannot overlap a neighbour. */
 .bio__press .press-list a { padding-inline: 4px; margin-inline: -4px; }
-.svc__cta, .path__cta, .feed__archive { padding-block: 14px; margin-block: -14px; }
+/* .path__cta is deliberately NOT in this list. This rule grows a small inline
+   text link to a 44px hit area without moving its glyphs; .path__cta is a real
+   .btn with a 52px box, already past the floor. Applied to it, the 14px
+   padding did nothing (border-box, height already 52) while `margin-block:
+   -14px` — later in source than .path__cta's own margin-top — silently
+   overrode that margin to -14px and pulled the button up into the copy. */
+.svc__cta, .feed__archive { padding-block: 14px; margin-block: -14px; }
 /* Every STYLE B standalone action link, not just the three named above: the
    treatment is selected by the arrow, so the hit box should be too. A STYLE B
    link sitting INSIDE running prose is exempt (WCAG 2.5.8 inline exception) —
@@ -1946,16 +2152,47 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 .window-note { margin-top: var(--s-24); font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; line-height: 1.7; max-width: 82ch; color: var(--mono-on-dark); }
 .paper .window-note, .paper-2 .window-note { color: var(--mono-on-cream); }
 
-/* ---- homepage "Example builds" outcome stats ---- */
-.bstat { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-24); margin-top: var(--s-24); }
-.bstat__i { display: flex; flex-direction: column; gap: 4px; }
-.bstat__n { font-size: clamp(var(--fs-25), 2.6vw, var(--fs-31)); color: var(--accent-text); }
-.bstat__n small { font-size: .55em; font-weight: 900; margin-left: 1px; }
+/* ---- homepage proof stat strip ----
+   A HAIRLINE GRID, like .svc__item and .timeline: one row, 1px --rule between
+   the cells, a rule above and below the row, and NO outer left/right border —
+   the strip runs the full container width and the figures sit flush with the
+   H2 above them. Because it draws its own borders it must NOT take the 24px
+   sibling gap from the VERTICAL RHYTHM LAYER; it is listed with the other
+   hairline grids in that block's exclusion comment. */
+.bstat {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0;
+  border-block: 1px solid var(--rule);
+  margin-top: var(--block-gap);            /* 64 — head-block already sets this;
+                                              stated so the strip owns its own
+                                              rhythm if the header ever moves */
+}
+.bstat__i {
+  display: flex; flex-direction: column; gap: var(--s-8);
+  padding: var(--s-32); border-left: 1px solid var(--rule);
+}
+/* Flush at both ends: the first figure lines up with the section heading, and
+   the strip's rules run edge to edge instead of floating inside a padded box. */
+.bstat__i:first-child { border-left: 0; padding-left: 0; }
+.bstat__i:last-child { padding-right: 0; }
+/* 5vw hits exactly 72px at 1440. It has to stay fluid: "1,240" + "hrs" is
+   ~245px at 72px, and the cell is only 215px wide at a 900px viewport, so a
+   flat 72px would overflow the strip on the way down to the stack breakpoint. */
+.bstat__n {
+  font-size: clamp(44px, 5vw, 72px); font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1; color: var(--accent-text);
+}
+/* Exactly one third of the value = 24px at the 72px desktop step, and it stays
+   proportional as the value scales rather than pinning to a literal. */
+.bstat__n small { font-size: calc(1em / 3); font-weight: inherit; margin-left: 2px; letter-spacing: -0.02em; }
 .ink .bstat__n { color: var(--accent-ink); }
 
 @media (max-width: 900px) {
   .scoregrid, .figs, .figs--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bound, .bstat { grid-template-columns: 1fr; }
+  /* Stacked, the separator has to turn 90°: a border-LEFT on a full-width row
+     is a stray vertical tick, not a divider. The row rules stay on .bstat. */
+  .bstat__i { border-left: 0; border-top: 1px solid var(--rule); padding: var(--s-24) 0; }
+  .bstat__i:first-child { border-top: 0; }
 }
 @media (max-width: 560px) {
   .scoregrid, .figs, .figs--4 { grid-template-columns: 1fr; }
@@ -2535,16 +2772,22 @@ select.input:invalid { color: var(--tx-faint); }
    page layouts (.hero__grid, .pagehero__grid, .head-block, .news, .faq, .bio,
    .math, .prose-2, .calcband__grid, .svc-detail__grid, .math-vs, .final .wrap,
    .foot__signup) whose gap is a column measure, not a card gap; and the
-   hairline grids (.paths, .phases, .diffs, .profile, .ind, .promise,
-   .timeline, .arg, .svc__item) that draw their own 0/1px borders — giving
-   those a 24px gap would break the bordered-grid motif. */
-:is(.scoregrid, .figs, .ba, .bound, .bstat, .closer, .feed__grid, .testi,
-    .gcards, .story-more, .contact-cards, .cr-values) { gap: var(--s-3); }
+   hairline grids (.phases, .diffs, .profile, .ind, .promise,
+   .timeline, .arg, .svc__item, .bstat) that draw their own 0/1px borders —
+   giving those a 24px gap would break the bordered-grid motif.
+   .bstat moved into that list on 2026-08-02 when it became a stat strip: this
+   rule is later in source than its own `gap: 0`, so leaving it here would have
+   silently reopened 24px holes in the strip's separator lines.
+   .paths moved the OTHER way the same day — it stopped being a shared-wall
+   hairline grid and became three separate bordered cards, so it takes the
+   card-collection gap like any other card collection. */
+:is(.scoregrid, .figs, .ba, .bound, .closer, .feed__grid, .testi,
+    .gcards, .story-more, .contact-cards, .cr-values, .paths) { gap: var(--s-3); }
 
 /* ---- 4. card interior padding ---- */
 :is(.svc-detail__card, .fig, .score, .bound__i, .spec-card, .subcard,
     .never, .reviewer, .foundernote, .failstat, .roi, .contact-card,
-    .gcard, .builds, .panel) { padding: var(--s-4); }
+    .gcard, .builds, .panel, .path) { padding: var(--s-4); }
 
 /* ---- 6. band boundary ----
    Two light sections in a row read as one undifferentiated field. A hairline

@@ -6,7 +6,8 @@
 //              that underline + accent never co-occur at REST
 //   buttons    two button variants only, one 52px box, PRIMARY carries the
 //              arrow and SECONDARY never does
-//   section-y  every <section> takes padding-block: var(--section-y)
+//   section-y  every <section> takes padding-block: var(--section-y), except
+//              the homepage hero (SECTION_Y_EXEMPT — sized to one viewport)
 //   min-11px   nothing renders below 11px
 //   contrast   every text/background pair clears WCAG AA
 //   widows     multi-line headings do not strand a one-word last line
@@ -184,12 +185,19 @@ const audit = (cfg) => {
 	}
 
 	/* ---------- 3. section padding = var(--section-y) ---------- */
+	// The homepage hero is the ONE named exception (styles.css, HERO block): it
+	// is sized to fit the nav→first-dark-band run inside a 900px viewport, so it
+	// takes a flat 96px rather than the sitewide ladder. Named here rather than
+	// tolerated by a range, so a SECOND section drifting off --section-y still
+	// fails — which is the whole point of this check.
+	const SECTION_Y_EXEMPT = { "section.hero.section": "96px" };
 	const wantY = getComputedStyle(document.documentElement).getPropertyValue("--section-y").trim();
 	for (const s of document.querySelectorAll("main section, body > section")) {
 		if (!vis(s)) continue;
 		const cs = getComputedStyle(s);
-		if (cs.paddingTop !== wantY || cs.paddingBottom !== wantY) {
-			add("section-y", `${sel(s)} ${cs.paddingTop}/${cs.paddingBottom} (want ${wantY})`);
+		const want = SECTION_Y_EXEMPT[sel(s)] || wantY;
+		if (cs.paddingTop !== want || cs.paddingBottom !== want) {
+			add("section-y", `${sel(s)} ${cs.paddingTop}/${cs.paddingBottom} (want ${want})`);
 		}
 	}
 

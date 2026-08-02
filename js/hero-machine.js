@@ -25,7 +25,10 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, r.width, r.height);
       const G = 56;
-      ctx.strokeStyle = 'rgba(26,21,17,0.045)'; ctx.lineWidth = 1;
+      // 6% — raised from 4.5% when the hero was tightened to one viewport.
+      // Less empty field left, so the field that remains has to read as a
+      // drawn surface rather than as leftover space.
+      ctx.strokeStyle = 'rgba(26,21,17,0.06)'; ctx.lineWidth = 1;
       for (let x = G; x < r.width; x += G) { ctx.beginPath(); ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, r.height); ctx.stroke(); }
       for (let y = G; y < r.height; y += G) { ctx.beginPath(); ctx.moveTo(0, y + .5); ctx.lineTo(r.width, y + .5); ctx.stroke(); }
       ctx.strokeStyle = 'rgba(26,21,17,0.14)';

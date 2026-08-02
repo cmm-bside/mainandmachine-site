@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -204,19 +204,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -247,7 +239,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -292,7 +284,7 @@
       <p>Anywhere from $100 an hour to more than $1 million a project, depending on the shape of the firm you hire. In the quotes our clients show us, independent consultants bill roughly $100–$300 an hour, specialist boutiques price projects from about $10,000 to $150,000, and the global firms start in the mid six figures.</p>
       <p>That spread is not noise. You are buying genuinely different things at each tier: a person’s time at the bottom, a scoped build in the middle, and an institution’s process at the top. Our own prices sit at the low end of the boutique band and are published in full: an <a href="/services/#audit">AI Readiness Audit</a> runs $3,500–$8,500, and an <a href="/services/#sprint">AI Implementation Sprint</a> runs $18,000–$60,000, quoted as a fixed price in writing before work begins. The rest of this guide shows you the whole shelf so you know what you are choosing between.</p>
 
-      <h2>What do hourly AI consultants charge?</h2>
+      <h2>What do hourly AI&nbsp;consultants&nbsp;charge?</h2>
       <p>Independent AI consultants generally bill $100–$300 an hour in the proposals we see, and specialists with deep machine-learning or data-engineering backgrounds run $200–$500. The rate is only half the number that matters; the other half is hours, and almost nobody quotes those in advance.</p>
       <p>Run the arithmetic on a real project. A modest automation build — intake handling, invoice follow-up, a data sync — is commonly 150 to 400 hours of work once meetings, revisions, and testing are counted. At $250 an hour, that is $37,500 to $100,000, and you learn the true figure only when it stops climbing. Hourly billing is not dishonest; plenty of good people work this way. But the structure puts every unknown on your side of the table. When the project runs long, the consultant earns more. You would not let a contractor rebuild your kitchen on those terms.</p>
       <p>The Ampersand essay <a href="/blog/the-currency-of-the-machine/">The Currency of the Machine</a> covers why AI work in particular resists time-based pricing: the costs live in tokens, tooling, and iteration, not in neat billable blocks.</p>
@@ -301,7 +293,7 @@
       <p>Big Four and global-consultancy AI engagements, in the quotes buyers have brought us, start around $250,000 and pass $500,000 before anything ships; multi-year transformation programs run into the millions. For an enterprise wiring AI through 40,000 employees and a compliance department, that can be entirely rational.</p>
       <p>What you are paying for is scale and cover: layers of analysts, governance frameworks, and a brand that reassures a board. None of that is fake — it is just built for a different customer. A 30-person firm inside one of those engagements is a rounding error, and rounding errors get the junior team. As our <a href="/pricing/">pricing page</a> puts it: our largest engagement costs less than their kickoff meeting. If you are 5 to 100 people, this tier is not your market, and being priced out of it costs you nothing.</p>
 
-      <h2>What do boutique AI consultancies charge?</h2>
+      <h2>What do boutique AI&nbsp;consultancies&nbsp;charge?</h2>
       <p>Specialist AI boutiques generally price by project: roughly $10,000–$50,000 for a scoped implementation, and $50,000–$150,000 for larger multi-workflow builds. This is the band where small and mid-size businesses should shop.</p>
       <p>The variance inside the band comes from three things: how senior the people actually doing the work are, how much custom engineering the build needs, and how the firm handles risk. Watch the last one closely. Many boutiques quote a “project price” that is time-and-materials wearing a suit — an estimate, not a commitment, with a change-order pipeline waiting behind it. The test is simple: is the number fixed, in writing, before work begins? If the answer involves the word “typically,” it is an hourly engagement with better marketing.</p>
 
@@ -365,18 +357,18 @@
       <p>Two smaller lines belong in the budget too. Running costs: the tools and model usage behind a working system typically land <a href="/guides/what-ai-automation-costs-to-run/">between $50 and $500 a month</a> for a small business — that band is ours, from the systems we run, but the model rates underneath it are public. Anthropic <a href="https://platform.claude.com/docs/en/about-claude/pricing" rel="nofollow noopener" target="_blank">publishes a per-million-token price for every model it sells</a>, input and output billed separately, so you can price the usage half of the bill yourself before anyone quotes you. Real money either way, but a fraction of what the manual work cost. If you are weighing whether a $25-a-month subscription is enough instead, <a href="/guides/chatgpt-vs-custom-ai/">that question has its own guide</a>. And maintenance: models and vendors shift, so either someone in-house watches the system or a retainer does. Ours is monthly with no lock-in, priced by what is running.</p>
       <p>Whether the build budget returns anything depends on your workflows, not the consultant’s slides — our <a href="/calculator/">ROI calculator</a> shows the assumptions we use, in the open, and the audit exists to replace those assumptions with your real numbers. Sometimes the audit’s answer is “wait a quarter,” in writing, and the sprint money stays in your pocket. Before you spend anything, run the <a href="/guides/ai-readiness-checklist/">20-point readiness checklist</a> — it is free and takes an afternoon. And when you start taking meetings, bring the <a href="/guides/how-to-choose-an-ai-consultant/">ten vetting questions</a> to every one of them, including ours.</p>
 
-    </article>
-  </div>
-</section>      <form class="estimate-form" data-source="/guides/ai-consultant-cost/" novalidate>
+      <form class="estimate-form" data-source="/guides/ai-consultant-cost/" novalidate>
         <label for="wsCost">Want this as a worksheet for your numbers?</label>
         <div class="estimate-form__row">
           <input class="input" type="email" id="wsCost" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Your email address" required />
-          <button class="btn btn--secondary" type="submit">Send the model <span class="arr">&rarr;</span></button>
+          <button class="btn btn--secondary" type="submit">Send the model</button>
         </div>
         <p class="estimate-form__note" data-note>We will send the model, the assumptions behind it, and the guarantee. You are not subscribed to anything.</p>
-      </form><!-- ============ START HERE (ink) ============ -->
+      </form>
 <p class="gtable-note"><b>Where these numbers come from.</b> No industry body surveys AI consulting rates, and the global firms do not publish engagement minimums. Every figure on this page is what we see in the market &mdash; competing proposals buyers bring to us, and the quotes we lose. Treat them as a working map, not a statistic. The one number here that is not a market observation is ours: <a href="/pricing/">our own price list</a>, published in full.</p>      <p class="gtable-note">Our own systems are itemized and priced in <a href="/services/builds/">the build catalog</a>.</p>
-<!-- FAQ:auto -->
+    </article>
+  </div>
+</section><!-- ============ START HERE (ink) ============ --><!-- FAQ:auto -->
 <section class="section paper-2">
   <div class="wrap">
     <div class="faq">
@@ -386,7 +378,7 @@
         <div class="faq__aside">
           <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
         </div>
       </div>
       <div class="faq__list">
@@ -416,11 +408,11 @@
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
-      <h2 class="h2 mt-s">Want a number for <span class="accent-tx">your business?</span></h2>
+      <h2 class="h2 mt-s">Want a number for&nbsp;<span class="accent-tx">your&nbsp;business?</span></h2>
       <p class="lead mt-s">The free 30-minute assessment is where ranges become a fixed quote in writing. A senior advisor walks your workflows and gives you a straight read. We reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-        <a class="btn btn--secondary btn--lg" href="/pricing/">Read the full price list <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a class="btn btn--secondary btn--lg" href="/pricing/">Read the full price list</a>
       </div>
     </div>
     <div class="final__promise">

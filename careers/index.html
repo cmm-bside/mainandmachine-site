@@ -23,7 +23,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: Human-centric AI for Main Street." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -108,7 +108,7 @@
    ========================================================= */
 
 /* hero */
-.cr-hero { padding-block: var(--hero-top) var(--section-pad); }
+.cr-hero { padding-block: var(--section-y); }
 .cr-hero__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 /* spec card top aligns to the H1 first-line cap height (side-by-side only) */
 @media (min-width: 881px) { .cr-hero__card { margin-top: 57px; } }
@@ -116,7 +116,7 @@
 .cr-hero h1 { font-size: clamp(var(--fs-39), 6.6vw, var(--fs-78)); line-height: 0.99; margin: 22px 0 24px; }
 .cr-hero__lede { max-width: 60ch; margin-bottom: 32px; }
 .cr-hero__actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-.cr-hero__note { font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); margin-top: 22px; letter-spacing: .02em; }
+.cr-hero__note { font-family: var(--sans); font-size: var(--t-sm); color: var(--tx-faint); margin-top: 22px; letter-spacing: normal; }
 
 /* corner-bracket spec card (reuses the .statrail look) */
 .cr-spec__bar { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 18px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); }
@@ -129,7 +129,7 @@
 .cr-values__head { max-width: 24ch; margin-top: 6px; }
 .cr-values { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--hairline); margin-top: clamp(40px, 5vw, 56px); }
 .cr-value { background: var(--paper); padding: var(--s-32); }
-.cr-value__n { font-family: var(--mono); font-size: var(--fs-12); color: var(--rust); letter-spacing: .1em; }
+.cr-value__n { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-text); letter-spacing: .1em; }
 .cr-value__t { font-weight: 800; font-size: var(--fs-20); letter-spacing: -0.015em; margin: 14px 0 10px; }
 .cr-value__d { font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.55; }
 @media (max-width: 720px) { .cr-values { grid-template-columns: 1fr; } }
@@ -150,10 +150,10 @@
 .cr-apply { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(36px, 6vw, 80px); align-items: start; }
 @media (max-width: 900px) { .cr-apply { grid-template-columns: 1fr; gap: 44px; } }
 .cr-aside__lede { margin: 18px 0 28px; }
-.cr-aside__spec { font-family: var(--mono); }
+.cr-aside__spec { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; }
 .cr-aside__row { display: flex; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line-soft); font-size: var(--fs-13); align-items: baseline; }
 .cr-aside__row:last-child { border-bottom: 0; }
-.cr-aside__row .k { color: var(--accent); min-width: 18px; }
+.cr-aside__row .k { color: var(--accent-text); min-width: 18px; }
 .cr-aside__row .v { color: var(--tx-mute); letter-spacing: .01em; }
 .cr-aside__row .v b { color: var(--tx); font-weight: 700; }
 .cr-after { margin-top: var(--s-32); border-top: 1px solid var(--line); padding-top: var(--s-24); }
@@ -167,7 +167,7 @@
 /* the input overlays the whole drop zone: native click + drag target, ≥44px */
 
 .cr-foot { margin-top: 28px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-.cr-foot .privacy { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); letter-spacing: .02em; max-width: 38ch; line-height: 1.5; }
+.cr-foot .privacy { font-family: var(--sans); font-size: var(--t-sm); color: var(--tx-faint); letter-spacing: normal; max-width: 38ch; line-height: 1.5; }
 
 /* send states */
 
@@ -185,19 +185,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -228,7 +220,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="#apply" aria-current="page">Apply now</a>
+      <a class="btn btn--primary" href="#apply" aria-current="page">Apply now <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -248,10 +240,10 @@
     <div class="cr-hero__grid">
       <div>
         <span class="kicker">Careers</span>
-        <h1>Help us put serious AI to work for <span class="accent-tx">Main Street.</span></h1>
+        <h1>Help us put serious AI to work for&nbsp;<span class="accent-tx">Main&nbsp;Street.</span></h1>
         <p class="lead cr-hero__lede">We build private, auditable AI systems for the businesses that keep the economy running: lenders, manufacturers, local institutions. It’s careful, high-stakes work for clients who can’t afford to get it wrong. If that’s the kind of problem you want to spend your days on, we’d like to meet you.</p>
         <div class="cr-hero__actions">
-          <a class="btn btn--primary btn--lg" href="#apply">Start your application <span class="arr">→</span></a>
+          <a class="btn btn--primary btn--lg" href="#apply">Start your application <span class="arr">&#8594;</span></a>
           <a class="btn btn--secondary btn--lg" href="#values">Why work here</a>
         </div>
         <p class="cr-hero__note">Open application · no specific role required · we read every submission</p>
@@ -274,7 +266,7 @@
 <section id="values" class="section paper-2" data-screen-label="What we value">
   <div class="wrap">
     <span class="kicker">What we value</span>
-    <h2 class="h2 cr-values__head mt-s">The work is technical. The standard is human.</h2>
+    <h2 class="h2 cr-values__head mt-s">The work is technical. The standard&nbsp;is&nbsp;human.</h2>
     <div class="cr-values">
       <div class="cr-value">
         <div class="cr-value__n">01</div>
@@ -306,7 +298,7 @@
     <span class="kicker">Who we hire</span>
     <div class="cr-hire">
       <div>
-        <h2 class="h2">We hire for judgment, care, and range.</h2>
+        <h2 class="h2">We hire for judgment, care,&nbsp;and&nbsp;range.</h2>
         <p class="cr-hire__body">We’re a small team that builds high-stakes systems, so we look for people who can own a problem end to end: engineers, AI builders, designers, and client-facing people who’d rather do a few things exceptionally than many things adequately. You don’t need a specific title to be useful here. <b>Tell us what you’re great at.</b></p>
       </div>
       <div class="cr-traits">
@@ -351,7 +343,7 @@
         </div>
       </div>
 
-      <div class="formcard crop" id="formCard">
+      <div class="formcard" id="formCard">
         <form id="applyForm" novalidate>
           <div class="frow">
             <div class="field">
@@ -433,7 +425,7 @@
       <div class="foot__brand">
         <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

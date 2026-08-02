@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -234,19 +234,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -277,7 +269,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -297,7 +289,7 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Who this is for</span>
-        <h1 class="h2 mt-s">Built for the businesses <span class="accent-tx">big consulting forgets.</span></h1>
+        <h1 class="h2 mt-s">Built for the businesses <span class="accent-tx">big&nbsp;consulting&nbsp;forgets.</span></h1>
         <p class="lead mt-s">Past the point where the owner can hold everything in their head, and not yet big enough for a Fortune 500 budget. Five industries where we have seen the clearest wins.</p>
       </div>
       <div class="statrail crop" aria-label="Fit check at a glance">
@@ -333,35 +325,35 @@
         <div class="ind__name">Professional services <span>Law, accounting, insurance, consulting, financial advisory.</span></div>
         <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">12 to 80</span></div>
         <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Intake, billing, matters</span></div>
-        <a class="ind__go" href="/industries/professional-services/">See the wins in professional services →</a>
+        <a class="ind__go" href="/industries/professional-services/">See the wins in professional services <span class="arr">&#8594;</span></a>
       </div>
       <div class="ind">
         <span class="ind__no">02</span>
         <div class="ind__name">Retail &amp; e-commerce <span>Physical, online, omnichannel operators.</span></div>
         <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">5 to 60</span></div>
         <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Inventory, support, merch</span></div>
-        <a class="ind__go" href="/industries/retail/">See the wins in retail →</a>
+        <a class="ind__go" href="/industries/retail/">See the wins in retail <span class="arr">&#8594;</span></a>
       </div>
       <div class="ind">
         <span class="ind__no">03</span>
         <div class="ind__name">Healthcare &amp; wellness <span>Practices, clinics, wellness businesses.</span></div>
         <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">8 to 50</span></div>
         <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Scheduling, intake, coding</span></div>
-        <a class="ind__go" href="/industries/healthcare/">See the wins in healthcare →</a>
+        <a class="ind__go" href="/industries/healthcare/">See the wins in healthcare <span class="arr">&#8594;</span></a>
       </div>
       <div class="ind">
         <span class="ind__no">04</span>
         <div class="ind__name">Construction &amp; trades <span>HVAC, plumbing, electrical, general contracting.</span></div>
         <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">10 to 100</span></div>
         <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Dispatch, invoicing, bids</span></div>
-        <a class="ind__go" href="/industries/construction/">See the wins in the trades →</a>
+        <a class="ind__go" href="/industries/construction/">See the wins in the trades <span class="arr">&#8594;</span></a>
       </div>
       <div class="ind">
         <span class="ind__no">05</span>
         <div class="ind__name">Hospitality &amp; food service <span>Restaurants, hotels, catering, venues.</span></div>
         <div class="ind__col"><span class="tick-lbl">Typical team</span><span class="mono">15 to 100</span></div>
         <div class="ind__col"><span class="tick-lbl">Clearest wins</span><span class="mono">Staffing, reservations, ops</span></div>
-        <a class="ind__go" href="/industries/hospitality/">See the wins in hospitality →</a>
+        <a class="ind__go" href="/industries/hospitality/">See the wins in hospitality <span class="arr">&#8594;</span></a>
       </div>
     </div>
   </div>
@@ -376,7 +368,7 @@
         <div class="faq__aside">
           <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
         </div>
       </div>
       <div class="faq__list">
@@ -409,7 +401,7 @@
       <span class="kicker">Start here</span>
       <p class="lead mt-s">Checking fit is exactly what the free assessment is for. 30 minutes, a senior advisor, and a straight answer on whether your business is one where AI actually pays.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       </div>
     </div>
     <div class="final__promise">

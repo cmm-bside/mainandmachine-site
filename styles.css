@@ -13,35 +13,23 @@
    Where Main Street meets the machine.
    ========================================================= */
 
+/* Base :root — only tokens that the canonical token layer does NOT define.
+   Every colour/type/spacing value that the A+ ELEVATION LAYER block declares
+   used to be declared here too, in a second, drifting copy: two --paper, two
+   --ink, two --tx-label, two type scales. The elevation block always won, so
+   the literals here were dead weight that still read like the truth. They are
+   gone; the canonical layer below is the only place a brand value is typed. */
 :root {
-  /* surfaces */
-  --paper:      #f4efe4;   /* warm cream — Main Street */
-  --paper-2:    #ece5d6;   /* deeper cream panel */
-  --paper-card: #fbf8f1;   /* raised card on paper */
-  --ink:        #181511;   /* warm machine-shop black */
-  --ink-2:      #211d18;   /* raised panel on ink */
-  --ink-3:      #2c2720;   /* line / hairline on ink */
-  --blueprint:  #d9dee2;   /* cool steel — the Machine */
+  /* cool steel — the Machine. The one hue outside the paper/ink/rust system,
+     so it has no canonical-token equivalent and stays a literal here. */
+  --blueprint:  #d9dee2;
   --blueprint-2:#cdd4da;
 
-  /* accent — single rust; canonical literal is --rust (see A+ ELEVATION block).
-     These all derive from it — no independent rust hex lives here. */
-  --accent:      var(--rust);
-  --accent-deep: color-mix(in srgb, var(--rust) 82%, #000);
+  /* 10% rust wash — derives from the canonical --accent */
   --accent-soft: color-mix(in srgb, var(--rust) 10%, transparent);
-  --accent-ink:  var(--rust-bright);
 
-  /* text on paper */
-  --tx:        #201c17;
-  --tx-mute:   #635b50;
-  --tx-label:  #978d7f;   /* renamed: see the elevation block */
-  --line:      rgba(32,28,23,0.14);
-  --line-soft: rgba(32,28,23,0.08);
-
-  /* text on ink */
-  --dtx:       #f4efe4;
+  /* text on ink — mute steps between --panel-ink and the hairlines */
   --dtx-mute:  #a59c8e;
-  --dtx-faint: #756c5f;   /* hairline-adjacent decoration ONLY — 3.7:1 on ink */
   --mono-on-dark: #9a9286; /* small mono captions on ink: 6.1:1 on --ink, 5.7:1 on --ink-2 */
   --dline:     rgba(244,239,228,0.14);
   --dline-soft:rgba(244,239,228,0.07);
@@ -49,12 +37,11 @@
   --sans: 'Archivo', system-ui, sans-serif;
   --mono: 'Space Mono', ui-monospace, monospace;
 
-  --maxw: 1240px;
-  --gutter: clamp(20px, 4vw, 64px);
-
-  /* modular type scale — 1.25 ratio, locked site-wide */
-  --fs-13: 13px; --fs-16: 16px; --fs-20: 20px; --fs-25: 25px; --fs-31: 31px;
-  --fs-39: 39px; --fs-49: 49px; --fs-76: 76px; --fs-110: 110px;
+  /* ONE container sitewide. Was 1240px on a clamp(20px,4vw,64px) gutter,
+     which made the inline padding viewport-dependent (57.6px at 1440) and
+     impossible to match against a fixed-column grid. Now fixed. */
+  --maxw: 1160px;
+  --gutter: 32px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -78,15 +65,21 @@ a { color: inherit; text-decoration: none; }
    (head-block → grid → prose, etc.). Every major block margin uses the
    token so the rhythm audits as one number sitewide. */
 :root{
-  --section-pad: var(--s-128);
-  --section-pad-tight: var(--s-96);
-  --block-gap: var(--s-48);
+  /* --section-y is canonical (declared in the token layer). --section-pad is
+     the legacy name kept as an alias so existing rules keep resolving. */
+  --section-pad: var(--section-y);
+  --section-pad-tight: var(--section-y-tight);
+  --block-gap: var(--s-5);   /* header block -> content, 64px, everywhere */
 }
 .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
 .section { padding-block: var(--section-pad); }
-.section--tight { padding-block: var(--section-pad-tight); }
-@media (max-width: 1024px){ :root{ --section-pad: var(--s-96); --section-pad-tight: var(--s-64); } }
-@media (max-width: 640px){ :root{ --section-pad: var(--s-64); --section-pad-tight: var(--s-48); } }
+/* .section--tight retired 2026-08-01: both users (/method/, /work/marcus/) are
+   full sections, not thin banners, so they take the standard rhythm. The class
+   is left in the markup as a no-op rather than editing two pages. */
+/* The responsive overrides for --section-y / --s-4 live immediately AFTER the
+   canonical token block further down, not here. Both are `:root`, so they tie
+   on specificity and SOURCE ORDER decides: declared here they would be
+   overridden by the canonical block below and silently never apply. */
 
 .ink   { background: var(--ink);  color: var(--dtx); }
 .paper { background: var(--cream); color: var(--tx); }
@@ -136,26 +129,44 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 
 /* ---------- buttons ---------- */
 /* ============ BUTTON COMPONENT — one base, three variants ============ */
+/* =========================================================
+   BUTTONS — exactly two variants, consolidated 2026-08-01
+   One box for both: 52px tall, 28px inline padding, square corners, mono
+   13px/600 uppercase at 0.06em. PRIMARY fills with accent and carries the
+   arrow; SECONDARY is the outline and never carries one. `.btn--lg` is
+   retired to a no-op — the 22px/30px padding split was a third variant
+   wearing a modifier's name. `.btn--ghost` is gone: a borderless text button
+   is a pseudo-button, and those are now either a real button or a STYLE B
+   action link.
+   ========================================================= */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-12);
-  height: 52px; padding: 0 22px; border-radius: var(--r-md);
-  font-family: var(--sans); font-weight: 700; font-size: var(--fs-16);
-  letter-spacing: -0.01em; white-space: nowrap; cursor: pointer;
-  border: 1.5px solid transparent;        /* identical box to --secondary's border */
-  box-shadow: var(--shadow-btn);
-  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px;
+  height: 52px; padding-inline: 28px; border-radius: 0;
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  white-space: nowrap; cursor: pointer; text-decoration: none;
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
 }
-.btn:active { transform: translateY(1px); }
-.btn .arr { transition: transform .2s var(--ease); }
-.btn:hover .arr { transform: translateX(3px); }
-.btn--lg { padding: 0 30px; }
-/* PRIMARY — rust fill, paper text */
-.btn--primary { background: var(--rust); color: var(--paper); }
-.btn--primary:hover { background: var(--rust-bright); }
-/* SECONDARY — outlined; same height/padding/baseline as primary; ink fill on hover */
-.btn--secondary { background: transparent; border-color: var(--ink); color: var(--ink); box-shadow: none; }
+.btn--lg { padding-inline: 28px; }   /* retired modifier — same box */
+.btn .arr { display: inline-block; transition: transform 150ms ease; }
+.btn:hover .arr { transform: translateX(2px); }
+
+/* PRIMARY — accent fill, paper text, trailing arrow */
+.btn--primary { background: var(--accent); color: var(--paper); }
+.btn--primary:hover { background: #A93517; }   /* ~8% darker than --accent */
+
+/* SECONDARY — outline; identical box; no arrow; inverts on hover */
+.btn--secondary { background: transparent; border-color: var(--ink); color: var(--ink); }
 .btn--secondary:hover { background: var(--ink); color: var(--paper); }
-.ink .btn--secondary { border-color: var(--dline); color: var(--dtx); }
+.btn--secondary .arr { display: none; }   /* belt and braces: no arrow, ever */
+
+/* Focus: same ring on both variants, both surfaces. --accent is 3.55:1 on
+   --ink, which clears the 3:1 WCAG 1.4.11 floor for non-text contrast, so the
+   dark surfaces do not need the cream ring the rest of the site uses. */
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 0; }
 .ink .btn--secondary:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
 /* GHOST — text + arrow only, no box (tertiary actions) */
 .btn--ghost { height: auto; padding: 0; border: 0; background: transparent; box-shadow: none; color: var(--rust); }
@@ -299,13 +310,15 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 /* =========================================================
    HERO
    ========================================================= */
-.hero { padding-top: var(--s-48); padding-bottom: var(--s-48); }
+/* .hero takes --section-y from .section like every other major section. */
 .hero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (max-width: 940px) { .hero__grid { grid-template-columns: 1fr; gap: var(--s-48); } }
 .hero h1 { margin: 12px 0 10px; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: var(--s-16); margin-top: var(--s-16); }
 .hero .hero__cta { margin-top: var(--s-32); } /* home hero CTA top-gap = 32px, matching other heroes */
-.hero__note { font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-mute); margin-top: var(--s-16); max-width: 46ch; line-height: 1.6; }
+/* Prose, not a label — sentences render in the body font. See the MONO
+   TYPOGRAPHY RULE block at the foot of this file. */
+.hero__note { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); margin-top: var(--s-16); max-width: 46ch; line-height: 1.6; }
 /* table-footnote variant: spans the full table width (one line at
    desktop) instead of the hero's 46ch measure */
 .hero__note--wide { max-width: none; }
@@ -331,8 +344,10 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 /* =========================================================
    PATHS — three doors
    ========================================================= */
-.head-block { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--s-48); align-items: end; margin-bottom: var(--block-gap); }
-@media (max-width: 820px){ .head-block { grid-template-columns: 1fr; gap: var(--s-24); } }
+/* Geometry lives in the shared SECTION HEADER component at the foot of this
+   file; only the block margin is local. The old 820px stack breakpoint is
+   superseded by the component's 900px one. */
+.head-block { margin-bottom: var(--block-gap); }
 
 .paths { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; border: 1px solid var(--line); }
 @media (max-width: 860px){ .paths { grid-template-columns: 1fr; } }
@@ -394,7 +409,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
    SERVICES
    ========================================================= */
 .svc { border: 1px solid var(--line); border-bottom: 0; }
-.svc__item { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 0; border-bottom: 1px solid var(--line); }
+.svc__item { display: grid; grid-template-columns: 220px 1fr 360px; gap: 0; border-bottom: 1px solid var(--line); }
 @media (max-width: 920px){ .svc__item { grid-template-columns: 1fr; } }
 .svc__item--feature { background: var(--ink); color: var(--dtx); }
 .svc__meta { padding: var(--s-32) var(--s-24); border-right: 1px solid var(--line); }
@@ -402,7 +417,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .svc__no { font-family: var(--mono); font-size: clamp(var(--fs-39),5vw,var(--fs-49)); font-weight: 700; line-height: 1; letter-spacing: -0.03em; }
 .svc__meta .tick-lbl { margin-top: var(--s-16); display:block; }
 .svc__item--feature .tick-lbl, .svc__item--feature .eyebrow { color: var(--mono-on-dark); }
-.svc__price { font-weight: 800; font-size: var(--fs-20); margin-top: var(--s-4); letter-spacing: -0.02em; }
+.svc__price { font-weight: 800; font-size: var(--fs-20); margin-top: var(--s-04); letter-spacing: -0.02em; }
 .svc__note { margin-top: var(--s-12); font-size: var(--fs-13); line-height: 1.5; color: var(--tx-mute); max-width: 24ch; }
 .svc__item--feature .svc__note { color: var(--dtx-mute); }
 .svc__main { padding: var(--s-32) var(--s-32); border-right: 1px solid var(--line); }
@@ -464,7 +479,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .ind__no { font-family: var(--mono); color: var(--accent-text); font-size: var(--fs-13); }
 .ind__name { font-weight: 800; font-size: var(--fs-20); letter-spacing: -0.02em; }
 .ind__name span { display:block; font-weight: 400; font-size: var(--fs-13); color: var(--tx-mute); margin-top: 3px; letter-spacing: 0; }
-.ind__col .tick-lbl { display:block; margin-bottom: var(--s-4); }
+.ind__col .tick-lbl { display:block; margin-bottom: var(--s-04); }
 .ind__col .mono { font-size: var(--fs-13); }
 .ind__go { font-family: var(--mono); font-size: var(--fs-13); color: var(--accent-text); display:inline-flex; gap:var(--s-8); align-items:center; justify-self:end; }
 @media (max-width: 820px){
@@ -615,7 +630,7 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 .final h2 { max-width: 16ch; }
 /* Shared "Start here" CTA band — clamped to content + s-96, no floating void.
    Two columns where space allows: the offer + button, and the founder's promise. */
-.final { padding-block: var(--s-96); }
+/* .final (pre-footer CTA) is a major section — it takes --section-y like the rest. */
 .final .wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(var(--s-32), 5vw, var(--s-96)); align-items: center; }
 .final__promise { border-left: 1px solid var(--dline); padding-left: clamp(var(--s-24), 3vw, var(--s-48)); }
 .final__promise p { font-size: var(--fs-20); line-height: 1.45; color: var(--dtx); max-width: 24ch; letter-spacing: -0.01em; }
@@ -665,7 +680,7 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
 .signup__input:hover{ border-color:rgba(244,239,228,0.30); }
 .signup__input:focus{ outline:none; border-color:var(--accent-ink); }
 .signup .btn--primary{ white-space:nowrap; }
-.signup__note{ font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.02em; color:var(--mono-on-dark); margin-top:var(--s-12); }
+.signup__note{ font-family:var(--sans); font-size: var(--t-sm); letter-spacing:normal; color:var(--mono-on-dark); margin-top:var(--s-12); }
 
 .foot__bottom { display:flex; flex-wrap: wrap; gap: var(--s-16); align-items:center; justify-content: space-between; padding: 26px 0 40px; }
 .foot__bottom, .foot__bottom a { font-family: var(--mono); font-size: var(--fs-13); color: var(--mono-on-dark); letter-spacing: .04em; }
@@ -689,31 +704,81 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
      adopts a change made in one place. (This block wins over base :root.)
      ===================================================================== */
 
-  /* ---- color primitives ---- */
-  --cream:        #EFE8D9;   /* warm cream — Main Street (page surface) */
-  --cream-band:   #E7DCCB;   /* deeper cream band */
-  --paper:        #F7F2E8;   /* lightest paper — raised cards */
-  --ink:          #1A1511;   /* warm machine-shop black */
-  --ink-2:        #19140F;   /* raised panel on ink */
-  --on-ink:       #D8CFC2;   /* text on ink */
-  --rust:         #B83E22;   /* THE single rust accent — the ONLY rust hex literal
-                                in the codebase. 4.8:1 AA on cream. Everything below
-                                derives from this; change rust here and nowhere else. */
-  --rust-bright:  color-mix(in srgb, var(--rust), #fff 22%);  /* derived: lightened so
-                                small accent text stays AA on dark ink (≈4.8:1) */
-  --mono-on-cream:#6B5E4B;   /* mono eyebrow/label text on cream */
-  --hairline:     rgba(26,21,17,.09);
+  /* =====================================================================
+     CANONICAL TOKENS — the nine brand colours, the step spacing scale and
+     the type scale. These nine hexes are the ONLY brand colour literals in
+     the codebase; every name further down aliases onto them, so a value
+     changed here changes the whole site.
+     ===================================================================== */
+
+  /* ---- colour ---- */
+  --paper:        #F0EBE1;   /* page surface — warm cream, Main Street */
+  --paper-tan:    #E4DBC8;   /* deeper cream band */
+  --ink:          #1B1611;   /* warm machine-shop black — surfaces AND body text */
+  /* The canonical muted literal lives on --muted-on-light so that a light card
+     nested INSIDE a dark section can restore it. Dark surfaces rebind
+     --ink-muted itself; var() substitution is lazy, so a reset written as
+     `--ink-muted: var(--ink-muted)` would resolve to the rebound value. The
+     light islands read this token instead, and it is never rebound. */
+  --muted-on-light: #685E4F;
+  --ink-muted:    var(--muted-on-light);  /* muted text on paper — 4.89:1 on --paper, AA */
+  --panel:        #221C15;   /* raised panel on ink */
+  --panel-ink:    #D8D2C6;   /* text on ink — 11.21:1 on --panel */
+  --accent:       #C6401E;   /* THE single rust. See the AA note on --accent-text. */
+  --rule:         #D6CCBA;   /* hairline on paper */
+  --rule-dark:    #3A3227;   /* hairline on ink */
+
+  /* ---- spacing: step scale (8px base) ---- */
+  --s-1:8px;  --s-2:16px; --s-3:24px; --s-4:40px; --s-5:64px; --s-6:96px;
+  --section-y:       160px;  /* vertical padding of every numbered section */
+  --section-y-tight: 120px;  /* .section--tight */
+
+  /* ---- type scale ---- */
+  --t-label: 11px;   --t-sm:  14px;  --t-base: 17px;  --t-lg: 22px;
+  --t-xl:    32px;   --t-2xl: 48px;
+  --t-hero:  clamp(52px, 7vw, 84px);
+
+  /* =====================================================================
+     DERIVED + LEGACY ALIASES — nothing below introduces a new brand value.
+     ===================================================================== */
+
+  /* ---- colour aliases ---- */
+  --cream:        var(--paper);       /* legacy name for the page surface */
+  --cream-band:   var(--paper-tan);
+  /* Raised card surface. The page surface is --paper, so a card has to sit a
+     step ABOVE it or every card flattens into the section behind it. Derived
+     from --paper so it tracks the brand colour instead of drifting. */
+  --paper-card:   color-mix(in srgb, var(--paper), #fff 40%);
+  --paper-2:      var(--paper-tan);
+  --ink-2:        var(--panel);
+  --ink-3:        var(--rule-dark);
+  --on-ink:       var(--panel-ink);
+  --rust:         var(--accent);      /* legacy name for the accent */
+  --rust-bright:  color-mix(in srgb, var(--accent), #fff 22%);  /* derived: lightened so
+                                small accent text stays AA on dark ink */
+  --mono-on-cream:var(--ink-muted);   /* mono eyebrow/label text on cream */
+  --hairline:     var(--rule);
   /* The only non-rust hue in the system: form success confirmation. Rust is
-     reserved for actions and errors, so "sent" needs its own signal.
-     4.9:1 on --paper — AA for the icon rule and the text beside it. */
+     reserved for actions and errors, so "sent" needs its own signal. */
   --go-deep:      #2E6B3F;
 
-  /* ---- type scale (1.25 ratio) ---- */
-  --fs-12:12px; --fs-13:13px; --fs-16:16px; --fs-20:20px; --fs-25:25px;
-  --fs-31:31px; --fs-39:39px; --fs-49:49px; --fs-61:61px; --fs-78:78px;
+  /* ---- type scale aliases -> canonical steps ---- */
+  --fs-12: var(--t-label);  --fs-13: var(--t-sm);   --fs-16: var(--t-base);
+  --fs-20: var(--t-lg);     --fs-31: var(--t-xl);   --fs-49: var(--t-2xl);
+  /* Two intermediate steps the 7-step scale does not name. They sit cleanly
+     between --t-lg/--t-xl and --t-xl/--t-2xl, so they stay explicit rather
+     than collapsing 21 usages onto a neighbouring step. */
+  --fs-25:25px; --fs-39:39px;
+  /* Scale ceiling == the max bound of --t-hero. It is used INSIDE clamp()
+     (.h-hero, .failstat__big, .math__big …), so it must stay a plain length —
+     aliasing it to the fluid --t-hero would nest clamp inside clamp. */
+  --fs-78:84px;
+  --fs-61:  var(--t-2xl);   /* 0 usages — kept so legacy refs resolve */
 
-  /* ---- spacing (8px base) ---- */
-  --s-4:4px;   --s-8:8px;   --s-12:12px; --s-16:16px; --s-24:24px;
+  /* ---- spacing: px-named scale (318 usages) ---- */
+  /* Retained alongside the step scale above. --s-04 is 4px: the step scale
+     redefines --s-4 as 40px, so the four 4px usages moved to this name. */
+  --s-04:4px;  --s-8:8px;   --s-12:12px; --s-16:16px; --s-24:24px;
   --s-32:32px; --s-40:40px; --s-48:48px; --s-64:64px; --s-96:96px; --s-128:128px;
   /* one token for the interior-page hero top (nav baseline -> breadcrumb) */
   --hero-top: 120px;
@@ -723,49 +788,64 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   --shadow-btn:0 1px 2px rgba(0,0,0,.16);
   --ease:cubic-bezier(.2,.6,.2,1);
 
-  /* ---- semantic aliases -> primitives (keep existing var() usages working) ---- */
-  --paper-2:     var(--cream-band);
-  /* Raised card surface. This aliased --cream (the page background) which
-     flattened every card into the section behind it; --paper is the primitive
-     documented above as "lightest paper — raised cards". */
-  --paper-card:  var(--paper);
+  /* ---- semantic aliases -> canonical tokens (keep existing var() usages working) ---- */
   /* Hover lift for cards: one step brighter than --paper-card, so hovers stop
-     jumping to a hardcoded #fff that no token controlled. */
-  --surface-hi:  #FDFAF3;
-  --ink-3:       #2a251d;               /* hairline on ink (outside the token set) */
-  --accent:      var(--rust);           /* links / display accents */
-  --accent-text: color-mix(in srgb, var(--rust) 92%, #000);  /* derived: rust for SMALL
-                                text — plain rust is 4.13:1 on the deepest cream band
-                                (AA fail <4.5); this lands 4.71 on band / 5.23 on cream */
-  --accent-deep: color-mix(in srgb, var(--rust) 82%, #000);  /* derived: link hover */
-  --accent-ink:  var(--rust-bright);    /* accent text on dark */
-  --flame:       var(--rust);           /* buttons — the single rust */
-  --flame-deep:  color-mix(in srgb, var(--rust) 82%, #000);  /* derived: button hover */
+     jumping to a hardcoded #fff that no token controlled. Derived, like the card. */
+  --surface-hi:  color-mix(in srgb, var(--paper), #fff 70%);
+  /* Rust for SMALL text. Plain --accent is 4.26:1 on --paper and 3.68:1 on
+     --paper-tan — both AA fails — so accent-sized text has never used the raw
+     token. Darkened until it clears 4.5:1 on the DEEPEST surface it lands on:
+     5.40:1 on --paper, 4.67:1 on --paper-tan. (88% is the exact AA threshold
+     on tan at 4.52; 86% leaves margin.) */
+  --accent-text: color-mix(in srgb, var(--accent) 86%, #000);
+  --accent-deep: color-mix(in srgb, var(--accent) 82%, #000);  /* derived: link hover, 5.81:1 */
+  /* Accent TEXT on dark. Decoupled from --rust-bright (2026-08-01 contrast
+     pass): that token still drives the primary button's hover BACKGROUND, so
+     the two must be free to move independently. 5.61:1 on --ink, 5.27:1 on
+     --panel. Allowed only at 16px+ and only for short labels — see the
+     DARK-SURFACE CONTRAST LAYER at the foot of this file. */
+  --accent-ink:  #E86A3E;
+  /* Muted/secondary text on dark. The brief set a floor of #8A8172, which
+     clears AA on --ink (4.67:1) but NOT on --panel (4.39:1) or on the warm
+     accent-washed dark (4.23:1). "No darker than" is a floor, so this sits one
+     step lighter and clears 4.5:1 on all three: 5.06 / 4.76 / 4.59. */
+  --on-dark-muted: #908778;
+  /* Headings on dark read near-white rather than at body weight. */
+  --on-dark-head:  var(--paper);         /* #F0EBE1 — 15.11:1 on --ink */
+  --flame:       var(--accent);         /* buttons — the single rust */
+  --flame-deep:  color-mix(in srgb, var(--accent) 82%, #000);  /* derived: button hover */
   --rust-ink:    var(--rust-bright);    /* accent on dark */
   --label:       var(--mono-on-cream);
-  --amber:       #d68a3a;               /* kept */
-  --dtx:         var(--on-ink);         /* text on ink */
-  --tx:          #1d1812;               /* body text on cream (kept) */
-  /* NOT faint — this computes 10.31:1 on cream, i.e. near-black. It is the
-     floor for small MONO LABELS that must stay crisp, so it is named for what
-     it does. Renamed from --tx-faint (2026-07-31); the name was lying. */
-  --tx-label:    #3A322A;               /* mono label floor — 10.31:1 on cream */
-  /* The real faint step: secondary text that should recede without failing AA.
-     4.82:1 on --cream, 5.27:1 on --paper, 4.34:1 on the deepest --cream-band.
-     For breadcrumb separators, dates, placeholders, table column heads. */
-  --tx-faint:    #6E6353;
-  --dtx-faint:   #8A8071;               /* faintest text on ink — raised from #756c5f
-                                (3.5:1, decoration-only) because real 12px text uses it
-                                (.confirm__id/.confirm__spam, .svc-detail__note): 4.66:1
-                                on ink, still a full step below --dtx-mute (6.68) */
-  --line:        var(--hairline);
+  --dtx:         var(--panel-ink);      /* text on ink */
+  --tx:          var(--ink);            /* body text on paper — 15.11:1 */
+  /* Mono label floor: near-black, 10.61:1 on paper. Was #3A322A, a near
+     duplicate of --rule-dark #3A3227 — consolidated onto the token. */
+  --tx-label:    var(--rule-dark);
+  /* The faint step: secondary text that recedes without failing AA.
+     4.89:1 on --paper, 5.24:1 on --paper-card. Was #6E6353, a near duplicate
+     of --ink-muted #6E6455 — consolidated onto the token.
+     NOTE: 4.22:1 on --paper-tan, so keep it off the deepest band. */
+  --tx-faint:    var(--ink-muted);
+  --tx-mute:     var(--ink-muted);      /* was #635b50 — same step, consolidated */
+  /* Was #8A8071: 4.62:1 on --ink but 4.34:1 on --panel and 4.19:1 on the
+     accent-washed dark inside .mk-box — AA fails on the darker-surface end.
+     Folded onto the one AA-safe dark muted step. */
+  --dtx-faint:   var(--on-dark-muted);
+  --line:        var(--rule);
   --line-soft:   rgba(29,24,18,0.085);  /* kept */
-  --block-gap:   var(--s-48);           /* inter-block gap == 48 */
+  --block-gap:   var(--s-5);            /* header block -> content == 64 */
   --fs-76:       var(--fs-78);          /* legacy scale top -> new ceiling */
   --fs-110:      var(--fs-78);          /* legacy scale top -> new ceiling */
   /* faint film grain, tiled */
   --grain: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxODAnIGhlaWdodD0nMTgwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC44MicgbnVtT2N0YXZlcz0nMicgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCNuKScgb3BhY2l0eT0nMC4wNDUnLz48L3N2Zz4=");
 }
+
+/* Responsive scale overrides — MUST stay after the canonical block above.
+   A media query carries no extra specificity, so an earlier :root would lose
+   to the later plain :root and never take effect. Overriding --section-y
+   re-flows --section-pad / --section-pad-tight, which alias it. */
+@media (max-width: 1024px){ :root{ --section-y: 120px; --section-y-tight: 88px; } }
+@media (max-width: 768px){  :root{ --section-y: 96px;  --section-y-tight: 72px; --s-4: 24px; --gutter: 20px; } }
 
 /* grain on every surface (sits behind content) */
 .paper, .paper-2 { background-color: var(--cream); background-image: var(--grain); }
@@ -781,56 +861,73 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   background-size: 32px 32px, 32px 32px, 180px 180px;
 }
 
-/* ---------- registration / crop-mark motif ---------- */
-.crop { position: relative; }
-.crop::after{
-  content:""; position:absolute; inset:-1px; pointer-events:none; z-index:3;
-  --bc: var(--rust);   /* 16px arms, 1.5px stroke, top-left + bottom-right */
-  background:
-    linear-gradient(var(--bc),var(--bc)) top    left  / 16px 1.5px no-repeat,
-    linear-gradient(var(--bc),var(--bc)) top    left  / 1.5px 16px no-repeat,
-    linear-gradient(var(--bc),var(--bc)) bottom right / 16px 1.5px no-repeat,
-    linear-gradient(var(--bc),var(--bc)) bottom right / 1.5px 16px no-repeat;
-}
-.ink .crop::after, .net.crop::after { --bc: var(--rust-ink); }
+/* ---------- registration / crop-mark motif ----------
+   ONE decoration, defined once and reused. Two absolutely-positioned 14px
+   corner pieces, 2px var(--accent), TOP-RIGHT and BOTTOM-LEFT.
 
-/* ---------- operator chrome: auto-scrolling announcement ticker ---------- */
+   Pseudo-elements rather than real nodes on purpose: they are outside the
+   accessibility tree (so no aria-hidden is needed), they cannot be reached by
+   pointer, and absolute positioning means they add no layout shift.
+
+   Applied to exactly four things — the hero spec card (.statrail), the
+   highlighted pricing row (.svc__item--feature), the /book/ "promise" card
+   (.panel--ink) and the founder photo frame (.bio__portrait). It used to be
+   sprinkled on 23 different components, which made it decoration rather than
+   a mark. Do not add a fifth without removing one. */
+.crop { position: relative; }
+.crop::before,
+.crop::after {
+  content: "";
+  position: absolute;
+  width: 14px; height: 14px;
+  border-color: var(--accent);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 3;
+}
+.crop::before { top: -1px;    right: -1px; border-width: 2px 2px 0 0; }
+.crop::after  { bottom: -1px; left: -1px;  border-width: 0 0 2px 2px; }
+
+/* ---------- operator chrome: top utility bar ----------
+   Reworked 2026-08-01. Was an auto-scrolling marquee carrying four items and a
+   dated build-slot count; it is now two static groups. The marquee is gone
+   outright — with it went the duplicated (aria-hidden) track, the 42s keyframe
+   animation, the will-change compositing layer, the hover/focus pause, and the
+   edge-fade overlays that existed only to hide the loop seam. Nothing here
+   animates, so there is no reduced-motion case to answer any more.
+
+   The class name `.ticker` is deliberately kept: js/analytics.js labels link
+   clicks by `a.closest(".ticker")`, so renaming the root would silently
+   reclassify this bar's traffic as untagged.
+
+   One link only, and it is the sole accent on the bar. */
 .ticker{
-  height:38px; overflow:hidden; display:flex; align-items:center; position:relative;
-  background:var(--cream); border-bottom:1px solid var(--line);
+  height:36px; display:flex; align-items:center;
+  background:var(--paper); border-bottom:1px solid var(--rule);
 }
-/* Edge fades so items never hard-clip mid-word at the rims. Painted as solid
-   cream→transparent overlays instead of the previous 48px mask-image: the bg
-   is solid cream so covering IS fading, it needs no mask support, and it
-   can't be dropped if the animated (will-change) track is ever composited
-   differently. 64px reads as a deliberate fade where 48px read as a clip.
-   The overlays stop 1px short of the bottom hairline. */
-.ticker::before, .ticker::after{
-  content:""; position:absolute; top:0; bottom:1px; width:64px; z-index:2; pointer-events:none;
+.ticker__inner{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:var(--s-16); width:100%; min-width:0;
 }
-.ticker::before{ left:0;  background:linear-gradient(90deg, var(--cream), transparent); }
-.ticker::after { right:0; background:linear-gradient(270deg, var(--cream), transparent); }
-.ticker__track{
-  display:flex; flex:0 0 auto; align-items:center; width:max-content;
-  animation:ticker-scroll 42s linear infinite; will-change:transform;
+.ticker__left, .ticker__right{
+  font-family:var(--mono); font-size:12px; letter-spacing:.04em; line-height:1;
+  white-space:nowrap; min-width:0; overflow:hidden; text-overflow:ellipsis;
 }
-/* pause on hover AND on keyboard focus (the ticker carries a live link) */
-.ticker:hover .ticker__track,
-.ticker:focus-within .ticker__track{ animation-play-state:paused; }
-.ticker__group{ display:flex; align-items:center; gap:0; }
-.ticker__item{
-  font-family:'Space Mono',monospace; font-size:var(--fs-12); letter-spacing:.1em;
-  line-height:1; white-space:nowrap; color:var(--mono-on-cream); padding:0;
-}
-/* a single middot separator, even 16px each side — uniform on every item and at
-   the loop seam, since the 2nd identical group makes the wrap invisible */
-.ticker__item::after{ content:"·"; margin:0 16px; color:var(--mono-on-cream); }
-.ticker .dot{ color:var(--rust); margin-right:var(--s-8); }
-/* two identical groups => -50% shift loops with no visible jump. linear = steady */
-@keyframes ticker-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-@media (prefers-reduced-motion: reduce){
-  .ticker__track{ animation:none; transform:none; }   /* fully static, readable */
-  .ticker__group:nth-child(2){ display:none; }         /* drop the duplicate copy */
+/* 75% ink over paper. color-mix keeps it one declaration instead of an opacity
+   on the element, which would also fade the link inside it. */
+.ticker__left{ color:color-mix(in srgb, var(--ink) 75%, transparent); }
+.ticker__right{ color:var(--ink-muted); }
+/* the separator rides on the second clause so both disappear together at 768 */
+.ticker__clause--alt::before{ content:"·"; margin:0 12px; }
+/* --accent-text, not raw --accent: this is 12px, the smallest type on the site,
+   and plain --accent is 4.26:1 on --paper (AA fail). See the MONO/colour notes
+   in CLAUDE.md. */
+.ticker__link{ color:var(--accent-text); text-decoration:none; }
+.ticker__link:hover,
+.ticker__link:focus-visible{ text-decoration:underline; text-underline-offset:2px; }
+/* mobile: first clause only */
+@media (max-width:768px){
+  .ticker__clause--alt, .ticker__right{ display:none; }
 }
 @keyframes mm-pulse{ 0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(236,108,61,.55); } 50%{ opacity:.45; box-shadow:0 0 0 4px rgba(236,108,61,0); } }
 
@@ -869,14 +966,9 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
 [data-hero-machine][data-state="play"] .hm-baseline{ animation:hm-base .6s cubic-bezier(.7,0,.3,1) .55s forwards; }
 @keyframes hm-base{ to{ transform:scaleX(1); } }
 
-.hm-crop{ position:absolute; box-sizing:border-box; width:13px; height:13px; background:none; padding:0; border:1.5px solid var(--rust); z-index:1; opacity:0; }
-.hm-crop--tl{ top:18px; left:18px; border-right:0; border-bottom:0; }
-.hm-crop--tr{ top:18px; right:18px; border-left:0; border-bottom:0; }
-.hm-crop--bl{ bottom:18px; left:18px; border-right:0; border-top:0; }
-.hm-crop--br{ bottom:18px; right:18px; border-left:0; border-top:0; }
-[data-hero-machine][data-state="play"] .hm-crop,
-[data-hero-machine][data-state="done"] .hm-crop{ animation:hm-crop .4s var(--ease) .7s forwards; }
-@keyframes hm-crop{ from{ opacity:0; transform:scale(.6) } to{ opacity:1; transform:none } }
+/* .hm-crop removed 2026-08-02: a second four-corner registration-mark
+   system (13px / 1.5px / four corners) competing with the systematized
+   .crop component (14px / 2px / two corners). One motif, one definition. */
 
 [data-hero-machine][data-state="done"] .hm-letter{ transform:none; opacity:1; }
 [data-hero-machine][data-state="done"] .hm-baseline{ transform:scaleX(1); }
@@ -981,13 +1073,13 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .bio__portrait img{ display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; filter:saturate(0); mix-blend-mode:multiply; }
 .bio__portrait figcaption{ display:block; padding: var(--s-16) var(--s-24) var(--s-16); border-top:1px solid var(--line); }
 .bio__name{ display:block; font-weight:800; font-size: var(--fs-20); letter-spacing:-.02em; }
-.bio__role{ display:block; font-family:var(--mono); font-size: var(--fs-13); color:var(--tx-mute); letter-spacing:.04em; margin-top:var(--s-12); line-height:1.7; }
+.bio__role{ display:block; font-family:var(--sans); font-size: var(--t-sm); color:var(--tx-mute); letter-spacing:normal; margin-top:var(--s-12); line-height:1.7; }
 .bio__prose p{ font-size: var(--fs-20); line-height:1.6; color:var(--tx-mute); max-width:60ch; }
 .bio__prose p b{ color: var(--tx); font-weight:700; }
 .bio__prose p + p{ margin-top:var(--s-24); }
-.bio__press{ font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.02em; color:var(--tx-mute); margin-top:var(--s-24); padding-top:var(--s-24); border-top:1px solid var(--line); line-height:2.0; }
+.bio__press{ font-family:var(--sans); font-size: var(--t-sm); letter-spacing:normal; color:var(--tx-mute); margin-top:var(--s-24); padding-top:var(--s-24); border-top:1px solid var(--line); line-height:2.0; }
 /* the note now anchors the bottom-left of the photo column */
-.bio__note{ margin-top:auto; padding-top:var(--s-24); font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-mute); line-height:1.7; }
+.bio__note{ margin-top:auto; padding-top:var(--s-24); font-family:var(--sans); font-size:var(--t-sm); letter-spacing:normal; color:var(--tx-mute); line-height:1.7; }
 .bio__note a{ color:var(--tx); text-decoration:underline; text-underline-offset:2px; }
 .bio__note a:hover{ color:var(--rust); }
 /* press outlets: solid ink wordmarks, uniform cap-height, tuned 8px dots */
@@ -1008,7 +1100,7 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
    ever renders, per the proof-shelf rule. Zero quotes = no section. ---- */
 .testi{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
 .testi blockquote{ border:1px solid var(--line); background:var(--paper-card); padding:28px 26px; font-size:var(--fs-16); line-height:1.6; margin:0; }
-.testi blockquote::before{ content:"“"; display:block; color:var(--accent); font-size:34px; font-weight:800; line-height:1; margin-bottom:10px; }
+.testi blockquote::before{ content:"“"; display:block; color:var(--accent); font-size:var(--t-xl); font-weight:800; line-height:1; margin-bottom:10px; }
 .testi cite{ display:block; margin-top:16px; padding-top:14px; border-top:1px dashed var(--line); font-style:normal; font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.06em; color:var(--tx-mute); line-height:1.6; }
 
 /* ---- the math ---- */
@@ -1098,8 +1190,8 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
    they must be allowed to wrap on a narrow card rather than overflow it. */
 .roi__big{ margin-top:var(--s-12); font-weight:900; font-size: clamp(var(--fs-25),3.6vw,var(--fs-39));
   line-height:1.02; letter-spacing:-.035em; color: var(--accent); overflow-wrap:break-word; }
-.roi__bigunit{ margin-top:var(--s-8); font-family:var(--mono); font-size:var(--fs-12);
-  letter-spacing:.06em; line-height:1.5; color: var(--tx-faint); }
+.roi__bigunit{ margin-top:var(--s-8); font-family:var(--sans); font-size:var(--t-sm);
+  letter-spacing:normal; line-height:1.5; color: var(--tx-faint); }
 .ink .roi__bigunit{ color: var(--dtx-faint); }
 .roi__disclaim{ margin-top:var(--s-16); font-size: var(--fs-13); line-height:1.5; color: var(--tx-mute); }
 
@@ -1107,7 +1199,7 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
   padding: var(--s-12) var(--s-16); border-top:1px solid var(--line); background: var(--paper-2);
   font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.12em; text-transform:uppercase; color: var(--tx-mute); } /* --tx-faint is 4.34:1 on paper-2 */
 .roi__foot b{ color: var(--tx); font-weight:700; }
-@media(max-width:520px){ .roi__bar, .roi__foot{ flex-direction:column; align-items:flex-start; gap:var(--s-4); } }
+@media(max-width:520px){ .roi__bar, .roi__foot{ flex-direction:column; align-items:flex-start; gap:var(--s-04); } }
 
 .roi__cta{ margin-top:var(--s-32); display:flex; align-items:center; gap:clamp(20px,3vw,36px); flex-wrap:wrap; }
 .roi__cta p{ flex:1; min-width:280px; font-size: var(--fs-16); line-height:1.55; color: var(--tx-mute); }
@@ -1119,9 +1211,8 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .ink .roi .accent-tx{ color: var(--accent); }
 
 /* ---- homepage calculator band: ONE balanced 2-col grid; slim card stacks ---- */
-.section.calcband{ padding-block: var(--s-128); }
-@media(max-width:760px){ .section.calcband{ padding-block: var(--s-64); } }
-.calcband__grid{ max-width:1200px; margin-inline:auto; display:grid; grid-template-columns:1.1fr .9fr; gap:var(--s-64); align-items:center; }
+/* .calcband takes the standard rhythm; the responsive step comes from --section-y. */
+.calcband__grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:var(--s-64); align-items:center; }
 @media(max-width:900px){ .calcband__grid{ grid-template-columns:1fr; gap:var(--s-48); } }
 .calcband__intro{ min-width:0; }
 .calcband__intro .lead{ max-width:46ch; }
@@ -1175,17 +1266,17 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .build p{ font-size: var(--fs-16); color:var(--tx-mute); line-height:1.5; }
 .build__win{
   display:block; margin-top:var(--s-16); padding-top:var(--s-16); border-top:1px dashed var(--line);
-  font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.02em; line-height:1.5; color:var(--tx);
+  font-family:var(--sans); font-size: var(--t-sm); letter-spacing:normal; line-height:1.5; color:var(--tx);
 }
 .builds__note{
   padding: var(--s-16) var(--s-24); border-top:1px solid var(--line);
-  font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.04em; line-height:1.6; color:var(--tx-label);
+  font-family:var(--sans); font-size: var(--t-sm); letter-spacing:normal; line-height:1.6; color:var(--tx-label);
 }
 
 /* citation under the 22%/78% stat pair (dark section) */
 .stat-source{
   margin-top:var(--s-16);
-  font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.04em; line-height:1.6;
+  font-family:var(--sans); font-size: var(--t-sm); letter-spacing:normal; line-height:1.6;
   color:var(--mono-on-dark);
 }
 .stat-source em{ font-style:italic; }
@@ -1461,7 +1552,7 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 /* ============ COMPARISON TABLE (extractable, GEO) ============ */
 .cmp__wrap{ overflow-x:auto; margin-top: var(--block-gap); -webkit-overflow-scrolling:touch; }
 table.cmp{ width:100%; border-collapse:collapse; font-size: var(--fs-16); line-height:1.5; }
-table.cmp caption{ text-align:left; font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.12em; text-transform:uppercase; color:var(--tx-mute); margin-bottom:var(--s-16); }
+table.cmp caption{ text-align:left; font-family:var(--sans); font-size: var(--t-sm); letter-spacing:normal; text-transform:none; color:var(--tx-mute); margin-bottom:var(--s-16); }
 table.cmp th, table.cmp td{ text-align:left; padding:15px 18px; border-bottom:1px solid var(--line); vertical-align:top; }
 table.cmp thead th{ font-family:var(--mono); font-size: var(--fs-13); letter-spacing:.12em; text-transform:uppercase; color:var(--tx-faint); font-weight:700; border-bottom:1px solid var(--tx); }
 table.cmp tbody th{ font-weight:700; white-space:nowrap; }
@@ -1485,8 +1576,7 @@ table.cmp .cmp__price{ font-family:var(--mono); color:var(--accent-text); white-
 .crumb a { color: var(--tx-mute); }
 .crumb a:hover { color: var(--tx); }
 .crumb .sep { opacity: .5; }
-.pagehero { padding-top: var(--hero-top); padding-bottom: var(--s-64); }
-@media (max-width: 640px){ .pagehero { padding-top: var(--s-48); } }
+/* .pagehero takes --section-y; --hero-top no longer special-cases the top. */
 .pagehero h1 { margin: 22px 0 24px; }
 .pagehero .lead { font-size: clamp(var(--fs-16),1.5vw,var(--fs-20)); max-width: 62ch; }
 .pagehero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
@@ -1635,7 +1725,7 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 .svc-detail__main > h3:first-child { margin-top: 0; }
 .svc-detail__main p { font-size: var(--fs-16); line-height: 1.6; color: var(--tx-mute); margin-bottom: var(--s-12); max-width: 60ch; }
 .svc-detail__main p b { color: var(--tx); font-weight: 700; }
-.svc-detail__note { font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-label); line-height: 1.6; }
+.svc-detail__note { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-label); line-height: 1.6; }
 .svc-detail__card { position: relative; background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--r-md); padding: var(--s-24); align-self: start; } /* equal 24px inner padding, light + dark */
 .svc-detail__card .tick-lbl { display: block; margin-bottom: var(--s-16); }
 .svc-detail__deliv { list-style: none; display: flex; flex-direction: column; gap: var(--s-12); margin-bottom: var(--s-24); }
@@ -1656,7 +1746,7 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 .timeline90__seg { flex: 1; padding: clamp(var(--s-24), 2.4vw, var(--s-32)); border-left: 1px solid var(--hairline); min-width: 0; } /* even thirds */
 .timeline90__seg:first-child { border-left: 0; }
 .timeline90__weeks { display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); } /* --rust is 4.13:1 on the cream band — under 4.5 */
-.timeline90__phase { display: block; font-weight: 700; font-size: var(--fs-20); letter-spacing: -0.01em; margin: var(--s-8) 0 var(--s-4); color: var(--ink); }
+.timeline90__phase { display: block; font-weight: 700; font-size: var(--fs-20); letter-spacing: -0.01em; margin: var(--s-8) 0 var(--s-04); color: var(--ink); }
 .timeline90__seg p { font-size: var(--fs-13); color: var(--tx-mute); line-height: 1.4; }
 @media (max-width: 680px){ .timeline90 { flex-direction: column; } .timeline90__seg { border-left: 0; border-top: 1px solid var(--hairline); } .timeline90__seg:first-child { border-top: 0; } }
 
@@ -1716,7 +1806,7 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 
 /* ---- "how it's sold" line ---- */
 .sold { margin-top: var(--s-32); padding-top: var(--s-16); border-top: 1px dashed var(--line);
-  font-family: var(--mono); font-size: var(--fs-13); line-height: 1.6; color: var(--tx-label); max-width: 74ch; }
+  font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; line-height: 1.6; color: var(--tx-label); max-width: 74ch; }
 .sold b { color: var(--tx); font-weight: 700; }
 .ink .sold { border-top-color: var(--dline); color: var(--dtx-faint); }
 .ink .sold b { color: var(--dtx); }
@@ -1732,17 +1822,19 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 .ba__bar--before { background: var(--blueprint); }
 .ba__bar--after { background: var(--ink); }
 .ba__bar--after span { color: var(--tx); font-weight: 700; }
-.ba__note { margin-top: var(--s-12); font-family: var(--mono); font-size: var(--fs-12); line-height: 1.6; color: var(--tx-label); max-width: 70ch; }
+.ba__note { margin-top: var(--s-12); font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; line-height: 1.6; color: var(--tx-label); max-width: 70ch; }
 
 /* ---- approve / send back / escalate ---- */
 .bound { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-16); margin-top: var(--block-gap); }
-.bound__i { padding: clamp(var(--s-16), 2.4vw, var(--s-32)); background: var(--paper-card); border: 1px solid var(--hairline); border-top: 3px solid var(--ink); border-radius: 0 0 var(--r-md) var(--r-md); }
+/* was: a 3px ink top edge + asymmetric radius — a partial-border experiment
+   competing with the crop mark. Now the standard hairline card. */
+.bound__i { padding: clamp(var(--s-16), 2.4vw, var(--s-32)); background: var(--paper-card); border: 1px solid var(--hairline); }
 .bound__n { font-size: clamp(var(--fs-25), 3vw, var(--fs-31)); color: var(--accent-text); margin-top: var(--s-8); }
 .bound__n small { font-size: .55em; font-weight: 900; margin-left: 1px; }
 .bound__d { margin-top: var(--s-8); font-size: var(--fs-13); line-height: 1.5; color: var(--tx-mute); }
 
 /* ---- measurement-window disclosure ---- */
-.window-note { margin-top: var(--s-24); font-family: var(--mono); font-size: var(--fs-12); line-height: 1.7; max-width: 82ch; color: var(--mono-on-dark); }
+.window-note { margin-top: var(--s-24); font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; line-height: 1.7; max-width: 82ch; color: var(--mono-on-dark); }
 .paper .window-note, .paper-2 .window-note { color: var(--mono-on-cream); }
 
 /* ---- homepage "Example builds" outcome stats ---- */
@@ -1812,47 +1904,12 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 .tl .tick-lbl,
 .foot .tick-lbl { color: var(--mono-on-dark); }
 
-/* ---- 2. body-copy link affordance (WCAG 1.4.1) ----
-   Links inside running copy must not rely on colour alone. Buttons opt out:
-   they already read as controls. */
-.lead a:not(.btn),
-p a:not(.btn),
-.svc-detail__main a:not(.btn),
-.arg__body a:not(.btn),
-li a:not(.btn):not(.nav__link) {
-  color: var(--accent-text);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-thickness: 1px;
-}
-.lead a:not(.btn):hover,
-p a:not(.btn):hover,
-.svc-detail__main a:not(.btn):hover,
-.arg__body a:not(.btn):hover { color: var(--accent-deep); }
-
-/* Dark-surface variant — the documented on-dark accent token. Without this
-   every body link on ink would render in --accent-text, which is rust
-   darkened for cream and fails badly against --ink. */
-.ink .lead a:not(.btn),
-.ink p a:not(.btn),
-.ink li a:not(.btn),
-.foot p a:not(.btn),
-.foot li a:not(.btn),
-.svc__item--feature p a:not(.btn),
-.svc__item--feature li a:not(.btn),
-.arg--amp p a:not(.btn),
-.failstat p a:not(.btn),
-.promise__col--dont p a:not(.btn),
-.promise__col--dont li a:not(.btn),
-.math__fig p a:not(.btn),
-.faq__aside p a:not(.btn),
-.faq-strip p a:not(.btn),
-.subcard p a:not(.btn),
-.tl p a:not(.btn) { color: var(--accent-ink); }
-
-.ink .lead a:not(.btn):hover,
-.ink p a:not(.btn):hover,
-.foot p a:not(.btn):hover { color: var(--rust-bright); }
+/* ---- 2. body-copy links ----
+   Superseded by the LINK SYSTEM at the foot of this file, which reduces every
+   content link to STYLE A (in-text) or STYLE B (standalone action). This block
+   used to set --accent-text + underline at rest, which is now the reserved
+   hover state for STYLE A; the dark-surface variant that followed it is gone
+   for the same reason. */
 
 /* ---- 3. footer logo ----
    The footer mark carries `class="logo ink"`, but no .logo.ink rule existed,
@@ -1875,7 +1932,7 @@ p a:not(.btn):hover,
 .gtable tr:last-child td{ border-bottom:0; }
 .gtable .us td{ background:var(--surface-hi); color:var(--tx); box-shadow:inset 3px 0 0 var(--accent); }
 .gtable td b{ color:var(--tx); }
-.gtable-note{ font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.02em; color:var(--tx-faint); margin-top:-0.6em; }
+.gtable-note{ font-family:var(--sans); font-size:var(--t-sm); letter-spacing:normal; color:var(--tx-faint); margin-top:-0.6em; }
 .prose .check{ list-style:none; padding-left:0; counter-reset:ck; }
 .prose .check li{ counter-increment:ck; position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--line-soft); }
 .prose .check li::before{ content:counter(ck,decimal-leading-zero); position:absolute; left:0; top:14px; font-family:var(--mono); font-size:var(--fs-13); letter-spacing:.08em; color:var(--accent-text); }
@@ -1937,7 +1994,8 @@ p a:not(.btn):hover,
 .field.full { grid-column: 1 / -1; }
 .field > label { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--tx-mute); display: flex; gap: 6px; align-items: baseline; }
 .field .req { color: var(--accent); font-weight: 700; }
-.field .opt { color: var(--tx-faint); text-transform: none; letter-spacing: .03em; font-size: var(--fs-12); }
+/* helper text riding inside a label — prose, so it leaves the mono label set */
+.field .opt { font-family: var(--sans); color: var(--tx-faint); text-transform: none; letter-spacing: normal; font-size: var(--t-sm); }
 
 /* ---- the control ---- */
 .input {
@@ -1963,8 +2021,8 @@ select.input:invalid { color: var(--tx-faint); }
    and does not shift layout. A focused errored field shows both at once. */
 .field.err .input { border-color: var(--accent-deep); box-shadow: inset 4px 0 0 var(--accent-deep); }
 .field.err .input:focus { border-color: var(--accent); box-shadow: inset 4px 0 0 var(--accent-deep), 0 0 0 3px var(--accent-soft); }
-.field__hint { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); letter-spacing: .02em; line-height: 1.6; }
-.field__err { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent-text); letter-spacing: .02em; display: none; }
+.field__hint { font-family: var(--sans); font-size: var(--t-sm); color: var(--tx-faint); letter-spacing: normal; line-height: 1.6; }
+.field__err { font-family: var(--sans); font-size: var(--t-sm); color: var(--accent-text); letter-spacing: normal; display: none; }
 .field.err .field__err { display: block; }
 
 /* honeypot — visually & a11y hidden, still submitted if a bot fills it */
@@ -1989,7 +2047,8 @@ select.input:invalid { color: var(--tx-faint); }
 .filedrop.has-file { border-style: solid; border-color: var(--accent); }
 .filedrop__icon { width: 40px; height: 40px; flex: none; border: 1.5px solid var(--tx); display: grid; place-items: center; font-family: var(--mono); font-size: var(--fs-12); font-weight: 700; color: var(--tx); }
 .filedrop.has-file .filedrop__icon { border-color: var(--accent); color: var(--accent); }
-.filedrop__text { font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.35; min-width: 0; }
+/* prose inside the drop target — the "PDF" chip beside it stays mono */
+.filedrop__text { font-family: var(--sans); font-size: var(--t-base); letter-spacing: normal; text-transform: none; color: var(--tx-mute); line-height: 1.35; min-width: 0; }
 .filedrop__text b { color: var(--tx); font-weight: 700; word-break: break-word; }
 .filedrop__text .sub { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); display: block; margin-top: 3px; text-transform: uppercase; }
 /* the input overlays the whole zone: native click + drag target, ≥44px */
@@ -1999,7 +2058,7 @@ select.input:invalid { color: var(--tx-faint); }
 /* ---- footer / submit ---- */
 .formfoot { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
 .submitrow { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
-.formfoot .note { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-mute); line-height: 1.6; max-width: 50ch; }
+.formfoot .note { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; max-width: 50ch; }
 .formfoot .note b { color: var(--accent); font-weight: 700; }
 .formfoot__error {
   margin: 16px 0 0; font-family: var(--mono); font-size: var(--fs-13); line-height: 1.5;
@@ -2078,7 +2137,7 @@ select.input:invalid { color: var(--tx-faint); }
    drift from site-facts.json.
    ========================================================= */
 .reversal { margin-top: var(--s-24); padding-top: var(--s-16); border-top: 1px solid var(--line); max-width: 62ch; }
-.reversal p { margin: 0; font-family: var(--mono); font-size: var(--fs-12); line-height: 1.65; color: var(--tx-mute); }
+.reversal p { margin: 0; font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; line-height: 1.65; color: var(--tx-mute); }
 .reversal p + p { margin-top: var(--s-8); }
 .reversal b { color: var(--tx); font-weight: 700; }
 .reversal a { color: var(--accent-text); }
@@ -2092,7 +2151,7 @@ select.input:invalid { color: var(--tx-faint); }
 .estimate-form > label { display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute); margin-bottom: var(--s-12); }
 .estimate-form__row { display: flex; gap: var(--s-12); flex-wrap: wrap; }
 .estimate-form__row .input { flex: 1 1 240px; width: auto; }
-.estimate-form__note { margin-top: var(--s-12); font-family: var(--mono); font-size: var(--fs-12); line-height: 1.6; color: var(--tx-faint); max-width: 56ch; }
+.estimate-form__note { margin-top: var(--s-12); font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; line-height: 1.6; color: var(--tx-faint); max-width: 56ch; }
 .ink .estimate-form { border-top-color: var(--dline); }
 .ink .estimate-form > label { color: var(--dtx-mute); }
 .ink .estimate-form__note { color: var(--dtx-faint); }
@@ -2103,15 +2162,631 @@ select.input:invalid { color: var(--tx-faint); }
    the two doors are not equally weighted in the first place. Below 620px the
    primary also goes full-width and the pair stacks. */
 .hero__cta--weighted { align-items: center; }
-.hero__cta--weighted .hero__cta-alt {
-  border: 0; background: none; padding: 0; width: auto;
-  font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em;
-  text-decoration: underline; text-underline-offset: 3px; color: var(--accent-text);
-}
-.ink .hero__cta--weighted .hero__cta-alt { color: var(--accent-ink); }
-.hero__cta--weighted .hero__cta-alt:hover { background: none; color: var(--accent-deep); }
+/* The second hero CTA is an ACTION, so under the 2026-08-01 button spec it is a
+   real SECONDARY button rather than the text link it briefly was. No overrides:
+   it takes the .btn--secondary box exactly. */
 @media (max-width: 620px) {
   .hero__cta--weighted { flex-direction: column; align-items: stretch; gap: var(--s-12); }
   .hero__cta--weighted .btn--primary { width: 100%; justify-content: center; }
   .hero__cta--weighted .hero__cta-alt { align-self: flex-start; }
 }
+
+/* =========================================================
+   MONO TYPOGRAPHY RULE — added 2026-08-01
+   The mono face is for SHORT LABELS AND DATA VALUES ONLY:
+   uppercase eyebrows and section labels, spec-card keys and
+   values, prices, dates, timelines, small tags. It is never
+   used for a sentence or a paragraph.
+
+   Prose that used to sit in mono (guide footnotes, the press
+   line, CTA asides, form helper text, the newsletter fine
+   print) now renders in var(--sans) at var(--t-sm) in
+   sentence case — those rules were converted in place, so
+   there is nothing to override here.
+
+   This block is the single standard for what STAYS mono. It
+   sits last on purpose: every selector below is a plain class
+   (0,1,0), so source order is what makes it win over the
+   scattered per-component label declarations above.
+
+   Deliberately NOT in this list: `.prose code` / `.prose pre`
+   (uppercasing code corrupts it), and the large display
+   numerals (.svc__no, .q-pm, .roi__count, .nf__code) which are
+   data at display size, not labels.
+   ========================================================= */
+.kicker, .eyebrow, .tick-lbl, .spec-card__label, .statrail__k,
+.entity__role, .feed__date, .post__date, .arg__tag, .gcard__meta,
+.cr-spec__k, .svc-ba__k, .timeline90__weeks, .story-feat__tag,
+.cr-after__lbl, .fgroup__t, .tool, .tag, .panel__t, .field > label,
+.blogsearch__hint, .src, .build__no, .prose figcaption, .ba__what,
+.svc__tab, .math__cap, .foot__col h2, .ops-strip span,
+.failstat__ratio-lbls, .feed__read, .feed__archive, .ind__go,
+.path__no, .ind__no, .phase__no, .chap__num {
+  font-size: var(--t-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Colour is scoped to light surfaces, per the rule: on ink the muted
+   step would be unreadable, so those keep the dark-surface colours
+   already declared per component. Accent-coloured markers and label
+   LINKS are excluded — accent there is load-bearing (it marks the
+   affordance), not decoration. */
+:is(.paper, .paper-2, .blueprint) :is(.kicker, .eyebrow, .tick-lbl,
+  .spec-card__label, .statrail__k, .entity__role, .feed__date,
+  .post__date, .arg__tag, .gcard__meta, .cr-spec__k, .svc-ba__k,
+  .timeline90__weeks, .story-feat__tag, .cr-after__lbl, .fgroup__t,
+  .tool, .tag, .panel__t, .blogsearch__hint, .src, .build__no,
+  .prose figcaption, .ba__what) {
+  color: var(--ink-muted);
+}
+/* .svc__tab is NOT in the colour list above. It is a chip that paints its own
+   accent background, so it is not "a label on a light surface" even though it
+   sits inside one — this rule's (0,2,0) beat its own (0,1,0) `color` and drove
+   it to 1.15:1 on the rust chip. Typography still standardises it; colour is
+   its own. White, not --paper: --paper is 4.26:1 on --accent (AA fail). */
+.svc__tab { color: #fff; }
+
+/* =========================================================
+   DARK-SURFACE CONTRAST LAYER — added 2026-08-01
+   Every text/background pair on the site was measured by rendering all 41
+   routes and compositing the real paint stack (translucent layers, color-mix
+   backgrounds and inherited opacity all folded in). This block fixes what
+   failed WCAG AA on dark.
+
+   It works by REBINDING THE TEXT TOKENS on dark surfaces rather than listing
+   every descendant class. The older DARK-SURFACE CASCADE above notes that
+   "CSS has no selector variables, so the lists are written out" — that is what
+   made it leak: a label class nobody remembered to add (.tag, .arg__tag,
+   .story-feat__tag, .panel__t, .d …) silently kept its light-surface colour
+   and rendered at 3.09:1 on ink. Rebinding the tokens once fixes every
+   descendant that reads them, including ones added later.
+
+   Sits last so it wins on source order over the per-component colours above.
+   ========================================================= */
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature,
+    .entity--here, .subcard, .promise__col--dont, .faq__aside, .faq-strip,
+    .tl, .arg--amp, .math__fig, .story-feat, .foundernote, .never,
+    .mk-box, .mk-story, .archtab) {
+  /* body + generic text */
+  --tx:            var(--panel-ink);
+  /* muted / secondary steps all collapse onto the AA-safe dark muted */
+  --ink-muted:     var(--on-dark-muted);
+  --tx-mute:       var(--on-dark-muted);
+  --tx-faint:      var(--on-dark-muted);
+  --tx-label:      var(--on-dark-muted);
+  --mono-on-cream: var(--on-dark-muted);
+  --label:         var(--on-dark-muted);
+  /* --accent-text is rust DARKENED for cream; on ink it lands at 2.8:1 */
+  --accent-text:   var(--accent-ink);
+}
+
+/* ---- 2. headings on dark read near-white ---- */
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature,
+    .entity--here, .subcard, .promise__col--dont, .faq__aside, .faq-strip,
+    .tl, .arg--amp, .math__fig, .story-feat, .foundernote, .never,
+    .mk-box, .mk-story, .archtab) :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--on-dark-head);
+}
+
+/* ---- 4. red on dark is a 16px+ short-label affordance only ----
+   The mono label set is 11px by the MONO TYPOGRAPHY RULE, so every one of
+   these is below the floor: they take the muted step instead of accent.
+   Larger accent text (.accent-tx, display numerals, 16px+ links) keeps
+   --accent-ink, which is now the lightened #E86A3E. */
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature,
+    .entity--here, .subcard, .promise__col--dont, .faq__aside, .faq-strip,
+    .tl, .arg--amp, .math__fig, .story-feat, .foundernote, .never,
+    .mk-box, .mk-story, .archtab) :is(.kicker, .tick-lbl, .arg__tag, .tag, .phase__no,
+    .story-feat__tag, .foundernote__tag, .cr-trait__n, .q-no, .ln, .go,
+    .statrail__k, .gcard__meta, .svc-ba__k, .timeline90__weeks, .fgroup__t,
+    .cr-spec__k, .cr-after__lbl, .build__no, .src) {
+  color: var(--on-dark-muted);
+}
+
+/* ---- 3. footer ----
+   Links were --dtx-mute (6.62:1 — legible but reading as muted body text).
+   Cream + a permanent 1px underline makes them read as links without spending
+   the accent, which is reserved for hover and the one primary CTA. */
+.foot .foot__col a:not(.btn),
+.foot .foot__col li a:not(.btn),
+.foot .foot__bottom a:not(.btn) {
+  color: var(--on-dark-head);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.foot .foot__col a:not(.btn):hover,
+.foot .foot__col li a:not(.btn):hover,
+.foot .foot__bottom a:not(.btn):hover { color: var(--accent-ink); }
+/* column headings stay mono-label, muted */
+.foot__col h2 { color: var(--on-dark-muted); }
+
+/* ---- primary CTA ----
+   The 2026-08-01 button spec sets PRIMARY text to var(--paper) explicitly, so
+   the #fff override added by the contrast pass is retired here. NOTE: --paper
+   on --accent is 4.26:1, under the 4.5:1 AA floor for this size; #fff was
+   5.06:1. Flagged in the handover — one token reverts it. */
+
+/* ---- breadcrumb separator ----
+   `opacity:.5` composited --ink-muted down to 1.99:1. The separator is still
+   the quietest thing in the crumb, just not below the floor. */
+.crumb .sep { opacity: 1; color: var(--ink-muted); }
+
+/* ---- LIGHT ISLANDS ----
+   A light card can sit INSIDE a dark section, and the token rebinding above
+   is inherited, not background-aware — it would paint cream-on-cream. These
+   are the surfaces the audit found doing it: the ROI estimator card and the
+   approve/send-back tiles, both --paper-card inside an .ink band. They read
+   --muted-on-light, which is never rebound, so the restore is not circular.
+   `.fig` / `.score` / `.svc-detail__card` are light by default and only dark
+   under .ink, so they are scoped that way in the lists above instead. */
+:is(.roi, .bound__i) {
+  --tx:            var(--ink);
+  --ink-muted:     var(--muted-on-light);
+  --tx-mute:       var(--muted-on-light);
+  --tx-faint:      var(--muted-on-light);
+  --tx-label:      var(--rule-dark);
+  --mono-on-cream: var(--muted-on-light);
+  --label:         var(--muted-on-light);
+  --accent-text:   color-mix(in srgb, var(--accent) 86%, #000);
+  --dtx-faint:     var(--muted-on-light);
+}
+:is(.roi, .bound__i) :is(h1, h2, h3, h4, h5, h6) { color: var(--ink); }
+
+/* Light islands: the token reset above is not enough on its own. The dark
+   label rule and the dark body-link rule both set an explicit `color` at
+   (0,2,0)/(0,2,2), which a token rebinding cannot outrank — these restate the
+   light colour at matching specificity, and win on source order. */
+:is(.roi, .bound__i) :is(.kicker, .tick-lbl, .arg__tag, .tag, .phase__no,
+  .story-feat__tag, .foundernote__tag, .cr-trait__n, .q-no, .ln, .go,
+  .statrail__k, .gcard__meta, .svc-ba__k, .timeline90__weeks, .fgroup__t,
+  .cr-spec__k, .cr-after__lbl, .build__no, .src) { color: var(--muted-on-light); }
+/* Light-island body links follow STYLE A (currentColor + underline); forcing
+   --accent-text here would recreate the forbidden underline+accent at rest. */
+:is(.roi, .bound__i) p a:not(.btn),
+:is(.roi, .bound__i) li a:not(.btn) { color: inherit; }
+
+/* ---- 5. light-surface pairs the sitewide sweep turned up ----
+   Out of the dark-section brief, but item 5 asked for AA everywhere.
+   Text colours only; no background moves.
+
+   --paper-tan is the deepest light surface, and the muted step lands at
+   4.22:1 on it — the one step of the scale that never cleared AA. Darkened on
+   that surface only (4.62:1), so --paper/--paper-card keep the lighter tone. */
+/* Raw --accent on the tan band is 3.68:1; --accent-text is the AA-safe step
+   that already exists for exactly this (4.67:1 on tan). */
+.paper-2 :is(.a, .k, .req, b) { color: var(--accent-text); }
+
+/* Breadcrumb separator: opacity .5 composited the muted step down to 1.99:1.
+   Every crumb variant, not just .crumb — /book/, /security/, /privacy/ and
+   /terms/ use their own crumb classes and kept the faded one. */
+.sep { opacity: 1; color: var(--ink-muted); }
+
+/* Compound dark surfaces, kept OUT of the :is() lists above on purpose.
+   :is() takes the HIGHEST specificity among its arguments, so one compound
+   like `.svc-detail.ink .svc-detail__card` lifted the entire list from (0,1,0)
+   to (0,2,1) — which then outranked the light-island reset and repainted the
+   ROI card's labels in the dark muted step. Same declarations, own rules. */
+:is(.svc-detail.ink .svc-detail__card, .ink .fig, .ink .score) {
+  --tx: var(--panel-ink);
+  --ink-muted: var(--on-dark-muted);
+  --tx-mute: var(--on-dark-muted);
+  --tx-faint: var(--on-dark-muted);
+  --tx-label: var(--on-dark-muted);
+  --mono-on-cream: var(--on-dark-muted);
+  --label: var(--on-dark-muted);
+  --accent-text: var(--accent-ink);
+}
+:is(.svc-detail.ink .svc-detail__card, .ink .fig, .ink .score) :is(h1,h2,h3,h4,h5,h6) { color: var(--on-dark-head); }
+
+/* ---- raw --accent used as small text on paper (4.26:1) ----
+   --accent-text is the AA-safe step (5.40:1 on --paper, 4.67:1 on --paper-tan).
+   Using the token rather than a literal means these also stay correct on dark,
+   where the layer above rebinds --accent-text to the lightened --accent-ink. */
+.btn--ghost,
+.nav__links a.is-active,
+.logo__word .amp,
+:is(.crumb, .legal__crumb, .bookhero__crumb, .sechero__crumb) a,
+.logo__word .amp,
+:is(.a, .k, .req, .cr-spec__v, .cr-value__n) { color: var(--accent-text); }
+.crumb .sep { opacity: 1; }
+
+/* =========================================================
+   VERTICAL RHYTHM LAYER — added 2026-08-01
+   One rhythm, expressed in the foundation tokens:
+     section padding   --section-y   (160 / 120 ≤1024 / 96 ≤768)
+     head -> content   --block-gap = --s-5   (64)
+     sibling cards     --s-3         (24)
+     card interior     --s-4         (40 desktop, 24 ≤768 — the token already
+                                      steps down at that breakpoint, so card
+                                      padding needs no media query of its own)
+     eyebrow -> H2     --s-2         (16)
+     H2 -> intro       --s-3         (24)
+   Sits last so it wins on source order over per-component spacing.
+   ========================================================= */
+
+/* ---- 5. head-block internals ----
+   These beat the .mt-s utility (0,1,0) on specificity (0,1,1) rather than
+   stripping the class from 423 elements: .mt-s is the site's generic 16px
+   nudge and is correct in most of the places it appears — it was only ever
+   wrong where it set the H2 -> intro step, which wants 24. */
+:is(.kicker, .eyebrow, .tick-lbl, .doc__sub) + :is(h1, h2, h3, .h1, .h2) { margin-top: var(--s-2); }
+:is(h1, h2, .h1, .h2) + :is(p, .lead, .sub, .prose) { margin-top: var(--s-3); }
+
+/* ---- 3. sibling cards / rows ----
+   Only genuine card collections. Deliberately NOT included: the two-column
+   page layouts (.hero__grid, .pagehero__grid, .head-block, .news, .faq, .bio,
+   .math, .prose-2, .calcband__grid, .svc-detail__grid, .math-vs, .final .wrap,
+   .foot__signup) whose gap is a column measure, not a card gap; and the
+   hairline grids (.paths, .phases, .diffs, .profile, .ind, .promise,
+   .timeline, .arg, .svc__item) that draw their own 0/1px borders — giving
+   those a 24px gap would break the bordered-grid motif. */
+:is(.scoregrid, .figs, .ba, .bound, .bstat, .closer, .feed__grid, .testi,
+    .gcards, .story-more, .contact-cards, .cr-values) { gap: var(--s-3); }
+
+/* ---- 4. card interior padding ---- */
+:is(.svc-detail__card, .fig, .score, .bound__i, .spec-card, .subcard,
+    .never, .reviewer, .foundernote, .failstat, .roi, .contact-card,
+    .gcard, .builds, .panel) { padding: var(--s-4); }
+
+/* ---- 6. band boundary ----
+   Two light sections in a row read as one undifferentiated field. A hairline
+   at the seam makes the band change deliberate. Adjacent-sibling means it can
+   never double up, and it only fires light-on-light: an ink section supplies
+   its own contrast. */
+:is(.paper, .paper-2, .blueprint) + :is(.paper, .paper-2, .blueprint) {
+  border-top: 1px solid var(--rule);
+}
+
+/* =========================================================
+   CARD TYPOGRAPHY — three tiers, added 2026-08-01
+   Scope: pricing rows (.svc__item), hero spec card (.spec-card/.statrail),
+   method phase cards (.phase), assessment sidebar (.rail), the
+   "what you leave with" card + list, and the footer stat block.
+
+     TIER 1  label      mono  --t-label 11  uppercase  .08em  muted
+     TIER 2  value/head sans  --t-lg    22  700        titles, prices, timelines
+     TIER 3  footnote   sans  --t-sm    14  400        line-height 1.55
+
+   Everything between those steps is gone: the 17px body step, the 25px title
+   step and the 19.9px/13px variants all mapped onto a tier.
+
+   NOT tiered, deliberately:
+     - a card's own <h3> heading, which the brief exempts when larger;
+     - buttons and .btn-like CTAs, which are controls with their own scale,
+       not label/value/footnote text;
+     - .cmp, the services comparison TABLE — it is a dense 5-column data table,
+       not a card, and 22px prices in it would break the column rhythm.
+   ========================================================= */
+:root{
+  --card-t1-size: var(--t-label);
+  --card-t2-size: var(--t-lg);
+  --card-t3-size: var(--t-sm);
+}
+
+/* ---- TIER 1: labels ---- */
+:is(.svc__item, .spec-card, .statrail, .phase, .rail, .svc-detail__card,
+    .svc-detail__deliv, .foot__brand .entity__stats)
+  :is(.tick-lbl, .statrail__k, .spec-card__label, .phase__no, .step__no,
+      .panel__t, .svc__tab, .cr-spec__k, .svc-ba__k, .kicker, dt) {
+  font-family: var(--mono);
+  font-size: var(--card-t1-size);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+/* ---- TIER 2: values, prices, timelines, card titles ---- */
+:is(.svc__item, .spec-card, .statrail, .phase, .rail, .svc-detail__card,
+    .foot__brand .entity__stats)
+  :is(.svc__no, .svc__price, .svc__title, .statrail__v, .cr-spec__v,
+      .entity__stats b, .rail h3, .rail > * > b, .advisor__tx h3) {
+  font-family: var(--sans);
+  font-size: var(--card-t2-size);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+/* the pricing-row title is a link, and .svc__no is a numeral marker */
+.svc__item :is(h3, h3 a, .svc__hd a) {
+  font-family: var(--sans);
+  font-size: var(--card-t2-size);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+/* long values keep TIER 3's size — 14 is in the allowed set and a 22px
+   three-item list would wrap the spec card */
+:is(.spec-card, .statrail) .statrail__v--sm { font-size: var(--card-t3-size); }
+
+/* ---- TIER 3: footnotes and body ---- */
+:is(.svc__item, .spec-card, .statrail, .phase, .rail, .svc-detail__card,
+    .svc-detail__deliv)
+  :is(p, li, .svc__tagline, .svc__note, .step__d, .advisor__tx p, dd, span.v) {
+  font-family: var(--sans);
+  font-size: var(--card-t3-size);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.55;
+}
+/* nothing in a card goes below TIER 1 */
+:is(.svc__item, .spec-card, .statrail, .phase, .rail, .svc-detail__card,
+    .svc-detail__deliv, .foot__brand .entity__stats) small { font-size: var(--card-t1-size); }
+
+/* ---- 3. label/value geometry ----
+   Label sits directly above its value: 4px. Value pairs in a row: 40px column. */
+:is(.foot__brand .entity__stats, .rail, .svc-detail__card) .tick-lbl { margin-bottom: var(--s-04); }
+.spec-card__row, .statrail__row { column-gap: var(--s-4); }
+.foot__brand .entity__stats { column-gap: var(--s-4); }
+
+/* Card CTAs: a control inside a card still has to sit in the tier set. TIER 3
+   size, but weight/decoration stay a button's own — the tiers govern SIZE, and
+   a 700-weight 14px control still reads as a control. The 44px tap target is
+   set by min-height elsewhere, so shrinking the label does not shrink the hit
+   area. */
+/* Buttons keep their own uniform 13px everywhere (the 2026-08-01 button spec);
+   only .svc__cta, a STYLE B link, still takes the card size — and STYLE B's own
+   rule outranks this anyway. */
+:is(.svc__item, .spec-card, .statrail, .phase, .rail, .svc-detail__card,
+    .svc-detail__deliv) .svc__cta {
+  font-size: var(--card-t3-size);
+}
+/* `.btn .arr` kept OUT of the :is() above: :is() takes the highest specificity
+   among its arguments, so that one descendant selector lifted the whole rule
+   from (0,2,0) to (0,3,0) and outranked the STYLE B link rule. */
+:is(.svc__item, .spec-card, .statrail, .phase, .rail, .svc-detail__card,
+    .svc-detail__deliv) .btn .arr { font-size: var(--card-t3-size); }
+
+/* The services comparison table is dense tabular data, not a card: its cells
+   take the TIER 3 SIZE so nothing on the page sits between the steps, but its
+   prices stay at that size rather than becoming 22px TIER 2 values — a 5-column
+   table with 22px figures loses its column rhythm. */
+.cmp :is(td, th, td a, td.cmp__price) { font-size: var(--card-t3-size); }
+
+/* Label -> value is 4px. Where the pair sits in a flex/grid stack the gap
+   belongs on the PARENT (a child margin would add to the parent's row-gap and
+   land at 12px, which is what it was doing); where the pair is in normal block
+   flow the margin is the only mechanism. */
+.foot__brand .entity__stats > div { row-gap: var(--s-04); }
+.foot__brand .entity__stats .tick-lbl { margin-bottom: 0; }
+
+/* =========================================================
+   SECTION HEADER — one shared component, added 2026-08-01
+   The "H2 block left, intro paragraph right" pattern. `.section-head` is the
+   name to use in new markup; `.head-block` and `.mk-outcome` are the two
+   existing classes carrying this pattern (20 pages and 1), aliased here rather
+   than rewritten across 21 files — one rule, one geometry, three names.
+
+   Was: .head-block 1.1fr/1fr, 48px gap, align-items:end (and :center on one
+   page); .mk-outcome 1fr/1fr, 80px gap, align-items:center. Overlaying any two
+   produced three different column geometries.
+   ========================================================= */
+.section-head, .head-block, .mk-outcome {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 440px);
+  column-gap: var(--s-5);
+  align-items: start;
+}
+/* Optical alignment: the intro's first line sits on the H2 cap height rather
+   than its line-box top. Expressed against the INTRO's type step (--t-lg, the
+   .lead size) rather than a bare 0.35em: `em` resolves against each element's
+   own font-size, so a column that wraps its paragraph in a <div> (17px) was
+   getting 5.95px while a bare <p> (22px) got 7.7px. Same offset everywhere is
+   the requirement, so the multiplier is anchored to one step. */
+.section-head > :nth-child(2),
+.head-block > :nth-child(2),
+.mk-outcome > :nth-child(2) { padding-top: calc(0.35 * var(--t-lg)); }
+
+@media (max-width: 900px){
+  .section-head, .head-block, .mk-outcome {
+    grid-template-columns: 1fr;
+    row-gap: var(--s-3);
+  }
+  /* stacked, the optical offset would read as a stray gap */
+  .section-head > :nth-child(2),
+  .head-block > :nth-child(2),
+  .mk-outcome > :nth-child(2) { padding-top: 0; }
+}
+
+/* ---- 4. pricing rows share one grid ----
+   Every row is 220px / 1fr / 360px, so the internal dividers stack into two
+   continuous vertical lines down the table. The dark feature row used --dline
+   (a translucent light hairline); on dark cards the divider is --rule-dark. */
+.svc__item--feature :is(.svc__meta, .svc__main) { border-right-color: var(--rule-dark); }
+
+/* =========================================================
+   LINK SYSTEM — exactly two treatments, added 2026-08-01
+   Every content link is STYLE A or STYLE B. Buttons (.btn) keep their own
+   control styling; site chrome (nav, breadcrumb, utility bar, logo) is not a
+   content link and is excluded — see the note at the end of this block.
+
+   The invariant: underline + accent NEVER co-occur at rest. STYLE A is
+   currentColor + underline; STYLE B is accent + no underline; the combination
+   is what STYLE A's hover state means.
+   ========================================================= */
+
+/* ---- STYLE A — in-text link, inside sentences ---- */
+:is(.lead, p, li, dd, dt, blockquote, figcaption, .prose, .svc-detail__main,
+    .arg__body, .sold, .window-note, .gtable-note, .builds__note, .bio__note,
+    .bio__press, .hero__note, .svc__note, .reversal, th, td) a:not(.btn) {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+:is(.lead, p, li, dd, dt, blockquote, figcaption, .prose, .svc-detail__main,
+    .arg__body, .sold, .window-note, .gtable-note, .builds__note, .bio__note,
+    .bio__press, .hero__note, .svc__note, .reversal, th, td) a:not(.btn):visited {
+  color: inherit;   /* visited === default, explicitly */
+}
+:is(.lead, p, li, dd, dt, blockquote, figcaption, .prose, .svc-detail__main,
+    .arg__body, .sold, .window-note, .gtable-note, .builds__note, .bio__note,
+    .bio__press, .hero__note, .svc__note, .reversal, th, td) a:not(.btn):hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+/* On dark: cream text, same underline rules. Specificity has to clear the
+   old dark cascade's `.ink p a:not(.btn)` (0,2,2) — this is (0,3,1). */
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature, .subcard,
+    .promise__col--dont, .faq__aside, .faq-strip, .tl, .arg--amp, .math__fig,
+    .story-feat, .foundernote, .never, .mk-box, .mk-story)
+  :is(.lead, p, li, dd, blockquote, .prose, .arg__body, .sold, .window-note) a:not(.btn) {
+  color: var(--on-dark-head);
+}
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature, .subcard,
+    .promise__col--dont, .faq__aside, .faq-strip, .tl, .arg--amp, .math__fig,
+    .story-feat, .foundernote, .never, .mk-box, .mk-story)
+  :is(.lead, p, li, dd, blockquote, .prose, .arg__body, .sold, .window-note) a:not(.btn):hover {
+  color: var(--accent-ink);
+}
+
+/* ---- STYLE B — standalone action link ----
+   Selected by the arrow, not by a class: every one of these carries the same
+   `<span class="arr">&#8594;</span>`, so :has() catches them all including the
+   51 whose arrow was a bare character before this pass. Later in the file and
+   at (0,2,1), so it wins over STYLE A where both could match. */
+a:not(.btn):has(.arr) {
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  /* --accent-text is the AA-safe step of --accent; raw --accent is 4.26:1 on
+     --paper and this is 12px. On dark the contrast layer rebinds it to
+     --accent-ink, so one token covers both surfaces. */
+  color: var(--accent-text);
+  text-decoration: none;
+}
+a:not(.btn):has(.arr):visited { color: var(--accent-text); }
+a:not(.btn):has(.arr):hover { color: var(--accent-text); text-decoration: none; }
+a:not(.btn):has(.arr) .arr {
+  display: inline-block;
+  margin-left: 0.5ch;
+  transition: transform 150ms ease;
+}
+/* only the arrow moves; the label stays put */
+a:not(.btn):has(.arr):hover .arr { transform: translateX(2px); }
+
+/* Chrome is not a content link: the nav, breadcrumb, utility bar and logo keep
+   their own treatments, exactly as buttons do. Underlining a nav bar would be
+   the wrong reading of "two link treatments". */
+
+/* Light islands inside dark sections: STYLE A's on-dark rule paints links
+   cream, which on the .roi card (--paper-card) is 1.07:1 — invisible. The
+   island restores currentColor. Specificity has to clear the on-dark STYLE A
+   rule's (0,3,1), so the dark ancestor is named here too: (0,4,1). */
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature, .subcard,
+    .promise__col--dont, .faq__aside, .faq-strip, .tl, .arg--amp, .math__fig,
+    .story-feat, .foundernote, .never, .mk-box, .mk-story)
+  :is(.roi, .bound__i) :is(.lead, p, li, dd, blockquote) a:not(.btn) {
+  color: inherit;
+}
+
+/* Dark sections: SECONDARY is cream border + cream text, and inverts to a
+   cream fill with ink text. Placed here so it wins over the base rule and over
+   the older `.ink .btn--secondary { border-color: var(--dline) }`. */
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature, .subcard,
+    .promise__col--dont, .faq__aside, .faq-strip, .tl, .arg--amp, .math__fig,
+    .story-feat, .foundernote, .never, .mk-box, .mk-story) .btn--secondary {
+  border-color: var(--paper);
+  color: var(--paper);
+  background: transparent;
+}
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature, .subcard,
+    .promise__col--dont, .faq__aside, .faq-strip, .tl, .arg--amp, .math__fig,
+    .story-feat, .foundernote, .never, .mk-box, .mk-story) .btn--secondary:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* =========================================================
+   TEXT WRAPPING — added 2026-08-01
+   `balance` evens the line lengths of short blocks (headings); `pretty` only
+   fixes the last line (orphans) and is the right one for running copy, where
+   balance would be both expensive and visually wrong.
+   Note: browsers cap `balance` at a handful of lines, so it is a hint, not a
+   guarantee — the remaining short final lines are pinned with &nbsp; in the
+   markup, which is why some headings carry them.
+   ========================================================= */
+h1, h2, h3, .h1, .h2 { text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+
+/* =========================================================
+   DARK-BAND TEXTURE — added 2026-08-02
+   Large dark bands whose content leaves one half empty get a background layer
+   on THAT side only. Two treatments, one per section, never both:
+
+     .deco-grid   1px cream grid on a 56px pitch at 4.5% opacity
+     .deco-amp    one oversized outlined ampersand at 3.5%, bottom-right
+
+   Both are pseudo-elements: outside the accessibility tree (so no aria-hidden
+   attribute is needed), pointer-events:none, absolutely positioned inside an
+   `overflow: clip` box — no layout shift and no scroll container. The section's
+   own .wrap is lifted to z-index 1 so nothing ever renders behind live text.
+
+   MAX ONE AMPERSAND PER PAGE — it is a signature, not a texture. The grid is
+   the default; reach for the ampersand only where a band ends a page section
+   and the empty side is the right.
+   ========================================================= */
+.deco-grid, .deco-amp { position: relative; overflow: clip; }
+.deco-grid > .wrap, .deco-amp > .wrap { position: relative; z-index: 1; }
+
+.deco-grid::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to right, rgba(240,235,225,.045) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(to bottom, rgba(240,235,225,.045) 0 1px, transparent 1px 56px);
+  /* confined to the RIGHT half, fading in so the seam is not a hard edge */
+  -webkit-mask-image: linear-gradient(to right, transparent 0 50%, #000 66%);
+          mask-image: linear-gradient(to right, transparent 0 50%, #000 66%);
+}
+.deco-grid--left::before {
+  -webkit-mask-image: linear-gradient(to left, transparent 0 50%, #000 66%);
+          mask-image: linear-gradient(to left, transparent 0 50%, #000 66%);
+}
+/* both outer margins, clean centre — for bands whose empty side varies by page */
+.deco-grid--edges::before {
+  -webkit-mask-image: linear-gradient(to right, #000 0 14%, transparent 30% 70%, #000 86%);
+          mask-image: linear-gradient(to right, #000 0 14%, transparent 30% 70%, #000 86%);
+}
+
+.deco-amp::before {
+  content: "&";
+  position: absolute; right: 1.5%; bottom: -0.18em; z-index: 0;
+  pointer-events: none; user-select: none;
+  font-family: var(--sans); font-weight: 900; font-style: normal;
+  font-size: clamp(300px, 34vw, 560px); line-height: .78;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(240, 235, 225, .04);
+  /* Diagonal mask: the glyph only materialises toward the bottom-right corner
+     and is fully transparent across the upper-left, where the copy columns sit.
+     Without this its top-left curve tracked behind the right-hand column. */
+  -webkit-mask-image: linear-gradient(to bottom right, transparent 30%, #000 62%);
+          mask-image: linear-gradient(to bottom right, transparent 30%, #000 62%);
+}
+@media (max-width: 900px){
+  /* below the two-column breakpoint there is no empty half to fill */
+  .deco-grid::before, .deco-amp::before { display: none; }
+}
+
+/* Recurring dark bands take the grid by selector rather than per-page markup:
+   .final (the pre-footer CTA, on 41 pages — its empty side varies, so it uses
+   the both-edges mask) and the ink service-detail band on /services/. */
+.section.ink.final { position: relative; overflow: clip; }
+.section.ink.final > .wrap { position: relative; z-index: 1; }
+.section.ink.final::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to right, rgba(240,235,225,.045) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(to bottom, rgba(240,235,225,.045) 0 1px, transparent 1px 56px);
+  -webkit-mask-image: linear-gradient(to right, #000 0 14%, transparent 30% 70%, #000 86%);
+          mask-image: linear-gradient(to right, #000 0 14%, transparent 30% 70%, #000 86%);
+}
+@media (max-width: 900px){ .section.ink.final::before { display: none; } }

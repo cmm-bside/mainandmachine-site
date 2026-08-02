@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -42,7 +42,7 @@
 .svc-ba { margin-top: var(--s-12); }
 .svc-ba__k { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-faint); margin-right: var(--s-8); }
 .svc-ba--after .svc-ba__k { color: var(--accent-text); }
-.svc-ba__foot { margin-top: var(--s-24); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .02em; color: var(--tx-faint); }
+.svc-ba__foot { margin-top: var(--s-24); font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-faint); }
 .svc-ba__foot a { color: var(--tx); text-decoration: underline; text-underline-offset: 2px; }
 .svc-ba__foot a:hover { color: var(--rust); }
 
@@ -385,19 +385,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -428,7 +420,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -451,7 +443,7 @@
         <h1 class="h2 mt-s">What we <span class="accent-tx">build.</span></h1>
         <p class="lead mt-s">The stock parts. Front of house: systems that answer, book, and follow up while you work. Back of house: the private machinery they run on. Everything here is delivered through the <a href="/services/">same three services</a>, at the prices already published — and the catalog is a record of what we build, not a limit on it.</p>
         <div class="hero__cta">
-          <a class="btn btn--primary btn--lg" href="/book/">Ask which parts your business needs <span class="arr">→</span></a>
+          <a class="btn btn--primary btn--lg" href="/book/">Ask which parts your business needs <span class="arr">&#8594;</span></a>
         </div>
       </div>
       <div class="statrail crop" aria-label="How catalog items are priced">
@@ -578,7 +570,7 @@
     <div class="head-block">
       <div>
         <span class="kicker">How to buy any of it</span>
-        <h2 class="h2 mt-s">One catalog. The same <span class="accent-tx">three doors.</span></h2>
+        <h2 class="h2 mt-s">One catalog. The same&nbsp;<span class="accent-tx">three&nbsp;doors.</span></h2>
       </div>
       <p class="lead">Nothing here is bought off a shelf. Every item arrives through the services you already know, at the <a href="/pricing/">published prices</a>.</p>
     </div>
@@ -610,7 +602,7 @@
       <span class="kicker">Start here</span>
       <p class="lead mt-s">Every path here starts with the same free 30-minute assessment. A senior advisor walks your workflows and tells you which of these is worth building, and which is not. We reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       </div>
     </div>
     <div class="final__promise">

@@ -219,21 +219,50 @@ if (expectedWord === undefined) {
       `to match buildSlots.remaining (${slots.remaining})`
   );
 }
-// The slot line is itself a countable claim: it must appear on the pages that
-// stamp it, and no surface may advertise a different count.
-guardCountablePhrase(String(slots.line || ""), "buildSlots.line");
+// Both remaining guards are about a PUBLISHED count. The topbar rework of
+// 2026-08-01 dropped the slot line from the utility bar, so no surface states
+// it any more — and an unpublished number cannot be unverifiable scarcity.
+//
+// Gating them on the span is what makes CLAUDE.md's stated escape hatch ("to
+// stop maintaining it, delete the data-fact span from the ticker") actually
+// work. Unconditionally, deleting the span failed the build two ways: the
+// countable-claim guard demanded a phrase no page said any more, and the
+// 21-day timer kept running against a count nobody could read. The facts
+// stay in site-facts.json, so re-adding the span re-arms both guards with no
+// other change.
+const slotsPublished = noteCorpus.some(({ html }) => html.includes('data-fact="build-slots"'));
 
-if (!/^\d{4}-\d{2}-\d{2}$/.test(countedOn || "")) {
-  fail(`site-facts.json: buildSlots.countedOn must be a YYYY-MM-DD date (got ${JSON.stringify(countedOn)})`);
-} else {
-  const ageDays = Math.floor((Date.now() - Date.parse(`${countedOn}T00:00:00Z`)) / 86_400_000);
-  if (ageDays > SLOT_STAMP_MAX_AGE_DAYS) {
-    fail(
-      `site-facts.json: buildSlots.countedOn (${countedOn}) is ${ageDays} days old — ` +
-        `max ${SLOT_STAMP_MAX_AGE_DAYS}. Recount the slots and update the date, or drop the ` +
-        `data-fact="build-slots" span from the ticker. A stale count is unverifiable scarcity.`
-    );
+if (slotsPublished) {
+  // The slot line is itself a countable claim: it must appear on the pages that
+  // stamp it, and no surface may advertise a different count.
+  guardCountablePhrase(String(slots.line || ""), "buildSlots.line");
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(countedOn || "")) {
+    fail(`site-facts.json: buildSlots.countedOn must be a YYYY-MM-DD date (got ${JSON.stringify(countedOn)})`);
+  } else {
+    const ageDays = Math.floor((Date.now() - Date.parse(`${countedOn}T00:00:00Z`)) / 86_400_000);
+    if (ageDays > SLOT_STAMP_MAX_AGE_DAYS) {
+      fail(
+        `site-facts.json: buildSlots.countedOn (${countedOn}) is ${ageDays} days old — ` +
+          `max ${SLOT_STAMP_MAX_AGE_DAYS}. Recount the slots and update the date, or drop the ` +
+          `data-fact="build-slots" span from the ticker. A stale count is unverifiable scarcity.`
+      );
+    }
   }
+} else {
+  // Still guard the other direction: with no span to stamp, no surface may
+  // start advertising a slot count that nothing keeps current.
+  const contradiction = contradictionPattern(String(slots.line || ""));
+  if (contradiction)
+    for (const { page, html } of noteCorpus) {
+      const hit = contradiction.exec(html);
+      if (hit)
+        fail(
+          `${page}: "${hit[0].trim()}" publishes a build-slot count, but the dated ` +
+            `data-fact="build-slots" span is gone from the ticker, so nothing keeps it ` +
+            `current. Restore the span (and buildSlots.countedOn) or drop the claim.`
+        );
+    }
 }
 
 // --- JSON-LD: every block must parse, and entity facts must match ----------

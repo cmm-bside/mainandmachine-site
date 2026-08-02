@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="styles.css?v=98" />
+<link rel="stylesheet" href="styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -217,19 +217,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item"><a href="/book/" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Every engagement starts with the free assessment →</a></span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item"><a href="/book/" tabindex="-1" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Every engagement starts with the free assessment →</a></span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -260,7 +252,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -272,10 +264,6 @@
 <!-- ============ 01 HERO ============ -->
 <section class="hero section paper" data-screen-label="Hero" data-hero-machine data-state="idle">
   <canvas class="hm-grid" data-machine-grid aria-hidden="true"></canvas>
-  <span class="hm-crop hm-crop--tl" aria-hidden="true"></span>
-  <span class="hm-crop hm-crop--tr" aria-hidden="true"></span>
-  <span class="hm-crop hm-crop--bl" aria-hidden="true"></span>
-  <span class="hm-crop hm-crop--br" aria-hidden="true"></span>
   <div class="wrap">
     <div class="hero__grid">
       <div>
@@ -288,8 +276,8 @@
         <span class="hm-baseline" aria-hidden="true"></span>
         <p class="lead">Other AI firms hand you a deck. We build the working systems that run inside your business. Fixed price, quoted in writing. Live in about 90 days — or we keep building at no charge until it is.</p>
         <div class="hero__cta hero__cta--weighted">
-          <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-          <a class="btn btn--secondary btn--lg hero__cta-alt" href="/score/">Get your AI-Ready Score</a>
+          <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+          <a class="btn btn--secondary hero__cta-alt" href="/score/">Get your AI-Ready Score</a>
         </div>
         <p class="hero__note">30 minutes with a senior advisor. Free. A straight answer.</p>
       </div>
@@ -307,16 +295,16 @@
 </section>
 
 <!-- ============ 02 THE PROBLEM (ink) ============ -->
-<section class="section ink" data-screen-label="The problem">
+<section class="section ink deco-amp" data-screen-label="The problem">
   <div class="wrap">
     <div class="head-block">
       <div>
         <span class="kicker">01 / The problem with most AI work</span>
-        <h2 class="h2 mt-s">Most AI projects fail. The ones that “work” can cost you <span class="accent-tx">something worse.</span></h2>
+        <h2 class="h2 mt-s">Most AI projects fail. The ones that “work” can cost you&nbsp;<span class="accent-tx">something&nbsp;worse.</span></h2>
       </div>
       <p class="lead">Most companies that spend on AI see almost nothing change. We exist to fix that.</p>
     </div>
-    <div class="failstat crop">
+    <div class="failstat">
       <div class="failstat__hero">
         <div class="tick-num failstat__big">74%</div>
         <p class="failstat__cap">spent the money and have yet to show tangible value.</p>
@@ -337,14 +325,14 @@
         <p class="failstat__kicker">We exist for the <b>26%</b>.</p>
       </div>
     </div>
-    <p class="stat-source">Source: Boston Consulting Group, <a href="https://www.bcg.com/publications/2024/wheres-value-in-ai" rel="nofollow noopener" target="_blank" style="color:inherit;"><em>Where’s the Value in AI?</em></a>, October 2024 — a survey of 1,000 executives across 59 countries.</p>
+    <p class="stat-source">Source: Boston Consulting Group, <a href="https://www.bcg.com/publications/2024/wheres-value-in-ai" rel="nofollow noopener" target="_blank"><em>Where’s the Value in AI?</em></a>, October 2024 — a survey of 1,000 executives across 59 countries.</p>
     <div class="prose-2">
       <div>
         <p style="color:var(--dtx-mute);">There is a second failure nobody mentions: AI that technically works but buries why decisions get made and turns your best people into ticket-closers.</p>
       </div>
       <div>
         <p style="color:var(--dtx-mute);">We build the other kind. Every system we ship can be explained, questioned, and overruled by a person who owns it.</p>
-        <p style="color:var(--dtx-mute);">The machine is never the answer to “why did this happen.” A person is. <a href="/method/" style="color:var(--dtx);text-decoration:underline;">How we work →</a></p>
+        <p style="color:var(--dtx-mute);">The machine is never the answer to “why did this happen.” A person is. <a href="/method/">How we work <span class="arr">&#8594;</span></a></p>
       </div>
     </div>
   </div>
@@ -356,14 +344,14 @@
     <div class="head-block">
       <div>
         <span class="kicker">02 / What we actually do</span>
-        <h2 class="h2 mt-s">We implement. That is the <span class="accent-tx">whole difference.</span></h2>
+        <h2 class="h2 mt-s">We implement. That is the&nbsp;<span class="accent-tx">whole&nbsp;difference.</span></h2>
       </div>
       <p class="lead">Plenty of AI experts have a framework and a workshop. We go into your business, find the three workflows costing you the most, and build the fix. Fixed price before we start.</p>
     </div>
     <div class="diffs">
       <div class="diff">
         <span class="tick-lbl">A: Custom agents</span>
-        <h3>Software that drafts the repetitive decisions.</h3>
+        <h3>Software that drafts the&nbsp;repetitive&nbsp;decisions.</h3>
         <p>It clears the routine work and drafts the hard calls, then routes the final judgment to a person who owns it.</p>
       </div>
       <div class="diff">
@@ -382,7 +370,7 @@
     <div class="builds">
       <div class="builds__bar">
         <span class="tick-lbl">Example builds</span>
-        <span class="tick-lbl"><a href="/services/builds/">Browse the build catalog →</a></span>
+        <span class="tick-lbl"><a href="/services/builds/">Browse the build catalog <span class="arr">&#8594;</span></a></span>
       </div>
     </div>
   </div>
@@ -394,9 +382,9 @@
     <div class="head-block">
       <div>
         <span class="kicker">03 / How to work with us</span>
-        <h2 class="h2 mt-s">Three ways in. Priced in <span class="accent-tx">plain numbers.</span></h2>
+        <h2 class="h2 mt-s">Three ways in. Priced in&nbsp;<span class="accent-tx">plain&nbsp;numbers.</span></h2>
       </div>
-      <p class="lead">You will not have to sit through three discovery calls to learn what something costs. Here is the short version. <a href="/pricing/" style="text-decoration:underline;">The price list</a> has every line item.</p>
+      <p class="lead">You will not have to sit through three discovery calls to learn what something costs. Here is the short version. <a href="/pricing/">The price list</a> has every line item.</p>
     </div>
     <div class="svc">
       <div class="svc__item svc__item--feature crop">
@@ -415,7 +403,7 @@
           <p>We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.</p>
         </div>
         <div class="svc__list">
-          <a class="svc__cta" href="/services/#audit">Read the full spec →</a>
+          <a class="svc__cta" href="/services/#audit">Read the full spec <span class="arr">&#8594;</span></a>
         </div>
       </div>
       <div class="svc__item">
@@ -434,7 +422,7 @@
           <p>Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.</p>
         </div>
         <div class="svc__list">
-          <a class="svc__cta" href="/services/#sprint">Read the full spec →</a>
+          <a class="svc__cta" href="/services/#sprint">Read the full spec <span class="arr">&#8594;</span></a>
         </div>
       </div>
       <div class="svc__item">
@@ -451,7 +439,7 @@
           <p>We keep what we built healthy, watch what changes, and evolve the systems as your business does.</p>
         </div>
         <div class="svc__list">
-          <a class="svc__cta" href="/services/#managed">Read the full spec →</a>
+          <a class="svc__cta" href="/services/#managed">Read the full spec <span class="arr">&#8594;</span></a>
         </div>
       </div>
     </div>
@@ -461,7 +449,7 @@
 </section>
 
 <!-- ============ 04b CALCULATOR BAND (slim embed — model in /js/roi.js, full version at /calculator/) ============ -->
-<section class="section ink calcband" data-screen-label="Calculator">
+<section class="section ink calcband deco-grid deco-grid--left" data-screen-label="Calculator">
   <div class="wrap">
     <div class="calcband__grid">
     <div class="calcband__intro">
@@ -470,12 +458,12 @@
     <p class="lead mt-s">Two inputs. A real range, built from the same price list published on this site, not a teaser that ends in “call us.”</p>
 
     <div class="roi__cta">
-      <a class="btn btn--primary btn--lg" id="bandBook" href="/book/">Run your real numbers <span class="arr">→</span></a>
-      <a class="btn btn--secondary" id="bandFull" href="/calculator/">Full breakdown + share <span class="arr">→</span></a>
+      <a class="btn btn--primary btn--lg" id="bandBook" href="/book/">Run your real numbers <span class="arr">&#8594;</span></a>
+      <a class="btn btn--secondary" id="bandFull" href="/calculator/">Full breakdown + share</a>
     </div>
     </div>
 
-    <div class="roi roi--slim crop" aria-label="ROI estimate calculator, quick version">
+    <div class="roi roi--slim" aria-label="ROI estimate calculator, quick version">
       <div class="roi__bar">
         <span class="roi__id"><span class="roi__dot" aria-hidden="true"></span>Estimate.v1</span>
         <span class="roi__id roi__id--mute">A model, not a promise</span>
@@ -542,7 +530,7 @@
     <div class="head-block">
       <div>
         <span class="kicker">04 / Proof it works</span>
-        <h2 class="h2 mt-s">One build we can name, <span class="accent-tx">and the numbers it returned.</span></h2>
+        <h2 class="h2 mt-s">One build we can name, <span class="accent-tx">and the numbers&nbsp;it&nbsp;returned.</span></h2>
       </div>
       <p class="lead">MARCUS runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA &amp; CDFI lender — entirely in-house, with no borrower file leaving the building. The first 90 days of full-fleet operation, measured off the audit log:</p>
     </div>
@@ -562,7 +550,7 @@
             </div>
           </div>
 <!-- /BUILD-LOG:MARCUS-HOME -->
-    <p class="builds__note" style="margin-top:var(--s-24);"><a href="/work/marcus/results/">Read the measured results &rarr;</a> &middot; <a href="/work/">the whole proof shelf</a></p>
+    <p class="builds__note" style="margin-top:var(--s-24);"><a href="/work/marcus/results/">Read the measured results <span class="arr">&#8594;</span></a> &middot; <a href="/work/">the whole proof shelf</a></p>
   </div>
 </section>
 
@@ -589,11 +577,11 @@
       </figure>
       <div class="bio__prose">
         <p>He’s <b>CEO of B:Side Capital and Fund</b>, a professor at ASU’s W.P. Carey School, and an author with 26 years backing Main Street. He pairs that judgment with a team of <b>AI-native builders</b> who never had to unlearn the old way. One name owns every build.</p>
-        <p><a class="svc__cta" href="/about/">Who builds this, and why the name matters →</a></p>
+        <p><a class="svc__cta" href="/about/">Who builds this, and why the name matters <span class="arr">&#8594;</span></a></p>
         <!-- Press links verified 2026-07-31: Forbes = founder contributor page; Inc. = founder author page;
      TechCrunch + Fox Business = BodeTree coverage naming Christopher Myers as founder/CEO.
      WSJ / NYT / MSNBC: no verifiable URL found - they stay unlinked. Never link without a real URL. -->
-        <div class="bio__press">Our founder’s work has been covered in: <span class="press-list"><span><a href="https://www.forbes.com/sites/chrismyers/" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Forbes</a></span><span>The Wall Street Journal</span><span>The New York Times</span><span><a href="https://www.inc.com/author/chris-myers" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Inc.</a></span><span><a href="https://techcrunch.com/2013/04/17/bodetree-a-startup-making-small-business-finance-less-boring-raises-1-4-million/" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">TechCrunch</a></span><span>MSNBC</span><span><a href="https://www.foxbusiness.com/features/bodetree-crunching-numbers-for-the-little-guy" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Fox Business</a></span></span></div>
+        <div class="bio__press">Our founder’s work has been covered in: <span class="press-list"><span><a href="https://www.forbes.com/sites/chrismyers/" rel="noopener" target="_blank">Forbes</a></span><span>The Wall Street Journal</span><span>The New York Times</span><span><a href="https://www.inc.com/author/chris-myers" rel="noopener" target="_blank">Inc.</a></span><span><a href="https://techcrunch.com/2013/04/17/bodetree-a-startup-making-small-business-finance-less-boring-raises-1-4-million/" rel="noopener" target="_blank">TechCrunch</a></span><span>MSNBC</span><span><a href="https://www.foxbusiness.com/features/bodetree-crunching-numbers-for-the-little-guy" rel="noopener" target="_blank">Fox Business</a></span></span></div>
       </div>
     </div>
   </div>
@@ -617,19 +605,19 @@
         <span class="path__no">01 / Ready</span>
         <h3>I want to see where AI pays in my business.</h3>
         <p>Book the free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. No obligation, no pitch.</p>
-        <a class="btn btn--ghost path__cta" href="/book/">Book a free assessment →</a>
+        <a class="btn btn--secondary path__cta" href="/book/">Book a free assessment</a>
       </div>
       <div class="path">
         <span class="path__no">02 / Decided</span>
         <h3>Skip the audit — scope a sprint.</h3>
         <p>You already know what you want built. Book a scoping call and we quote a fixed-price Implementation Sprint in writing — no audit in between.</p>
-        <a class="btn btn--ghost path__cta" href="/book/?service=sprint">Scope a sprint →</a>
+        <a class="btn btn--secondary path__cta" href="/book/?service=sprint">Scope a sprint</a>
       </div>
       <div class="path">
         <span class="path__no">03 / Curious</span>
         <h3>I’d rather see where I stand first.</h3>
         <p>Take the AI-Ready Score. Fourteen questions, seven minutes, and a straight answer about whether your company is ready — before you talk to anyone.</p>
-        <a class="btn btn--ghost path__cta" href="/score/">Get your score →</a>
+        <a class="btn btn--secondary path__cta" href="/score/">Get your score</a>
       </div>
     </div>
   </div>
@@ -657,7 +645,7 @@
       <div class="foot__brand">
         <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

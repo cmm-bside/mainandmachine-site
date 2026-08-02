@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -60,11 +60,11 @@
 .story-more { margin-top: clamp(var(--s-24), 4vw, var(--s-32)); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em; color: var(--tx-faint); }
 
 /* ---- founder featured quote (ink) ---- */
-.foundernote { background: var(--ink); color: var(--dtx); border-radius: var(--r-md); padding: clamp(var(--s-32), 5vw, var(--s-64)); }
+.foundernote { background: var(--ink); color: var(--dtx); border-radius: var(--r-md); padding: var(--s-4); }
 .foundernote__tag { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); display: block; margin-bottom: var(--s-24); }
 .foundernote__q { font-family: var(--sans); font-style: italic; font-weight: 500; font-size: clamp(var(--fs-20), 2.5vw, var(--fs-31)); line-height: 1.34; letter-spacing: -.01em; color: var(--dtx); max-width: 54ch; text-wrap: balance; margin: 0; }
 .foundernote__q b { color: var(--accent-ink); font-weight: 600; font-style: italic; }
-.foundernote__by { display: flex; align-items: baseline; gap: var(--s-12); flex-wrap: wrap; margin-top: var(--s-32); padding-top: var(--s-24); border-top: 1px solid var(--dline); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em; color: var(--dtx-mute); }
+.foundernote__by { display: flex; align-items: baseline; gap: var(--s-12); flex-wrap: wrap; margin-top: var(--s-32); padding-top: var(--s-24); border-top: 1px solid var(--dline); font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--dtx-mute); }
 .foundernote__by b { color: var(--dtx); font-weight: 700; letter-spacing: 0; }
 
 /* ---- MARCUS teardown breakdown ---- */
@@ -191,19 +191,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -234,7 +226,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -272,7 +264,7 @@
 <!-- ============ FOUNDER NOTE ============ -->
 <section class="section paper-2">
   <div class="wrap">
-    <div class="foundernote crop">
+    <div class="foundernote">
       <span class="foundernote__tag">Why we lead with our own company</span>
       <blockquote class="foundernote__q">
         <p>I didn’t start Main &amp; Machine to sell AI. I built MARCUS to run my own company: B:Side Capital, a regulated SBA and CDFI lender, where a wrong call has real consequences and a borrower’s file never leaves the building. I made every mistake on my own operation first, with my own money and my own name on the line. Only once I trusted it with the thing I’m accountable for did I take it to anyone else. <b>We sell exactly one thing: what we already proved on ourselves.</b></p>
@@ -293,7 +285,7 @@
       <p class="lead">The clearest case study we have is our own. Our founder runs B:Side Capital; MARCUS is the AI back office we built to run it, under real regulatory stakes, on our own infrastructure. That it’s our own company isn’t a caveat. It’s the credibility.</p>
     </div>
 
-    <div class="teardown crop">
+    <div class="teardown">
       <div class="teardown__cell">
         <span class="tick-lbl">The problem</span>
         <h3>Prep ate the days.</h3>
@@ -311,12 +303,12 @@
       </div>
     </div>
 
-    <a class="story-feat crop" href="/work/marcus/" aria-label="Read the full MARCUS teardown" style="margin-top: clamp(var(--s-24), 4vw, var(--s-32));">
+    <a class="story-feat" href="/work/marcus/" aria-label="Read the full MARCUS teardown" style="margin-top: clamp(var(--s-24), 4vw, var(--s-32));">
       <div class="story-feat__body">
         <span class="story-feat__tag">Full teardown · B:Side Capital</span>
         <h2>MARCUS: a private AI back office for a regulated lender</h2>
         <p>The brief was one line: take the prep off our people’s plate, without ever taking them out of control. Walk the whole build: the seven departments, the fourteen agents, and the four surfaces the team already uses.</p>
-        <span class="story-feat__go">Read the full teardown <span class="arr">→</span></span>
+        <span class="story-feat__go">Read the full teardown <span class="arr">&#8594;</span></span>
       </div>
       <div class="story-feat__rail">
         <div class="story-feat__row"><span>Client</span><b>B:Side Capital</b></div>
@@ -365,7 +357,7 @@
         </div>
       </div>
 <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
-    <p class="builds__note" style="margin-top:20px;"><a href="/work/marcus/results/">Read the MARCUS measured results →</a></p>
+    <p class="builds__note" style="margin-top:20px;"><a href="/work/marcus/results/">Read the MARCUS measured results <span class="arr">&#8594;</span></a></p>
   </div>
 </section>
 
@@ -379,11 +371,11 @@
       <span class="kicker">Start here</span>
       <p class="lead mt-s">Want your operation on this shelf? It starts with a <b>free 30-minute assessment</b>: a senior advisor walks three of your workflows and tells you what’s worth building, if anything.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       </div>
       <div class="reversal">
         <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
-        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list &rarr;</a></p>
+        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list <span class="arr">&#8594;</span></a></p>
       </div>
     </div>
     <div class="final__promise">

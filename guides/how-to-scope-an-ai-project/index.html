@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -204,19 +204,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -247,7 +239,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -269,7 +261,7 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">The Field Guide / 12</span>
-        <h1 class="h2 mt-s">How do you write an AI project scope a vendor <span class="accent-tx">can’t inflate?</span></h1>
+        <h1 class="h2 mt-s">How do you write an AI project scope a vendor&nbsp;<span class="accent-tx">can’t&nbsp;inflate?</span></h1>
         <p class="lead mt-s">Scope inflation is how a $15,000 project becomes a $60,000 relationship. Here is the document that prevents it — every clause, and the vendor patterns each one blocks.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
@@ -288,7 +280,7 @@
   <div class="wrap">
     <article class="prose">
 
-      <h2>How do you write an AI project scope a vendor can’t inflate?</h2>
+      <h2>How do you write an AI project scope a vendor&nbsp;can’t&nbsp;inflate?</h2>
       <p>Name one workflow end-to-end, state what it costs you today, define “done” in operations language, list what is explicitly out, make the vendor state the monthly run cost, and get the price fixed in writing before work begins. A scope with those six properties has no room to grow — which is the entire point.</p>
       <p>Most owners have bought plenty of software but have never bought AI, and some vendors price that inexperience in. This guide is procurement armor: what each clause does, the inflation patterns it blocks, and a ten-line template at the end you can copy into your next conversation. We build under these terms ourselves — <a href="/pricing/">every price we charge is published</a> — so nothing here asks a vendor for anything we do not put in our own contracts.</p>
 
@@ -312,7 +304,7 @@
       <p>You own everything — the code and configuration, the prompts, the documentation, the accounts — and your team is trained to run it. The scope says so in writing, and it makes the vendor state the monthly run cost next to it.</p>
       <p>For a small business, the tools and model usage behind a working system typically land between $50 and $500 a month. A vendor who will not commit to a run-cost figure is reserving the right to surprise you with one, and a vendor whose architecture only they can operate has sold you a subscription dressed as a build. The test for lock-in is one question: “If we parted ways, could a competent firm take this over inside a month using the documentation?” If the answer wobbles, the “platform” is a leash. Handoff terms are the difference between buying an asset and renting a dependency, and they cost nothing to ask for — before you sign.</p>
 
-      <h2>Why is a fixed price in writing the strongest clause?</h2>
+      <h2>Why is a fixed price in writing the&nbsp;strongest&nbsp;clause?</h2>
       <p>Because it moves scope risk from your side of the table to the vendor’s before work begins. Every inflation pattern — endless discovery, phase pricing, change orders — is a mechanism for billing uncertainty to you; a fixed price makes uncertainty the seller’s problem.</p>
       <p>It also changes who scopes carefully. A firm that must commit to a number has to understand the work before selling it, which is why our engagements run in two fixed steps: an <a href="/guides/what-is-an-ai-readiness-audit/">AI Readiness Audit</a> at $3,500–$8,500 over 2–4 weeks, which produces the measured scope, and an <a href="/services/#sprint">Implementation Sprint</a> at $18,000–$60,000, quoted as a fixed price in writing before work begins, delivered in 4–12 weeks. That structure is not generosity — it is the discipline this whole guide is asking you to demand from anyone, including us. “Fixed” has a precise meaning here: the number does not move after work starts. An “estimate,” a “target,” or a “typical range” is hourly billing with better marketing.</p>
 
@@ -370,10 +362,10 @@
       </ol>
       <p>Owners in trades businesses tend to take to this fastest — <a href="/industries/construction/">construction firms</a> have been burned by open-ended change orders before and recognize the pattern instantly. The same armor works in every industry. Pair this template with the <a href="/guides/how-to-choose-an-ai-consultant/">ten vetting questions</a> when you take meetings, and if you want to watch the process from the other side of the table first, the <a href="/book/">free 30-minute assessment</a> is where we scope exactly this way — one workflow, real numbers, and a straight answer about whether it is worth building at all. We reply within 24 hours.</p>
 
+      <p class="gtable-note">If you would rather order a part than commission a project, <a href="/services/builds/">the build catalog</a> lists each system with its price.</p>
     </article>
   </div>
-</section><!-- ============ START HERE (ink) ============ -->      <p class="gtable-note">If you would rather order a part than commission a project, <a href="/services/builds/">the build catalog</a> lists each system with its price.</p>
-<!-- FAQ:auto -->
+</section><!-- ============ START HERE (ink) ============ --><!-- FAQ:auto -->
 <section class="section paper-2">
   <div class="wrap">
     <div class="faq">
@@ -383,7 +375,7 @@
         <div class="faq__aside">
           <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
         </div>
       </div>
       <div class="faq__list">
@@ -416,8 +408,8 @@
       <h2 class="h2 mt-s">Want a scope with a number <span class="accent-tx">that can’t move?</span></h2>
       <p class="lead mt-s">The free 30-minute assessment is where one workflow gets named, measured, and priced — fixed, in writing, before any work begins. We reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-        <a class="btn btn--secondary btn--lg" href="/pricing/">Read the full price list <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a class="btn btn--secondary btn--lg" href="/pricing/">Read the full price list</a>
       </div>
     </div>
     <div class="final__promise">

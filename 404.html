@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex" />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -18,7 +18,7 @@
   .nf { min-height: 70vh; display: flex; align-items: center; }
   .nf__code { font-family: var(--mono); font-size: clamp(var(--fs-49), 14vw, var(--fs-78)); font-weight: 700; line-height: 1; letter-spacing: -0.04em; color: var(--accent); }
   .nf__links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-  .nf__hint { font-family: var(--mono); font-size: var(--fs-13); color: var(--dtx-mute); margin-top: 26px; }
+  .nf__hint { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--dtx-mute); margin-top: 26px; }
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="/js/pa"></script>
@@ -57,7 +57,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -74,7 +74,7 @@
     <h1 class="h2 mt-s">That page is not here.</h1>
     <p class="lead mt-s">The link may be old, or the address has a small typo. Nothing is broken on your end. Here is where most people are headed.</p>
     <div class="nf__links">
-      <a class="btn btn--primary btn--lg" href="/">Back to home <span class="arr">→</span></a>
+      <a class="btn btn--primary btn--lg" href="/">Back to home <span class="arr">&#8594;</span></a>
       <a class="btn btn--secondary btn--lg" href="/#pricing">See pricing</a>
       <a class="btn btn--secondary btn--lg" href="/blog/">Read the blog</a>
       <a class="btn btn--secondary btn--lg" href="/book/">Book a free assessment</a>

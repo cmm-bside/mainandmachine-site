@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -204,19 +204,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -247,7 +239,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -269,7 +261,7 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">The Field Guide / 09</span>
-        <h1 class="h2 mt-s">Where does your AI data <span class="accent-tx">actually go?</span></h1>
+        <h1 class="h2 mt-s">Where does your AI data&nbsp;<span class="accent-tx">actually&nbsp;go?</span></h1>
         <p class="lead mt-s">Most owners sign the vendor agreement without reading the data clause. This guide is that clause, translated — cloud, on-premise, and the middle path, by data type.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
@@ -306,7 +298,7 @@
       <p>On-premise (or local) AI means the model itself runs on hardware you control — your server, your building or your private cloud tenancy — so documents are processed where they already live. Nothing goes to OpenAI, Anthropic, or anyone else, because the intelligence comes to the data instead of the data going to the intelligence.</p>
       <p>This is not theoretical; it is how we built <a href="/work/marcus/">MARCUS</a> for B:Side Capital, an SBA 504 / CDFI lender — a regulated business where borrower files simply do not get to leave. MARCUS runs 14 AI agents across 7 departments, entirely on-prem. Before any model reads a document, Microsoft Presidio strips the PII — names, SSNs, account numbers — so even the local model works on redacted text. Everything is encrypted at rest, every action lands in an append-only, tamper-evident audit log, and nothing sends, files, posts, or pays without human approval. That is what “your data never leaves” looks like when it has to survive an examiner. The complete architecture is public on <a href="/security/">our security page</a> — read it even if you never hire us, because it is a useful checklist for interrogating anyone else’s claims.</p>
 
-      <h2>Is there a middle path between cloud and on-prem?</h2>
+      <h2>Is there a middle path between cloud&nbsp;and&nbsp;on-prem?</h2>
       <p>Yes: strip the sensitive fields locally before anything goes to a cloud model. A PII-scrubbing layer such as Presidio runs on your side, replaces names, numbers, and identifiers with placeholders, and only the redacted text makes the trip.</p>
       <p>The cloud model still does what it is good at — reading, summarizing, drafting — but the identifying details never left your network, and the response gets re-matched to the real records locally. This hybrid pattern covers a surprising share of real cases: a firm that wants cloud-grade models on customer correspondence without shipping the customer list, a clinic that wants help with documentation without transmitting patient identities. It costs less than full on-prem because you are not hosting the model, and it converts “we can’t use AI, our data is sensitive” into an engineering detail. Which model family sits behind it — open weights you host or a closed API you call — is its own trade-off, covered in <a href="/blog/open-models-closed-models/">Open Models, Closed Models</a>.</p>
 
@@ -357,7 +349,7 @@
       <p>Usually not. If your most sensitive asset is internal documents and everyday customer records, a business-tier cloud deployment with sane retention settings — plus PII stripping where customer data flows — is the right call, and on-prem would be paying enterprise money to solve a problem you do not have.</p>
       <p>On-prem costs real money: hardware or dedicated hosting, maintenance, and models that trail the frontier. It earns that cost in exactly three situations — a regulator can ask where your data went; a contract (often with your own enterprise customers) forbids third-party processing; or a breach of one specific dataset would end the business. If none of those describes you, take the cloud dividend: better models, lower cost, and a running bill that typically lands at $50–$500 a month rather than an infrastructure line item. Anyone steering a 20-person e-commerce shop toward on-prem is selling complexity. Anyone waving a lender onto consumer-tier ChatGPT is selling negligence. The deployment should be an output of <a href="/services/">the diagnostic work</a>, never a default — and it is one of the ten questions in <a href="/guides/how-to-choose-an-ai-consultant/">our guide to vetting consultants</a>.</p>
 
-      <h2>What should you ask before signing any AI vendor agreement?</h2>
+      <h2>What should you ask before signing any AI&nbsp;vendor&nbsp;agreement?</h2>
       <p>Five questions, answered in writing: Is our data used for training on this tier? How long are prompts and outputs retained, and can retention be set to zero? Who are the subprocessors? Where is the data processed geographically? And what happens to our data when we leave?</p>
       <p>A serious vendor answers all five from documents they already have — a data processing addendum, a security page, a subprocessor list. Evasion on any of them is your answer, and so is the phrase “we take security very seriously” offered in place of a document. Keep the answers in the deal file; if a customer or regulator ever asks where their data went, that folder is the difference between an afternoon and a very bad month. If you want the same interrogation applied to your own setup — what data your workflows actually touch, and which deployment that implies — that is part of what an <a href="/services/#audit">AI Readiness Audit</a> maps, at the published prices on <a href="/pricing/">the pricing page</a>. Or start smaller: <a href="/book/">book the free 30-minute assessment</a>, tell us what data you handle, and we will give you a straight read on whether cloud, hybrid, or on-prem even belongs in your conversation. We reply within 24 hours.</p>
 
@@ -374,7 +366,7 @@
         <div class="faq__aside">
           <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
         </div>
       </div>
       <div class="faq__list">
@@ -405,11 +397,11 @@
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
-      <h2 class="h2 mt-s">Not sure which deployment <span class="accent-tx">your data needs?</span></h2>
+      <h2 class="h2 mt-s">Not sure which deployment <span class="accent-tx">your&nbsp;data&nbsp;needs?</span></h2>
       <p class="lead mt-s">Tell us what your workflows touch — patient records, borrower files, or plain business documents — and a senior advisor gives you a straight read in 30 minutes. Free, and we reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-        <a class="btn btn--secondary btn--lg" href="/security/">Read the security architecture <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a class="btn btn--secondary btn--lg" href="/security/">Read the security architecture</a>
       </div>
     </div>
     <div class="final__promise">

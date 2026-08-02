@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -204,19 +204,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -247,7 +239,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -297,7 +289,7 @@
       <p>The shape of your workflow decides the bill. A chat-light system — an assistant that answers a few dozen staff questions a day against your procedures — reads and writes small amounts of text and lands at the bottom of the band, often a few dollars a day or less. A document-heavy system is different arithmetic. When the machine reads every 40-page contract, every intake packet, every invoice attachment, each document is thousands of tokens in and often thousands more out in summaries and drafts. A <a href="/industries/professional-services/">professional-services firm</a> running proposals and engagement letters through a system will spend more per month on tokens than a shop using the same model to answer scheduling questions — not because anyone did anything wrong, but because tokens are the metered fuel. The Ampersand essay <a href="/blog/the-currency-of-the-machine/">The Currency of the Machine</a> explains the meter in plain English, and <a href="/blog/the-buildings-behind-the-intelligence/">The Buildings Behind the Intelligence</a> covers the physical infrastructure the meter is paying for.</p>
       <p>You can rough out your own bill before anyone builds anything, because the rates are public — AWS publishes <a href="https://aws.amazon.com/bedrock/pricing/" rel="nofollow noopener" target="_blank">per-input-token and per-output-token prices for every model on Bedrock</a>, and the other platforms do the same. Count the documents the workflow touches in a month and multiply by their typical length: two hundred 3-page invoices is a modest token load; forty 40-page contracts is a heavy one, even though it is fewer documents. Precision does not matter at this stage — what matters is knowing whether you are a $30-a-month workflow or a $300-a-month workflow before you commit to a build price, because the answer occasionally changes whether the build is worth doing at all.</p>
 
-      <h2>What software subscriptions sit underneath a working system?</h2>
+      <h2>What software subscriptions sit underneath a&nbsp;working&nbsp;system?</h2>
       <p>Plan on $30–$200 a month in tools around the model: the platform that hosts the workflow, the integration layer that moves data between your systems, and sometimes a specialty service for documents. Each piece is small; together they are usually the second-largest line.</p>
       <p>A typical stack for one automated workflow looks like this: an integration platform (the plumbing that connects your inbox, your file storage, and your system of record) at $20–$100 a month depending on how many times it runs; a hosting or workflow tool at $0–$50; and, for document work, OCR or storage services at $10–$50. One caution worth flagging separately: per-seat AI add-ons — the $18–$30-per-user-per-month copilot licenses sold inside office suites — are a different bill entirely. Microsoft <a href="https://www.microsoft.com/en-us/microsoft-365/copilot/business" rel="nofollow noopener" target="_blank">lists Microsoft 365 Copilot at $21 per user per month</a> on an annual commitment, $25.20 billed monthly, and is currently promoting it at $18. Twenty seats of a copilot is $360–$600 a month before any workflow exists. That can be worth it, but do not confuse it with the running cost of an automated workflow; a scoped system usually costs less per month than blanket seats and does something specific.</p>
 
@@ -314,7 +306,7 @@
       <p>Run the arithmetic before anyone runs a demo. If a task takes your bookkeeper two hours a month, full automation saves at most two hours a month — against $50 or more in running costs and a build price on top. That is a hobby, not an investment. A small <a href="/industries/retail/">retail shop</a> reconciling four supplier invoices a month should keep reconciling them by hand; the same shop answering two hundred customer emails a week has a real candidate. Volume is the test, and it is why every audit we deliver marks some workflows “leave it manual” in writing. If a seller has never told you not to automate something, they are not scoping — they are selling. The free <a href="/guides/ai-readiness-checklist/">20-point readiness checklist</a> helps you sort your own list before anyone charges you to sort it.</p>
       <p>There is a middle case worth naming, too. Some workflows are low-volume today and will not stay that way — the shop opening a second location, the firm about to take on a new contract type. For those, the right answer is usually “not yet, revisit at volume,” with a specific trigger written down: automate the invoice flow when it crosses fifty a month, not before. A dated threshold turns a vague someday into a decision that makes itself, and it costs nothing to write.</p>
 
-      <h2>How do monthly costs compare across workflow types?</h2>
+      <h2>How do monthly costs compare across&nbsp;workflow&nbsp;types?</h2>
       <p>Three profiles cover most of what small businesses actually run. The ranges are typical figures for systems like the ones we scope — not quotes, because your volume decides your number.</p>
       <div class="gtable-wrap">
         <table class="gtable">
@@ -360,11 +352,11 @@
       <p>Think of the build as the mortgage and the running cost as the utilities: $18,000–$60,000 once for an implementation sprint at our published prices, then $50–$500 a month to keep it working. Both numbers should be on the table before you sign anything.</p>
       <p>The full year-one picture, then: an audit at $3,500–$8,500 over 2–4 weeks, a sprint at $18,000–$60,000 fixed in writing over 4–12 weeks, and roughly $600–$6,000 in running costs across the first twelve months. For the build side of the market — hourly rates, boutique bands, Big Four quotes — the companion guide <a href="/guides/ai-consultant-cost/">What an AI consultant costs</a> lays out the whole shelf; the full price list is on <a href="/pricing/">one page</a>. And one vetting question worth carrying into every meeting, including ours: ask for the projected monthly running cost next to the build quote. A builder who cannot estimate the monthly number has not actually scoped the workflow. Every engagement starts with a free 30-minute assessment, and we reply within 24 hours.</p>
 
+
+<p class="gtable-note"><b>Where these numbers come from.</b> Model and platform list prices are published by the vendors and change often &mdash; check them at the source before you budget. The monthly bands on this page are ours: what the systems we run actually cost to operate, not a market survey. If your document volume is unusual, your number will be too.</p>
     </article>
   </div>
-</section><!-- ============ START HERE (ink) ============ -->
-<p class="gtable-note"><b>Where these numbers come from.</b> Model and platform list prices are published by the vendors and change often &mdash; check them at the source before you budget. The monthly bands on this page are ours: what the systems we run actually cost to operate, not a market survey. If your document volume is unusual, your number will be too.</p>
-<!-- FAQ:auto -->
+</section><!-- ============ START HERE (ink) ============ --><!-- FAQ:auto -->
 <section class="section paper-2">
   <div class="wrap">
     <div class="faq">
@@ -374,7 +366,7 @@
         <div class="faq__aside">
           <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
         </div>
       </div>
       <div class="faq__list">
@@ -404,11 +396,11 @@
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
-      <h2 class="h2 mt-s">Want both numbers for <span class="accent-tx">your workflows?</span></h2>
+      <h2 class="h2 mt-s">Want both numbers for&nbsp;<span class="accent-tx">your&nbsp;workflows?</span></h2>
       <p class="lead mt-s">The free 30-minute assessment is where ranges become your numbers — a senior advisor walks your workflows and gives you a straight read on the build price and the monthly bill behind it. We reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-        <a class="btn btn--secondary btn--lg" href="/pricing/">Read the full price list <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a class="btn btn--secondary btn--lg" href="/pricing/">Read the full price list</a>
       </div>
     </div>
     <div class="final__promise">

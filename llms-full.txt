@@ -163,7 +163,7 @@ The same numbers, pointed at your business
 Two inputs. A real range, built from the same price list published on this site, not a teaser that ends in “call us.”
 
 Run your real numbers →
-Full breakdown + share →
+Full breakdown + share
 
 Estimate.v1
 A model, not a promise
@@ -244,7 +244,7 @@ Three doors. No wrong answer.
 
 Book the free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. No obligation, no pitch.
 
-Book a free assessment →
+Book a free assessment
 
 02 / Decided
 
@@ -252,7 +252,7 @@ Book a free assessment →
 
 You already know what you want built. Book a scoping call and we quote a fixed-price Implementation Sprint in writing — no audit in between.
 
-Scope a sprint →
+Scope a sprint
 
 03 / Curious
 
@@ -260,7 +260,7 @@ Scope a sprint →
 
 Take the AI-Ready Score. Fourteen questions, seven minutes, and a straight answer about whether your company is ready — before you talk to anyone.
 
-Get your score →
+Get your score
 
 ========================================================================
 PAGE: AI Services for Small Business: Audit, Sprint, Managed
@@ -404,7 +404,7 @@ What you leave with
 
 - Your team trained to run all of it
 
-See the full price list →
+See the full price list
 
 ### Questions about the sprint
 
@@ -1054,7 +1054,7 @@ Of consequential actions approved by a person before anything sent, filed, poste
 
 Measurement window: the first 90 days of full-fleet operation. Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.
 
-Read the measured results →
+Read the measured results
 
 Who we built it for
 
@@ -1304,7 +1304,7 @@ Proof
 
 ## More client stories.
 
-See all of Proof →
+See all of Proof
 
 Current · B:Side Capital
 
@@ -1892,7 +1892,7 @@ Rule: the machine prepares; people decide
 
 MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: 0 ( the measured results ).
 
-Read the MARCUS case study →
+Read the MARCUS case study
 
 Have a security questionnaire? Send it, or bring your IT reviewer to the free 30-minute assessment. The person answering is the founder who is accountable for the build — and “that control doesn’t apply to your workflow” is an answer we’ll put in writing too. The plain-English version of the cloud-versus-on-prem call is in where your AI data actually goes .
 
@@ -1910,7 +1910,7 @@ Fair questions
 
 Ask it directly. Security questions land with the founder, not a sales queue.
 
-Ask a security question →
+Ask a security question
 
 01 Does our data leave our building? +
 For regulated work, no — the models run on your own hardware, and in normal operation no client file leaves your network. That is how MARCUS runs at a regulated SBA lender today. When a cloud model is the right call for a workflow, we say so in the written quote and you decide.
@@ -2177,7 +2177,7 @@ Fair questions
 
 The full price list is published — audits, sprints, managed services, all on one page.
 
-Read the price list →
+Read the price list
 
 01 How much does an AI consultant cost per hour? +
 Independent AI consultants typically bill $100–$300 an hour; specialists with deep machine-learning backgrounds run $200–$500. The total depends on hours, which almost nobody quotes in advance — which is why we price fixed instead.
@@ -2198,7 +2198,7 @@ Start here
 The free 30-minute assessment is where ranges become a fixed quote in writing. A senior advisor walks your workflows and gives you a straight read. We reply within 24 hours.
 
 Book a free assessment →
-Read the full price list →
+Read the full price list
 
 A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
 
@@ -2324,7 +2324,7 @@ Fair questions
 
 The full price list is published — audits, sprints, managed services, all on one page.
 
-Read the price list →
+Read the price list
 
 01 How do I know if my business is ready for AI? +
 Run the 20 checks on this page: documented workflows, exportable data, a named owner with review time, and a number on what the manual work costs. Sixteen or more and you are ready to build; nine or fewer means fix the foundations first.
@@ -2345,7 +2345,7 @@ Start here
 Fourteen questions, a 0–100 score, and the one constraint to fix first. No sales call. When you want a human read instead, the free 30-minute assessment is the front door.
 
 Get your AI-Ready Score →
-Book a free assessment →
+Book a free assessment
 
 A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
 
@@ -2473,7 +2473,7 @@ Fair questions
 
 The full price list is published — audits, sprints, managed services, all on one page.
 
-Read the price list →
+Read the price list
 
 01 What should I ask an AI consultant before hiring them? +
 Ten questions: the exact cost and when you learn it, whether they guarantee ROI (they should not), the real timeline, who scopes versus who builds, whether they can say wait, tool incentives, where your data goes, who can overrule the system, what you own at handoff, and proof of a real build.
@@ -2494,7 +2494,7 @@ Start here
 30 minutes with a senior advisor. Bring this page. You get straight answers and a read on what is worth automating — and what is not. We reply within 24 hours.
 
 Book a free assessment →
-Read our method first →
+Read our method first
 
 A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
 

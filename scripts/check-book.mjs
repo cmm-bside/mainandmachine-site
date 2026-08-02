@@ -18,7 +18,9 @@ const REQUIRED = [
   "Christopher Myers",
   // Booking banner (delivery framing). The quarter is auto-advanced by js/nav.js,
   // so assert the structural hook (not a fixed quarter) — a literal "Q4" would go stale.
-  'booking for <span class="js-book-quarter">',
+  // Copy became "Booking <Q> delivery" in the 2026-08-01 topbar rework; the hook
+  // is what matters, so this asserts the span alone rather than the wording.
+  '<span class="js-book-quarter">',
 ];
 for (const s of REQUIRED) {
   if (!html.includes(s)) errors.push(`/book: missing required text "${s}"`);

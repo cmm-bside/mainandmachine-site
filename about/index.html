@@ -213,19 +213,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -256,7 +248,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -322,7 +314,7 @@
         <!-- Press links verified 2026-07-31: Forbes = founder contributor page; Inc. = founder author page;
      TechCrunch + Fox Business = BodeTree coverage naming Christopher Myers as founder/CEO.
      WSJ / NYT / MSNBC: no verifiable URL found - they stay unlinked. Never link without a real URL. -->
-        <div class="bio__press">Our founder’s work has been covered in: <span class="press-list"><span><a href="https://www.forbes.com/sites/chrismyers/" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Forbes</a></span><span>The Wall Street Journal</span><span>The New York Times</span><span><a href="https://www.inc.com/author/chris-myers" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Inc.</a></span><span><a href="https://techcrunch.com/2013/04/17/bodetree-a-startup-making-small-business-finance-less-boring-raises-1-4-million/" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">TechCrunch</a></span><span>MSNBC</span><span><a href="https://www.foxbusiness.com/features/bodetree-crunching-numbers-for-the-little-guy" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Fox Business</a></span></span></div>
+        <div class="bio__press">Our founder’s work has been covered in: <span class="press-list"><span><a href="https://www.forbes.com/sites/chrismyers/" rel="noopener" target="_blank">Forbes</a></span><span>The Wall Street Journal</span><span>The New York Times</span><span><a href="https://www.inc.com/author/chris-myers" rel="noopener" target="_blank">Inc.</a></span><span><a href="https://techcrunch.com/2013/04/17/bodetree-a-startup-making-small-business-finance-less-boring-raises-1-4-million/" rel="noopener" target="_blank">TechCrunch</a></span><span>MSNBC</span><span><a href="https://www.foxbusiness.com/features/bodetree-crunching-numbers-for-the-little-guy" rel="noopener" target="_blank">Fox Business</a></span></span></div>
         <div class="bio__verify">
           <span class="tick-lbl">Don’t take the bio’s word for it</span>
           <ul>
@@ -343,7 +335,7 @@
     <div class="head-block">
       <div>
         <span class="kicker">02 / The team</span>
-        <h2 class="h2 mt-s">The build team is young <span class="accent-tx">on purpose.</span></h2>
+        <h2 class="h2 mt-s">The build team is young&nbsp;<span class="accent-tx">on&nbsp;purpose.</span></h2>
       </div>
       <p class="lead">Around twenty-five AI-native technologists, most of them students and recent graduates, who have never known work without these tools and have nothing to unlearn. Every build runs under one accountable operator with twenty-six years backing Main Street. That pairing is the whole company: fluency with the new, judgment from the old.</p>
     </div>
@@ -364,7 +356,7 @@
       <div>
         <span class="tick-lbl">01: Prices stated plainly</span>
         <h3>No discovery call required to learn the cost.</h3>
-        <p><a href="/pricing/" style="text-decoration:underline;">The price list</a> is published in plain numbers, because that is how you would want to be treated.</p>
+        <p><a href="/pricing/">The price list</a> is published in plain numbers, because that is how you would want to be treated.</p>
       </div>
       <div>
         <span class="tick-lbl">02: Vendor-neutral</span>
@@ -388,7 +380,7 @@
 <!-- ============ THE NAME ============ -->
 <section class="section paper" data-screen-label="The name">
   <div class="wrap">
-    <div class="head-block" style="align-items:center; margin-bottom:38px;">
+    <div class="head-block">
       <div>
         <span class="kicker">04 / The name</span>
         <h2 class="h2 mt-s">Two words. <span class="accent-tx">One argument.</span></h2>
@@ -419,7 +411,7 @@
       <span class="kicker">Start here</span>
       <p class="lead mt-s">Book a free 30-minute AI Opportunity Assessment. We will look at your business and tell you the truth, even when the truth is “wait a quarter” or “you do not need us for this.”</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       </div>
     </div>
     <div class="final__promise">
@@ -451,7 +443,7 @@
       <div class="foot__brand">
         <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

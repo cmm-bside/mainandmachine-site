@@ -24,7 +24,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -174,19 +174,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -217,7 +209,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/#request">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/#request">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -237,7 +229,7 @@
       <span>Request received</span>
     </div>
 
-    <div class="confirm crop">
+    <div class="confirm">
       <div class="confirm__bar"><span class="ok">Request received</span><span id="confirmStamp">Logged</span></div>
       <div class="confirm__body">
         <div class="confirm__id" id="refRow" hidden>Reference <b id="refId">—</b></div>
@@ -254,7 +246,7 @@
         <!-- the faster path -->
         <div class="faster" id="faster">
           <p><b>Don’t want to wait for the email?</b> The same 30 minutes, on the calendar right now. Booked in about a minute.</p>
-          <a class="btn btn--primary btn--lg" id="fasterLink" href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">Pick a time now <span class="arr">→</span></a>
+          <a class="btn btn--primary btn--lg" id="fasterLink" href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">Pick a time now <span class="arr">&#8594;</span></a>
         </div>
 
         <!-- STAGE 2 — optional prep details, appended to the same submission -->
@@ -344,7 +336,7 @@
         </div>
 
         <div class="reversal" id="confirmProof">
-          <p><b>What we build:</b> MARCUS returned <!-- BUILD-LOG:MARCUS-INLINE-BOOK-THANKS — rendered from data/build-log.json. Never hand-edit. --><b>1,240 hrs</b><!-- /BUILD-LOG:MARCUS-INLINE-BOOK-THANKS --> of staff preparation in its first 90 days of full-fleet operation, with zero borrower identifiers sent to an outside model. <a href="/work/marcus/results/">Read the measured results &rarr;</a></p>
+          <p><b>What we build:</b> MARCUS returned <!-- BUILD-LOG:MARCUS-INLINE-BOOK-THANKS — rendered from data/build-log.json. Never hand-edit. --><b>1,240 hrs</b><!-- /BUILD-LOG:MARCUS-INLINE-BOOK-THANKS --> of staff preparation in its first 90 days of full-fleet operation, with zero borrower identifiers sent to an outside model. <a href="/work/marcus/results/">Read the measured results <span class="arr">&#8594;</span></a></p>
           <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
         </div>
       </div>
@@ -375,7 +367,7 @@
       <div class="foot__brand">
         <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

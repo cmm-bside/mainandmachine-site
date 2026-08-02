@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -204,19 +204,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -247,7 +239,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -269,7 +261,7 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">The Field Guide / 13</span>
-        <h1 class="h2 mt-s">What is the real ROI math of AI for a 5–100 person <span class="accent-tx">business?</span></h1>
+        <h1 class="h2 mt-s">What is the real ROI math of AI for a 5–100&nbsp;person&nbsp;<span class="accent-tx">business?</span></h1>
         <p class="lead mt-s">Most firms keep their ROI model in a black box and hand you the output. Here is our entire model — every rate, the cost formula, one fully worked example, and the three things that break it.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
@@ -292,7 +284,7 @@
       <p>Two modeled cost lines — manual work and lost capacity — weighed against one implementation cost, with every assumption published. For a 25-person professional-services firm, the model says $150,000 a year of drag against roughly $18,000 to build, and the whole calculation is only as good as its assumptions, which is why this guide shows you every one of them.</p>
       <p>These are the exact numbers behind <a href="/calculator/">our ROI calculator</a>, laid out in prose instead of a widget. Read them as what they are: a model — our published averages, useful for a first read of whether AI is worth investigating at your size, and built to be replaced by your measured numbers the moment you have them. Nothing on this page is a promise, and the last two sections explain why we refuse to make one.</p>
 
-      <h2>What does the “manual work” line actually measure?</h2>
+      <h2>What does the “manual work” line&nbsp;actually&nbsp;measure?</h2>
       <p>The modeled cost of hours your team spends on repetitive, rule-following work a machine could carry: re-keying data between systems, drafting routine emails and documents, chasing statuses, reconciling records, copying answers from one place to another. We model it at $4,000 per employee per year in professional services, with different rates by industry.</p>
       <p>Two things about that number matter more than the number. First, it is an average across your whole headcount, not a claim about any individual — some employees do almost none of this work, and a few do ten times the average; spread over the team, the modeled figure is what survives. Second, it is deliberately unspectacular. At a $50 loaded rate, $4,000 a year is roughly an hour and a half per person per week — the arithmetic of ordinary friction, not a story about robots replacing anyone. The average includes the owner, whose re-keying hour is the most expensive one in the building. If your reaction is “our people lose more than that,” you may be right, and that is exactly what an audit measures rather than assumes.</p>
 
@@ -300,7 +292,7 @@
       <p>The revenue the model says you do not pursue because your people are busy with the manual work: proposals that never get written, callbacks that never happen, jobs that never get quoted, follow-ups that die in a full inbox. We model it at $2,000 per employee per year in professional services, again varying by industry.</p>
       <p>This is the softer of the two lines, and we treat it that way. Manual work is a cost you are already paying and could in principle time-and-motion study next week. Lost capacity is a counterfactual — an estimate of what freed hours would earn if they were redirected at revenue, which requires that there is revenue to chase and someone who redirects the hours. In some businesses that line is conservative; a <a href="/industries/retail/">retail operation</a> that answers product questions an hour faster genuinely sells more. In others it is generous. When the two lines are added, remember which one stands on observed hours and which one stands on an assumption about what you would do with them.</p>
 
-      <h2>What are the per-industry rates, exactly?</h2>
+      <h2>What are the per-industry&nbsp;rates,&nbsp;exactly?</h2>
       <p>Five industries, two rates each, exactly as published in the calculator. They differ because the mix of paperwork, margins, and hourly economics differs by industry — a law firm’s hour is not a restaurant’s hour.</p>
       <div class="gtable-wrap">
         <table class="gtable">
@@ -365,21 +357,21 @@
       <p>Second: a system nobody uses returns zero, regardless of what the spreadsheet said. Adoption does not fail loudly — the approval seat goes empty for a week, the old habit creeps back because it was faster that day, and by month four the build is a login nobody remembers. The model assumes the hours flow back; adoption is the pipe they flow through, and it is a human pipe.</p>
       <p>Third, the subtlest: saved time is not captured value. “Lost capacity” only converts to dollars if someone redirects the freed hours at revenue — and if the manual work was being absorbed into slack you would never have staffed anyway, eliminating it improves morale, not the bank balance. A model that counts those hours as dollars is double-counting, and most vendor ROI slides do. Any pitch that ignores all three of these failure modes is showing you the model’s best day and calling it a forecast.</p>
 
-      <h2>Why won’t we promise ROI numbers?</h2>
+      <h2>Why won’t we promise&nbsp;ROI&nbsp;numbers?</h2>
       <p>Because everything above is our published set of assumptions, not your measured facts, and a promise built on assumptions is fiction with a signature. That is why no page on this site quotes a guaranteed return — this one included.</p>
       <p>What we do instead is stage the certainty. The <a href="/calculator/">calculator</a> gives you a free first read using the rates in this guide — run your own headcount through it. The same model does heavier work in <a href="/guides/ai-consultant-vs-in-house/">the build-versus-hire comparison</a>, if your alternative is a full-time hire. And when the first read looks worth testing, an <a href="/services/#audit">AI Readiness Audit</a> &mdash; we call it <span data-fact="name-audit">The Blueprint</span> &mdash; $3,500–$8,500, 2–4 weeks, replaces every average on this page with your workflows, your hours, and your rates, then prices the build as a fixed quote in writing. Sometimes the audit’s answer is that the drag is real but the workflows are not automatable yet, and the recommendation is to wait. If you would rather start smaller than that, the <a href="/book/">free 30-minute assessment</a> is a conversation about which of your numbers would survive the audit — we reply within 24 hours.</p>
 
-    </article>
-  </div>
-</section>      <form class="estimate-form" data-source="/guides/ai-roi-math-small-business/" novalidate>
+      <form class="estimate-form" data-source="/guides/ai-roi-math-small-business/" novalidate>
         <label for="wsRoi">Want this as a worksheet for your numbers?</label>
         <div class="estimate-form__row">
           <input class="input" type="email" id="wsRoi" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Your email address" required />
-          <button class="btn btn--secondary" type="submit">Send the model <span class="arr">&rarr;</span></button>
+          <button class="btn btn--secondary" type="submit">Send the model</button>
         </div>
         <p class="estimate-form__note" data-note>We will send the model, the assumptions behind it, and the guarantee. You are not subscribed to anything.</p>
       </form>
-<!-- FAQ:auto -->
+    </article>
+  </div>
+</section><!-- FAQ:auto -->
 <section class="section paper-2">
   <div class="wrap">
     <div class="faq">
@@ -389,7 +381,7 @@
         <div class="faq__aside">
           <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
         </div>
       </div>
       <div class="faq__list">
@@ -419,11 +411,11 @@
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
-      <h2 class="h2 mt-s">Run the model on <span class="accent-tx">your headcount.</span></h2>
+      <h2 class="h2 mt-s">Run the model on&nbsp;<span class="accent-tx">your&nbsp;headcount.</span></h2>
       <p class="lead mt-s">The calculator is free and uses every rate on this page. When you want the averages replaced with your real numbers, the 30-minute assessment is where that starts. We reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-        <a class="btn btn--secondary btn--lg" href="/calculator/">Open the ROI calculator <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a class="btn btn--secondary btn--lg" href="/calculator/">Open the ROI calculator</a>
       </div>
     </div>
     <div class="final__promise">

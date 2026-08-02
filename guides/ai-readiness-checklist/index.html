@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -204,19 +204,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -247,7 +239,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -269,7 +261,7 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">The Field Guide / 02</span>
-        <h1 class="h2 mt-s">The AI readiness checklist: <span class="accent-tx">20 points.</span></h1>
+        <h1 class="h2 mt-s">The AI readiness checklist:&nbsp;<span class="accent-tx">20&nbsp;points.</span></h1>
         <p class="lead mt-s">Run it in an afternoon, without hiring anyone — including us. Twenty checks across your workflows, data, team, and economics, with scoring bands that include the answer nobody sells: wait.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
@@ -293,7 +285,7 @@
       <p>Documented workflows, data somebody can actually export, one named person with time to review what a machine produces, and a number on what the manual work costs you. That is the whole secret — not a data science team, not a bigger budget, not a platform migration.</p>
       <p>The twenty checks below test exactly those four things. They are the same questions we ask in the first week of a paid <a href="/services/#audit">AI Readiness Audit</a>, published here because you can run most of them yourself. A business that passes fifteen of these will get more from a $18,000 build than an unprepared one gets from a $200,000 engagement.</p>
 
-      <h2>How do you use this checklist?</h2>
+      <h2>How do you use&nbsp;this&nbsp;checklist?</h2>
       <p>Score one point for every item you can check off without squinting, zero for the rest — no half points. Twenty minutes if you know your business; an afternoon if you have to go look, and having to go look is itself a finding.</p>
       <p>Be strict. The checklist only helps if the score is true, and nobody is watching you take it. If an item makes you say “sort of,” that is a zero with better posture.</p>
 
@@ -307,7 +299,7 @@
         <li><b>Each workflow has one owner with a name.</b> “Operations handles that” is not a name. Automation without an owner is a stray dog.</li>
       </ol>
 
-      <h2>Is your data ready? (Points 6–10)</h2>
+      <h2>Is your data ready?&nbsp;(Points&nbsp;6–10)</h2>
       <p>Ready does not mean clean — nobody’s data is clean. It means you know where each fact lives and you can get it out.</p>
       <ol class="check" style="counter-reset:ck 5">
         <li><b>You can say which system is the truth for each core fact.</b> Customer, order, invoice, job status: one home each. Two systems that disagree is the most expensive kind of normal.</li>
@@ -317,7 +309,7 @@
         <li><b>Someone can pull last month’s numbers in under an hour, without IT.</b> If a basic report takes a week, the machine will automate confusion at scale.</li>
       </ol>
 
-      <h2>Is your team ready? (Points 11–15)</h2>
+      <h2>Is your team ready?&nbsp;(Points&nbsp;11–15)</h2>
       <p>Most AI projects fail on people, not technology. These five checks find out before the invoice does.</p>
       <ol class="check" style="counter-reset:ck 10">
         <li><b>Someone at the top actually wants this.</b> A sponsor who will spend attention on it — not an owner who merely tolerates the experiment.</li>
@@ -359,7 +351,7 @@
         <div class="faq__aside">
           <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
         </div>
       </div>
       <div class="faq__list">
@@ -390,11 +382,11 @@
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
-      <h2 class="h2 mt-s">Get the automated version <span class="accent-tx">in seven minutes.</span></h2>
+      <h2 class="h2 mt-s">Get the automated version <span class="accent-tx">in&nbsp;seven&nbsp;minutes.</span></h2>
       <p class="lead mt-s">Fourteen questions, a 0–100 score, and the one constraint to fix first. No sales call. When you want a human read instead, the free 30-minute assessment is the front door.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/score/">Get your AI-Ready Score <span class="arr">→</span></a>
-        <a class="btn btn--secondary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/score/">Get your AI-Ready Score <span class="arr">&#8594;</span></a>
+        <a class="btn btn--secondary btn--lg" href="/book/">Book a free assessment</a>
       </div>
     </div>
     <div class="final__promise">

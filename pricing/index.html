@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <style>
 /* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
 /* 1. Price/range values never wrap. Stepped down one size so the widest range
@@ -364,19 +364,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -407,7 +399,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -427,7 +419,7 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Pricing</span>
-        <h1 class="h2 mt-s">Three ways in. Priced in <span class="accent-tx">plain numbers.</span></h1>
+        <h1 class="h2 mt-s">Three ways in. Priced in&nbsp;<span class="accent-tx">plain&nbsp;numbers.</span></h1>
         <p class="lead mt-s">You will not have to sit through three discovery calls to learn what something costs. Here is the price list.</p>
       </div>
       <dl class="statrail crop" aria-label="Pricing at a glance">
@@ -476,7 +468,7 @@
             <li>An approval queue: people decide, always</li>
             <li>Your team trained, everything owned by you</li>
           </ul>
-          <a class="svc__cta" href="/work/marcus/">Read the MARCUS build &rarr;</a>
+          <a class="svc__cta" href="/work/marcus/">Read the MARCUS build <span class="arr">&#8594;</span></a>
         </div>
       </div>
     </div>
@@ -485,7 +477,7 @@
         <h3>The guarantee, in one sentence.</h3>
         <p data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</p>
       </div>
-      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&rarr;</span></a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
     </div>
   </div>
 </section>
@@ -496,7 +488,7 @@
     <div class="head-block">
       <div>
         <span class="kicker">The price list</span>
-        <h2 class="h2 mt-s">And the three ways <span class="accent-tx">most businesses start.</span></h2>
+        <h2 class="h2 mt-s">And the three ways <span class="accent-tx">most&nbsp;businesses&nbsp;start.</span></h2>
       </div>
       <p class="lead">Audit, sprint, retainer: every price fixed and quoted in writing before any work begins. The audit is where most businesses start.</p>
     </div>
@@ -524,7 +516,7 @@
             <li>A phased plan you own outright</li>
             <li>A straight read on whether to build at all</li>
           </ul>
-          <a class="svc__cta" href="/services/#audit">Read the full spec →</a>
+          <a class="svc__cta" href="/services/#audit">Read the full spec <span class="arr">&#8594;</span></a>
         </div>
       </div>
       <div class="svc__item">
@@ -550,7 +542,7 @@
             <li>Integrations into one source of truth</li>
             <li>Your team trained to run all of it</li>
           </ul>
-          <a class="svc__cta" href="/services/#sprint">Read the full spec →</a>
+          <a class="svc__cta" href="/services/#sprint">Read the full spec <span class="arr">&#8594;</span></a>
         </div>
       </div>
       <div class="svc__item">
@@ -576,7 +568,7 @@
             <li>A one-page monthly report, plain numbers</li>
             <li>No lock-in: leave whenever it stops paying</li>
           </ul>
-          <a class="svc__cta" href="/services/#managed">Read the full spec →</a>
+          <a class="svc__cta" href="/services/#managed">Read the full spec <span class="arr">&#8594;</span></a>
         </div>
       </div>
     </div>
@@ -617,7 +609,7 @@
     <div class="faq">
       <div>
         <span class="kicker">Fair questions</span>
-        <h2 class="h2 mt-s">How much does AI implementation cost?</h2>
+        <h2 class="h2 mt-s">How much does AI&nbsp;implementation&nbsp;cost?</h2>
       </div>
       <div class="faq__list">
         <details>
@@ -651,7 +643,7 @@
         <h3>Want exact numbers?</h3>
         <p>The assessment is where ranges become a fixed quote in writing: 30 minutes, free. No obligation.</p>
       </div>
-      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">→</span></a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
     </div>
   </div>
 </section>

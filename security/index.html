@@ -23,7 +23,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine — where Main Street meets the machine" />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -168,14 +168,14 @@
    Written for the buyer's IT/compliance reviewer; the
    architecture is the one MARCUS runs on (see /work/marcus/).
    ========================================================= */
-.sechero { padding-bottom: clamp(40px, 5vw, 64px); }
+.sechero { padding-bottom: var(--section-y); }
 .sechero__crumb {
   font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase;
   color: var(--tx-faint); display: flex; gap: 10px; align-items: center; margin-bottom: 26px;
 }
 .sechero__crumb a { color: var(--tx-mute); }
 .sechero__crumb a:hover { color: var(--tx); }
-.sechero__crumb .sep { opacity: .5; }
+.sechero__crumb .sep { opacity: 1; color: var(--ink-muted); }
 .sechero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (max-width: 940px) { .sechero__grid { grid-template-columns: 1fr; gap: 36px; } }
 .sechero h1 { margin: 22px 0 24px; }
@@ -193,7 +193,7 @@
 @media (max-width: 560px) { .control { grid-template-columns: 1fr; gap: 8px; } }
 
 /* what never happens — ink panel */
-.never { border: 1px solid var(--dline); background: var(--ink); color: var(--dtx); background-image: var(--grain); padding: clamp(28px, 4vw, 48px); }
+.never { border: 1px solid var(--dline); background: var(--ink); color: var(--dtx); background-image: var(--grain); padding: var(--s-4); }
 .never ul { list-style: none; margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; }
 @media (max-width: 700px) { .never ul { grid-template-columns: 1fr; } }
 .never li { padding-left: 26px; position: relative; color: var(--dtx-mute); line-height: 1.55; }
@@ -201,7 +201,7 @@
 .never li b { color: var(--dtx); font-weight: 700; }
 
 /* reviewer strip */
-.reviewer { border: 1px solid var(--line); background: var(--paper-card); padding: clamp(24px, 3vw, 36px); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+.reviewer { border: 1px solid var(--line); background: var(--paper-card); padding: var(--s-4); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
 .reviewer p { max-width: 52ch; color: var(--tx-mute); line-height: 1.6; }
 .reviewer p b { color: var(--tx); font-weight: 700; }
 </style>
@@ -217,19 +217,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -260,7 +252,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -280,7 +272,7 @@
     <div class="sechero__grid">
       <div>
         <span class="kicker">Security &amp; data handling</span>
-        <h1 class="h2 mt-s">Where your data goes — <span class="accent-tx">and where it never goes.</span></h1>
+        <h1 class="h2 mt-s">Where your data goes — <span class="accent-tx">and where it&nbsp;never&nbsp;goes.</span></h1>
         <p class="lead mt-s">This page is written for the person who reviews vendors for a living: your IT lead, your compliance officer, your fractional CISO. It describes the architecture our builds inherit — the same one running a regulated lender’s back office today. Bring your security questionnaire; the answers below are the ones we put in writing.</p>
       </div>
       <div class="statrail crop" aria-label="The architecture at a glance">
@@ -306,7 +298,7 @@
       <p class="lead">Most AI vendors ask you to trust their cloud. We built the opposite: a stack where the sensitive thing stays put and every step leaves evidence.</p>
     </div>
 
-    <div class="controls crop">
+    <div class="controls">
       <div class="control">
         <span class="control__no">C-01</span>
         <div>
@@ -334,7 +326,7 @@
       <div class="control">
         <span class="control__no">C-04</span>
         <div>
-          <h3>Every action writes to an append-only, tamper-evident log.</h3>
+          <h3>Every action writes to an append-only,&nbsp;tamper-evident&nbsp;log.</h3>
           <p>Each action the system takes is appended to an audit log secured as a <b>tamper-evident chain</b>: entries can be added, never edited or deleted. When your auditor asks what happened, compliance can <b>prove nothing was altered</b> — not assert it, prove it.</p>
           <span class="impl">Property: append-only · chained · verifiable</span>
         </div>
@@ -342,7 +334,7 @@
       <div class="control">
         <span class="control__no">C-05</span>
         <div>
-          <h3>A person signs off on every consequential action.</h3>
+          <h3>A person signs off on every&nbsp;consequential&nbsp;action.</h3>
           <p><b>Nothing sends, files, posts, or pays until a person approves it.</b> The system shows its work — what it did, what it’s asking for, the source it relied on — and a person approves, sends it back, or escalates. While a request waits, nothing moves.</p>
           <span class="impl">Rule: the machine prepares; people decide</span>
         </div>
@@ -354,7 +346,7 @@
 <!-- ============ WHAT NEVER HAPPENS ============ -->
 <section class="section paper" data-screen-label="What never happens">
   <div class="wrap">
-    <div class="never crop">
+    <div class="never">
       <span class="kicker">02 / The other half of the page title</span>
       <h2 class="h2 mt-s">What never happens.</h2>
       <ul>
@@ -375,23 +367,23 @@
     <div class="head-block">
       <div>
         <span class="kicker">03 / Not a policy document</span>
-        <h2 class="h2 mt-s">This architecture is running <span class="accent-tx">right now.</span></h2>
+        <h2 class="h2 mt-s">This architecture is running&nbsp;<span class="accent-tx">right&nbsp;now.</span></h2>
       </div>
       <p class="lead">MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: <!-- BUILD-LOG:MARCUS-INLINE-SECURITY — rendered from data/build-log.json. Never hand-edit. --><b>0</b><!-- /BUILD-LOG:MARCUS-INLINE-SECURITY --> (<a href="/work/marcus/results/">the measured results</a>).</p>
     </div>
-    <a class="btn btn--secondary btn--lg" href="/work/marcus/">Read the MARCUS case study <span class="arr">→</span></a>
+    <a class="btn btn--secondary btn--lg" href="/work/marcus/">Read the MARCUS case study</a>
   </div>
 </section>
 
 <!-- ============ FOR YOUR REVIEWER ============ -->
 <section class="section paper" data-screen-label="For your reviewer">
   <div class="wrap">
-    <div class="reviewer crop">
+    <div class="reviewer">
       <p><b>Have a security questionnaire?</b> Send it, or bring your IT reviewer to the free 30-minute assessment. The person answering is the founder who is accountable for the build — and “that control doesn’t apply to your workflow” is an answer we’ll put in writing too. The plain-English version of the cloud-versus-on-prem call is in <a href="/guides/ai-data-cloud-vs-on-prem/">where your AI data actually goes</a>.</p>
-      <a class="btn btn--primary btn--lg" href="/book/">Book the free assessment <span class="arr">→</span></a>
+      <a class="btn btn--primary btn--lg" href="/book/">Book the free assessment <span class="arr">&#8594;</span></a>
       <div class="reversal">
         <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
-        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list &rarr;</a></p>
+        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list <span class="arr">&#8594;</span></a></p>
       </div>
     </div>
   </div>
@@ -407,7 +399,7 @@
         <div class="faq__aside" style="margin-top:28px;">
           <h3 class="accent-tx" style="color:var(--accent-ink);">Something we didn’t cover?</h3>
           <p>Ask it directly. Security questions land with the founder, not a sales queue.</p>
-          <a class="btn btn--primary" href="/contact/">Ask a security question <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/contact/">Ask a security question</a>
         </div>
       </div>
       <div class="faq__list">
@@ -462,7 +454,7 @@
       <div class="foot__brand">
         <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
-          <span class="logo__word" style="color:var(--dtx);">Main <span class="amp">&amp;</span> Machine</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
         <div class="entity__stats">

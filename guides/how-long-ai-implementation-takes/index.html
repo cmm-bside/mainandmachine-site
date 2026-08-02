@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -204,19 +204,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -247,7 +239,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -269,7 +261,7 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">The Field Guide / 07</span>
-        <h1 class="h2 mt-s">How long does AI implementation <span class="accent-tx">actually take?</span></h1>
+        <h1 class="h2 mt-s">How long does AI implementation&nbsp;<span class="accent-tx">actually&nbsp;take?</span></h1>
         <p class="lead mt-s">The market promises two weeks; the real answer is about 90 days per workflow. Here is the week-by-week why — and what the two-week version actually delivers.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
@@ -340,7 +332,7 @@
       </div>
       <p class="gtable-note">The sprint band is 4–12 weeks — a single contained workflow lands near the short end; ~90 days is the typical full arc for one workflow.</p>
 
-      <h2>What does a “two-week AI implementation” actually deliver?</h2>
+      <h2>What does a “two-week AI implementation”&nbsp;actually&nbsp;deliver?</h2>
       <p>Usually a chat wrapper: a general-purpose model with your logo on it, not connected to your systems, with no training and no edge-case testing. It is not fraud — it is just a different product wearing the word “implementation.”</p>
       <p>The pattern is predictable. Week one, the wrapper appears and everyone tries it. Week three, usage has fallen to the two people who like new things, because the tool cannot see the job files, the customer records, or the calendar — so every answer is generic and every task still ends in the old system. By week six it is a line item nobody defends. That said, there is a legitimate case for the fast version: as a pilot. If your team has never touched AI and you want to build familiarity cheaply before committing real money, a two-week wrapper is a reasonable experiment — as long as it is priced like an experiment and nobody calls it a transformation. What it cannot be is the thing that changes your operation, because it never touches your operation.</p>
 
@@ -366,7 +358,7 @@
         <div class="faq__aside">
           <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
         </div>
       </div>
       <div class="faq__list">
@@ -397,11 +389,11 @@
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
-      <h2 class="h2 mt-s">Want a real timeline for <span class="accent-tx">your workflow?</span></h2>
+      <h2 class="h2 mt-s">Want a real timeline for&nbsp;<span class="accent-tx">your&nbsp;workflow?</span></h2>
       <p class="lead mt-s">The free 30-minute assessment is where the calendar gets specific: a senior advisor walks your workflow and gives you a straight read on how long it would actually take. We reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">→</span></a>
-        <a class="btn btn--secondary btn--lg" href="/services/">See how the services fit <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a class="btn btn--secondary btn--lg" href="/services/">See how the services fit</a>
       </div>
     </div>
     <div class="final__promise">

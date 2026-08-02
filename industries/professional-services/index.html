@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=98" />
+<link rel="stylesheet" href="/styles.css?v=109" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -272,19 +272,11 @@
 
 <!-- ============ OPERATOR CHROME ============ -->
 <div class="ticker" role="region" aria-label="Announcements">
-  <div class="ticker__track">
-    <div class="ticker__group">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
-    <div class="ticker__group" aria-hidden="true">
-      <span class="ticker__item"><span class="dot">●</span> <span data-fact="build-slots">Four Q4 build slots remain (counted 2026-07-30)</span> · booking for <span class="js-book-quarter">Q4</span> delivery</span>
-      <span class="ticker__item">Every engagement starts with the free assessment</span>
-      <span class="ticker__item">Human-centric AI for Main Street</span>
-      <span class="ticker__item">Denver · Phoenix · Remote</span>
-    </div>
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
 </div>
 
@@ -315,7 +307,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -337,7 +329,7 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Industries / 01</span>
-        <h1 class="h2 mt-s">AI for professional services, built for the <span class="accent-tx">5–100 person shop.</span></h1>
+        <h1 class="h2 mt-s">AI for professional services, built for the <span class="accent-tx">5–100&nbsp;person&nbsp;shop.</span></h1>
         <p class="lead mt-s">Law, accounting, insurance, consulting, financial advisory: firms that bill for judgment and lose too much of the week to everything wrapped around it. The examples below lean legal, because law makes the stakes plain — but the pattern holds across the desk professions.</p>
       </div>
       <div class="statrail crop" aria-label="Professional services at a glance">
@@ -357,7 +349,7 @@
     <div class="head-block">
       <div>
         <span class="kicker">The clearest wins</span>
-        <h2 class="h2 mt-s">Where does AI actually pay in <span class="accent-tx">professional services?</span></h2>
+        <h2 class="h2 mt-s">Where does AI actually pay in&nbsp;<span class="accent-tx">professional&nbsp;services?</span></h2>
       </div>
       <p class="lead">Three places, in our experience. Each one is drawn out below as a before-and-after — illustrative vignettes, not client claims. In every one, the machine drafts and chases; the person who knows the client decides. How that handoff gets taught is the subject of <a href="/blog/teaching-the-machine-your-business/">Teaching the Machine Your Business</a>.</p>
     </div>
@@ -378,7 +370,7 @@
         <div class="build">
           <span class="build__no">02</span>
           <span class="tick-lbl">Billing</span>
-          <h3>The work gets chased without the month-end scramble.</h3>
+          <h3>The work gets chased without the&nbsp;month-end&nbsp;scramble.</h3>
           <p><b>Before.</b> It is the 28th. The office manager exports unbilled time from one system and open invoices from another, reconciles them in a spreadsheet, and drafts reminders one at a time — softening some, skipping the awkward ones entirely. A handful of invoices quietly age past sixty days because chasing them is nobody’s favorite job.</p>
           <p><b>After.</b> An automation watches unbilled time and open invoices every day. It drafts each reminder in your voice, matched to the invoice’s age and the client’s history, and queues the routine ones for one-click approval. The exceptions — the disputed bill, the client a partner has known for twenty years — get flagged to a person with context instead of fired off blind. Nothing sends without approval.</p>
           <span class="build__win">The win: receivables get chased every week, and no client ever hears from a robot.</span>
@@ -386,7 +378,7 @@
         <div class="build">
           <span class="build__no">03</span>
           <span class="tick-lbl">Matters</span>
-          <h3>Every matter shows the same status everywhere.</h3>
+          <h3>Every matter shows the same&nbsp;status&nbsp;everywhere.</h3>
           <p><b>Before.</b> A client calls and asks where things stand. The document system says one thing, the billing system says another, and the real answer is three weeks deep in a partner’s inbox. Someone reconciles the three by hand, the client waits until tomorrow, and the same reconciliation happens again next month.</p>
           <p><b>After.</b> An integration keeps matter status in one place. When a filing lands, an invoice pays, or a deadline moves, every system shows it — the same record, everywhere. “Where does this stand” has exactly one answer, and anyone at the firm can give it in under a minute, including the person answering the phone.</p>
           <span class="build__win">The win: status questions cost a minute, not an afternoon.</span>
@@ -442,7 +434,7 @@
           <p>At this size the model prices the Implementation Sprint at $18,000 — inside the published $18,000–$60,000 range, and fixed in writing before work begins. Recover all of the modeled drag and the build returns $144,000 a year net of run costs. Apply the ROI guide’s stress test instead — half the drag, a quarter of that captured — and the same firm returns $12,750 a year. Against a one-time $18,000 build that is a payback of two to seventeen months. Both ends come out of the same model; which one you land nearer is what the audit is for.</p>
         </div>
       </div>
-      <p class="builds__note">A model, not a promise. The savings are assumptions you can see above, not your books. The whole model is published — with what breaks it — in <a href="/guides/ai-roi-math-small-business/">the ROI math guide</a>. <a href="/calculator/?industry=professional-services&amp;team=25">Run it at your own headcount →</a> Then we run your real numbers in the free assessment.</p>
+      <p class="builds__note">A model, not a promise. The savings are assumptions you can see above, not your books. The whole model is published — with what breaks it — in <a href="/guides/ai-roi-math-small-business/">the ROI math guide</a>. <a href="/calculator/?industry=professional-services&amp;team=25">Run it at your own headcount <span class="arr">&#8594;</span></a> Then we run your real numbers in the free assessment.</p>
     </div>
   </div>
 </section>
@@ -466,7 +458,7 @@
         <div class="faq__aside">
           <h3 class="accent-tx">Want the numbers?</h3>
           <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
         </div>
       </div>
       <div class="faq__list">
@@ -513,10 +505,10 @@
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
-      <h2 class="h2 mt-s">See the wins in <span class="accent-tx">professional services.</span></h2>
+      <h2 class="h2 mt-s">See the wins in&nbsp;<span class="accent-tx">professional&nbsp;services.</span></h2>
       <p class="lead mt-s">30 minutes with a senior advisor who walks your intake, billing, and matter workflows and tells you what is worth automating, and what is not — in person from our <a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a> hubs, or remote anywhere in the US.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/?industry=professional-services">Book a free assessment <span class="arr">→</span></a>
+        <a class="btn btn--primary btn--lg" href="/book/?industry=professional-services">Book a free assessment <span class="arr">&#8594;</span></a>
       </div>
     </div>
     <div class="final__promise">

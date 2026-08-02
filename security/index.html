@@ -23,7 +23,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine — where Main Street meets the machine" />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=109" />
+<link rel="stylesheet" href="/styles.css?v=110" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -252,7 +252,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+      <a aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -367,7 +367,7 @@
     <div class="head-block">
       <div>
         <span class="kicker">03 / Not a policy document</span>
-        <h2 class="h2 mt-s">This architecture is running&nbsp;<span class="accent-tx">right&nbsp;now.</span></h2>
+        <h2 class="h2 mt-s">This architecture is running <span class="accent-tx">right&nbsp;now.</span></h2>
       </div>
       <p class="lead">MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: <!-- BUILD-LOG:MARCUS-INLINE-SECURITY — rendered from data/build-log.json. Never hand-edit. --><b>0</b><!-- /BUILD-LOG:MARCUS-INLINE-SECURITY --> (<a href="/work/marcus/results/">the measured results</a>).</p>
     </div>

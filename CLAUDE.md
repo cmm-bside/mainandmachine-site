@@ -252,6 +252,18 @@ are headings under six words. A four-word heading can only break 2+2 or 1+3; the
 "three words on the last line" rule would force a one-word FIRST line, which is
 worse. Don't chase those.
 
+**Pins are capped by the viewport (2026-08-02).** A three-word pin at 39px is an
+unbreakable run up to 412px — wider than the 280px of content a 320px phone has
+— so it sized its grid track and scrolled the page sideways. That was the single
+biggest source of horizontal overflow on the site. 86 pins were relaxed, one at
+a time, taking only the ones that did not fit: each heading keeps every pin it
+can afford at 320px. Widows did not get worse (64 → 62 across four widths) —
+relaxing a pin lets `text-wrap: balance` rebalance the whole heading.
+**A pin must never make a heading's min-content exceed 280px.** Long single
+words are handled instead by `hyphens: auto` below 480px, which only breaks when
+a break is needed and, unlike `overflow-wrap: break-word`, also lowers
+min-content so the track can shrink.
+
 ### Buttons — two variants (2026-08-01)
 
 **BUTTONS** block near the top of `styles.css`. One box for both variants:
@@ -292,6 +304,12 @@ at `0.06em`, no shadow, 150ms transitions.
   rust was 3.23:1.)
 - Buttons sit **outside the card type tiers** by design, so 13px inside a card
   is expected — see the card typography note.
+- **Below 620px the label wraps** and the box grows downward from a 52px
+  `min-height` (2026-08-02). The one-52px-box rule assumed every label is short;
+  several CTAs are sentences ("Run your real numbers: book the free assessment"
+  is 487px of nowrap mono) and a box wider than the screen scrolled the page.
+  A two-line button on a phone beats a page that scrolls sideways (WCAG 1.4.10).
+  `qa:matrix` asserts exactly 52px above 620 and at-least-52 below it.
 
 ### Link system — two treatments (2026-08-01)
 
@@ -312,6 +330,17 @@ combination is what STYLE A's hover means.
   characters were wrapped in the standard `<span class="arr">&#8594;</span>`,
   and all arrow spans use one entity. Add an arrow and the link becomes STYLE B
   automatically; there is no class to remember.
+- **BLOCK links are excluded structurally**, via
+  `:not(:has(h1,h2,h3,h4,h5,h6,p))` (2026-08-02). `:has(.arr)` is a subtree
+  test, so a card link whose footer carries a "Read more →" affordance matched
+  STYLE B and inherited mono + uppercase + 12px + accent into everything inside
+  it. `/work/`'s MARCUS teardown card was rendering its 39px `h2` and its
+  37-word brief in uppercase Space Mono for exactly that reason — the worst
+  mono-rule violation on the site, and produced by the link system, not by the
+  card. The exclusion is structural rather than a class blocklist so the next
+  block link with an arrow is handled without anyone remembering. `.arr` also
+  now has a base rule (`display:inline-block` + the transition) outside STYLE B,
+  which previously owned it — an arrow in an excluded link could not animate.
 - The arrow is `inline-block`, `margin-left: 0.5ch`, `transition: transform
   150ms ease`, `translateX(2px)` on hover. Only the arrow moves — verified at
   arrow +2.00px / text +0.00px.
@@ -503,10 +532,28 @@ accent-coloured markers and label links, where the accent marks an affordance
 rather than decorating.
 
 Audit it by rendering, not grepping: computed `font-family` is the only
-reliable test, since most mono text inherits rather than declaring. Known
-residual: four `.kicker` eyebrows run 9 words (`/`, `/services/`,
-`/work/marcus/results/`, `/security/`) — each is a single text node, so
-compliance needs a copy trim, not a CSS change.
+reliable test, since most mono text inherits rather than declaring. This is
+now enforced — **`npm run mono:check`** (`scripts/check-mono.mjs`) renders all
+43 routes and fails on any mono run over 8 words. Like `sweep:mobile` it needs
+Playwright, which is deliberately not a dependency, so it is NOT in
+`build:static`: `npm i -D playwright && npm run mono:check`, or point
+`PLAYWRIGHT_PATH` at an existing install.
+
+Two things the guard had to get right, and both took a wrong answer first:
+
+- **The unit is a mono BLOCK, not an element.** Charge each element for its own
+  text nodes and a mono sentence broken by inline links reads as three passing
+  fragments; charge it for its whole subtree and every container is reported
+  once per descendant. The guard climbs to the outermost mono ancestor, but
+  only across ancestors that have interstitial text of their own — otherwise a
+  pure wrapper of separate labels (`.ticker__left`, `.foot__bottom`) merges
+  into one long pseudo-sentence and reports a false 10- and 16-word violation.
+- **Separators are not words.** `·` `/` `—` `→` carry no reading load. Counting
+  them is what previously made four legitimate eyebrows look like 9-word
+  violations — "The Ampersand · free, a few times a month" is eight words and a
+  middot, and `a few times a month` is `BLOG_CADENCE`, shared with llms.txt,
+  the FAQ and the smoke test. Those four are compliant as written; the earlier
+  note calling for a copy trim was a counting artefact, not a real residual.
 - `npm run tokens:check` fails the build on any `var()` pointing at a token
   that does not exist — that failure is otherwise SILENT (the declaration is
   dropped at computed-value time).
@@ -624,9 +671,58 @@ Each of these exists because something shipped wrong once and nothing objected:
   (They didn't — `/` and `/about/` shipped 8 profiles while 37 pages shipped 6.)
   Add a profile to `PERSON_SAMEAS` and the build fails until every page carries
   it.
+- `qa:matrix` (`scripts/qa-matrix.mjs`) — the design-system consistency matrix,
+  rendered across every route at 1440/1024/768/375. Eight checks: two link
+  treatments, two button variants on one 52px box, `padding-block:
+  var(--section-y)` on every section, nothing under 11px, WCAG AA on every
+  text/background pair, heading widows against the documented budget, one
+  1160px container, and utility-bar + footer DOM identity across pages. Like
+  `sweep:mobile` and `mono:check` it needs Playwright, so it is not in
+  `build:static`. Two measurement traps it had to solve, both of which produce
+  confident nonsense if you get them wrong:
+  - **Resolve the background by the text's CENTRE POINT, not full-rect
+    containment.** Full containment fails wherever a child is wider than its
+    background ancestor — i.e. on every page that still has horizontal overflow
+    at 375px — so the walk finds nothing, falls back to white, and reports a
+    shelf of phantom failures (cream headings "on #ffffff" at 1.19:1 that are
+    really cream on ink).
+  - **STYLE B is selected by the ARROW, not by font-family.** Classifying on
+    mono misreads every STYLE A link that sits inside a mono container: the
+    footer's legal bar is mono, so its Privacy/Terms links looked like
+    underlined STYLE B violations. Card TITLES that are links are excluded too
+    — the affordance is the title, and underlining it is the wrong reading of
+    "two link treatments".
 - All guards skip `LOCAL_SCRATCH_DIRS` (`scripts/lib/config.mjs`) so a stale
   local copy of the site can't flood the checks with phantom failures — that
   noise is how people learn to ignore a red build.
+
+**Mobile sweep is green (2026-08-02).** `npm run sweep:mobile` went from 254
+failures to 0 across 43 routes × 320/390/430. One cause dominated, and it is
+worth knowing because it looks like the layout is responding correctly when it
+is not: **a grid or flex ITEM defaults to `min-width: auto`, so its track can
+never be narrower than the item's min-content.** These layouts DID collapse to
+one column on a phone; the track then stayed 290–409px wide inside a 280px
+viewport because something unbreakable inside it — a pinned heading, a long
+word, an email address — set the floor. The MOBILE TRACK RELEASE block at the
+foot of `styles.css` sets `min-width: 0` on the children of every two-column
+layout below 900px. The same bug, found separately, is why `.final .wrap` uses
+`minmax(0, …)` tracks and why the contact card's value takes
+`overflow-wrap: anywhere` (the only value that also lowers min-content).
+The rest: the footer's legal link row was 318px of nowrap flex on all 43 routes,
+the skip link was 42px against a 44px floor, and the press-strip outlets and
+comparison-table row headers were 15px-tall inline links — all fixed with
+padding that paints outside the line box, so no glyph moved.
+
+**Chrome parity.** The utility bar and footer are duplicated by hand across the
+static pages and generated by `scripts/lib/templates.mjs` for the blog, so they
+drift silently — the blog shipped the RETIRED scrolling marquee, a footer with
+the signup block in the wrong position, no `entity__stats`, a different legal
+bar, and bare `→` characters that the arrow-normalisation pass never reached.
+`qa:matrix`'s `chrome` column now compares footer and utility-bar DOM across all
+43 routes and fails on any shape that is not the majority. Exceptions are named
+in `CHROME_MINIMAL` in that script: `/privacy/`, `/terms/` and `/404.html` carry
+a cut-down footer and no utility bar by existing design. Everything else — 40
+routes — is one identical footer and one identical bar.
 
 ## SEO content pipeline (cloud agent + /publish-seo)
 

@@ -631,11 +631,16 @@ details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs
 /* Shared "Start here" CTA band — clamped to content + s-96, no floating void.
    Two columns where space allows: the offer + button, and the founder's promise. */
 /* .final (pre-footer CTA) is a major section — it takes --section-y like the rest. */
-.final .wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(var(--s-32), 5vw, var(--s-96)); align-items: center; }
+/* minmax(0, …) rather than a bare fr: a grid item defaults to min-width:auto,
+   so a track cannot shrink below its content's min-content width. On
+   /services/sample-audit/ the CTA column refused to shrink at 768px, ate the
+   row, and pushed .final__promise clean outside the viewport (left:809 in a
+   768px window), squeezed to 103px wide and 319px tall. */
+.final .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(var(--s-32), 5vw, var(--s-96)); align-items: center; }
 .final__promise { border-left: 1px solid var(--dline); padding-left: clamp(var(--s-24), 3vw, var(--s-48)); }
 .final__promise p { font-size: var(--fs-20); line-height: 1.45; color: var(--dtx); max-width: 24ch; letter-spacing: -0.01em; }
 .final__sig { display: block; margin-top: var(--s-16); font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .06em; color: var(--mono-on-dark); }
-@media (max-width: 760px){ .final .wrap { grid-template-columns: 1fr; gap: var(--s-32); } .final__promise { border-left: 0; padding-left: 0; border-top: 1px solid var(--dline); padding-top: var(--s-24); } }
+@media (max-width: 768px){ .final .wrap { grid-template-columns: 1fr; gap: var(--s-32); } .final__promise { border-left: 0; padding-left: 0; border-top: 1px solid var(--dline); padding-top: var(--s-24); } }
 .timeline { display:grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; background: var(--dline); border: 1px solid var(--dline); margin-top: var(--block-gap); }
 @media (max-width: 820px){ .timeline { grid-template-columns: repeat(2,1fr);} }
 .tl { background: var(--ink); padding: var(--s-24) var(--s-24) var(--s-24); }
@@ -684,7 +689,10 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
 
 .foot__bottom { display:flex; flex-wrap: wrap; gap: var(--s-16); align-items:center; justify-content: space-between; padding: 26px 0 40px; }
 .foot__bottom, .foot__bottom a { font-family: var(--mono); font-size: var(--fs-13); color: var(--mono-on-dark); letter-spacing: .04em; }
-.foot__bottom .links { display:flex; gap: var(--s-24); }
+/* wrap: this row is Security/Privacy/Terms + "Built in Denver & Phoenix" on a
+   24px gap — 318px of nowrap flex in the 280px a 320px phone has. It was the
+   single most widespread horizontal overflow on the site, on all 43 routes. */
+.foot__bottom .links { display:flex; flex-wrap:wrap; gap: var(--s-12) var(--s-24); }
 
 /* utility */
 .stack-sm > * + * { margin-top: var(--s-12); }
@@ -1080,8 +1088,11 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .bio__press{ font-family:var(--sans); font-size: var(--t-sm); letter-spacing:normal; color:var(--tx-mute); margin-top:var(--s-24); padding-top:var(--s-24); border-top:1px solid var(--line); line-height:2.0; }
 /* the note now anchors the bottom-left of the photo column */
 .bio__note{ margin-top:auto; padding-top:var(--s-24); font-family:var(--sans); font-size:var(--t-sm); letter-spacing:normal; color:var(--tx-mute); line-height:1.7; }
-.bio__note a{ color:var(--tx); text-decoration:underline; text-underline-offset:2px; }
-.bio__note a:hover{ color:var(--rust); }
+/* The aside's links are STYLE A and take it from the LINK SYSTEM block at the
+   foot of this file (.bio__note is in its container list). The per-component
+   pair that used to live here was a near-miss of it — an explicit --tx instead
+   of `inherit`, and a 2px underline offset against STYLE A's 3px — which is
+   exactly the kind of quiet third variant the link system exists to remove. */
 /* press outlets: solid ink wordmarks, uniform cap-height, tuned 8px dots */
 .bio__press .press-list{ gap:0.5em 0; }
 .bio__press .press-list > span{ color:var(--tx); }
@@ -1226,7 +1237,11 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 
 /* ---- closer line ---- */
 .closer{ margin-top:var(--s-48); padding-top:var(--s-32); border-top:1px solid var(--dline); display:flex; gap:var(--s-24); align-items:flex-start; }
+/* nowrap holds the label beside the copy while .closer is a row. Once it
+   stacks at 620px the label has the full column and nowrap only forces a
+   357px line through a 280px viewport. */
 .closer .kicker{ white-space:nowrap; }
+@media(max-width:620px){ .closer .kicker{ white-space:normal; } }
 .closer p{ font-size: var(--fs-16); color:var(--dtx-mute); max-width:66ch; line-height:1.55; }
 .closer p b{ color: var(--dtx); font-weight:700; }
 @media(max-width:620px){ .closer{ flex-direction:column; gap:var(--s-12); } }
@@ -1327,6 +1342,22 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
    link's aria-label) carries the brand alone below that. */
 @media (max-width: 480px){
   .logo__word{ display:none; }
+}
+
+/* Below ~400px the bar overflowed the viewport (scrollWidth 412 at a 320px
+   screen). The maths does not close with padding alone: 320 - 40 gutter leaves
+   280, of which the plate takes 34+12 and the hamburger 8+40, so the CTA gets
+   186px — and "BOOK A FREE ASSESSMENT" is 254px, or 208px even at the label
+   step. The label itself has to shorten, so `.btn__long` drops the leading
+   "Book a " and the button reads "FREE ASSESSMENT". The anchor carries an
+   explicit aria-label, so the accessible name stays the full phrase at every
+   width (WCAG 2.5.3 holds: the visible text is contained in it).
+
+   Scoped to .nav__right so it can never reach a CTA in page content, where
+   there is room for the full label. */
+@media (max-width: 400px){
+  .nav__right .btn--primary{ font-size: var(--t-label); padding-inline: 12px; }
+  .nav__right .btn--primary .btn__long{ display:none; }
 }
 
 /* =========================================================
@@ -1599,9 +1630,63 @@ table.cmp .cmp__price{ font-family:var(--mono); color:var(--accent-text); white-
    viewport (the site's only horizontal overflow). Let those spans wrap. */
 .foot__bottom .press-list > span { white-space: normal; }
 
+/* =========================================================
+   MOBILE TRACK RELEASE — added 2026-08-02
+   A grid or flex ITEM defaults to min-width:auto, so its track can never be
+   narrower than the item's min-content. Once these two-column layouts collapse
+   to one column on a phone, that floor is what kept them 290-409px wide inside
+   a 280px viewport — the page scrolled sideways even though the layout had
+   "responded" correctly. min-width:0 releases the floor; the prose inside then
+   wraps as it always could.
+
+   Scoped to the stacked case only. Above 900px every one of these fits, and
+   the auto floor is the thing that stops a wide table or figure collapsing.
+   ========================================================= */
+@media (max-width: 900px) {
+  :is(.pagehero__grid, .bookhero__grid, .hero__grid, .head-block, .section-head,
+      .mk-outcome, .calcband__grid, .paths, .book, .svc-detail__grid,
+      .builds__grid, .mk-hero, .faq, .news, .bio, .math, .math-vs, .prose-2,
+      .profile, .ind, .promise, .timeline, .arg, .diffs, .phases,
+      .roi__grid, .final .wrap) > * {
+    min-width: 0;
+  }
+}
+
+/* Long CTA labels on a phone.
+   The button spec is one 52px box with white-space:nowrap, which assumes a
+   short label. Several CTAs are sentences — "Run your real numbers: book the
+   free assessment" is 487px of nowrap mono — so the box could not fit a 320px
+   screen and scrolled the page instead. Below 620px the label wraps and the
+   box grows downward from the same 52px floor, so the tap target and the
+   square, shadowless look are unchanged; only the assumption that every label
+   is short is given up. A two-line button on a phone beats a page that
+   scrolls sideways (WCAG 1.4.10). */
+@media (max-width: 620px) {
+  .btn {
+    white-space: normal;
+    height: auto;
+    min-height: 52px;
+    padding-block: 12px;
+    text-align: center;
+    text-wrap: balance;
+  }
+}
+
 /* No one-word widows in copy; balanced headings. */
 p, li, figcaption, .lead, .hero__note { text-wrap: pretty; }
 h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
+
+/* Long words at display size are wider than a phone. "Implementation" alone is
+   298px at 39px type, against the 280px of content a 320px viewport has, so it
+   sized its grid track and scrolled the page sideways — five headings did this
+   with no NBSP pin involved. `hyphens: auto` only breaks a word when a break is
+   actually needed to fit, so nothing hyphenates while there is room; it also
+   lowers min-content, which is what stops the track from overflowing in the
+   first place. Scoped to narrow widths: desktop headings never need it, and
+   the pages already declare lang="en" for the hyphenation dictionary. */
+@media (max-width: 480px) {
+  h1, h2, h3, h4, .h1, .h2, .h-hero { hyphens: auto; }
+}
 
 /* =========================================================
    TOUCH TARGETS — ≥44px hit boxes, zero visual change
@@ -1609,8 +1694,28 @@ h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
    hit area grows without moving a glyph. Atomic boxes (inline-flex)
    get the same padding cancelled by negative margin.
    ========================================================= */
-.crumb a, .bookhero__crumb a, .legal__crumb a, .tick-lbl a, h3 a { padding-block: 14px; }
+.crumb a, .bookhero__crumb a, .legal__crumb a, .sechero__crumb a,
+.tick-lbl a, h3 a,
+/* press-strip outlets and comparison-table row headers: both are single-line
+   inline links at 15px. Vertical padding on an inline box paints outside the
+   line box, so the hit area reaches 44px without moving a glyph or changing
+   a row height. */
+.bio__press .press-list a, .cmp th a { padding-block: 15px; }
+/* "Inc." is 23px wide — under the 24px floor. The outlets sit on a 1.6em gap
+   with an 8px-margin middot between them, so ±4px cannot overlap a neighbour. */
+.bio__press .press-list a { padding-inline: 4px; margin-inline: -4px; }
 .svc__cta, .path__cta, .feed__archive { padding-block: 14px; margin-block: -14px; }
+/* Every STYLE B standalone action link, not just the three named above: the
+   treatment is selected by the arrow, so the hit box should be too. A STYLE B
+   link sitting INSIDE running prose is exempt (WCAG 2.5.8 inline exception) —
+   it is constrained by the line-height of the text around it, and giving it a
+   44px box would open up the paragraph's leading. */
+a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)) {
+  display: inline-flex; align-items: center; min-height: 44px;
+}
+:is(p, li, dd, dt, td, th, figcaption, blockquote) a:not(.btn):has(.arr) {
+  display: inline; min-height: 0;
+}
 /* short footer links ("RSS") need width too — gap is 20px, so ±8px can't overlap */
 .foot__bottom .links a { padding-inline: 8px; margin-inline: -8px; }
 
@@ -1647,8 +1752,12 @@ h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
 }
 
 /* Skip-to-content link — first focusable element, slides in on focus */
+/* 10px of padding on a 14px line came to 42px — under the 44px target floor,
+   and this is the one control a keyboard or switch user hits first. inline-flex
+   + min-height puts it over without changing how it looks. */
 .skip-link {
   position: absolute; top: -56px; left: 8px; z-index: 1000;
+  display: inline-flex; align-items: center; min-height: 44px;
   padding: 10px 16px; background: var(--ink); color: var(--paper);
   font-family: var(--mono); font-size: var(--fs-13); letter-spacing: .04em;
   text-decoration: none; border-radius: var(--r-sm); transition: top .15s var(--ease);
@@ -2167,8 +2276,15 @@ select.input:invalid { color: var(--tx-faint); }
    it takes the .btn--secondary box exactly. */
 @media (max-width: 620px) {
   .hero__cta--weighted { flex-direction: column; align-items: stretch; gap: var(--s-12); }
+  /* This container turns COLUMN here, and the generic `.hero__cta .btn
+     { flex: 1 1 100% }` in the mobile block was written for the row case,
+     where a 100% basis means "full width, one per line". On a column axis the
+     basis sizes HEIGHT instead, and flex-shrink then collapsed both hero
+     buttons from their 52px box to 22.5px — a broken control and a failed tap
+     target on every phone. Restore an auto main size; width is set below. */
+  .hero__cta--weighted .btn { flex: 0 0 auto; }
   .hero__cta--weighted .btn--primary { width: 100%; justify-content: center; }
-  .hero__cta--weighted .hero__cta-alt { align-self: flex-start; }
+  .hero__cta--weighted .hero__cta-alt { align-self: flex-start; width: auto; }
 }
 
 /* =========================================================
@@ -2652,7 +2768,34 @@ select.input:invalid { color: var(--tx-faint); }
    `<span class="arr">&#8594;</span>`, so :has() catches them all including the
    51 whose arrow was a bare character before this pass. Later in the file and
    at (0,2,1), so it wins over STYLE A where both could match. */
-a:not(.btn):has(.arr) {
+/* The arrow's own box, independent of which treatment claims the link. It used
+   to be declared only inside the STYLE B rule, so an arrow in a link STYLE B
+   does not match (a card link, per the exclusion below) lost `inline-block`
+   and could not be transformed at all. */
+.arr {
+  display: inline-block;
+  transition: transform 150ms ease;
+}
+
+/* A BLOCK link is not a standalone action link. `:has(.arr)` is a subtree
+   test, so a card whose footer carries a "Read more →" affordance matched this
+   rule and inherited mono + uppercase + 12px + accent into every descendant.
+   `/work/`'s MARCUS teardown card was rendering its 39px h2 and its 37-word
+   brief in uppercase Space Mono for exactly that reason — the single worst
+   violation of the mono rule on the site, produced by the link system rather
+   than by the card.
+
+   The exclusion is STRUCTURAL, not a class blocklist: if the link contains a
+   heading or a paragraph it is a card, and a card is styled by its own
+   component. That way the next block link with an arrow is handled without
+   anyone remembering to add it here. This matches what CLAUDE.md already
+   says the link system covers — card/block affordances are excluded on
+   purpose, alongside buttons and chrome.
+
+   Specificity: `:not()` and `:has()` take the highest specificity among their
+   arguments, so the added `:not(:has(h1,…,p))` contributes only (0,0,1) and
+   the rule moves (0,2,1) -> (0,2,2). It still outranks STYLE A. */
+a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)) {
   font-family: var(--mono);
   font-size: 12px;
   text-transform: uppercase;
@@ -2664,15 +2807,32 @@ a:not(.btn):has(.arr) {
   color: var(--accent-text);
   text-decoration: none;
 }
-a:not(.btn):has(.arr):visited { color: var(--accent-text); }
-a:not(.btn):has(.arr):hover { color: var(--accent-text); text-decoration: none; }
-a:not(.btn):has(.arr) .arr {
-  display: inline-block;
-  margin-left: 0.5ch;
-  transition: transform 150ms ease;
-}
+a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)):visited { color: var(--accent-text); }
+a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)):hover { color: var(--accent-text); text-decoration: none; }
+a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)) .arr { margin-left: 0.5ch; }
 /* only the arrow moves; the label stays put */
-a:not(.btn):has(.arr):hover .arr { transform: translateX(2px); }
+a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)):hover .arr { transform: translateX(2px); }
+
+/* STYLE B on dark surfaces.
+   The on-dark STYLE A rule above is (0,3,1) and STYLE B is (0,2,2), so a STYLE B
+   link sitting inside a <p> or <li> in a dark section lost its colour to STYLE A
+   and painted CREAM — a third link appearance at rest, and the one the two-style
+   audit kept catching on `/` ("How we work →") and `/work/` ("See the price
+   list →"). Naming the dark ancestor here takes this to (0,3,2) so the arrow
+   link keeps the accent it is supposed to carry. --accent-text is already
+   rebound to --accent-ink on dark by the contrast layer, so the token is the
+   same one the light rule uses. */
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature, .subcard,
+    .promise__col--dont, .faq__aside, .faq-strip, .tl, .arg--amp, .math__fig,
+    .story-feat, .foundernote, .never, .mk-box, .mk-story)
+  a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)),
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature, .subcard,
+    .promise__col--dont, .faq__aside, .faq-strip, .tl, .arg--amp, .math__fig,
+    .story-feat, .foundernote, .never, .mk-box, .mk-story)
+  a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)):hover {
+  color: var(--accent-text);
+  text-decoration: none;
+}
 
 /* Chrome is not a content link: the nav, breadcrumb, utility bar and logo keep
    their own treatments, exactly as buttons do. Underlining a nav bar would be

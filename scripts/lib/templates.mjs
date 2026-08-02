@@ -9,6 +9,10 @@ import {
 	COMPANY,
 	BEEHIIV_SUBSCRIBE_FALLBACK,
 } from "./config.mjs";
+// The footer brand block carries the audit floor. The static pages stamp it as
+// a data-fact span; a generated surface derives it from the same single
+// definition instead, so the two can never disagree.
+import { factValues } from "./fact-values.mjs";
 
 const FAVICON =
 	"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E";
@@ -223,7 +227,7 @@ export function nav() {
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a class="btn btn--primary" href="/book/">Book a free assessment</a>
+      <a aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -235,13 +239,31 @@ export function nav() {
 export function footer() {
 	return `<footer class="foot">
   <div class="wrap">
-      <div class="foot__top">
+      <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">${esc(BLOG_NAME)} · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="${attr(BEEHIIV_SUBSCRIBE_FALLBACK)}" method="get" target="_blank" aria-label="Subscribe to ${attr(BLOG_NAME)}">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&#8594;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+    </div>
+    <div class="foot__top">
       <div class="foot__brand">
         <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
           <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
         </a>
         <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b>${esc(factValues(COMPANY)["audit-floor"])}</b></div>
+        </div>
       </div>
       <div class="foot__col">
         <h2>Company</h2>
@@ -284,23 +306,9 @@ export function footer() {
         </ul>
       </div>
     </div>
-    <div class="foot__signup">
-        <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">${esc(BLOG_NAME)} · free, a few times a month</span>
-          <h2>Plain-English AI for Main Street.</h2>
-          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
-        </div>
-        <div>
-          <form class="signup" data-beehiiv-subscribe action="${attr(BEEHIIV_SUBSCRIBE_FALLBACK)}" method="get" target="_blank" aria-label="Subscribe to ${attr(BLOG_NAME)}">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
-            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
-          </form>
-          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
-        </div>
-    </div>
     <div class="foot__bottom">
       <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
-      <span class="links"><a href="/">Home</a><a href="/blog/">Writing</a><a href="/blog/rss.xml">RSS</a><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
     </div>
   </div>
 </footer>`;
@@ -323,7 +331,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
         <p class="lead" style="font-size:15px;">Free essays, a few times a month. One field. No sales pitches.</p>
         <form class="subform" data-beehiiv-subscribe action="${attr(action)}" method="get" target="_blank">
           <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
-          <button class="btn btn--primary" type="submit">Get the essays →</button>
+          <button class="btn btn--primary" type="submit">Get the essays <span class="arr">&#8594;</span></button>
         </form>
         <p style="font-family:var(--mono);font-size:11px;color:var(--dtx-faint);margin-top:14px;line-height:1.6;">Delivered by beehiiv. No spam, unsubscribe anytime.</p>
       </div>
@@ -334,7 +342,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
           <li>How we actually think about AI on Main Street</li>
           <li>No pitches, no funnels. Leave whenever it stops paying</li>
         </ul>
-        <a class="feed__archive" href="/blog/archive/">Full archive →</a>
+        <a class="feed__archive" href="/blog/archive/">Full archive <span class="arr">&#8594;</span></a>
       </div>
     </div>
   </div>

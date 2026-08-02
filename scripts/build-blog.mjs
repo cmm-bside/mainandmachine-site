@@ -234,7 +234,7 @@ function featured(post) {
     <span class="tick-lbl">Latest dispatch · ${esc(formatDate(post.publishedAt))}</span>
     <h2 class="feed__featured-title">${esc(post.title)}</h2>
     ${post.excerpt ? `<p class="feed__excerpt">${esc(post.excerpt)}</p>` : ""}
-    <span class="feed__read">Read the essay →</span>
+    <span class="feed__read">Read the essay <span class="arr">&#8594;</span></span>
   </div>
 </a>`;
 }
@@ -250,7 +250,7 @@ function searchBar(placeholder) {
 function emptyState(subscribeUrlRaw) {
 	const subscribeUrl = subscribeUrlRaw || BEEHIIV_SUBSCRIBE_FALLBACK;
 	const cta = subscribeUrl
-		? `<a class="btn btn--primary btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Get the essays →</a>`
+		? `<a class="btn btn--primary btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Get the essays <span class="arr">&#8594;</span></a>`
 		: "";
 	return `<div class="feed__empty crop">
   <span class="kicker kicker--plain">${esc(BLOG_NAME)}</span>
@@ -289,10 +289,10 @@ function renderHome(posts, { subscribeUrl, publicationUrl }) {
 		const rest = posts.slice(1, 1 + RECENT_ON_HOME);
 		feed = `${featured(posts[0])}
 ${rest.length
-	? `<div class="feed__bar"><span class="tick-lbl">Recent dispatches</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent-text)">Full archive →</a></div>
+	? `<div class="feed__bar"><span class="tick-lbl">Recent dispatches</span><a class="tick-lbl" href="/blog/archive/">Full archive <span class="arr">&#8594;</span></a></div>
 <div class="feed__grid">${rest.map(card).join("\n")}</div>`
 	: ""}
-<a class="feed__archive" href="/blog/archive/">Full archive →</a>`;
+<a class="feed__archive" href="/blog/archive/">Full archive <span class="arr">&#8594;</span></a>`;
 	}
 
 	const body = `${topbar()}
@@ -413,7 +413,7 @@ function renderArchive(posts, { subscribeUrl, publicationUrl }) {
 			.join("\n");
 
 		const moreBtn = (pane) =>
-			`<button type="button" class="feed__archive archmore" data-pane="${pane}">Load more →</button>`;
+			`<button type="button" class="feed__archive archmore" data-pane="${pane}">Load more <span class="arr">&#8594;</span></button>`;
 
 		content = `<div class="archtabs" role="tablist">
   <button class="archtab is-active" role="tab" aria-selected="true" data-tab="latest">Latest</button>
@@ -560,7 +560,7 @@ ${nav()}
         <div class="prose">
 ${proseInner}
         </div>
-        <p class="essay__seealso"><span class="tick-lbl">Where this shows up</span><a href="${attr(seeAlso.href)}">${esc(seeAlso.label)} →</a></p>
+        <p class="essay__seealso"><span class="tick-lbl">Where this shows up</span><a href="${attr(seeAlso.href)}">${esc(seeAlso.label)} <span class="arr">&#8594;</span></a></p>
         <div class="essay__share">
           <span class="tick-lbl">Share</span>
           <a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}" target="_blank" rel="noopener noreferrer" aria-label="Share on X">X</a>
@@ -578,7 +578,7 @@ ${(prevPost || nextPost)
   <div class="wrap">
     <nav class="essay__pn" aria-label="Chronological essay navigation">
       ${prevPost ? `<a class="essay__pn-cell" href="${prevPost.url}" rel="prev"><span class="tick-lbl">← Earlier</span><b>${esc(prevPost.title)}</b></a>` : `<span class="essay__pn-cell essay__pn-cell--empty" aria-hidden="true"></span>`}
-      ${nextPost ? `<a class="essay__pn-cell essay__pn-cell--next" href="${nextPost.url}" rel="next"><span class="tick-lbl">Later →</span><b>${esc(nextPost.title)}</b></a>` : `<span class="essay__pn-cell essay__pn-cell--empty" aria-hidden="true"></span>`}
+      ${nextPost ? `<a class="essay__pn-cell essay__pn-cell--next" href="${nextPost.url}" rel="next"><span class="tick-lbl">Later <span class="arr">&#8594;</span></span><b>${esc(nextPost.title)}</b></a>` : `<span class="essay__pn-cell essay__pn-cell--empty" aria-hidden="true"></span>`}
     </nav>
   </div>
 </section>`
@@ -588,7 +588,7 @@ ${readNext.length
 	? `<section class="section paper-2">
   <div class="wrap">
     <div class="essay__next">
-      <div class="feed__bar"><span class="tick-lbl">Keep reading</span><a class="tick-lbl" href="/blog/archive/" style="color:var(--accent-text)">Archive →</a></div>
+      <div class="feed__bar"><span class="tick-lbl">Keep reading</span><a class="tick-lbl" href="/blog/archive/">Archive <span class="arr">&#8594;</span></a></div>
       <div class="feed__grid">${readNext.map(card).join("\n")}</div>
     </div>
   </div>
@@ -602,8 +602,8 @@ ${readNext.length
       <h2 class="h2 mt-s">Like how we think? Put it to work.</h2>
       <p class="lead">This is the kind of workflow the free assessment maps. Thirty minutes, no pitch.</p>
       <div class="essay__cta-actions">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment →</a>
-        <a class="btn btn--secondary btn--lg" href="/pricing/">See what it costs →</a>
+        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a class="btn btn--secondary btn--lg" href="/pricing/">See what it costs</a>
       </div>
     </div>
   </div>

@@ -7,7 +7,10 @@
 //   buttons    two button variants only, one 52px box, PRIMARY carries the
 //              arrow and SECONDARY never does
 //   section-y  every <section> takes padding-block: var(--section-y), except
-//              the homepage hero (SECTION_Y_EXEMPT — sized to one viewport)
+//              the homepage hero (SECTION_Y_EXEMPT — sized to one viewport) and
+//              sections ending in a thin utility element, which close at 96px
+//              (.section--close-96 — the shape is re-derived and checked both
+//              ways, so class and markup cannot drift apart)
 //   min-11px   nothing renders below 11px
 //   contrast   every text/background pair clears WCAG AA
 //   widows     multi-line headings do not strand a one-word last line
@@ -191,13 +194,67 @@ const audit = (cfg) => {
 	// tolerated by a range, so a SECOND section drifting off --section-y still
 	// fails — which is the whole point of this check.
 	const SECTION_Y_EXEMPT = { "section.hero.section": "96px" };
+	// A section whose LAST element is a thin utility element closes at 96px
+	// (styles.css, "terminal utility elements close early"). CSS cannot select
+	// that shape — `p > a:only-child` also matches any prose paragraph holding
+	// one link — so the stylesheet uses an authored `.section--close-96` class
+	// and this guard re-derives the REAL test. Checking both directions is the
+	// point: the class without the shape, or the shape without the class, both
+	// fail, so the two can never drift apart.
+	//
+	// CLOSE_96_OTHER is the escape hatch, and it is an ALLOWLIST so it cannot
+	// become one. These sections take the 96px close for a reason that is NOT
+	// the terminal-element rule, are named individually, and each must justify
+	// itself in CLAUDE.md. Anything else carrying the class without the shape
+	// still fails. Keyed by id: sel() collapses to `section.section.paper` for
+	// half the page and would exempt the wrong sections.
+	//   #about — the founder section. Its last element is .bio, a content
+	//   block, so it does not "end thin"; it closes early because the press row
+	//   and the photo card now bottom out on the same line, which is already a
+	//   hard horizontal ending.
+	//   #problem — the dark opening section. Ends in .prose-2, a content block,
+	//   so it does not "end thin" either; it closes early because the tail is
+	//   the .deco-amp glyph's panel, and 160px of it read as empty rather than
+	//   marked. 96px rather than a second early-close step — see CLAUDE.md.
+	const CLOSE_96_OTHER = new Set(["about", "problem"]);
+	const endsThin = (s) => {
+		const wrap = s.querySelector(":scope > .wrap") || s;
+		const kids = [...wrap.children].filter(vis);
+		const last = kids[kids.length - 1];
+		if (!last) return false;
+		if (last.classList.contains("buildstrip")) return true;      // rule-bounded strip
+		const a = last.querySelector(":scope > a:only-child");        // lone action link:
+		if (!a || !a.querySelector(".arr")) return false;             //  …carries an arrow
+		if (a.classList.contains("btn")) return false;                //  …is NOT a button —
+		//   /services/#builds-cta ends in a lone .btn--primary whose text is the
+		//   whole paragraph. A filled 52px conversion CTA is a content block, not
+		//   a thin utility element, so it keeps the full closing step. Same
+		//   `a:not(.btn)` exclusion the LINK SYSTEM makes for STYLE B.
+		const whole = (last.textContent || "").replace(/\s+/g, " ").trim();
+		const link = (a.textContent || "").replace(/\s+/g, " ").trim();
+		return whole === link;                                        //  …and IS the paragraph
+	};
 	const wantY = getComputedStyle(document.documentElement).getPropertyValue("--section-y").trim();
 	for (const s of document.querySelectorAll("main section, body > section")) {
 		if (!vis(s)) continue;
 		const cs = getComputedStyle(s);
-		const want = SECTION_Y_EXEMPT[sel(s)] || wantY;
-		if (cs.paddingTop !== want || cs.paddingBottom !== want) {
-			add("section-y", `${sel(s)} ${cs.paddingTop}/${cs.paddingBottom} (want ${want})`);
+		const exempt = SECTION_Y_EXEMPT[sel(s)];
+		const thin = endsThin(s);
+		const allowed = CLOSE_96_OTHER.has(s.id);
+		const tagged = s.classList.contains("section--close-96");
+		// shape => class (always), and class => shape OR a named allowlist entry
+		if (thin && !tagged) {
+			add("section-y", `${sel(s)} ends thin but is NOT tagged .section--close-96`);
+			continue;
+		}
+		if (tagged && !thin && !allowed) {
+			add("section-y", `${sel(s)} tagged .section--close-96 but does not end thin and is not in CLOSE_96_OTHER`);
+			continue;
+		}
+		const wantTop = exempt || wantY;
+		const wantBottom = exempt || (thin || (tagged && allowed) ? "96px" : wantY);
+		if (cs.paddingTop !== wantTop || cs.paddingBottom !== wantBottom) {
+			add("section-y", `${sel(s)} ${cs.paddingTop}/${cs.paddingBottom} (want ${wantTop}/${wantBottom})`);
 		}
 	}
 

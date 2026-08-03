@@ -190,6 +190,29 @@ a layer on *that side only*. Two treatments, never both on one section:
 `/` (problem section) and `/work/marcus/` (MARCUS band). The grid is the
 default; `.section.ink.final` takes it by selector on all 41 pages.
 
+**Ampersand retuned 2026-08-02.** Stroke 4% → **7%**, mask 30%/62% →
+**50%/76%**, `bottom` −0.18em → **−0.30em**. All three move together; changing
+one alone makes things worse.
+
+- At 4% the glyph's peak deviation from the ink background was **13/255** in
+  the section's tail — present in the DOM, effectively invisible on screen, so
+  the space under the closing copy read as an empty panel rather than a marked
+  one. At 7% the peak is **17/255**.
+- **Raising the alpha exposed a latent bug.** At the 30% mask the glyph was
+  already painting *behind* the closing copy — 251 pixels at 1280, 451 at 1440
+  — which nobody had noticed because at 4% nothing there was visible at all.
+  The mask had to tighten and the glyph had to drop in the same pass.
+- **Measure collision by DIFFING, not by geometry.** Render the frame, render
+  it again with the pseudo-element `display:none`, and count differing pixels
+  that fall inside the copy column's TEXT rects. Comparing against the column's
+  bounding BOX instead reports a collision for any glyph in the column's
+  whitespace, which is the whole point of the corner treatment. Final: **0 px
+  behind text at 1280 / 1440 / 1024 / 901.**
+- The tail closes at 96px via `.section--close-96` (`#problem` is in
+  `CLOSE_96_OTHER` — it ends in `.prose-2`, a content block, so it does not
+  qualify under the terminal-element rule). 96 rather than a second
+  early-close step; the brief's cap was ≤120px and one step beats two.
+
 Verified: **zero layout shift** (disabling every decoration changes not one
 element's geometry across 1042 elements on three pages), no horizontal
 overflow, and all seven dark sections that had a ≥260px empty half at 1440px
@@ -500,6 +523,43 @@ foot of `styles.css`.
 - **The exception: `.hero` (homepage) takes a flat 96px** — see the homepage
   hero section below. It is named in `SECTION_Y_EXEMPT` in `scripts/qa-matrix.mjs`,
   so a *second* section drifting off `--section-y` still fails the check.
+- **Sections that END on a thin utility element close at 96px**
+  (`.section--close-96`, 2026-08-02). A rule-bounded strip or a lone action
+  link already reads as an ending; a further 160px of air below one makes the
+  section look unfinished rather than closed. `padding-bottom` only — the top
+  keeps `--section-y`, so these are the only intentionally asymmetric sections
+  on the site. Exactly **three** qualify across 205 by the terminal rule: `/`
+  `#work` (the `.buildstrip`), `/` `#proof` and `/work/`'s scorecard section
+  (both a lone "…measured results →"), plus one allowlisted exception below.
+  - The class is named for its EFFECT, not its cause. It was `--ends-thin` for
+    one afternoon; `/` `#about` closes at 96px for a different reason and the
+    old name would have lied about it.
+  - **`CLOSE_96_OTHER` in `qa-matrix.mjs` is the escape hatch, and it is an
+    ALLOWLIST so it cannot become one.** A section carrying the class without
+    the terminal shape must be named there and justified here. Currently one
+    entry — `#about`, the founder section: its last element is `.bio`, a
+    content block, so it does not "end thin"; it closes early because the press
+    row and the photo card now bottom out on the same line, which is already a
+    hard horizontal ending. Keyed by `id` because `sel()` collapses to
+    `section.section.paper` for half the page and would exempt the wrong ones.
+  - **It is an authored class, not a `:has()` selector, and that is deliberate.**
+    The real test is "the paragraph's entire text IS the link text", which CSS
+    cannot express: `p:last-child > a:only-child` counts only ELEMENT children,
+    so it also matches every prose paragraph holding one link — it caught six
+    (`/services/builds/` ×2, `/denver/`, `/phoenix/`, `/calculator/`,
+    `/404.html`). Requiring `.arr` does not rescue it either; `/calculator/`'s
+    `.roi__note` is prose *and* carries an arrow.
+  - `qa:matrix` re-derives the real test and checks it **both ways** — the
+    shape without the class always fails, and the class without the shape fails
+    unless the section is named in `CLOSE_96_OTHER`. That is what stops the
+    markup and the rule drifting apart. Both directions verified by negative
+    test: removing the class from `/work/` fails with "ends thin but is NOT
+    tagged"; adding it to `#pricing` fails with "tagged … but does not end thin
+    and is not in CLOSE_96_OTHER".
+  - **A lone `.btn` does not count.** `/services/#builds-cta` ends in a single
+    `.btn--primary` whose text is the whole paragraph, so it matches the naive
+    shape — but a filled 52px conversion CTA is a content block. Excluded with
+    the same `a:not(.btn)` test the LINK SYSTEM uses for STYLE B.
 - Card padding needs **no media query**: `--s-4` already steps 40 → 24 at 768px
   from the foundation layer, so `padding: var(--s-4)` is the whole rule.
 - The 24px sibling gap applies to card collections ONLY. Deliberately excluded,
@@ -824,6 +884,96 @@ gap, no container border, no internal rules left to be stray.
   content box at every one, height is exactly 52px down to 390px, and the
   row-1 baseline spread is 0.00px throughout. At 320px the label wraps to
   67.06px off the 52px min-height — the documented sub-620px button behaviour.
+
+### ROI card compression (2026-08-02)
+
+The `.roi--slim` embed on the calculator band went **1031px → 839px**, taking
+the dark band from **1.50× → 1.29×** of a 900px viewport.
+
+| | before | after |
+|---|---|---|
+| card height | 1031px | **839px** |
+| band height | 1351px (1.50×) | **1159px (1.29×)** |
+| bar | 69px (2 lines) | **47px** (1 line) |
+| footnote | 168px, 9 lines | **21px** + a STYLE B link |
+| receipt rows | 22px on an 8px gap | **40px pitch** |
+| card content width | 322px | **402px** |
+| left-column empty run | 715px | **524px** |
+
+- **The biggest win was a bug, not a trim.** `.roi` sits in the rhythm layer's
+  card-interior `:is()` list, so it took `padding: var(--s-4)` *on top of* the
+  30px its own zones (`.roi__bar`, `.roi__inputs`, `.roi__output`) already
+  apply — 80px of doubled inset. Worse, it squeezed the content column to
+  322px, which is what forced the bar's right label, the "Modeled return /
+  year" label and the select's note each onto two lines. `.roi--slim{ padding:
+  0 }` must sit AFTER that list: same (0,1,0) specificity, and `.roi--slim`'s
+  own block is ~1300 lines earlier, so source order is what decides.
+- **Nothing had to be moved to `/calculator/`.** All eight caveats in the cut
+  footnote were already published there in fuller form (verified clause by
+  clause against the rendered page). Deleting them from the homepage loses
+  nothing from the site.
+- **`--roi-zone: 28px`** is a local custom property on `.roi--slim`, named once
+  rather than repeated as a literal at four zone boundaries. It sits between
+  `--s-24` and `--s-32` because the brief specified it.
+- The 40px receipt pitch is the one change here that ADDS height (+48px). It is
+  paid for several times over by the padding removal and the footnote cut.
+- **The select's caret** was `color: var(--accent)` at 14px, absolutely
+  positioned against the wrap while `.roi__select` was `width: auto` — so the
+  field stopped 51px short of the wrap and the caret rendered as a loose rust
+  fleck in the gap beside the control. `width: 100%` puts the field under its
+  own caret (the 40px of right padding was already reserved for it); the caret
+  is now 12px `--ink`, 14px inside the field's right edge. **The same bug was
+  live on `/calculator/` and is fixed there too.**
+- `.roi__how` carries the sitewide 44px touch floor, leaving ~12px of empty box
+  under its 12px text, so the card trailed 45px of cream against 30px above.
+  `margin-bottom: -12px` closes exactly that dead space; the hit area stays
+  44px. Output zone now reads 30.0px top / 32.5px bottom — the 2.5px is the
+  mono line-box descender.
+- **`.roi--slim` scoping is deliberate.** `/calculator/` runs the full `.roi`
+  two-column card and keeps its 40px padding, its 12-line disclaimer and its
+  own rhythm. Only the homepage embed is compressed.
+- **KNOWN, not met:** the brief's "left-column empty zone ≤320px". It is 524px.
+  The arithmetic is fixed: the empty run is `card − intro`, the intro column is
+  315px of copy, so the card would have to reach **≤635px**. After this pass
+  the four zones are bar 47 + inputs 296 + output 506 and there is no 200px of
+  slack left that is not content. Widening the card's track (tested at five
+  ratios) bottoms out at **392px** and costs the CTAs stacking. Closing it
+  needs either another zone deleted from the card or copy added to the left
+  column — an editorial call, not a CSS one.
+- **KNOWN, flagged:** "A model, not a promise" now appears TWICE in the card —
+  as the bar's right label and as the whole footnote. The brief asked to keep
+  the footnote's first sentence, which is that same sentence. Dropping the bar
+  label is a one-line fix once someone decides which one carries it.
+
+### Founder section — press block at the column foot (2026-08-02)
+
+`.bio` was already `align-items: stretch`, so the prose column had always
+matched the photo card's height. But as a block container its children stacked
+at the top and left the slack **below** the press block — 166px of it on the
+homepage — so a finished card sat beside an unfinished column.
+
+`.bio__prose` becomes a flex column and `.bio__press` takes `margin-top: auto`.
+Press bottom and card bottom now measure **0.00px apart** at 1440 / 1024 / 900.
+The hairline needed no separate handling: `border-top` is on `.bio__press`
+itself, so it travels with the block instead of sitting stranded mid-column.
+
+- **Guarded on the press being the column's LAST child** —
+  `.bio__prose:has(> .bio__press:last-child)`. True on the homepage, false on
+  `/about/`, where `.bio__verify` follows it; pushing the press down there
+  would strand the verify list at the bottom and open a gap in the middle.
+  Verified `/about/` still computes `display: block`.
+- `margin-top: auto` **overrides** `.bio__press`'s own 24px margin-top and
+  collapses to 0 when there is no slack (stacked, ≤760px), so the minimum gap
+  has to come from the paragraph above it.
+- The section takes `.section--close-96` via the `CLOSE_96_OTHER` allowlist,
+  not the terminal-element rule — see the note in the rhythm layer.
+- **Measuring "empty zone" here:** the auto-margin MOVES slack, it does not
+  remove it, so the right column now carries a 183px gap between the action
+  link and the press row. That is not an empty *zone*: the photo card fills
+  that whole vertical range beside it. Measured as bands with no ink anywhere
+  across the section's content box, the largest run is **62px** — the standard
+  `--block-gap` between the header block and `.bio`. Measure the section, not
+  one column, or a two-column layout with a tall image always reads as failing.
 
 ### Contrast / dark surfaces (pass run 2026-08-01)
 

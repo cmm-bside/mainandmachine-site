@@ -1240,6 +1240,27 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .bio__prose p b{ color: var(--tx); font-weight:700; }
 .bio__prose p + p{ margin-top:var(--s-24); }
 .bio__press{ font-family:var(--sans); font-size: var(--t-sm); letter-spacing:normal; color:var(--tx-mute); margin-top:var(--s-24); padding-top:var(--s-24); border-top:1px solid var(--line); line-height:2.0; }
+/* ---- press block sits at the FOOT of the prose column ----
+   `.bio` is already `align-items: stretch`, so the prose column has always
+   matched the photo card's height — but as a block container its children
+   stacked at the top and left the slack (166px on the homepage) BELOW the
+   press block, which read as an unfinished column beside a finished card.
+   Flex + `margin-top:auto` moves that slack above the press instead, so the
+   press row and the card bottom out on the same line. The hairline needs no
+   separate handling: `border-top` is on .bio__press itself, so it travels with
+   the block rather than sitting stranded mid-column.
+
+   Guarded on the press being the column's LAST child, which is true on the
+   homepage and false on /about/, where `.bio__verify` follows it. There,
+   pushing the press down would strand the verify list at the bottom and open a
+   gap in the middle — the opposite of the intent. Structural rather than an
+   id or a page-scoped selector, so it stays correct if either page changes. */
+.bio__prose:has(> .bio__press:last-child){ display:flex; flex-direction:column; }
+.bio__prose > .bio__press:last-child{ margin-top:auto; }
+/* `auto` collapses to 0 when the column has no slack (stacked, ≤760px), and it
+   overrode .bio__press's own 24px margin-top — so the minimum gap has to come
+   from the paragraph above it. */
+.bio__prose:has(> .bio__press:last-child) > p:last-of-type{ margin-bottom:var(--s-24); }
 /* the note now anchors the bottom-left of the photo column */
 .bio__note{ margin-top:auto; padding-top:var(--s-24); font-family:var(--sans); font-size:var(--t-sm); letter-spacing:normal; color:var(--tx-mute); line-height:1.7; }
 /* The aside's links are STYLE A and take it from the LINK SYSTEM block at the
@@ -1298,14 +1319,23 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .roi__field .tick-lbl{ display:block; margin-bottom:var(--s-12); }
 
 .roi__selectwrap{ position:relative; }
+/* width:100%, not auto. The caret is absolutely positioned against the WRAP,
+   which fills the column, while `width:auto` sized the field to its longest
+   option — so the field ended 51px short of the wrap and the caret rendered as
+   a loose fleck floating in the gap beside it instead of inside the control.
+   The 40px of right padding was already reserved for the caret; only the field
+   was failing to reach it. */
 .roi__select{
-  appearance:none; -webkit-appearance:none; width:auto; min-width:200px; max-width:100%;
+  appearance:none; -webkit-appearance:none; width:100%; max-width:100%;
   background: var(--cream); color: var(--tx); border:1px solid var(--line);
   font-family: var(--sans); font-size: var(--fs-16); font-weight:600; letter-spacing:-.01em;
   padding: 13px 40px 13px 14px; cursor:pointer; transition: border-color .15s; }
 .roi__select:hover{ border-color: var(--tx-mute); }
 .roi__select:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
-.roi__caret{ position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none; color:var(--accent); font-size: var(--fs-13); }
+/* Ink, not accent: this is a control affordance, not an action. Solid accent
+   is reserved for actions (see the token notes), and at 12px a lone rust glyph
+   read as a stray mark rather than a dropdown indicator. */
+.roi__caret{ position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none; color:var(--ink); font-size:12px; line-height:1; }
 .roi__note{ margin-top:var(--s-8); font-size: var(--fs-13); line-height:1.45; color: var(--tx-mute); }
 
 .roi__sliderhead{ display:flex; align-items:flex-end; justify-content:space-between; }
@@ -1403,6 +1433,31 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .roi--slim .roi__grid{ grid-template-columns:1fr; }
 .roi--slim .roi__inputs{ border-right:0; border-bottom:1px solid var(--line); }
 .roi--slim .roi__output{ gap:0; }
+
+/* ---- slim card: compressed rhythm (2026-08-02) ----
+   One step between every zone — inputs / modeled return / receipt rows /
+   footnote. 28px is a brief-specified value that sits between --s-24 and
+   --s-32; named once here rather than repeated as a literal four times. */
+.roi--slim{ --roi-zone: 28px; }
+.roi--slim .roi__field + .roi__field{ margin-top: var(--roi-zone); }
+.roi--slim .roi__assume{ margin-top: var(--roi-zone); padding-top: var(--roi-zone); }
+.roi--slim .roi__disclaim{ margin-top: var(--roi-zone); }
+/* Receipt rows: a fixed 40px pitch instead of 22px lines on an 8px gap, so the
+   four figures scan as a receipt rather than a paragraph of numbers. This is
+   the one change in this pass that ADDS height (+48px); it is paid for many
+   times over by the doubled-padding removal and the footnote cut. */
+.roi--slim .roi__assume ul{ gap: 0; }
+.roi--slim .roi__assume li{ min-height: 40px; align-items: center; }
+/* Footnote is now one sentence + a STYLE B action link. The link takes its
+   mono/uppercase/accent treatment from the LINK SYSTEM via its arrow — only
+   the spacing belongs here. */
+/* The link carries the sitewide 44px min-height touch floor, which leaves ~12px
+   of empty box under its 12px text. Left alone the card trailed 45px of cream
+   against 30px above the zone's first line. The negative margin pulls the zone
+   closed by exactly that dead space, so the VISIBLE inset matches top and
+   bottom while the hit area stays 44px — the same compensation the pricing
+   row's action link needs. */
+.roi__how{ display: inline-flex; margin-top: var(--s-12); margin-bottom: -12px; }
 
 /* ---- closer line ---- */
 .closer{ margin-top:var(--s-48); padding-top:var(--s-32); border-top:1px solid var(--dline); display:flex; gap:var(--s-24); align-items:flex-start; }
@@ -2814,6 +2869,15 @@ select.input:invalid { color: var(--tx-faint); }
 :is(.svc-detail__card, .fig, .score, .bound__i, .spec-card, .subcard,
     .never, .reviewer, .foundernote, .failstat, .roi, .contact-card,
     .gcard, .builds, .panel, .path) { padding: var(--s-4); }
+/* The slim ROI embed is an EXCEPTION: its zones (.roi__bar, .roi__inputs,
+   .roi__output) already pad themselves, so the card-interior step landed as a
+   SECOND 40px inset on top of them — 80px of card height, and it squeezed the
+   content column to 322px, which is what forced the big number, the
+   "Modeled return / year" label, the bar's right label and the select's note
+   each onto two lines. Removing it is worth far more than the 80px it returns.
+   Must sit AFTER the rule above: same (0,1,0) specificity, so source order is
+   what decides, and .roi--slim's own block is ~1300 lines earlier. */
+.roi--slim{ padding: 0; }
 
 /* ---- 6. band boundary ----
    Two light sections in a row read as one undifferentiated field. A hairline
@@ -2823,6 +2887,37 @@ select.input:invalid { color: var(--tx-faint); }
 :is(.paper, .paper-2, .blueprint) + :is(.paper, .paper-2, .blueprint) {
   border-top: 1px solid var(--rule);
 }
+
+/* ---- 7. terminal utility elements close early ----
+   A section that ENDS in a thin utility element closes at 96px instead of the
+   full --section-y. A rule-bounded strip and a lone action link already read
+   as an ending; a further 160px of air below one makes the section look
+   unfinished rather than closed. Sections ending in a real content block —
+   cards, prose, a primary CTA button — keep the standard padding, because
+   those need the full step to separate from the next band.
+
+   An explicit class, and NOT the `:has()` structural selector this file
+   prefers elsewhere — because CSS cannot express the test that actually
+   separates the two cases. The signal is "the paragraph's entire text IS the
+   link text", and `p:last-child > a:only-child` only checks ELEMENT children,
+   so it also matches every prose paragraph that happens to contain one link:
+   `/services/builds/`'s two `.svc-ba__foot` notes, `/denver/` and `/phoenix/`
+   `.hero__note`, `/calculator/`'s `.roi__note`, `/404.html`'s `.nf__hint` —
+   six false positives. Requiring `.arr` does not save it either; the
+   calculator's note is prose AND carries an arrow.
+
+   So the class is authored, and `qa:matrix` re-derives the real structural
+   test (buildstrip, or last element whose whole text is one arrow link) and
+   fails on a section that has the class without the shape OR the shape
+   without the class. The guard is what keeps the two from drifting.
+
+   Deliberately NOT applied: `/services/#builds-cta`, which ends in a
+   `.btn--primary`. A filled 52px conversion button is a content block; the
+   link system excludes `.btn` from STYLE B for the same reason.
+
+   padding-BOTTOM only — the top keeps --section-y, so these are the only
+   intentionally asymmetric sections on the site. */
+.section--close-96 { padding-bottom: var(--s-96); }
 
 /* =========================================================
    CARD TYPOGRAPHY — three tiers, added 2026-08-01
@@ -3188,17 +3283,34 @@ p, li, dd { text-wrap: pretty; }
 
 .deco-amp::before {
   content: "&";
-  position: absolute; right: 1.5%; bottom: -0.18em; z-index: 0;
+  /* bottom -0.30em, was -0.18em: drops the glyph out of the copy column's
+     vertical band. `overflow: clip` on the section handles the overhang. */
+  position: absolute; right: 1.5%; bottom: -0.30em; z-index: 0;
   pointer-events: none; user-select: none;
   font-family: var(--sans); font-weight: 900; font-style: normal;
   font-size: clamp(300px, 34vw, 560px); line-height: .78;
   color: transparent;
-  -webkit-text-stroke: 2px rgba(240, 235, 225, .04);
+  /* 7%, raised from 4% (2026-08-02). Measured, not eyeballed: at .04 the
+     glyph's peak deviation from the ink background is 13/255 in the section's
+     tail — present in the DOM, effectively invisible on screen, so the space
+     below the closing copy read as an empty panel rather than a marked one.
+     At .07 the peak is 19/255. The diagonal mask attenuates it further toward
+     the upper-left, so the stroke alpha is an upper bound, not what most of
+     the glyph paints at. Both users of .deco-amp (/ and /work/marcus/) move
+     together on purpose — one signature, one weight. */
+  -webkit-text-stroke: 2px rgba(240, 235, 225, .07);
   /* Diagonal mask: the glyph only materialises toward the bottom-right corner
      and is fully transparent across the upper-left, where the copy columns sit.
-     Without this its top-left curve tracked behind the right-hand column. */
-  -webkit-mask-image: linear-gradient(to bottom right, transparent 30%, #000 62%);
-          mask-image: linear-gradient(to bottom right, transparent 30%, #000 62%);
+     Without this its top-left curve tracked behind the right-hand column.
+     Tightened 30%→50% / 62%→76% when the stroke went to 7%. At 30% the glyph
+     was already painting behind the closing copy — 251 pixels at 1280, 451 at
+     1440 — which nobody noticed at 4% because nothing there was visible at
+     all. Raising the alpha without moving the mask would have made a latent
+     bug legible. Measured by diffing the render against the same frame with
+     the pseudo-element display:none, counting only pixels inside the column's
+     TEXT rects: 0 at 1280 / 1440 / 1024. */
+  -webkit-mask-image: linear-gradient(to bottom right, transparent 50%, #000 76%);
+          mask-image: linear-gradient(to bottom right, transparent 50%, #000 76%);
 }
 @media (max-width: 900px){
   /* below the two-column breakpoint there is no empty half to fill */

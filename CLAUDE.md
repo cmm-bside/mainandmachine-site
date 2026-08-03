@@ -932,18 +932,28 @@ the dark band from **1.50× → 1.29×** of a 900px viewport.
 - **`.roi--slim` scoping is deliberate.** `/calculator/` runs the full `.roi`
   two-column card and keeps its 40px padding, its 12-line disclaimer and its
   own rhythm. Only the homepage embed is compressed.
-- **KNOWN, not met:** the brief's "left-column empty zone ≤320px". It is 524px.
-  The arithmetic is fixed: the empty run is `card − intro`, the intro column is
-  315px of copy, so the card would have to reach **≤635px**. After this pass
-  the four zones are bar 47 + inputs 296 + output 506 and there is no 200px of
-  slack left that is not content. Widening the card's track (tested at five
-  ratios) bottoms out at **392px** and costs the CTAs stacking. Closing it
-  needs either another zone deleted from the card or copy added to the left
-  column — an editorial call, not a CSS one.
-- **KNOWN, flagged:** "A model, not a promise" now appears TWICE in the card —
-  as the bar's right label and as the whole footnote. The brief asked to keep
-  the footnote's first sentence, which is that same sentence. Dropping the bar
-  label is a one-line fix once someone decides which one carries it.
+- **The duplicated caveat is resolved (2026-08-02).** "A model, not a promise"
+  had been appearing twice — the bar's right label and the whole footnote,
+  ~500px apart. The FOOTNOTE sentence went; the bar keeps it, because the bar
+  states the caveat BEFORE the reader reaches the number, which is where a
+  caveat belongs. `.roi__how` is now the card's last zone and takes the full
+  `--roi-zone` step rather than the 12px it used under the sentence.
+- **The 524px left-column void is resolved (2026-08-02): now 95px.** Padding
+  was never the lever — the card had to get SHORTER, and the only way to
+  shorten it was to stop stacking its two zones. See the two-column note in the
+  `.roi--slim` block. Band 1159px → **852px, 0.95× of a 900px viewport**.
+  Void ≤320px at every side-by-side width: 95 (≥1160), 317 (1060–1159),
+  303 (1024), 273 (901).
+  - **Cost, accepted deliberately:** the card needs ≥565px to hold two
+    columns, which drops the text column below the 526px the two CTAs need
+    side by side, so they now stack. Two-column card and single-row CTAs are
+    mutually exclusive — that is arithmetic, not preference. Flagged twice and
+    confirmed before shipping.
+- **KNOWN, pre-existing, NOT from this work:** at 320px the industry select
+  clips its widest option by 19px (199px of text needed, 180px available) —
+  the card is only 280px wide there. Verified identical under the previous
+  `width:auto; min-width:200px`, so `width:100%` did not cause it; that change
+  in fact FIXED a 2px clip at 390 and 430px.
 
 ### Founder section — press block at the column foot (2026-08-02)
 

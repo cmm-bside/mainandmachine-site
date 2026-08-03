@@ -1419,7 +1419,13 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
    what makes both columns begin on the same y. It does NOT change the band's
    height; it redistributes the slack (was 375 above / 527 below the text) to
    one run beneath the text column, which is what .deco-grid--left is for. */
-.calcband__grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:var(--s-64); align-items:start; }
+/* .75fr 1.25fr, was 1.1fr .9fr (2026-08-02). The band's left column held 315px
+   of copy beside an 839px card, leaving a 524px dead run under the CTAs. The
+   fix is not padding — it is that the card had to get SHORTER, and the only
+   way to shorten it is to stop stacking its two zones (see .roi__grid below).
+   Two columns inside the card need the card ≥565px, which is what this ratio
+   buys. Void 524px → 95px, band 1159px → 852px. */
+.calcband__grid{ display:grid; grid-template-columns:.75fr 1.25fr; gap:var(--s-64); align-items:start; }
 @media(max-width:900px){ .calcband__grid{ grid-template-columns:1fr; gap:var(--s-48); } }
 .calcband__intro{ min-width:0; }
 .calcband__intro .lead{ max-width:46ch; }
@@ -1433,6 +1439,27 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .roi--slim .roi__grid{ grid-template-columns:1fr; }
 .roi--slim .roi__inputs{ border-right:0; border-bottom:1px solid var(--line); }
 .roi--slim .roi__output{ gap:0; }
+/* ---- slim card goes TWO-COLUMN once it can afford to (2026-08-02) ----
+   Stacking inputs over output is what made this card 806px tall and left a
+   524px dead run beside it in the band. Side by side it is 532px.
+
+   The gate is the industry SELECT, and it is arithmetic, not taste: its widest
+   option needs 199px of text, the control adds 54px of its own padding (14
+   left, 40 right reserved for the caret) and .roi__inputs adds 60px — so the
+   inputs column needs ≥313px, and with an output column wide enough to keep
+   the big number on one line the CARD needs ≥565px. Below 1060px viewport it
+   is narrower than that, so the card reverts to the stack it was designed
+   with, exactly as before. Getting this wrong clips the select's value, which
+   is the failure the original single-column note in this file warned about.
+
+   1160px, not the ~1130 the arithmetic alone gives: that is where .wrap hits
+   its max-width, so the card settles at a stable 645px and the select clears
+   199px with 8px to spare. Gating at 1060 put the breakpoint 100px too low and
+   clipped the select at exactly 1060 — measured, 199 needed / 175 available. */
+@media (min-width: 1160px){
+  .roi--slim .roi__grid{ grid-template-columns:1fr 1fr; }
+  .roi--slim .roi__inputs{ border-right:1px solid var(--line); border-bottom:0; }
+}
 
 /* ---- slim card: compressed rhythm (2026-08-02) ----
    One step between every zone — inputs / modeled return / receipt rows /
@@ -1457,7 +1484,12 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
    closed by exactly that dead space, so the VISIBLE inset matches top and
    bottom while the hit area stays 44px — the same compensation the pricing
    row's action link needs. */
-.roi__how{ display: inline-flex; margin-top: var(--s-12); margin-bottom: -12px; }
+/* Now the LAST zone in the card — the footnote sentence above it is gone (it
+   duplicated the bar's "A model, not a promise" verbatim, ~500px apart, and
+   the bar states the caveat BEFORE the number, which is where it belongs). So
+   this takes the full zone step rather than the 12px it used under the
+   sentence. */
+.roi__how{ display: inline-flex; margin-top: var(--roi-zone, var(--s-24)); margin-bottom: -12px; }
 
 /* ---- closer line ---- */
 .closer{ margin-top:var(--s-48); padding-top:var(--s-32); border-top:1px solid var(--dline); display:flex; gap:var(--s-24); align-items:flex-start; }

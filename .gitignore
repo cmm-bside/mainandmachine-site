@@ -27,3 +27,10 @@ audit/
 
 # FUSE temp artifacts — stale duplicates that got committed once already
 .fuse_hidden*
+
+# Local scratch — never commit: Pages serves the repo root, so a stale copy of
+# the site here would be published as duplicate content. These are the same
+# dirs LOCAL_SCRATCH_DIRS makes the build guards skip.
+_to_delete/
+kobo_downloads/
+.claude/

@@ -8,6 +8,10 @@ Disallow: /score/report/
 Disallow: /s/
 # The booking API is POST-only and has nothing to index.
 Disallow: /api/
+# Internal design reference (design/home-reference.html) — a visual spec, not a
+# page. Served because Pages publishes the repo root; nothing links to it and it
+# is not in the sitemap.
+Disallow: /design/
 
 # AI assistants and answer engines are welcome. Plain-English company
 # facts live at https://www.mainandmachine.com/llms.txt

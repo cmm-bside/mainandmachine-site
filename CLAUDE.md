@@ -160,17 +160,46 @@ the whole site. Five non-brand literals remain by design: `--blueprint` /
 
 ### Brand decoration (systematized 2026-08-02)
 
-**Crop marks — ONE definition, four uses.** `.crop` draws two 14px corner
+**Crop marks — ONE definition, three uses.** `.crop` draws two 14px corner
 pieces, 2px `var(--accent)`, **top-right and bottom-left**, via `::before` /
 `::after`. Pseudo-elements on purpose: outside the accessibility tree (no
 `aria-hidden` attribute needed), unreachable by pointer, absolutely positioned
 so they cause no layout shift.
 
-Applied to exactly four components — the hero spec card (`.statrail`), the
-highlighted pricing row (`.svc__item--feature`), the `/book/` "promise" card
-(`.panel--ink`) and the founder photo frame (`.bio__portrait`). It had spread
-to **23 components / 73 elements**, which made it wallpaper rather than a mark.
-**Do not add a fifth without removing one.**
+Applied to exactly three components — the hero spec card (`.statrail`), the
+`/book/` "promise" card (`.panel--ink`) and the founder photo frame
+(`.bio__portrait`). It had spread to **23 components / 73 elements**, which
+made it wallpaper rather than a mark. **Do not add a fourth without removing
+one.**
+
+**The highlighted pricing row lost it 2026-08-02 — it is a third bracket
+system colliding, not a position bug.** `.svc__item--feature` carried `.crop`
+and rendered a lone red bracket at the far-left seam between tiers 01 and 02,
+plus a second one opening the wrong way at the card's top-LEFT.
+
+- `.diff::before, .svc__item::before` is the **hover flame-bracket system** (an
+  8-gradient L at each corner, `inset: 7px`, arms grow from `background-size:
+  0` on hover). It is `(0,1,1)` — the same specificity as `.crop::before` — and
+  sits ~1090 lines later in `styles.css`, so its `inset: 7px` wins outright.
+- With `inset: 7px` on all four sides *and* `.crop`'s explicit 14px box, the
+  pseudo-element is over-constrained. In LTR `top`/`left` win, so it resolved
+  to the row's **top-left** corner while still painting `.crop`'s top+right
+  borders — a registration mark pointing the wrong way. Meanwhile `::after`
+  drew the bottom-left mark at `-1px/-1px`, i.e. 1px outside the card, on the
+  hairline it *shares* with row 02 — which is why it read as detached from any
+  card.
+- **The row can never carry the full motif.** An element has two
+  pseudo-elements; `.svc__item::before` is already spent on the hover
+  brackets, so at most one of `.crop`'s two corners can render. Half a
+  two-corner motif *is* the lone bracket. Insetting or re-anchoring only moves
+  it — it cannot make the second corner exist.
+- `.crop` was removed from all 5 instances of that row (`/`, `/pricing/` ×2,
+  `/denver/`, `/phoenix/`). The row keeps its hover brackets and its
+  "MOST START HERE" tab chip as its highlight. Do not re-add it.
+- Auditing this: `getComputedStyle(el, '::before')` returning the **same value
+  on all four insets** is the tell. A `.crop` that is working reads
+  `top: -1px; right: -1px` with the other two as resolved used values — compare
+  `.statrail`, which does.
 
 Removed as duplicate/partial-border experiments:
 - `.hm-crop` — a second four-corner system (13px / 1.5px / four corners / rust)
@@ -182,17 +211,55 @@ a layer on *that side only*. Two treatments, never both on one section:
 
 - `.deco-grid` — 1px cream grid on a 56px pitch at 4.5%, masked to the right
   half. `--left` and `--edges` modifiers for the other cases.
-- `.deco-amp` — one oversized outlined ampersand at 4%, bottom-right, with a
+- `.deco-amp` — one oversized outlined ampersand at 7%, bottom-right, with a
   diagonal mask so it materialises only in the empty corner and never tracks
-  behind a copy column.
+  behind a copy column. It sits fully inside the section — no shape is cut at
+  the boundary.
 
 **Max one ampersand per page** — it is a signature, not a texture. Currently
-`/` (problem section) and `/work/marcus/` (MARCUS band). The grid is the
-default; `.section.ink.final` takes it by selector on all 41 pages.
+**`/work/marcus/` (MARCUS band) only**. The grid is the default;
+`.section.ink.final` takes it by selector on all 41 pages.
+
+**`/` `#problem` lost its ampersand 2026-08-03**, by decision rather than by
+defect: the reference has no decoration in that section. `.deco-amp` came off
+the section outright — the class carried `overflow: clip` and the `> .wrap`
+z-index lift with it, and neither turned out to be load-bearing (no page
+overflow at 1440 / 1280 / 1024 / 768 / 430 / 320 with `overflow` back to
+`visible`). The `.deco-amp` rule itself stays for `/work/marcus/`.
+
+- The section keeps its texture: `#problem` never had a *grid*. Its background
+  is `--grain` — a 180×180 `feTurbulence` fractal-noise SVG at 4.5%, from
+  `.ink`. The reference paints something different there, a 1px ruled grid at
+  2.7% via two `repeating-linear-gradient`s on the section itself. Ours is
+  noise, the reference's is ruled. Nothing was added to close that gap; see the
+  note when this next comes up.
 
 **Ampersand retuned 2026-08-02.** Stroke 4% → **7%**, mask 30%/62% →
 **50%/76%**, `bottom` −0.18em → **−0.30em**. All three move together; changing
 one alone makes things worse.
+
+**Un-clipped later the same day: `bottom` −0.30em → `0`, mask 50%/76% →
+65%/86%.** The glyph hung ~126px below the section and let `overflow: clip`
+cut it. That is what read as "faint outlined rectangles sliced by the section
+edge" — Archivo's `&` is angular, so the surviving fragments of an *outlined*
+glyph look like stray rectangles rather than a letter. Nothing is cut now: the
+ink bottoms out **21px above** the section's bottom edge and touches no edge at
+1440 / 1280 / 1024 / 901.
+
+- **The mask is the counterweight to `bottom`, and this is the same trap in
+  reverse.** Raising the glyph moves the whole fragment up ~126px into the band
+  the closing copy occupies: at `bottom: 0` with the old 50%/76% mask it painted
+  **36 px behind text at 1280, 24 at 1024, 52 at 901** (1440 was clean, which is
+  why one width is not a test). 65%/86% takes it back to 0 everywhere.
+- **Tightening the mask did not shrink the mark** — 1294 px of ink at 1440
+  versus 1453 for the old *clipped* fragment. Un-clipping gives back more than
+  the tighter mask takes: the whole visible fragment is now the glyph's tail
+  and the corner of its bowl, which reads as a letter.
+- Both `.deco-amp` users move together, as documented. `/work/marcus/` had the
+  identical defect (clipped at 1440 / 1280 / 901, clean only at 1024) and the
+  same two values fix it. **`/` `#problem` no longer carries the class at all
+  (see above), so these values now serve `/work/marcus/` alone** — the tuning
+  still stands, and it is what keeps that page's glyph whole.
 
 - At 4% the glyph's peak deviation from the ink background was **13/255** in
   the section's tail — present in the DOM, effectively invisible on screen, so
@@ -208,10 +275,14 @@ one alone makes things worse.
   bounding BOX instead reports a collision for any glyph in the column's
   whitespace, which is the whole point of the corner treatment. Final: **0 px
   behind text at 1280 / 1440 / 1024 / 901.**
-- The tail closes at 96px via `.section--close-96` (`#problem` is in
-  `CLOSE_96_OTHER` — it ends in `.prose-2`, a content block, so it does not
-  qualify under the terminal-element rule). 96 rather than a second
+- The tail closes at 96px via `.section--close-96`. 96 rather than a second
   early-close step; the brief's cap was ≤120px and one step beats two.
+  (`#problem` was in `CLOSE_96_OTHER` while it ended in `.prose-2`, a content
+  block. **Removed from the allowlist 2026-08-03** — "How we work →" moved out
+  of that prose onto its own line as `p.section-action`, whose whole text IS
+  the link, so the section now satisfies the real terminal-element test and
+  needs no escape hatch. The allowlist only means something while every entry
+  still has to be there.)
 
 Verified: **zero layout shift** (disabling every decoration changes not one
 element's geometry across 1042 elements on three pages), no horizontal
@@ -373,6 +444,27 @@ at `0.06em`, no shadow, 150ms transitions.
 two styles. **The invariant: underline + accent never co-occur at rest** — that
 combination is what STYLE A's hover means.
 
+**ONE documented exception: `.section-action` (2026-08-03).** A STYLE B link
+lifted out of running copy onto its own line at the foot of a section takes a
+1px rule under the label, `color-mix(in srgb, currentColor 45%, transparent)`
+with `padding-bottom: 3px`. Requested against the reference, and it does breach
+the invariant above — recorded here rather than quietly absorbed.
+
+- The reference is not uniform about it either, and the pattern is worth
+  copying: the rule appears only on action links that **stand alone on their
+  own line** (`HOW WE WORK`, `READ THE MEASURED RESULTS`) and never on ones
+  inside a card (`READ THE FULL SPEC`, `BROWSE THE BUILD CATALOG`, `HOW THIS IS
+  MODELED`). So the class names the standing-alone CASE, not the decoration.
+- `currentColor` rather than a token: it resolves to `--accent-text` on paper
+  and `--accent-ink` on ink with no surface-awareness in the rule.
+- The border is on an INLINE box, so its `padding-bottom` paints without
+  entering the line box — no reflow, and the rule hugs the label rather than
+  spanning the paragraph.
+- **Currently one instance sitewide**, `/` `#problem`. `/` `#proof`'s "Read the
+  measured results →" is the site's other lone action link and does NOT have
+  it, so the two are inconsistent; the reference gives both the rule. Adding
+  `.section-action` to that `<p>` is the whole fix if that is wanted.
+
 | | STYLE A (in-text) | STYLE B (standalone action) |
 |---|---|---|
 | font | inherited | mono 12px, 600, uppercase, `0.06em` |
@@ -528,9 +620,11 @@ foot of `styles.css`.
   link already reads as an ending; a further 160px of air below one makes the
   section look unfinished rather than closed. `padding-bottom` only — the top
   keeps `--section-y`, so these are the only intentionally asymmetric sections
-  on the site. Exactly **three** qualify across 205 by the terminal rule: `/`
-  `#work` (the `.buildstrip`), `/` `#proof` and `/work/`'s scorecard section
-  (both a lone "…measured results →"), plus one allowlisted exception below.
+  on the site. **Four** qualify across 205 by the terminal rule: `/` `#work`
+  (the `.buildstrip` — still, now that it carries a chip row: `endsThin` matches
+  the class, not a height), `/` `#proof` and `/work/`'s scorecard section (both
+  a lone "…measured results →"), and as of 2026-08-03 `/` `#problem` (a lone
+  "How we work →" in `p.section-action`). Plus one allowlisted exception below.
   - The class is named for its EFFECT, not its cause. It was `--ends-thin` for
     one afternoon; `/` `#about` closes at 96px for a different reason and the
     old name would have lied about it.
@@ -542,6 +636,9 @@ foot of `styles.css`.
     row and the photo card now bottom out on the same line, which is already a
     hard horizontal ending. Keyed by `id` because `sel()` collapses to
     `section.section.paper` for half the page and would exempt the wrong ones.
+    (`#problem` was the second entry until 2026-08-03; it now passes the real
+    test on its own. Entries come OUT when they stop being needed, or the
+    allowlist quietly becomes the rule.)
   - **It is an authored class, not a `:has()` selector, and that is deliberate.**
     The real test is "the paragraph's entire text IS the link text", which CSS
     cannot express: `p:last-child > a:only-child` counts only ELEMENT children,
@@ -642,6 +739,30 @@ The homepage's third column held one "Read the full spec →" link in a 360px
 track and nothing else. Those rows are now `.svc--2col` (`220px 1fr`), the link
 moved to the foot of the description column, and the price fine print
 (`.svc__note`) moved out of the rail into the description column with it.
+
+**`.fineprint`, the note block under the tiers (2026-08-03).** The two closing
+paragraphs ran the full 1096px container at **~122 characters a line** — about
+half again the top of the readable band. They are now an eyebrow rail
+("The fine print", `.tick-lbl`) plus a measured column, **on the tier rows' own
+geometry**: a 220px rail, a 32px gap, text capped at 640px. **81 chars/line**,
+which is what the reference measures too.
+
+- **The two literals are the row's, restated so the block lines up with it.**
+  220px is `.svc--2col`'s rail; 32px is `.svc__main`'s own left padding. Edit
+  the row's tracks and this has to move with them.
+- **Plus a 1px left pad, and it is not a fudge.** The `.svc` table draws a 1px
+  border, so its rows begin one pixel inside the container; a block starting at
+  the container edge lands 1px left of every tier's text. With it: rail-to-rail
+  **0.0px** and text-to-text **0.0px** at 1440 / 1280 / 1024 / 921.
+- `.hero__note`'s own 16px top margin is zeroed on the first paragraph, so the
+  eyebrow and the first line share a baseline row as they do in the reference.
+- **Tracks inside `@media (min-width: 921px)`** — the same breakpoint and the
+  same reason as `.svc--2col` above: the single-column state is the default,
+  and a media query adds no specificity, so declaring the two-column form
+  unconditionally would outrank any rule meant to undo it. Stacked, the eyebrow
+  takes a 12px bottom margin because the column gap is no longer doing that job.
+- Copy is **unchanged**. One thing it says is now stale, and is left alone
+  deliberately — see the note in the TODO section about the retired slot count.
 
 **The empty third column was a symptom, not the cause.** Measured naturally at
 1440: the 220px rail was the TALLEST column in rows 01 and 02 (285 and 423px)
@@ -788,14 +909,53 @@ its own border) whose only content was a `.builds__bar` carrying its own
 border-bottom and gradient — a box inside a box, for one label and one link.
 
     <div class="buildstrip">
-      <span class="tick-lbl">Example builds</span>
-      <a class="buildstrip__go" href="/services/builds/">Browse the build catalog →</a>
+      <div class="buildstrip__row">
+        <span class="tick-lbl">Example builds</span>
+        <a class="buildstrip__go" href="/services/builds/">Browse the build catalog →</a>
+      </div>
+      <ul class="buildstrip__chips"> …four <li> … </ul>
     </div>
 
 1px `--rule` top and bottom, no left/right border, transparent at rest,
-`padding-block: 24px`, `justify-content: space-between`, and it sits in the
-standard `.wrap` so it measures 1096px inside the 1160px container. Hover fills
-the band with `--paper-tan` and nudges the arrow 2px. **Zero nested containers.**
+`padding-block: 24px`, and it sits in the standard `.wrap` so it measures 1096px
+inside the 1160px container. Hover fills the band with `--paper-tan` and nudges
+the arrow 2px. **Zero nested containers.**
+
+**Chips added 2026-08-03.** The strip was a label, a link and a rule with
+nothing beneath — an empty table header. `.buildstrip` became a flex COLUMN
+(`gap: --s-16`) and its old row geometry moved to `.buildstrip__row`, so the
+label/action row is unchanged and the chips are a second row under it.
+
+- **The four names are REAL catalog entries, verbatim from `/services/builds/`**
+  — "24/7 AI receptionist", "Instant lead response", "Business system
+  connectors", "Company knowledge base". One per door of the three cards the
+  strip sits under (agent · automation · integration · data). The reference's
+  own four are placeholders ("Intake & triage agent", "Quote-to-invoice
+  automation", "CRM ↔ field-ops sync", "Policy Q&A with audit log") and must
+  NOT be copied — none of them is a thing we sell.
+- Chips are **static `<li>`, not links**: the strip already targets the
+  catalog, and a chip that looked clickable would promise a per-build page that
+  does not exist. A `<ul>` rather than four `<div>`s because it is a list of
+  four things and the semantics are free.
+- **The stretched `::after` now covers the chips too, on purpose.** `inset: 0`
+  resolves against `.buildstrip`, so the overlay grew with the strip. Hit-tested
+  at 1440/1024/620/390: chip text, the gap between chips, the label, and both
+  far corners all resolve to `/services/builds/`.
+- 12.5px is **off the type scale deliberately** — the steps either side are
+  `--fs-12`/11px and `--fs-13`/14px — and is the reference's measured size. It
+  clears the 11px floor `qa:matrix` asserts. The border is
+  `color-mix(in srgb, var(--ink) 28%, transparent)`: the brief's "~28% ink",
+  derived so it tracks the palette rather than pasted as a literal.
+- Chip height is **44px against the reference's 40px**, because Space Mono has a
+  taller line box than the reference's IBM Plex Mono at the same 12.5px and
+  `11px 16px` padding. The padding matches the brief; the height follows the
+  face.
+- Wraps on its own: one row to 1024, two at 768–620, four at ≤430. No chip
+  escapes the strip and no page overflow at any of 1440/1280/1024/768/620/430/
+  390/320.
+- **The strip is still `#work`'s terminal element**, so the section keeps
+  `.section--close-96`; `qa:matrix`'s `endsThin` matches `.buildstrip` by class,
+  not by height, so a taller strip does not drift the two apart.
 
 - **`.builds` itself is untouched** — six industry pages use it as designed,
   with build cards under the bar. Only the homepage had the degenerate
@@ -832,6 +992,26 @@ the band with `--paper-tan` and nudges the arrow 2px. **Zero nested containers.*
   per the link system's rule that accent marks the action.
 
 ### Homepage "Pick the door" cards (normalized 2026-08-02)
+
+**Door 01's CTA is PRIMARY as of 2026-08-03** ("Book a free assessment"); 02 and
+03 stay SECONDARY. Three identical outlines gave the free assessment — the one
+conversion the whole page funnels toward — no more weight than "Get your score".
+Matches the reference, which fills door 01 and outlines the other two.
+
+- **It had to gain an arrow.** Every PRIMARY carries one and SECONDARY never
+  does; `qa:matrix` fails `PRIMARY without arrow`. The reference's own door-01
+  label has no arrow — our button contract wins over copying the glyph.
+- **The one-primary-per-viewport-height rule still holds**, and was checked
+  rather than assumed. Content primaries now sit at y 628 (hero), 4950
+  (calculator band) and 7635 (doors) — gaps of **4322px** and **2685px**,
+  against a 1000px floor. The footer's "Subscribe →" is 373px below the new
+  one, which is fine: nav CTA and footer newsletter are chrome and excluded by
+  the rule, exactly as the BUTTONS section records.
+- Geometry is untouched: all three stay `align-self: stretch`, so widths remain
+  identical (267.33 / 267.33 / 267.34 at 1440, spread 0.01px) at every width
+  from 320 to 1440, each button inside its own card, 52px box throughout. At
+  320px the primary alone measures 67px — its label is the longest and wraps,
+  which is the documented sub-620px button behaviour, not a defect.
 
 `.paths` was a hairline grid — one bordered container, `gap: 0`, a
 `border-right` on each `.path`. Those shared walls are what read as a stray
@@ -932,6 +1112,16 @@ the dark band from **1.50× → 1.29×** of a 900px viewport.
 - **`.roi--slim` scoping is deliberate.** `/calculator/` runs the full `.roi`
   two-column card and keeps its 40px padding, its 12-line disclaimer and its
   own rhythm. Only the homepage embed is compressed.
+- **The results header stacks in the slim card only (2026-08-03).**
+  `.roi__nethead` is two mono labels in a `space-between` row. At
+  `/calculator/`'s 447px they sit on one line each and read correctly; in the
+  262px slim card BOTH wrap to two lines and the columns interleave — the eye
+  reads across and gets "MODELED RETURN FOR 25 / YEAR PEOPLE". `.roi--slim`
+  makes it a column: two left-aligned lines, `--s-04` apart, the second in
+  `--tx-mute` as the qualifier. Scoped to `--slim`, because the full card is
+  not broken and must not move. `#bandFor` was already live on the slider
+  (`range.addEventListener('input', …)`); verified at 5 / 60 / 100, and it
+  keeps the singular case at 1.
 - **The duplicated caveat is resolved (2026-08-02).** "A model, not a promise"
   had been appearing twice — the bar's right label and the whole footnote,
   ~500px apart. The FOOTNOTE sentence went; the bar keeps it, because the bar
@@ -949,11 +1139,74 @@ the dark band from **1.50× → 1.29×** of a 900px viewport.
     side by side, so they now stack. Two-column card and single-row CTAs are
     mutually exclusive — that is arithmetic, not preference. Flagged twice and
     confirmed before shipping.
+  - **SETTLED 2026-08-03: the CTAs stack, and that is the design.** Asked to
+    make a call rather than keep flagging it, the answer is to keep the
+    two-column ROI card and let the pair stack equal-width. The card is what
+    the section is for; collapsing it back to one column to win a single row of
+    buttons trades a 0.95×-viewport band for a 1.29× one and reopens the 524px
+    void that took a whole pass to close. Nothing further is owed here.
+  - **Re-raised 2026-08-03 and the arithmetic still holds.** The CTAs were
+    asked to go side by side at a 16px gap. They cannot at 387px: `.btn` is
+    `white-space: nowrap`, so the pair needs 260 + 250 + 16 = **526px**. The
+    reference does not manage it either — its buttons need 520px against a
+    fixed 502px column and wrap at 1280/1440/1600/1920. What shipped instead:
+    `gap` 36 → **16px** as asked, and `.calcband__intro .roi__cta .btn
+    { flex: 1 1 0 }`, which puts them side by side wherever the row can hold
+    them (≤900px, where the band is single-column) and makes them **equal
+    width** when it cannot — the real visible defect was 260px against 250px.
+    `flex-basis: 0`, not `auto`: from `auto` a side-by-side pair grows off its
+    own label widths and lands at 415/405, the same raggedness one row over.
+    Below 620px the rule flips to `flex: 1 1 100%` — `.btn` may wrap its label
+    there, which removes the min-content floor, and the pair had begun sitting
+    side by side at 187px each with both labels broken over two lines.
 - **KNOWN, pre-existing, NOT from this work:** at 320px the industry select
   clips its widest option by 19px (199px of text needed, 180px available) —
   the card is only 280px wide there. Verified identical under the previous
   `width:auto; min-width:200px`, so `width:100%` did not cause it; that change
   in fact FIXED a 2px clip at 390 and 430px.
+
+### Founder section — beige band + uniform press row (2026-08-03)
+
+**`#about` moved cream → beige and `#paths` moved beige → cream**, so the tail
+of the page alternates `#proof` cream → `#about` **beige** → `#paths` cream.
+Both had to move: `#about` alone would have put two beige bands back to back,
+since `#paths` was already `.paper-2`. The reference does exactly this swap.
+
+- Contrast on `--paper-tan` re-measured, all AA-clean: h2 **13.05:1**, outlet
+  names 13.05, action link 15.24, and every muted step — lead, eyebrow, prose,
+  the new press label — **4.62:1**. That last number is why `--ink-muted` is
+  `#685E4F` and not the older `#6E6455`, which was 4.22:1 on this exact band.
+- **Hairlines lose contrast on beige and that is worth knowing.** `--line` is
+  **1.16:1** on `--paper-tan` against 1.34:1 on `--paper` — the `.bio__press`
+  top rule is now nearly invisible. Left as-is: `--rule` on `.paper-2` is what
+  `/pricing/` and the doors section have always done, and darkening the token
+  for one band would fork the hairline system. The new outlet underline sits at
+  **2.36:1**, which is the visible line in that block now.
+
+**The press row is uniform, linked or not.** Four outlets (Forbes, Inc.,
+TechCrunch, Fox Business) are `<a>` and took STYLE A's underline; WSJ, NYT and
+MSNBC are bare `<span>` and took nothing — so the row read half-linked,
+signalling nothing except which URLs we happen to hold. All seven now render
+600 weight with a 1px rule at `color-mix(in srgb, var(--ink) 35%, transparent)`.
+
+- **Drawn with `text-decoration`, not `border-bottom`.** The border was the
+  first attempt and `qa:matrix` rejected it: to stop the linked ones doubling
+  up I had stripped their underline, which left them with neither underline nor
+  arrow — a THIRD link appearance, and 8 failing cells across `/` and
+  `/about/` (`STYLE A without underline: a "Forbes"`). Underlining every outlet
+  keeps the four links textbook STYLE A with only the decoration COLOUR moved.
+- **The mid-dot separator is retired.** It lived inside the nowrap span so it
+  could never start a line; an inline border/underline wraps the whole inline
+  box including a `::after`, so the rule ran on under " ·".
+- **`.bio__press .press-list` had `gap: 0.5em 0` — a ZERO column gap.** The
+  mid-dot and its 8px margins were the only thing holding the names apart, so
+  removing it ran them into "ForbesThe Wall Street JournalThe New York
+  Times…" under one continuous rule. Now `0.7em 1.6em`, giving 22px between
+  outlets. Do not reinstate the dot without putting that gap back to 0.
+- The intro is a label now, not a sentence: `.tick-lbl` mono caps, its own
+  line, colon dropped. Copy still credits the founder, per the voice rules.
+- **The CSS is shared, so `/about/` gets the same row** — deliberate; the two
+  pages should not disagree about how the press strip looks.
 
 ### Founder section — press block at the column foot (2026-08-02)
 
@@ -999,6 +1252,32 @@ compositing the real paint stack. **71 AA failures repaired; 0 remain on dark.**
   `--rust-bright` (which still drives the primary button's hover background).
   Allowed at 16px+ for short labels only; the mono label set is 11px, so on
   dark those take `--on-dark-muted` instead.
+- **Dark-surface links are already on that token, and it is already the
+  "something worse." colour.** Re-audited 2026-08-03 after a report that they
+  sat near 3.5:1 — they do not. The dark heading accent span and every
+  dark-surface link both compute **`#E86A3E` at 5.61:1 on `--ink`**; light
+  surfaces keep `--accent-text` `#AA371A` (4.66:1 on `--paper-tan`, 5.79:1 on
+  the ROI card). `--accent` `#C6401E` IS 3.59:1 on ink, which is where a 3.5:1
+  figure comes from, but no link resolves to it — only the focus ring does, and
+  3:1 is the bar there (WCAG 1.4.11).
+- The reference's `#E8622C` measures **5.39:1** on `--ink`, slightly BELOW our
+  `#E86A3E`. **Not adopted, and settled 2026-08-03** — it would repaint every
+  dark surface sitewide to lose 0.2 of a ratio. The same call was made for the
+  other two exact-hex asks: the `.failstat` bar track stays derived from
+  `--rule-dark` (lands `rgb(74,66,55)` against a spec `rgb(74,66,52)`, and it
+  tracks the palette instead of pinning a literal), and the doors primary keeps
+  its arrow (the reference's has none, but `qa:matrix` fails
+  `PRIMARY without arrow` and the button contract outranks the mock). Reopen
+  any of the three only if exact parity with the reference becomes the goal.
+- **STYLE B on dark hovers to `--on-dark-head` (cream), 5.61 → 15.11:1**, added
+  2026-08-03. Rest colour is unchanged. STYLE A on dark deliberately keeps the
+  inverse — cream at rest, `--accent-ink` on hover — because pointing both at
+  cream would leave it with no hover response at all.
+- Auditing this: measure **hover as well as rest**, and remember that
+  `color-mix()` serialises as `color(srgb 0.96 0.95 0.93)` with **0..1**
+  channels. An `rgb()`-shaped parser reads those as bytes and turns every
+  `--paper-card` surface into near-black, which manufactures a page of phantom
+  1:1 failures — the same trap the contrast pass hit in 2026-08-01.
 - `--muted-on-light: #685E4F` is the light-surface muted step. It holds the
   literal so light cards nested in dark sections can restore it —
   `--ink-muted` derives from it. Was `#6E6455`, which never cleared AA on
@@ -1114,6 +1393,14 @@ panel — it dilutes the CTA.
   (an unpublished number cannot be unverifiable scarcity). While the span is
   absent a reverse guard applies — no surface may state a slot count that
   nothing keeps current.
+  **RESOLVED 2026-08-03 by deleting the clause.** `/`'s fine print read "We
+  take a fixed number of builds each quarter — *the count at the top of this
+  page is real*", pointing at a count the utility bar stopped publishing. It
+  stated no NUMBER, so `facts:check`'s reverse guard never fired — the guard
+  looks for a stated count, and this was a reference to one. The clause is
+  gone; the sentence now ends at "each quarter." Re-adding a
+  `data-fact="build-slots"` span would re-arm both guards and is still the
+  route back if the slot count returns.
 - After deploy: resubmit sitemap.xml in Search Console and request indexing on the
   new pages.
 

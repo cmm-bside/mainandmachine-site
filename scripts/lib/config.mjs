@@ -17,6 +17,13 @@ export const LOCAL_SCRATCH_DIRS = new Set([
 	"reports",
 	"_to_delete",
 	"kobo_downloads",
+	// design/ holds home-reference.html, the rendered visual spec. It IS
+	// committed and IS deployed (robots.txt disallows it), so it is not scratch
+	// in the sense above — but it is not a site page either, and it was already
+	// being swept into placeholders:check (44 -> 45 pages). A mock is allowed to
+	// contain the words a real page may not; without this, adding "TODO" to the
+	// spec would fail the site build.
+	"design",
 ]);
 
 // --- Site identity (sourced from src/data/company.mjs) ---
@@ -179,4 +186,4 @@ export const POST_TOPICS = {
 export const POST_TOPIC_FALLBACK = { href: "/services/", label: "What we actually build" };
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "115";
+export const ASSET_VERSION = "127";

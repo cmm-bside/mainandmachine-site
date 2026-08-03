@@ -382,6 +382,28 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .spec-card__value, .statrail__v { font-weight: 700; font-size: var(--fs-20); letter-spacing: -0.02em; color: var(--ink); }
 .statrail__v .accent-tx { font-weight: 900; }
 .statrail__v--sm { font-size: var(--fs-13); font-weight: 700; letter-spacing: 0; text-align: right; line-height: 1.4; }
+/* The hero spec sheet is a one-line-per-row rhythm: every row is one line, so a
+   value that wraps reads as a ragged block rather than a row. Two scopes, both
+   load-bearing:
+
+   .hero — NOT .statrail__v--sm itself. /work/marcus/results/ puts that same
+   modifier on running sentences ("Christopher Myers, in both capacities — …"),
+   which must wrap; scoping to .hero cannot reach that card.
+
+   min-width 941px — the hero's own two-column breakpoint, and the width below
+   which the spec sheet goes full-bleed. nowrap sets an element's min-content to
+   the whole string, and a grid/flex item's automatic minimum is its min-content,
+   so an unwrappable 240px value inside a 280px-wide card at 320px pushes the
+   track wider than the viewport: `sweep:mobile` caught exactly that
+   (card-escape on span.statrail__v--sm). The reference is a desktop spec, and
+   below 941px there is no second column for the rhythm to line up with, so the
+   value is allowed to wrap there.
+
+   The copy is the real fix — "Agents · Automations" fits on one line on its own.
+   nowrap is the guard that keeps it honest if the copy ever grows. */
+@media (min-width: 941px) {
+  .hero .statrail__v--sm { white-space: nowrap; }
+}
 
 /* operator log strip */
 
@@ -439,29 +461,81 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .ops-strip span b { color: var(--accent-ink); margin-right: var(--s-8); }
 .ops-strip span:last-child { border-right: 0; }
 
-/* problem-section stat: one dominant 78% (bright, largest) + a subordinate flame 22% counterpoint (~half weight) */
-.failstat{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:clamp(28px,5vw,72px); padding:clamp(28px,4vw,44px) clamp(24px,3vw,36px); background:var(--ink-2); border:1px solid var(--dline); }
-/* Deliberately a fixed size, not a clamp: the elevation layer aliases both
-   --fs-76 and --fs-110 to --fs-78, so the old clamp(76,13vw,110) had equal
-   endpoints and the 13vw middle term could never win. Stating the fixed
-   value says what actually renders. The <=600px rule below IS a live clamp
-   (49px floor, 20vw, 78px ceiling) and stays one. */
-.failstat__big{ font-size:var(--fs-78); line-height:0.82; color:var(--dtx); }
-.failstat__sm{ font-size:clamp(var(--fs-31),4.2vw,var(--fs-49)); line-height:0.9; color:var(--accent-ink); }
-.failstat__cap{ font-size:var(--fs-16); color:var(--dtx); margin-top:var(--s-12); max-width:24ch; line-height:1.35; }
-.failstat__cap--sm{ font-size: var(--fs-13); color:var(--dtx-mute); max-width:22ch; }
-/* third element: the split drawn as a bar, capped with the thesis line —
-   fills the card's right half on desktop, stacks full-width on mobile */
-.failstat__aside{ flex:1 1 300px; min-width:260px; margin-left:auto; align-self:stretch; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; }
-.failstat__ratio{ display:flex; gap:3px; height:12px; }
-.failstat__ratio-spent{ flex:74; background:var(--dline); }
+/* problem-section stat — REORDERED 2026-08-02 to match design/home-reference.html.
+   It used to lead with 74% (huge, bright cream) and set 26% as a smaller flame
+   counterpoint, then draw the SAME split again as a SPENT/MOVED bar: two
+   encodings of one pair, with the number this company exists for subordinate to
+   the one it does not. Now 26% leads and 74% is the muted secondary, and there
+   is exactly ONE bar, whose segment labels carry the same words as the captions
+   ("no tangible value" / "past proof of concept") rather than a second
+   vocabulary (SPENT / MOVED).
+
+   Layout is a 2-column grid with the numbers and the captions as DIRECT
+   children — numbers auto-place into row 1, captions into row 2 — so both
+   captions start on the same line whatever the numbers do. Wrapping each
+   number+caption in its own column div (the old .failstat__hero /
+   .failstat__counter) cannot guarantee that: the captions then sit at the
+   bottom of two independently-sized stacks. The numbers take align-self:end so
+   the small one sits on the big one's baseline rather than its cap line. */
+.failstat{
+  display:grid; grid-template-columns:1.2fr 1fr;
+  column-gap:clamp(32px,4vw,56px); align-items:start;
+  background:var(--ink-2); border:1px solid var(--dline);
+}
+.failstat__big, .failstat__sm{ align-self:end; }
+/* Both numbers are fluid so they cannot outgrow their column: the vw terms hit
+   the reference's 92px / 44px exactly at 1440 and shrink from there. */
+.failstat__big{ font-size:clamp(var(--fs-49),6.4vw,92px); line-height:1; font-weight:900; color:var(--accent-ink); }
+.failstat__sm{ font-size:clamp(var(--fs-25),3.06vw,44px); line-height:1; font-weight:800; color:var(--on-dark-muted); }
+/* Both captions take the same size — only colour separates lead from secondary,
+   which is what keeps the pair reading as one comparison rather than two tiers. */
+.failstat__cap{ font-size:var(--fs-16); color:var(--dtx); margin-top:var(--s-16); max-width:24ch; line-height:1.35; }
+.failstat__cap--sm{ color:var(--on-dark-muted); max-width:22ch; }
+/* the split drawn once, full width beneath both columns, capped with the thesis line */
+.failstat__aside{ grid-column:1 / -1; margin-top:var(--s-40); display:flex; flex-direction:column; gap:var(--s-12); }
+.failstat__ratio{ display:flex; gap:3px; height:10px; }
+/* Track: the reference's #4A4234, derived rather than pasted so it still moves
+   with the palette — --rule-dark lifted 10% toward --panel-ink lands on
+   rgb(74,66,55) against a spec rgb(74,66,52). The old --dline is a translucent
+   hairline, which composited to rgb(63,58,50) here: too dark to read as the
+   larger share of a proportional bar. */
+.failstat__ratio-spent{ flex:74; background:color-mix(in srgb, var(--rule-dark) 90%, var(--panel-ink)); }
 .failstat__ratio-moved{ flex:26; background:var(--accent-ink); }
-.failstat__ratio-lbls{ display:flex; gap:3px; font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--dtx-mute); }
-.failstat__ratio-lbls span:first-child{ flex:74; }
-.failstat__ratio-lbls span:last-child{ flex:26; color:var(--accent-ink); }
-.failstat__kicker{ margin-top:var(--s-12); font-size:var(--fs-20); font-weight:700; letter-spacing:-0.01em; color:var(--dtx); }
+/* space-between, NOT flex:74/26 — the labels sit at the two ENDS of the bar, so
+   the right one must end at the bar's right edge. Weighting them like the
+   segments left-aligns the right label inside its own 26% segment instead. */
+.failstat__ratio-lbls{ display:flex; justify-content:space-between; gap:var(--s-16); font-family:var(--mono); font-size:var(--fs-12); letter-spacing:.1em; text-transform:uppercase; color:var(--on-dark-muted); }
+.failstat__ratio-lbls span:last-child{ color:var(--accent-ink); text-align:right; }
+/* --s-16 on top of the aside's --s-12 gap = 28px under the segment labels.
+   The px-named scale has no 20 step (16 -> 24), and inventing one for a 31px
+   reference measurement is not worth a token. */
+.failstat__kicker{ margin-top:var(--s-16); font-size:var(--fs-20); font-weight:700; letter-spacing:-0.01em; color:var(--dtx); }
 .failstat__kicker b{ color:var(--accent-ink); font-weight:800; }
-@media (max-width:600px){ .failstat__big{ font-size:clamp(var(--fs-49),20vw,var(--fs-78)); } .failstat__aside{ margin-left:0; } }
+/* Below the two-column breakpoint the pair stacks: one column, the secondary
+   number and its caption following the lead rather than sitting beside it. */
+@media (max-width:760px){
+  .failstat{ grid-template-columns:1fr; }
+  /* DOM order is number, number, caption, caption — which is what puts the two
+     captions on one row when there are two columns. Collapsed to one column
+     that same order would separate each number from its caption, so `order`
+     re-pairs them. .failstat__cap--sm must come after .failstat__cap here:
+     both are (0,1,0) and the modifier also carries the base class. */
+  .failstat__big{ order:1; }
+  .failstat__cap{ order:2; }
+  .failstat__sm{ order:3; margin-top:var(--s-24); }
+  .failstat__cap--sm{ order:4; }
+  .failstat__aside{ order:5; }
+}
+/* The two segment labels are ~175px and ~206px at 11px mono, so side by side
+   they need ~397px of card interior — more than a 430px phone has (342px), and
+   they wrap INTO each other rather than overflowing, which no overflow check
+   catches. Below 560px they stack instead: one label per line, each well
+   inside the narrowest card (232px at 320px), and the right one loses its
+   right-alignment because there is no bar end to sit against any more. */
+@media (max-width:560px){
+  .failstat__ratio-lbls{ flex-direction:column; gap:var(--s-8); }
+  .failstat__ratio-lbls span:last-child{ text-align:left; }
+}
 
 /* =========================================================
    ROI CALCULATOR (blueprint / machine)
@@ -527,6 +601,49 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 @media (min-width: 921px){
   .svc--2col .svc__item { grid-template-columns: 220px 1fr; }
   .svc--2col .svc__main { border-right: 0; }
+}
+
+/* ---- .fineprint: the note block under the tiers (2026-08-03) ----
+   Two paragraphs that used to run the full 1096px container at ~122 characters
+   a line — roughly half again the top of the readable band. Now a labelled
+   rail + a measured column, on the SAME geometry as the tier rows above it:
+   a 220px rail, then the description column.
+
+   The two literals are the tier row's, restated so the block lines up with it:
+   220px is `.svc--2col`'s rail, and the 32px gap is `.svc__main`'s own left
+   padding — together they put the note's first character on exactly the same
+   x as every tier's description text (425px at 1440). Change the row's tracks
+   and this has to move with them.
+
+   640px is the measured cap, ~81 characters at this size, matching the
+   reference. It is a max-width rather than a track so the column never
+   stretches on a wide viewport.
+
+   TRACKS INSIDE THE MIN-WIDTH QUERY, for the reason spelled out above the
+   .svc--2col rule: the collapsed single-column state is the default, and a
+   media query adds no specificity, so declaring the two-column form
+   unconditionally would outrank any max-width rule meant to undo it. Same
+   921px breakpoint as the rows, so the rail appears and disappears with the
+   geometry it is aligning to. */
+.fineprint { margin-top: var(--s-40); }
+.fineprint__body { max-width: 640px; }
+.fineprint__body p + p { margin-top: var(--s-32); }
+/* .hero__note carries a 16px top margin for its usual placement under a CTA.
+   Here it would drop the first line 16px below the eyebrow; the reference sets
+   both on the same line. */
+.fineprint__body > p:first-child { margin-top: 0; }
+@media (min-width: 921px){
+  .fineprint { display: grid; grid-template-columns: 220px 1fr; column-gap: var(--s-32); align-items: start; }
+  /* The 1px is the .svc table's own border: the rows begin one pixel inside
+     the container, so a block that starts at the container edge lands 1px left
+     of every tier's text. Shifting the whole block by that border is what makes
+     rail-to-rail and text-to-text exact rather than nearly right. */
+  .fineprint { padding-left: 1px; }
+}
+/* Stacked, the eyebrow needs air under it — as a grid rail it had the column
+   gap doing that job. */
+@media (max-width: 920px){
+  .fineprint > .tick-lbl { display: block; margin-bottom: var(--s-12); }
 }
 /* The description column is a flex column so the action link and the fine
    print sit in a controlled order under the prose. Deliberately NOT
@@ -1018,11 +1135,29 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
    accessibility tree (so no aria-hidden is needed), they cannot be reached by
    pointer, and absolute positioning means they add no layout shift.
 
-   Applied to exactly four things — the hero spec card (.statrail), the
-   highlighted pricing row (.svc__item--feature), the /book/ "promise" card
-   (.panel--ink) and the founder photo frame (.bio__portrait). It used to be
-   sprinkled on 23 different components, which made it decoration rather than
-   a mark. Do not add a fifth without removing one. */
+   Applied to exactly three things — the hero spec card (.statrail), the
+   /book/ "promise" card (.panel--ink) and the founder photo frame
+   (.bio__portrait). It used to be sprinkled on 23 different components, which
+   made it decoration rather than a mark. Do not add a fourth without removing
+   one.
+
+   NOT the highlighted pricing row (2026-08-02). .svc__item--feature carried
+   .crop until it was found rendering a lone bracket at the far-left seam
+   between tiers 01 and 02. The cause is a collision, not a position bug:
+   `.diff::before, .svc__item::before` (the hover flame-bracket system, further
+   down this file) is ALSO (0,1,1) and sits later in source, so its `inset: 7px`
+   beats `.crop::before`'s `top/right: -1px`. With inset:7px on all four sides
+   and an explicit 14px box the pseudo is over-constrained, so it resolved to
+   the row's top-LEFT corner and painted the crop's top+right borders there —
+   a bracket opening the wrong way — while ::after drew the bottom-left mark
+   1px outside the card, straddling the hairline it shares with row 02.
+
+   The row cannot carry both: one element has two pseudo-elements, and
+   .svc__item::before is already spent on the hover brackets, so at most half
+   of a two-corner motif can ever render there. Half a motif is the lone
+   bracket. .crop was removed from the 5 instances of that row (/, /pricing/
+   ×2, /denver/, /phoenix/); the row keeps its hover brackets and its
+   "MOST START HERE" tab as its highlight. Do not re-add it. */
 .crop { position: relative; }
 .crop::before,
 .crop::after {
@@ -1111,19 +1246,20 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
 [data-hero-machine][data-state="play"] .hm-letter{ animation:hm-drop .62s cubic-bezier(.16,1,.3,1) forwards; animation-delay:calc(.35s + var(--i) * .045s); }
 @keyframes hm-drop{ 60%{ opacity:1 } 100%{ transform:none; opacity:1 } }
 
-.hm-baseline{ display:block; height:1.5px; background:var(--rust); margin:16px 0 4px; max-width:12ch; transform:scaleX(0); transform-origin:left; }
-[data-hero-machine][data-state="play"] .hm-baseline{ animation:hm-base .6s cubic-bezier(.7,0,.3,1) .55s forwards; }
-@keyframes hm-base{ to{ transform:scaleX(1); } }
+/* .hm-baseline removed 2026-08-02: a 12ch rust rule that drew itself in under
+   the headline. The last line of the H1 is already set in --accent, so the rule
+   was a second emphasis mark on the same phrase — the reference carries none.
+   Its span, its draw-in animation and the `hm-base` keyframes are all gone; no
+   JS referenced it. Removing it also closes the 21.5px it occupied (1.5px rule
+   + 16/4 margins), which is the whole of the hero's height change. */
 
 /* .hm-crop removed 2026-08-02: a second four-corner registration-mark
    system (13px / 1.5px / four corners) competing with the systematized
    .crop component (14px / 2px / two corners). One motif, one definition. */
 
 [data-hero-machine][data-state="done"] .hm-letter{ transform:none; opacity:1; }
-[data-hero-machine][data-state="done"] .hm-baseline{ transform:scaleX(1); }
 @media (prefers-reduced-motion: reduce){
   .hm-letter{ transform:none !important; opacity:1 !important; animation:none !important; }
-  .hm-baseline{ transform:scaleX(1) !important; animation:none !important; }
   .hm-grid{ clip-path:none !important; animation:none !important; }
   .hm-crop{ opacity:1 !important; animation:none !important; }
 }
@@ -1269,8 +1405,46 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
    of `inherit`, and a 2px underline offset against STYLE A's 3px — which is
    exactly the kind of quiet third variant the link system exists to remove. */
 /* press outlets: solid ink wordmarks, uniform cap-height, tuned 8px dots */
-.bio__press .press-list{ gap:0.5em 0; }
-.bio__press .press-list > span{ color:var(--tx); }
+/* Column gap was 0 — the retired mid-dot (plus its 8px margins) was the only
+   thing holding the outlets apart, so dropping it ran the names together into
+   "ForbesThe Wall Street JournalThe New York Times…" under one continuous rule.
+   1.6em is the base .press-list column gap; the row gap stays generous because
+   each outlet now carries an underline and two wrapped lines would otherwise
+   sit rule-to-text. */
+.bio__press .press-list{ gap:0.7em 1.6em; }
+/* All seven outlets read identically whether or not they link (2026-08-03).
+   Four of them are <a> and took STYLE A's underline; three are bare <span> and
+   took nothing, so the row looked half-linked and half-not — a difference that
+   tracks nothing a reader cares about (whether we happen to hold a URL), and
+   the strongest visual signal in the block. The weight and the rule now live on
+   the WRAPPER span, which every outlet has; the anchor only carries the href.
+
+   The rule is drawn with `text-decoration`, NOT a border-bottom. A border was
+   the first attempt and qa:matrix rejected it, correctly: stripping the
+   anchors' underline to avoid doubling left them with neither an underline nor
+   an arrow, which is a THIRD link appearance and exactly what the two-treatment
+   system exists to prevent (`links :: STYLE A without underline: a "Forbes"`,
+   8 occurrences across / and /about/). Underlining every outlet instead keeps
+   the four links textbook STYLE A — the decoration is only recoloured — and
+   gives the three unlinked names the same line. */
+.bio__press .press-list > span{
+  color:var(--tx); font-weight:600;
+  text-decoration:underline;
+  text-decoration-color:color-mix(in srgb, var(--ink) 35%, transparent);
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+/* (0,2,2), so it outranks the STYLE A rule at the foot of this file — (0,2,1),
+   which names .bio__press in its :is() list. Only the COLOUR moves; the
+   underline itself stays, so the link system's invariant holds. */
+.bio__press .press-list > span a{
+  color:inherit; font-weight:inherit;
+  text-decoration-color:color-mix(in srgb, var(--ink) 35%, transparent);
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+/* The intro is a label now, not a sentence: small mono caps, its own line. */
+.bio__press-lbl{ display:block; margin-bottom:var(--s-8); }
 @media(max-width:760px){ .bio{ grid-template-columns:1fr; } .bio__note{ margin-top:var(--s-24); } }
 
 /* ---- founder entity block: verify-it-yourself links (/about/) ---- */
@@ -1400,6 +1574,19 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 .roi__cta p{ flex:1; min-width:280px; font-size: var(--fs-16); line-height:1.55; color: var(--tx-mute); }
 
 /* ---- slim ROI embed (homepage calculator band) ---- */
+/* The results header is two mono labels. In the FULL card (/calculator/) they
+   sit side by side on one line each in 447px and read correctly. In the slim
+   embed the same row is 262px, so both labels wrap to two lines and the two
+   columns interleave — the eye reads across and gets "MODELED RETURN FOR 25 /
+   YEAR PEOPLE". Stacked here instead: two left-aligned lines, the measure of
+   the label rather than the width of the column deciding the break.
+   Scoped to --slim on purpose; the full card is not broken and must not move. */
+.roi--slim .roi__nethead{
+  flex-direction: column; align-items: flex-start;
+  justify-content: flex-start; gap: var(--s-04);
+}
+/* the second line is the qualifier, not a second heading */
+.roi--slim .roi__nethead span:last-child{ color: var(--tx-mute); }
 .roi--slim .roi__net{ margin-top:0; padding-top:0; border-top:0; }
 /* the card stays a paper surface even on the ink band — undo the dark-context cascade */
 .ink .roi .tick-lbl{ color: var(--tx-mute); }
@@ -1432,7 +1619,35 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 /* 64px below the intro, not 32. The CTAs are never pinned to the band bottom —
    they stay in flow directly under the copy they belong to, and the leftover
    dark space falls below them. */
-.calcband__intro .roi__cta{ margin-top:var(--s-64); }
+.calcband__intro .roi__cta{ margin-top:var(--s-64); gap: var(--s-16); }
+/* Side by side wherever the column can hold them, equal-width when it cannot.
+   `flex: 1 1 auto` does both: on one line the pair shares the row; once they
+   wrap, each grows to the full column so the stack is flush instead of ragged
+   (they were 260px and 250px, which is what read as two mismatched blocks).
+
+   THEY DO WRAP AT THE CURRENT COLUMN WIDTH, and that is arithmetic, not a
+   setting: .btn is white-space:nowrap, so the pair needs 260 + 250 + 16 = 526px
+   and the text column is 387px. The only lever is a wider column, which drops
+   the ROI card below the 565px it needs for its own two-column layout — see the
+   ROI card note in CLAUDE.md, where that trade was made deliberately. The
+   reference does not escape it either: its buttons need 520px against a fixed
+   502px column, so it wraps at 1280/1440/1600/1920 too.
+   Scoped to .calcband__intro — /calculator/'s .roi__cta is a different row
+   (one button, a guarantee panel and a note) and must not take flex-grow.
+
+   `flex-basis: 0` rather than `auto` so the two are EQUAL in both states: from
+   `auto` they grow off their own label widths and a side-by-side pair lands at
+   415px and 405px, which is the same raggedness one row over. `nowrap` still
+   sets each one's floor, so neither can be squeezed under its label. */
+.calcband__intro .roi__cta .btn{ flex: 1 1 0; }
+/* Below 620px .btn is allowed to wrap its label (the sub-620 rule in the
+   BUTTONS block), which removes the min-content floor that otherwise stops
+   `flex-basis: 0` from squeezing these two. Without this they sat side by side
+   at 187px each on a 430px phone with both labels broken over two lines — a
+   worse outcome than the stack. Pinned to one per row there. */
+@media (max-width: 620px){
+  .calcband__intro .roi__cta .btn{ flex: 1 1 100%; }
+}
 /* the slim embed sits in a ~510px column: stack inputs over output so the
    select shows its full value, the note reads at measure, and the big number
    sits on the same grid as the rows beneath it */
@@ -1539,18 +1754,51 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
    Because the ::after belongs to the <a>, a pointer anywhere on the strip is
    also hovering the <a> — so STYLE B's own `:hover .arr` nudge already covers
    the full band and needs no separate rule. */
+/* The strip is a COLUMN as of 2026-08-03: a label/action row, then a row of
+   example-build chips. It was a bare label + link + rule with nothing under it —
+   an empty table header. */
 .buildstrip{
   position: relative;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: var(--s-24);
+  display: flex; flex-direction: column;
+  gap: var(--s-16);
   padding-block: var(--s-24);
   border-block: 1px solid var(--rule);
   margin-top: var(--block-gap);
   transition: background .18s var(--ease);
 }
+/* the label/action row keeps the geometry the strip itself used to have */
+.buildstrip__row{
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--s-24);
+}
 .buildstrip:hover{ background: var(--paper-tan); }
-/* the strip, not the words, is the target */
+/* The strip, not the words, is the target — and that deliberately still covers
+   the chip row. `inset: 0` resolves against .buildstrip (the nearest positioned
+   ancestor), so the overlay grew with it. The chips are examples OF the catalog,
+   so a click anywhere on the strip going to the catalog is the same promise the
+   row above makes; and because they are plain <li>, nothing under the overlay
+   wanted a click of its own. */
 .buildstrip__go::after{ content:""; position:absolute; inset:0; }
+/* Example-build chips. A <ul>, not a row of <div>s: it is a list of four
+   things, and the list semantics are free. mono because these are catalog
+   names — data values, not prose — which is what the MONO TYPOGRAPHY RULE
+   reserves the face for; each is 3-4 words, well inside the 8-word ceiling
+   mono:check enforces.
+   12.5px is off the type scale on purpose (the steps either side are
+   --fs-12/11px and --fs-13/14px) and is the reference's measured size; it is
+   above the 11px floor qa:matrix asserts.
+   The border is derived, not pasted: 28% of --ink, so it tracks the palette. */
+.buildstrip__chips{
+  display: flex; flex-wrap: wrap; gap: var(--s-12);
+  list-style: none; margin: 0; padding: 0;
+}
+.buildstrip__chips li{
+  font-family: var(--mono); font-size: 12.5px; font-weight: 400;
+  letter-spacing: normal; text-transform: none;
+  color: var(--ink-muted);
+  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+  padding: 11px 16px;
+}
 /* Optional one-line description, sentence case in the body face — the only
    element in this row that is NOT a label. Every property the label and the
    action set is restated so it can never inherit either treatment. `auto`
@@ -1564,7 +1812,7 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 /* Stacked, space-between has no free space to distribute and the action would
    sit directly under the label with no separation. */
 @media (max-width: 620px){
-  .buildstrip{ flex-direction: column; align-items: flex-start; gap: var(--s-12); }
+  .buildstrip__row{ flex-direction: column; align-items: flex-start; gap: var(--s-12); }
   .buildstrip__desc{ margin-right: 0; }
 }
 
@@ -1933,11 +2181,13 @@ table.cmp .cmp__price{ font-family:var(--mono); color:var(--accent-text); white-
    side of a wrap, so spacing alone does the separating. */
 .press-list { display: inline-flex; flex-wrap: wrap; gap: 0.3em 1.6em; }
 .press-list > span { white-space: nowrap; }
-/* Press outlets get a trailing mid-dot bound inside the nowrap span:
-   a separator can never start a line, names still never split, and a
-   line-end outlet ("Inc. ·") reads as a list item, not a typo. */
-
-.bio__press .press-list > span:not(:last-child)::after { content: "·"; margin: 0 8px; opacity: .4; color: var(--tx-label); }
+/* The trailing mid-dot was RETIRED 2026-08-03. It lived inside the nowrap span
+   so a separator could never start a line — but that span now carries the
+   outlets' bottom rule, and an inline border wraps the whole inline box
+   INCLUDING a ::after, so the rule ran on under " ·" and read as a mistake.
+   Each outlet is delimited by its own rule now, with the list's 1.6em column
+   gap between them. Do not reinstate it without first moving the border off
+   the span. */
 /* The footer bottom line holds sentences, not outlet names — nowrap there
    pushes "Human-centric AI for small and mid-size business" past a 390px
    viewport (the site's only horizontal overflow). Let those spans wrap. */
@@ -3230,9 +3480,74 @@ a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)):hover .arr { transfor
   text-decoration: none;
 }
 
+/* STYLE B on dark HOVERS TO THE HEADING CREAM (2026-08-03). At rest these are
+   --accent-ink, the same orange the dark headings use for their accent span
+   ("something worse."), and hover left that colour untouched — only the arrow
+   moved 2px, which is a very quiet response for a 12px label. Cream is the
+   brightest thing on an ink surface, so the whole label lifts.
+
+   Same (0,3,2) as the rule above, placed after it so it wins on source order.
+
+   STYLE A on dark deliberately does NOT get this. Its rest colour already IS
+   cream (15.11:1) and it hovers TO --accent-ink — the exact inverse. Pointing
+   both states at cream would erase its hover feedback entirely, leaving only
+   the underline, which never changes. The two treatments swap the same two
+   colours in opposite directions; that is the system working, not a
+   discrepancy to flatten. */
+:is(.ink, .foot, .panel--ink, .failstat, .net, .svc__item--feature, .subcard,
+    .promise__col--dont, .faq__aside, .faq-strip, .tl, .arg--amp, .math__fig,
+    .story-feat, .foundernote, .never, .mk-box, .mk-story)
+  a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)):hover {
+  color: var(--on-dark-head);
+}
+
 /* Chrome is not a content link: the nav, breadcrumb, utility bar and logo keep
    their own treatments, exactly as buttons do. Underlining a nav bar would be
-   the wrong reading of "two link treatments". */
+   the wrong reading of "two link treatments".
+
+   THE FOOTER SITEMAP COLUMNS KEEP THEIR UNDERLINE — considered and rejected
+   2026-08-03. The reference leaves its 18 footer nav links unmarked, and the
+   first read was that ours were underlined only by accident, because they sit
+   in `<li>` and STYLE A's `:is()` list names `li`. That is wrong: the footer
+   block in the DARK-SURFACE CONTRAST LAYER (search `---- 3. footer ----`)
+   already states them at (0,3,2) on purpose — "cream + a permanent 1px
+   underline makes them read as links without spending the accent". On an ink
+   surface, cream text with no underline and no accent has no rest-state
+   affordance at all; position alone is what the reference relies on. Removing
+   it would undo that contrast-pass decision to match a mock. The legal bar
+   matches the reference either way. */
+
+/* ---------- STYLE B standing alone: .section-action (2026-08-03) ----------
+   A STYLE B link lifted out of running copy onto its own line at the foot of a
+   section, per design/home-reference.html. It keeps every STYLE B property from
+   the rule above — mono, 12px, 600, uppercase, 0.06em, --accent-text (rebound
+   to --accent-ink on dark) — and adds a rule under the label.
+
+   NOTE, deliberately: this is the ONE documented exception to the LINK SYSTEM's
+   invariant that "underline + accent never co-occur at rest". The reference
+   applies the rule only to action links that stand alone on their own line
+   (HOW WE WORK, READ THE MEASURED RESULTS) and never to ones sitting inside a
+   card (READ THE FULL SPEC, BROWSE THE BUILD CATALOG), so the class marks the
+   standing-alone CASE rather than the decoration — add .section-action to any
+   other lone action link and it inherits the same treatment.
+
+   currentColor, not a token: it resolves to --accent-text on paper and
+   --accent-ink on ink without this rule having to know which surface it is on.
+   45% keeps the rule subordinate to the label, matching the reference's
+   rgba(...,0.45). The border sits on an inline box, so its padding-bottom
+   paints without adding to the line box height — no reflow. */
+.section-action { margin-top: var(--s-40); }
+/* `.builds__note--action` is the SAME case wearing an older name: `/` #proof's
+   lone "Read the measured results →" under the stat strip. The reference rules
+   both, and P8 shipped only the first, which left the page's two standing-alone
+   action links disagreeing. Added to the selector rather than to the markup on
+   purpose — the class would also apply `.section-action`'s 40px margin-top and
+   overwrite the documented 64px gap under the strip. */
+.section-action a:not(.btn):has(.arr),
+.builds__note--action a:not(.btn):has(.arr) {
+  border-bottom: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+  padding-bottom: 3px;
+}
 
 /* Light islands inside dark sections: STYLE A's on-dark rule paints links
    cream, which on the .roi card (--paper-card) is 1.07:1 — invisible. The
@@ -3315,9 +3630,18 @@ p, li, dd { text-wrap: pretty; }
 
 .deco-amp::before {
   content: "&";
-  /* bottom -0.30em, was -0.18em: drops the glyph out of the copy column's
-     vertical band. `overflow: clip` on the section handles the overhang. */
-  position: absolute; right: 1.5%; bottom: -0.30em; z-index: 0;
+  /* bottom 0 (2026-08-02), was -0.30em. The glyph used to hang ~126px below the
+     section and rely on `overflow: clip` to cut it — which is exactly what read
+     as "faint outlined rectangles sliced by the section edge": Archivo's & is
+     angular, so the surviving fragments of an outlined glyph look like stray
+     rectangles rather than a letter. Nothing is cut now; the ink bottoms out
+     21px above the section's bottom edge at every width.
+
+     The mask had to tighten in the SAME pass — see below. Raising the glyph
+     without it walks the fragment straight up into the closing copy, which is
+     the mirror image of the 2026-08-02 stroke change (there the glyph had to
+     drop when the alpha went up). Measured, both directions. */
+  position: absolute; right: 1.5%; bottom: 0; z-index: 0;
   pointer-events: none; user-select: none;
   font-family: var(--sans); font-weight: 900; font-style: normal;
   font-size: clamp(300px, 34vw, 560px); line-height: .78;
@@ -3334,15 +3658,24 @@ p, li, dd { text-wrap: pretty; }
   /* Diagonal mask: the glyph only materialises toward the bottom-right corner
      and is fully transparent across the upper-left, where the copy columns sit.
      Without this its top-left curve tracked behind the right-hand column.
-     Tightened 30%→50% / 62%→76% when the stroke went to 7%. At 30% the glyph
-     was already painting behind the closing copy — 251 pixels at 1280, 451 at
-     1440 — which nobody noticed at 4% because nothing there was visible at
-     all. Raising the alpha without moving the mask would have made a latent
-     bug legible. Measured by diffing the render against the same frame with
-     the pseudo-element display:none, counting only pixels inside the column's
-     TEXT rects: 0 at 1280 / 1440 / 1024. */
-  -webkit-mask-image: linear-gradient(to bottom right, transparent 50%, #000 76%);
-          mask-image: linear-gradient(to bottom right, transparent 50%, #000 76%);
+     30%→50%/62%→76% when the stroke went to 7%; 50%→65% / 76%→86% (2026-08-02)
+     when `bottom` came up to 0. At 30% the glyph was already painting behind
+     the closing copy — 251 pixels at 1280, 451 at 1440 — which nobody noticed
+     at 4% because nothing there was visible at all.
+
+     The mask is the counterweight to `bottom`. Un-clipping the glyph moves the
+     whole fragment up by ~126px, into the band the closing copy occupies:
+     at bottom:0 with the old 50%/76% mask it painted 36 px behind text at
+     1280, 24 at 1024, 52 at 901. Tightening to 65%/86% takes it back to 0
+     everywhere while keeping comparable ink (1294 px at 1440, vs 1453 for the
+     old clipped fragment) — so the mark is no smaller on screen, just whole.
+
+     Measured by diffing the render against the same frame with the
+     pseudo-element display:none, counting only pixels inside the section's
+     TEXT rects: 0 at 1440 / 1280 / 1024 / 901, on BOTH .deco-amp pages, and
+     the ink bbox touches no section edge at any of those widths. */
+  -webkit-mask-image: linear-gradient(to bottom right, transparent 65%, #000 86%);
+          mask-image: linear-gradient(to bottom right, transparent 65%, #000 86%);
 }
 @media (max-width: 900px){
   /* below the two-column breakpoint there is no empty half to fill */

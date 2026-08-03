@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="styles.css?v=115" />
+<link rel="stylesheet" href="styles.css?v=127" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -273,7 +273,6 @@
           <span class="hm-line">belongs to</span>
           <span class="hm-line accent-tx" data-machine-word>Main Street.</span>
         </h1>
-        <span class="hm-baseline" aria-hidden="true"></span>
         <p class="lead">Other AI firms hand you a deck. We build the working systems that run inside your business. Fixed price, quoted in writing. Live in about 90 days — or we keep building at no charge until it is.</p>
         <div class="hero__cta hero__cta--weighted">
           <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
@@ -286,7 +285,7 @@
         <div class="statrail__row"><span class="statrail__k">Audits from</span><span class="statrail__v accent-tx">$3,500</span></div>
         <div class="statrail__row"><span class="statrail__k">Guarantee</span><span class="statrail__v">Live in 90 days</span></div>
         <div class="statrail__row"><span class="statrail__k">Approach</span><span class="statrail__v">Human-centric</span></div>
-        <div class="statrail__row"><span class="statrail__k">Builds</span><span class="statrail__v statrail__v--sm">Agents · Automations · Integrations</span></div>
+        <div class="statrail__row"><span class="statrail__k">Builds</span><span class="statrail__v statrail__v--sm">Agents · Automations</span></div>
         <div class="statrail__row"><span class="statrail__k">Hubs</span><span class="statrail__v">Denver &amp; Phoenix</span></div>
         <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v"><time datetime="2026-07-31">July 2026</time></span></div>
       </div>
@@ -295,7 +294,7 @@
 </section>
 
 <!-- ============ 02 THE PROBLEM (ink) ============ -->
-<section class="section ink deco-amp section--close-96" id="problem" data-screen-label="The problem">
+<section class="section ink section--close-96" id="problem" data-screen-label="The problem">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -304,23 +303,24 @@
       </div>
       <p class="lead">Most companies that spend on AI see almost nothing change. We exist to fix that.</p>
     </div>
+    <!-- The 26% leads: it is the number this company exists for. Numbers sit in
+         grid row 1 and captions in row 2 as direct children, so both captions
+         start on the same line however tall either number is. -->
     <div class="failstat">
-      <div class="failstat__hero">
-        <div class="tick-num failstat__big">74%</div>
-        <p class="failstat__cap">spent the money and have yet to show tangible value.</p>
-      </div>
-      <div class="failstat__counter">
-        <div class="tick-num failstat__sm">26%</div>
-        <p class="failstat__cap failstat__cap--sm">built the capability to get past proofs of concept.</p>
-      </div>
+      <div class="tick-num failstat__big">26%</div>
+      <div class="tick-num failstat__sm">74%</div>
+      <p class="failstat__cap">built AI capability that made it past proof of concept.</p>
+      <p class="failstat__cap failstat__cap--sm">spent the money and have yet to show tangible value.</p>
       <div class="failstat__aside">
-        <div class="failstat__ratio" role="img" aria-label="A bar split 74 to 26: seventy-four percent of companies have yet to show tangible value from AI; twenty-six percent have built the capability to move beyond proofs of concept.">
+        <!-- The bar is aria-hidden: the two labels beneath it are real text and
+             carry the same numbers, so exposing it too would read them twice. -->
+        <div class="failstat__ratio" aria-hidden="true">
           <span class="failstat__ratio-spent"></span>
           <span class="failstat__ratio-moved"></span>
         </div>
-        <div class="failstat__ratio-lbls" aria-hidden="true">
-          <span>spent</span>
-          <span>moved</span>
+        <div class="failstat__ratio-lbls">
+          <span>74% — No tangible value</span>
+          <span>26% — Past proof of concept</span>
         </div>
         <p class="failstat__kicker">We exist for the <b>26%</b>.</p>
       </div>
@@ -332,9 +332,10 @@
       </div>
       <div>
         <p style="color:var(--dtx-mute);">We build the other kind. Every system we ship can be explained, questioned, and overruled by a person who owns it.</p>
-        <p style="color:var(--dtx-mute);">The machine is never the answer to “why did this happen.” A person is. <a href="/method/">How we work <span class="arr">&#8594;</span></a></p>
+        <p style="color:var(--dtx-mute);">The machine is never the answer to “why did this happen.” A person is.</p>
       </div>
     </div>
+    <p class="section-action"><a href="/method/">How we work <span class="arr">&#8594;</span></a></p>
   </div>
 </section>
 
@@ -366,10 +367,23 @@
       </div>
     </div>
 
-    <!-- proof: concrete example builds -->
+    <!-- proof: concrete example builds. The four chips are REAL catalog entries,
+         named verbatim from /services/builds/ — one per door above (agent,
+         automation, integration, data) so the row spans the three cards it sits
+         under. They are static <li>, not links: the strip as a whole already
+         targets the catalog, and a chip that looked clickable would promise a
+         per-build page that does not exist. -->
     <div class="buildstrip">
-      <span class="tick-lbl">Example builds</span>
-      <a class="buildstrip__go" href="/services/builds/">Browse the build catalog <span class="arr">&#8594;</span></a>
+      <div class="buildstrip__row">
+        <span class="tick-lbl">Example builds</span>
+        <a class="buildstrip__go" href="/services/builds/">Browse the build catalog <span class="arr">&#8594;</span></a>
+      </div>
+      <ul class="buildstrip__chips">
+        <li>24/7 AI receptionist</li>
+        <li>Instant lead response</li>
+        <li>Business system connectors</li>
+        <li>Company knowledge base</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -385,7 +399,7 @@
       <p class="lead">You will not have to sit through three discovery calls to learn what something costs. Here is the short version. <a href="/pricing/">The price list</a> has every line item.</p>
     </div>
     <div class="svc svc--2col">
-      <div class="svc__item svc__item--feature crop">
+      <div class="svc__item svc__item--feature">
         <span class="svc__tab">Most start here</span>
         <div class="svc__meta">
           <div class="svc__no">01</div>
@@ -435,8 +449,16 @@
         </div>
       </div>
     </div>
-    <p class="hero__note hero__note--wide">Every path here starts with the same free 30-minute assessment. We take a fixed number of builds each quarter &mdash; the count at the top of this page is real. The free assessment is how we choose them, and how you check us before spending a dollar.</p>
-    <p class="hero__note hero__note--wide" style="margin-top:var(--s-32);"><b>The ceiling:</b> when a business wants the whole back office carried rather than one workflow, that is a MARCUS-class build &mdash; <a href="/pricing/#backoffice"><span data-fact="price-backoffice">From $95,000</span></a>, four a year. Everything above is where most businesses start.</p>
+    <!-- Labelled rail + measured column, on the tier rows' own geometry: the
+         220px rail and the 32px gap put this text on the same x as every tier's
+         description. Copy is unchanged from the full-width version. -->
+    <div class="fineprint">
+      <span class="tick-lbl">The fine print</span>
+      <div class="fineprint__body">
+        <p class="hero__note hero__note--wide">Every path here starts with the same free 30-minute assessment. We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar.</p>
+        <p class="hero__note hero__note--wide"><b>The ceiling:</b> when a business wants the whole back office carried rather than one workflow, that is a MARCUS-class build &mdash; <a href="/pricing/#backoffice"><span data-fact="price-backoffice">From $95,000</span></a>, four a year. Everything above is where most businesses start.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -547,7 +569,7 @@
 </section>
 
 <!-- ============ 05 WHO BUILDS THIS ============ -->
-<section class="section paper section--close-96" id="about" data-screen-label="Who builds this">
+<section class="section paper-2 section--close-96" id="about" data-screen-label="Who builds this">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -573,7 +595,7 @@
         <!-- Press links verified 2026-07-31: Forbes = founder contributor page; Inc. = founder author page;
      TechCrunch + Fox Business = BodeTree coverage naming Christopher Myers as founder/CEO.
      WSJ / NYT / MSNBC: no verifiable URL found - they stay unlinked. Never link without a real URL. -->
-        <div class="bio__press">Our founder’s work has been covered in: <span class="press-list"><span><a href="https://www.forbes.com/sites/chrismyers/" rel="noopener" target="_blank">Forbes</a></span><span>The Wall Street Journal</span><span>The New York Times</span><span><a href="https://www.inc.com/author/chris-myers" rel="noopener" target="_blank">Inc.</a></span><span><a href="https://techcrunch.com/2013/04/17/bodetree-a-startup-making-small-business-finance-less-boring-raises-1-4-million/" rel="noopener" target="_blank">TechCrunch</a></span><span>MSNBC</span><span><a href="https://www.foxbusiness.com/features/bodetree-crunching-numbers-for-the-little-guy" rel="noopener" target="_blank">Fox Business</a></span></span></div>
+        <div class="bio__press"><span class="tick-lbl bio__press-lbl">Our founder’s work has been covered in</span><span class="press-list"><span><a href="https://www.forbes.com/sites/chrismyers/" rel="noopener" target="_blank">Forbes</a></span><span>The Wall Street Journal</span><span>The New York Times</span><span><a href="https://www.inc.com/author/chris-myers" rel="noopener" target="_blank">Inc.</a></span><span><a href="https://techcrunch.com/2013/04/17/bodetree-a-startup-making-small-business-finance-less-boring-raises-1-4-million/" rel="noopener" target="_blank">TechCrunch</a></span><span>MSNBC</span><span><a href="https://www.foxbusiness.com/features/bodetree-crunching-numbers-for-the-little-guy" rel="noopener" target="_blank">Fox Business</a></span></span></div>
       </div>
     </div>
   </div>
@@ -583,7 +605,7 @@
 <!-- TESTIMONIALS: rendered by scripts/build-testimonials.mjs — do not hand-edit -->
 <!-- /TESTIMONIALS -->
 
-<section class="section paper-2" id="paths" data-screen-label="Where are you">
+<section class="section paper" id="paths" data-screen-label="Where are you">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -597,7 +619,7 @@
         <span class="path__no">01 / Ready</span>
         <h3>I want to see where AI pays in my business.</h3>
         <p>Book the free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. No obligation, no pitch.</p>
-        <a class="btn btn--secondary path__cta" href="/book/">Book a free assessment</a>
+        <a class="btn btn--primary path__cta" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       </div>
       <div class="path">
         <span class="path__no">02 / Decided</span>

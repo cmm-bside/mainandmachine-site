@@ -130,6 +130,11 @@ const audit = (cfg) => {
 	// Chrome is not a content link (nav, breadcrumb, utility bar, logo, skip
 	// link), and neither is a card/block affordance where the whole card is the
 	// link — both are excluded by the link system on purpose.
+	// .foot__col is deliberately NOT here. It was added on 2026-08-03 to exempt
+	// the footer sitemap columns, then reverted: those links keep a permanent
+	// underline by design (see the footer block in the DARK-SURFACE CONTRAST
+	// LAYER), so they pass as ordinary STYLE A links and exempting them would
+	// only reduce coverage.
 	const CHROME = ".nav, .ticker, .crumb, .legal__crumb, .bookhero__crumb, .sechero__crumb, .logo, .skip, .skip-link, .nav__menu";
 	for (const a of document.querySelectorAll("a")) {
 		if (!vis(a) || a.classList.contains("btn")) continue;
@@ -212,11 +217,15 @@ const audit = (cfg) => {
 	//   block, so it does not "end thin"; it closes early because the press row
 	//   and the photo card now bottom out on the same line, which is already a
 	//   hard horizontal ending.
-	//   #problem — the dark opening section. Ends in .prose-2, a content block,
-	//   so it does not "end thin" either; it closes early because the tail is
-	//   the .deco-amp glyph's panel, and 160px of it read as empty rather than
-	//   marked. 96px rather than a second early-close step — see CLAUDE.md.
-	const CLOSE_96_OTHER = new Set(["about", "problem"]);
+	//   (#problem was listed here until 2026-08-03. It ended in .prose-2, a
+	//   content block, and was allowlisted because its tail was the .deco-amp
+	//   glyph's panel. Both facts changed: the glyph came off the section, and
+	//   "How we work →" moved out of the prose onto its own line as
+	//   p.section-action — whose whole text IS the link, so #problem now
+	//   satisfies the REAL terminal-element test and needs no escape hatch.
+	//   Removed rather than left in place: the allowlist only means anything
+	//   while every entry still needs to be there.)
+	const CLOSE_96_OTHER = new Set(["about"]);
 	const endsThin = (s) => {
 		const wrap = s.querySelector(":scope > .wrap") || s;
 		const kids = [...wrap.children].filter(vis);

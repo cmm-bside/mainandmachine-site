@@ -307,6 +307,21 @@ ${sections.join("\n\n")}
 // /facts.json — the same canonical facts as machine-readable JSON, for
 // agents that prefer structured output over the llms.txt fact sheet.
 const { _meta, ...facts } = COMPANY;
+
+/**
+ * Drop every `_`-prefixed key, at any depth. Those are editor notes for
+ * whoever opens site-facts.json ("Date the count was last verified by hand…",
+ * the booking.quarter instructions), and they were being published verbatim on
+ * a public endpoint that exists to feed agents canonical facts. An instruction
+ * to a maintainer is not a fact about the business, and shipping one invites a
+ * model to quote it back as though it were.
+ */
+const stripNotes = (v) =>
+	Array.isArray(v) ? v.map(stripNotes)
+		: v && typeof v === "object"
+			? Object.fromEntries(Object.entries(v).filter(([k]) => !k.startsWith("_")).map(([k, x]) => [k, stripNotes(x)]))
+			: v;
+
 const factsOut = {
   _meta: {
     source: "https://www.mainandmachine.com/facts.json",
@@ -314,7 +329,7 @@ const factsOut = {
     generatedFrom: "src/data/site-facts.json",
     schemaVersion: _meta?.schemaVersion ?? 1,
   },
-  ...facts,
+  ...stripNotes(facts),
 };
 fs.writeFileSync(path.join(ROOT, "llms.txt"), out);
 fs.writeFileSync(path.join(ROOT, "llms-full.txt"), fullOut);

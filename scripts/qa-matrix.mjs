@@ -135,7 +135,14 @@ const audit = (cfg) => {
 	// underline by design (see the footer block in the DARK-SURFACE CONTRAST
 	// LAYER), so they pass as ordinary STYLE A links and exempting them would
 	// only reduce coverage.
-	const CHROME = ".nav, .ticker, .crumb, .legal__crumb, .bookhero__crumb, .sechero__crumb, .logo, .skip, .skip-link, .nav__menu";
+	// .stickybook is the fixed mobile booking bar (js/nav.js injects it <=768px).
+	// It is CHROME, in the same sense the nav CTA and the utility bar are: a
+	// site-level conversion affordance, not a content link. It carries an arrow,
+	// and STYLE B is selected BY the arrow, so without this it reports as a link
+	// treatment violation for being a filled rust button rather than an accent
+	// text link — which is the wrong reading of "two link treatments", exactly as
+	// it would be for the nav's "Book a free assessment" button.
+	const CHROME = ".nav, .ticker, .crumb, .legal__crumb, .bookhero__crumb, .sechero__crumb, .logo, .skip, .skip-link, .nav__menu, .stickybook";
 	for (const a of document.querySelectorAll("a")) {
 		if (!vis(a) || a.classList.contains("btn")) continue;
 		if (a.closest(CHROME) || a.classList.contains("logo")) continue;
@@ -193,12 +200,28 @@ const audit = (cfg) => {
 	}
 
 	/* ---------- 3. section padding = var(--section-y) ---------- */
-	// The homepage hero is the ONE named exception (styles.css, HERO block): it
-	// is sized to fit the nav→first-dark-band run inside a 900px viewport, so it
-	// takes a flat 96px rather than the sitewide ladder. Named here rather than
-	// tolerated by a range, so a SECOND section drifting off --section-y still
-	// fails — which is the whole point of this check.
-	const SECTION_Y_EXEMPT = { "section.hero.section": "96px" };
+	// Sections sized to the SCREEN rather than to the sitewide rhythm. Each is
+	// named individually and justified in CLAUDE.md, so a section drifting off
+	// --section-y for no reason still fails — which is the whole point.
+	//
+	// Matched with el.matches() on a selector that is UNIQUE sitewide, not on
+	// sel(): sel() keeps only the first two classes, so `.bookhero` collapses to
+	// `section.section.paper` and `#request` to `section.section.paper-2`, both
+	// of which name half the pages on the site. Same trap CLOSE_96_OTHER notes.
+	//
+	// `bottom: null` means "the sitewide --section-y" — /book/'s request section
+	// only pulls its TOP in, and keeps a full closing step at the foot of a
+	// section that runs 3000px.
+	const SECTION_Y_EXEMPT = [
+		// The homepage hero: sized to fit the nav→first-dark-band run inside one
+		// 900px viewport (styles.css, HERO block).
+		{ sel: "section.hero", top: "96px", bottom: "96px" },
+		// /book/, both halves of the same measurement: the scheduler iframe is
+		// the page's conversion and started 294px below a 900px fold. 96 + 48 +
+		// 48 replaces 160 + 160 + 160 above it. See book/index.html.
+		{ sel: "section.bookhero", top: "96px", bottom: "48px" },
+		{ sel: "section#request", top: "48px", bottom: null },
+	];
 	// A section whose LAST element is a thin utility element closes at 96px
 	// (styles.css, "terminal utility elements close early"). CSS cannot select
 	// that shape — `p > a:only-child` also matches any prose paragraph holding
@@ -247,7 +270,7 @@ const audit = (cfg) => {
 	for (const s of document.querySelectorAll("main section, body > section")) {
 		if (!vis(s)) continue;
 		const cs = getComputedStyle(s);
-		const exempt = SECTION_Y_EXEMPT[sel(s)];
+		const exempt = SECTION_Y_EXEMPT.find((e) => s.matches(e.sel));
 		const thin = endsThin(s);
 		const allowed = CLOSE_96_OTHER.has(s.id);
 		const tagged = s.classList.contains("section--close-96");
@@ -260,8 +283,8 @@ const audit = (cfg) => {
 			add("section-y", `${sel(s)} tagged .section--close-96 but does not end thin and is not in CLOSE_96_OTHER`);
 			continue;
 		}
-		const wantTop = exempt || wantY;
-		const wantBottom = exempt || (thin || (tagged && allowed) ? "96px" : wantY);
+		const wantTop = (exempt && exempt.top) || wantY;
+		const wantBottom = (exempt && exempt.bottom) || (thin || (tagged && allowed) ? "96px" : wantY);
 		if (cs.paddingTop !== wantTop || cs.paddingBottom !== wantBottom) {
 			add("section-y", `${sel(s)} ${cs.paddingTop}/${cs.paddingBottom} (want ${wantTop}/${wantBottom})`);
 		}

@@ -125,6 +125,61 @@ git add . && git commit -m "Update hero headline" && git push
 > When you change CSS, bump the cache-buster: in `index.html` the link is `styles.css?v=5`
 > → change it to `?v=6` so browsers fetch the new file immediately.
 
+### Booking quarter
+
+**What the chip claims.** The thin bar at the top of every page reads
+**"Booking Q4 delivery · every engagement starts with the free assessment."**
+That is a statement about capacity: which quarter a build booked now would be
+delivered in. `/pricing/` and `/book/` both sit on the same promise — that we
+take a fixed number of builds each quarter and say so plainly. A wrong quarter
+is therefore not a cosmetic bug: it falsifies the thing that makes the claim
+worth making.
+
+**Where the value lives.** One place:
+
+```json
+// src/data/site-facts.json
+"booking": { "quarter": "Q4 2026" }
+```
+
+Every one of the 40 pages that renders the chip carries
+`<span data-fact="booking-quarter">`, stamped from that value at build time. A
+repo-wide grep for the quarter string finds the config and nothing else.
+
+The year is in the config but **not on screen** — the bar renders "Q4", exactly
+as it always has. The year exists so the build guard can tell whether the
+quarter has passed; "Q4" alone is true once a year, forever, which is the
+failure the guard is there to catch.
+
+**It is never computed.** Until 2026-08-04 a script advanced the chip to the
+next calendar quarter on every page load. That can't go stale, but it can be
+wrong — and wrong without anyone deciding anything. Capacity is a business
+fact; a person states it.
+
+**When to update it.** The build tells you, twice:
+
+| when | what happens |
+|---|---|
+| more than 30 days before the quarter ends | quiet |
+| within 30 days of the end | build **passes** with a loud warning: `bookingQuarter rolls over soon — confirm capacity and update.` |
+| after the quarter has ended | build **FAILS**, naming `booking.quarter` and the fix |
+
+**How to update it — one line, one deploy:**
+
+```bash
+# 1. Confirm real capacity with a human first. Do not guess.
+# 2. Edit src/data/site-facts.json  ->  "booking": { "quarter": "Q1 2027" }
+npm run facts:render     # restamps every page's chip
+git commit -am "Booking quarter -> Q1 2027" && git push
+```
+
+Check it without waiting for a real date to arrive:
+
+```bash
+BOOKING_QUARTER_NOW=2026-12-20 npm run quarter:check   # warning branch
+BOOKING_QUARTER_NOW=2027-01-05 npm run quarter:check   # failure branch
+```
+
 ### Preview locally before pushing
 
 ```bash

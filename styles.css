@@ -351,13 +351,16 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
    inside a line box of the column's inherited 26.86px line-height and its
    border box lands 8.31px BELOW the padding edge. Anywhere an eyebrow starts a
    column that has to line up with something — the hero's nav gap, the
-   calculator band's card top — that phantom 8.31px is the difference between
-   the measured geometry and the declared geometry. Block-level flex removes
-   the line box entirely: same glyphs, same 8px bar, same gap, but the box top
-   IS the padding edge.
+   calculator band's card top, /book/'s spec card — that phantom 8.31px is the
+   difference between the measured geometry and the declared geometry.
+   Block-level flex removes the line box entirely: same glyphs, same 8px bar,
+   same gap, but the box top IS the padding edge.
    Listed explicitly rather than applied to every .kicker: elsewhere the
-   eyebrow is inline by design, where it can share a line with other content. */
-:is(.hero, .calcband__intro) .kicker { display: flex; line-height: var(--eyebrow-lh); }
+   eyebrow is inline by design, where it can share a line with other content.
+   .bookhero joined 2026-08-03: its eyebrow starts the left column of a
+   two-column hero whose right column is a .statrail, and the two tops were
+   8.31px apart — the same defect the homepage hero had, on the same shape. */
+:is(.hero, .calcband__intro, .bookhero) .kicker { display: flex; line-height: var(--eyebrow-lh); }
 .hero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (max-width: 940px) { .hero__grid { grid-template-columns: 1fr; gap: var(--s-48); } }
 .hero h1 { margin: 12px 0 10px; }
@@ -1231,7 +1234,24 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
    place, and a rust tooling baseline draws under it. NOTE: the canvas is named
    .hm-grid, NOT .hero__grid — that class is already the hero's content grid.
    Rust = var(--rust) (the hero's chosen accent); grid lines = faint warm-ink. */
-[data-hero-machine]{ position:relative; isolation:isolate; }
+/* The headline reveal's whole budget, named so it can be audited rather than
+   re-derived from two magic numbers. "Main Street." is 11 animated letters
+   (--i 0..10), so the last one completes at 10 * --hm-stagger + --hm-dur =
+   0.74s after the play state is set. The requirement is 1.2s from FIRST PAINT,
+   and play now starts in the same task the script arms in (see
+   js/hero-machine.js), so the 0.46s of headroom absorbs script execution.
+
+   THERE IS NO INITIAL DELAY, deliberately. The old rule opened with a flat
+   .35s before letter 0 moved, on top of a .045s stagger and a .62s drop —
+   1.42s after play, which by itself overran the budget before a single byte of
+   network cost was counted. A lead-in delay is the one part of a stagger that
+   buys nothing: it reads as lag, not as rhythm.
+
+   Keep the two values in proportion if they are ever retuned: the stagger is
+   what makes it mechanical (0.32s of cascade across the line is plainly
+   sequential), the duration is what makes each letter land. Shortening the
+   stagger alone turns the effect into a single fade. */
+[data-hero-machine]{ position:relative; isolation:isolate; --hm-dur:.42s; --hm-stagger:.032s; }
 .hm-grid{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; clip-path:inset(0 100% 0 0); }
 [data-hero-machine][data-state="play"] .hm-grid,
 [data-hero-machine][data-state="done"] .hm-grid{ animation:hm-wipe .9s cubic-bezier(.5,0,.2,1) forwards; }
@@ -1250,7 +1270,7 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
 .hm-letter{ display:inline-block; will-change:transform,opacity; }
 [data-hero-machine][data-state="armed"] .hm-letter,
 [data-hero-machine][data-state="play"] .hm-letter{ transform:translateY(110%) rotate(3deg); opacity:0; }
-[data-hero-machine][data-state="play"] .hm-letter{ animation:hm-drop .62s cubic-bezier(.16,1,.3,1) forwards; animation-delay:calc(.35s + var(--i) * .045s); }
+[data-hero-machine][data-state="play"] .hm-letter{ animation:hm-drop var(--hm-dur) cubic-bezier(.16,1,.3,1) forwards; animation-delay:calc(var(--i) * var(--hm-stagger)); }
 @keyframes hm-drop{ 60%{ opacity:1 } 100%{ transform:none; opacity:1 } }
 
 /* .hm-baseline removed 2026-08-02: a 12ch rust rule that drew itself in under
@@ -2263,6 +2283,15 @@ h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
    Inline links: vertical padding paints outside the line box, so the
    hit area grows without moving a glyph. Atomic boxes (inline-flex)
    get the same padding cancelled by negative margin.
+
+   KNOWN EXCEPTION to "zero visual change": the crumb rows are `display: flex`,
+   which BLOCKIFIES their links, so there the 15px is 30px of real layout
+   height (a 17px row measures 47px). /book/ cancels it with the negative
+   margin this block already prescribes, because that row sits above the fold
+   on the page's conversion screen (see .bookhero__crumb in book/index.html).
+   .crumb / .sechero__crumb / .legal__crumb still carry it on ~40 pages and are
+   deliberately left alone — the fix is one line each, but it moves every
+   interior page's hero geometry and that is its own pass, not a side effect.
    ========================================================= */
 .crumb a, .bookhero__crumb a, .legal__crumb a, .sechero__crumb a,
 .tick-lbl a, h3 a,
@@ -3739,3 +3768,98 @@ p, li, dd { text-wrap: pretty; }
           mask-image: linear-gradient(to right, #000 0 14%, transparent 30% 70%, #000 86%);
 }
 @media (max-width: 900px){ .section.ink.final::before { display: none; } }
+
+/* =========================================================
+   MOBILE VERIFICATION PASS (2026-08-04)
+   Repairs found by `npm run audit:mobile` at 390x844. No layout
+   redesign — each rule closes one measured failure at small sizes and
+   is scoped to the existing 768px breakpoint so desktop is untouched.
+   ========================================================= */
+@media (max-width: 768px) {
+  /* Footer links measured 29-43px WIDE. The existing rule above already
+     gives them min-height:44px, so only the cross-axis was short — they
+     are inline-flex in a vertical list with the whole column to spare,
+     so a min-width costs no layout. Scoped to the COLUMN links and the
+     brand: .foot__bottom .links is a nowrap flex row that was already
+     tuned to fit 390px, and widening its items would push it back into
+     the horizontal overflow that pass removed. */
+  .foot__col a,
+  .foot__brand a { min-width: 44px; }
+
+  /* iOS zooms the page when a focused text control is under 16px. The
+     newsletter field computes 14px (--fs-13), so tapping it kicked the
+     whole footer sideways. 16px is the documented threshold, not a
+     preference. Text entry only — radios never trigger it. */
+  .signup__input { font-size: 16px; }
+
+  /* The Calendly embed sat 304px wide inside a 390px viewport: 20px of
+     .wrap gutter plus 22px of .formcard__body padding on each side. The
+     mobile scheduler is dense, and 86px of chrome around it is the
+     difference between a usable month grid and a cramped one. Cancel the
+     card's inline padding for this one child so the embed reaches the
+     card's edges (348px) while the card keeps its padding everywhere
+     else. Vertical padding is untouched. */
+  .formcard__body > .cal-embed {
+    margin-inline: calc(-1 * clamp(22px, 3vw, 36px));
+    width: calc(100% + 2 * clamp(22px, 3vw, 36px));
+  }
+
+  /* 16px thumb on a 44px track: the hit area was already fine (the track
+     takes the tap), but the visible grab handle was small enough to read
+     as decoration. The track height does not change, so nothing moves. */
+  .roi__range::-webkit-slider-thumb { width: 26px; height: 26px; margin-top: -11px; }
+  .roi__range::-moz-range-thumb { width: 26px; height: 26px; }
+}
+
+/* ---------- Sticky mobile booking bar ---------- */
+/* Injected by js/nav.js on <=768px after ~1.5 viewport heights of scroll.
+   Hidden entirely above 768px, on /book/, and while the nav drawer is open. */
+.stickybook {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  display: none; align-items: stretch;
+  background: var(--accent);
+  /* The bar's own padding, not the button's, so the tap target keeps its
+     full height and the rust still bleeds into the home-indicator strip. */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  transform: translateY(110%);
+  transition: transform .28s cubic-bezier(.2, .7, .3, 1);
+  box-shadow: 0 -6px 24px rgba(27, 22, 17, .18);
+}
+@media (max-width: 768px) { .stickybook { display: flex; } }
+.stickybook.is-in { transform: none; }
+/* The drawer overlays the page; a fixed bar on top of it is a second
+   competing surface. :has() rather than a JS class so there is no state to
+   keep in sync — the bar follows the nav's own is-open flag. */
+body:has(.nav.is-open) .stickybook { transform: translateY(110%); }
+/* `a.stickybook__cta`, not `.stickybook__cta`, and the reason is load-bearing.
+   The LINK SYSTEM selects STYLE B with `a:not(.btn):has(.arr)` — a link that
+   carries an arrow and is not a button. This CTA is exactly that, so it was
+   silently captured: STYLE B repainted it `--accent-text` (#aa371a) ON the
+   rust bar, which qa:matrix measured at 1.27:1, and forced it to 12px. Source
+   order could not save it — STYLE B is (0,2,1) and a bare class is (0,1,0).
+   The real selector is `a:not(.btn):has(.arr):not(:has(h1,...,p))` — (0,2,2),
+   not the (0,2,1) a quick reading suggests, because the trailing :not() adds an
+   element to the count. Two attempts under-counted it, so this is deliberately
+   over-specified rather than tied: (0,3,1) wins outright and does not depend on
+   source order at all. Every property STYLE B would impose is restated below
+   rather than left to chance. #fff on --accent is 5.06:1; --paper is 4.26:1
+   and would fail AA. */
+.stickybook a.stickybook__cta:not(.btn) {
+  flex: 1; min-height: 56px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .06em;
+  color: #fff; text-decoration: none;
+}
+.stickybook a.stickybook__cta:not(.btn) .arr { transition: transform .15s ease; color: inherit; }
+.stickybook a.stickybook__cta:not(.btn):hover { color: #fff; }
+.stickybook a.stickybook__cta:not(.btn):hover .arr { transform: translateX(2px); }
+.stickybook__x {
+  flex: 0 0 auto; width: 56px; min-height: 56px;
+  background: none; border: 0; border-left: 1px solid rgba(255, 255, 255, .28);
+  color: #fff; font-size: 22px; line-height: 1; cursor: pointer;
+}
+.stickybook a.stickybook__cta:focus-visible, .stickybook__x:focus-visible {
+  outline: 2px solid #fff; outline-offset: -4px;
+}
+@media (prefers-reduced-motion: reduce) { .stickybook { transition: none; } }

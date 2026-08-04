@@ -8,7 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/config.mjs";
 import { COMPANY } from "../src/data/company.mjs";
-import { factValues, serviceNotes, countableClauses, contradictionPattern } from "./lib/fact-values.mjs";
+import { buildSlotsLine, factValues, serviceNotes, countableClauses, contradictionPattern } from "./lib/fact-values.mjs";
 import { PERSON_SAMEAS } from "./lib/templates.mjs";
 
 const errors = [];
@@ -209,15 +209,29 @@ const countedOn = slots.countedOn;
 
 // The prose count and the machine count must agree: `remaining: 4` with a
 // line reading "Two Q4 build slots remain" is the drift this catches.
+// buildSlots.line USED to be stored alongside `remaining`, and this guard
+// existed because the two could disagree. The line is now DERIVED from
+// `remaining` and booking.quarter (buildSlotsLine in lib/fact-values.mjs), so
+// they cannot disagree by construction — the stored copy was also a second
+// hardcoded home for the quarter, which is what this pass removed. What is
+// still worth asserting is that the derivation produces something sane.
 const NUMBER_WORDS = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
 const expectedWord = NUMBER_WORDS[slots.remaining];
+let slotLine = "";
 if (expectedWord === undefined) {
   fail(`site-facts.json: buildSlots.remaining (${JSON.stringify(slots.remaining)}) is not a whole number 0–10`);
-} else if (!new RegExp(`^${expectedWord}\\b`, "i").test(String(slots.line || ""))) {
-  fail(
-    `site-facts.json: buildSlots.line ("${slots.line}") does not start with "${expectedWord}" ` +
-      `to match buildSlots.remaining (${slots.remaining})`
-  );
+} else {
+  try {
+    slotLine = buildSlotsLine(COMPANY);
+  } catch (err) {
+    fail(`site-facts.json: cannot derive the build-slot line — ${err.message}`);
+  }
+  if (slotLine && !new RegExp(`^${expectedWord}\\b`, "i").test(slotLine)) {
+    fail(
+      `derived build-slot line ("${slotLine}") does not start with "${expectedWord}" ` +
+        `to match buildSlots.remaining (${slots.remaining})`
+    );
+  }
 }
 // Both remaining guards are about a PUBLISHED count. The topbar rework of
 // 2026-08-01 dropped the slot line from the utility bar, so no surface states
@@ -235,7 +249,7 @@ const slotsPublished = noteCorpus.some(({ html }) => html.includes('data-fact="b
 if (slotsPublished) {
   // The slot line is itself a countable claim: it must appear on the pages that
   // stamp it, and no surface may advertise a different count.
-  guardCountablePhrase(String(slots.line || ""), "buildSlots.line");
+  guardCountablePhrase(slotLine, "the derived build-slot line");
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(countedOn || "")) {
     fail(`site-facts.json: buildSlots.countedOn must be a YYYY-MM-DD date (got ${JSON.stringify(countedOn)})`);
@@ -252,7 +266,7 @@ if (slotsPublished) {
 } else {
   // Still guard the other direction: with no span to stamp, no surface may
   // start advertising a slot count that nothing keeps current.
-  const contradiction = contradictionPattern(String(slots.line || ""));
+  const contradiction = contradictionPattern(slotLine);
   if (contradiction)
     for (const { page, html } of noteCorpus) {
       const hit = contradiction.exec(html);

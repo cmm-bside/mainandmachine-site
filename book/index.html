@@ -21,10 +21,19 @@
 <meta name="twitter:description" content="A senior advisor walks your workflows and shows where AI pays, what it's worth, and when to wait. Free, no pitch, reply within 24 hours." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
+<!-- The scheduler iframe is mounted at DOMContentLoaded (see the Calendly block
+     at the foot of this file), so the connection is worth warming in the head.
+     preconnect is a resource HINT, not a fetch — CSP does not apply to it, so
+     this costs nothing against the frame-src https://calendly.com policy.
+     BOTH forms are needed and they are not redundant: the socket pool keys on
+     the anonymous flag, so the crossorigin (credentials-omitted) connection is
+     a DIFFERENT one from the credentialed connection an iframe NAVIGATION uses.
+     Drop the plain one and the iframe re-handshakes from cold. -->
 <link rel="preconnect" href="https://calendly.com" />
+<link rel="preconnect" href="https://calendly.com" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=128" />
+<link rel="stylesheet" href="/styles.css?v=131" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -157,13 +166,42 @@
 /* BOOK AN ASSESSMENT — page-scoped LAYOUT ONLY. The form system, the numbered
    agenda (.steps/.step) and the checklist (.pluslist) live in styles.css. */
 .bookhero { padding-bottom: var(--section-y); }
-.bookhero__crumb { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-faint); display: flex; gap: 10px; align-items: center; margin-bottom: 26px; }
+.bookhero__crumb { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-faint); display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
 .bookhero__crumb a { color: var(--tx-mute); }
 .bookhero__crumb a:hover { color: var(--tx); }
 .bookhero__crumb .sep { opacity: 1; color: var(--ink-muted); }
 .bookhero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
-.bookhero h1 { margin: 22px 0 24px; }
-.bookhero .lead { font-size: clamp(var(--fs-16), 1.5vw, var(--fs-20)); }
+.bookhero h1 { margin: 12px 0 16px; }
+.bookhero .lead { font-size: clamp(var(--fs-16), 1.5vw, var(--fs-20)); margin-top: var(--s-16); }
+/* ---- SIZED TO THE VIEWPORT, like the homepage hero ----
+   The scheduler is this page's whole conversion, and it started BELOW the fold
+   at 1440x900: panel header at 975px, calendar at 1194px. The sitewide rhythm
+   put 480px of section padding above the calendar (160 hero top + 160 hero
+   bottom + 160 request top) before a single pixel of it could be seen.
+   These three are flat, not the --section-y ladder, for the same reason .hero
+   is: they answer to the SCREEN, not to the page. 96px is where --section-y
+   itself lands at <=768, so the hero just reaches that step early; the 48 + 48
+   across the cream/beige seam is one --s-96 gutter split by the colour change,
+   between a promise and the picker that are one flow. Nothing is deleted —
+   every element of the hero still ships, and #request keeps its full closing
+   step at the foot of a section that runs 3000px.
+   Both are named in SECTION_Y_EXEMPT in scripts/qa-matrix.mjs, so a THIRD
+   section drifting off --section-y still fails the check.
+   The floor here is the .statrail: at 305px it is the taller of the hero's two
+   columns, so trimming the headline's margins further buys nothing. Getting
+   the calendar above an 812px fold too would mean either cutting that shared
+   card down on this page alone or moving the context field below the embed —
+   where nobody would fill it in before booking. Neither is worth it. */
+.bookhero { padding-block: var(--s-96) var(--s-48); }
+#request { padding-top: var(--s-48); }
+/* The crumb links carry `padding-block: 15px` from the sitewide TOUCH TARGETS
+   block, whose premise is that vertical padding on an INLINE box paints
+   outside the line box and moves nothing. That premise does not hold here:
+   .bookhero__crumb is a flex container, so its links are blockified and the
+   padding became 30px of real layout height above the fold. Cancelled with the
+   negative margin that block already prescribes for its atomic boxes — the
+   44px hit area is untouched, the row is 17px again. */
+.bookhero__crumb a { margin-block: -15px; }
 /* the two-column booking layout */
 .book { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: clamp(28px, 4vw, 52px); align-items: start; }
 .advisor { display: flex; gap: 14px; align-items: flex-start; }
@@ -172,9 +210,21 @@
 .advisor__tx p { font-size: var(--fs-13); color: var(--tx-mute); margin-top: 5px; line-height: 1.55; }
 /* pick-a-time (Calendly) card — the primary path */
 .schedwrap { max-width: 880px; margin: 0 auto; }
+/* Scoped to the scheduler card only — the assessment-request card below the
+   fold keeps the standard 36px interior. Nothing here is above the fold but
+   this card's own header and its one optional field. */
+#schedule .formcard__body { padding-top: var(--s-24); }
 .cal-q { max-width: 640px; }
-.cal-embed { position: relative; margin-top: 24px; min-height: 720px; border: 1px solid var(--line); background: var(--paper); }
+/* The 720px is the iframe's RESERVED height, and it is reserved before the
+   iframe exists: the frame is absolutely positioned, so it is out of flow and
+   contributes nothing to this box either way. The card measures 720px on the
+   parse, on the mount and on the load — the swap cannot shift the page. */
+.cal-embed { position: relative; margin-top: var(--s-16); min-height: 720px; border: 1px solid var(--line); background: var(--paper); }
+/* The branded placeholder. It comes off on the iframe's own `load` event
+   (the .is-ready class), NEVER on a timer — a timer either lies about a slow
+   frame or leaves the message under a live calendar. */
 .cal-embed::before { content: "Loading the scheduler…"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); letter-spacing: .08em; }
+.cal-embed.is-ready::before { content: none; }
 .cal-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .cal-note { margin-top: 16px; font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; }
 .cal-note b { color: var(--accent); font-weight: 700; }
@@ -206,7 +256,7 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -327,7 +377,7 @@
                 </div>
                 <div class="field">
                   <label for="email">Work email <span class="req">*</span></label>
-                  <input class="input" type="email" id="email" name="email" autocomplete="email" placeholder="jordan@yourcompany.com" required />
+                  <input class="input" type="email" id="email" name="email" autocomplete="email" placeholder="jordan@yourcompany.com" required inputmode="email" />
                   <span class="field__err">Enter a valid email address.</span>
                 </div>
               </div>
@@ -342,7 +392,7 @@
                 </div>
                 <div class="field">
                   <label for="phone" id="phoneLabel">Phone <span class="opt">(optional)</span></label>
-                  <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Best number to reach you" />
+                  <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Best number to reach you" inputmode="tel" />
                   <span class="field__err">Please enter a phone number.</span>
                 </div>
               </div>
@@ -429,7 +479,7 @@
         <div class="panel">
           <h2 class="panel__t">Why it&rsquo;s free</h2>
           <p>Scoping is the work. We quote a fixed price in writing before anything starts, and you cannot quote a fixed price without knowing what you are quoting. The first thirty minutes is unavoidable &mdash; we just don&rsquo;t charge for it.</p>
-          <p style="margin-top:12px;">We take a fixed number of builds each quarter &mdash; the count at the top of this page is real. The free assessment is how we choose them, and how you check us before spending a dollar.</p>
+          <p style="margin-top:12px;">We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar.</p>
         </div>
         <div class="panel panel--ink crop">
           <h2 class="panel__t">The promise</h2>
@@ -499,7 +549,7 @@
         </div>
         <div>
           <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
             <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
           </form>
           <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
@@ -753,15 +803,38 @@
 })();
 
 // ---- Calendly inline (the primary path) ----
-// A plain iframe, created only as the card nears the viewport, so the embed
-// never competes with first paint. No Calendly widget.js: the iframe is the
-// whole integration, and booking events arrive via postMessage regardless.
+// A plain iframe, mounted at DOMContentLoaded. It used to be created by an
+// IntersectionObserver at rootMargin 600px. Measured, that observer was NOT
+// what made the "Loading the scheduler…" placeholder dwell at desktop sizes —
+// 600px of margin already covered the embed, so it fired at +4ms with no
+// scroll. What it did cost was a cliff below ~593px of viewport height, where
+// the embed stopped intersecting the expanded root and genuinely needed a
+// scroll before it would even be requested. The card IS the conversion; it does
+// not get to depend on the window being tall enough. The observer path is gone
+// rather than kept as a fallback — there is no browser where mounting early
+// fails that would also run this script, and a dead code path is a thing that
+// rots.
+//
+// Still NOT Calendly's widget.js: script-src does not allow assets.calendly.com
+// and must not be loosened. The iframe is the whole integration, and booking
+// events arrive via postMessage regardless.
 (function(){
+  // Idempotence guard. If this block is ever included twice — a duplicated
+  // script tag, a partial pasted into another page — a second run would mount a
+  // second iframe AND register a second `message` handler, double-counting
+  // every funnel event. One latch covers both, because both live in here.
+  if(window.__mmBooking) return;
+  window.__mmBooking = true;
+
   var mount = document.getElementById('calEmbed');
   if(!mount) return;
   var base = mount.getAttribute('data-cal-url');
   var qEl = document.getElementById('cal-workflows');
   var iframe = null, loadedFired = false;
+  // The a1 value the LIVE iframe was built with, and whether the visitor has
+  // committed inside the embed. Both gate the prefill rebuild below.
+  var appliedQ = '';
+  var engaged = false;
 
   // Brand-matched embed (Calendly's supported theming params) + the
   // qualifying answer prefilled into the booking form's first question (a1).
@@ -784,37 +857,114 @@
     var f = document.createElement('iframe');
     f.src = calUrl();
     f.title = 'Schedule your free 30-minute AI Opportunity Assessment';
+    // Explicit, though it is the default: this frame starts below the fold on a
+    // short viewport, which is exactly the shape a browser heuristic may decide
+    // to defer. The whole point of this change is that it does not get deferred.
+    f.setAttribute('loading', 'eager');
+    // Placeholder back up while THIS frame loads — including a prefill rebuild,
+    // which is a real load and should say so.
+    mount.classList.remove('is-ready');
     f.addEventListener('load', function(){
+      mount.classList.add('is-ready');
       if(loadedFired) return;
       loadedFired = true;
       if(typeof window.plausible === 'function') window.plausible('calendly_loaded', { props: { page: '/book/' } });
     });
     if(iframe){ mount.replaceChild(f, iframe); } else { mount.appendChild(f); }
     iframe = f;
+    appliedQ = qEl ? qEl.value.trim() : '';
   }
 
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      for(var i = 0; i < entries.length; i++){
-        if(entries[i].isIntersecting){ io.disconnect(); mountFrame(); return; }
-      }
-    }, { rootMargin: '600px 0px' });
-    io.observe(mount);
+  // This script is at the foot of <body>, so readyState is usually already
+  // 'interactive' and the frame goes out on the spot; the listener is for the
+  // case where it is not.
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', mountFrame, { once: true });
   } else {
     mountFrame();
   }
 
-  // Typed (or edited) the qualifying answer after the embed loaded? Rebuild
-  // the iframe with the new a1 — cheap before a slot is picked, and the
-  // answer must be attached before booking to ride along at all.
+  // Typed (or edited) the qualifying answer? Rebuild the iframe with the new
+  // a1 — the answer must be attached to the embed URL before booking to ride
+  // along at all. Three guards, because a rebuild throws the frame away:
+  //   * only when the value actually CHANGED (blur fires on every pass through
+  //     the field, and re-mounting an identical URL is a free flash of the
+  //     placeholder for nothing),
+  //   * never for an empty value (clearing the field must not reload the
+  //     calendar out from under someone), and
+  //   * never once the visitor has picked a slot — see `engaged` below. Past
+  //     that point the answer still reaches the advisor: the postMessage
+  //     handler stashes it in sessionStorage and the thanks page carries it.
+  function syncPrefill(){
+    if(!iframe || engaged) return;
+    var q = qEl.value.trim();
+    if(!q || q === appliedQ) return;
+    mountFrame();
+  }
   if(qEl){
-    qEl.addEventListener('change', function(){ if(iframe) mountFrame(); });
+    qEl.addEventListener('change', syncPrefill);
+    qEl.addEventListener('blur', syncPrefill);
   }
 
-  // Booked: Calendly posts calendly.event_scheduled to the parent window.
+  // ---- The booking funnel, as Calendly reports it ----
+  // Calendly posts progress to the parent window with window.postMessage(),
+  // and ONLY when the embed URL carries embed_domain — which calUrl() sets.
+  // The four names are Calendly's, verified against their embed documentation:
+  //   calendly.profile_page_viewed     (not emitted here — we embed one event
+  //                                     type directly, never the profile page)
+  //   calendly.event_type_viewed       the booking UI rendered
+  //   calendly.date_and_time_selected  a slot is picked
+  //   calendly.event_scheduled         the booking is confirmed
+  //
+  // Each maps to one Plausible event, fired AT MOST ONCE per page load. Calendly
+  // re-emits event_type_viewed whenever the visitor backs out of a slot and
+  // returns to the calendar, and our own prefill rebuild remounts the frame,
+  // which makes it fire again — neither is a new visitor reaching that step, so
+  // an unlatched handler would inflate the top of the funnel against a
+  // once-only bottom.
+  //
+  // NO PAYLOAD FIELD IS EVER FORWARDED. event_scheduled's payload carries
+  // invitee/event URIs (and, on some plans, invitee answers); props stay the
+  // literal page path. The URIs are stashed in sessionStorage for the advisor,
+  // which never leaves the browser except to our own /api endpoint.
+  var FUNNEL = {
+    'calendly.event_type_viewed':      'calendly_widget_viewed',
+    'calendly.date_and_time_selected': 'calendly_time_selected'
+    // event_scheduled is handled below — it also redirects, so it needs the
+    // beacon callback rather than this fire-and-forget path.
+  };
+  var funnelFired = {};
+
   window.addEventListener('message', function(e){
+    // Origin is the only trust boundary that matters: any page can postMessage
+    // to us, so an unchecked handler lets a hostile frame or opener forge
+    // "booked". Strict equality against the exact string — not indexOf, not a
+    // regex — so evil-calendly.com and calendly.com.attacker.net cannot match.
     if(e.origin !== 'https://calendly.com') return;
-    if(e.data && e.data.event === 'calendly.event_scheduled'){
+    // Shape check before use: e.data may be a string, null, or a structured
+    // clone from an unrelated library sharing the frame.
+    if(!e.data || typeof e.data !== 'object') return;
+    var evt = e.data.event;
+    if(typeof evt !== 'string' || evt.indexOf('calendly.') !== 0) return;
+
+    if(FUNNEL[evt] && !funnelFired[evt]){
+      funnelFired[evt] = true;
+      if(typeof window.plausible === 'function'){
+        window.plausible(FUNNEL[evt], { props: { page: '/book/' } });
+      }
+    }
+
+    // A slot is picked. From here the embed holds state we did not create and
+    // cannot restore, so the prefill rebuild above stands down for good.
+    // Deliberately NOT latched on first click or focus into the frame: the
+    // field sits ABOVE the calendar, so someone who scrolls down, looks, then
+    // comes back up to type would silently lose the prefill. Picking a time is
+    // the point where a rebuild starts costing the visitor something.
+    if(evt === 'calendly.date_and_time_selected') engaged = true;
+    if(evt === 'calendly.event_scheduled'){
+      engaged = true;
+      if(funnelFired[evt]) return; // one booking, one event, one redirect
+      funnelFired[evt] = true;
       // Calendly's payload carries the invitee and event URIs but NOT the name
       // or email — those live behind their API. The URIs are still a real join
       // key, so stash them: the thanks page sends them with the prep details,
@@ -848,7 +998,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
-<script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=2"></script>
+<script src="/js/nav.js?v=7"></script>
+<script src="/js/analytics.js?v=3"></script>
 </body>
 </html>

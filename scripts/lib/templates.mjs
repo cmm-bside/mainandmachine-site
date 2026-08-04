@@ -124,7 +124,7 @@ export function topbar() {
 	return `<div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -227,7 +227,7 @@ export function nav() {
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -247,7 +247,7 @@ export function footer() {
         </div>
         <div>
           <form class="signup" data-beehiiv-subscribe action="${attr(BEEHIIV_SUBSCRIBE_FALLBACK)}" method="get" target="_blank" aria-label="Subscribe to ${attr(BLOG_NAME)}">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
             <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&#8594;</span></button>
           </form>
           <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
@@ -299,7 +299,7 @@ export function footer() {
       <div class="foot__col">
         <h2>Contact</h2>
         <ul>
-          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:${attr(COMPANY.email)}">${esc(COMPANY.email)}</a></li>
           <li><a href="${attr(COMPANY.phoneHref)}">${esc(COMPANY.phone)}</a></li>
           <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
@@ -330,7 +330,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
         <h3>Read before you ever pick up the phone.</h3>
         <p class="lead" style="font-size:15px;">Free essays, a few times a month. One field. No sales pitches.</p>
         <form class="subform" data-beehiiv-subscribe action="${attr(action)}" method="get" target="_blank">
-          <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
+          <input type="email" name="email" placeholder="Email address" aria-label="Email address" required inputmode="email" />
           <button class="btn btn--primary" type="submit">Get the essays <span class="arr">&#8594;</span></button>
         </form>
         <p style="font-family:var(--mono);font-size:11px;color:var(--dtx-faint);margin-top:14px;line-height:1.6;">Delivered by beehiiv. No spam, unsubscribe anytime.</p>
@@ -351,7 +351,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
 
 // Scripts shared by every blog page: mobile nav + subscribe enhancement + search.
 export function pageScripts() {
-	return `<script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=2"></script>
+	return `<script src="/js/nav.js?v=7"></script>
+<script src="/js/analytics.js?v=3"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

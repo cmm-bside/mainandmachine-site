@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MARCUS: 1,240 Hours Returned in 90 Days | Main &amp; Machine</title>
-<meta name="description" content="MARCUS results: 1,240 staff hours returned in 90 days, 93% weekly adoption, zero borrower identifiers sent to an outside model. Every figure off the audit log." />
+<meta name="description" content="MARCUS results: 1,240 staff hours returned in 90 days, 93% weekly adoption, zero borrower identifiers sent to an outside model. Figures from the audit log." />
 <link rel="canonical" href="https://www.mainandmachine.com/work/marcus/results/" />
 
 <!-- Open Graph -->
@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=128" />
+<link rel="stylesheet" href="/styles.css?v=131" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -172,7 +172,7 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -205,7 +205,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -232,7 +232,7 @@
         <h1 class="h1 mt-s">Fourteen agents. Seven departments. <span class="accent-tx">Zero files that ever left the building.</span></h1>
         <p class="lead mt-s">B:Side Capital &mdash; an SBA 504 and CDFI lender &mdash; asked us to wire what they already had into something that could be asked questions: on a machine they own, behind a filter they control. B:Side is our founder&rsquo;s own company; MARCUS ran on his money and his name before we offered a version of it to anyone else. We commissioned the server in February 2026 and brought MARCUS up in waves across a 90-day implementation sprint, which passed its end-of-sprint go/no-go review in May 2026. These are the measured numbers from the first 90 days of full-fleet operation after that review.</p>
         <div class="hero__cta mt-s">
-          <a class="btn btn--primary btn--lg" href="/book/">Build something like MARCUS <span class="arr">&#8594;</span></a>
+          <a data-cta="page-hero" class="btn btn--primary btn--lg" href="/book/">Build something like MARCUS <span class="arr">&#8594;</span></a>
           <a class="btn btn--secondary btn--lg" href="/work/marcus/">Read how it was built</a>
         </div>
       </div>
@@ -631,7 +631,7 @@
       <span class="kicker">Start here</span>
       <p class="lead mt-s">You already have the data, the front door, and the books. We wire them into something you can ask &mdash; on a machine you own, behind a filter you control, with your people approving every consequential action. Every path here starts with the same free 30-minute assessment, and we reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a data-cta="final-cta" class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
         <a class="btn btn--secondary btn--lg" href="/pricing/#backoffice">See what a build like this costs</a>
       </div>
       <div class="reversal">
@@ -656,7 +656,7 @@
         </div>
         <div>
           <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
             <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
           </form>
           <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
@@ -708,7 +708,7 @@
       <div class="foot__col">
         <h2>Contact</h2>
         <ul>
-          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
           <li><a href="tel:+14808059983">480-805-9983</a></li>
           <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
@@ -725,6 +725,6 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".head-block > *,.scoregrid > *,.figs > *,.ba > *,.bound > *,.prose-2 > *,.foot__top > *"></script>
 
-<script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=2"></script>
+<script src="/js/nav.js?v=7"></script>
+<script src="/js/analytics.js?v=3"></script>
 </body>

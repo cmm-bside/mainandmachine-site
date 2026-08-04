@@ -30,7 +30,7 @@ Guarantee Live in 90 days
 
 Approach Human-centric
 
-Builds Agents · Automations · Integrations
+Builds Agents · Automations
 
 Hubs Denver & Phoenix
 
@@ -42,16 +42,16 @@ Updated July 2026
 
 Most companies that spend on AI see almost nothing change. We exist to fix that.
 
+26%
+
 74%
+
+built AI capability that made it past proof of concept.
 
 spent the money and have yet to show tangible value.
 
-26%
-
-built the capability to get past proofs of concept.
-
-spent
-moved
+74% — No tangible value
+26% — Past proof of concept
 
 We exist for the 26% .
 
@@ -61,7 +61,9 @@ There is a second failure nobody mentions: AI that technically works but buries 
 
 We build the other kind. Every system we ship can be explained, questioned, and overruled by a person who owns it.
 
-The machine is never the answer to “why did this happen.” A person is. How we work →
+The machine is never the answer to “why did this happen.” A person is.
+
+How we work →
 
 02 / What we actually do
 
@@ -90,6 +92,14 @@ We make your data do something instead of sitting in five systems that do not ta
 Example builds
 Browse the build catalog →
 
+- 24/7 AI receptionist
+
+- Instant lead response
+
+- Business system connectors
+
+- Company knowledge base
+
 03 / How to work with us
 
 ## Three ways in. Priced in plain numbers.
@@ -106,13 +116,13 @@ Timeline
 Fixed price
 $3,500–$8,500
 
-100% of the fee credits toward a sprint signed within 60 days.
-
 ### AI Readiness Audit
 
 The Blueprint — most businesses start here. You leave holding it, whether or not we build it.
 
 We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
+
+100% of the fee credits toward a sprint signed within 60 days.
 
 Read the full spec →
 
@@ -124,15 +134,15 @@ Timeline
 Fixed quote after scoping
 $18,000–$60,000
 
-Exact price quoted in writing before work begins. It does not move after we start.
-
-Guaranteed live in 90 days, or we keep building at no charge.
-
 ### AI Implementation Sprint
 
 The 90-Day Build — live in your operation in about 90 days, or we keep building free until it is.
 
 Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
+
+Exact price quoted in writing before work begins. It does not move after we start.
+
+Guaranteed live in 90 days, or we keep building at no charge.
 
 Read the full spec →
 
@@ -152,7 +162,9 @@ We keep what we built healthy, watch what changes, and evolve the systems as you
 
 Read the full spec →
 
-Every path here starts with the same free 30-minute assessment. We take a fixed number of builds each quarter — the count at the top of this page is real. The free assessment is how we choose them, and how you check us before spending a dollar.
+The fine print
+
+Every path here starts with the same free 30-minute assessment. We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar.
 
 The ceiling: when a business wants the whole back office carried rather than one workflow, that is a MARCUS-class build — From $95,000 , four a year. Everything above is where most businesses start.
 
@@ -198,7 +210,7 @@ a year, net of run costs — stress-tested low end to full-recovery high end
 
 - Payback on that build 1–13 months
 
-A model, not a promise. Both ends are annual and net of run costs; the sprint is a one-time cost the return pays back. The high end assumes the build recovers all of the modeled drag, the low end applies the ROI guide’s stress test. On thin cases the payback stretches to years rather than months — that is the model telling you to wait. We run your real numbers in the free assessment.
+How this is modeled →
 
 04 / Proof it works
 
@@ -215,7 +227,7 @@ Weekly use by week six
 0
 Identifiers sent outside
 
-Read the measured results → · the whole proof shelf
+Read the measured results →
 
 05 / Who builds this
 
@@ -230,7 +242,7 @@ He’s CEO of B:Side Capital and Fund , a professor at ASU’s W.P. Carey School
 
 Who builds this, and why the name matters →
 
-Our founder’s work has been covered in: Forbes The Wall Street Journal The New York Times Inc. TechCrunch MSNBC Fox Business
+Our founder’s work has been covered in Forbes The Wall Street Journal The New York Times Inc. TechCrunch MSNBC Fox Business
 
 06 / Where are you?
 
@@ -244,7 +256,7 @@ Three doors. No wrong answer.
 
 Book the free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. No obligation, no pitch.
 
-Book a free assessment
+Book a free assessment →
 
 02 / Decided
 
@@ -705,7 +717,7 @@ What you leave with
 
 Read the full spec →
 
-Every path here starts with the same free 30-minute assessment . We take a fixed number of builds each quarter — the count at the top of this page is real. The free assessment is how we choose them, and how you check us before spending a dollar. Want a rough number first? Run the calculator .
+Every path here starts with the same free 30-minute assessment . We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar. Want a rough number first? Run the calculator .
 
 The math
 
@@ -998,7 +1010,7 @@ A fixed price, quoted in writing before we start. And a straight answer within 2
 ========================================================================
 PAGE: MARCUS: A Private AI Back Office for B:Side Capital
 URL: https://www.mainandmachine.com/work/marcus/
-SUMMARY: How Main & Machine built MARCUS: 14 AI agents that run a regulated lender's back office entirely on-prem, with no borrower file leaving the building. A client story, published with B:Side Capital's permission.
+SUMMARY: How we built MARCUS: 14 AI agents that run a regulated lender's back office on-prem, no borrower file leaving the building. A B:Side Capital client story.
 ========================================================================
 
 Main & Machine
@@ -1319,7 +1331,7 @@ More client stories are clearing review as each client signs off on the numbers.
 ========================================================================
 PAGE: MARCUS: 1,240 Hours Returned in 90 Days | Main & Machine
 URL: https://www.mainandmachine.com/work/marcus/results/
-SUMMARY: MARCUS results: 1,240 staff hours returned in 90 days, 93% weekly adoption, zero borrower identifiers sent to an outside model. Every figure off the audit log.
+SUMMARY: MARCUS results: 1,240 staff hours returned in 90 days, 93% weekly adoption, zero borrower identifiers sent to an outside model. Figures from the audit log.
 ========================================================================
 
 Main & Machine
@@ -2014,7 +2026,7 @@ Founder & Chairman. The person who scopes your work is the one accountable for t
 
 Scoping is the work. We quote a fixed price in writing before anything starts, and you cannot quote a fixed price without knowing what you are quoting. The first thirty minutes is unavoidable — we just don’t charge for it.
 
-We take a fixed number of builds each quarter — the count at the top of this page is real. The free assessment is how we choose them, and how you check us before spending a dollar.
+We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar.
 
 ## The promise
 

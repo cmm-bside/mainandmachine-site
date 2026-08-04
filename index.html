@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="styles.css?v=128" />
+<link rel="stylesheet" href="styles.css?v=131" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -170,7 +170,7 @@
   if(dest){ window.location.replace(dest); }
 })();
 </script>
-<script defer src="/js/hero-machine.js?v=6"></script>
+<script defer src="/js/hero-machine.js?v=7"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -219,7 +219,7 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -252,7 +252,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -275,7 +275,7 @@
         </h1>
         <p class="lead">Other AI firms hand you a deck. We build the working systems that run inside your business. Fixed price, quoted in writing. Live in about 90 days — or we keep building at no charge until it is.</p>
         <div class="hero__cta hero__cta--weighted">
-          <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+          <a data-cta="hero" class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
           <a class="btn btn--secondary hero__cta-alt" href="/score/">Get your AI-Ready Score</a>
         </div>
         <p class="hero__note">30 minutes with a senior advisor. Free. A straight answer.</p>
@@ -477,7 +477,7 @@
     <p class="lead mt-s">Two inputs. A real range, built from the same price list published on this site, not a teaser that ends in “call us.”</p>
 
     <div class="roi__cta">
-      <a class="btn btn--primary btn--lg" id="bandBook" href="/book/">Run your real numbers <span class="arr">&#8594;</span></a>
+      <a data-cta="calculator" class="btn btn--primary btn--lg" id="bandBook" href="/book/">Run your real numbers <span class="arr">&#8594;</span></a>
       <a class="btn btn--secondary" id="bandFull" href="/calculator/">Full breakdown + share</a>
     </div>
     </div>
@@ -624,13 +624,13 @@
         <span class="path__no">01 / Ready</span>
         <h3>I want to see where AI pays in my business.</h3>
         <p>Book the free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. No obligation, no pitch.</p>
-        <a class="btn btn--primary path__cta" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a data-cta="door" class="btn btn--primary path__cta" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       </div>
       <div class="path">
         <span class="path__no">02 / Decided</span>
         <h3>Skip the audit — scope a sprint.</h3>
         <p>You already know what you want built. Book a scoping call and we quote a fixed-price Implementation Sprint in writing — no audit in between.</p>
-        <a class="btn btn--secondary path__cta" href="/book/?service=sprint">Scope a sprint</a>
+        <a data-cta="door" class="btn btn--secondary path__cta" href="/book/?service=sprint">Scope a sprint</a>
       </div>
       <div class="path">
         <span class="path__no">03 / Curious</span>
@@ -654,7 +654,7 @@
         </div>
         <div>
           <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
             <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
           </form>
           <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
@@ -706,7 +706,7 @@
       <div class="foot__col">
         <h2>Contact</h2>
         <ul>
-          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
           <li><a href="tel:+14808059983">480-805-9983</a></li>
           <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
@@ -803,7 +803,7 @@
 })();
 </script>
 
-<script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=2"></script>
+<script src="/js/nav.js?v=7"></script>
+<script src="/js/analytics.js?v=3"></script>
 </body>
 </html>

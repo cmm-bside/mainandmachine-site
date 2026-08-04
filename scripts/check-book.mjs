@@ -16,11 +16,16 @@ const REQUIRED = [
   "What happens · 30 minutes",
   "Who you’ll talk to", // typographic apostrophe — page copy is educated (“ ” ‘ ’)
   "Christopher Myers",
-  // Booking banner (delivery framing). The quarter is auto-advanced by js/nav.js,
-  // so assert the structural hook (not a fixed quarter) — a literal "Q4" would go stale.
-  // Copy became "Booking <Q> delivery" in the 2026-08-01 topbar rework; the hook
-  // is what matters, so this asserts the span alone rather than the wording.
-  '<span class="js-book-quarter">',
+  // Booking banner (delivery framing). Assert the structural hook, never the
+  // quarter itself — a literal "Q4" here would need editing at every rollover
+  // and would fail the build for the wrong reason when it was forgotten.
+  // The hook moved from class="js-book-quarter" to data-fact="booking-quarter"
+  // on 2026-08-04, when the client-side auto-advance was removed: the value is
+  // now stated in site-facts.json and stamped by facts:render, so the span is a
+  // fact target rather than a JS target. check-facts verifies the VALUE;
+  // check-booking-quarter verifies it has not rolled over; this asserts only
+  // that /book/ still carries the chip at all.
+  '<span data-fact="booking-quarter">',
 ];
 for (const s of REQUIRED) {
   if (!html.includes(s)) errors.push(`/book: missing required text "${s}"`);

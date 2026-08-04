@@ -31,6 +31,54 @@ const HAND_MADE = new Set([
 const slugFor = (route) =>
   route === "/" ? "home" : route.replace(/^\/|\/$/g, "").replace(/\//g, "-");
 
+const price = (key) => COMPANY.services.find((s) => s.key === key).price;
+
+/**
+ * Cards whose content is AUTHORED rather than derived from the page. Two
+ * distinct reasons a route lands here, and both are permanent:
+ *
+ *   * /score/ has no HTML in this repo AT ALL. It is a PROXIED_ROUTES entry
+ *     served from the Score app (lib/score-proxy.mjs), so readPage() has
+ *     nothing to read and the derive path can never produce its card.
+ *   * The derived card was WRONG. `subline` falls back to the first 62
+ *     characters of the meta description, which on /careers/ is the page's own
+ *     H1 restated and then cut mid-word — the shipped careers.png reads
+ *     "Help us put serious AI to work for Main Street. Open applicati…"
+ *     directly under that same sentence as the headline. And the derived
+ *     footer is "Fixed price · quoted in writing" on /careers/ and /contact/,
+ *     where nothing is being priced.
+ *
+ * Prices come from COMPANY, never literals: a number baked into a PNG is
+ * invisible to facts:check, so the only safe version is one derived at render
+ * time from the same source the pages use.
+ */
+const EXPLICIT = {
+  "/score/": {
+    kicker: "Free assessment",
+    title: "The AI-Ready Score",
+    subline: "14 questions · 7 minutes · $0 · No sales call",
+    footer: `${COMPANY.domain}/score`,
+  },
+  "/careers/": {
+    kicker: "Careers",
+    title: "Build AI for Main Street",
+    subline: "",
+    footer: `Denver · Phoenix · Remote · ${COMPANY.domain}`,
+  },
+  "/contact/": {
+    kicker: "Contact",
+    title: "Talk to a person.",
+    subline: `${COMPANY.email} · ${COMPANY.phone}`,
+    footer: `Denver · Phoenix · Remote · ${COMPANY.domain}`,
+  },
+  "/guides/": {
+    kicker: "Guides",
+    title: "The Field Guide",
+    subline: "The buying questions, answered.",
+    footer: `Audits ${price("audit")} · ${COMPANY.domain}`,
+  },
+};
+
 const decode = (s) =>
   s.replace(/<[^>]+>/g, "")
    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
@@ -93,12 +141,28 @@ h1.xs{font-size:50px;max-width:22ch}
 }
 
 // --- what to render -------------------------------------------------------
+// `--only=/careers/,/score/` re-renders just those routes. Without it, fixing
+// one authored card means either --force (which rewrites all ~24 derived cards
+// and churns the diff for no visual change) or deleting files by hand.
+const ONLY = (() => {
+  const arg = process.argv.find((a) => a.startsWith("--only="));
+  return arg ? new Set(arg.slice("--only=".length).split(",").filter(Boolean)) : null;
+})();
+
 const targets = [];
-for (const route of STATIC_ROUTES) {
-  if (HAND_MADE.has(route)) continue;
+// EXPLICIT routes are rendered even when they are not in STATIC_ROUTES — /score/
+// is proxied, so it appears in PROXIED_ROUTES instead and would otherwise be
+// skipped entirely.
+for (const route of [...new Set([...STATIC_ROUTES, ...Object.keys(EXPLICIT)])]) {
+  if (ONLY && !ONLY.has(route)) continue;
+  if (HAND_MADE.has(route) && !EXPLICIT[route]) continue;
   const slug = slugFor(route);
   const out = path.join(OUT_DIR, `${slug}.png`);
-  if (!FORCE && fs.existsSync(out)) continue;
+  if (!FORCE && !ONLY && fs.existsSync(out)) continue;
+
+  const fixed = EXPLICIT[route];
+  if (fixed) { targets.push({ route, out, ...fixed }); continue; }
+
   const page = readPage(route);
   if (!page || !page.title) { console.warn(`[og:build] skip ${route} — no <h1>`); continue; }
 

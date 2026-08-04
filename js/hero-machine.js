@@ -67,13 +67,64 @@
     }
     root.dataset.state = 'armed';
 
-    new IntersectionObserver((es, obs) => {
-      es.forEach(e => { if (e.isIntersecting) { root.dataset.state = 'play'; obs.disconnect(); } });
-    }, { threshold: 0.35 }).observe(root);
+    // ARMING IS THE MOMENT THE TEXT DISAPPEARS, so nothing may sit between it
+    // and the reveal. The hero is the top of the page: on a normal load it is
+    // already well past the observer's 0.35 threshold when this script runs,
+    // and waiting for IntersectionObserver to say so costs a full async
+    // callback — the observer's first record is delivered on a later task, not
+    // synchronously from observe(). That was the real defect. The headline
+    // ships whole in the HTML and font-display:swap paints it at first paint,
+    // so a late arm does not merely delay an entrance: it takes a line the
+    // visitor has already read and removes it, then brings it back. On a slow
+    // first visit — where the deferred script arrives long after first paint —
+    // that is exactly the reported "the payoff line is absent seconds after
+    // load", and no amount of CSS tuning reaches it, because the cost is in
+    // front of the animation rather than inside it.
+    //
+    // So: measure the rect here and, if the hero already satisfies the same
+    // 0.35 threshold, go straight to play in this task. Armed is then a state
+    // the browser never gets a chance to paint, and the letters' first painted
+    // frame is the first frame of the animation.
+    const visibleRatio = () => {
+      const r = root.getBoundingClientRect();
+      if (!r.height) return 0;
+      const vh = innerHeight || document.documentElement.clientHeight || 0;
+      const vw = innerWidth || document.documentElement.clientWidth || 0;
+      // Both axes, matching what IntersectionObserver actually measures — a
+      // rect that is off to the side is not 100% visible because its top and
+      // bottom happen to be on screen.
+      const h = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+      const w = Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0));
+      return (h * w) / (r.height * r.width);
+    };
+    const play = () => { if (root.dataset.state === 'armed') root.dataset.state = 'play'; };
 
-    // Safety net: if the observer never fires (zoomed viewport, prerender,
-    // anything), the headline must not stay hidden. 2.5s later, force-finish.
-    setTimeout(() => { if (root.dataset.state === 'armed') finish(); }, 2500);
+    if (visibleRatio() >= 0.35) {
+      play();
+    } else {
+      // Below the fold: the observer is the right instrument, and its latency
+      // does not matter because the visitor has to scroll first anyway.
+      new IntersectionObserver((es, obs) => {
+        es.forEach(e => { if (e.isIntersecting) { play(); obs.disconnect(); } });
+      }, { threshold: 0.35 }).observe(root);
+
+      // A second look once the document is parsed. `defer` already puts us
+      // after parsing, so this is normally a no-op — it exists for the case
+      // where the rect was not yet meaningful at script time (the script moved
+      // out of defer, a prerender, a hero whose height is still 0). Cheap, and
+      // it is the difference between a headline that reveals and one that waits
+      // on the safety net.
+      if (document.readyState === 'loading') {
+        addEventListener('DOMContentLoaded', () => { if (visibleRatio() >= 0.35) play(); }, { once: true });
+      }
+    }
+
+    // Safety net: if neither path fires (zoomed viewport, prerender, anything),
+    // the headline must not stay hidden. Tightened 2.5s -> 1.5s. It is a
+    // backstop for a state nobody should reach, and 2.5s of a missing payoff
+    // line is itself the bug this pass is about — the reveal's own worst case
+    // is 0.74s, so 1.5s is still twice the time it needs.
+    setTimeout(() => { if (root.dataset.state === 'armed') finish(); }, 1500);
   } catch (e) {
     finish();
   }

@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=128" />
+<link rel="stylesheet" href="/styles.css?v=131" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -206,7 +206,7 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -239,7 +239,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -351,7 +351,7 @@
 
       <h2>What should you ask before signing any AI&nbsp;vendor&nbsp;agreement?</h2>
       <p>Five questions, answered in writing: Is our data used for training on this tier? How long are prompts and outputs retained, and can retention be set to zero? Who are the subprocessors? Where is the data processed geographically? And what happens to our data when we leave?</p>
-      <p>A serious vendor answers all five from documents they already have — a data processing addendum, a security page, a subprocessor list. Evasion on any of them is your answer, and so is the phrase “we take security very seriously” offered in place of a document. Keep the answers in the deal file; if a customer or regulator ever asks where their data went, that folder is the difference between an afternoon and a very bad month. If you want the same interrogation applied to your own setup — what data your workflows actually touch, and which deployment that implies — that is part of what an <a href="/services/#audit">AI Readiness Audit</a> maps, at the published prices on <a href="/pricing/">the pricing page</a>. Or start smaller: <a href="/book/">book the free 30-minute assessment</a>, tell us what data you handle, and we will give you a straight read on whether cloud, hybrid, or on-prem even belongs in your conversation. We reply within 24 hours.</p>
+      <p>A serious vendor answers all five from documents they already have — a data processing addendum, a security page, a subprocessor list. Evasion on any of them is your answer, and so is the phrase “we take security very seriously” offered in place of a document. Keep the answers in the deal file; if a customer or regulator ever asks where their data went, that folder is the difference between an afternoon and a very bad month. If you want the same interrogation applied to your own setup — what data your workflows actually touch, and which deployment that implies — that is part of what an <a href="/services/#audit">AI Readiness Audit</a> maps, at the published prices on <a href="/pricing/">the pricing page</a>. Or start smaller: <a data-cta="prose" href="/book/">book the free 30-minute assessment</a>, tell us what data you handle, and we will give you a straight read on whether cloud, hybrid, or on-prem even belongs in your conversation. We reply within 24 hours.</p>
 
     </article>
   </div>
@@ -400,7 +400,7 @@
       <h2 class="h2 mt-s">Not sure which deployment <span class="accent-tx">your data&nbsp;needs?</span></h2>
       <p class="lead mt-s">Tell us what your workflows touch — patient records, borrower files, or plain business documents — and a senior advisor gives you a straight read in 30 minutes. Free, and we reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a data-cta="final-cta" class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
         <a class="btn btn--secondary btn--lg" href="/security/">Read the security architecture</a>
       </div>
     </div>
@@ -423,7 +423,7 @@
         </div>
         <div>
           <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
             <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
           </form>
           <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
@@ -475,7 +475,7 @@
       <div class="foot__col">
         <h2>Contact</h2>
         <ul>
-          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
           <li><a href="tel:+14808059983">480-805-9983</a></li>
           <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
@@ -492,7 +492,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
 
-<script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=2"></script>
+<script src="/js/nav.js?v=7"></script>
+<script src="/js/analytics.js?v=3"></script>
 </body>
 </html>

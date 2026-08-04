@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=128" />
+<link rel="stylesheet" href="/styles.css?v=131" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
@@ -206,7 +206,7 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -239,7 +239,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -335,7 +335,7 @@
 
       <h2>Why publish questions we could fail?</h2>
       <p>Because we would rather be disqualified by a sharp buyer than hired by a confused one. A client who chose us against a real standard stays; a client who was dazzled churns — so the standard is good business, not virtue.</p>
-      <p>It is also the standard we already signed. Our <a href="/method/">method page</a> lists what we promise and what we refuse to promise, and this guide is that list turned into questions anyone can ask any firm. Use it on us first: book the <a href="/book/">free 30-minute assessment</a> and ask all ten. If you are still comparing, <a href="/guides/ai-consultant-cost/">Guide 01 prices the whole market</a> and <a href="/guides/ai-consultant-vs-in-house/">Guide 03 runs the hire-or-engage math</a>. Once you choose, two companions keep the engagement straight: <a href="/guides/how-to-scope-an-ai-project/">a scope a vendor can’t inflate</a>, and <a href="/guides/what-is-an-ai-readiness-audit/">exactly what an audit should hand you</a>.</p>
+      <p>It is also the standard we already signed. Our <a href="/method/">method page</a> lists what we promise and what we refuse to promise, and this guide is that list turned into questions anyone can ask any firm. Use it on us first: book the <a data-cta="prose" href="/book/">free 30-minute assessment</a> and ask all ten. If you are still comparing, <a href="/guides/ai-consultant-cost/">Guide 01 prices the whole market</a> and <a href="/guides/ai-consultant-vs-in-house/">Guide 03 runs the hire-or-engage math</a>. Once you choose, two companions keep the engagement straight: <a href="/guides/how-to-scope-an-ai-project/">a scope a vendor can’t inflate</a>, and <a href="/guides/what-is-an-ai-readiness-audit/">exactly what an audit should hand you</a>.</p>
 
     </article>
   </div>
@@ -384,7 +384,7 @@
       <h2 class="h2 mt-s">Ask us all ten. <span class="accent-tx">We’ll go first.</span></h2>
       <p class="lead mt-s">30 minutes with a senior advisor. Bring this page. You get straight answers and a read on what is worth automating — and what is not. We reply within 24 hours.</p>
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a data-cta="final-cta" class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
         <a class="btn btn--secondary btn--lg" href="/method/">Read our method first</a>
       </div>
     </div>
@@ -407,7 +407,7 @@
         </div>
         <div>
           <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
             <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
           </form>
           <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
@@ -459,7 +459,7 @@
       <div class="foot__col">
         <h2>Contact</h2>
         <ul>
-          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
           <li><a href="tel:+14808059983">480-805-9983</a></li>
           <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
@@ -476,7 +476,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
 
-<script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=2"></script>
+<script src="/js/nav.js?v=7"></script>
+<script src="/js/analytics.js?v=3"></script>
 </body>
 </html>

@@ -16,6 +16,47 @@ export const NUMBER_WORDS = [
 	"Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve",
 ];
 
+/**
+ * "Q4 2026" -> { q: 4, year: 2026, label: "Q4" }.
+ *
+ * The config stores the YEAR because a guard cannot compare "Q4" to a build
+ * date — "Q4" is true once a year, forever, which is exactly the failure mode
+ * the guard exists to prevent. The chip renders `label` only, because "Booking
+ * Q4 delivery" is what the bar has always said and this change must not alter
+ * a word of it.
+ */
+export function parseBookingQuarter(value) {
+	const m = /^Q([1-4])\s+(\d{4})$/.exec(String(value || "").trim());
+	if (!m) {
+		throw new Error(
+			`site-facts.json: booking.quarter must look like "Q4 2026" (got ${JSON.stringify(value)})`,
+		);
+	}
+	const q = Number(m[1]);
+	const year = Number(m[2]);
+	return {
+		q, year,
+		label: `Q${q}`,
+		// End of the stated quarter, exclusive: the first instant of the next one.
+		// UTC throughout — a build runs on whatever timezone the runner happens
+		// to have, and a claim about a calendar quarter must not turn over at a
+		// different moment depending on where CI is.
+		endsAt: Date.UTC(q === 4 ? year + 1 : year, q === 4 ? 0 : q * 3, 1),
+	};
+}
+
+/**
+ * The slot line, derived rather than stored. It read "Four Q4 build slots
+ * remain" in site-facts.json, which put the quarter in a second place that
+ * nothing kept in step with the chip — a rollover would have left the JSON
+ * claiming a quarter the bar no longer showed.
+ */
+export function buildSlotsLine(COMPANY) {
+	const n = COMPANY.buildSlots.remaining;
+	const word = NUMBER_WORDS[n - 1] || String(n);
+	return `${word} ${parseBookingQuarter(COMPANY.booking.quarter).label} build slots remain`;
+}
+
 export function factValues(COMPANY) {
 	const svc = (key) => COMPANY.services.find((s) => s.key === key);
 	const usd = (n) => "$" + n.toLocaleString("en-US");
@@ -36,7 +77,12 @@ export function factValues(COMPANY) {
 		// Dated so the scarcity claim is verifiable rather than atmospheric —
 		// the site's own guide red-flags an undated slot count. check-facts.mjs
 		// fails the build once buildSlots.countedOn is more than 21 days stale.
-		"build-slots": `${COMPANY.buildSlots.line} (counted ${COMPANY.buildSlots.countedOn})`,
+		"build-slots": `${buildSlotsLine(COMPANY)} (counted ${COMPANY.buildSlots.countedOn})`,
+		// The capacity quarter in the top utility bar. Stamped like every other
+		// fact, so the 39 hand-written copies of the chip cannot drift from the
+		// config and check-facts fails the build if one does. Renders "Q4" — the
+		// year lives in the config for the rollover guard, not on screen.
+		"booking-quarter": parseBookingQuarter(COMPANY.booking.quarter).label,
 		"phone": COMPANY.phone,
 		"email": COMPANY.email,
 		// The named-offer layer (audit/NAMING-MEMO-2026-08-01.md). Stamped so a

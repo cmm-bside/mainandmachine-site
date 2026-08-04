@@ -19,7 +19,8 @@ prerendered at deploy time from beehiiv:
   → `blog:build` (prerender `/blog/*`, `rss.xml`, `sitemap.xml`) → `llms:build`
   (regenerate `llms.txt` from the facts file — never hand-edit `llms.txt`)
   → `seo:check` → `facts:check` → `llms:check` → `head:check` →
-  `placeholders:check` → `links:check` → `book:check`.
+  `placeholders:check` → `links:check` → `book:check` → `cta:check` →
+  `meta:check` → `quarter:check`.
   **`blog:build` FAILS on a zero-post index** — an empty fetch used to prerender
   an empty archive and 404 every committed `/blog/<slug>/` link with a green
   build. Local dev without a beehiiv key must say so out loud:
@@ -35,6 +36,23 @@ prerendered at deploy time from beehiiv:
   `orgJsonLd()` in `scripts/lib/templates.mjs` (reads the facts file); static pages
   hand-embed it, and `facts:check` parses every block and fails the build if an email,
   phone, or `@id` drifts from `src/data/company.mjs`.
+- **Open Graph cards:** 1200×630 PNGs in `images/og/`, rendered by
+  `scripts/build-og.mjs` and committed (a deploy must never need a browser).
+  Most are DERIVED from the page — kicker + H1 read out of the HTML — so a new
+  route in `STATIC_ROUTES` picks one up automatically. Four are authored
+  instead, in that file's `EXPLICIT` map, and both reasons are permanent:
+  `/score/` has **no HTML in this repo** (it is a `PROXIED_ROUTES` entry, so
+  there is nothing to derive from), and on `/careers/`, `/contact/` and
+  `/guides/` the derived card was wrong — the auto-subline is the first 62
+  chars of the meta description, which on `/careers/` restated the H1 and cut
+  it mid-word ("…Open applicati…") directly beneath that same sentence, and the
+  auto-footer said "Fixed price · quoted in writing" on pages where nothing is
+  priced. Prices and contact details in a card come from `COMPANY` at render
+  time, never literals: a number baked into a PNG is invisible to
+  `facts:check`. Re-render one card with
+  `node scripts/build-og.mjs --only=/careers/` — `--force` rewrites all ~24
+  derived cards and churns the diff for no visual change. `meta:check` fails
+  the build if a page's `og:image` does not resolve to a real file.
 - **Styling:** all in `styles.css` (design tokens in the `:root` blocks at the top —
   the "A+ ELEVATION LAYER" block wins). When CSS changes, bump the cache-buster
   (`styles.css?v=N` in the HTML pages **and** `ASSET_VERSION` in
@@ -370,10 +388,40 @@ At ≤768px only the first clause shows.
 
 - The root class stays `.ticker`: `js/analytics.js` labels link clicks by
   `a.closest(".ticker")`, so renaming it would silently untag this bar's traffic.
-- The quarter is the `.js-book-quarter` span, auto-advanced by `js/nav.js` to
-  the NEXT quarter (delivery framing), so it can never read stale. `book:check`
-  asserts that span exists on `/book/` — it deliberately asserts the hook, not
-  the wording.
+- **The quarter is a STATED fact, not a computed one (reworked 2026-08-04).**
+  It lives in `src/data/site-facts.json` → `booking.quarter` as `"Q4 2026"`,
+  is stamped into `<span data-fact="booking-quarter">` on all 40 chip-bearing
+  surfaces by `facts:render`, and is held current by `quarter:check`
+  (`scripts/check-booking-quarter.mjs`) in `build:static`. `book:check` asserts
+  that span exists on `/book/` — it deliberately asserts the hook, not the
+  wording. Full operator instructions live in README.md → "Booking quarter".
+  - **`js/nav.js` used to rewrite it to the next calendar quarter on every page
+    load.** That could not go stale, but it could be WRONG with nobody deciding
+    anything: in October it would have flipped the entire site to "Booking Q1
+    delivery" — a claim about *next year's* capacity — and kept doing so every
+    quarter forever. The bar states capacity and `/pricing/` and `/book/` lean
+    on it, so a computed value is the wrong instrument. The block is deleted,
+    not disabled.
+  - **The config stores the YEAR; the chip renders only `Q4`.** A guard cannot
+    compare "Q4" to a build date — "Q4" is true once a year, forever, which is
+    the exact failure being guarded. Rendering is unchanged, verified JS-on and
+    JS-off.
+  - `quarter:check` **warns** within 30 days of the quarter's end and **fails**
+    once it has passed, naming `booking.quarter` and the four-step fix. It never
+    advances the value. Test both branches without waiting for the date:
+    `BOOKING_QUARTER_NOW=2027-01-05 npm run quarter:check`.
+  - **`buildSlots.quarter` and `buildSlots.line` were deleted from
+    site-facts.json.** Both hardcoded the quarter a second time, in a file
+    nothing kept in step with the chip. The line is now derived by
+    `buildSlotsLine()` in `lib/fact-values.mjs` from `remaining` +
+    `booking.quarter`, so the old "prose count vs machine count" drift guard in
+    `check-facts.mjs` is replaced by construction.
+  - **`/facts.json` was publishing the maintainer notes.** `_`-prefixed keys in
+    site-facts.json are instructions to whoever opens the file ("Recount, update
+    this date, run npm run facts:render"), and they were being served verbatim
+    on the public endpoint that exists to feed agents canonical facts.
+    `build-llms.mjs` now strips them at any depth; the deliberate top-level
+    `_meta` block is constructed separately and survives.
 - The markup is duplicated: hand-written in the 39 static pages and generated by
   `topbar()` in `scripts/lib/templates.mjs` for blog pages. Change both.
 - `/privacy/`, `/terms/` and `/404.html` carry no utility bar, by existing design.
@@ -785,6 +833,80 @@ fold and the hero read as unfinished rather than as composed. **Now 811px.**
   + fontBoundingBoxAscent − actualBoundingBoxAscent`, via a canvas
   `measureText` with the element's computed font. Align to the rect and the card
   sits 8px high while every number says it is correct.
+#### Headline reveal — the timing budget (2026-08-04)
+
+The accent line "Main Street." **completes within 1.2s of first paint**, measured
+on Fast 3G + 4× CPU throttle. It was **2476ms**, and the payoff line sat hidden
+for **1442ms** — the first impression read "The machine belongs to" with no
+resolution. Now **856ms** settle, **750ms** hidden. `npm run test:hero`
+(`scripts/test-hero-timing.mjs`) measures it under real CDP throttling.
+
+**The cost was in FRONT of the animation, not inside it.** This is the part that
+matters for anyone retuning it: the headline ships complete in the HTML and
+`font-display:swap` paints it at first paint, so the script's `armed` state does
+not delay an entrance — it **removes a line the visitor has already read** and
+brings it back. Three things stacked:
+
+- `IntersectionObserver`'s first record is delivered on a **later task**, not
+  synchronously from `observe()`. The hero is the top of the page and always
+  past the 0.35 threshold on load, so that round-trip bought nothing and cost a
+  frame or more — on a slow first visit, where the deferred script arrives long
+  after first paint, it is the largest term. The script now measures the rect
+  itself and, at ratio ≥ 0.35, goes **straight to `play` in the same task**;
+  `armed` is a state the browser never paints (`test:hero` asserts the observed
+  states are `["idle","play"]`). The observer is kept for the below-the-fold
+  case, where its latency is irrelevant because the visitor must scroll first.
+- A flat **0.35s lead-in delay** before letter 0 moved. Removed outright: a
+  lead-in is the one part of a stagger that buys nothing — it reads as lag, not
+  rhythm.
+- The reveal itself ran 1.42s (`.045s` stagger × 10 + `.62s` drop).
+
+Now `--hm-dur: .42s` / `--hm-stagger: .032s`, named on `[data-hero-machine]` so
+the budget is auditable rather than re-derived from two literals: 11 letters,
+`--i` 0..10, so the last completes at **0.74s** after `play`. The remaining
+0.46s of headroom absorbs script execution. Keep the two in proportion if
+retuned — the stagger is what makes it mechanical (0.32s of cascade is plainly
+sequential), the duration is what makes each letter land. Shortening the stagger
+alone turns it into a single fade.
+
+Safety net **2.5s → 1.5s**. It backstops a state nobody should reach, and 2.5s
+of a missing payoff line is itself the bug; the reveal's own worst case is 0.74s.
+
+**The contract is unchanged and verified, not assumed** — all six by measurement,
+never by reading the source:
+
+- **No JS**: `hero-machine.js` aborted at the network layer → full headline,
+  never split, `armed` never entered.
+- **Reduced motion**: full headline, `document.getAnimations()` has **zero**
+  `hm-drop` animations, state goes straight to `done`, `armed` never entered.
+- **JS error**: the fault is injected into the served script body immediately
+  **after** it arms — the worst case, letters already split and hidden — and the
+  `catch` force-finishes to the complete headline. Patching the body rather than
+  stubbing a DOM method matters: a stub broad enough to break the script also
+  breaks the test's own probe, which is how the first attempt failed.
+- **No layout shift**: the accent line's box is byte-identical across
+  unsplit / armed / play / done (x 172, y 390.22, w 622.42, h 93.52 at 1440).
+- **CLS 0** from the headline.
+
+Two measurement traps here, both of which produce confident nonsense:
+
+- **Record the LAST settle, not the first.** The line is already complete at
+  first paint, then the script hides it. A probe that records the first
+  `complete` reading reports a perfect 0ms on a page that blanks its headline
+  for two seconds. `test:hero` samples every frame and finds the last
+  incomplete→complete transition, and separately reports how long the line spent
+  hidden.
+- **A `layout-shift` entry's `value` is the score for the whole FRAME, not for
+  one source.** Charging the full value to the hero because one of its sources
+  is inside it reported the sitewide **webfont swap** — one entry at ~43ms
+  moving `.nav__right`, a stat label and the hero's CTA button together — as a
+  hero shift worth 5.4e-5. It is not one: page CLS is **identical to the last
+  decimal with `hero-machine.js` blocked entirely**, which is the control run
+  that settles it, and no element of the headline is ever a shift source.
+
+Not touched, per the brief: the headline copy, and the canvas grid drawing
+(`hm-wipe` still runs .9s — it is the background surface, not the headline).
+
 - Grid texture raised 4.5% → **6%** (`js/hero-machine.js`). Less empty field is
   left, so what remains has to read as a drawn surface, not leftover space. The
   registration ticks stay at 14% — they are the mark, the grid is the texture.
@@ -1302,6 +1424,149 @@ itself, so it travels with the block instead of sitting stranded mid-column.
   `--block-gap` between the header block and `.bio`. Measure the section, not
   one column, or a two-column layout with a tall image always reads as failing.
 
+### /book/ scheduler — eager mount + a hero sized to the fold (2026-08-03)
+
+The Calendly embed is the site's conversion moment. At 1440×900 the whole card
+started below the fold — **panel header at 975px, calendar at 1194px** — and
+the iframe was created by an **IntersectionObserver** (`rootMargin: 600px`).
+
+**Measure the observer before blaming it.** It was NOT what made the
+"Loading the scheduler…" placeholder dwell at desktop sizes: 600px of root
+margin already covered an embed 1193px down a 900px viewport, so it fired at
+**+4ms with no scroll** — indistinguishable from the eager mount's +3ms. The
+dwell is Calendly's own weight (**~25s to `load` on Fast 3G**, unchanged by
+when we start it). What the observer really cost was a **cliff below ~593px of
+viewport height**, where the embed stopped intersecting the expanded root and
+genuinely required a scroll: measured `NO — requires a scroll` at 580 / 500 /
+400px tall, `yes` at 600 and up. Short windows and landscape phones sat on the
+wrong side of it. After the change every one of those mounts without scrolling.
+
+**The observer is deleted, not kept as a fallback.** The inline script sits at
+the foot of `<body>`, so `document.readyState` is already `interactive` and the
+frame goes out on the spot; the `DOMContentLoaded` listener is only for the
+case where it is not. There is no browser that would run this script and fail
+to mount early, and a fallback path nobody exercises is a path that rots.
+`loading="eager"` is set explicitly — it is the default, but this frame starts
+below the fold on a short viewport, which is exactly the shape a browser
+heuristic may decide to defer.
+
+- **Still not `widget.js`.** `script-src` does not allow `assets.calendly.com`
+  and must not be loosened. The direct iframe IS the integration; booking
+  events arrive via `postMessage` either way.
+- **Two preconnects in the head, and they are not redundant.** The socket pool
+  keys on the anonymous flag, so the `crossorigin` (credentials-omitted)
+  connection is a *different* one from the credentialed connection an iframe
+  NAVIGATION uses. Drop the plain one and the iframe re-handshakes from cold.
+  preconnect is a resource hint, not a fetch, so CSP does not apply to either.
+- **The placeholder comes off on the iframe's `load` event, never on a timer**
+  (`.cal-embed.is-ready::before { content: none }`). A timer either lies about
+  a slow frame or leaves the message sitting under a live calendar. It goes
+  back up during a prefill rebuild, because that is a real load.
+- **Zero CLS, and it was already structurally impossible.** `.cal-embed` has
+  `min-height: 720px` and the iframe is `position: absolute`, so the frame is
+  out of flow and contributes nothing to the box either way — the card measures
+  720px on the parse, on the mount and on the load. Measured **0.00003**.
+
+**The prefill guard is tightened.** `calUrl()` is byte-for-byte unchanged; what
+changed is when a rebuild fires. `change` **and** `blur` now go through
+`syncPrefill()`, which rebuilds only when the value actually CHANGED and is
+non-empty, and never once `engaged` is latched.
+
+- Previously any `change` rebuilt unconditionally — including re-mounting an
+  identical URL, which is a free flash of the placeholder for nothing.
+- **`engaged` latches on `calendly.date_and_time_selected`, deliberately NOT on
+  first click or focus into the frame.** The context field sits ABOVE the
+  calendar, so latching on focus would silently drop the prefill for anyone who
+  scrolls down, looks, then comes back up to type. Picking a time is the point
+  where a rebuild starts costing the visitor something they created.
+- Past that point the answer still reaches the advisor: the `postMessage`
+  handler stashes it in `sessionStorage` and `/book/thanks/` carries it.
+- Verified against the LIVE booking form (navigated directly, so the DOM is
+  readable — you cannot read it through the iframe): `a1` lands in the custom
+  question **"Please share anything that will help prepare for our meeting."**
+  Six cases checked: empty blur, type+blur, unchanged blur, cleared field,
+  post-selection edit, and placeholder state during a rebuild.
+
+**The hero is sized to the screen, like the homepage hero.** `.bookhero` takes a
+flat `96px / 48px` and `#request` a `48px` top, replacing `160 + 160 + 160`.
+Both are named in `SECTION_Y_EXEMPT` in `qa-matrix.mjs`, so a THIRD section
+drifting off `--section-y` still fails. Nothing was deleted; `#request` keeps
+its full closing step at the foot of a section that runs 3000px.
+
+| | before | after |
+|---|---|---|
+| panel header top | 974.6px | **639.5px** |
+| calendar top | 1193.5px | **838.4px** |
+| calendar visible @900px | 0px | **61.6px** |
+| hero height | 705.6px | **482.5px** |
+
+- **The crumb was carrying 30px of pure layout air.** The sitewide TOUCH
+  TARGETS block gives crumb links `padding-block: 15px` on the premise that
+  vertical padding on an INLINE box paints outside the line box and moves
+  nothing. That premise does not hold here: `.bookhero__crumb` is
+  `display: flex`, which BLOCKIFIES its links — a 17px row measured 47px.
+  Cancelled with the negative margin that block already prescribes for its
+  atomic boxes; the 44px hit area is untouched. **`.crumb` /
+  `.sechero__crumb` / `.legal__crumb` have the identical latent bug on ~40
+  pages and are deliberately left alone** — one line each, but it moves every
+  interior page's hero geometry and that is its own pass.
+- **`.bookhero` joined the FLUSH-TOP EYEBROWS list.** Its eyebrow starts the
+  left column of a two-column hero whose right column is a `.statrail`, and the
+  two tops were **8.31px apart** — the same defect the homepage hero had, on
+  the same shape. Now 0.00px.
+- 48 + 48 across the cream/beige seam is one `--s-96` gutter split by the
+  colour change. 96px on top is where `--section-y` itself lands at ≤768, so
+  the hero just reaches that step early.
+- **The floor is the `.statrail` at 305px** — it is the taller of the hero's
+  two columns, so trimming the headline's margins buys nothing further.
+- **Known, and a deliberate non-fix: the Calendly iframe carries ~65px of its
+  own top inset** before its white "Select a Date & Time" card begins. So at
+  exactly 900px the embed's top edge is visible and that card starts ~3px
+  below the fold. Closing it would mean forking the shared `.statrail` to a
+  denser row height on this page alone, pushing section seams below 48px, or
+  cropping the third-party embed with a negative `top` — which breaks silently
+  the day Calendly changes its own padding. None is worth it. **An 812px-tall
+  viewport does not clear the calendar top at all**; 900 is the bar that is met.
+- Verified after: `qa:matrix` ALL ROWS PASS (including a negative test — the
+  guard still fails on drift), `sweep:mobile` green on all 43 routes ×
+  320/390/430, `css:check`, `tokens:check`, `facts:check`, `head:check`,
+  `placeholders:check`, `book:check`.
+
+### Sticky mobile booking bar (2026-08-04)
+
+`js/nav.js` injects `.stickybook` on viewports <=768px after ~1.5 viewport
+heights of scroll: a full-width rust bar, "Book a free assessment ->", with a
+dismiss x that persists for the session in `sessionStorage`. Injected rather
+than added to 40 pages of markup — it is a pure enhancement, so no-JS loses
+nothing and there is no chrome to keep in sync.
+
+- **Never on `/book/`**, by path test. A fixed bar there would sit over the
+  Calendly iframe's action area, which on a phone is exactly where the confirm
+  button lives.
+- **Never while the drawer is open**, via `body:has(.nav.is-open)` in CSS
+  rather than a JS class, so there is no second piece of state to drift.
+- **Not injected at all on a page shorter than 1.7 viewport heights.** Such a
+  page can never scroll far enough to show it, so the bar would be pure DOM —
+  and on `/404.html` its label was enough to break `sweep:mobile`'s JS-off/JS-on
+  text-parity check, which exists to catch content that DISAPPEARS without JS.
+- **It was silently captured by the LINK SYSTEM.** STYLE B is
+  `a:not(.btn):has(.arr):not(:has(h1,...,p))` — selected BY the arrow — so the
+  CTA rendered `--accent-text` on the rust bar at **1.27:1** and at 12px.
+  Source order cannot save a lower-specificity rule: that selector is
+  **(0,2,2)**, not the (0,2,1) a quick reading gives, because the trailing
+  `:not()` adds an element to the count. Two attempts under-counted it. The rule
+  is now `.stickybook a.stickybook__cta:not(.btn)` — (0,3,1), winning outright
+  rather than by position — and restates every property STYLE B would impose.
+  `#fff` on `--accent` is 5.06:1; `--paper` is 4.26:1 and would fail.
+- **`.stickybook` is in `qa:matrix`'s `CHROME` exclusion**, alongside `.nav` and
+  `.ticker`. It carries an arrow, and STYLE B is selected by the arrow, so
+  without it the bar reports as a link-treatment violation for being a filled
+  button — the same wrong reading that would flag the nav's own booking CTA.
+- `data-cta="sticky-bar"` is picked up by `js/analytics.js` with no
+  registration: its click listener is document-level and capture-phase, so an
+  element added later is tagged automatically.
+- Total new JS for this pass (focus trap + bar): **1657 bytes**, budget 2048.
+
 ### Contrast / dark surfaces (pass run 2026-08-01)
 
 Every text/background pair was measured by rendering all 41 routes and
@@ -1457,12 +1722,18 @@ panel — it dilutes the CTA.
   (an unpublished number cannot be unverifiable scarcity). While the span is
   absent a reverse guard applies — no surface may state a slot count that
   nothing keeps current.
-  **RESOLVED 2026-08-03 by deleting the clause.** `/`'s fine print read "We
-  take a fixed number of builds each quarter — *the count at the top of this
-  page is real*", pointing at a count the utility bar stopped publishing. It
-  stated no NUMBER, so `facts:check`'s reverse guard never fired — the guard
-  looks for a stated count, and this was a reference to one. The clause is
-  gone; the sentence now ends at "each quarter." Re-adding a
+  **RESOLVED 2026-08-03 by deleting the clause — but only on `/`. FINISHED
+  2026-08-04.** The fine print read "We take a fixed number of builds each
+  quarter — *the count at the top of this page is real*", pointing at a count
+  the utility bar stopped publishing. It stated no NUMBER, so `facts:check`'s
+  reverse guard never fired — the guard looks for a stated count, and this was
+  a *reference* to one. The 2026-08-03 pass removed it from the homepage and
+  recorded the job as done; **`/pricing/` and `/book/` carried the identical
+  sentence for another day**, telling readers to go verify a number that was
+  not on the page. Both now end at "each quarter." A guard that keys on a
+  stated number cannot catch a sentence that only points at one — when a claim
+  is deleted, grep the whole repo for it rather than the page it was noticed
+  on. Re-adding a
   `data-fact="build-slots"` span would re-arm both guards and is still the
   route back if the slot count returns.
 - After deploy: resubmit sitemap.xml in Search Console and request indexing on the
@@ -1538,6 +1809,98 @@ Each of these exists because something shipped wrong once and nothing objected:
   (They didn't — `/` and `/about/` shipped 8 profiles while 37 pages shipped 6.)
   Add a profile to `PERSON_SAMEAS` and the build fails until every page carries
   it.
+- `cta:check` (`scripts/check-cta.mjs`, 2026-08-04) — offline; every internal
+  `/book` link in committed HTML must carry a non-empty `data-cta`, the blog
+  chrome in `templates.mjs` must carry the same three, and `/book/` must still
+  map all three Calendly postMessage names to Plausible events behind an origin
+  check. Booking placement used to be INFERRED from ancestor classes in
+  `js/analytics.js`, and inference fails silently in both directions: 16 links
+  matched no region and fired NOTHING (the `/pricing/` FAQ strip, `/security/`,
+  `/contact/`, `/404.html`, nine in-prose links), while `.hero__cta` — a shared
+  CTA-ROW wrapper, not the hero — labelled 30 pre-footer `.final` CTAs, two
+  page heroes and three `/work/marcus/` mid-page CTAs as `hero`. Only the
+  homepage's was a hero. 176 links now carry one of 16 placements; run
+  `npm run cta:stamp` to stamp new ones (it renders each page and applies a
+  first-match rule list, so it sees what `closest()` sees). **The stamper walks
+  committed HTML, NOT `STATIC_ROUTES`** — `/book/thanks/` is a `NOINDEX_ROUTES`
+  entry carrying four booking links, and a `STATIC_ROUTES`-driven pass left
+  every one unstamped while reporting success. `cta:check` is what caught that.
+- `test:funnel` (`scripts/test-booking-funnel.mjs`) — needs Playwright, so it is
+  NOT in `build:static`. Drives the real `/book/` listener from genuine
+  cross-origin frames (request routing serves stubs AT `https://calendly.com`
+  and `https://evil.example`, so `event.origin` is browser-stamped rather than
+  forged) and asserts the funnel fires once per step, ignores every other
+  origin and every malformed body, and leaks no invitee field into the props.
+  Verified both ways: deleting the origin check fails it with a named
+  assertion, not a stack trace.
+- `meta:check` (`scripts/check-meta.mjs`, 2026-08-04) — offline, in `build:static`.
+  Per page: title ≤ 60, description 110–155, canonical present, exactly one
+  `<h1>`, and **`og:image` resolving to a real file on disk**. Lengths are
+  measured DECODED, so `&amp;` counts as one character.
+  - **The file-resolution check is the one that earns its place.** Eight pages
+    shipped with a bespoke card sitting unused in `images/og/` while the HTML
+    still pointed at the generic `/og-image.png` — `/careers/`, `/contact/`,
+    `/guides/`, `/privacy/`, `/security/`, `/terms/`, plus `/work/marcus/` and
+    `/services/builds/`, which pointed at a *different page's* card
+    (`work.png`, `services.png`). Every one of them "had an og:image", so a
+    presence-only check was green throughout. Presence was never the failure
+    mode.
+  - **It lints `/score/` too, which has no HTML in this repo.** That route is
+    proxied (`lib/score-proxy.mjs`), so a file walk cannot see it — which is
+    exactly why its title had drifted to 64 chars while `head:check` held every
+    static page to 60. The proxy's exported constants are held to the same
+    rules, and the check also asserts the injected `<meta>`/`<link>` tags are
+    entity-escaped: they are appended with HTMLRewriter's `html: true`, which
+    escapes nothing, and `SCORE_TITLE` ends "| Main & Machine". The ld+json in
+    the same string is deliberately NOT escaped — script content is raw text,
+    and escaping it would put a literal `&amp;` inside the JSON.
+  - `EXEMPT` names `/404.html` for canonical and og:image, with reasons: a 404
+    must not be indexed and Google discourages a canonical on one, and an error
+    page is never deliberately shared.
+- `jsonld:check` (`scripts/check-jsonld.mjs`) — validates all 69 ld+json blocks
+  (1124 nodes) against the **real schema.org vocabulary**, building
+  type → allowed-properties including inheritance. NOT in `build:static`: it
+  downloads the ~1.5MB vocabulary on first run and caches it under
+  `node_modules/.cache/`, and a deploy must never depend on schema.org being
+  reachable.
+  - **The parsing trap: the dump writes ids as `schema:Question`, not
+    `https://schema.org/Question`.** Strip only the URL form and every type
+    resolves as unknown — the first run reported **3,539 errors** including
+    "unknown @type Question" and "unknown property name". A validator that
+    fails everything is indistinguishable from a site that is broken
+    everywhere; the giveaway is that the "errors" are all obviously-real
+    schema.org terms.
+  - Two findings are allowlisted with reasons in the file: `query-input` on
+    `SearchAction` (Google's sitelinks-searchbox extension — in Google's docs
+    and schema.org's Actions examples, but not a formal property, so every
+    validator flags it; removing it turns the searchbox off) and an empty
+    `blogPost` on `Blog` (only reachable with zero posts fetched, i.e. local dev
+    under `ALLOW_EMPTY_BLOG=1` — `blog:build` fails the build on a zero-post
+    index otherwise, so a deploy can never emit it).
+- `shots:mobile` / `audit:mobile` (2026-08-04) — the mobile verification pass.
+  Both need Playwright, so neither is in `build:static`. `shots:mobile` captures
+  full-page screenshots of `/`, `/book/`, `/pricing/`, `/services/`, `/score/`
+  at 390x844 and 768x1024 into `audit/mobile-shots/<label>/` and FAILS on any
+  horizontal overflow; `audit:mobile` runs the 33-item checklist (hamburger,
+  focus trap, tap targets, /book/ form, reveal.js, footer). Both accept
+  `BASE_URL=` for a preview deploy.
+  - **`/score/` is proxied**, so a plain static server 404s it and a harness
+    that never looked at it would report green. The local server mirrors
+    `functions/score/[[path]].js` for `/score/*`; if the upstream is down the
+    route reports **SKIPPED**, never `ok`.
+  - **`js/reveal.js` returns early on `navigator.webdriver`.** Under Playwright
+    it never runs, so "is any content stuck hidden?" answers itself and the
+    check is theatre. `audit:mobile` stubs `webdriver` to false in an init
+    script, and asserts `.reveal` elements actually exist to prove the stub
+    worked.
+  - **Three of the first seven "failures" were the harness, not the site**, and
+    each looked exactly like a real defect: the drawer is full-width so a click
+    at (200,700) is *inside* it, not outside; the ROI slider sits ~8000px down
+    and Playwright's mouse takes VIEWPORT coordinates, so dragging its
+    boundingBox without scrolling drags empty space; and
+    `getComputedStyle(el, "::-webkit-slider-thumb")` returns the HOST's box in
+    Chromium (it reported the 304px track as the thumb). Check the instrument
+    before filing the bug.
 - `qa:matrix` (`scripts/qa-matrix.mjs`) — the design-system consistency matrix,
   rendered across every route at 1440/1024/768/375. Eight checks: two link
   treatments, two button variants on one 52px box, `padding-block:

@@ -11,6 +11,14 @@
  *
  *   cta_book_click        { page, location }   booking intent
  *   cta_score_click       { page, location }   tool engagement intent
+ *
+ * `location` on cta_book_click comes from the link's own `data-cta` attribute,
+ * which every booking CTA carries (16 distinct placements — ticker, nav,
+ * footer, final-cta, hero, page-hero, door, calculator, faq-strip, prose,
+ * breadcrumb, contact-cta, security-reviewer, story-close, legal, not-found).
+ * Stamped by scripts/stamp-cta.mjs, asserted by scripts/check-cta.mjs, which
+ * runs in build:static. /score links still use the region inference below.
+ *
  *   calculator_interacted { page, industry, team_band }   once per page load
  *   newsletter_subscribed { page }             beehiiv form submit
  *   guide_read            { page, guide }      75% scroll depth, once
@@ -36,13 +44,31 @@
   }
 
   /* ---------- CTA clicks: /book and /score links, placement-tagged ------- */
+  // `data-cta` in the markup is AUTHORITATIVE. Every booking CTA carries one
+  // (stamped by scripts/stamp-cta.mjs, asserted by scripts/check-cta.mjs), and
+  // the blog chrome carries the same three in templates.mjs.
+  //
+  // The region inference below used to be the only source, and it was wrong in
+  // both directions:
+  //   * 16 links matched nothing and fired NOTHING — the /pricing/ FAQ strip,
+  //     /security/, /contact/, /404.html and nine in-prose links.
+  //   * `.hero__cta` is a shared CTA-ROW wrapper, not the hero. 35 of the 36
+  //     links it labelled "hero" were not heroes: 30 were the pre-footer
+  //     `.final` band, two were page heroes, three were /work/marcus/ mid-page
+  //     CTAs. Only the homepage's was real.
+  // It is kept, corrected, purely so a newly added link is never silently
+  // untracked. In practice it should be dead code — `cta:check` fails the build
+  // on an unstamped /book link. It still carries the /score links, which are
+  // not stamped.
   function placementOf(a) {
     if (a.closest(".ticker")) return "ticker";
     if (a.closest("header.nav")) return "nav";
     if (a.closest(".foot")) return "footer";
-    if (a.closest(".hero__cta")) return "hero";
+    if (a.closest("section.final")) return "final-cta"; // pre-footer band
     if (a.closest(".paths")) return "door";
     if (a.closest(".calcband")) return "calculator"; // homepage ROI band
+    if (a.closest("section.hero")) return "hero"; // the homepage hero only
+    if (a.closest(".pagehero, .sechero, .cr-hero, .bookhero")) return "page-hero";
     // The /calculator/ page: its CTAs sit outside .roi, so key off the path
     // (nav/footer/ticker already returned above).
     if (PAGE.indexOf("/calculator") === 0) return "calculator";
@@ -63,8 +89,12 @@
             ? "cta_book_click"
             : null;
       if (!name) return;
-      // Explicit data-cta-placement wins; otherwise infer from the region.
-      var placement = a.getAttribute("data-cta-placement") || placementOf(a);
+      // data-cta wins; data-cta-placement is the retired spelling, kept because
+      // the Score app's report door may still emit it; then region inference.
+      var placement =
+        a.getAttribute("data-cta") ||
+        a.getAttribute("data-cta-placement") ||
+        placementOf(a);
       if (!placement) return;
       fire(name, { page: PAGE, location: placement });
     },

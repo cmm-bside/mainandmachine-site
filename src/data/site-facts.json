@@ -67,10 +67,12 @@
   "guarantee": "If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.",
   "rollover": "100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.",
   "annualManaged": "Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.",
+  "_booking_note": "The capacity quarter shown in the top utility bar (\"Booking Q4 delivery\"). STATED BY A HUMAN, never computed: capacity is a business fact, and the chip's value is that it is true, not that it is fresh. Format is \"Q<n> YYYY\" — the year is required so check-booking-quarter.mjs can compare it to the build date; only the \"Q<n>\" part is rendered, which is what the bar has always shown. Updating it is one line here plus `npm run facts:render`, then deploy.",
+  "booking": {
+    "quarter": "Q4 2026"
+  },
   "buildSlots": {
-    "quarter": "Q4",
     "remaining": 4,
-    "line": "Four Q4 build slots remain",
     "_countedOn": "Date the count was last verified by hand (YYYY-MM-DD). facts:render stamps it into the ticker so the claim is dated, not vague; check-facts.mjs FAILS the build once it is more than 21 days old. Recount, update this date, run npm run facts:render.",
     "countedOn": "2026-07-30"
   },

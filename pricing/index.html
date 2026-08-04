@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=128" />
+<link rel="stylesheet" href="/styles.css?v=131" />
 <style>
 /* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
 /* 1. Price/range values never wrap. Stepped down one size so the widest range
@@ -366,7 +366,7 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -399,7 +399,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -477,7 +477,7 @@
         <h3>The guarantee, in one sentence.</h3>
         <p data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</p>
       </div>
-      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="faq-strip" class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
     </div>
   </div>
 </section>
@@ -572,7 +572,7 @@
         </div>
       </div>
     </div>
-    <p class="hero__note hero__note--wide">Every path here starts with the same <a href="/book/">free 30-minute assessment</a>. We take a fixed number of builds each quarter &mdash; the count at the top of this page is real. The free assessment is how we choose them, and how you check us before spending a dollar. Want a rough number first? <a href="/calculator/">Run the calculator</a>.</p>
+    <p class="hero__note hero__note--wide">Every path here starts with the same <a data-cta="prose" href="/book/">free 30-minute assessment</a>. We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar. Want a rough number first? <a href="/calculator/">Run the calculator</a>.</p>
   </div>
 </section>
 
@@ -643,7 +643,7 @@
         <h3>Want exact numbers?</h3>
         <p>The assessment is where ranges become a fixed quote in writing: 30 minutes, free. No obligation.</p>
       </div>
-      <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="faq-strip" class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
     </div>
   </div>
 </section>
@@ -660,7 +660,7 @@
         </div>
         <div>
           <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
             <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
           </form>
           <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
@@ -712,7 +712,7 @@
       <div class="foot__col">
         <h2>Contact</h2>
         <ul>
-          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
           <li><a href="tel:+14808059983">480-805-9983</a></li>
           <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
@@ -729,7 +729,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.svc__item,.closer,.faq > *,.faq__list details,.foot__top > *"></script>
 
-<script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=2"></script>
+<script src="/js/nav.js?v=7"></script>
+<script src="/js/analytics.js?v=3"></script>
 </body>
 </html>

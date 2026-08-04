@@ -11,19 +11,19 @@
 <meta property="og:title" content="Security &amp; Data Handling | Main &amp; Machine" />
 <meta property="og:description" content="On-prem local models, PII stripped before any model reads a document, encryption at rest, a tamper-evident audit log, and a human sign-off on every action." />
 <meta property="og:url" content="https://www.mainandmachine.com/security/" />
-<meta property="og:image" content="https://www.mainandmachine.com/og-image.png" />
+<meta property="og:image" content="https://www.mainandmachine.com/images/og/security.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Main &amp; Machine — where Main Street meets the machine" />
+<meta property="og:image:alt" content="Main &amp; Machine: Where your data goes." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Security &amp; Data Handling | Main &amp; Machine" />
 <meta name="twitter:description" content="On-prem local models, PII stripped before any model reads a document, encryption at rest, a tamper-evident audit log, and a human sign-off on every action." />
-<meta name="twitter:image" content="https://www.mainandmachine.com/og-image.png" />
-<meta name="twitter:image:alt" content="Main &amp; Machine — where Main Street meets the machine" />
+<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/security.png" />
+<meta name="twitter:image:alt" content="Main &amp; Machine: Where your data goes." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=128" />
+<link rel="stylesheet" href="/styles.css?v=131" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -219,7 +219,7 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span class="js-book-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -252,7 +252,7 @@
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav__right">
-      <a aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -380,7 +380,7 @@
   <div class="wrap">
     <div class="reviewer">
       <p><b>Have a security questionnaire?</b> Send it, or bring your IT reviewer to the free 30-minute assessment. The person answering is the founder who is accountable for the build — and “that control doesn’t apply to your workflow” is an answer we’ll put in writing too. The plain-English version of the cloud-versus-on-prem call is in <a href="/guides/ai-data-cloud-vs-on-prem/">where your AI data actually goes</a>.</p>
-      <a class="btn btn--primary btn--lg" href="/book/">Book the free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="security-reviewer" class="btn btn--primary btn--lg" href="/book/">Book the free assessment <span class="arr">&#8594;</span></a>
       <div class="reversal">
         <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
         <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list <span class="arr">&#8594;</span></a></p>
@@ -444,7 +444,7 @@
         </div>
         <div>
           <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required />
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
             <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
           </form>
           <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
@@ -496,7 +496,7 @@
       <div class="foot__col">
         <h2>Contact</h2>
         <ul>
-          <li><a href="/book/">Book a free assessment</a></li>
+          <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
           <li><a href="tel:+14808059983">480-805-9983</a></li>
           <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
@@ -511,7 +511,7 @@
 </footer>
 
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".sechero__grid > *,.controls,.never,.reviewer,.faq > *,.faq__list details,.foot__top > *"></script>
-<script src="/js/nav.js?v=5"></script>
-<script src="/js/analytics.js?v=2"></script>
+<script src="/js/nav.js?v=7"></script>
+<script src="/js/analytics.js?v=3"></script>
 </body>
 </html>

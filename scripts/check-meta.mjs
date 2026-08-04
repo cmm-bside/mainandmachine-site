@@ -35,6 +35,29 @@ const DESC_MAX = 155;
  * Documented exemptions. An allowlist, keyed by route, with the reason inline —
  * a bare skip list becomes a place to hide failures.
  */
+/**
+ * A generated blog POST page — /blog/<slug>/, but not /blog/ or /blog/archive/,
+ * which we author here.
+ *
+ * Its <title> and description come from beehiiv (`post.seoTitle || post.title`,
+ * `post.seoDescription || post.excerpt`), written by an editor in another
+ * system. Holding those to a 110-155 band FAILS THE DEPLOY on an excerpt
+ * length, which is the wrong owner for that constraint: it blocks every publish
+ * until someone edits a newsletter field, and the person pushing code is not
+ * the person who wrote the excerpt.
+ *
+ * This is not hypothetical and it is not a hedge. Shipping this file with the
+ * band applied to posts broke production immediately: two live essays measure
+ * 87 and 108 characters, build:static failed, and the site sat on the previous
+ * deploy. The guard had only ever run against a blog with zero posts, which is
+ * the one environment where it could not see them.
+ *
+ * Structure is still enforced on these pages — description PRESENT, canonical,
+ * og:image resolving to a real file, exactly one h1, title <= 60 (head:check
+ * errors on that too). Only the band is advisory, and it is still printed.
+ */
+const isGeneratedPost = (route) => /^\/blog\/[^/]+\/$/.test(route) && route !== "/blog/archive/";
+
 const EXEMPT = {
 	"/404.html": {
 		canonical: "a 404 must not be indexed, and Google explicitly discourages a canonical on one",
@@ -84,6 +107,7 @@ function localFileFor(url) {
 }
 
 const rows = [];
+const advisories = [];
 let failures = 0;
 
 for (const file of pages) {
@@ -100,9 +124,13 @@ for (const file of pages) {
 
 	const descM = /<meta\s+name="description"\s+content="([^"]*)"/i.exec(html);
 	const desc = descM ? decode(descM[1]).trim() : null;
+	const generated = isGeneratedPost(route);
 	if (!desc) problems.push("no meta description");
 	else if (desc.length < DESC_MIN || desc.length > DESC_MAX) {
-		problems.push(`description ${desc.length} outside ${DESC_MIN}-${DESC_MAX}`);
+		const msg = `description ${desc.length} outside ${DESC_MIN}-${DESC_MAX}`;
+		// Beehiiv-authored copy: report it, never fail the deploy over it.
+		if (generated) advisories.push(`${route}  ${msg} (beehiiv copy — edit the post's SEO description)`);
+		else problems.push(msg);
 	}
 
 	const canon = /<link\s+rel="canonical"\s+href="([^"]*)"/i.exec(html);
@@ -124,6 +152,7 @@ for (const file of pages) {
 	if (problems.length) failures++;
 	rows.push({
 		route,
+		generated,
 		title: title ? title.length : "—",
 		desc: desc ? desc.length : "—",
 		canon: canon ? "yes" : (ex.canonical ? "exempt" : "NO"),
@@ -181,8 +210,13 @@ for (const r of rows) {
 	console.log(
 		pad(r.route, w) + padl(r.title, 6) + padl(r.desc, 6) + "  " +
 		pad(r.canon, 7) + pad(r.og, 30) + padl(r.h1, 3) + "  " +
-		(r.problems.length ? "FAIL" : "ok"),
+		(r.problems.length ? "FAIL" : r.generated ? "ok*" : "ok"),
 	);
+}
+if (advisories.length) {
+	console.log(`\n  ${advisories.length} advisory (generated blog copy — does not fail the build):`);
+	for (const a of advisories) console.log(`    ~ ${a}`);
+	console.log(`    Fix at the source: the post's SEO description in beehiiv, then redeploy.`);
 }
 
 if (failures) {

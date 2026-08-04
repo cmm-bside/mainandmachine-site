@@ -969,6 +969,13 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   --paper:        #F0EBE1;   /* page surface — warm cream, Main Street */
   --paper-tan:    #E4DBC8;   /* deeper cream band */
   --ink:          #1B1611;   /* warm machine-shop black — surfaces AND body text */
+  /* The reference's dark band, one step up from --ink and NOT derivable from
+     it (the three channels move by different amounts: +6/+4/+3). Scoped to
+     .ink--grid — the sections that carry the ruled blueprint grid, where the
+     grid's 6/255 line needs a field it can be read against. Everything else
+     dark — .final, the footer, every other page's ink band — stays --ink.
+     See the BLUEPRINT GRID block at the foot of this file. */
+  --ink-grid:     #211A14;
   /* The canonical muted literal lives on --muted-on-light so that a light card
      nested INSIDE a dark section can restore it. Dark surfaces rebind
      --ink-muted itself; var() substitution is lazy, so a reset written as
@@ -3680,6 +3687,42 @@ p, li, dd { text-wrap: pretty; }
 @media (max-width: 900px){
   /* below the two-column breakpoint there is no empty half to fill */
   .deco-grid::before, .deco-amp::before { display: none; }
+}
+
+/* =========================================================
+   BLUEPRINT GRID — the reference's dark-band treatment (2026-08-03)
+
+   The faint ruled grid the reference paints on its dark sections. Values are
+   the reference's, verbatim: a 1px cream line at rgba(240,235,224,.028) on a
+   56px pitch, over #211A14 (--ink-grid).
+
+   On the SECTION, not on .wrap — the grid has to run full-bleed behind the
+   content, and a .wrap is 1160px inside a viewport-wide band. It is also a
+   plain background rather than a masked ::before like .deco-grid/.deco-amp:
+   there is no mask here, so there is nothing to position, no overflow: clip
+   and no z-index to manage, and no child can paint over it by accident.
+
+   This REPLACES --grain on these sections and must stay later in the file
+   than `.ink { background-image: var(--grain) }` (~line 1125) — both are
+   (0,1,0), so source order is what decides. Noise and rule are two different
+   textures and they do not stack: a 6/255 line under 4.5% fractal noise is
+   exactly the "grid is missing" this was reported as. CLAUDE.md's brand-
+   decoration note flagged the ours-is-noise / reference-is-ruled gap and left
+   it open; this closes it, on the two sections the reference rules.
+
+   NOT switched off below 900px, unlike .deco-grid — that layer exists to fill
+   an empty HALF of a two-column band and has nothing to do once the columns
+   stack. This one is the band's surface at every width.
+
+   Line alpha is the reference's .028 and that is what ships. It may go to .04
+   and no higher if the grid still reads as absent on real hardware.
+   ========================================================= */
+.ink--grid{
+  background-color: var(--ink-grid);
+  background-image:
+    linear-gradient(rgba(240,235,224,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240,235,224,.028) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
 /* Recurring dark bands take the grid by selector rather than per-page markup:

@@ -128,6 +128,22 @@ keeps a second, drifting copy of the palette.
 | `--rule` | `#D6CCBA` | hairline on paper |
 | `--rule-dark` | `#3A3227` | hairline on ink |
 
+**A tenth was added 2026-08-03: `--ink-grid: #211A14`**, the reference's dark
+band, used ONLY by `.ink--grid` (the blueprint-grid sections — see below). It
+is one step up from `--ink` and is not derivable from it: the three channels
+move by different amounts (+6/+4/+3), so no `color-mix()` reproduces it.
+
+- **It is scoped, not a second `--ink`.** `.final`, the footer and every other
+  page's ink band stay `--ink`. Do not repoint `--ink` at it to "unify" them:
+  `--panel` (`#221C15`) is only 1/2/1 above `#211A14`, so a sitewide swap
+  flattens every raised panel on ink into its section.
+- **`--panel` cannot follow it up, either.** The reference's panel is `#2A2219`,
+  which measures **4.42:1** against `--on-dark-muted` — an AA fail, and
+  `.failstat` puts that token on three elements (the 74% figure, its caption,
+  the ratio labels). `--panel` stays `#221C15` (4.76:1). What separates the
+  stat panel from the band is the grid stopping at its border, not tone;
+  verified against the reference, which reads the same way.
+
 Everything else aliases or derives from these (`--cream`, `--paper-card`,
 `--rust`, `--tx`, `--line` … all resolve here), so changing a value changes
 the whole site. Five non-brand literals remain by design: `--blueprint` /
@@ -207,7 +223,10 @@ Removed as duplicate/partial-border experiments:
 - `.bound__i`'s 3px ink top edge + asymmetric radius, now the standard hairline.
 
 **Dark-band texture.** Large dark bands whose content leaves one half empty get
-a layer on *that side only*. Two treatments, never both on one section:
+a layer on *that side only*. Two treatments, never both on one section. (A
+third thing, `.ink--grid`, is NOT one of these — it is the band's whole
+surface rather than a filler for an empty half. See the blueprint-grid section
+below; a section takes that or one of these, never both.)
 
 - `.deco-grid` — 1px cream grid on a 56px pitch at 4.5%, masked to the right
   half. `--left` and `--edges` modifiers for the other cases.
@@ -228,11 +247,54 @@ overflow at 1440 / 1280 / 1024 / 768 / 430 / 320 with `overflow` back to
 `visible`). The `.deco-amp` rule itself stays for `/work/marcus/`.
 
 - The section keeps its texture: `#problem` never had a *grid*. Its background
-  is `--grain` — a 180×180 `feTurbulence` fractal-noise SVG at 4.5%, from
-  `.ink`. The reference paints something different there, a 1px ruled grid at
-  2.7% via two `repeating-linear-gradient`s on the section itself. Ours is
-  noise, the reference's is ruled. Nothing was added to close that gap; see the
-  note when this next comes up.
+  was `--grain` — a 180×180 `feTurbulence` fractal-noise SVG at 4.5%, from
+  `.ink`. The reference paints something different there, a 1px ruled grid on
+  the section itself. Ours was noise, the reference's is ruled. **That gap is
+  closed 2026-08-03 — see the blueprint grid below.**
+
+### Blueprint grid — `.ink--grid` (2026-08-03)
+
+The reference's dark-band surface, adopted verbatim on the two sections that
+carry it there: `/` `#problem` and `/` `#calcband`. On the SECTION, so it runs
+full-bleed; a `.wrap` is 1160px inside a viewport-wide band.
+
+    background-color: var(--ink-grid);          /* #211A14 */
+    background-image:
+      linear-gradient(rgba(240,235,224,.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,235,224,.028) 1px, transparent 1px);
+    background-size: 56px 56px;
+
+- **It REPLACES `--grain`, it does not stack with it.** `.ink` sets
+  `background-image: var(--grain)` at (0,1,0); `.ink--grid` is the same
+  specificity, so the block must stay LATER in `styles.css` — source order is
+  what decides, the usual trap. And the textures do not compose: a 5/255 line
+  under 4.5% fractal noise is exactly the "the grid is missing" this was
+  reported as. Noise and rule are two different surfaces; pick one.
+- **A plain background, not a masked `::before` like `.deco-grid`/`.deco-amp`.**
+  There is no mask, so there is nothing to position, no `overflow: clip`, no
+  `> .wrap` z-index lift — and no child can paint over it by accident.
+- **Not switched off below 900px**, unlike `.deco-grid`. That layer exists to
+  fill an empty HALF of a two-column band and has nothing to do once the
+  columns stack. This one is the band's surface at every width.
+- **`.calcband` lost `.deco-grid--left` to it.** The earlier note said not to
+  remove that class from this section — it was the only thing keeping the empty
+  left run reading as a drawn surface. `.ink--grid` rules the whole band, which
+  covers that run and the rest. **Never put both on one section**: two grids on
+  different pitches with a mask between them is moiré, not texture.
+  `.deco-grid` itself stays — 5 other pages use it (`/denver/`, `/phoenix/`,
+  `/services/`, `/work/marcus/`, `/work/marcus/results/`).
+- **The alpha ceiling is `.04`.** `.028` is the reference's and is what ships;
+  it may go to `.04` if the grid reads as absent on real hardware, no higher.
+- Measured, not eyeballed: field `rgb(33,26,20)`, rule `rgb(39,31,25)`, pitch
+  56px on both sections — byte-identical to the same scanline through the
+  reference. Auditing it: probe a scanline in an empty part of the band and
+  count distinct colours; the delta is 5–6/255, which no screenshot comparison
+  will show you reliably.
+- Verified after: `qa:matrix` ALL ROWS PASS (contrast included — `#211A14` is
+  lighter than `--ink`, so every dark-surface ratio moved down a notch and all
+  still clear AA), `tokens:check`, `css:check`, `facts:check`, `head:check`,
+  `placeholders:check`, and no horizontal overflow at 1440/1280/1024/921/768/
+  430/390/320.
 
 **Ampersand retuned 2026-08-02.** Stroke 4% → **7%**, mask 30%/62% →
 **50%/76%**, `bottom` −0.18em → **−0.30em**. All three move together; changing
@@ -834,9 +896,11 @@ every two-column width (901→1920).
   centred block splits its slack evenly above and below) to **715px** in one
   run under the CTAs. That is the direct, unavoidable consequence of the
   alignment, and it means the "no empty dark region taller than 200px" bar is
-  NOT met. `.deco-grid--left` (`inset: 0`, masked to the left half) is what
-  keeps that run reading as a drawn surface rather than a hole — do not remove
-  it from this section.
+  NOT met. `.deco-grid--left` (`inset: 0`, masked to the left half) was what
+  kept that run reading as a drawn surface rather than a hole. **Superseded
+  2026-08-03 by `.ink--grid`**, which rules the whole band and so covers that
+  run and everything else — the requirement stands, only the layer meeting it
+  changed. The band must never be left with neither.
 - CTAs sit `--s-64` below the intro, in flow. They are deliberately NOT pinned
   to the band bottom: pinning turns one 715px run into a 779px one, because the
   gap opens above them instead.

@@ -14,7 +14,16 @@
   const finish = () => { root.dataset.state = 'done'; };
 
   try {
-    // draw the registration grid once (static; redrawn only on resize)
+    // Draw the registration TICKS once (static; redrawn only on resize).
+    //
+    // The 6% grid FIELD this used to draw is now a CSS background on every
+    // hero on the site (see "THE GRID IS THE SURFACE" in styles.css), at the
+    // same 56px pitch and the same alpha. Drawing it here as well would put
+    // two identical grids on the homepage hero — double alpha, and phased
+    // apart by the canvas's half-pixel offset, which is moiré rather than
+    // texture. So the field is CSS and the ticks stay canvas: they are the
+    // mark, they exist only here, and they are what makes this a registration
+    // grid rather than graph paper.
     const cv = root.querySelector('[data-machine-grid]');
     function drawGrid() {
       if (!cv) return;
@@ -25,12 +34,7 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, r.width, r.height);
       const G = 56;
-      // 6% — raised from 4.5% when the hero was tightened to one viewport.
-      // Less empty field left, so the field that remains has to read as a
-      // drawn surface rather than as leftover space.
-      ctx.strokeStyle = 'rgba(26,21,17,0.06)'; ctx.lineWidth = 1;
-      for (let x = G; x < r.width; x += G) { ctx.beginPath(); ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, r.height); ctx.stroke(); }
-      for (let y = G; y < r.height; y += G) { ctx.beginPath(); ctx.moveTo(0, y + .5); ctx.lineTo(r.width, y + .5); ctx.stroke(); }
+      ctx.lineWidth = 1;
       ctx.strokeStyle = 'rgba(26,21,17,0.14)';
       for (let y = G; y < r.height; y += G) for (let x = G; x < r.width; x += G) {
         ctx.beginPath(); ctx.moveTo(x - 3.5, y + .5); ctx.lineTo(x + 3.5, y + .5);

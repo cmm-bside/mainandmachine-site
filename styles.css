@@ -1632,7 +1632,8 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
    started at the top — the two columns read as unrelated. Start-aligning is
    what makes both columns begin on the same y. It does NOT change the band's
    height; it redistributes the slack (was 375 above / 527 below the text) to
-   one run beneath the text column, which is what .deco-grid--left is for. */
+   one run beneath the text column. That was .deco-grid--left's job until
+   2026-08-05; the band's own grid covers the whole run now. */
 /* .75fr 1.25fr, was 1.1fr .9fr (2026-08-02). The band's left column held 315px
    of copy beside an 839px card, leaving a 524px dead run under the CTAs. The
    fix is not padding — it is that the card had to get SHORTER, and the only
@@ -3630,8 +3631,10 @@ p, li, dd { text-wrap: pretty; }
    Large dark bands whose content leaves one half empty get a background layer
    on THAT side only. Two treatments, one per section, never both:
 
-     .deco-grid   1px cream grid on a 56px pitch at 4.5% opacity
      .deco-amp    one oversized outlined ampersand at 3.5%, bottom-right
+
+   (.deco-grid was the second treatment here until 2026-08-05; the grid now
+   rules whole bands instead — see THE GRID IS THE SURFACE at the foot.)
 
    Both are pseudo-elements: outside the accessibility tree (so no aria-hidden
    attribute is needed), pointer-events:none, absolutely positioned inside an
@@ -3642,27 +3645,15 @@ p, li, dd { text-wrap: pretty; }
    the default; reach for the ampersand only where a band ends a page section
    and the empty side is the right.
    ========================================================= */
-.deco-grid, .deco-amp { position: relative; overflow: clip; }
-.deco-grid > .wrap, .deco-amp > .wrap { position: relative; z-index: 1; }
+.deco-amp { position: relative; overflow: clip; }
+.deco-amp > .wrap { position: relative; z-index: 1; }
 
-.deco-grid::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    repeating-linear-gradient(to right, rgba(240,235,225,.045) 0 1px, transparent 1px 56px),
-    repeating-linear-gradient(to bottom, rgba(240,235,225,.045) 0 1px, transparent 1px 56px);
-  /* confined to the RIGHT half, fading in so the seam is not a hard edge */
-  -webkit-mask-image: linear-gradient(to right, transparent 0 50%, #000 66%);
-          mask-image: linear-gradient(to right, transparent 0 50%, #000 66%);
-}
-.deco-grid--left::before {
-  -webkit-mask-image: linear-gradient(to left, transparent 0 50%, #000 66%);
-          mask-image: linear-gradient(to left, transparent 0 50%, #000 66%);
-}
-/* both outer margins, clean centre — for bands whose empty side varies by page */
-.deco-grid--edges::before {
-  -webkit-mask-image: linear-gradient(to right, #000 0 14%, transparent 30% 70%, #000 86%);
-          mask-image: linear-gradient(to right, #000 0 14%, transparent 30% 70%, #000 86%);
-}
+/* .deco-grid and its --left / --edges modifiers were RETIRED 2026-08-05.
+   They painted a masked half-grid to fill the empty side of a dark band; the
+   grid now rules the whole band on every dark section (see THE GRID IS THE
+   SURFACE, at the foot of this file), so there is no empty half to fill and
+   a second, differently-phased 56px grid over the first is moiré. The class
+   was removed from its 5 sections in the same pass — grep returns nothing. */
 
 .deco-amp::before {
   content: "&";
@@ -3715,7 +3706,7 @@ p, li, dd { text-wrap: pretty; }
 }
 @media (max-width: 900px){
   /* below the two-column breakpoint there is no empty half to fill */
-  .deco-grid::before, .deco-amp::before { display: none; }
+  .deco-amp::before { display: none; }
 }
 
 /* =========================================================
@@ -3754,20 +3745,65 @@ p, li, dd { text-wrap: pretty; }
   background-size: 56px 56px;
 }
 
-/* Recurring dark bands take the grid by selector rather than per-page markup:
-   .final (the pre-footer CTA, on 41 pages — its empty side varies, so it uses
-   the both-edges mask) and the ink service-detail band on /services/. */
-.section.ink.final { position: relative; overflow: clip; }
-.section.ink.final > .wrap { position: relative; z-index: 1; }
-.section.ink.final::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+/* =========================================================
+   THE GRID IS THE SURFACE — sitewide (2026-08-05)
+
+   Until now the blueprint grid was a homepage feature: `#problem` and
+   `#calcband` carried .ink--grid and nothing else on the site did. Every
+   other dark band got one of two MASKED half-grids (.deco-grid, and .final's
+   own ::before) or, on 18 sections, nothing but --grain. Five different dark
+   surfaces, so /pricing/ and /method/ read as a different site from /.
+
+   The grid is now the surface of every dark band, and of every hero. Two
+   rules, below, replace three.
+
+   WHICH SECTIONS, AND WHY NOT ALL OF THEM. design/home-reference.html grids
+   exactly three of its eight sections: the hero (ink on cream) and the two
+   dark bands (cream on ink). The five light bands between them are plain
+   paper on purpose — that contrast is what gives a dark gridded band its
+   punch, and gridding everything would flatten the page back out. So the
+   rule the reference encodes is "the grid marks the hero and the dark
+   bands", and that is what is implemented here.
+
+   The masked variants are RETIRED, not stacked with this. A mask exists to
+   fill an empty HALF of a two-column band; once the grid rules the whole
+   band there is no empty half left to fill, and two grids on one section —
+   one full-bleed, one masked, both 56px but differently phased — is moiré.
+   .deco-grid's 5 uses are stripped from the markup in the same pass.
+
+   .deco-amp is NOT retired: an outlined glyph is a signature, not a second
+   grid, and it composes with a ruled field rather than beating against it.
+   /work/marcus/ keeps the site's one ampersand, now over the grid.
+   ========================================================= */
+
+/* DARK — every ink band, full-bleed, at every width.
+   (0,1,1) so it beats `.ink { background-image: var(--grain) }` on
+   specificity as well as source order. Noise and rule are two different
+   surfaces; this REPLACES the grain rather than layering over it. */
+section.ink {
+  background-color: var(--ink-grid);
   background-image:
-    repeating-linear-gradient(to right, rgba(240,235,225,.045) 0 1px, transparent 1px 56px),
-    repeating-linear-gradient(to bottom, rgba(240,235,225,.045) 0 1px, transparent 1px 56px);
-  -webkit-mask-image: linear-gradient(to right, #000 0 14%, transparent 30% 70%, #000 86%);
-          mask-image: linear-gradient(to right, #000 0 14%, transparent 30% 70%, #000 86%);
+    linear-gradient(rgba(240,235,224,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240,235,224,.028) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
-@media (max-width: 900px){ .section.ink.final::before { display: none; } }
+
+/* LIGHT — every page hero.
+   The homepage hero already had this, drawn to a <canvas> by hero-machine.js,
+   which meant it existed on ONE page and vanished with JS off. As CSS it is
+   free, needs no script, and reaches all 38 heroes. The canvas keeps drawing
+   the registration TICKS, which are the mark; this is only the field.
+
+   Alpha is the homepage's own .06, not the reference's .05 — the homepage is
+   the stated source of truth here and that value was raised deliberately when
+   the hero was tightened to one viewport. Same 56px pitch as the dark grid,
+   so the two read as one system. */
+:is(.hero, .pagehero, .sechero, .bookhero, .cr-hero, .thankshero) {
+  background-image:
+    linear-gradient(rgba(26,21,17,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,21,17,.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
 
 /* =========================================================
    MOBILE VERIFICATION PASS (2026-08-04)

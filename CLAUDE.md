@@ -147,20 +147,36 @@ keeps a second, drifting copy of the palette.
 | `--rule-dark` | `#3A3227` | hairline on ink |
 
 **A tenth was added 2026-08-03: `--ink-grid: #211A14`**, the reference's dark
-band, used ONLY by `.ink--grid` (the blueprint-grid sections — see below). It
-is one step up from `--ink` and is not derivable from it: the three channels
-move by different amounts (+6/+4/+3), so no `color-mix()` reproduces it.
+band. It is one step up from `--ink` and is not derivable from it: the three
+channels move by different amounts (+6/+4/+3), so no `color-mix()` reproduces
+it.
 
-- **It is scoped, not a second `--ink`.** `.final`, the footer and every other
-  page's ink band stay `--ink`. Do not repoint `--ink` at it to "unify" them:
-  `--panel` (`#221C15`) is only 1/2/1 above `#211A14`, so a sitewide swap
-  flattens every raised panel on ink into its section.
-- **`--panel` cannot follow it up, either.** The reference's panel is `#2A2219`,
+**As of 2026-08-05 it is the field of EVERY dark section** (`section.ink`),
+not just the two homepage bands — see "The grid is the surface" below. `--ink`
+itself is unchanged and still the token for the footer, for `.mk-box`'s pinned
+base, and for anything that must NOT track the field.
+
+- **`--panel` does not follow it up.** The reference's panel is `#2A2219`,
   which measures **4.42:1** against `--on-dark-muted` — an AA fail, and
   `.failstat` puts that token on three elements (the 74% figure, its caption,
-  the ratio labels). `--panel` stays `#221C15` (4.76:1). What separates the
-  stat panel from the band is the grid stopping at its border, not tone;
-  verified against the reference, which reads the same way.
+  the ratio labels). `--panel` stays `#221C15` (4.76:1).
+- **So every raised panel on ink is now 1/2/1 from its field, by design.**
+  That was the exact number the earlier note here warned a sitewide swap would
+  produce, and it is fine — because tone was never what separated them.
+  `.failstat` has shipped at 1/2/1 since 2026-08-03 and reads correctly: the
+  panel is an OPAQUE background, so **the grid stops at its border**, and a
+  1px `--dline` hairline draws the edge. Verified against the reference, which
+  reads the same way. Measured on `.failstat`, `.svc-detail__card`, `.score`
+  and `.ink .fig` across `/`, `/services/`, `/method/`,
+  `/work/marcus/results/` and `/industries/healthcare/`: every one carries the
+  border and the grid-stop.
+- **A TRANSLUCENT panel is the case that breaks**, and there was exactly one:
+  `.mk-box--core` on `/work/marcus/` is an accent wash (`rgba(189,69,31,.12)`),
+  so it composited against the field instead of covering it, lightened from
+  `#2E1C13` to `#341F15`, and took `--on-dark-muted` to **4.38:1** — an AA
+  fail. Both `.mk-box` rules now sit on an opaque `var(--ink)` base with the
+  wash as a `linear-gradient` layer, which pins the composite wherever the
+  band goes. If you add a translucent panel on ink, do the same.
 
 Everything else aliases or derives from these (`--cream`, `--paper-card`,
 `--rust`, `--tx`, `--line` … all resolve here), so changing a value changes
@@ -240,22 +256,31 @@ Removed as duplicate/partial-border experiments:
   on the hero. Its spans and CSS are gone; no JS referenced them.
 - `.bound__i`'s 3px ink top edge + asymmetric radius, now the standard hairline.
 
-**Dark-band texture.** Large dark bands whose content leaves one half empty get
-a layer on *that side only*. Two treatments, never both on one section. (A
-third thing, `.ink--grid`, is NOT one of these — it is the band's whole
-surface rather than a filler for an empty half. See the blueprint-grid section
-below; a section takes that or one of these, never both.)
+**Dark-band texture.** One treatment remains, `.deco-amp`. The grid is no
+longer a *filler for an empty half* — it is the surface of every dark band
+(see "The grid is the surface" below), so there is no empty half left to fill.
 
-- `.deco-grid` — 1px cream grid on a 56px pitch at 4.5%, masked to the right
-  half. `--left` and `--edges` modifiers for the other cases.
 - `.deco-amp` — one oversized outlined ampersand at 7%, bottom-right, with a
   diagonal mask so it materialises only in the empty corner and never tracks
   behind a copy column. It sits fully inside the section — no shape is cut at
-  the boundary.
+  the boundary. It composes WITH the grid: an outlined glyph over a ruled
+  field is one drawing, not two textures fighting.
+- **`.deco-grid` (and `--left` / `--edges`) was RETIRED 2026-08-05.** It
+  painted a masked half-grid at 4.5% over plain `--ink`. Its 5 sections
+  (`/denver/`, `/phoenix/`, `/services/`, `/work/marcus/`,
+  `/work/marcus/results/`) now take the full-bleed grid like everything else;
+  the class is gone from the markup and its rules are gone from `styles.css`.
+  Two 56px grids on one section — one full-bleed, one masked and differently
+  phased — is moiré, so these could never have stacked.
+  - Removing it also removed `position: relative`, `overflow: clip` and the
+    `> .wrap` z-index lift from those 5 sections. **Verified not load-bearing**,
+    the same way `#problem` was: element-by-element geometry diff against the
+    live pre-change site, **zero movement across 1457 elements**, and no page
+    overflow or escaping child at 1920/1440/1280/1024/921/768/430/390/320.
 
 **Max one ampersand per page** — it is a signature, not a texture. Currently
-**`/work/marcus/` (MARCUS band) only**. The grid is the default;
-`.section.ink.final` takes it by selector on all 41 pages.
+**`/work/marcus/` (MARCUS band) only**, now sitting over the grid rather than
+over plain ink.
 
 **`/` `#problem` lost its ampersand 2026-08-03**, by decision rather than by
 defect: the reference has no decoration in that section. `.deco-amp` came off
@@ -270,11 +295,61 @@ overflow at 1440 / 1280 / 1024 / 768 / 430 / 320 with `overflow` back to
   the section itself. Ours was noise, the reference's is ruled. **That gap is
   closed 2026-08-03 — see the blueprint grid below.**
 
-### Blueprint grid — `.ink--grid` (2026-08-03)
+### The grid is the surface — sitewide (2026-08-05)
 
-The reference's dark-band surface, adopted verbatim on the two sections that
-carry it there: `/` `#problem` and `/` `#calcband`. On the SECTION, so it runs
-full-bleed; a `.wrap` is 1160px inside a viewport-wide band.
+**The blueprint grid is the site's ground texture, on every dark band and
+every hero.** Until this pass it was a homepage feature: `#problem` and
+`#calcband` carried it and nothing else did, which is why `/pricing/` and
+`/method/` read as a different site.
+
+**Which surfaces, and why not all of them.** `design/home-reference.html`
+grids exactly **three of its eight sections** — the hero (ink on cream) and
+the two dark bands (cream on ink). The five light bands between them are
+plain paper *on purpose*: that contrast is what gives a dark gridded band its
+punch, and gridding everything flattens the page back out. So the rule is
+**"the grid marks the hero and the dark bands"**, and that is what ships.
+Do not add it to `.paper` / `.paper-2` content sections.
+
+| surface | rule | field |
+|---|---|---|
+| `section.ink` (53 sections) | `rgba(240,235,224,.028)` 1px @56px | `--ink-grid` `#211A14` |
+| every hero (38) | `rgba(26,21,17,.06)` 1px @56px | unchanged (`--paper`) |
+| every other light section | none | unchanged |
+
+- **The hero grid moved from canvas to CSS.** `js/hero-machine.js` used to
+  draw the field at 6%, which meant it existed on ONE page and vanished with
+  JS off. As a CSS background it is free, needs no script, and reaches all 38
+  heroes. The canvas still draws the registration **ticks** at 14% — those are
+  the mark, and they are homepage-only by design. Verified the field is not
+  drawn twice: the homepage hero measures `rgb(227,222,213)` against a
+  `rgb(240,235,225)` field, **identical to every other hero**, and the canvas
+  now covers 0.44% of its box (a full grid covers ~3.5%).
+- **Hero alpha is the homepage's `.06`, not the reference's `.05`.** The
+  homepage is the source of truth for this pass and that value was raised
+  deliberately when the hero was tightened to one viewport.
+- **Three treatments became one.** `.deco-grid` (masked half-grid, 4.5%) and
+  `.section.ink.final::before` (masked both-edges, 4.5%, and switched off
+  below 900px) are both deleted. A mask exists to fill an empty HALF of a
+  two-column band; once the grid rules the whole band there is nothing to
+  fill.
+- **Selector, not markup.** `section.ink` is (0,1,1), so it beats
+  `.ink { background-image: var(--grain) }` on specificity as well as source
+  order, and a new dark section is gridded without anyone remembering. The
+  `.ink--grid` class still works and is still on the two homepage bands; it is
+  now redundant rather than load-bearing.
+- **Measured, not eyeballed.** Field `rgb(33,26,20)`, rule `rgb(39,31,25)`,
+  9 rule pixels per 500px scanline — **byte-identical on `/`, `/pricing/`,
+  `/method/`, `/careers/`, `/services/`, `/industries/retail/` and `/about/`'s
+  `.final`**. A screenshot will not show you a 5–6/255 delta reliably; probe a
+  scanline in an empty part of the band and count distinct colours.
+  - Sample **below the sticky nav**. An element screenshot scrolls the section
+    into view and the nav paints over its top ~30px, which reported
+    `/careers/` as a light `rgb(215,209,200)` with no grid at all. Row 120 is
+    clear; row 30 is not.
+
+Historical note — the original 2026-08-03 adoption, on `/` `#problem` and
+`/` `#calcband` only. On the SECTION, so it runs full-bleed; a `.wrap` is
+1160px inside a viewport-wide band.
 
     background-color: var(--ink-grid);          /* #211A14 */
     background-image:
@@ -291,16 +366,14 @@ full-bleed; a `.wrap` is 1160px inside a viewport-wide band.
 - **A plain background, not a masked `::before` like `.deco-grid`/`.deco-amp`.**
   There is no mask, so there is nothing to position, no `overflow: clip`, no
   `> .wrap` z-index lift — and no child can paint over it by accident.
-- **Not switched off below 900px**, unlike `.deco-grid`. That layer exists to
-  fill an empty HALF of a two-column band and has nothing to do once the
-  columns stack. This one is the band's surface at every width.
-- **`.calcband` lost `.deco-grid--left` to it.** The earlier note said not to
-  remove that class from this section — it was the only thing keeping the empty
-  left run reading as a drawn surface. `.ink--grid` rules the whole band, which
-  covers that run and the rest. **Never put both on one section**: two grids on
-  different pitches with a mask between them is moiré, not texture.
-  `.deco-grid` itself stays — 5 other pages use it (`/denver/`, `/phoenix/`,
-  `/services/`, `/work/marcus/`, `/work/marcus/results/`).
+- **Not switched off below 900px.** The retired masked layers were — they
+  existed to fill an empty HALF of a two-column band and had nothing to do
+  once the columns stack. This one is the band's surface at every width.
+- **`.calcband` lost `.deco-grid--left` to it.** `.ink--grid` rules the whole
+  band, which covers that run and the rest. **Never put two grids on one
+  section**: different pitches with a mask between them is moiré, not texture.
+  (`.deco-grid` had 5 remaining users after this; all 5 were retired
+  2026-08-05 — see the brand-decoration note.)
 - **The alpha ceiling is `.04`.** `.028` is the reference's and is what ships;
   it may go to `.04` if the grid reads as absent on real hardware, no higher.
 - Measured, not eyeballed: field `rgb(33,26,20)`, rule `rgb(39,31,25)`, pitch

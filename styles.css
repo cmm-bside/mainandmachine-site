@@ -1927,9 +1927,24 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 /* very small phones (~360–390px): guard against tight chrome text */
 
 /* On phones the bar carries logo + CTA + hamburger; the wordmark + CTA +
-   toggle stop sharing a row around ~470px, so the M&M plate (with the logo
-   link's aria-label) carries the brand alone below that. */
-@media (max-width: 480px){
+   toggle stop sharing a row, so the M&M plate (with the logo link's
+   aria-label) carries the brand alone below that.
+
+   THIS BREAKPOINT WAS 480px AND THAT WAS ~30px TOO LOW. "Around ~470px" was
+   an estimate that was never measured, and it was wrong: every width from
+   481 to 509 overflowed — 1px at the top of the band, 29px at the bottom —
+   with the hamburger pushed past the viewport edge.
+
+   It survived because it falls in a hole in every grid that renders this
+   site: sweep:mobile runs 320/390/430 and qa:matrix renders 375/768/1024/
+   1440, so nothing has ever rendered a width between 431 and 767. A
+   spot-check grid cannot find a 29px band; this came out of sweeping
+   320..1440 one pixel at a time.
+
+   560 rather than 510: it leaves headroom for a label edit, and the score
+   app's mirror of this file needs 560 anyway — its nav CTA is wider, so its
+   band runs to 546. One number in both files beats two that drift. */
+@media (max-width: 560px){
   .logo__word{ display:none; }
 }
 

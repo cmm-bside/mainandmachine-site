@@ -62,7 +62,7 @@ the pre-change `hero` bucket should be read as "hero + pre-footer + page hero".
 | engagement | `cta_score_click` | `page`, `location` (hero·ticker·nav·door·footer·calculator) | any `/score` link clicked in a known region | `js/analytics.js` |
 | engagement | `score_started` | `page` | "Get my score" — first question shown | Score app |
 | engagement | `score_completed` | `page`, `band` | assessment scored (band, never the number) | Score app |
-| engagement | `calculator_interacted` | `page`, `industry`, `team_band` (1–10 · 11–25 · 26–50 · 51–100) | first touch of either ROI calculator, once per page load | `js/analytics.js` |
+| engagement | `calculator_interacted` | `page`, `industry`, `team_band` (1–10 · 11–25 · 26–50 · 51–100), `at` (`first-touch` · `cta-click`) | either ROI calculator. `first-touch` once per page load, debounced 400ms so a slider drag reports the SETTLED value; `cta-click` once more if they then click the calculator's own booking CTA, carrying the state they acted on. An untouched calculator fires neither. | `js/analytics.js` |
 | engagement | `guide_read` | `page`, `guide` (slug) | 75% scroll depth on a `/guides/<slug>/` page, once | `js/analytics.js` |
 | intent | `cta_book_click` | `page`, `location` (the link's own `data-cta`; + `score-report` from the app's report door) | any `/book` link clicked, anywhere | both |
 | intent | `calendly_loaded` | `page` | the /book/ scheduler **iframe** fires `load` — our side of the embed | `book/index.html` |
@@ -108,6 +108,13 @@ counts is the healthy state. `calendly_loaded` materially exceeding
 `calendly_widget_viewed` means the frame is mounting and the booking UI is not
 coming up — an embed outage that no other event would show you, because a
 visitor who never sees a calendar also never reaches any later step.
+
+Since 2026-08-04 the message behind `calendly_widget_viewed`
+(`calendly.event_type_viewed`) is **also** what clears the "Loading the
+scheduler…" placeholder — see CLAUDE.md → /book/ scheduler. The analytics are
+unchanged: the Plausible event stays latched to once per page load, while the
+placeholder clears on every paint, because a prefill rebuild is a real repaint
+but not a new visitor reaching that step. Do not collapse the two.
 
 Each of the three Calendly events fires **at most once per page load**. Calendly
 re-emits `event_type_viewed` whenever someone backs out of a slot to the
@@ -157,10 +164,22 @@ Network filtered to `/api/event`, then:
       whole job).
 - [ ] Homepage: click the hero "Book a free assessment" → `cta_book_click`
       `{page:"/", location:"hero"}`. Repeat from nav, footer, ticker, door.
-- [ ] Homepage ROI band: move the slider → one `calculator_interacted` with
-      the industry + band; move it again → **no second event**.
+- [ ] Homepage ROI band: drag the slider → one `calculator_interacted`
+      `{at:"first-touch"}` ~400ms after you let go, carrying the band you
+      SETTLED on (not the first pixel of the drag); move it again → **no
+      second event**.
 - [ ] /calculator/: change industry → `calculator_interacted`
-      `{page:"/calculator/", …}`.
+      `{page:"/calculator/", at:"first-touch", …}`. Then change it again and
+      click "Run your real numbers" → one more, `{at:"cta-click"}`, carrying
+      the SECOND industry. Load the page and click that CTA without touching
+      anything → **no** `calculator_interacted` at all (just `cta_book_click`).
+- [ ] /calculator/ → click the CTA → the /book/ scheduler's "What is eating
+      your team's time?" field reads "Ran the calculator: <industry>, ~N
+      people." and is editable; a bare /book/ leaves it empty. Malformed
+      (`?industry=notreal&team=25`, `?service=constructor`) shows nothing.
+- [ ] /score report → click the booking door → /book/ field reads "Took the
+      AI-Ready Score: <Phase> phase." Confirm the URL carries `phase` and
+      **no numeric score**.
 - [ ] /guides/ai-consultant-cost/: scroll to ~75% → one `guide_read`
       `{guide:"ai-consultant-cost"}`; keep scrolling → no repeat.
 - [ ] Any footer: submit the newsletter form → `newsletter_subscribed`;
@@ -192,5 +211,6 @@ Network filtered to `/api/event`, then:
       finish → `score_completed` with `band` only (inspect the POST body —
       no answers, no email, no raw score).
 - [ ] /score report: click the booking door → `cta_book_click`
-      `{location:"score-report"}`.
+      `{location:"score-report"}`, and the URL carries
+      `ctx=score&phase=<map|prove|expand>` alongside the report UTMs.
 - [ ] Realtime dashboard shows each event within ~30s of firing.

@@ -8,7 +8,7 @@
 > the US. Founded by Christopher Myers.
 > The free 30-minute assessment is the front door.
 
-Last updated: 2026-08-04
+Last updated: 2026-08-06
 
 Full page text for AI systems: [llms-full.txt](/llms-full.txt) — the complete
 visible copy of the most important pages, with page delimiters.

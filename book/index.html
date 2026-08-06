@@ -220,10 +220,18 @@
    contributes nothing to this box either way. The card measures 720px on the
    parse, on the mount and on the load — the swap cannot shift the page. */
 .cal-embed { position: relative; margin-top: var(--s-16); min-height: 720px; border: 1px solid var(--line); background: var(--paper); }
-/* The branded placeholder. It comes off on the iframe's own `load` event
-   (the .is-ready class), NEVER on a timer — a timer either lies about a slow
-   frame or leaves the message under a live calendar. */
-.cal-embed::before { content: "Loading the scheduler…"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); letter-spacing: .08em; }
+/* The branded placeholder. It comes off (the .is-ready class) when CALENDLY
+   PAINTS — its `calendly.event_type_viewed` postMessage — not on the iframe's
+   own `load` event, which fires 1–2s before the app renders and left a blank
+   cream box in the gap. A 5s per-mount timer is the FALLBACK only: a blocked
+   or dropped listener must never leave this label sitting on top of a working
+   calendar. It is deliberately not the primary signal — a timer alone either
+   lies about a slow frame or does exactly that.
+   `pointer-events: none` because the placeholder must never take a click. It
+   already sits under the iframe (both are positioned at z-index auto, and the
+   ::before precedes the iframe child in paint order), so this is belt and
+   braces for the window before the frame exists. */
+.cal-embed::before { content: "Loading the scheduler…"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); letter-spacing: .08em; pointer-events: none; }
 .cal-embed.is-ready::before { content: none; }
 .cal-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .cal-note { margin-top: 16px; font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; }
@@ -636,9 +644,6 @@
   // #industry / #team, which have never existed on this page.
   try {
     var qp = new URLSearchParams(window.location.search);
-    var svc = (qp.get('service') || '').trim().toLowerCase();
-    var ind = (qp.get('industry') || '').trim().toLowerCase();
-    var team = parseInt(qp.get('team'), 10);
     var SVC = { audit: 'AI Readiness Audit', sprint: 'Implementation Sprint', managed: 'Managed Services' };
     var IND = {
       'professional-services': 'Professional services',
@@ -647,22 +652,93 @@
       'construction': 'Construction & trades',
       'hospitality': 'Hospitality & food service'
     };
+    // The scheduler sentence wants the plain lowercase noun — it reads as
+    // prose in the context field, where the title-case form label would not.
+    var IND_PROSE = {
+      'professional-services': 'professional services',
+      'retail': 'retail',
+      'healthcare': 'healthcare',
+      'construction': 'construction',
+      'hospitality': 'hospitality'
+    };
+    // The AI-Ready Score's three phases. The app calls this value `band`
+    // internally (config/crm-fields.ts: "map | prove | expand"); `phase` is
+    // what it is called in public copy, and the URL is public.
+    var PHASE = { map: 'Map', prove: 'Prove', expand: 'Expand' };
+
+    // WHITELIST, and ONLY the whitelist. This used to be `SVC[svc] || svc`,
+    // which echoed an unrecognised value straight back into the page. It is
+    // textContent so it was never script, but
+    // /book/?service=Your%20card%20was%20declined%20—%20call%20480-555-0100
+    // rendered that sentence on our own booking page under "Scoping for:",
+    // which is a phishing surface with our branding around it.
+    // hasOwnProperty because a bare lookup answers 'constructor' and
+    // '__proto__' out of the prototype chain — both truthy, both stringifying
+    // into the copy. Anything unrecognised now contributes nothing at all,
+    // which is also what keeps a malformed link identical to a bare /book/.
+    function label(map, key) {
+      return (key && Object.prototype.hasOwnProperty.call(map, key)) ? map[key] : '';
+    }
+    var svc = label(SVC, (qp.get('service') || '').trim().toLowerCase());
+    var indKey = (qp.get('industry') || '').trim().toLowerCase();
+    var ind = label(IND, indKey);
+    var phase = label(PHASE, (qp.get('phase') || '').trim().toLowerCase());
+    // The calculator slider's own range (min 5, max 100), AND only alongside a
+    // recognised industry. Both calculators emit the pair together and always
+    // have, so a team size arriving without one did not come from them —
+    // /book/?industry=notreal&team=25 used to drop the bad industry and still
+    // render "Scoping for: ~25 people — from the calculator", attributing a
+    // number to a tool that never produced it. NaN fails both comparisons, so
+    // junk collapses to 0.
+    var teamN = parseInt(qp.get('team'), 10);
+    var team = (ind && teamN >= 5 && teamN <= 100) ? teamN : 0;
+
     var parts = [];
-    if (svc) parts.push('Service: ' + (SVC[svc] || svc));
-    if (ind) parts.push('Industry: ' + (IND[ind] || ind));
+    if (svc) parts.push('Service: ' + svc);
+    if (ind) parts.push('Industry: ' + ind);
     if (team > 0) parts.push('Team: ~' + team + ' (from ROI calculator)');
+    if (phase) parts.push('AI-Ready Score phase: ' + phase);
     var interestEl = document.getElementById('interest');
     if (interestEl) interestEl.value = parts.join(' · ');
 
     // The human-readable version of the same context, shown on the form card.
     var shown = [];
-    if (svc) shown.push(SVC[svc] || svc);
-    if (ind) shown.push(IND[ind] || ind);
+    if (svc) shown.push(svc);
+    if (ind) shown.push(ind);
     if (team > 0) shown.push('~' + team + ' people');
+    if (phase) shown.push(phase + ' phase');
     var ctx = document.getElementById('calcContext');
     if (ctx && shown.length) {
       ctx.textContent = 'Scoping for: ' + shown.join(', ') + (team > 0 ? ' — from the calculator' : '');
       ctx.hidden = false;
+    }
+
+    // ---- and the SCHEDULER path, which is the one that was missing --------
+    // Everything above feeds the FALLBACK form: a hidden #interest field read
+    // server-side, plus the visible confirmation line. But the primary path on
+    // this page is the Calendly card, and its context field (#cal-workflows)
+    // is what rides along with the booking as Calendly's `a1` answer. So a
+    // visitor who ran the calculator and then booked a slot — the exact path
+    // this hand-off exists for — arrived with none of it. This closes that.
+    //
+    // A sentence, not a field dump, because a human reads it before the call
+    // and can edit it in place.
+    //
+    // Set ONCE, and never over an existing value. The field is empty on a
+    // normal load, so a value already here is either restored (bfcache, back
+    // navigation) or typed, and both outrank anything the URL claims. Later
+    // edits keep winning through syncPrefill() in the Calendly block below,
+    // and the stand-down once a slot is picked is untouched.
+    //
+    // Ordering is load-bearing: this runs before the Calendly IIFE, so the
+    // FIRST calUrl() already carries the sentence and no rebuild is needed.
+    var calQ = document.getElementById('cal-workflows');
+    if (calQ && !calQ.value.trim()) {
+      var sentence = '';
+      if (phase) sentence = 'Took the AI-Ready Score: ' + phase + ' phase.';
+      else if (ind && team) sentence = 'Ran the calculator: ' + label(IND_PROSE, indKey) + ', ~' + team + ' people.';
+      else if (ind) sentence = 'Ran the calculator: ' + label(IND_PROSE, indKey) + '.';
+      if (sentence) calQ.value = sentence;
     }
   } catch (e) { /* query parsing is best-effort */ }
 
@@ -830,7 +906,26 @@
   if(!mount) return;
   var base = mount.getAttribute('data-cal-url');
   var qEl = document.getElementById('cal-workflows');
-  var iframe = null, loadedFired = false;
+  var iframe = null, loadedFired = false, readyTimer = null;
+
+  // The placeholder comes off when CALENDLY paints, not when our iframe loads.
+  // `load` fires on the frame's own document 1–2s before their app renders, so
+  // the old .is-ready-on-load left a blank cream box for that whole gap. The
+  // signal we already receive at first paint is calendly.event_type_viewed —
+  // see the FUNNEL block below, which latches it for ANALYTICS. This does not
+  // share that latch on purpose: a prefill rebuild is a second real paint that
+  // must clear the placeholder again but must NOT count as a second visitor
+  // reaching that step.
+  //
+  // markReady() is idempotent and armed from two places — that message and a
+  // 5s per-mount fallback. The fallback exists because a blocked listener (an
+  // extension, a future postMessage change on their side) would otherwise
+  // leave the label sitting on top of a working calendar forever. It is a
+  // backstop, never the primary path.
+  function markReady(){
+    if(readyTimer){ clearTimeout(readyTimer); readyTimer = null; }
+    mount.classList.add('is-ready');
+  }
   // The a1 value the LIVE iframe was built with, and whether the visitor has
   // committed inside the embed. Both gate the prefill rebuild below.
   var appliedQ = '';
@@ -862,10 +957,17 @@
     // to defer. The whole point of this change is that it does not get deferred.
     f.setAttribute('loading', 'eager');
     // Placeholder back up while THIS frame loads — including a prefill rebuild,
-    // which is a real load and should say so.
+    // which is a real load and should say so. The fallback timer is re-armed
+    // per mount for the same reason: each rebuild gets its own 5s grace.
     mount.classList.remove('is-ready');
+    if(readyTimer) clearTimeout(readyTimer);
+    readyTimer = setTimeout(markReady, 5000);
     f.addEventListener('load', function(){
-      mount.classList.add('is-ready');
+      // Deliberately does NOT clear the placeholder — see markReady() above.
+      // This event still means something and keeps its own analytics: it is
+      // OUR side of the embed loading, which analytics-events.md contrasts
+      // against calendly_widget_viewed to catch a frame that mounts but never
+      // renders a booking UI.
       if(loadedFired) return;
       loadedFired = true;
       if(typeof window.plausible === 'function') window.plausible('calendly_loaded', { props: { page: '/book/' } });
@@ -947,6 +1049,10 @@
     var evt = e.data.event;
     if(typeof evt !== 'string' || evt.indexOf('calendly.') !== 0) return;
 
+    // Calendly's booking UI has painted. Clear the placeholder on EVERY such
+    // message, including the re-emissions the funnel latch below ignores.
+    if(evt === 'calendly.event_type_viewed') markReady();
+
     if(FUNNEL[evt] && !funnelFired[evt]){
       funnelFired[evt] = true;
       if(typeof window.plausible === 'function'){
@@ -999,6 +1105,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=7"></script>
-<script src="/js/analytics.js?v=3"></script>
+<script src="/js/analytics.js?v=4"></script>
 </body>
 </html>

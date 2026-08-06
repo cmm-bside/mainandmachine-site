@@ -1,0 +1,18 @@
+# Main & Machine — machine-readable security contact (RFC 9116).
+#
+# This file is HAND-MAINTAINED and its Expires date is enforced by
+# `npm run security:check` (scripts/check-security-txt.mjs), which runs in
+# build:static: the build warns inside 30 days and FAILS once the date has
+# passed. An expired security.txt is worse than none — RFC 9116 says a
+# consumer MUST ignore the file past Expires, so a lapsed date silently
+# removes the disclosure route it exists to advertise.
+#
+# To renew: set Expires ~12 months out and re-run `npm run security:check`.
+# Contact must stay byte-identical to `email` in src/data/site-facts.json;
+# the guard asserts that too, so a contact change cannot land here alone.
+
+Contact: mailto:cmyers@mainandmachine.com
+Expires: 2027-08-04T00:00:00.000Z
+Policy: https://www.mainandmachine.com/security/
+Preferred-Languages: en
+Canonical: https://www.mainandmachine.com/.well-known/security.txt

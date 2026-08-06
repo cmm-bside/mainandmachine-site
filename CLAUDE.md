@@ -1424,6 +1424,57 @@ itself, so it travels with the block instead of sitting stranded mid-column.
   `--block-gap` between the header block and `.bio`. Measure the section, not
   one column, or a two-column layout with a tall image always reads as failing.
 
+### Tool → booking context hand-off (2026-08-04)
+
+The ROI calculator and the AI-Ready Score both hand what the visitor told them
+to `/book/`, which turns it into an **editable sentence in the scheduler's
+context field** (`#cal-workflows`) — the field that rides along with the
+Calendly booking as its `a1` answer, so the advisor reads it before the call.
+
+- **The URL half already existed and was NOT rebuilt.** Both calculator CTAs
+  (`#calcBook` on `/calculator/`, `#bandBook` on `/`) have always kept their
+  href in sync with the live inputs — `/book/?industry=…&team=…&service=sprint`
+  — on every `change`/`input`. Syncing the href LIVE rather than rewriting it on
+  click is what makes middle-click and "copy link address" carry the same
+  context. A second `ctx=roi` spelling was proposed and rejected: `industry` +
+  `team` already identify the calculator, and two schemes for one fact is two
+  whitelists to keep in step.
+- **What was missing is the destination.** `/book/`'s param block fed only the
+  FALLBACK form — the hidden `#interest` field and the visible `#calcContext`
+  line. The primary path on that page is the scheduler, so a visitor who ran the
+  calculator and then booked a slot arrived with none of it. The same block now
+  also seeds `#cal-workflows`.
+- **Ordering is load-bearing.** The block runs before the Calendly IIFE, so the
+  FIRST `calUrl()` already carries the sentence and no prefill rebuild is
+  needed. It also lives inside the fallback form's IIFE (`if(!form) return`) —
+  fine while both are on the page, but that coupling is the thing to notice if
+  the fallback form is ever removed.
+- **Set once, never over an existing value.** The field is empty on a normal
+  load, so a value already there is restored (bfcache, back navigation) or
+  typed; both outrank the URL. Later edits keep winning through `syncPrefill()`,
+  and the stand-down once a slot is picked is untouched.
+- **The score passes its PHASE, never its number.** `ctx=score&phase=<map|prove|
+  expand>`, added in the score app's `doorUrl()` (separate repo,
+  `~/ai-ready-score/config/offers.ts`) so it rides every door plus the report
+  email and PDF. The app calls this value `band` internally; `phase` is the
+  public word and the URL is public. A numeric score must never be in a link
+  someone pastes into Slack.
+- **Whitelist, and only the whitelist — this was a live content-injection
+  hole.** The block used to resolve labels as `MAP[key] || key`, echoing an
+  unrecognised value straight into the page. `textContent`, so never script, but
+  `/book/?service=Your%20card%20was%20declined%20—%20call%20480-555-0100`
+  rendered that sentence under "Scoping for:" inside our own branding. Lookups
+  now go through `hasOwnProperty` — a bare lookup answers `constructor` and
+  `__proto__` out of the prototype chain, both truthy, both stringifying into
+  the copy — and anything unrecognised contributes nothing at all.
+- **`team` is only honoured alongside a recognised industry**, and only inside
+  the slider's own 5–100. Both calculators emit the pair together, so
+  `?industry=notreal&team=25` used to drop the bad industry and still render
+  "~25 people — from the calculator", attributing a number to a tool that never
+  produced it.
+- A malformed link is therefore byte-identical to a bare `/book/`, which is the
+  property that makes this safe to link from anywhere.
+
 ### /book/ scheduler — eager mount + a hero sized to the fold (2026-08-03)
 
 The Calendly embed is the site's conversion moment. At 1440×900 the whole card
@@ -1458,10 +1509,34 @@ heuristic may decide to defer.
   connection is a *different* one from the credentialed connection an iframe
   NAVIGATION uses. Drop the plain one and the iframe re-handshakes from cold.
   preconnect is a resource hint, not a fetch, so CSP does not apply to either.
-- **The placeholder comes off on the iframe's `load` event, never on a timer**
-  (`.cal-embed.is-ready::before { content: none }`). A timer either lies about
-  a slow frame or leaves the message sitting under a live calendar. It goes
-  back up during a prefill rebuild, because that is a real load.
+- **The placeholder comes off when CALENDLY PAINTS, not when our iframe loads
+  (revised 2026-08-04).** `.cal-embed.is-ready::before { content: none }` is now
+  set by `markReady()`, armed from `calendly.event_type_viewed` — the
+  postMessage that says *their* booking UI rendered. The iframe's own `load`
+  fires **1–2s earlier**, on the frame's document rather than on the app, and
+  clearing there left a blank cream box for that whole gap. `load` keeps its
+  `calendly_loaded` analytics and nothing else.
+  - **A 5s per-mount timer is the FALLBACK, and only that.** The earlier note
+    here said "never on a timer", and the reasoning behind it still stands as
+    stated — a timer *as the primary signal* either lies about a slow frame or
+    leaves the label sitting on top of a live calendar. What it did not cover
+    is a listener that never fires at all (an extension, a future change to
+    Calendly's postMessage names), which strands the label forever. A backstop
+    behind a real signal is not the thing that was ruled out.
+  - **It does NOT share the funnel latch, deliberately.** `funnelFired` exists
+    so a re-emitted `event_type_viewed` cannot inflate the top of the funnel.
+    But a prefill rebuild is a second *real* paint that must clear the
+    placeholder again, so `markReady()` is called on every such message and the
+    latch is applied only to the Plausible call. Wiring the placeholder to the
+    latch leaves it stuck up after any rebuild.
+  - The timer is re-armed per mount (each rebuild gets its own 5s grace) and
+    cleared by `markReady()`, so a fired paint cannot be undone by a stale
+    timeout. The placeholder still goes back up during a rebuild, because that
+    is a real load.
+  - `pointer-events: none` on the `::before`. It already sat under the iframe
+    (both positioned at `z-index: auto`, and the `::before` precedes the iframe
+    in paint order — hit-tested, the card's centre resolves to `<iframe>`), so
+    this is belt and braces for the window before the frame exists.
 - **Zero CLS, and it was already structurally impossible.** `.cal-embed` has
   `min-height: 720px` and the iframe is `position: absolute`, so the frame is
   out of flow and contributes nothing to the box either way — the card measures

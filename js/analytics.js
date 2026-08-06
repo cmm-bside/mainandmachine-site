@@ -19,7 +19,7 @@
  * Stamped by scripts/stamp-cta.mjs, asserted by scripts/check-cta.mjs, which
  * runs in build:static. /score links still use the region inference below.
  *
- *   calculator_interacted { page, industry, team_band }   once per page load
+ *   calculator_interacted { page, industry, team_band, at } first-touch · cta-click
  *   newsletter_subscribed { page }             beehiiv form submit
  *   guide_read            { page, guide }      75% scroll depth, once
  *   calculator_emailed    { page, industry, team_band }  estimate emailed to self
@@ -105,28 +105,80 @@
   // Both calculators: /calculator/ (#calcIndustry/#calcRange) and the
   // homepage band (#bandIndustry/#bandRange). Props are the industry key and
   // a coarse headcount band — never the dollar output.
+  // `at` distinguishes the two moments this fires, and it is ONE event rather
+  // than two names on purpose: the funnel question is "did they engage with the
+  // calculator", and splitting that across two goals makes every rate in
+  // analytics-events.md need reassembling by hand.
+  //   first-touch — they started moving it. Debounced (below), latched, once.
+  //   cta-click   — they clicked the calculator's own booking CTA. This is the
+  //                 state they ACTED on, which first-touch cannot tell you: a
+  //                 visitor who lands on professional-services/25 and drags to
+  //                 construction/80 before booking reports the first pair only.
   (function () {
     var pairs = [
       ["calcIndustry", "calcRange"],
       ["bandIndustry", "bandRange"],
     ];
-    var fired = false;
-    pairs.forEach(function (p) {
-      var sel = document.getElementById(p[0]);
-      var range = document.getElementById(p[1]);
-      if (!sel || !range) return;
-      function onFirstTouch() {
-        if (fired) return;
-        fired = true;
-        fire("calculator_interacted", {
-          page: PAGE,
-          industry: sel.value,
-          team_band: teamBand(range.value),
-        });
-      }
-      sel.addEventListener("change", onFirstTouch);
-      range.addEventListener("input", onFirstTouch);
-    });
+    // Exactly one pair exists per page (/calculator/ has calc*, the homepage
+    // band has band*). The old loop shared one `fired` latch across both, so
+    // taking the first present pair is the same behaviour.
+    var sel = null, range = null;
+    for (var i = 0; i < pairs.length && !sel; i++) {
+      var s = document.getElementById(pairs[i][0]);
+      var r = document.getElementById(pairs[i][1]);
+      if (s && r) { sel = s; range = r; }
+    }
+    if (!sel) return;
+
+    var touched = false, sent = false, sentCta = false, timer = null;
+    function send(at) {
+      fire("calculator_interacted", {
+        page: PAGE,
+        industry: sel.value,
+        team_band: teamBand(range.value),
+        at: at,
+      });
+    }
+
+    // Debounced 400ms. `input` on a range fires per pixel of drag, and the
+    // latch alone would have reported the FIRST tick of a drag — a visitor
+    // hauling the slider from 25 to 60 got recorded at 26. The debounce is
+    // what makes the reported value the one they settled on. It can never
+    // change how MANY events fire; `sent` decides that.
+    function onTouch() {
+      touched = true;
+      if (sent) return;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        if (sent) return;
+        sent = true;
+        send("first-touch");
+      }, 400);
+    }
+    sel.addEventListener("change", onTouch);
+    range.addEventListener("input", onTouch);
+
+    // The final state, captured at the moment they act on it. Only for someone
+    // who actually moved something — an untouched calculator's CTA click is
+    // already `cta_book_click { location: "calculator" }` and carries nothing
+    // about a calculation that never happened.
+    document.addEventListener(
+      "click",
+      function (e) {
+        var a = e.target && e.target.closest
+          ? e.target.closest('a[data-cta="calculator"][href^="/book/"]')
+          : null;
+        if (!a || !touched || sentCta) return;
+        sentCta = true;
+        // A click inside the debounce window means first-touch never went. Drop
+        // it rather than firing both: this event carries the same values, and
+        // the pair would double-count one interaction.
+        clearTimeout(timer);
+        sent = true;
+        send("cta-click");
+      },
+      true,
+    );
   })();
 
   /* ---------- calculator_emailed: "email me this estimate" -------------- */

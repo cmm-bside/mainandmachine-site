@@ -27,8 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=133" />
+<link rel="stylesheet" href="/styles.css?v=137" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -49,14 +50,20 @@
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
-      "areaServed": {
-        "@type": "City",
-        "name": "Denver",
-        "containedInPlace": {
-          "@type": "State",
-          "name": "Colorado"
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Denver",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Denver–Aurora–Lakewood, CO Metropolitan Statistical Area"
         }
-      },
+      ],
       "slogan": "The machine belongs to Main Street.",
       "parentOrganization": {
         "@id": "https://www.mainandmachine.com/#org"
@@ -141,7 +148,29 @@
       "founder": {
         "@id": "https://www.mainandmachine.com/#person-cmyers"
       },
-      "areaServed": "US"
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Denver",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Phoenix",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Arizona"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
+      "priceRange": "$3,500–$60,000"
     },
     {
       "@type": "Person",
@@ -153,18 +182,23 @@
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
         "https://www.bside.org",
+        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
-      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://www.mainandmachine.com/#website",
       "name": "Main & Machine",
-      "url": "https://www.mainandmachine.com/"
+      "url": "https://www.mainandmachine.com/",
+      "alternateName": "Main and Machine"
     },
     {
       "@type": "BreadcrumbList",
@@ -290,11 +324,12 @@
 <!-- ============ PAGE HERO ============ -->
 <section class="section paper pagehero">
   <div class="wrap">
-    <div class="crumb">
-      <a href="/">Main &amp; Machine</a>
-      <span class="sep">/</span>
-      <span>Denver</span>
-    </div>
+    <nav class="crumb" aria-label="Breadcrumb">
+        <ol class="crumb__list">
+          <li><a href="/">Main &amp; Machine</a></li>
+          <li><span aria-current="page">Denver</span></li>
+        </ol>
+      </nav>
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Denver, Colorado</span>
@@ -311,6 +346,21 @@
     </div>
   </div>
 </section>
+
+<!-- CITY:NAP -->
+<section class="section section--tight paper napband">
+  <div class="wrap">
+    <p class="nap">
+      <span class="nap__name">Main &amp; Machine</span>
+      <span class="nap__sep" aria-hidden="true">&middot;</span>
+      <a class="nap__tel" href="tel:+14808059983">480-805-9983</a>
+      <span class="nap__sep" aria-hidden="true">&middot;</span>
+      <span class="nap__loc">Denver, CO</span>
+    </p>
+    <p class="nap__note">Service-area business &mdash; we work at your place, not ours. No storefront in Denver.</p>
+  </div>
+</section>
+<!-- /CITY:NAP -->
 
 <!-- ============ SERVICES AND PRICES ============ -->
 <section class="section paper-2" id="services">
@@ -433,6 +483,47 @@
   </div>
 </section>
 
+<!-- CITY:INDUSTRY-STRIP -->
+<section class="section paper cxi">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">Five sectors</span>
+        <h2 class="h2 mt-s">What we build for Denver operators, by sector.</h2>
+      </div>
+      <p>The same four SKUs and the same published prices in every one. What changes is the first workflow worth automating.</p>
+    </div>
+    <ul class="cxi__grid">
+      <li class="cxi__item">
+        <h3 class="cxi__h">Professional services in Denver</h3>
+        <p>Law, accounting, insurance and advisory firms cluster downtown, through the Tech Center and out along the US-36 corridor — the twelve-to-eighty-person shops this work is built for. The bottleneck is almost never the advice; it is intake, matter setup and the billing narrative that gets written twice.</p>
+        <p class="cxi__go"><a href="/industries/professional-services/">Professional services &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+      <li class="cxi__item">
+        <h3 class="cxi__h">Retail &amp; e-commerce in Denver</h3>
+        <p>Front Range retail runs split between a storefront and a webstore that disagree about stock by Tuesday. One count, every channel, every morning is the build — and it is the same build whether the second channel is a marketplace, a wholesale line or a second location in Boulder.</p>
+        <p class="cxi__go"><a href="/industries/retail/">Retail &amp; e-commerce &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+      <li class="cxi__item">
+        <h3 class="cxi__h">Healthcare &amp; wellness in Denver</h3>
+        <p>Practices and clinics across the metro carry scheduling, intake and coding on staff who were hired to do something else. The record never leaves the practice: models run on hardware in your building, which is the architecture Colorado operators ask about first.</p>
+        <p class="cxi__go"><a href="/industries/healthcare/">Healthcare &amp; wellness &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+      <li class="cxi__item">
+        <h3 class="cxi__h">Construction &amp; trades in Denver</h3>
+        <p>This is the most common first build we scope on the Front Range. Pay applications assembled on the cycle, lien waivers tracked across every tier of sub, and Colorado prevailing-wage and certified-payroll records built from the same source data rather than rebuilt by hand.</p>
+        <p class="cxi__go"><a href="/industries/construction/">Construction &amp; trades &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+      <li class="cxi__item">
+        <h3 class="cxi__h">Hospitality &amp; food service in Denver</h3>
+        <p>Restaurants, hotels and venues from LoDo out to the mountain corridor run on staffing sheets, reservations and a supplier invoice pile that lands weekly in three formats. The back office is what gets automated; service stays human.</p>
+        <p class="cxi__go"><a href="/industries/hospitality/">Hospitality &amp; food service &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- /CITY:INDUSTRY-STRIP -->
+
 <!-- ============ LOCAL PROOF ============ -->
 <section class="section ink">
   <div class="wrap">
@@ -452,6 +543,39 @@
     </div>
   </div>
 </section>
+
+<!-- CITY:LOCAL-OPS -->
+<section class="section paper-2 lops">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">Denver–Aurora–Lakewood</span>
+        <h2 class="h2 mt-s">How working together actually goes in Denver.</h2>
+      </div>
+      <p>In person means at your place: RiNo, the Tech Center, Lakewood, or a job trailer if that is where the work is. When distance wins we work remotely, at the same published prices.</p>
+    </div>
+    <div class="lops__grid">
+      <div class="lops__row"><span class="tick-lbl">Coverage</span><p>Front Range, Boulder down to Colorado Springs in person, remote across the US.</p></div>
+      <!-- NEEDS-INPUT (denver.kickoff): What is the kickoff format and how long does it run?
+           Fill LOCAL_OPS.denver.kickoff in scripts/lib/cities.mjs, then run
+           npm run cities:render. Left unwritten on purpose — this is a
+           commitment to a customer and must not be invented. -->
+      <!-- NEEDS-INPUT (denver.cadence): How often are on-site working sessions during a sprint?
+           Fill LOCAL_OPS.denver.cadence in scripts/lib/cities.mjs, then run
+           npm run cities:render. Left unwritten on purpose — this is a
+           commitment to a customer and must not be invented. -->
+      <!-- NEEDS-INPUT (denver.responseTime): What response time do we actually commit to?
+           Fill LOCAL_OPS.denver.responseTime in scripts/lib/cities.mjs, then run
+           npm run cities:render. Left unwritten on purpose — this is a
+           commitment to a customer and must not be invented. -->
+      <!-- NEEDS-INPUT (denver.communities): Which local chambers / trade associations do we belong to?
+           Fill LOCAL_OPS.denver.communities in scripts/lib/cities.mjs, then run
+           npm run cities:render. Left unwritten on purpose — this is a
+           commitment to a customer and must not be invented. -->
+    </div>
+  </div>
+</section>
+<!-- /CITY:LOCAL-OPS -->
 
 <!-- ============ FAQ ============ -->
 <section class="section paper-2">

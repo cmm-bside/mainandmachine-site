@@ -27,8 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=133" />
+<link rel="stylesheet" href="/styles.css?v=137" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -53,7 +54,28 @@
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
-      "areaServed": "US",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Denver",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Phoenix",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Arizona"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
       "slogan": "The machine belongs to Main Street.",
       "address": [
         {
@@ -138,7 +160,8 @@
       "@type": "WebSite",
       "@id": "https://www.mainandmachine.com/#website",
       "name": "Main & Machine",
-      "url": "https://www.mainandmachine.com/"
+      "url": "https://www.mainandmachine.com/",
+      "alternateName": "Main and Machine"
     },
     {
       "@type": "Person",
@@ -150,6 +173,7 @@
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
         "https://www.bside.org",
+        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -303,13 +327,13 @@
 <!-- ============ PAGE HERO ============ -->
 <section class="section paper pagehero">
   <div class="wrap">
-    <div class="crumb">
-      <a href="/">Main &amp; Machine</a>
-      <span class="sep">/</span>
-      <a href="/industries/">Who this is for</a>
-      <span class="sep">/</span>
-      <span>Hospitality &amp; food service</span>
-    </div>
+    <nav class="crumb" aria-label="Breadcrumb">
+        <ol class="crumb__list">
+          <li><a href="/">Main &amp; Machine</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><span aria-current="page">Hospitality &amp; food service</span></li>
+        </ol>
+      </nav>
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Industries / 05</span>
@@ -450,6 +474,22 @@
 <!-- /FAQ:auto -->
 
 <!-- ============ START HERE (ink) ============ -->
+<!-- CITY:CITY-LINKS -->
+<section class="section section--tight paper-2 citylinks">
+  <div class="wrap">
+    <p class="citylinks__p"><span class="tick-lbl">Local</span> We work with hospitality &amp; food service in person from two hubs &mdash; <a href="/denver/">AI consulting in Denver</a> and <a href="/phoenix/">AI consulting in Phoenix</a> &mdash; and remotely across the US, at the same published prices.</p>
+  </div>
+</section>
+<!-- /CITY:CITY-LINKS -->
+
+<!-- BUILD-LINKS:auto -->
+<section class="section section--tight paper-2 buildlinks">
+  <div class="wrap">
+    <p class="citylinks__p"><span class="tick-lbl">From the catalog</span> Builds most often scoped here: <a href="/services/builds/review-reputation-agent/">review & reputation agent</a>, <a href="/services/builds/missed-call-text-back/">missed-call text-back</a>, <a href="/services/builds/website-chat-booking-agent/">website chat & booking agent</a>. Every one is delivered through the same three services, at the published prices.</p>
+  </div>
+</section>
+<!-- /BUILD-LINKS:auto -->
+
 <section class="section ink final">
   <div class="wrap">
     <div class="final__cta">

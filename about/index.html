@@ -27,8 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=133" />
+<link rel="stylesheet" href="/styles.css?v=137" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -53,7 +54,28 @@
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
-      "areaServed": "US",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Denver",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Phoenix",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Arizona"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
       "slogan": "The machine belongs to Main Street.",
       "address": [
         {
@@ -138,7 +160,8 @@
       "@type": "WebSite",
       "@id": "https://www.mainandmachine.com/#website",
       "name": "Main & Machine",
-      "url": "https://www.mainandmachine.com/"
+      "url": "https://www.mainandmachine.com/",
+      "alternateName": "Main and Machine"
     },
     {
       "@type": "Person",
@@ -150,6 +173,7 @@
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
         "https://www.bside.org",
+        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -260,11 +284,12 @@
 <!-- ============ PAGE HERO ============ -->
 <section class="section paper pagehero" data-screen-label="About hero">
   <div class="wrap">
-    <div class="crumb">
-      <a href="/">Main &amp; Machine</a>
-      <span class="sep">/</span>
-      <span>Who we are</span>
-    </div>
+    <nav class="crumb" aria-label="Breadcrumb">
+        <ol class="crumb__list">
+          <li><a href="/">Main &amp; Machine</a></li>
+          <li><span aria-current="page">Who we are</span></li>
+        </ol>
+      </nav>
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Who we are</span>
@@ -309,6 +334,14 @@
       <p class="bio__note">Read his essay <a href="/blog/seventy-years-of-overnight-success/">Seventy Years of Overnight Success</a>, or see how every build runs in <a href="/method/">the method</a>. Skeptical of AI generally? <a href="/guides/ai-for-the-skeptical-owner/">Good — start here</a>.</p>
       </div>
       <div class="bio__prose">
+<!-- FOUNDER-ID:auto -->
+        <dl class="founder-id">
+          <div class="founder-id__row"><dt>Name</dt><dd>Christopher Myers</dd></div>
+          <div class="founder-id__row"><dt>Role</dt><dd>Founder &amp; Chairman, Main &amp; Machine</dd></div>
+          <div class="founder-id__row"><dt>Also</dt><dd>CEO, B:Side Capital + Fund &middot; Professor of entrepreneurship, ASU W.P. Carey School of Business &middot; Author</dd></div>
+          <div class="founder-id__row"><dt>Verify</dt><dd><a href="https://www.linkedin.com/in/cmyers85/" rel="noopener">LinkedIn</a> &middot; <a href="https://search.asu.edu/profile/559969" rel="noopener">ASU faculty profile</a> &middot; <a href="https://www.amazon.com/stores/author/B01LBGCKWM/about" rel="noopener">Amazon author page</a> &middot; <a href="https://www.bside.org" rel="noopener">B:Side Capital</a></dd></div>
+        </dl>
+        <!-- /FOUNDER-ID:auto -->
         <p>Christopher has spent 26 years backing Main Street, today as <b>CEO of B:Side Capital and Fund</b>, a professor of entrepreneurship at ASU’s W.P. Carey School, and the author of several books on small business. Main &amp; Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building.</p>
         <p>As chairman, he pairs his own senior judgment with a team of <b>AI-native builders</b>: digital natives who never had to unlearn the old way. One operator stays accountable for every build. The future doesn’t belong to the people who can do what AI does; it belongs to the people who can take what the machine produces and <b>be accountable for it.</b></p>
         <!-- Press links verified 2026-07-31: Forbes = founder contributor page; Inc. = founder author page;

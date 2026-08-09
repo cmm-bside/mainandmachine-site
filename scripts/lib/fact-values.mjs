@@ -57,6 +57,38 @@ export function buildSlotsLine(COMPANY) {
 	return `${word} ${parseBookingQuarter(COMPANY.booking.quarter).label} build slots remain`;
 }
 
+/**
+ * The JSON-LD `priceRange` on the ProfessionalService node: the audit floor to
+ * the sprint ceiling, the widest band we actually quote.
+ *
+ * DERIVED, never stored. It is hardcoded in 39 hand-written pages and cannot be
+ * stamped — it lives inside a JSON string, which has nowhere to hang a
+ * data-fact span. So it gets the other half of the contract instead:
+ * check-facts.mjs re-derives it here and fails the build on any page whose
+ * priceRange disagrees. Before this, changing the sprint ceiling in
+ * site-facts.json left all 39 copies stale with a green build — the one real
+ * drift risk the 2026-08-08 fact sweep turned up.
+ *
+ * The "$3,500–$60,000" form deliberately spans TWO services (audit low →
+ * sprint high) rather than restating one, which is why it is not just
+ * services[n].price.
+ */
+export function priceRange(COMPANY) {
+	const svc = (key) => COMPANY.services.find((s) => s.key === key);
+	const usd = (n) => "$" + n.toLocaleString("en-US");
+	return `${usd(svc("audit").priceLow)}–${usd(svc("sprint").priceHigh)}`;
+}
+
+/**
+ * Every phone spelling the site is allowed to publish, derived from the one
+ * canonical number. There is exactly one line — confirmed 2026-08-08; the
+ * "480-360-5128 tracking line" that prompted the sweep does not exist and
+ * never appeared in this repo.
+ */
+export function phoneForms(COMPANY) {
+	return [COMPANY.phone, COMPANY.phoneE164, COMPANY.phoneHref];
+}
+
 export function factValues(COMPANY) {
 	const svc = (key) => COMPANY.services.find((s) => s.key === key);
 	const usd = (n) => "$" + n.toLocaleString("en-US");
@@ -69,6 +101,12 @@ export function factValues(COMPANY) {
 		"timeline-audit": svc("audit").timeline,
 		"timeline-sprint": svc("sprint").timeline,
 		"timeline-backoffice": svc("backoffice").timeline,
+		// Added 2026-08-09 with the build-catalog pages. Managed Services has a
+		// timeline in site-facts.json ("Ongoing") like every other tier, but no
+		// surface had ever stamped it, so the key did not exist — and a build
+		// page whose delivering tier is `managed` needs the same four spec rows
+		// as one delivered by a sprint.
+		"timeline-managed": svc("managed").timeline,
 		"audit-floor": usd(svc("audit").priceLow) + "+",
 		"sprint-ceiling": usd(svc("sprint").priceHigh),
 		"guarantee": COMPANY.guarantee,

@@ -1,0 +1,15 @@
+PLACEHOLDER — not a real token. Do not deploy this file.
+
+Google Search Console gives you ONE of two things. Use whichever you pick:
+
+  A. HTML file method — GSC hands you a file named
+     google<hash>.html. Drop it in the repo ROOT (next to index.html),
+     delete this placeholder, commit, deploy, then click Verify.
+
+  B. DNS TXT method (preferred — verifies the whole domain incl. subdomains)
+     Cloudflare DNS -> mainandmachine.com -> Add record:
+        Type: TXT   Name: @   Content: google-site-verification=<token>
+     No repo change needed. Delete this placeholder.
+
+Bing Webmaster Tools: import from GSC (fastest) or use BingSiteAuth.xml —
+see BingSiteAuth-PLACEHOLDER.xml.

@@ -6,6 +6,7 @@
     "schemaVersion": 1
   },
   "name": "Main & Machine",
+  "alternateName": "Main and Machine",
   "domain": "mainandmachine.com",
   "origin": "https://www.mainandmachine.com",
   "oneLiner": "AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue)",
@@ -86,11 +87,50 @@
     "Denver, CO",
     "Phoenix, AZ"
   ],
+  "hubs": [
+    {
+      "city": "Denver",
+      "state": "Colorado",
+      "stateCode": "CO",
+      "metro": "Denver–Aurora–Lakewood, CO Metropolitan Statistical Area",
+      "path": "/denver/"
+    },
+    {
+      "city": "Phoenix",
+      "state": "Arizona",
+      "stateCode": "AZ",
+      "metro": "Phoenix–Mesa–Chandler, AZ Metropolitan Statistical Area",
+      "path": "/phoenix/"
+    }
+  ],
   "coverage": "Remote across the US",
   "email": "cmyers@mainandmachine.com",
   "phone": "480-805-9983",
   "phoneE164": "+1-480-805-9983",
   "phoneHref": "tel:+14808059983",
+  "blog": {
+    "name": "The Ampersand",
+    "cadence": "a few times a month",
+    "platform": "beehiiv",
+    "subscribeUrl": "https://theampersand.beehiiv.com/subscribe"
+  },
+  "sameAs": {
+    "org": [
+      "https://www.linkedin.com/company/main-and-machine/",
+      "https://x.com/mainandmachine"
+    ],
+    "person": [
+      "https://www.linkedin.com/in/cmyers85/",
+      "https://x.com/Chris_myers",
+      "https://www.entrepreneur.com/author/christopher-myers",
+      "https://search.asu.edu/profile/559969",
+      "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+      "https://www.bside.org",
+      "https://www.thebsideway.com",
+      "https://www.forbes.com/sites/chrismyers/",
+      "https://www.inc.com/author/chris-myers"
+    ]
+  },
   "press": [
     "Forbes",
     "The Wall Street Journal",

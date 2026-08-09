@@ -33,6 +33,18 @@ const ALL_PAGES = [
   "services/index.html",
   "services/sample-audit/index.html",
   "services/builds/index.html",
+  "services/builds/instant-lead-response/index.html",
+  "services/builds/missed-call-text-back/index.html",
+  "services/builds/review-reputation-agent/index.html",
+  "services/builds/private-ai-server/index.html",
+  "services/builds/data-privacy-filter/index.html",
+  "services/builds/company-knowledge-base/index.html",
+  "services/builds/slack-teams-integration/index.html",
+  "services/builds/private-company-chat/index.html",
+  "services/builds/business-system-connectors/index.html",
+  "services/builds/testing-and-monitoring/index.html",
+  "services/builds/ai-receptionist/index.html",
+  "services/builds/website-chat-booking-agent/index.html",
   "industries/index.html",
   "industries/professional-services/index.html",
   "industries/retail/index.html",
@@ -59,6 +71,7 @@ const ALL_PAGES = [
   "guides/how-to-scope-an-ai-project/index.html",
   "guides/ai-roi-math-small-business/index.html",
   "guides/ai-for-the-skeptical-owner/index.html",
+  "guides/private-ai-for-small-business/index.html",
   "calculator/index.html",
   "security/index.html",
   "contact/index.html",
@@ -194,6 +207,43 @@ for (const { page, html } of noteCorpus) {
         `${page}: "${clause}" states the audit credit without its condition — ` +
           `the canonical rollover is only good for a sprint "signed within 60 days"`
       );
+  }
+}
+
+// --- Blog cadence must match the facts file --------------------------------
+// The cadence ("a few times a month") is a promise about how often we publish.
+// It sits in the footer kicker on ~40 hand-written pages, in llms.txt, and in
+// the generated blog chrome — and until 2026-08-08 it lived in
+// scripts/lib/config.mjs as a string literal, so it was the one business claim
+// with its own private source of truth and no guard at all. Now it is
+// COMPANY.blog.cadence and this holds every surface to it.
+//
+// SCOPED TO THE BLOG CONTEXT, deliberately. A bare search for "weekly" hits
+// the MARCUS proof figures ("93% weekly adoption by week six", "Weekly use by
+// week six") on five pages, which are measurements, not publishing promises.
+// So a cadence word only counts when it sits beside the publication's name.
+const CADENCE = COMPANY.blog.cadence;
+const CADENCE_WORDS =
+  /\b(?:weekly|daily|monthly|fortnightly|bi-?weekly|twice\s+a\s+(?:week|month)|every\s+(?:week|day|month)|a\s+few\s+times\s+a\s+month)\b/gi;
+guardCountablePhrase(CADENCE, "blog.cadence");
+for (const { page, html } of noteCorpus) {
+  const name = COMPANY.blog.name;
+  let from = 0;
+  for (;;) {
+    const at = html.indexOf(name, from);
+    if (at === -1) break;
+    from = at + name.length;
+    // The kicker reads "The Ampersand · free, a few times a month" — the claim
+    // trails the name. A window rather than a line: llms.txt wraps.
+    const window = html.slice(at, at + 120);
+    for (const m of window.matchAll(CADENCE_WORDS)) {
+      if (m[0].toLowerCase() === CADENCE.toLowerCase()) continue;
+      fail(
+        `${page}: "${COMPANY.blog.name} … ${m[0]}" states a publishing cadence of ` +
+          `"${m[0]}" — the canonical blog.cadence is "${CADENCE}". Edit ` +
+          `src/data/site-facts.json, not the page.`
+      );
+    }
   }
 }
 

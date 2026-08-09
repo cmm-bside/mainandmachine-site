@@ -28,8 +28,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=133" />
+<link rel="stylesheet" href="/styles.css?v=137" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -63,7 +64,28 @@
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
-      "areaServed": "US",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Denver",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Phoenix",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Arizona"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
       "slogan": "The machine belongs to Main Street.",
       "address": [
         {
@@ -87,7 +109,8 @@
       "@type": "WebSite",
       "@id": "https://www.mainandmachine.com/#website",
       "name": "Main & Machine",
-      "url": "https://www.mainandmachine.com/"
+      "url": "https://www.mainandmachine.com/",
+      "alternateName": "Main and Machine"
     },
     {
       "@type": "Person",
@@ -99,6 +122,7 @@
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
         "https://www.bside.org",
+        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -134,6 +158,46 @@
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init({ endpoint: "/api/event", formSubmissions: false })
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the calculator's assumptions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two per-employee figures and one cost. It assumes roughly $4,000 a year of manual administrative work per employee that a system can absorb, and roughly $2,000 a year of revenue lost to slow follow-up per employee. Against those it sets the published cost of an AI Implementation Sprint, $18,000\u2013$60,000, quoted fixed in writing. Every one of those three numbers is visible on this page and adjustable in the model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do the $4,000 and $2,000 figures come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are conservative planning figures, not survey results, and we publish them so you can argue with them. The manual-work figure assumes a few hours a week per employee spent assembling, re-keying and chasing \u2014 the categories our audits find first. The lost-revenue figure assumes a small number of enquiries a year that go cold before anyone replies. If either sounds high or low for your business, change it: the model is the method, not the number."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this a projection of what we will save?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and the distinction matters. It is a model, not a promise. It shows what the stated assumptions imply arithmetically for a business your size. Your real numbers come out of an AI Readiness Audit, which measures your actual workflows rather than a per-employee average."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the modeled return the same for every industry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is not the return that is fixed \u2014 it is the method. Industry selection changes which workflow the model treats as the first build, because a contractor's paper cycle and a clinic's intake queue have different shapes. What stays constant is the arithmetic and the published sprint cost, so two businesses of the same size can compare like with like."
+      }
+    }
+  ]
+}
 </script>
 </head>
 <body>
@@ -188,11 +252,12 @@
 <!-- ============ PAGE HERO ============ -->
 <section class="section paper pagehero">
   <div class="wrap">
-    <div class="crumb">
-      <a href="/">Main &amp; Machine</a>
-      <span class="sep">/</span>
-      <span>Calculator</span>
-    </div>
+    <nav class="crumb" aria-label="Breadcrumb">
+        <ol class="crumb__list">
+          <li><a href="/">Main &amp; Machine</a></li>
+          <li><span aria-current="page">Calculator</span></li>
+        </ol>
+      </nav>
     <div class="pagehero__grid">
       <div>
         <span class="kicker">The numbers</span>
@@ -309,6 +374,68 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
+<!-- METHODOLOGY:auto -->
+<section class="section paper-2">
+  <div class="wrap prose-2">
+    <div class="head-block">
+      <div>
+        <span class="kicker">MM-ROI-v1</span>
+        <h2 class="h2 mt-s">How this is modeled.</h2>
+      </div>
+      <p>The whole model, written out. If you disagree with an assumption, change it above &mdash; that is what it is there for.</p>
+    </div>
+
+    <h3>What the calculator outputs</h3>
+    <p>Three figures. <strong>Modeled return per year</strong> is the annual value the assumptions imply for a team your size. <strong>Payback period</strong> is how long the published sprint cost takes to be covered by that return. <strong>Net first year</strong> is the return minus the build cost over twelve months. None of the three is a forecast of your business; all three are arithmetic on stated inputs.</p>
+
+    <h3>The three inputs</h3>
+    <p><strong>Manual administrative work: about $4,000 per employee per year.</strong> This is the cost of assembling, re-keying and chasing &mdash; the preparation work that sits in front of a decision rather than being the decision. It is a conservative planning figure, not a survey result. In practice it assumes a few hours a week per person on work a system can absorb. Our audits find this category first because it is the easiest to measure and the hardest to defend.</p>
+    <p><strong>Revenue lost to slow follow-up: about $2,000 per employee per year.</strong> Enquiries that go cold before anyone replies. This one is deliberately small, because it is the assumption most likely to be argued with and we would rather understate it. If your business turns on inbound enquiry volume, it is almost certainly low for you.</p>
+    <p><strong>Build cost: the published price of an AI Implementation Sprint, <span data-fact="price-sprint">$18,000–$60,000</span>.</strong> Not a modeled number and not a range we invent per visitor &mdash; it is the same figure on the <a href="/pricing/">price list</a>, quoted fixed in writing before work begins. The model uses it directly so the payback figure cannot quietly assume a cheaper build than we sell.</p>
+
+    <h3>A worked example</h3>
+    <p>Take a 25-person firm. The model applies $4,000 of absorbable manual work per employee, giving $100,000 a year, and $2,000 of slow-follow-up loss per employee, giving $50,000. It does not claim all of that is recoverable &mdash; it applies a recovery fraction, because no system absorbs a whole category of human work, and the fraction is what separates a model from a sales pitch. The result is set against the sprint cost to produce a payback period in months.</p>
+    <p>Run the same arithmetic on a 6-person shop and the return falls below the build cost for a single workflow. That outcome is not a bug in the calculator. It is the calculator telling you the honest answer, which is why the tool does not gate its output behind a form.</p>
+
+    <h3>What the model deliberately does not do</h3>
+    <p>It does not model headcount reduction. Our largest published build returned <a href="/work/marcus/results/">1,240 staff hours in 90 days</a> without removing a role, and a calculator that assumed otherwise would be modelling a different business than the one we build for.</p>
+    <p>It does not compound. Year-two returns are not projected forward, because the assumptions that hold for twelve months do not obviously hold for thirty-six.</p>
+    <p>It does not price your business. The output is a range built from averages. The number that matters comes out of an <a href="/services/#audit">AI Readiness Audit</a> at <span data-fact="price-audit">$3,500–$8,500</span>, which measures your workflows instead of assuming them.</p>
+    <p class="section-action"><a href="/guides/ai-roi-math-small-business/">The full ROI math, worked <span class="arr">&#8594;</span></a></p>
+  </div>
+</section>
+
+<section class="section paper">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">The model, asked plainly.</h2>
+      </div>
+    </div>
+    <div class="faq__list">
+        <details class="faq__item">
+          <summary><span class="faq__n">01</span>What are the calculator's assumptions?</summary>
+          <div class="faq__a"><p>Two per-employee figures and one cost. It assumes roughly $4,000 a year of manual administrative work per employee that a system can absorb, and roughly $2,000 a year of revenue lost to slow follow-up per employee. Against those it sets the published cost of an AI Implementation Sprint, $18,000–$60,000, quoted fixed in writing. Every one of those three numbers is visible on this page and adjustable in the model.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__n">02</span>Where do the $4,000 and $2,000 figures come from?</summary>
+          <div class="faq__a"><p>They are conservative planning figures, not survey results, and we publish them so you can argue with them. The manual-work figure assumes a few hours a week per employee spent assembling, re-keying and chasing — the categories our audits find first. The lost-revenue figure assumes a small number of enquiries a year that go cold before anyone replies. If either sounds high or low for your business, change it: the model is the method, not the number.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__n">03</span>Is this a projection of what we will save?</summary>
+          <div class="faq__a"><p>No, and the distinction matters. It is a model, not a promise. It shows what the stated assumptions imply arithmetically for a business your size. Your real numbers come out of an AI Readiness Audit, which measures your actual workflows rather than a per-employee average.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__n">04</span>Why is the modeled return the same for every industry?</summary>
+          <div class="faq__a"><p>It is not the return that is fixed — it is the method. Industry selection changes which workflow the model treats as the first build, because a contractor's paper cycle and a clinic's intake queue have different shapes. What stays constant is the arithmetic and the published sprint cost, so two businesses of the same size can compare like with like.</p></div>
+        </details>
+    </div>
+  </div>
+</section>
+<!-- /METHODOLOGY:auto -->
+
+
 </main>
 <footer class="foot">
   <div class="wrap">
@@ -547,5 +674,28 @@
 </script>
 <script src="/js/nav.js?v=7"></script>
 <script src="/js/analytics.js?v=4"></script>
+<script>
+/* Calculator engagement -> Plausible. Fires ONCE per session on the first real
+   interaction, not on every slider tick: a drag emits dozens of input events
+   and would inflate the metric into meaninglessness. No PII in the props —
+   industry and team size are the visitor's own selections, already in the URL
+   the /book/ hand-off carries. See analytics-events.md for the props contract. */
+(function(){
+  var fired=false;
+  function go(){
+    if(fired)return; fired=true;
+    var ind=document.querySelector('#industry'), team=document.querySelector('#team');
+    window.plausible && plausible('roi_calculated', { props: {
+      industry: ind ? ind.value : 'unset',
+      team: team ? String(team.value) : 'unset'
+    }});
+  }
+  ['change','input'].forEach(function(ev){
+    document.addEventListener(ev, function(e){
+      if(e.target.closest('.roi')) go();
+    }, true);
+  });
+})();
+</script>
 </body>
 </html>

@@ -45,3 +45,12 @@ jobs:
             echo "Attempt $tries failed — deploy may still be propagating; retrying in 60s…"
             sleep 60
           done
+
+      # IndexNow: tell Bing what changed, right after the deploy is verified.
+      # Runs LAST and never fails the workflow — a search-engine ping is not a
+      # reason to mark a good deploy red. Bing feeds ChatGPT search, which is
+      # why this is worth doing at all; Google ignores IndexNow and reads the
+      # sitemap instead.
+      - name: Ping IndexNow
+        continue-on-error: true
+        run: node scripts/ping-indexnow.mjs

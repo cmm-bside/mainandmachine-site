@@ -6,8 +6,18 @@
 // propagates it. Idempotent. Unknown keys fail loudly — no silent typos.
 import fs from "node:fs";
 import path from "node:path";
-import { ROOT } from "./lib/config.mjs";
 import { factValues } from "./lib/fact-values.mjs";
+
+// ROOT is defined locally rather than imported from ./lib/config.mjs, and that
+// is load-bearing: config.mjs re-exports COMPANY from the GENERATED
+// src/data/company.mjs, so importing it here made the generator depend on its
+// own stale output. Adding any new key to site-facts.json that config.mjs
+// reads then bootstrapped into a hard TypeError at import time —
+// `COMPANY.blog.name` on a company.mjs that predates `blog` — and the only way
+// out was to hand-edit the generated file. The generator must import nothing
+// generated. fact-values.mjs is safe: it takes COMPANY as an argument for
+// exactly this reason.
+const ROOT = process.cwd();
 
 // Read the source of truth directly (not via company.mjs — this script
 // GENERATES company.mjs, so it must not depend on it).

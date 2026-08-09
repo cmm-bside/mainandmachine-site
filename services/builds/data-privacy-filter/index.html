@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Data Privacy Filter for Business | Main &amp; Machine</title>
+<meta name="description" content="Strips personal information from prompts and documents before anything leaves your building. Delivered in a Sprint, $18,000–$60,000 fixed." />
+<link rel="canonical" href="https://www.mainandmachine.com/services/builds/data-privacy-filter/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Main &amp; Machine" />
+<meta property="og:title" content="AI Data Privacy Filter for Business | Main &amp; Machine" />
+<meta property="og:description" content="Strips personal information from prompts and documents before anything leaves your building. Delivered in a Sprint, $18,000–$60,000 fixed." />
+<meta property="og:url" content="https://www.mainandmachine.com/services/builds/data-privacy-filter/" />
+<meta property="og:image" content="https://www.mainandmachine.com/images/og/services-builds-data-privacy-filter.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Data Privacy Filter &mdash; Main &amp; Machine" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Data Privacy Filter for Business | Main &amp; Machine" />
+<meta name="twitter:description" content="Strips personal information from prompts and documents before anything leaves your building. Delivered in a Sprint, $18,000–$60,000 fixed." />
+<meta name="twitter:image" content="https://www.mainandmachine.com/images/og/services-builds-data-privacy-filter.png" />
+<meta name="twitter:image:alt" content="Data Privacy Filter &mdash; Main &amp; Machine" />
+
+<link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css?v=137" />
+<link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
+<style>
+/* =========================================================
+   SAMPLE AUDIT — page-scoped document system
+   Built on the Main & Machine tokens in styles.css
+   ========================================================= */
+
+/* ---- the document pages ---- */
+.docs { max-width: 920px; margin: 0 auto; }
+.doc { border: 1px solid var(--ink); background: var(--paper-card); }
+.doc + .doc { margin-top: clamp(32px, 4vw, 48px); }
+.doc__bar {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 24px;
+  padding: 14px 20px; border-bottom: 1px solid var(--line);
+  background: linear-gradient(var(--paper-2), var(--paper-card));
+  font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute);
+}
+.doc__bar b { color: var(--accent); font-weight: 700; }
+.doc__body { padding: clamp(22px, 3.4vw, 40px); }
+.doc__body h2 { font-size: clamp(var(--fs-20), 2.2vw, var(--fs-25)); letter-spacing: -0.01em; margin: 6px 0 8px; }
+.doc__sub { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; margin-bottom: 24px; }
+
+/* redaction bars */
+.redact {
+  display: inline-block; background: var(--ink); color: transparent; user-select: none;
+  height: .95em; vertical-align: middle; min-width: 88px; border-radius: 1px;
+}
+.redact--sm { min-width: 54px; }
+.redact--lg { min-width: 130px; }
+
+/* workflow map table */
+.map { width: 100%; border-collapse: collapse; font-size: var(--fs-13); background: var(--surface-hi); }
+.map th {
+  font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--tx-mute); text-align: left; font-weight: 700;
+  padding: 10px 12px; border: 1px solid var(--line); background: var(--paper-2);
+}
+.map td { padding: 11px 12px; border: 1px solid var(--line); color: var(--tx-mute); vertical-align: top; line-height: 1.5; }
+.map td:first-child { font-family: var(--mono); font-size: var(--fs-12); color: var(--accent); white-space: nowrap; }
+.map-wrap { overflow-x: auto; }
+
+/* At phone widths the five-column map can't fit — restack each row into a
+   redacted-document block: step number as a mono label, then each column
+   as a label/value pair. Keeps every cell (and redaction bar) readable
+   without horizontal scrolling. */
+@media (max-width: 640px) {
+  .map, .map tbody, .map tr, .map td { display: block; width: 100%; }
+  .map thead { display: none; }
+  .map { border: 1px solid var(--line); }
+  .map tr { padding: 14px 14px 16px; border-bottom: 1px solid var(--line); }
+  .map tr:last-child { border-bottom: 0; }
+  .map td { border: 0; padding: 9px 0 0; }
+  .map td + td { border-top: 1px dashed var(--line); margin-top: 9px; }
+  .map td:first-child { padding-top: 0; }
+  .map td::before {
+    display: block; font-family: var(--mono); font-size: var(--fs-12); font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute);
+    margin-bottom: 3px;
+  }
+  .map td:nth-child(1)::before { content: "Step"; }
+  .map td:nth-child(2)::before { content: "What happens"; }
+  .map td:nth-child(3)::before { content: "Who touches it"; }
+  .map td:nth-child(4)::before { content: "Tool"; }
+  .map td:nth-child(5)::before { content: "Where it breaks"; }
+}
+
+/* ranked opportunity list */
+.rank { list-style: none; display: flex; flex-direction: column; }
+.rank li { display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 20px 0; border-top: 1px dashed var(--line); }
+.rank li:first-child { border-top: 0; padding-top: 0; }
+.rank__no { font-family: var(--mono); font-size: var(--fs-20); font-weight: 700; color: var(--accent); line-height: 1.2; }
+.rank h3 { font-size: var(--fs-16); letter-spacing: -0.01em; margin-bottom: 6px; }
+.rank p { font-size: var(--fs-13); line-height: 1.6; color: var(--tx-mute); }
+.rank__tags { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; }
+.rank__tags span {
+  font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute);
+}
+.rank__tags b { color: var(--tx); font-weight: 700; }
+
+/* caption + actions */
+.doc-caption { max-width: 920px; margin: 28px auto 0; }
+.doc-caption .big { font-size: var(--fs-20); font-weight: 800; letter-spacing: -0.01em; color: var(--tx); }
+.doc-caption p { margin-top: 8px; font-size: var(--fs-16); line-height: 1.6; color: var(--tx-mute); max-width: 70ch; }
+.doc-actions { max-width: 920px; margin: 24px auto 0; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+/* ---- print: just the two document pages, clean on white ---- */
+@media print {
+  /* #fff and #000 here are deliberate and are NOT palette tokens: on paper,
+     white is the absence of ink and black is the ink. Mapping these to
+     --paper (a warm cream) would print a full-bleed background nobody asked
+     for. This is the one place in the codebase where a colour literal is
+     the correct answer. */
+  .topbar, .nav, .foot, .doc-actions, .pagehero, .final, .btn { display: none !important; }
+  body, .section, .paper, .paper-2 { background: #fff !important; }
+  .section { padding: 0 !important; }
+  .doc { border: 1px solid #000; box-shadow: none; break-inside: avoid; }
+  .doc + .doc { margin-top: 0; page-break-before: always; }
+  .doc__bar { background: #fff; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+</style>
+
+<!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="/js/pa"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init({ endpoint: "/api/event", formSubmissions: false })
+</script>
+
+<!-- FAQ-JSONLD:auto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.mainandmachine.com/#org",
+      "name": "Main & Machine",
+      "url": "https://www.mainandmachine.com/",
+      "logo": "https://www.mainandmachine.com/icon-512.png",
+      "email": "cmyers@mainandmachine.com",
+      "telephone": "+1-480-805-9983",
+      "priceRange": "$3,500–$60,000",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Denver",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Phoenix",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Arizona"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
+      "founder": {
+        "@id": "https://www.mainandmachine.com/#person-cmyers"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/main-and-machine/",
+        "https://x.com/mainandmachine"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainandmachine.com/#website",
+      "name": "Main & Machine",
+      "alternateName": "Main and Machine",
+      "url": "https://www.mainandmachine.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mainandmachine.com/#person-cmyers",
+      "name": "Christopher Myers",
+      "jobTitle": "Founder & Chairman",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/cmyers85/",
+        "https://x.com/Chris_myers",
+        "https://www.entrepreneur.com/author/christopher-myers",
+        "https://search.asu.edu/profile/559969",
+        "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+        "https://www.bside.org",
+        "https://www.thebsideway.com",
+        "https://www.forbes.com/sites/chrismyers/",
+        "https://www.inc.com/author/chris-myers"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.mainandmachine.com/services/builds/data-privacy-filter/#service",
+      "name": "Data Privacy Filter",
+      "serviceType": "Data Privacy Filter",
+      "description": "A data privacy filter sits between your people and any AI model, stripping personal information out of prompts and documents before anything leaves your building. The cleaned text then goes to a local model or, where the work genuinely needs one, to a commercial model — with the identifiers still on your side of the wall. It is the component that makes AI usable on records you are legally responsible for.",
+      "url": "https://www.mainandmachine.com/services/builds/data-privacy-filter/",
+      "provider": {
+        "@id": "https://www.mainandmachine.com/#org"
+      },
+      "areaServed": "US",
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 18000,
+          "maxPrice": 60000,
+          "priceCurrency": "USD"
+        },
+        "url": "https://www.mainandmachine.com/pricing/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main & Machine",
+          "item": "https://www.mainandmachine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://www.mainandmachine.com/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Build Catalog",
+          "item": "https://www.mainandmachine.com/services/builds/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Data Privacy Filter",
+          "item": "https://www.mainandmachine.com/services/builds/data-privacy-filter/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What counts as personal information here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Names, contact details, account and file numbers, and whatever else your sector treats as identifying — which is a scoping conversation, because a lender, a clinic, and a contractor do not have the same list."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the filter slow things down?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not in a way anyone notices. It runs on the same machine as the model, so the work stays inside your building rather than making a round trip."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can we prove it worked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is what the audit trail is for. Every request through the filter is logged, so the question 'did that document leave the building' has a recorded answer rather than an assurance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is delivered through an AI Implementation Sprint, quoted fixed in writing before work begins. It is normally scoped alongside the private server rather than on its own."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ OPERATOR CHROME ============ -->
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="wrap ticker__inner">
+    <span class="ticker__left">
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
+    </span>
+    <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/" aria-label="Main &amp; Machine home">
+      <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+      <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      <span class="nav__item nav__item--menu">
+        <a href="/services/" class="is-active" aria-current="page">Services</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-services-menu">
+          <a href="/services/">Compare all three</a>
+          <a href="/services/#audit">AI Readiness Audit</a>
+          <a href="/services/#sprint">Implementation Sprint</a>
+          <a href="/services/#managed">Managed Services</a>
+        </div>
+      </span>
+      <a href="/work/">Proof</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/score/">Your Score</a>
+      <a href="/method/">Method</a>
+      <a href="/about/">Who We Are</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<!-- ============ HERO ============ -->
+<section class="section paper pagehero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+        <ol class="crumb__list">
+          <li><a href="/">Main &amp; Machine</a></li>
+          <li><a href="/services/">Services</a></li>
+          <li><a href="/services/builds/">The Build Catalog</a></li>
+          <li><span aria-current="page">Data Privacy Filter</span></li>
+        </ol>
+      </nav>
+    <div class="pagehero__grid">
+      <div>
+        <span class="kicker">The gatekeeper</span>
+        <h1 class="h1">Data Privacy Filter</h1>
+        <p class="lead">A data privacy filter sits between your people and any AI model, stripping personal information out of prompts and documents before anything leaves your building. The cleaned text then goes to a local model or, where the work genuinely needs one, to a commercial model — with the identifiers still on your side of the wall. It is the component that makes AI usable on records you are legally responsible for.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/book/" data-cta="build-page-hero">Book a free assessment <span class="arr">&#8594;</span></a>
+          <a class="btn btn--secondary" href="/score/">Get your AI-Ready Score</a>
+        </div>
+      </div>
+      <div class="statrail crop">
+        <div class="statrail__row"><span class="statrail__k">Delivered through</span><span class="statrail__v">AI Implementation Sprint</span></div>
+        <div class="statrail__row"><span class="statrail__k">Price</span><span class="statrail__v"><span data-fact="price-sprint">$18,000–$60,000</span></span></div>
+        <div class="statrail__row"><span class="statrail__k">Timeline</span><span class="statrail__v"><span data-fact="timeline-sprint">4 to 12 weeks</span></span></div>
+        <div class="statrail__row"><span class="statrail__k">Guarantee</span><span class="statrail__v">Live in 90 days or we keep building</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO IT IS FOR ============ -->
+<section class="section paper-2">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">Who feels it most</span>
+        <h2 class="h2 mt-s">Where this one earns its keep.</h2>
+      </div>
+      <p>Every sector we work in has a version of this problem. These four feel it hardest, and they are where we have built it most often.</p>
+    </div>
+    <ul class="buildpage__inds">
+            <li><a href="/industries/healthcare/">Healthcare &amp; wellness</a></li>
+            <li><a href="/industries/professional-services/">Professional services</a></li>
+            <li><a href="/industries/construction/">Construction &amp; trades</a></li>
+            <li><a href="/industries/retail/">Retail &amp; e-commerce</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ THE PAIN ============ -->
+<section class="section paper">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">The arithmetic</span>
+        <h2 class="h2 mt-s">What one pasted document can cost</h2>
+      </div>
+      <p>No invented example here. The method is below; the numbers are yours to put into it.</p>
+    </div>
+    <div class="prose-2">
+      <p><strong>What to count.</strong> documents a month that currently cannot go near a model &times; the minutes each one costs to handle by hand. That is the arithmetic, and it is yours to run &mdash; we would rather hand you the method than a number invented for a page.</p>
+      <p>The <a href="/calculator/">ROI calculator</a> models the same shape across a whole team, and its assumptions are published in full underneath it. The number that actually matters comes out of an <a href="/services/#audit">AI Readiness Audit</a>, which measures your workflows instead of averaging them.</p>
+    </div>
+    <!-- BUILD-PAGE:WORKED-EXAMPLE data-privacy-filter -->
+    <!-- NEEDS-INPUT (data-privacy-filter.workedExample): the worked example is deliberately
+         NOT generated. A realistic before/after needs a real intake volume, a
+         real close rate and a real ticket size for this build, and inventing
+         them would put fabricated arithmetic on a page that quotes fixed
+         prices. Supply the three inputs and this section gets written. -->
+    <!-- /BUILD-PAGE:WORKED-EXAMPLE -->
+  </div>
+</section>
+
+<!-- ============ HOW WE BUILD IT ============ -->
+<section class="section ink">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">How it gets built</span>
+        <h2 class="h2 mt-s">Discover, build, evolve.</h2>
+      </div>
+      <p>The same three phases as every other engagement. Nothing about this build gets its own process.</p>
+    </div>
+    <div class="prose-2">
+      <p><strong>Discover.</strong> We walk the workflow as it runs today &mdash; who touches it, where it stalls, what it costs when it slips. That is the AI Readiness Audit, and it ends in a written document you own.</p>
+      <p><strong>Build.</strong> A fixed quote in writing before work begins, then the system goes into your real operation rather than a demo environment. A person stays in the loop on anything a customer sees.</p>
+      <p><strong>Evolve.</strong> Once it is live it needs watching: what it handles, what it escalates, what changed in your business since. That is Managed Services, and it is optional.</p>
+      <p class="section-action"><a href="/method/">How we work <span class="arr">&#8594;</span></a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICE CONTEXT ============ -->
+<section class="section paper-2">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">What it costs</span>
+        <h2 class="h2 mt-s">Delivered through AI Implementation Sprint.</h2>
+      </div>
+      <p>This build has no price of its own. It is scoped and delivered inside a published service, at the published price.</p>
+    </div>
+    <p class="buildpage__price">An <a href="/services/#audit">AI Readiness Audit</a> runs <span data-fact="price-audit">$3,500–$8,500</span> and tells you whether this build is the right first move. The build itself is delivered in AI Implementation Sprint at <span data-fact="price-sprint">$18,000–$60,000</span>, quoted fixed in writing before work begins. <a href="/pricing/">Read the price list <span class="arr">&#8594;</span></a></p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section paper">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">Data Privacy Filter, asked plainly.</h2>
+      </div>
+    </div>
+    <div class="faq__list">
+        <details class="faq__item">
+          <summary><span class="faq__n">01</span>What counts as personal information here?</summary>
+          <div class="faq__a"><p>Names, contact details, account and file numbers, and whatever else your sector treats as identifying — which is a scoping conversation, because a lender, a clinic, and a contractor do not have the same list.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__n">02</span>Does the filter slow things down?</summary>
+          <div class="faq__a"><p>Not in a way anyone notices. It runs on the same machine as the model, so the work stays inside your building rather than making a round trip.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__n">03</span>Can we prove it worked?</summary>
+          <div class="faq__a"><p>That is what the audit trail is for. Every request through the filter is logged, so the question 'did that document leave the building' has a recorded answer rather than an assurance.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__n">04</span>What does it cost?</summary>
+          <div class="faq__a"><p>It is delivered through an AI Implementation Sprint, quoted fixed in writing before work begins. It is normally scoped alongside the private server rather than on its own.</p></div>
+        </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section ink final">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Next step</span>
+      <h2 class="h2 mt-s">30 minutes. A straight answer.</h2>
+      <p>A senior advisor walks your workflows and tells you whether this build is worth doing &mdash; including when the answer is not yet.</p>
+    </div>
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="/book/" data-cta="build-page-final">Book a free assessment <span class="arr">&#8594;</span></a>
+      <a class="btn btn--secondary" href="/score/">Get your AI-Ready Score</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__signup">
+        <div class="foot__signup-copy">
+          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
+          <h2>Plain-English AI for Main Street.</h2>
+          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+        </div>
+        <div>
+          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
+            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
+            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+        </div>
+      </div>
+      <div class="foot__top">
+      <div class="foot__brand">
+        <a class="logo ink" href="/" aria-label="Main &amp; Machine home">
+          <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
+          <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
+        </a>
+        <p>Where Main Street meets the machine. Human-centric AI for small and mid-size business.</p>
+        <div class="entity__stats">
+          <div><span class="tick-lbl">Scope</span><b>Fixed</b></div>
+          <div><span class="tick-lbl">Audits</span><b data-fact="audit-floor">$3,500+</b></div>
+        </div>
+      </div>
+      <div class="foot__col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">Who We Are</a></li>
+          <li><a href="/method/">Method</a></li>
+          <li><a href="/work/">Proof</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/">Compare all three</a></li>
+          <li><a href="/services/#audit">AI Readiness Audit</a></li>
+          <li><a href="/services/#sprint">Implementation Sprint</a></li>
+          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>More</h2>
+        <ul>
+          <li><a href="/score/">AI-Ready Score</a></li>
+          <li><a href="/industries/">Who this is for</a></li>
+          <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><a href="/blog/archive/">Archive</a></li>
+          <li><a href="/#paths">Where are you?</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
+          <li><a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a></li>
+          <li><a href="tel:+14808059983">480-805-9983</a></li>
+          <li><a href="/denver/">Denver</a> and <a href="/phoenix/">Phoenix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="press-list"><span>© 2026 mainandmachine.com</span><span>Human-centric AI for small and mid-size business</span></span>
+      <span class="links"><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><span>Built in Denver &amp; Phoenix</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ REVEAL ANIMATION ============ -->
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.doc,.doc-caption,.doc-actions,.closer,.foot__top > *"></script>
+
+<script src="/js/nav.js?v=7"></script>
+<script src="/js/analytics.js?v=4"></script>
+</body>
+</html>

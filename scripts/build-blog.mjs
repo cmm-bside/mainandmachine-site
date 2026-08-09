@@ -298,7 +298,7 @@ ${rest.length
 	const body = `${topbar()}
 ${nav()}
 <main id="main" tabindex="-1">
-<section class="section section--tight paper">
+<section class="section section--tight paper bloghero">
   <div class="wrap">
     <div class="head-block" style="align-items:flex-end;">
       <div>
@@ -430,7 +430,7 @@ ${topBatches.length > 1 ? moreBtn("top") : ""}</div>`;
 	const body = `${topbar()}
 ${nav()}
 <main id="main" tabindex="-1">
-<section class="section section--tight paper">
+<section class="section section--tight paper bloghero">
   <div class="wrap">
     <div class="head-block" style="align-items:flex-end;">
       <div>
@@ -455,7 +455,10 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `Essay Archive | ${BLOG_NAME}`,
+		// Brand suffix, not the publication name: seo:regression asserts
+		// "| Main & Machine" on every title with room for it (46 chars here), and
+		// the archive is a site page before it is an Ampersand page.
+		title: `Essay Archive: ${BLOG_NAME} | ${BRAND}`,
 		description: `Every essay from ${BLOG_NAME}: ${BLOG_DESCRIPTION}`,
 		canonical: `${SITE_ORIGIN}/blog/archive/`,
 		ogImage: `${SITE_ORIGIN}/images/og/blog.png`,
@@ -535,7 +538,14 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 		post.publishedAt && modifiedOf(post).slice(0, 10) > post.publishedAt.slice(0, 10)
 			? `Updated ${formatDate(modifiedOf(post))}`
 			: "";
-	const metaRow = [esc(AUTHOR), esc(formatDate(post.publishedAt)), updatedStamp ? esc(updatedStamp) : "", `${minutes} min read`, topic ? esc(topic) : ""]
+	// The author is a LINK to /about/ with rel="author", not bare text. The row
+	// already carried the name and the Updated stamp — what it never did was
+	// connect the credit to the Person the graph describes, which is the whole
+	// point of an author signal. The role is stated for the same reason: a name
+	// alone is not a credential.
+	const authorCredit =
+		`<a href="/about/" rel="author">${esc(AUTHOR)}</a> &mdash; Founder, ${esc(BRAND)}`;
+	const metaRow = [authorCredit, esc(formatDate(post.publishedAt)), updatedStamp ? esc(updatedStamp) : "", `${minutes} min read`, topic ? esc(topic) : ""]
 		.filter(Boolean)
 		.map((part) => `<span>${part}</span>`)
 		.join("");

@@ -27,8 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=133" />
+<link rel="stylesheet" href="/styles.css?v=137" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -49,14 +50,20 @@
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
-      "areaServed": {
-        "@type": "City",
-        "name": "Phoenix",
-        "containedInPlace": {
-          "@type": "State",
-          "name": "Arizona"
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Phoenix",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Arizona"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Phoenix–Mesa–Chandler, AZ Metropolitan Statistical Area"
         }
-      },
+      ],
       "slogan": "The machine belongs to Main Street.",
       "parentOrganization": {
         "@id": "https://www.mainandmachine.com/#org"
@@ -141,7 +148,29 @@
       "founder": {
         "@id": "https://www.mainandmachine.com/#person-cmyers"
       },
-      "areaServed": "US"
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Denver",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Phoenix",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Arizona"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
+      "priceRange": "$3,500–$60,000"
     },
     {
       "@type": "Person",
@@ -153,18 +182,23 @@
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
         "https://www.bside.org",
+        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
       "name": "Christopher Myers",
       "jobTitle": "Founder & Chairman",
-      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png"
+      "image": "https://www.mainandmachine.com/images/christopher-myers-hedcut.png",
+      "worksFor": {
+        "@id": "https://www.mainandmachine.com/#org"
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://www.mainandmachine.com/#website",
       "name": "Main & Machine",
-      "url": "https://www.mainandmachine.com/"
+      "url": "https://www.mainandmachine.com/",
+      "alternateName": "Main and Machine"
     },
     {
       "@type": "BreadcrumbList",
@@ -290,11 +324,12 @@
 <!-- ============ PAGE HERO ============ -->
 <section class="section paper pagehero">
   <div class="wrap">
-    <div class="crumb">
-      <a href="/">Main &amp; Machine</a>
-      <span class="sep">/</span>
-      <span>Phoenix</span>
-    </div>
+    <nav class="crumb" aria-label="Breadcrumb">
+        <ol class="crumb__list">
+          <li><a href="/">Main &amp; Machine</a></li>
+          <li><span aria-current="page">Phoenix</span></li>
+        </ol>
+      </nav>
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Phoenix, Arizona</span>
@@ -311,6 +346,21 @@
     </div>
   </div>
 </section>
+
+<!-- CITY:NAP -->
+<section class="section section--tight paper napband">
+  <div class="wrap">
+    <p class="nap">
+      <span class="nap__name">Main &amp; Machine</span>
+      <span class="nap__sep" aria-hidden="true">&middot;</span>
+      <a class="nap__tel" href="tel:+14808059983">480-805-9983</a>
+      <span class="nap__sep" aria-hidden="true">&middot;</span>
+      <span class="nap__loc">Phoenix, AZ</span>
+    </p>
+    <p class="nap__note">Service-area business &mdash; we work at your place, not ours. No storefront in Phoenix.</p>
+  </div>
+</section>
+<!-- /CITY:NAP -->
 
 <!-- ============ SERVICES AND PRICES ============ -->
 <section class="section paper-2" id="services">
@@ -433,6 +483,47 @@
   </div>
 </section>
 
+<!-- CITY:INDUSTRY-STRIP -->
+<section class="section paper cxi">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">Five sectors</span>
+        <h2 class="h2 mt-s">What we build for Phoenix operators, by sector.</h2>
+      </div>
+      <p>The same four SKUs and the same published prices in every one. What changes is the first workflow worth automating.</p>
+    </div>
+    <ul class="cxi__grid">
+      <li class="cxi__item">
+        <h3 class="cxi__h">Professional services in Phoenix</h3>
+        <p>The Valley's professional bench — law, accounting, insurance, advisory — has grown with the metro, and intake is where that growth shows up first. Firms of twelve to eighty carry matter setup and billing narrative by hand long after the headcount says they should not.</p>
+        <p class="cxi__go"><a href="/industries/professional-services/">Professional services &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+      <li class="cxi__item">
+        <h3 class="cxi__h">Retail &amp; e-commerce in Phoenix</h3>
+        <p>Retail across Scottsdale, Tempe and Chandler runs a storefront and a webstore that disagree about stock by mid-week, with seasonal swing on top of it. One count, every channel, every morning — the same build whether the second channel is a marketplace or a second location.</p>
+        <p class="cxi__go"><a href="/industries/retail/">Retail &amp; e-commerce &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+      <li class="cxi__item">
+        <h3 class="cxi__h">Healthcare &amp; wellness in Phoenix</h3>
+        <p>The Valley's population growth shows up first in medical and dental practices: new locations, new providers, and scheduling and intake that were sized for a smaller practice. The patient record stays in the practice — models run on hardware in your building.</p>
+        <p class="cxi__go"><a href="/industries/healthcare/">Healthcare &amp; wellness &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+      <li class="cxi__item">
+        <h3 class="cxi__h">Construction &amp; trades in Phoenix</h3>
+        <p>Arizona's preliminary-notice window is twenty days, which is tighter than most states and is the reason contractors call. The twenty-day notice, pay applications, waivers per tier and certified payroll all assembled from one source, with a person signing everything.</p>
+        <p class="cxi__go"><a href="/industries/construction/">Construction &amp; trades &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+      <li class="cxi__item">
+        <h3 class="cxi__h">Hospitality &amp; food service in Phoenix</h3>
+        <p>Metro Phoenix adds restaurants, resorts and event venues faster than most markets, and every one of them runs on a weekly invoice pile arriving as email, PDF and photographs. That stack is read, coded and staged; the floor stays the floor.</p>
+        <p class="cxi__go"><a href="/industries/hospitality/">Hospitality &amp; food service &rarr; what we build <span class="arr">&#8594;</span></a></p>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- /CITY:INDUSTRY-STRIP -->
+
 <!-- ============ LOCAL PROOF ============ -->
 <section class="section ink">
   <div class="wrap">
@@ -452,6 +543,39 @@
     </div>
   </div>
 </section>
+
+<!-- CITY:LOCAL-OPS -->
+<section class="section paper-2 lops">
+  <div class="wrap">
+    <div class="head-block">
+      <div>
+        <span class="kicker">Phoenix–Mesa–Chandler</span>
+        <h2 class="h2 mt-s">How working together actually goes in Phoenix.</h2>
+      </div>
+      <p>In person means at your place: Tempe, Old Town, Chandler, or a job trailer if that is where the work is. When distance wins we work remotely, at the same published prices.</p>
+    </div>
+    <div class="lops__grid">
+      <div class="lops__row"><span class="tick-lbl">Coverage</span><p>the Valley, East Valley through the West Valley in person, remote across the US.</p></div>
+      <!-- NEEDS-INPUT (phoenix.kickoff): What is the kickoff format and how long does it run?
+           Fill LOCAL_OPS.phoenix.kickoff in scripts/lib/cities.mjs, then run
+           npm run cities:render. Left unwritten on purpose — this is a
+           commitment to a customer and must not be invented. -->
+      <!-- NEEDS-INPUT (phoenix.cadence): How often are on-site working sessions during a sprint?
+           Fill LOCAL_OPS.phoenix.cadence in scripts/lib/cities.mjs, then run
+           npm run cities:render. Left unwritten on purpose — this is a
+           commitment to a customer and must not be invented. -->
+      <!-- NEEDS-INPUT (phoenix.responseTime): What response time do we actually commit to?
+           Fill LOCAL_OPS.phoenix.responseTime in scripts/lib/cities.mjs, then run
+           npm run cities:render. Left unwritten on purpose — this is a
+           commitment to a customer and must not be invented. -->
+      <!-- NEEDS-INPUT (phoenix.communities): Which local chambers / trade associations do we belong to?
+           Fill LOCAL_OPS.phoenix.communities in scripts/lib/cities.mjs, then run
+           npm run cities:render. Left unwritten on purpose — this is a
+           commitment to a customer and must not be invented. -->
+    </div>
+  </div>
+</section>
+<!-- /CITY:LOCAL-OPS -->
 
 <!-- ============ FAQ ============ -->
 <section class="section paper-2">

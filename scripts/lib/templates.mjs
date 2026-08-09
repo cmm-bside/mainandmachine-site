@@ -98,6 +98,7 @@ ${imgKnownSize ? `<meta property="og:image:width" content="1200" />
 <meta name="twitter:image" content="${attr(img)}" />
 <meta name="twitter:image:alt" content="${attr(imgAlt)}" />
 
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="alternate" type="application/rss+xml" title="${esc(BLOG_NAME)}" href="${SITE_ORIGIN}/blog/rss.xml" />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
@@ -135,30 +136,19 @@ export function topbar() {
 // Facts come from src/data/company.mjs; never restate them here.
 // sameAs = verified official profiles only (do not invent). Add GitHub org /
 // Crunchbase / author-speaker profiles here when real URLs exist.
-const ORG_SAMEAS = [
-	"https://www.linkedin.com/company/main-and-machine/",
-	"https://x.com/mainandmachine",
-];
+// MOVED to src/data/site-facts.json (`sameAs.org` / `sameAs.person`)
+// 2026-08-08. These were array literals here — a profile list is a claim about
+// an entity, so it belongs with the other canonical facts rather than in a
+// template module that only the blog pipeline imports. The rules that governed
+// them are unchanged and now live in `_sameAs_note` beside the data: verified
+// profile pages only, never invented, order is significant.
+const ORG_SAMEAS = COMPANY.sameAs.org;
 // Exported so check-facts.mjs can hold every hand-embedded Person block to it.
-// One entity, one claim set: if you add a profile here, `npm run facts:check`
-// fails every static page until it carries the same list in the same order.
-export const PERSON_SAMEAS = [
-	"https://www.linkedin.com/in/cmyers85/",
-	"https://x.com/Chris_myers",
-	"https://www.entrepreneur.com/author/christopher-myers",
-	"https://search.asu.edu/profile/559969",
-	"https://www.amazon.com/stores/author/B01LBGCKWM/about",
-	"https://www.bside.org",
-	// Press author profiles, verified 2026-07-31 (bios match: BodeTree
-	// cofounder/CEO -> B:Side). Coverage ARTICLES (TechCrunch, Fox Business)
-	// are linked in the .bio__press strips on / and /about/, not here —
-	// sameAs is for profile pages of the person, not stories about him.
-	// WSJ / NYT / MSNBC: asserted in his Inc. bio but no verifiable URL found
-	// as of 2026-07-31 — those outlets stay UNLINKED in the press strip. Do
-	// not add or link them without a real URL.
-	"https://www.forbes.com/sites/chrismyers/",
-	"https://www.inc.com/author/chris-myers",
-];
+// One entity, one claim set: if you add a profile to site-facts.json,
+// `npm run facts:check` fails every static page until it carries the same list
+// in the same order. Re-exported (rather than having callers read COMPANY
+// directly) so the ~40-page consistency guard keeps its single import site.
+export const PERSON_SAMEAS = COMPANY.sameAs.person;
 // Pass { searchAction: true } on pages whose search honors ?q= (the blog
 // index) to emit a WebSite SearchAction (sitelinks searchbox).
 export function orgJsonLd({ searchAction = false } = {}) {

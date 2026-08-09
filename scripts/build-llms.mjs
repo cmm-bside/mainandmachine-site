@@ -12,7 +12,7 @@
 //                   AI systems that want source copy rather than the summary.
 import fs from "node:fs";
 import path from "node:path";
-import { ROOT, SITE_ORIGIN } from "./lib/config.mjs";
+import { ROOT, SITE_ORIGIN, STATIC_ROUTES } from "./lib/config.mjs";
 import { COMPANY } from "../src/data/company.mjs";
 
 // Stamped into llms.txt so consumers can tell how fresh the fact sheet is.
@@ -220,6 +220,14 @@ const FULL_PAGES = [
   "/services/builds/",
   "/security/",
   "/book/",
+  // The two city pages, added 2026-08-09. They were the only key commercial
+  // surface missing from the full text, and they are the ones that answer
+  // "does this firm work in my metro" — the question a local AI search is
+  // actually asking. Each is ~70% locally unique copy (Front Range vs Valley
+  // geography, Colorado prevailing wage vs Arizona's 20-day notice), so
+  // including both adds real coverage rather than a second copy of one.
+  "/denver/",
+  "/phoenix/",
   "/guides/ai-consultant-cost/",
   "/guides/ai-readiness-checklist/",
   "/guides/how-to-choose-an-ai-consultant/",
@@ -294,6 +302,57 @@ for (const route of FULL_PAGES) {
   );
 }
 
+// --- index of every guide and every essay -----------------------------------
+// The 15 sections above are FULL TEXT of the commercial pages. This is the
+// other half of the brief: a one-paragraph summary plus a link for every Field
+// Guide entry and every published essay, so an AI system can see the whole
+// catalogue without us pasting 14 guides and 15 essays into one 400KB file.
+//
+// Summaries are each page's own meta description — already written, already
+// held to 110–155 chars by meta:check, and already the sentence we chose to
+// describe that page. Writing a second summary here would be a second thing to
+// keep in step.
+function summaryIndex() {
+  const out = [];
+
+  const guideRoutes = STATIC_ROUTES.filter((r) => r.startsWith("/guides/") && r !== "/guides/");
+  const guides = [];
+  for (const route of guideRoutes) {
+    const abs = path.join(ROOT, `${route.replace(/^\/|\/$/g, "")}/index.html`);
+    if (!fs.existsSync(abs)) continue;
+    const { title, description } = pageMeta(fs.readFileSync(abs, "utf8"));
+    guides.push(`- [${title.replace(/\s*\|.*$/, "")}](${route})\n  ${description}`);
+  }
+  if (guides.length) {
+    out.push(`${RULE}\nINDEX: The Field Guide — all ${guides.length} entries\nURL: ${SITE_ORIGIN}/guides/\n${RULE}\n\n${guides.join("\n")}`);
+  }
+
+  // Essays come from the generated post data. On a local build with no beehiiv
+  // key that list is empty and this section is omitted entirely rather than
+  // shipped as an empty heading — blog:build already fails the deploy on a
+  // zero-post index, so an empty list here can only be local dev.
+  let posts = [];
+  try {
+    const mod = fs.readFileSync(path.join(ROOT, "src", "data", "blog-posts.js"), "utf8");
+    const m = /export const posts = (\[[\s\S]*?\]);/.exec(mod);
+    if (m) posts = JSON.parse(m[1]);
+  } catch { /* no data module locally */ }
+  const essays = posts
+    .filter((p) => p && p.slug && p.title)
+    .map((p) => {
+      const when = (p.publishedAt || "").slice(0, 10);
+      const blurb = (p.excerpt || p.subtitle || "").replace(/\s+/g, " ").trim();
+      return `- [${p.title}](/blog/${p.slug}/)${when ? ` — ${when}` : ""}\n  ${blurb}`;
+    });
+  if (essays.length) {
+    out.push(`${RULE}\nINDEX: The Ampersand — all ${essays.length} essays\nURL: ${SITE_ORIGIN}/blog/\n${RULE}\n\n${essays.join("\n")}`);
+  } else {
+    console.warn("[llms:build] WARN: no essays indexed in llms-full.txt (no post data — local build without a beehiiv key)");
+  }
+  return out;
+}
+const indexSections = summaryIndex();
+
 const fullOut = `# ${COMPANY.name} — llms-full.txt
 # The complete visible text of the ${sections.length} most important pages on
 # ${SITE_ORIGIN}/ , concatenated with page delimiters.
@@ -301,7 +360,7 @@ const fullOut = `# ${COMPANY.name} — llms-full.txt
 # Canonical business facts: ${COMPANY.oneLiner}.
 # Contact: ${COMPANY.email} · ${COMPANY.phone} · Denver, CO & Phoenix, AZ.
 
-${sections.join("\n\n")}
+${[...sections, ...indexSections].join("\n\n")}
 `;
 
 // /facts.json — the same canonical facts as machine-readable JSON, for

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!-- PLACEHOLDER — not a real token. Do not deploy this file.
+     Bing Webmaster Tools -> Add site -> "Import from Google Search Console"
+     is the fastest path and needs no file at all.
+     If you verify manually instead, Bing gives you BingSiteAuth.xml:
+     save it at the repo ROOT with your real token, delete this placeholder. -->
+<users><user>REPLACE_WITH_YOUR_BING_TOKEN</user></users>

@@ -34,3 +34,8 @@ audit/
 _to_delete/
 kobo_downloads/
 .claude/
+
+# Lighthouse HTML/JSON reports (npm run perf). Cloudflare Pages serves the
+# repo root, so committing these would publish ~7MB of crawlable report pages
+# under /docs/perf/ — generated artifacts, not site content.
+docs/perf/

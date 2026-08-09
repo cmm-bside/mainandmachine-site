@@ -5,7 +5,11 @@
         "https://www.mainandmachine.com/",
         "https://www.mainandmachine.com/pricing/",
         "https://www.mainandmachine.com/book/",
-        "https://www.mainandmachine.com/score/"
+        "https://www.mainandmachine.com/score/",
+        "https://www.mainandmachine.com/services/",
+        "https://www.mainandmachine.com/guides/ai-consultant-cost/",
+        "https://www.mainandmachine.com/denver/",
+        "https://www.mainandmachine.com/blog/where-your-data-goes/"
       ],
       "numberOfRuns": 3,
       "settings": {
@@ -17,7 +21,9 @@
       "assertions": {
         "largest-contentful-paint": ["error", { "maxNumericValue": 2000, "aggregationMethod": "median" }],
         "cumulative-layout-shift": ["error", { "maxNumericValue": 0.05, "aggregationMethod": "median" }],
-        "total-blocking-time": ["error", { "maxNumericValue": 150, "aggregationMethod": "median" }]
+        "total-blocking-time": ["error", { "maxNumericValue": 150, "aggregationMethod": "median" }],
+        "total-byte-weight": ["error", { "maxNumericValue": 1600000, "aggregationMethod": "median" }],
+        "modern-image-formats": ["error", { "maxNumericValue": 1000, "aggregationMethod": "median" }]
       }
     },
     "upload": { "target": "temporary-public-storage" }

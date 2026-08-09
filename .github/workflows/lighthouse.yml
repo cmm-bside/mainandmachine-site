@@ -26,5 +26,12 @@ jobs:
       # Give the Cloudflare Pages deploy time to land before measuring.
       - name: Wait for deploy
         run: sleep 180
-      - name: Run Lighthouse CI
+      - name: Run Lighthouse CI (desktop)
         run: npx --yes @lhci/cli@0.14.x autorun --config=lighthouserc.json
+      # MOBILE, added 2026-08-09. The desktop-only budget is why a 1.37MB PNG
+      # cover on a blog post sat at LCP 9.64s without ever failing a build:
+      # the blog template was not in the URL list AND mobile was never
+      # measured. Mobile thresholds are the Core Web Vitals "good" line
+      # (LCP 2.5s / CLS 0.1), deliberately looser than the desktop budget.
+      - name: Run Lighthouse CI (mobile)
+        run: npx --yes @lhci/cli@0.14.x autorun --config=lighthouserc.mobile.json

@@ -11,6 +11,8 @@ export const COMPANY = {
     "schemaVersion": 1
   },
   "name": "Main & Machine",
+  "_alternateName_note": "The spelled-out form, for the WebSite node's alternateName. People search \"main and machine\" as often as they type the ampersand, and an ampersand is entity-ambiguous to a parser. Display copy always uses the & form — this exists for structured data only.",
+  "alternateName": "Main and Machine",
   "domain": "mainandmachine.com",
   "origin": "https://www.mainandmachine.com",
   "oneLiner": "AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue)",
@@ -94,11 +96,53 @@ export const COMPANY = {
     "Denver, CO",
     "Phoenix, AZ"
   ],
+  "_hubs_note": "The two hubs as STRUCTURED data, for the JSON-LD layer. `locations` above is the display form and is what page copy uses; this is the machine form the city pages' LocalBusiness nodes and the org's areaServed are built from, so a hub cannot be described two ways. `metro` is the Census CBSA name — the official metropolitan statistical area, not a marketing phrase. NO streetAddress, ever: we are a service-area business with no verified public address, and inventing one is both a schema.org violation and a Google Business Profile risk. See CLAUDE.md → TODO.",
+  "hubs": [
+    {
+      "city": "Denver",
+      "state": "Colorado",
+      "stateCode": "CO",
+      "metro": "Denver–Aurora–Lakewood, CO Metropolitan Statistical Area",
+      "path": "/denver/"
+    },
+    {
+      "city": "Phoenix",
+      "state": "Arizona",
+      "stateCode": "AZ",
+      "metro": "Phoenix–Mesa–Chandler, AZ Metropolitan Statistical Area",
+      "path": "/phoenix/"
+    }
+  ],
   "coverage": "Remote across the US",
   "email": "cmyers@mainandmachine.com",
   "phone": "480-805-9983",
   "phoneE164": "+1-480-805-9983",
   "phoneHref": "tel:+14808059983",
+  "_blog_note": "The Ampersand, published on beehiiv. CADENCE IS A CLAIM, not decoration: it appears in the footer kicker on ~40 pages, in llms.txt, and in the blog chrome, so it lived in scripts/lib/config.mjs as BLOG_CADENCE where nothing tied it to the rest of the facts. \"weekly\" was retired deliberately when publishing paused after the June 2026 essay — restore it here ONLY if weekly publishing actually resumes, and never as an aspiration. There is no Substack; beehiiv is the only publishing surface.",
+  "blog": {
+    "name": "The Ampersand",
+    "cadence": "a few times a month",
+    "platform": "beehiiv",
+    "subscribeUrl": "https://theampersand.beehiiv.com/subscribe"
+  },
+  "_sameAs_note": "Verified official profile URLs — the sameAs arrays in every JSON-LD graph. One @id is one entity, so all ~40 hand-embedded Person blocks must carry `person` EXACTLY and IN ORDER; check-facts.mjs fails the build until they do. These moved here from PERSON_SAMEAS/ORG_SAMEAS in scripts/lib/templates.mjs so a profile list is not a second source of truth living in a template file. NEVER invent a URL: sameAs pointing at a wrong page is worse than a short list. Coverage ARTICLES (TechCrunch, Fox Business) belong in the .bio__press strips, not here — sameAs is for profile pages of the person. WSJ / NYT / MSNBC are asserted in his Inc. bio but no verifiable profile URL was found as of 2026-07-31, so those outlets stay unlinked. Still TODO when real URLs exist: GitHub org, Crunchbase.",
+  "sameAs": {
+    "org": [
+      "https://www.linkedin.com/company/main-and-machine/",
+      "https://x.com/mainandmachine"
+    ],
+    "person": [
+      "https://www.linkedin.com/in/cmyers85/",
+      "https://x.com/Chris_myers",
+      "https://www.entrepreneur.com/author/christopher-myers",
+      "https://search.asu.edu/profile/559969",
+      "https://www.amazon.com/stores/author/B01LBGCKWM/about",
+      "https://www.bside.org",
+      "https://www.thebsideway.com",
+      "https://www.forbes.com/sites/chrismyers/",
+      "https://www.inc.com/author/chris-myers"
+    ]
+  },
   "press": [
     "Forbes",
     "The Wall Street Journal",

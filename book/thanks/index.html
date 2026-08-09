@@ -24,8 +24,9 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=133" />
+<link rel="stylesheet" href="/styles.css?v=137" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
 <script type="application/ld+json">
@@ -45,7 +46,28 @@
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
-      "areaServed": "US",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Denver",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Phoenix",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Arizona"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
       "founder": {
         "@id": "https://www.mainandmachine.com/#person-cmyers"
       }
@@ -54,7 +76,8 @@
       "@type": "WebSite",
       "@id": "https://www.mainandmachine.com/#website",
       "name": "Main & Machine",
-      "url": "https://www.mainandmachine.com/"
+      "url": "https://www.mainandmachine.com/",
+      "alternateName": "Main and Machine"
     },
     {
       "@type": "Person",
@@ -66,6 +89,7 @@
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
         "https://www.bside.org",
+        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -88,13 +112,13 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Book a free assessment",
+          "name": "Book an assessment",
           "item": "https://www.mainandmachine.com/book/"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Request received",
+          "name": "You're booked",
           "item": "https://www.mainandmachine.com/book/thanks/"
         }
       ]
@@ -221,13 +245,13 @@
 <!-- ============ CONFIRMATION ============ -->
 <section class="section paper thankshero" data-screen-label="Request received">
   <div class="wrap">
-    <div class="thankshero__crumb">
-      <a href="/">Main &amp; Machine</a>
-      <span class="sep">/</span>
-      <a data-cta="breadcrumb" href="/book/">Book an assessment</a>
-      <span class="sep">/</span>
-      <span>Request received</span>
-    </div>
+    <nav class="thankshero__crumb" aria-label="Breadcrumb">
+        <ol class="crumb__list">
+          <li><a href="/">Main &amp; Machine</a></li>
+          <li><a href="/book/" data-cta="breadcrumb">Book an assessment</a></li>
+          <li><span aria-current="page">You're booked</span></li>
+        </ol>
+      </nav>
 
     <div class="confirm">
       <div class="confirm__bar"><span class="ok">Request received</span><span id="confirmStamp">Logged</span></div>

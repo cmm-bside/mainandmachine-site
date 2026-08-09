@@ -17,6 +17,13 @@ export const LOCAL_SCRATCH_DIRS = new Set([
 	"reports",
 	"_to_delete",
 	"kobo_downloads",
+	// .claude/worktrees/<name>/ is a FULL git worktree — a second complete copy
+	// of the site — created whenever a task runs in an isolated worktree. Every
+	// page therefore exists twice, and head:check's cross-page duplicate-meta
+	// rule fires on all ~40 of them at once. That is the exact phantom-failure
+	// flood this list exists to stop, and it appears the moment someone runs a
+	// background task, not from anything they did wrong.
+	".claude",
 	// design/ holds home-reference.html, the rendered visual spec. It IS
 	// committed and IS deployed (robots.txt disallows it), so it is not scratch
 	// in the sense above — but it is not a site page either, and it was already
@@ -24,6 +31,12 @@ export const LOCAL_SCRATCH_DIRS = new Set([
 	// contain the words a real page may not; without this, adding "TODO" to the
 	// spec would fail the site build.
 	"design",
+	// docs/ holds SITE-AUDIT.md, the PR write-ups and the Lighthouse report
+	// HTML. None of it is a site page, and the Lighthouse reports in particular
+	// are ~7MB of generated HTML that every page-walking guard would otherwise
+	// sweep in (they have no canonical, no og tags and a "Lighthouse Report"
+	// title, so they fail almost every check for reasons that mean nothing).
+	"docs",
 ]);
 
 // --- Site identity (sourced from src/data/company.mjs) ---
@@ -31,12 +44,18 @@ export { COMPANY };
 export const SITE_ORIGIN = COMPANY.origin;
 export const SITE_HOST = COMPANY.origin.replace(/^https?:\/\//, "");
 export const BRAND = COMPANY.name;
-export const BLOG_NAME = "The Ampersand";
+export const BLOG_NAME = COMPANY.blog.name;
 export const AUTHOR = COMPANY.founder.name;
 // Cadence claim must match what actually ships. Publishing paused after the
-// June 2026 essay; "weekly" was retired rather than left to drift. Restore it
-// here (and in templates.mjs / build-llms.mjs / smoke-test.mjs) if it resumes.
-export const BLOG_CADENCE = "a few times a month";
+// June 2026 essay; "weekly" was retired rather than left to drift.
+//
+// MOVED to src/data/site-facts.json (blog.cadence) 2026-08-08. It was a string
+// literal here, which made it the one business claim on the site with its own
+// private source of truth: facts:check never saw it, so the footer kicker on
+// ~40 pages, llms.txt and the blog chrome were held together only by whoever
+// remembered to edit all of them. Restore weekly publishing by editing the
+// JSON and running `npm run facts:render` — not by editing this line.
+export const BLOG_CADENCE = COMPANY.blog.cadence;
 export const BLOG_DESCRIPTION = `Free essays from Christopher Myers on building durable things in a noisy time, ${BLOG_CADENCE}.`;
 // Cadence-free variant for the /blog/ archive <meta description>, which
 // head:check caps at 160 chars. Makes no cadence claim rather than a stale one.
@@ -55,7 +74,7 @@ export const BEEHIIV_PUBLICATION_ID = process.env.BEEHIIV_PUBLICATION_ID || "";
 // meta.subscribeUrl — previously they shipped action="#" and depended entirely
 // on a runtime JS rewrite, which meant a subscribe form that did nothing at all
 // with JS off or before blog.js ran.
-export const BEEHIIV_SUBSCRIBE_FALLBACK = "https://theampersand.beehiiv.com/subscribe";
+export const BEEHIIV_SUBSCRIBE_FALLBACK = COMPANY.blog.subscribeUrl;
 // Optional explicit subscribe URL; otherwise derived from a post's web_url host.
 export const BEEHIIV_SUBSCRIBE_URL = process.env.BEEHIIV_SUBSCRIBE_URL || "";
 
@@ -83,6 +102,18 @@ export const STATIC_ROUTES = [
 	"/services/",
 	"/services/sample-audit/",
 	"/services/builds/",
+	"/services/builds/instant-lead-response/",
+	"/services/builds/missed-call-text-back/",
+	"/services/builds/review-reputation-agent/",
+	"/services/builds/private-ai-server/",
+	"/services/builds/data-privacy-filter/",
+	"/services/builds/company-knowledge-base/",
+	"/services/builds/slack-teams-integration/",
+	"/services/builds/private-company-chat/",
+	"/services/builds/business-system-connectors/",
+	"/services/builds/testing-and-monitoring/",
+	"/services/builds/ai-receptionist/",
+	"/services/builds/website-chat-booking-agent/",
 	"/industries/",
 	"/industries/professional-services/",
 	"/industries/retail/",
@@ -109,6 +140,7 @@ export const STATIC_ROUTES = [
 	"/guides/how-to-scope-an-ai-project/",
 	"/guides/ai-roi-math-small-business/",
 	"/guides/ai-for-the-skeptical-owner/",
+	"/guides/private-ai-for-small-business/",
 	"/calculator/",
 	"/security/",
 	"/contact/",
@@ -186,4 +218,4 @@ export const POST_TOPICS = {
 export const POST_TOPIC_FALLBACK = { href: "/services/", label: "What we actually build" };
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "133";
+export const ASSET_VERSION = "137";

@@ -27,8 +27,9 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=133" />
+<link rel="stylesheet" href="/styles.css?v=137" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2" />
@@ -54,7 +55,28 @@
       "email": "cmyers@mainandmachine.com",
       "telephone": "+1-480-805-9983",
       "priceRange": "$3,500–$60,000",
-      "areaServed": "US",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Denver",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Phoenix",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Arizona"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
       "slogan": "The machine belongs to Main Street.",
       "address": [
         {
@@ -78,7 +100,8 @@
       "@type": "WebSite",
       "@id": "https://www.mainandmachine.com/#website",
       "name": "Main & Machine",
-      "url": "https://www.mainandmachine.com/"
+      "url": "https://www.mainandmachine.com/",
+      "alternateName": "Main and Machine"
     },
     {
       "@type": "Person",
@@ -90,6 +113,7 @@
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
         "https://www.bside.org",
+        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -107,7 +131,7 @@
       "description": "Cloud AI sends your prompts and documents to the provider's servers; on-premise AI keeps them on your hardware. Which deployment fits which data type — and when cloud is the right call.",
       "url": "https://www.mainandmachine.com/guides/ai-data-cloud-vs-on-prem/",
       "datePublished": "2026-07-13",
-      "dateModified": "2026-07-29",
+      "dateModified": "2026-08-06",
       "author": {
         "@id": "https://www.mainandmachine.com/#person-cmyers"
       },
@@ -142,7 +166,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Where your AI data goes",
+          "name": "Where your data goes",
           "item": "https://www.mainandmachine.com/guides/ai-data-cloud-vs-on-prem/"
         }
       ]
@@ -251,17 +275,21 @@
 <!-- ============ PAGE HERO ============ -->
 <section class="section paper pagehero">
   <div class="wrap">
-    <div class="crumb">
-      <a href="/">Main &amp; Machine</a>
-      <span class="sep">/</span>
-      <a href="/guides/">The Field Guide</a>
-      <span class="sep">/</span>
-      <span>Where your data goes</span>
-    </div>
+    <nav class="crumb" aria-label="Breadcrumb">
+        <ol class="crumb__list">
+          <li><a href="/">Main &amp; Machine</a></li>
+          <li><a href="/guides/">The Field Guide</a></li>
+          <li><span aria-current="page">Where your data goes</span></li>
+        </ol>
+      </nav>
     <div class="pagehero__grid">
       <div>
         <span class="kicker">The Field Guide / 09</span>
         <h1 class="h2 mt-s">Where does your AI data <span class="accent-tx">actually&nbsp;go?</span></h1>
+        <!-- BYLINE:auto -->
+        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated August 2026</span>
+      <span class="byline__reviewed">Reviewed by Christopher Myers, August 2026</span></p>
+        <!-- /BYLINE:auto -->
         <p class="lead mt-s">Most owners sign the vendor agreement without reading the data clause. This guide is that clause, translated — cloud, on-premise, and the middle path, by data type.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
@@ -393,6 +421,22 @@
 <!-- /FAQ:auto -->
 
 <!-- ============ START HERE (ink) ============ -->
+<!-- BUILD-LINKS:auto -->
+<section class="section section--tight paper-2 buildlinks">
+  <div class="wrap">
+    <p class="citylinks__p"><span class="tick-lbl">From the catalog</span> Builds most often scoped here: <a href="/services/builds/private-ai-server/">private ai server</a>, <a href="/services/builds/data-privacy-filter/">data privacy filter</a>. Every one is delivered through the same three services, at the published prices.</p>
+  </div>
+</section>
+<!-- /BUILD-LINKS:auto -->
+
+<!-- PILLAR-LINK:auto -->
+<section class="section section--tight paper-2 citylinks">
+  <div class="wrap">
+    <p class="citylinks__p"><span class="tick-lbl">Read next</span> The full picture, including the production figures: <a href="/guides/private-ai-for-small-business/">Private AI for small business</a>.</p>
+  </div>
+</section>
+<!-- /PILLAR-LINK:auto -->
+
 <section class="section ink final">
   <div class="wrap">
     <div class="final__cta">

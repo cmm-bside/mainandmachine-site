@@ -38,6 +38,11 @@ const warn = (m) => { console.warn(`  WARN   ${m}`); warnings++; };
 
 const TITLE_MAX = 60, TITLE_WARN = 65;
 const SUFFIX = " | Main & Machine";
+// Blog surfaces carry the PUBLICATION suffix instead — "| The Ampersand".
+// That is first-party brand context, not a missing suffix, and demanding the
+// company name there would either double the suffix or delete the masthead
+// from every essay title. Accept either.
+const SUFFIX_ALT = " | The Ampersand";
 const dec = (s) => String(s).replace(/&amp;/g, "&").replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&mdash;/g, "—").replace(/&nbsp;/g, " ");
 
 // /404.html is noindex by design: no canonical, no og:image (Google discourages
@@ -76,7 +81,7 @@ for (const rel of pages) {
 	if (prev) fail(`${rel}: <title> duplicates ${prev} — "${title}". Every page needs its own.`);
 	else seenTitles.set(title, rel);
 	// Suffix only where it fits (see TITLE POLICY above).
-	if (!title.endsWith(SUFFIX) && route !== "/" && title.length + SUFFIX.length <= TITLE_MAX)
+	if (!title.endsWith(SUFFIX) && !title.endsWith(SUFFIX_ALT) && route !== "/" && title.length + SUFFIX.length <= TITLE_MAX)
 		fail(`${rel}: <title> is ${title.length} chars and has room for "${SUFFIX.trim()}" (${title.length + SUFFIX.length} total) — add it.`);
 
 	// --- 2. description + canonical ---

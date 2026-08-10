@@ -31,6 +31,18 @@
      Drop the plain one and the iframe re-handshakes from cold. -->
 <link rel="preconnect" href="https://calendly.com" />
 <link rel="preconnect" href="https://calendly.com" crossorigin />
+<!-- assets.calendly.com is a SECOND origin, and it is the one that actually
+     gates the paint: calendly.com/<user>/<event> returns a ~2KB shell with an
+     empty <div id="root">, and the booking UI does not exist until a stylesheet
+     and a script land from assets.calendly.com. Measured 2026-08-10, brotli off
+     the wire: booking-*.css 1.30 MB, booking-*.js 1.29 MB — 2.5 MB before one
+     pixel of calendar. That handshake could not start until the shell arrived
+     and was parsed; warming it here overlaps it with our own page load.
+     Plain form only. Both files are loaded by the frame as ordinary
+     <script>/<link rel=stylesheet> with no crossorigin attribute, so they use
+     the credentialed socket — the anonymous one the pair above needs would sit
+     unused here. -->
+<link rel="preconnect" href="https://assets.calendly.com" />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
 <link rel="stylesheet" href="/styles.css?v=141" />
@@ -263,10 +275,35 @@
    `pointer-events: none` because the placeholder must never take a click. It
    already sits under the iframe (both are positioned at z-index auto, and the
    ::before precedes the iframe child in paint order), so this is belt and
-   braces for the window before the frame exists. */
-.cal-embed::before { content: "Loading the scheduler…"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); letter-spacing: .08em; pointer-events: none; }
+   braces for the window before the frame exists.
+
+   THE TIMER NO LONGER BLANKS THIS LABEL — it rewords it (.is-slow), and that
+   is the whole point. Being painted UNDER the iframe makes the label
+   self-correcting: a rendered calendar is an opaque surface, so it hides the
+   label with no signal from us, and the label can only be seen when the frame
+   is genuinely still blank. The old fallback cleared it outright at 5s on the
+   premise that a stuck label could end up sitting on top of a live calendar.
+   It cannot — the same comment above says so — and the cost of that premise
+   was the failure mode measured on 2026-08-10: Calendly not painting at all,
+   the label removed on schedule, and the visitor left facing 978px of empty
+   cream with nothing to read and nowhere to go. Say what is happening
+   instead. (.is-ready still clears the label outright and is LAST here on
+   purpose: it is the same (0,2,0) as .is-slow, so source order is what makes
+   a real paint win over the timer.) */
+.cal-embed::before { content: "Loading the scheduler…"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 var(--s-24); text-align: center; font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); letter-spacing: .08em; pointer-events: none; }
+.cal-embed.is-slow::before { content: "Still loading — Calendly is slow to respond. Use the link below to open it in a new tab, or send the form."; }
 .cal-embed.is-ready::before { content: none; }
 .cal-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* The escape hatch, and it is deliberately ALWAYS VISIBLE rather than revealed
+   by the .is-slow timer. The embed is a third-party app we do not control and
+   cannot repair from here; the one thing we can guarantee is that a visitor who
+   wants a time slot is never dependent on it rendering. Tying this to a class
+   would make the only route out of a broken scheduler depend on the same
+   scripting that just failed to produce one. Quiet by design — it is an
+   escape hatch, not a second CTA, and it must not compete with the calendar.
+   No arrow, so the LINK SYSTEM reads it as in-text STYLE A: it sits inside a
+   sentence, and STYLE B is for links standing alone on their own line. */
+.cal-fallback { margin-top: 12px; font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; }
 .cal-note { margin-top: 16px; font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; }
 .cal-note b { color: var(--accent); font-weight: 700; }
 .orpath { display: flex; align-items: center; gap: 18px; margin: clamp(32px, 4vw, 48px) 0; }
@@ -283,6 +320,11 @@
 @media (max-width: 700px) { .cal-embed { min-height: 980px; } }
 @media (max-width: 560px) { .frow { grid-template-columns: 1fr; } }
 </style>
+<!-- With scripting off no iframe is ever mounted, so the placeholder announced
+     a load that was never going to start — "Loading the scheduler…" as a
+     permanent state. The <noscript> link inside .cal-embed is the real content
+     in that case; this lets it be seen. -->
+<noscript><style>.cal-embed::before { content: none; } .cal-embed { display: flex; align-items: center; justify-content: center; min-height: 0; padding: var(--s-40); }</style></noscript>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="/js/pa"></script>
 <script>
@@ -382,6 +424,7 @@
           <div class="cal-embed" id="calEmbed" data-cal-url="https://calendly.com/cmyers-mainandmachine/30min">
             <noscript><a href="https://calendly.com/cmyers-mainandmachine/30min">Open the scheduler in a new tab&nbsp;<span class="arr">&#8594;</span></a></noscript>
           </div>
+          <p class="cal-fallback">Calendar not showing up? <a href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">Open the scheduler in a new tab</a> — or send the form below and we’ll reply within 24 hours.</p>
           <p class="cal-note"><b>Pick a slot and it’s booked.</b> The calendar invite and confirmation arrive from Calendly right away.</p>
         </div>
       </div>
@@ -955,14 +998,29 @@
   // must clear the placeholder again but must NOT count as a second visitor
   // reaching that step.
   //
-  // markReady() is idempotent and armed from two places — that message and a
-  // 5s per-mount fallback. The fallback exists because a blocked listener (an
-  // extension, a future postMessage change on their side) would otherwise
-  // leave the label sitting on top of a working calendar forever. It is a
-  // backstop, never the primary path.
+  // markReady() is idempotent and is now armed ONLY by that message. The 5s
+  // fallback that also called it is gone. It existed to stop a blocked
+  // listener leaving the label on top of a working calendar forever — but the
+  // label is painted UNDER the iframe, as the note two paragraphs up already
+  // says, so a painted calendar is an opaque surface that hides it with no
+  // signal from us. There was never anything for that backstop to back up.
+  // What it did instead was hide the evidence when the embed failed outright.
+  //
+  // markSlow() replaces it and does the opposite: it REWORDS the label rather
+  // than removing it, so a frame that has not painted says so and points at
+  // the two routes that still work. 12s rather than 5, because this is now a
+  // statement that the third party is in trouble rather than a race with a
+  // slow-but-fine load — Calendly ships ~2.5 MB brotli of CSS+JS before it
+  // renders anything, which is a long time on a phone and must not be called
+  // a failure.
   function markReady(){
     if(readyTimer){ clearTimeout(readyTimer); readyTimer = null; }
+    mount.classList.remove('is-slow');
     mount.classList.add('is-ready');
+  }
+  function markSlow(){
+    readyTimer = null;
+    if(!mount.classList.contains('is-ready')) mount.classList.add('is-slow');
   }
   // The a1 value the LIVE iframe was built with, and whether the visitor has
   // committed inside the embed. Both gate the prefill rebuild below.
@@ -1060,11 +1118,15 @@
     // to defer. The whole point of this change is that it does not get deferred.
     f.setAttribute('loading', 'eager');
     // Placeholder back up while THIS frame loads — including a prefill rebuild,
-    // which is a real load and should say so. The fallback timer is re-armed
-    // per mount for the same reason: each rebuild gets its own 5s grace.
+    // which is a real load and should say so. Both classes come off, not just
+    // is-ready: a rebuild that follows a stalled mount starts from the neutral
+    // "Loading the scheduler…" wording and earns its own verdict. The slow
+    // timer is re-armed per mount for the same reason — each rebuild gets its
+    // own 12s grace.
     mount.classList.remove('is-ready');
+    mount.classList.remove('is-slow');
     if(readyTimer) clearTimeout(readyTimer);
-    readyTimer = setTimeout(markReady, 5000);
+    readyTimer = setTimeout(markSlow, 12000);
     f.addEventListener('load', function(){
       // Deliberately does NOT clear the placeholder — see markReady() above.
       // This event still means something and keeps its own analytics: it is

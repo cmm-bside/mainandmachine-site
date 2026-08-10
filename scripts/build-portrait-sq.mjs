@@ -26,9 +26,34 @@ const ROOT = process.cwd();
 const SRC = path.join(ROOT, "images", "christopher-myers-hedcut.png");
 const OUT = path.join(ROOT, "images", "christopher-myers-hedcut-sq.png");
 
-// Crop window into the 768x768 source, chosen to frame hair-top to collar the
-// way the old asset did. Square, so the 1/1 aspect-ratio in CSS never distorts.
-const CROP = { x: 155, y: 30, size: 460 };
+// Crop window into the 768x768 source. Square, so the 1/1 aspect-ratio in CSS
+// never distorts.
+//
+// MEASURED, not eyeballed. Thresholding the source at paper-luminance minus 55
+// puts the ink of the hair at y=33, the head (hair + ear) at x=195..554, and the
+// beard's bottom edge at y~530. The first crop here — {155, 30, 460} — started
+// 3px above the hair and ended at y=490, i.e. it clipped the crown flat and ran
+// the beard off the bottom edge. At a 72px slot that reads as a badly framed
+// mugshot next to /about/'s full-frame engraving.
+//
+// The frame is now 600px centred on the head (x 74..674 leaves 121/120px of
+// margin), with the hair 60px below the top edge (10% air) and the beard 43px
+// above the bottom (7% clearance), so the collar reads and the chin never
+// touches an edge.
+//
+// PAD is why the top number is reachable at all. The SOURCE has only 33px of
+// paper above the hair — 4.3% of its own height — so no crop of it can give 10%
+// air without either clipping the ears or adding canvas. 27 rows of the source's
+// own top band are mirrored above row 0 to make up the difference. Mirroring
+// keeps the paper's grain and its horizontal vignette exactly, and the seam is
+// invisible because row 0 maps to itself.
+//
+// **PAD MUST STAY BELOW 33.** Mirror more than that and the band picks up the
+// top of the hair, which lands as a dark blob floating above the head — tried at
+// 43 and it is unmistakable. If the source portrait is ever replaced, re-measure
+// where its first ink row is before touching this number.
+const CROP = { x: 74, y: -27, size: 600 };
+const PAD = 27;
 // 3x the 72px slot, so the engraving's stipple survives on a retina screen.
 const OUT_SIZE = 216;
 
@@ -44,21 +69,37 @@ const dataUri = "data:image/png;base64," + fs.readFileSync(SRC).toString("base64
 // PNG plus WebP, the same pair .bio__portrait ships. Stipple is the worst case
 // for PNG — every dot is an edge — so the WebP is worth having at this size.
 const out = await page.evaluate(
-	async ({ dataUri, CROP, OUT_SIZE }) => {
+	async ({ dataUri, CROP, PAD, OUT_SIZE }) => {
 		const img = new Image();
 		img.src = dataUri;
 		await img.decode();
+
+		// Source plus PAD rows of its own top band, mirrored, so CROP.y may be
+		// negative. Everything downstream works in ORIGINAL source coordinates.
+		const src = document.createElement("canvas");
+		src.width = img.width;
+		src.height = img.height + PAD;
+		const sg = src.getContext("2d");
+		sg.drawImage(img, 0, PAD);
+		if (PAD > 0) {
+			sg.save();
+			sg.translate(0, PAD);
+			sg.scale(1, -1);
+			sg.drawImage(img, 0, 0, img.width, PAD, 0, 0, img.width, PAD);
+			sg.restore();
+		}
+
 		const c = document.createElement("canvas");
 		c.width = c.height = OUT_SIZE;
 		const g = c.getContext("2d");
 		g.imageSmoothingQuality = "high";
-		g.drawImage(img, CROP.x, CROP.y, CROP.size, CROP.size, 0, 0, OUT_SIZE, OUT_SIZE);
+		g.drawImage(src, CROP.x, CROP.y + PAD, CROP.size, CROP.size, 0, 0, OUT_SIZE, OUT_SIZE);
 		return {
 			png: c.toDataURL("image/png").split(",")[1],
 			webp: c.toDataURL("image/webp", 0.92).split(",")[1],
 		};
 	},
-	{ dataUri, CROP, OUT_SIZE },
+	{ dataUri, CROP, PAD, OUT_SIZE },
 );
 
 await browser.close();

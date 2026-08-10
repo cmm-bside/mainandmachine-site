@@ -1884,6 +1884,22 @@ panel — it dilutes the CTA.
   on. Re-adding a
   `data-fact="build-slots"` span would re-arm both guards and is still the
   route back if the slot count returns.
+- **Calendly: turn off "Remove Calendly branding" in the account settings.** The
+  `/book/` scheduler now matches the palette everywhere the embed lets us reach
+  — background and accent measured byte-identical to `--paper-card` and
+  `--accent` off the live iframe — with ONE exception: the "POWERED BY Calendly"
+  corner ribbon, which paints `#505960`, a cool blue-grey that appears nowhere
+  in the nine canonical colours. It is the only off-palette element left on the
+  card and it sits top-right at full contrast.
+  - **There is no embed parameter for it, verified rather than assumed.**
+    `hide_branding=1`, `hide_calendly_branding=1`, `hide_landing_page_details=1`
+    and `hide_branding=true` were each loaded against the real booking page:
+    the badge is present and visible in all four, byte-identical to baseline.
+    Do not go looking for a fifth spelling.
+  - It is an account switch on paid plans, in the same family as the colour
+    params. Those went live between 2026-08-09 and 2026-08-10 (the plan changed
+    — see the note above `calUrl()`), so this switch is likely available now.
+    Nothing in the repo can do it and nothing will warn when it becomes possible.
 - After deploy: resubmit sitemap.xml in Search Console and request indexing on the
   new pages.
 

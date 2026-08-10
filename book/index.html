@@ -229,6 +229,11 @@
 /* the two-column booking layout */
 .book { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: clamp(28px, 4vw, 52px); align-items: start; }
 .advisor { display: flex; gap: 14px; align-items: flex-start; }
+/* The FLEX ITEM is the <picture>, not the <img> — so `flex: none` below never
+   applied to the box that flex sizes. The wrapper shrank to 46px and the global
+   `img { max-width: 100% }` (styles.css) squeezed the portrait with it, so
+   object-fit: cover cropped the sides of the head off a square asset. */
+.advisor > picture { flex: none; display: block; }
 .advisor__portrait { width: 72px; height: 72px; flex: none; object-fit: cover; border: 1px solid var(--hairline); background: var(--paper-2); display: block; filter: saturate(0); mix-blend-mode: multiply; }
 .advisor__tx h3 { font-size: var(--fs-16); font-weight: 800; letter-spacing: -0.01em; }
 .advisor__tx p { font-size: var(--fs-13); color: var(--tx-mute); margin-top: 5px; line-height: 1.55; }
@@ -243,7 +248,11 @@
    iframe exists: the frame is absolutely positioned, so it is out of flow and
    contributes nothing to this box either way. The card measures 720px on the
    parse, on the mount and on the load — the swap cannot shift the page. */
-.cal-embed { position: relative; margin-top: var(--s-16); min-height: 720px; border: 1px solid var(--line); background: var(--paper); }
+/* background is --paper-card to match .formcard around it, and to match the
+   background_color this page hands Calendly — see calUrl(). --paper here put a
+   6/255-darker panel inside the card, and flashed that same wrong cream behind
+   the loading placeholder before the iframe painted over it. */
+.cal-embed { position: relative; margin-top: var(--s-16); min-height: 720px; border: 1px solid var(--line); background: var(--paper-card); }
 /* The branded placeholder. It comes off (the .is-ready class) when CALENDLY
    PAINTS — its `calendly.event_type_viewed` postMessage — not on the iframe's
    own `load` event, which fires 1–2s before the app renders and left a blank
@@ -500,8 +509,8 @@
           <h2 class="panel__t">Who you’ll talk to</h2>
           <div class="advisor">
             <picture>
-              <source type="image/webp" srcset="/images/christopher-myers-hedcut-sq.webp?v=2" />
-              <img class="advisor__portrait" src="/images/christopher-myers-hedcut-sq.png?v=2" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="72" height="72" loading="lazy" decoding="async" />
+              <source type="image/webp" srcset="/images/christopher-myers-hedcut-sq.webp?v=3" />
+              <img class="advisor__portrait" src="/images/christopher-myers-hedcut-sq.png?v=3" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="72" height="72" loading="lazy" decoding="async" />
             </picture>
             <div class="advisor__tx">
               <h3>Christopher Myers</h3>
@@ -963,31 +972,69 @@
   // Brand-matched embed (Calendly's supported theming params) + the
   // qualifying answer prefilled into the booking form's first question (a1).
   //
-  // THESE THREE COLOURS ARE CURRENTLY INERT, and that is a Calendly plan limit,
-  // not a bug here. Measured 2026-08-09 by loading the real booking page three
-  // ways — with these values, with the previous ones, and with no colour params
-  // at all: all three render the identical white card with #006BFF date pills
-  // and navy headings, and all three show the "POWERED BY Calendly" corner
-  // ribbon. background_color / text_color / primary_color are honoured only on
-  // paid plans, and removing the badge is the same kind of switch — an account
-  // setting, with NO embed parameter behind it. Do not go looking for one, and
-  // do not try to reach into the iframe: it is cross-origin by design.
-  // They are set correctly anyway so the embed matches the palette the day the
-  // plan changes. Re-check with the three-way load above before concluding the
-  // values are wrong.
+  // THESE THREE COLOURS ARE LIVE as of 2026-08-10. They were inert until then —
+  // a Calendly plan limit, not a bug here — and this comment said so. The plan
+  // changed and the note went stale, which is worse than never having written
+  // it: it told the next person the params could not work.
+  //
+  // Re-measured 2026-08-10 the same three ways the original note prescribed,
+  // loading the REAL booking page each time:
+  //
+  //   no colour params           →  white card, #006BFF blue pills, navy heads
+  //   these values               →  cream card, rust pills        ← what ships
+  //   f5f1e8/211a14/c2431f       →  cream card, rust pills (indistinguishable;
+  //                                 an off-palette set that was proposed once)
+  //
+  // So the three-way load is still the way to check this, and it is still the
+  // only way — do not try to reach into the iframe, it is cross-origin by design.
+  //
+  // The "POWERED BY Calendly" corner ribbon is UNCHANGED and still shows on all
+  // variants. That part of the original note holds: removing the badge is an
+  // account setting with no embed parameter behind it. Do not go looking for one.
   //
   // READ FROM THE TOKENS, don't retype the palette. These were three hex
   // literals, and none of the three actually matched the canonical colour it
   // was standing in for — close enough to look right in a diff, wrong enough
   // that the embed would have drifted from the site the moment a token moved.
-  // styles.css is the source of truth for --paper / --ink / --accent, so the
-  // params are derived from it at runtime; the literals below are the same
-  // three canonical values, kept only as a fallback for the case where the
-  // stylesheet has not applied. Calendly wants bare hex with no leading '#'.
+  // styles.css is the source of truth, so the params are derived from it at
+  // runtime; the literals below are the same canonical values, kept only as a
+  // fallback for the case where the stylesheet has not applied. Calendly wants
+  // bare hex with no leading '#'.
+  //
+  // background_color is --paper-card, NOT --paper, and the difference is
+  // visible. The embed sits inside .formcard, whose background is
+  // `color-mix(in srgb, var(--paper), #fff 40%)` = #F6F3ED. Painting the
+  // scheduler --paper (#F0EBE1) put a 6/255-darker rectangle inside that card —
+  // measured in situ off the live iframe: field #F0EBE1 against a #F6F3ED
+  // surround. Small, but it is a straight edge running the full width of the
+  // panel, which is exactly the kind of seam the eye finds. The .cal-embed
+  // wrapper below matches, so the loading state does not flash the other cream.
+  //
+  // **--paper-card is a color-mix(), so it does NOT serialise as hex.**
+  // getPropertyValue returns `color(srgb 0.96 0.95 0.93)` with 0..1 channels,
+  // and the old hex-only regex would have silently fallen through to the
+  // fallback — the failure mode being that the token stops tracking the palette
+  // while the code still looks like it reads it. Worse, an rgb()-shaped parser
+  // reads those 0..1 channels as BYTES and returns near-black; that trap has
+  // already cost this repo a phantom page of contrast failures. All three forms
+  // are parsed explicitly below.
   function brandHex(token, fallback){
     var v = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
     var m = /^#?([0-9a-f]{6})$/i.exec(v);
-    return m ? m[1].toLowerCase() : fallback;
+    if(m) return m[1].toLowerCase();
+    // color(srgb r g b) — channels are 0..1, NOT 0..255.
+    m = /^color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/i.exec(v);
+    if(m) return hex3(+m[1] * 255, +m[2] * 255, +m[3] * 255);
+    // rgb()/rgba() — channels are 0..255.
+    m = /^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)/i.exec(v);
+    if(m) return hex3(+m[1], +m[2], +m[3]);
+    return fallback;
+  }
+  function hex3(r, g, b){
+    return [r, g, b].map(function(n){
+      var v = Math.max(0, Math.min(255, Math.round(n))).toString(16);
+      return v.length < 2 ? '0' + v : v;
+    }).join('');
   }
   function calUrl(){
     var p = new URLSearchParams({
@@ -995,9 +1042,9 @@
       embed_type: 'Inline',
       hide_gdpr_banner: '1',
       hide_event_type_details: '1',
-      background_color: brandHex('--paper',  'f0ebe1'),
-      text_color:       brandHex('--ink',    '1b1611'),
-      primary_color:    brandHex('--accent', 'c6401e')
+      background_color: brandHex('--paper-card', 'f6f3ed'),
+      text_color:       brandHex('--ink',        '1b1611'),
+      primary_color:    brandHex('--accent',     'c6401e')
     });
     var q = qEl ? qEl.value.trim() : '';
     if(q) p.set('a1', q.slice(0, 500));

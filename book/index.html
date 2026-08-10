@@ -367,7 +367,7 @@
         <div class="formcard__body">
           <div class="field cal-q">
             <label for="cal-workflows">What is eating your team’s time? <span class="opt">(optional — rides along with your booking)</span></label>
-            <input class="input" type="text" id="cal-workflows" placeholder="Intake, billing, scheduling, data entry, quoting…" />
+            <input class="input" type="text" id="cal-workflows" placeholder="Intake, billing, quoting…" />
             <span class="field__hint">The advisor reads this before your call. One line is plenty.</span>
           </div>
           <div class="cal-embed" id="calEmbed" data-cal-url="https://calendly.com/cmyers-mainandmachine/30min">
@@ -425,7 +425,7 @@
                 </div>
                 <div class="field">
                   <label for="phone" id="phoneLabel">Phone <span class="opt">(optional)</span></label>
-                  <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Best number to reach you" inputmode="tel" />
+                  <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Best number to call" inputmode="tel" />
                   <span class="field__err">Please enter a phone number.</span>
                 </div>
               </div>
@@ -975,15 +975,29 @@
   // They are set correctly anyway so the embed matches the palette the day the
   // plan changes. Re-check with the three-way load above before concluding the
   // values are wrong.
+  //
+  // READ FROM THE TOKENS, don't retype the palette. These were three hex
+  // literals, and none of the three actually matched the canonical colour it
+  // was standing in for — close enough to look right in a diff, wrong enough
+  // that the embed would have drifted from the site the moment a token moved.
+  // styles.css is the source of truth for --paper / --ink / --accent, so the
+  // params are derived from it at runtime; the literals below are the same
+  // three canonical values, kept only as a fallback for the case where the
+  // stylesheet has not applied. Calendly wants bare hex with no leading '#'.
+  function brandHex(token, fallback){
+    var v = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
+    var m = /^#?([0-9a-f]{6})$/i.exec(v);
+    return m ? m[1].toLowerCase() : fallback;
+  }
   function calUrl(){
     var p = new URLSearchParams({
       embed_domain: location.hostname,
       embed_type: 'Inline',
       hide_gdpr_banner: '1',
       hide_event_type_details: '1',
-      background_color: 'f5f1e8',
-      text_color: '211a14',
-      primary_color: 'c2431f'
+      background_color: brandHex('--paper',  'f0ebe1'),
+      text_color:       brandHex('--ink',    '1b1611'),
+      primary_color:    brandHex('--accent', 'c6401e')
     });
     var q = qEl ? qEl.value.trim() : '';
     if(q) p.set('a1', q.slice(0, 500));

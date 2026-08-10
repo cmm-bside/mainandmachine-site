@@ -23,7 +23,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: Build AI for Main Street." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=137" />
+<link rel="stylesheet" href="/styles.css?v=141" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -143,7 +143,10 @@
 .cr-hero__note { font-family: var(--sans); font-size: var(--t-sm); color: var(--tx-faint); margin-top: 22px; letter-spacing: normal; }
 
 /* corner-bracket spec card (reuses the .statrail look) */
-.cr-spec__bar { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 18px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-mute); }
+/* .cr-spec__bar's own declaration was deleted 2026-08-09 — the header band is
+   now defined once, in styles.css beside .statrail__bar, and this class is
+   named there. This copy set 11px/.14em against the component's 14px/.12em,
+   which is how one band shipped at two sizes. Do not re-add it here. */
 .cr-spec__row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); }
 .cr-spec__row:last-child { border-bottom: 0; }
 .cr-spec__k { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute); }
@@ -275,7 +278,7 @@
       </div>
       <div class="cr-hero__card">
         <div class="statrail crop" aria-label="About the shop">
-          <div class="cr-spec__bar"><span>The Shop</span><span>2026</span></div>
+          <div class="cr-spec__bar"><span>The Shop</span><span><b>2026</b></span></div>
           <div class="cr-spec__row"><span class="cr-spec__k">Based in</span><span class="cr-spec__v">Denver &amp; Phoenix</span></div>
           <div class="cr-spec__row"><span class="cr-spec__k">Work style</span><span class="cr-spec__v">Remote-friendly</span></div>
           <div class="cr-spec__row"><span class="cr-spec__k">We build</span><span class="cr-spec__v">Human-centric AI</span></div>

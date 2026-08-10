@@ -87,17 +87,59 @@ function faqGraph(b) {
 	};
 }
 
+/**
+ * The fourth spec row is an assurance, and WHICH assurance depends on the
+ * delivering service — it is not one sentence for every build.
+ *
+ * The 90-day guarantee is a DELIVERY promise: a scoped workflow goes live in
+ * the client's operation or we keep building at no charge. That is what a
+ * sprint sells. Managed Services sells the opposite shape — it is ongoing,
+ * there is nothing to "go live", and a page that offers to keep building until
+ * a retainer is live is promising something incoherent. Its assurance is the
+ * one that actually applies, and it is already canonical in site-facts.json as
+ * the managed note ("No lock-in · annual pays for 10 months, not 12").
+ *
+ * Keyed off b.tier rather than the slug so a build that is re-tiered later
+ * moves to the right row without anyone remembering this exists.
+ *
+ * Both this row and "Delivered through" carry .statrail__v--sm. The spec sheet
+ * is a one-line-per-row rhythm and a service name or an assurance clause is a
+ * phrase, not a figure: at TIER 2's 22px "Live in 90 days or we keep building"
+ * needed 259px of a ~250px column and wrapped, which also squeezed the label
+ * until "No lock-in" broke at its own hyphen. --sm is the component's existing
+ * answer for a long value (see /'s "Agents · Automations"); the price and the
+ * timeline stay at 22px because those are the figures the card is for.
+ */
+function assuranceFor(tierKey) {
+	return tierKey === "managed"
+		? { label: "No lock-in", value: "Leave whenever it stops paying" }
+		: { label: "Guarantee", value: "Live in 90 days or we keep building" };
+}
+
 function page(b) {
 	const route = routeOf(b);
 	const tier = tierOf(b);
+	// The price sentence in PRICE CONTEXT below opens on the stamped price
+	// rather than splicing it after "at". Managed Services' canonical price is
+	// the string "From $1,500/month" — the word is part of the fact — so
+	// "delivered in Managed Services at From $1,500/month" was the rendered
+	// result, and the stamp cannot be lowercased to fix it (check-facts compares
+	// the span byte-for-byte against site-facts.json). Starting a sentence with
+	// it is how /services/builds/ already handles the same string.
 	const priceFact = `price-${b.tier}`;
+	const assurance = assuranceFor(b.tier);
 	const inds = b.industries
 		.map((k) => `<li><a href="/industries/${k}/">${esc(INDUSTRY_NAMES[k])}</a></li>`)
 		.join("\n            ");
 	const faqHtml = b.faq
-		.map(([q, a], i) => `        <details class="faq__item">
-          <summary><span class="faq__n">0${i + 1}</span>${esc(q)}</summary>
-          <div class="faq__a"><p>${esc(a)}</p></div>
+		// The canonical FAQ row, identical to the 28 hand-written pages. This used
+		// to emit .faq__item / .faq__n / .faq__a — three classes with NO rule
+		// anywhere in styles.css — so every build page rendered its index numbers
+		// in body ink instead of accent and, because the "+" was authored markup
+		// back then, showed no expand affordance at all.
+		.map(([q, a], i) => `        <details>
+          <summary><span class="q-no">0${i + 1}</span><span class="q-tx">${esc(q)}</span></summary>
+          <p>${esc(a)}</p>
         </details>`)
 		.join("\n");
 
@@ -153,10 +195,11 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
         </div>
       </div>
       <div class="statrail crop">
-        <div class="statrail__row"><span class="statrail__k">Delivered through</span><span class="statrail__v">${esc(tier.name)}</span></div>
+        <div class="statrail__bar"><span>The build</span><span><b>Spec</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Delivered through</span><span class="statrail__v statrail__v--sm">${esc(tier.name)}</span></div>
         <div class="statrail__row"><span class="statrail__k">Price</span><span class="statrail__v"><span data-fact="${priceFact}">${esc(tier.price)}</span></span></div>
         <div class="statrail__row"><span class="statrail__k">Timeline</span><span class="statrail__v"><span data-fact="timeline-${b.tier}">${esc(tier.timeline)}</span></span></div>
-        <div class="statrail__row"><span class="statrail__k">Guarantee</span><span class="statrail__v">Live in 90 days or we keep building</span></div>
+        <div class="statrail__row"><span class="statrail__k">${esc(assurance.label)}</span><span class="statrail__v statrail__v--sm">${esc(assurance.value)}</span></div>
       </div>
     </div>
   </div>
@@ -222,7 +265,10 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
 </section>
 
 <!-- ============ PRICE CONTEXT ============ -->
-<section class="section paper-2">
+<!-- .section--close-96: the section now ends on a lone action link, which is
+     the rhythm layer's terminal-element rule. qa:matrix re-derives that shape
+     and fails the build if the class and the markup disagree either way. -->
+<section class="section paper-2 section--close-96">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -231,7 +277,8 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
       </div>
       <p>This build has no price of its own. It is scoped and delivered inside a published service, at the published price.</p>
     </div>
-    <p class="buildpage__price">An <a href="/services/#audit">AI Readiness Audit</a> runs <span data-fact="price-audit">${esc(COMPANY.services.find((s) => s.key === "audit").price)}</span> and tells you whether this build is the right first move. The build itself is delivered in ${esc(tier.name)} at <span data-fact="${priceFact}">${esc(tier.price)}</span>, quoted fixed in writing before work begins. <a href="/pricing/">Read the price list <span class="arr">&#8594;</span></a></p>
+    <p class="buildpage__price">An <a href="/services/#audit">AI Readiness Audit</a> runs <span data-fact="price-audit">${esc(COMPANY.services.find((s) => s.key === "audit").price)}</span> and tells you whether this build is the right first move. The build itself is delivered in ${esc(tier.name)}. <span data-fact="${priceFact}">${esc(tier.price)}</span>, quoted fixed in writing before work begins.</p>
+    <p class="section-action"><a href="/pricing/">Read the price list&nbsp;<span class="arr">&#8594;</span></a></p>
   </div>
 </section>
 

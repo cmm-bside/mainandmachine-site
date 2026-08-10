@@ -30,7 +30,7 @@ export const BUILDS = [
 		definition:
 			"A 24/7 AI receptionist is a phone system that answers your business line in a natural voice, handles the questions your staff answer twenty times a day, books appointments straight into your calendar, and routes anything urgent to a person. It works the hours nobody is at the desk — nights, weekends, and the middle of a job — and it leaves a written transcript of every call.",
 		industries: ["construction", "healthcare", "hospitality", "professional-services"],
-		painHeading: "What a missed call actually costs",
+		painHeading: "What a missed call actually costs.",
 		tier: "sprint",
 		faq: [
 			["Does it sound like a robot?",
@@ -56,7 +56,7 @@ export const BUILDS = [
 		definition:
 			"A website chat and booking agent is a chat window on your site that answers questions using your own pricing, policies, and service documents, then books the appointment while the visitor is still reading. It is not a decision-tree widget with five canned buttons: it reads what you actually publish, answers in sentences, and hands to a person when the question is outside what it has been given.",
 		industries: ["professional-services", "retail", "healthcare", "hospitality"],
-		painHeading: "What the contact form is costing you",
+		painHeading: "What the contact form is costing you.",
 		tier: "sprint",
 		faq: [
 			["How is this different from a chatbot widget?",
@@ -82,7 +82,7 @@ export const BUILDS = [
 		definition:
 			"Instant lead response is a system that answers every inbound enquiry within a minute of it arriving — web form, email, or ad platform — with a real reply rather than an autoresponder, then keeps drafting follow-ups in your voice until the person answers or asks you to stop. Speed is the whole mechanism: the business that replies first usually wins the job, and most leads that arrive outside office hours are gone by Monday.",
 		industries: ["construction", "professional-services", "retail", "hospitality"],
-		painHeading: "What a weekend in the inbox costs",
+		painHeading: "What a weekend in the inbox costs.",
 		tier: "sprint",
 		faq: [
 			["Is this just an autoresponder?",
@@ -108,7 +108,7 @@ export const BUILDS = [
 		definition:
 			"Missed-call text-back is a system that sends an immediate text message to any caller you could not answer: who you are, when you will call back, and a link to book. It is the smallest build in the catalog and one of the most effective, because a missed call with no voicemail is otherwise a customer you will never know you had.",
 		industries: ["construction", "healthcare", "hospitality", "retail"],
-		painHeading: "What an unanswered call is worth",
+		painHeading: "What an unanswered call is worth.",
 		tier: "sprint",
 		faq: [
 			["How fast does the text go out?",
@@ -134,7 +134,7 @@ export const BUILDS = [
 		definition:
 			"A review and reputation agent asks each customer for a review at the moment they are most likely to leave one, routes anyone unhappy to you privately before they post, and drafts your reply to every review that lands. The asymmetry it fixes is simple: satisfied customers forget to write reviews and dissatisfied ones never do.",
 		industries: ["hospitality", "healthcare", "retail", "construction"],
-		painHeading: "What silence in your review profile costs",
+		painHeading: "What silence in your review profile costs.",
 		tier: "sprint",
 		faq: [
 			["Is filtering out unhappy customers allowed?",
@@ -162,7 +162,7 @@ export const BUILDS = [
 		definition:
 			"A private AI server is a physical machine in your building, bought in your name, configured to run open-source AI models locally. Other vendors rent you a seat on their server and your data travels to it. This one is your property from the day it is installed, which means the documents it reads never leave the premises and the capability does not disappear if a vendor changes their terms.",
 		industries: ["healthcare", "professional-services", "construction", "retail"],
-		painHeading: "What sending your data outside actually risks",
+		painHeading: "What sending your data outside actually risks.",
 		tier: "sprint",
 		faq: [
 			["Do we own the hardware?",
@@ -188,7 +188,7 @@ export const BUILDS = [
 		definition:
 			"A data privacy filter sits between your people and any AI model, stripping personal information out of prompts and documents before anything leaves your building. The cleaned text then goes to a local model or, where the work genuinely needs one, to a commercial model — with the identifiers still on your side of the wall. It is the component that makes AI usable on records you are legally responsible for.",
 		industries: ["healthcare", "professional-services", "construction", "retail"],
-		painHeading: "What one pasted document can cost",
+		painHeading: "What one pasted document can cost.",
 		tier: "sprint",
 		faq: [
 			["What counts as personal information here?",
@@ -214,7 +214,7 @@ export const BUILDS = [
 		definition:
 			"A company knowledge base is everything your business knows, put into a form AI can actually use: the structured records in your systems and the unstructured material around them — emails, notes, policies, job files — joined so a single question can cross both. It is the component that lets the rest of the catalog answer from your business rather than from the internet.",
 		industries: ["professional-services", "healthcare", "construction", "retail"],
-		painHeading: "What it costs when the answer lives in someone's head",
+		painHeading: "What it costs when the answer lives in someone's head.",
 		tier: "sprint",
 		faq: [
 			["Do we have to reorganise our files first?",
@@ -240,7 +240,7 @@ export const BUILDS = [
 		definition:
 			"A Slack and Teams integration puts the AI system where your team already works, so finished work arrives in the channel they already watch and a person approves it there. No new app, no new login, no training deck. It is the difference between a system people use and a system people were shown once.",
 		industries: ["professional-services", "construction", "retail", "healthcare"],
-		painHeading: "What another login costs in adoption",
+		painHeading: "What another login costs in adoption.",
 		tier: "sprint",
 		faq: [
 			["Does everyone need to learn something new?",
@@ -266,7 +266,7 @@ export const BUILDS = [
 		definition:
 			"Private company chat is your own chat interface — running on your server, behind your privacy filter, connected to your knowledge base. It is what your staff already wanted from the consumer chatbots, without the part where your customer records become somebody else's training data. Staff stop pasting company documents into a public tool because there is finally a better place to ask.",
 		industries: ["professional-services", "healthcare", "construction", "retail"],
-		painHeading: "What staff are already pasting into public tools",
+		painHeading: "What staff are already pasting into public tools.",
 		tier: "sprint",
 		faq: [
 			["Our staff already use ChatGPT. Why change?",
@@ -292,7 +292,7 @@ export const BUILDS = [
 		definition:
 			"Business system connectors join the AI system to the software you already run, starting with QuickBooks because that is where Main Street keeps its books. Reconciliation is prepared, invoices are chased, reports are drafted — and nothing posts until a person approves it. The connector is what turns a system that can read into a system that can finish the work.",
 		industries: ["professional-services", "construction", "retail", "hospitality"],
-		painHeading: "What hand-reconciliation costs every month",
+		painHeading: "What hand-reconciliation costs every month.",
 		tier: "sprint",
 		faq: [
 			["Which systems do you connect to?",
@@ -318,7 +318,7 @@ export const BUILDS = [
 		definition:
 			"Testing and monitoring is the evidence layer: stress tests that run against your system on a schedule, results on a dashboard you can open yourself, and an audit trail behind every action the system takes. A test suite ships with every build we deliver, because a system you cannot audit is a system you cannot trust. Keeping it watched over time is what Managed Services is.",
 		industries: ["healthcare", "professional-services", "construction", "retail"],
-		painHeading: "What you cannot prove, you cannot rely on",
+		painHeading: "What you cannot prove, you cannot rely on.",
 		tier: "managed",
 		faq: [
 			["Is this an extra we have to buy?",

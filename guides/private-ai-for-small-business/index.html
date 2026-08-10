@@ -26,6 +26,9 @@
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/guides-private-ai-for-small-business.png" />
 <meta name="twitter:image:alt" content="Private AI for small business &mdash; Main &amp; Machine" />
 
+<link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css?v=141" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -289,16 +292,17 @@
         <p class="lead mt-s">Private AI means the model runs on hardware you control and your documents never leave your network. This page explains what that actually requires, who genuinely needs it, what it costs, and how it differs from a ChatGPT subscription &mdash; using the architecture and the measured figures from a regulated lender running it in production today.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
+        <div class="statrail__bar"><span>Field Guide</span><span><b>Private AI</b></span></div>
         <div class="statrail__row"><span class="statrail__k">Delivered through</span><span class="statrail__v">Implementation Sprint</span></div>
         <div class="statrail__row"><span class="statrail__k">Price</span><span class="statrail__v"><span data-fact="price-sprint">$18,000–$60,000</span></span></div>
         <div class="statrail__row"><span class="statrail__k">Proof</span><span class="statrail__v">SBA 504 / CDFI lender, in production</span></div>
-        <div class="statrail__row"><span class="statrail__k">Read next</span><span class="statrail__v"><a href="/security/">The security model</a></span></div>
+        <div class="statrail__row"><span class="statrail__k">Read next</span><span class="statrail__v statrail__v--sm"><a href="/security/">The security model&nbsp;<span class="arr">&#8594;</span></a></span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section paper-2">
+<section class="section paper-2 section--close-96">
   <div class="wrap prose-2">
     <h2 class="h2">What is private AI?</h2>
     <p>Private AI is artificial intelligence that runs on infrastructure you control, using models that read your documents without those documents being sent to an outside service. The usual implementation is on-premise: a physical machine in your building, bought in your name, running open-source models locally.</p>
@@ -347,7 +351,7 @@
 
     <h2 class="h2">Where should you start?</h2>
     <p>Ask three people what they pasted into a chatbot last week, and do not punish the answer. If the answers include something that cannot leave your building, you have found your first workflow, and the rest of this is scoping.</p>
-    <p class="section-action"><a href="/security/">How we handle client data <span class="arr">&#8594;</span></a></p>
+    <p class="section-action"><a href="/security/">How we handle client data&nbsp;<span class="arr">&#8594;</span></a></p>
   </div>
 </section>
 
@@ -360,29 +364,29 @@
       </div>
     </div>
     <div class="faq__list">
-        <details class="faq__item">
-          <summary><span class="faq__n">01</span>Is private AI the same as on-premise AI?</summary>
-          <div class="faq__a"><p>In practice, yes. Private AI means the model runs on hardware you control and your documents are not sent to an outside service. On-premise is the usual way to achieve that: a machine in your building, bought in your name, running open-source models. The distinction that matters is not the word — it is whether a file leaves your network.</p></div>
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">Is private AI the same as on-premise AI?</span></summary>
+          <p>In practice, yes. Private AI means the model runs on hardware you control and your documents are not sent to an outside service. On-premise is the usual way to achieve that: a machine in your building, bought in your name, running open-source models. The distinction that matters is not the word — it is whether a file leaves your network.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">02</span>Do we need private AI, or is a ChatGPT subscription enough?</summary>
-          <div class="faq__a"><p>If nothing in your documents is regulated or confidential, a subscription is almost certainly enough and you should not buy a build. Private AI earns its cost when a specific class of document cannot leave your control — borrower financials, patient records, privileged client files. The test is not company size. It is whether you can name the document.</p></div>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">Do we need private AI, or is a ChatGPT subscription enough?</span></summary>
+          <p>If nothing in your documents is regulated or confidential, a subscription is almost certainly enough and you should not buy a build. Private AI earns its cost when a specific class of document cannot leave your control — borrower financials, patient records, privileged client files. The test is not company size. It is whether you can name the document.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">03</span>What does private AI actually cost to run each month?</summary>
-          <div class="faq__a"><p>Running cost is tools plus model usage, and on owned hardware the model usage is electricity rather than per-token billing. The build itself is delivered through an AI Implementation Sprint at $18,000–$60,000, quoted fixed in writing before work begins. Our published guide to monthly running costs covers the ongoing side in detail.</p></div>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">What does private AI actually cost to run each month?</span></summary>
+          <p>Running cost is tools plus model usage, and on owned hardware the model usage is electricity rather than per-token billing. The build itself is delivered through an AI Implementation Sprint at $18,000–$60,000, quoted fixed in writing before work begins. Our published guide to monthly running costs covers the ongoing side in detail.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">04</span>Is a local model good enough, or do we lose capability?</summary>
-          <div class="faq__a"><p>For reading documents, drafting, classifying and answering from your own records, local models are sufficient — that is the work most businesses actually need. Where a task genuinely needs a frontier model, a privacy filter strips identifiers first and sends cleaned text out, so the capability is available without the identities travelling with it.</p></div>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Is a local model good enough, or do we lose capability?</span></summary>
+          <p>For reading documents, drafting, classifying and answering from your own records, local models are sufficient — that is the work most businesses actually need. Where a task genuinely needs a frontier model, a privacy filter strips identifiers first and sends cleaned text out, so the capability is available without the identities travelling with it.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">05</span>How do we prove to an auditor that data never left?</summary>
-          <div class="faq__a"><p>With a log, not an assurance. Every action writes to an append-only, tamper-evident audit log: entries can be added, never edited or deleted. In our largest published deployment, 100% of prompts and attachments cleared the privacy filter before reaching any model, and there were zero PII incidents since the filter went live.</p></div>
+        <details>
+          <summary><span class="q-no">05</span><span class="q-tx">How do we prove to an auditor that data never left?</span></summary>
+          <p>With a log, not an assurance. Every action writes to an append-only, tamper-evident audit log: entries can be added, never edited or deleted. In our largest published deployment, 100% of prompts and attachments cleared the privacy filter before reaching any model, and there were zero PII incidents since the filter went live.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">06</span>Who is accountable when the system gets something wrong?</summary>
-          <div class="faq__a"><p>A person, because nothing fires on its own. Send, file, post and pay all wait for human approval — the machine prepares and people decide. In the deployment above, 100% of consequential actions were approved by a person before anything was sent, filed, posted or paid.</p></div>
+        <details>
+          <summary><span class="q-no">06</span><span class="q-tx">Who is accountable when the system gets something wrong?</span></summary>
+          <p>A person, because nothing fires on its own. Send, file, post and pay all wait for human approval — the machine prepares and people decide. In the deployment above, 100% of consequential actions were approved by a person before anything was sent, filed, posted or paid.</p>
         </details>
     </div>
   </div>

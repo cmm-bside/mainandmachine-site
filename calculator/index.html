@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=137" />
+<link rel="stylesheet" href="/styles.css?v=141" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -269,7 +269,9 @@
 </section>
 
 <!-- ============ THE CALCULATOR (blueprint) ============ -->
-<section class="section blueprint">
+<!-- .section--close-96: ends on a lone action link (the AI-Ready Score CTA,
+     lifted out of the note above it) — the rhythm layer's terminal rule. -->
+<section class="section blueprint section--close-96">
   <div class="wrap">
 
     <div class="roi" aria-label="ROI estimate calculator">
@@ -365,11 +367,13 @@
       <a data-cta="calculator" class="btn btn--primary btn--lg" id="calcBook" href="/book/">Run your real numbers: book the free assessment <span class="arr">&#8594;</span></a>
       <div class="reversal">
         <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
-        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span> <a href="/pricing/">See the price list <span class="arr">&#8594;</span></a></p>
+        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span></p>
+        <p><a href="/pricing/">See the price list&nbsp;<span class="arr">&#8594;</span></a></p>
       </div>
       <p>The two ends are not a forecast and neither is a typical result: the high end assumes the build recovers all of the modeled drag, the low end applies the stress test in <a href="/guides/ai-roi-math-small-business/">Guide 13</a>. Where you land is what the assessment is for. <b style="color:var(--tx);">If your numbers don’t work, we’ll tell you.</b></p>
     </div>
-    <p class="roi__note" style="margin-top:var(--s-16);">Cost is half the question. Find out if you’re ready — <a href="/score/">get your AI-Ready Score <span class="arr">&#8594;</span></a></p>
+    <p class="roi__note" style="margin-top:var(--s-16);">Cost is half the question. Find out if you’re ready.</p>
+        <p class="section-action"><a href="/score/">Get your AI-Ready Score&nbsp;<span class="arr">&#8594;</span></a></p>
   </div>
 </section>
 
@@ -401,7 +405,7 @@
     <p>It does not model headcount reduction. Our largest published build returned <a href="/work/marcus/results/">1,240 staff hours in 90 days</a> without removing a role, and a calculator that assumed otherwise would be modelling a different business than the one we build for.</p>
     <p>It does not compound. Year-two returns are not projected forward, because the assumptions that hold for twelve months do not obviously hold for thirty-six.</p>
     <p>It does not price your business. The output is a range built from averages. The number that matters comes out of an <a href="/services/#audit">AI Readiness Audit</a> at <span data-fact="price-audit">$3,500–$8,500</span>, which measures your workflows instead of assuming them.</p>
-    <p class="section-action"><a href="/guides/ai-roi-math-small-business/">The full ROI math, worked <span class="arr">&#8594;</span></a></p>
+    <p class="section-action"><a href="/guides/ai-roi-math-small-business/">The full ROI math, worked&nbsp;<span class="arr">&#8594;</span></a></p>
   </div>
 </section>
 
@@ -414,21 +418,21 @@
       </div>
     </div>
     <div class="faq__list">
-        <details class="faq__item">
-          <summary><span class="faq__n">01</span>What are the calculator's assumptions?</summary>
-          <div class="faq__a"><p>Two per-employee figures and one cost. It assumes roughly $4,000 a year of manual administrative work per employee that a system can absorb, and roughly $2,000 a year of revenue lost to slow follow-up per employee. Against those it sets the published cost of an AI Implementation Sprint, $18,000–$60,000, quoted fixed in writing. Every one of those three numbers is visible on this page and adjustable in the model.</p></div>
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">What are the calculator's assumptions?</span></summary>
+          <p>Two per-employee figures and one cost. It assumes roughly $4,000 a year of manual administrative work per employee that a system can absorb, and roughly $2,000 a year of revenue lost to slow follow-up per employee. Against those it sets the published cost of an AI Implementation Sprint, $18,000–$60,000, quoted fixed in writing. Every one of those three numbers is visible on this page and adjustable in the model.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">02</span>Where do the $4,000 and $2,000 figures come from?</summary>
-          <div class="faq__a"><p>They are conservative planning figures, not survey results, and we publish them so you can argue with them. The manual-work figure assumes a few hours a week per employee spent assembling, re-keying and chasing — the categories our audits find first. The lost-revenue figure assumes a small number of enquiries a year that go cold before anyone replies. If either sounds high or low for your business, change it: the model is the method, not the number.</p></div>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">Where do the $4,000 and $2,000 figures come from?</span></summary>
+          <p>They are conservative planning figures, not survey results, and we publish them so you can argue with them. The manual-work figure assumes a few hours a week per employee spent assembling, re-keying and chasing — the categories our audits find first. The lost-revenue figure assumes a small number of enquiries a year that go cold before anyone replies. If either sounds high or low for your business, change it: the model is the method, not the number.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">03</span>Is this a projection of what we will save?</summary>
-          <div class="faq__a"><p>No, and the distinction matters. It is a model, not a promise. It shows what the stated assumptions imply arithmetically for a business your size. Your real numbers come out of an AI Readiness Audit, which measures your actual workflows rather than a per-employee average.</p></div>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Is this a projection of what we will save?</span></summary>
+          <p>No, and the distinction matters. It is a model, not a promise. It shows what the stated assumptions imply arithmetically for a business your size. Your real numbers come out of an AI Readiness Audit, which measures your actual workflows rather than a per-employee average.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">04</span>Why is the modeled return the same for every industry?</summary>
-          <div class="faq__a"><p>It is not the return that is fixed — it is the method. Industry selection changes which workflow the model treats as the first build, because a contractor's paper cycle and a clinic's intake queue have different shapes. What stays constant is the arithmetic and the published sprint cost, so two businesses of the same size can compare like with like.</p></div>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Why is the modeled return the same for every industry?</span></summary>
+          <p>It is not the return that is fixed — it is the method. Industry selection changes which workflow the model treats as the first build, because a contractor's paper cycle and a clinic's intake queue have different shapes. What stays constant is the arithmetic and the published sprint cost, so two businesses of the same size can compare like with like.</p>
         </details>
     </div>
   </div>

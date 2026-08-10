@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=137" />
+<link rel="stylesheet" href="/styles.css?v=141" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -381,10 +381,11 @@
         </div>
       </div>
       <div class="statrail crop">
-        <div class="statrail__row"><span class="statrail__k">Delivered through</span><span class="statrail__v">Managed Services</span></div>
+        <div class="statrail__bar"><span>The build</span><span><b>Spec</b></span></div>
+        <div class="statrail__row"><span class="statrail__k">Delivered through</span><span class="statrail__v statrail__v--sm">Managed Services</span></div>
         <div class="statrail__row"><span class="statrail__k">Price</span><span class="statrail__v"><span data-fact="price-managed">From $1,500/month</span></span></div>
         <div class="statrail__row"><span class="statrail__k">Timeline</span><span class="statrail__v"><span data-fact="timeline-managed">Ongoing</span></span></div>
-        <div class="statrail__row"><span class="statrail__k">Guarantee</span><span class="statrail__v">Live in 90 days or we keep building</span></div>
+        <div class="statrail__row"><span class="statrail__k">No lock-in</span><span class="statrail__v statrail__v--sm">Leave whenever it stops paying</span></div>
       </div>
     </div>
   </div>
@@ -415,7 +416,7 @@
     <div class="head-block">
       <div>
         <span class="kicker">The arithmetic</span>
-        <h2 class="h2 mt-s">What you cannot prove, you cannot rely on</h2>
+        <h2 class="h2 mt-s">What you cannot prove, you cannot rely on.</h2>
       </div>
       <p>No invented example here. The method is below; the numbers are yours to put into it.</p>
     </div>
@@ -453,7 +454,10 @@
 </section>
 
 <!-- ============ PRICE CONTEXT ============ -->
-<section class="section paper-2">
+<!-- .section--close-96: the section now ends on a lone action link, which is
+     the rhythm layer's terminal-element rule. qa:matrix re-derives that shape
+     and fails the build if the class and the markup disagree either way. -->
+<section class="section paper-2 section--close-96">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -462,7 +466,8 @@
       </div>
       <p>This build has no price of its own. It is scoped and delivered inside a published service, at the published price.</p>
     </div>
-    <p class="buildpage__price">An <a href="/services/#audit">AI Readiness Audit</a> runs <span data-fact="price-audit">$3,500–$8,500</span> and tells you whether this build is the right first move. The build itself is delivered in Managed Services at <span data-fact="price-managed">From $1,500/month</span>, quoted fixed in writing before work begins. <a href="/pricing/">Read the price list <span class="arr">&#8594;</span></a></p>
+    <p class="buildpage__price">An <a href="/services/#audit">AI Readiness Audit</a> runs <span data-fact="price-audit">$3,500–$8,500</span> and tells you whether this build is the right first move. The build itself is delivered in Managed Services. <span data-fact="price-managed">From $1,500/month</span>, quoted fixed in writing before work begins.</p>
+    <p class="section-action"><a href="/pricing/">Read the price list&nbsp;<span class="arr">&#8594;</span></a></p>
   </div>
 </section>
 
@@ -476,21 +481,21 @@
       </div>
     </div>
     <div class="faq__list">
-        <details class="faq__item">
-          <summary><span class="faq__n">01</span>Is this an extra we have to buy?</summary>
-          <div class="faq__a"><p>The test suite and the audit trail ship with every build. What Managed Services adds is somebody continuing to watch the results and act on them after the sprint ends.</p></div>
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">Is this an extra we have to buy?</span></summary>
+          <p>The test suite and the audit trail ship with every build. What Managed Services adds is somebody continuing to watch the results and act on them after the sprint ends.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">02</span>What do the tests actually check?</summary>
-          <div class="faq__a"><p>That the system still does what it was scoped to do — the answers it gives, the things it escalates, and the cases it is supposed to refuse. Models and businesses both drift, and the tests are how you find out which one moved.</p></div>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">What do the tests actually check?</span></summary>
+          <p>That the system still does what it was scoped to do — the answers it gives, the things it escalates, and the cases it is supposed to refuse. Models and businesses both drift, and the tests are how you find out which one moved.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">03</span>Can we see the results ourselves?</summary>
-          <div class="faq__a"><p>Yes. The dashboard is yours to open, not a report we summarise for you. The audit trail is the same: it is evidence, and evidence you cannot inspect is just a claim.</p></div>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Can we see the results ourselves?</span></summary>
+          <p>Yes. The dashboard is yours to open, not a report we summarise for you. The audit trail is the same: it is evidence, and evidence you cannot inspect is just a claim.</p>
         </details>
-        <details class="faq__item">
-          <summary><span class="faq__n">04</span>Is there a lock-in?</summary>
-          <div class="faq__a"><p>No. Managed Services runs from $1,500 a month with no lock-in, and paying annually runs 12 months for the price of 10 with unused months refunded if you leave.</p></div>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">Is there a lock-in?</span></summary>
+          <p>No. Managed Services runs from $1,500 a month with no lock-in, and paying annually runs 12 months for the price of 10 with unused months refunded if you leave.</p>
         </details>
     </div>
   </div>
@@ -589,7 +594,7 @@
 </footer>
 
 <!-- ============ REVEAL ANIMATION ============ -->
-<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.doc,.doc-caption,.doc-actions,.closer,.foot__top > *"></script>
+<script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.doc,.doc-caption,.doc-actions,.final .wrap > *,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=7"></script>
 <script src="/js/analytics.js?v=4"></script>

@@ -143,9 +143,19 @@ const audit = (cfg) => {
 	// text link — which is the wrong reading of "two link treatments", exactly as
 	// it would be for the nav's "Book a free assessment" button.
 	const CHROME = ".nav, .ticker, .crumb, .legal__crumb, .bookhero__crumb, .sechero__crumb, .logo, .skip, .skip-link, .nav__menu, .stickybook";
+	// A MARKER LIST is the third documented affordance, alongside a block link
+	// and a card title. .buildpage__inds ("Where this one earns its keep." on the
+	// 12 build pages) is a four-item index in which the WHOLE ROW is the link and
+	// a rust "›" marks it — the same construction as .svc__list, whose rows
+	// happen not to be links. Underlining all four draws four rules through a
+	// four-item list, so the marker carries the affordance instead. Without this
+	// the rows report as "STYLE A without underline", which is the same wrong
+	// reading the guard already avoids for a card title.
+	const MARKER_LIST = ".buildpage__inds";
 	for (const a of document.querySelectorAll("a")) {
 		if (!vis(a) || a.classList.contains("btn")) continue;
 		if (a.closest(CHROME) || a.classList.contains("logo")) continue;
+		if (a.closest(MARKER_LIST)) continue;
 		if (a.querySelector("h1,h2,h3,h4,h5,h6,p")) continue;            // block link wrapping a card
 		if (a.querySelector("img, svg, picture")) continue;              // image affordance
 		// …and the inverse: a card TITLE that is itself the link. Underlining a

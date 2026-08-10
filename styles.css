@@ -481,11 +481,38 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
    bottom of two independently-sized stacks. The numbers take align-self:end so
    the small one sits on the big one's baseline rather than its cap line. */
 .failstat{
-  display:grid; grid-template-columns:1.2fr 1fr;
+  display:grid; grid-template-columns:1fr 1.2fr;
   column-gap:clamp(32px,4vw,56px); align-items:start;
   background:var(--ink-2); border:1px solid var(--dline);
 }
-.failstat__big, .failstat__sm{ align-self:end; }
+/* COLUMNS FOLLOW THE BAR (2026-08-09). The ratio below is drawn 74-then-26 —
+   .failstat__ratio-spent is flex:74 and comes first — but the stat columns were
+   26-then-74, so each figure stood over the other one's segment and the bar
+   read as contradicting the numbers above it. Swapped visually with `order`,
+   not by reordering the markup: the 26% is the lead figure and this company's
+   whole reason for existing, so it stays first in the DOM and first for a
+   screen reader. Nothing here is focusable, so visual/DOM divergence costs no
+   tab order. The tracks swap with them — the wide 1.2fr belongs to whichever
+   column carries the 92px figure, which is now the right one.
+   The @media block below re-sets all five orders for the stacked layout; keep
+   the two lists in step, and keep every selector here at (0,1,0). A
+   `.failstat__cap:not(.failstat__cap--sm)` reads more precisely but is (0,2,0),
+   which would outrank the stacked block's plain `.failstat__cap` — a media
+   query adds no specificity — and silently unpair the phone layout. So the base
+   caption is declared FIRST and the modifier overrides it on source order,
+   which is the same trick, and the same reasoning, as the block below. */
+.failstat__sm{ order:1; }
+.failstat__big{ order:2; }
+.failstat__cap{ order:4; }
+.failstat__cap--sm{ order:3; }
+.failstat__aside{ order:5; }
+/* BASELINE, not `end`. The old rule was align-self:end with the note that it
+   put the small number "on the big one's baseline" — it does not. Both numbers
+   are line-height:1, so their line box IS the em box and aligning box bottoms
+   aligns their DESCENDER lines; the descent below the baseline scales with the
+   font, so 44px against 92px left the two baselines 10px apart. Grid baseline
+   alignment aligns the thing that is actually meant to line up. */
+.failstat__big, .failstat__sm{ align-self:baseline; }
 /* Both numbers are fluid so they cannot outgrow their column: the vw terms hit
    the reference's 92px / 44px exactly at 1440 and shrink from there. */
 .failstat__big{ font-size:clamp(var(--fs-49),6.4vw,92px); line-height:1; font-weight:900; color:var(--accent-ink); }
@@ -580,7 +607,29 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .svc__list li { font-size: var(--fs-16); padding-left: 22px; position: relative; line-height: 1.4; }
 .svc__list li::before { content: "›"; position:absolute; left: 0; color: var(--accent); font-weight: 700; }
 .svc__item--feature .svc__list li::before { color: var(--accent-ink); }
-.svc__cta { margin-top: var(--s-24); font-weight: 700; font-size: var(--fs-13); display:inline-flex; gap:var(--s-8); align-items:center; color: var(--accent-text); }
+/* The build pages' "Where this one earns its keep." industry list takes the
+   same marker. It had NO rule at all — `.buildpage__inds` was never written —
+   so 12 pages shipped a browser-default <ul> with grey disc bullets and
+   STYLE A underlines on the links, the only default-styled list on the site.
+   Two columns because the list is always exactly four industries. */
+.buildpage__inds { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-12) var(--s-32); margin-top: var(--s-24); }
+@media (max-width: 620px){ .buildpage__inds { grid-template-columns: 1fr; } }
+.buildpage__inds li { font-size: var(--fs-16); padding-left: 22px; position: relative; line-height: 1.4; }
+.buildpage__inds li::before { content: "›"; position:absolute; left: 0; color: var(--accent); font-weight: 700; }
+/* The list IS the affordance — every item is a link, so underlining each one
+   draws four rules through a four-item list. The marker and the hover carry it,
+   which is how .svc__list's "what you leave with" list already reads.
+
+   Specificity: the LINK SYSTEM's STYLE A rule is
+   `:is(.lead, p, li, dd, …) a:not(.btn)` — (0,2,1), because :is() takes its
+   highest argument. A plain `.buildpage__inds a` is (0,1,1) and loses, which is
+   why the first attempt left the underlines exactly as they were. */
+.buildpage__inds li a:not(.btn) { color: inherit; text-decoration: none; }
+.buildpage__inds li a:not(.btn):hover { color: var(--accent-text); text-decoration: none; }
+/* gap:0 — the label/arrow space is the markup's &nbsp;, as on every other mono
+   CTA. An 8px flex gap here stacked on top of it and made this the one CTA with
+   a double-width space. */
+.svc__cta { margin-top: var(--s-24); font-weight: 700; font-size: var(--fs-13); display:inline-flex; gap:0; align-items:center; color: var(--accent-text); }
 .svc__item--feature .svc__cta { color: var(--accent-ink); }
 
 /* ---- .svc--2col: the rail + description variant ----
@@ -730,7 +779,9 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .ind__name span { display:block; font-weight: 400; font-size: var(--fs-13); color: var(--tx-mute); margin-top: 3px; letter-spacing: 0; }
 .ind__col .tick-lbl { display:block; margin-bottom: var(--s-04); }
 .ind__col .mono { font-size: var(--fs-13); }
-.ind__go { font-family: var(--mono); font-size: var(--fs-13); color: var(--accent-text); display:inline-flex; gap:var(--s-8); align-items:center; justify-self:end; }
+/* gap:0 — same reason as .svc__cta: the label/arrow space is the &nbsp; in the
+   markup, and a flex gap on top of it doubles the space on this CTA alone. */
+.ind__go { font-family: var(--mono); font-size: var(--fs-13); color: var(--accent-text); display:inline-flex; gap:0; align-items:center; justify-self:end; }
 @media (max-width: 820px){
   /* Two columns: number | everything. Without explicit placement, the
      justify-self:end link auto-places into the 40px number column and
@@ -843,7 +894,15 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 /* =========================================================
    PROMISE — two columns
    ========================================================= */
-.promise { display:grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); align-items: start; } /* heights differ — don't pad the short panel */
+/* Panels stretch to a common height so their bottom edges align (2026-08-09).
+   This was `align-items: start` with the note "heights differ — don't pad the
+   short panel", but the two panels sit inside ONE bordered container and the
+   right one is an ink fill: at start the 3-item panel ended 89.3px above the
+   5-item panel, so the dark block stopped short of the container's own bottom
+   border and left a notch of paper under it. Stretch pads nothing — the items
+   stay top-aligned inside taller boxes; only the fill and the divider run the
+   full height. */
+.promise { display:grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); align-items: stretch; }
 @media (max-width: 820px){ .promise { grid-template-columns: 1fr; } }
 .promise__col { padding: var(--s-32); }
 .promise__col--do { border-right: 1px solid var(--line); }
@@ -865,10 +924,30 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 details { border-bottom: 1px solid var(--line); }
 summary { list-style: none; cursor: pointer; display:flex; gap: var(--s-16); padding: 22px 4px; align-items:flex-start; }
 summary::-webkit-details-marker { display: none; }
+/* The index number is ACCENT ON EVERY BACKGROUND. --accent-text rebinds to
+   --accent-ink inside the dark-surface layer, so this one token is correct on
+   paper and on ink. `.q-no` used to be listed among the dark-surface MUTED
+   labels, which turned the numbers on /services/'s dark FAQ to --on-dark-muted
+   and made the same component read differently depending on the band it sat
+   in; that entry (and the light-island entry that existed only to undo it) are
+   gone. */
 summary .q-no { font-family: var(--mono); font-size: var(--fs-13); color: var(--accent-text); padding-top: 3px; }
 summary .q-tx { font-weight: 700; font-size: var(--fs-16); flex: 1; letter-spacing: -0.01em; }
-summary .q-pm { font-family: var(--mono); font-size: var(--fs-20); color: var(--tx-mute); transition: transform .2s; }
-details[open] summary .q-pm { transform: rotate(45deg); }
+/* THE "+" IS DRAWN BY THE COMPONENT, NOT AUTHORED. It used to be a hand-written
+   <span class="q-pm">+</span> in every summary, which meant a FAQ written
+   without it simply had no affordance — and three surfaces had been written
+   that way: the 12 generated build pages, /calculator/ and
+   /guides/private-ai-for-small-business/, 58 rows with nothing to click toward.
+   As a pseudo-element every <details> gets it for free and a new one cannot be
+   written wrong.
+   `margin-left: auto` rather than relying on the label's `flex: 1`, because the
+   orphan markup had a bare text node for the question: an anonymous flex item
+   takes `flex: 0 1 auto` and would not have pushed the marker to the right
+   edge. This works whether the label is a .q-tx span or a loose text node.
+   summary is display:flex, so ::after is a blockified flex item and `transform`
+   applies to it — it would not on a non-replaced inline box. */
+summary::after { content: "+"; margin-left: auto; font-family: var(--mono); font-size: var(--fs-20); color: var(--tx-mute); line-height: 1.1; transition: transform .2s; }
+details[open] summary::after { transform: rotate(45deg); }
 details p { padding: 0 4px 24px 44px; color: var(--tx-mute); font-size: var(--fs-16); line-height: 1.6; max-width: 66ch; }
 .faq__aside { background: var(--ink); color: var(--dtx); padding: var(--s-32); }
 .faq__aside p { color: var(--dtx-mute); font-size: var(--fs-13); margin: 14px 0 22px; }
@@ -1292,11 +1371,21 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
 }
 
 /* ---------- spec-sheet stat rail ---------- */
-.statrail__bar{ display:flex; justify-content:space-between; align-items:center;
+/* THE HEADER BAND — one definition, every spec card. Label left, value right,
+   both in the same letterspaced mono caps; the value is the bold one. The band
+   is the part of the card that is NOT a label/value row, so its children carry
+   no classes and the typography is inherited from here. That is also what made
+   it fragile — see the CARD TYPOGRAPHY notes on why bare dt/dd had to come out
+   of TIER 1 and TIER 3.
+   .cr-spec__bar (/careers/) is the same band under an older page-local name and
+   is served from here as of 2026-08-09; it used to declare its own 11px/.14em
+   copy in that page's <style> block, which is how one component came to render
+   at two sizes. */
+.statrail__bar, .spec-card__bar, .cr-spec__bar{ display:flex; justify-content:space-between; align-items:center;
   padding: var(--s-12) var(--s-16); border-bottom: 1px solid var(--hairline); border-radius: var(--r-md) var(--r-md) 0 0;
   background: var(--cream-band);
   font-family: var(--mono); font-size: var(--fs-13); letter-spacing:.12em; text-transform:uppercase; color: var(--tx-mute); }
-.statrail__bar b{ color: var(--tx-mute); font-weight:700; } /* header value = muted dark mono; rust is reserved for status rows */
+.statrail__bar b, .spec-card__bar b, .cr-spec__bar b{ color: var(--tx-mute); font-weight:700; } /* header value = muted dark mono; rust is reserved for status rows */
 .statrail__row{ transition: background .15s; }
 /* Spec-card rule: the card's TOP BORDER sits on the H1's cap height — level
    with the top of "The machine", not above the eyebrow. Only when the hero is
@@ -1435,10 +1524,15 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 /* Column gap was 0 — the retired mid-dot (plus its 8px margins) was the only
    thing holding the outlets apart, so dropping it ran the names together into
    "ForbesThe Wall Street JournalThe New York Times…" under one continuous rule.
-   1.6em is the base .press-list column gap; the row gap stays generous because
-   each outlet now carries an underline and two wrapped lines would otherwise
-   sit rule-to-text. */
-.bio__press .press-list{ gap:0.7em 1.6em; }
+   1.6em is the base .press-list column gap.
+
+   ROW GAP HALVED 0.7em -> 0.35em (2026-08-09). The strip fits one line at 1280
+   and up, so the row gap only ever shows on a wrap — and at 1024 the wrap is
+   "Fox Business" alone on line two. At 0.7em the pitch was 38px against a 28px
+   line box, which read as a separate paragraph rather than the rest of the same
+   list. 0.35em brings it to 33px: still clear of the underlines (the reason the
+   gap was generous in the first place), but plainly a continuation. */
+.bio__press .press-list{ gap:0.35em 1.6em; }
 /* All seven outlets read identically whether or not they link (2026-08-03).
    Four of them are <a> and took STYLE A's underline; three are bare <span> and
    took nothing, so the row looked half-linked and half-not — a difference that
@@ -2194,6 +2288,14 @@ table.cmp tbody th{ font-weight:700; white-space:nowrap; }
 table.cmp tbody th a{ color:var(--accent-text); text-decoration:none; }
 table.cmp tbody th a:hover{ text-decoration:underline; text-underline-offset:2px; }
 table.cmp .cmp__price{ font-family:var(--mono); color:var(--accent-text); white-space:nowrap; }
+/* Timeline holds "2 to 4 weeks" / "4 to 12 weeks" / "Ongoing" — three-token
+   durations that are one value, not prose. The table is auto-layout at
+   width:100%, so the 591px "What it delivers" column squeezed this one to
+   ~119px below 1100 and broke "4 to 12 weeks" across two lines while the price
+   beside it stayed whole. nowrap, the same treatment .cmp__price already gets
+   and for the same reason. Safe at every width because .cmp__wrap scrolls the
+   table horizontally rather than the page. */
+table.cmp .cmp__time{ white-space:nowrap; }
 @media (max-width:640px){ table.cmp{ font-size: var(--fs-13); } table.cmp th, table.cmp td{ padding:12px 12px; } }
 
 /* ============ MEDIA BAR (ambient credibility under hero) ============ */
@@ -2485,14 +2587,36 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 .svc__tab { position: absolute; top: 0; left: clamp(var(--s-16), 4vw, var(--s-32)); transform: translateY(-50%); z-index: 4;
   background: var(--rust); color: var(--paper); font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em;
   text-transform: uppercase; padding: 5px 12px; border-radius: var(--r-sm); white-space: nowrap; }
-/* "The Math" band — real visual: our largest engagement vs a Big Four minimum */
-.math-vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(var(--s-24), 4vw, var(--s-64)); align-items: center; margin-top: var(--s-48); }
+/* "The Math" band — real visual: our largest engagement vs a Big Four minimum.
+
+   TOP-ALIGNED, NOT CENTRED. The two columns hold captions of different lengths,
+   so `align-items: center` centred each column on its own height and pushed the
+   shorter one's label and figure down — on /services/ the right column's label
+   and figure sat 25.5px below the left's, and the comparison stopped reading as
+   a comparison. Top-aligning puts both labels on one baseline and therefore both
+   figures on one baseline too, since the rows above them are identical.
+
+   /pricing/ has carried this correction since the pricing pass, as four lines in
+   its own <style> block, and /services/ uses byte-identical markup with none of
+   it — one component, two renderings, and only the page that was looked at was
+   right. Promoted here 2026-08-09 and deleted from that page; do not re-add a
+   page-local copy.
+
+   The "vs" then has to be placed by hand: it is a grid item in a row whose
+   height is the tallest column, so any align-self would centre it on the whole
+   band rather than on the figures. `15px + 0.36em` is the label's height and
+   margin plus the figure's CAP-height midline — 0.36 rather than 0.5 because
+   the target is the optical middle of the digits, not of the line box. Measured
+   against the box midline it therefore reads ~8.8px high, which is correct. */
+.math-vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(var(--s-24), 4vw, var(--s-64)); align-items: start; margin-top: var(--s-48); }
 .math-vs__col .tick-lbl { color: var(--mono-on-dark); display: block; }
 .math-vs__num { font-weight: 900; font-size: clamp(var(--fs-49), 7vw, var(--fs-78)); letter-spacing: -0.03em; line-height: 1; margin: var(--s-12) 0; color: var(--rust-ink); }
 .math-vs__num--them { color: var(--dtx-mute); }
 .math-vs__col p { color: var(--dtx-mute); font-size: var(--fs-16); line-height: 1.5; max-width: 34ch; }
-.math-vs__sep { font-family: var(--mono); font-size: var(--fs-20); color: var(--mono-on-dark); letter-spacing: .04em; text-transform: uppercase; }
-@media (max-width: 720px){ .math-vs { grid-template-columns: 1fr; gap: var(--s-32); } .math-vs__sep { justify-self: center; } }
+.math-vs__sep { font-family: var(--mono); font-size: var(--fs-20); color: var(--mono-on-dark); letter-spacing: .04em; text-transform: uppercase;
+  align-self: start; margin-top: calc(15px + 0.36 * clamp(var(--fs-49), 7vw, var(--fs-78))); }
+/* Stacked, there is no pair to sit between: the offset would just push it down. */
+@media (max-width: 720px){ .math-vs { grid-template-columns: 1fr; gap: var(--s-32); } .math-vs__sep { justify-self: center; margin-top: 0; } }
 /* FAQ CTA as a full-width strip below the accordion */
 .faq-strip { display: flex; align-items: center; justify-content: space-between; gap: clamp(var(--s-24), 4vw, var(--s-48)); flex-wrap: wrap;
   margin-top: var(--s-48); padding: clamp(var(--s-24), 3vw, var(--s-32)) clamp(var(--s-24), 4vw, var(--s-48));
@@ -2959,7 +3083,7 @@ select.input:invalid { color: var(--tx-faint); }
 
    Deliberately NOT in this list: `.prose code` / `.prose pre`
    (uppercasing code corrupts it), and the large display
-   numerals (.svc__no, .q-pm, .roi__count, .nf__code) which are
+   numerals (.svc__no, .roi__count, .nf__code) which are
    data at display size, not labels.
    ========================================================= */
 .kicker, .eyebrow, .tick-lbl, .spec-card__label, .statrail__k,
@@ -3046,7 +3170,7 @@ select.input:invalid { color: var(--tx-faint); }
     .entity--here, .subcard, .promise__col--dont, .faq__aside, .faq-strip,
     .tl, .arg--amp, .math__fig, .story-feat, .foundernote, .never,
     .mk-box, .mk-story, .archtab) :is(.kicker, .tick-lbl, .arg__tag, .tag, .phase__no,
-    .story-feat__tag, .foundernote__tag, .cr-trait__n, .q-no, .ln, .go,
+    .story-feat__tag, .foundernote__tag, .cr-trait__n, .ln, .go,
     .statrail__k, .gcard__meta, .svc-ba__k, .timeline90__weeks, .fgroup__t,
     .cr-spec__k, .cr-after__lbl, .build__no, .src) {
   color: var(--on-dark-muted);
@@ -3107,7 +3231,7 @@ select.input:invalid { color: var(--tx-faint); }
    (0,2,0)/(0,2,2), which a token rebinding cannot outrank — these restate the
    light colour at matching specificity, and win on source order. */
 :is(.roi, .bound__i) :is(.kicker, .tick-lbl, .arg__tag, .tag, .phase__no,
-  .story-feat__tag, .foundernote__tag, .cr-trait__n, .q-no, .ln, .go,
+  .story-feat__tag, .foundernote__tag, .cr-trait__n, .ln, .go,
   .statrail__k, .gcard__meta, .svc-ba__k, .timeline90__weeks, .fgroup__t,
   .cr-spec__k, .cr-after__lbl, .build__no, .src) { color: var(--muted-on-light); }
 /* Light-island body links follow STYLE A (currentColor + underline); forcing
@@ -3280,10 +3404,20 @@ select.input:invalid { color: var(--tx-faint); }
 }
 
 /* ---- TIER 1: labels ---- */
+/* Bare `dt` was in this list until 2026-08-09 and it was over-broad. A row's
+   key ALWAYS carries .statrail__k / .spec-card__label even when the card is
+   marked up as a <dl>, so `dt` never caught a row — the only unclassed <dt> in
+   any tiered card is the one in the HEADER BAND, whose children carry no
+   classes by design. This list is (0,3,0) and sits ~1900 lines after
+   .statrail__bar (0,1,0), so it silently took the band's label from the band's
+   own 14px/.12em down to 11px/.08em on the four pages that use <dl> markup.
+   Verified before removing: 8 unclassed dt/dd exist inside tiered cards
+   site-wide and all 8 are in a header band. See the TIER 3 note for the other
+   half of the same bug. */
 :is(.svc__item, .spec-card, .statrail, .phase, .rail, .svc-detail__card,
     .svc-detail__deliv, .foot__brand .entity__stats)
   :is(.tick-lbl, .statrail__k, .spec-card__label, .phase__no, .step__no,
-      .panel__t, .svc__tab, .cr-spec__k, .svc-ba__k, .kicker, dt) {
+      .panel__t, .svc__tab, .cr-spec__k, .svc-ba__k, .kicker) {
   font-family: var(--mono);
   font-size: var(--card-t1-size);
   font-weight: 400;
@@ -3313,13 +3447,35 @@ select.input:invalid { color: var(--tx-faint); }
   line-height: 1.2;
 }
 /* long values keep TIER 3's size — 14 is in the allowed set and a 22px
-   three-item list would wrap the spec card */
-:is(.spec-card, .statrail) .statrail__v--sm { font-size: var(--card-t3-size); }
+   three-item list would wrap the spec card.
+
+   THIS RULE DID NOTHING FROM 2026-08-01 TO 2026-08-09 and the modifier was
+   dead on all four of its users — the homepage's "Agents · Automations",
+   /work/marcus/results/'s window and its five-line sign-off attestation — all
+   of which were still painting at 22px. It is the :is() specificity trap the
+   contrast pass hit, in its purest form: TIER 2 above LOOKS like (0,2,0) but
+   :is() takes the HIGHEST specificity in each list, and `.foot__brand
+   .entity__stats` (0,2,0) in the first plus `.entity__stats b` (0,1,1) in the
+   second make it (0,3,1). The old selector here was (0,2,0), so it lost
+   outright and sitting later in the file could not save it — the usual
+   assumption that source order decides between two "class-only" rules.
+   Four classes takes this to (0,4,0), which wins on specificity rather than
+   position. Audit it with getComputedStyle, never by reading the cascade:
+   a --sm value must compute 14px, not 22px. */
+.statrail .statrail__row .statrail__v.statrail__v--sm,
+.spec-card .spec-card__row .statrail__v.statrail__v--sm { font-size: var(--card-t3-size); }
 
 /* ---- TIER 3: footnotes and body ---- */
+/* Bare `dd` removed 2026-08-09, same reason as `dt` in TIER 1 and this was the
+   visible half: the header band's value is an unclassed <dd> on <dl> cards, so
+   this rule repainted it in Archivo 14px AND set text-transform:none, which
+   cancelled the band's inherited uppercase. That is why /pricing/ rendered
+   "Published" instead of "PUBLISHED" and /about/ "v.2026" instead of "V.2026" —
+   a sans value sitting beside a mono caps label in the same band. A row's value
+   always carries .statrail__v / .spec-card__value, so nothing else needed it. */
 :is(.svc__item, .spec-card, .statrail, .phase, .rail, .svc-detail__card,
     .svc-detail__deliv)
-  :is(p, li, .svc__tagline, .svc__note, .step__d, .advisor__tx p, dd, span.v) {
+  :is(p, li, .svc__tagline, .svc__note, .step__d, .advisor__tx p, span.v) {
   font-family: var(--sans);
   font-size: var(--card-t3-size);
   font-weight: 400;
@@ -3507,7 +3663,17 @@ a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)) {
 }
 a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)):visited { color: var(--accent-text); }
 a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)):hover { color: var(--accent-text); text-decoration: none; }
-a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)) .arr { margin-left: 0.5ch; }
+/* NO margin here — the gap is the `&nbsp;` that every mono CTA now carries in
+   its markup, and one mechanism is the point. A 0.5ch margin used to sit on top
+   of that space, so an in-prose CTA measured 11.73px while a standalone one
+   measured 3.67px: STYLE B makes standalone action links `display: inline-flex`
+   (for the 44px hit box), and a flex container DROPS a whitespace-only text
+   node, so the authored space between label and arrow simply vanished on
+   "BROWSE THE BUILD CATALOG" and five others. `&nbsp;` is not collapsible
+   white space, so it survives as a real flex item and renders identically in
+   inline, flex and inline-flex contexts. Every mono CTA is now one space wide.
+   Buttons are deliberately excluded from all of this — they space their arrow
+   with the flex `gap` the BUTTONS block specifies, and carry no nbsp. */
 /* only the arrow moves; the label stays put */
 a:not(.btn):has(.arr):not(:has(h1, h2, h3, h4, h5, h6, p)):hover .arr { transform: translateX(2px); }
 

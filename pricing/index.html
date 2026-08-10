@@ -27,21 +27,23 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=137" />
+<link rel="stylesheet" href="/styles.css?v=141" />
 <style>
 /* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
 /* 1. Price/range values never wrap. Stepped down one size so the widest range
    ($18,000–$60,000) fits the 220px meta column on a single line. */
 .svc__price { white-space: nowrap; font-size: var(--fs-16); }
-/* 2. Uniform price-table row heights (desktop 3-column table only — stacks <921px).
-   grid-auto-rows:1fr keeps the three rows equal at every width, unlike a fixed
-   min-height which only lines up at one viewport. */
-@media (min-width: 921px){ .svc { display: grid; grid-auto-rows: 1fr; } }
-/* 3. THE MATH: top-align the columns so the two figures share a baseline (the
-   longer caption no longer pushes $45,000 down via align-items:center), then
-   drop "vs" to the figures' cap-height midline (≈ label + 0.36 × figure size). */
-.math-vs { align-items: start; }
-.math-vs__sep { align-self: start; margin-top: calc(15px + 0.36 * clamp(var(--fs-49), 7vw, var(--fs-78))); }
+/* 2. REMOVED 2026-08-09 — `@media (min-width:921px){ .svc { display:grid;
+   grid-auto-rows:1fr } }`, which forced the three price rows to a common
+   height. The rows are stacked full-width bands, not side-by-side cards, so
+   equal heights bought nothing visually and cost the tallest row's slack to
+   every other row: the dark "Most start here" audit card carried 148.6px of
+   empty panel below its last line, and Managed Services 126.9px, because the
+   Implementation Sprint row set the height for all three. Rows now size to
+   content. Do not reinstate without solving the dead panel. */
+/* 3. THE MATH: moved into styles.css with the .math-vs component — /services/
+   used the same markup and never had this correction, so the band was right on
+   one page and 25.5px out on the other. See the note there. */
 /* 4. FAQ heading/accordion gutter matches the page's section-head gutter (48px). */
 .faq { gap: var(--s-48); }
 </style>
@@ -451,7 +453,8 @@
         <div class="statrail__bar"><dt>Price list</dt><dd><b>Published</b></dd></div>
         <div class="statrail__row"><dt class="statrail__k">Audits</dt><dd class="statrail__v accent-tx" data-fact="price-audit">$3,500–$8,500</dd></div>
         <div class="statrail__row"><dt class="statrail__k">Sprints</dt><dd class="statrail__v" data-fact="price-sprint">$18,000–$60,000</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Managed</dt><dd class="statrail__v">From $1,500/mo · no lock-in</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Managed</dt><dd class="statrail__v">From $1,500/mo</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Lock-in</dt><dd class="statrail__v">None</dd></div>
         <div class="statrail__row"><dt class="statrail__k">Quote</dt><dd class="statrail__v">Fixed, in writing</dd></div>
         <div class="statrail__row"><dt class="statrail__k">Guarantee</dt><dd class="statrail__v accent-tx">Live in 90 days</dd></div>
       </dl>
@@ -465,7 +468,7 @@
     <div class="head-block">
       <div>
         <span class="kicker">The ceiling</span>
-        <h2 class="h2 mt-s">The ceiling: <span class="accent-tx">from $95,000, four a year.</span></h2>
+        <h2 class="h2 mt-s">The ceiling: <span class="accent-tx">from $95,000, four per year.</span></h2>
       </div>
       <p class="lead">The MARCUS class, and the top of the price list. Start here so every number below it has a scale to sit against — most businesses do not buy this one.</p>
     </div>
@@ -493,7 +496,7 @@
             <li>An approval queue: people decide, always</li>
             <li>Your team trained, everything owned by you</li>
           </ul>
-          <a class="svc__cta" href="/work/marcus/">Read the MARCUS build <span class="arr">&#8594;</span></a>
+          <a class="svc__cta" href="/work/marcus/">Read the MARCUS build&nbsp;<span class="arr">&#8594;</span></a>
         </div>
       </div>
     </div>
@@ -541,7 +544,7 @@
             <li>A phased plan you own outright</li>
             <li>A straight read on whether to build at all</li>
           </ul>
-          <a class="svc__cta" href="/services/#audit">Read the full spec <span class="arr">&#8594;</span></a>
+          <a class="svc__cta" href="/services/#audit">Read the full spec&nbsp;<span class="arr">&#8594;</span></a>
         </div>
       </div>
       <div class="svc__item">
@@ -567,7 +570,7 @@
             <li>Integrations into one source of truth</li>
             <li>Your team trained to run all of it</li>
           </ul>
-          <a class="svc__cta" href="/services/#sprint">Read the full spec <span class="arr">&#8594;</span></a>
+          <a class="svc__cta" href="/services/#sprint">Read the full spec&nbsp;<span class="arr">&#8594;</span></a>
         </div>
       </div>
       <div class="svc__item">
@@ -593,7 +596,7 @@
             <li>A one-page monthly report, plain numbers</li>
             <li>No lock-in: leave whenever it stops paying</li>
           </ul>
-          <a class="svc__cta" href="/services/#managed">Read the full spec <span class="arr">&#8594;</span></a>
+          <a class="svc__cta" href="/services/#managed">Read the full spec&nbsp;<span class="arr">&#8594;</span></a>
         </div>
       </div>
     </div>
@@ -638,27 +641,27 @@
       </div>
       <div class="faq__list">
         <details>
-          <summary><span class="q-no">01</span><span class="q-tx">How much does AI implementation cost for a small business?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">01</span><span class="q-tx">How much does AI implementation cost for a small business?</span></summary>
           <p>The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in, and a Full Back Office build starts at $95,000. For how our numbers compare to the wider market — hourly, boutique, Big Four — see <a href="/guides/ai-consultant-cost/">What an AI Consultant Costs in 2026</a>; for the monthly costs after the build, see <a href="/guides/what-ai-automation-costs-to-run/">What AI Automation Costs to Run</a>.</p>
         </details>
         <details>
-          <summary><span class="q-no">02</span><span class="q-tx">Is there a guarantee?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">02</span><span class="q-tx">Is there a guarantee?</span></summary>
           <p>Yes, on delivery: if a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. The scope is fixed in writing before work begins, so the guarantee is against a spec both sides can read. We do not guarantee ROI numbers — nobody honestly can — but we do guarantee the thing you paid for shows up and runs.</p>
         </details>
         <details>
-          <summary><span class="q-no">03</span><span class="q-tx">Does the audit fee count toward a build?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">03</span><span class="q-tx">Does the audit fee count toward a build?</span></summary>
           <p>Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. If the audit leads to a build, the diagnosis effectively costs you nothing.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">What does the AI Readiness Audit include?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">04</span><span class="q-tx">What does the AI Readiness Audit include?</span></summary>
           <p>A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.</p>
         </details>
         <details>
-          <summary><span class="q-no">05</span><span class="q-tx">Why fixed prices instead of hourly?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">05</span><span class="q-tx">Why fixed prices instead of hourly?</span></summary>
           <p>Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs. If you are comparing firms, the ten questions in <a href="/guides/how-to-choose-an-ai-consultant/">How to Choose an AI Consultant</a> include this one — and <a href="/guides/how-to-scope-an-ai-project/">a scope a vendor can’t inflate</a> keeps the number fixed after you choose.</p>
         </details>
         <details>
-          <summary><span class="q-no">06</span><span class="q-tx">What happens after the 90 days?</span><span class="q-pm">+</span></summary>
+          <summary><span class="q-no">06</span><span class="q-tx">What happens after the 90 days?</span></summary>
           <p>Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: from $1,500 a month, cancel any month it stops earning its keep, and pay annually for 12 months at the price of 10. Whether to keep a retainer, name an internal owner, or hire is worked through in <a href="/guides/ai-consultant-vs-in-house/">AI Consultant vs. In-House Hire</a>.</p>
         </details>
       </div>

@@ -166,7 +166,7 @@ The fine print
 
 Every path here starts with the same free 30-minute assessment. We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar.
 
-The ceiling: when a business wants the whole back office carried rather than one workflow, that is a MARCUS-class build — From $95,000 , four a year. Everything above is where most businesses start.
+The ceiling: when a business wants the whole back office carried rather than one workflow, that is a MARCUS-class build — From $95,000 , four per year. Everything above is where most businesses start.
 
 The same numbers, pointed at your business
 
@@ -298,7 +298,9 @@ Audits $3,500–$8,500
 
 Sprints $18,000–$60,000
 
-Managed From $1,500/mo · no lock-in
+Managed From $1,500/mo
+
+Lock-in None
 
 Delivery ~90 days
 
@@ -366,15 +368,15 @@ See the full price list →
 
 ### Questions about the audit
 
-01 What is the AI Readiness Audit? + Two to four weeks inside your real operation. We map your workflows, put a cost on each one, and hand you a phased plan you own, whether or not you build it with us.
+01 What is the AI Readiness Audit? Two to four weeks inside your real operation. We map your workflows, put a cost on each one, and hand you a phased plan you own, whether or not you build it with us.
 
-02 How much does the AI Readiness Audit cost? + $3,500–$8,500, quoted as a fixed price in writing before work begins. The exact number depends on the size and complexity of your operation. 100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+02 How much does the AI Readiness Audit cost? $3,500–$8,500, quoted as a fixed price in writing before work begins. The exact number depends on the size and complexity of your operation. 100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
 
-03 How long does the audit take? + 2 to 4 weeks.
+03 How long does the audit take? 2 to 4 weeks.
 
-04 What do I leave with? + A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all.
+04 What do I leave with? A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all.
 
-05 What if the audit says don’t build? + Then it says so, in writing. Sometimes the right call is to wait a quarter. You will not be talked into a build your own numbers do not support. To gauge readiness before spending anything, run the 20-point readiness checklist yourself.
+05 What if the audit says don’t build? Then it says so, in writing. Sometimes the right call is to wait a quarter. You will not be talked into a build your own numbers do not support. To gauge readiness before spending anything, run the 20-point readiness checklist yourself.
 
 Service 02 · 4–12 weeks · $18,000–$60,000
 
@@ -416,19 +418,19 @@ What you leave with
 
 - Your team trained to run all of it
 
-See the full price list
+See the full price list →
 
 ### Questions about the sprint
 
-01 What is the AI Implementation Sprint? + A fixed-scope build of the highest-payback workflow your audit surfaced, typically 4 to 12 weeks, about 90 days per workflow. Guaranteed: if a scoped workflow is not live within 90 days, we keep building at no charge until it is.
+01 What is the AI Implementation Sprint? A fixed-scope build of the highest-payback workflow your audit surfaced, typically 4 to 12 weeks, about 90 days per workflow. Guaranteed: if a scoped workflow is not live within 90 days, we keep building at no charge until it is.
 
-02 How much does an Implementation Sprint cost? + $18,000–$60,000, quoted as a fixed price in writing before any work begins. For how that compares to the wider market, see What an AI Consultant Costs in 2026 .
+02 How much does an Implementation Sprint cost? $18,000–$60,000, quoted as a fixed price in writing before any work begins. For how that compares to the wider market, see What an AI Consultant Costs in 2026 .
 
-03 How long does a sprint take? + 4 to 12 weeks, depending on scope.
+03 How long does a sprint take? 4 to 12 weeks, depending on scope.
 
-04 Do I need an audit first? + Usually. Most sprints start with the AI Readiness Audit so the build rests on your numbers instead of a guess.
+04 Do I need an audit first? Usually. Most sprints start with the AI Readiness Audit so the build rests on your numbers instead of a guess.
 
-05 What does a finished sprint look like? + A working system your team actually uses. The closest published example is MARCUS: 14 AI agents across 7 departments we built for B:Side Capital, a regulated lender.
+05 What does a finished sprint look like? A working system your team actually uses. The closest published example is MARCUS: 14 AI agents across 7 departments we built for B:Side Capital, a regulated lender.
 
 Service 03 · Ongoing · Monthly · no lock-in
 
@@ -476,13 +478,13 @@ See the full price list →
 
 ### Questions about managed services
 
-01 What are Managed Services? + Ongoing monitoring and maintenance for what we build, keeping the system healthy after handoff. From $1,500 a month, no lock-in, and 12 months cost the price of 10 when paid annually.
+01 What are Managed Services? Ongoing monitoring and maintenance for what we build, keeping the system healthy after handoff. From $1,500 a month, no lock-in, and 12 months cost the price of 10 when paid annually.
 
-02 How much do Managed Services cost? + From $1,500 a month with no lock-in; the exact amount depends on what is running. Pay annually and 12 months cost the price of 10. The audit and sprint that lead here run $3,500–$8,500 and $18,000–$60,000 respectively.
+02 How much do Managed Services cost? From $1,500 a month with no lock-in; the exact amount depends on what is running. Pay annually and 12 months cost the price of 10. The audit and sprint that lead here run $3,500–$8,500 and $18,000–$60,000 respectively.
 
-03 Is Managed Services required? + No. It is optional, never required. You can run what we build yourself. The hire-or-engage math behind that choice is in AI Consultant vs. In-House Hire .
+03 Is Managed Services required? No. It is optional, never required. You can run what we build yourself. The hire-or-engage math behind that choice is in AI Consultant vs. In-House Hire .
 
-04 Do you only manage what you built? + The road here runs through the audit and the sprint, so yes. We manage systems we built and understand.
+04 Do you only manage what you built? The road here runs through the audit and the sprint, so yes. We manage systems we built and understand.
 
 Picture it
 
@@ -573,7 +575,9 @@ Audits : $3,500–$8,500
 
 Sprints : $18,000–$60,000
 
-Managed : From $1,500/mo · no lock-in
+Managed : From $1,500/mo
+
+Lock-in : None
 
 Quote : Fixed, in writing
 
@@ -581,7 +585,7 @@ Guarantee : Live in 90 days
 
 The ceiling
 
-## The ceiling: from $95,000, four a year.
+## The ceiling: from $95,000, four per year.
 
 The MARCUS class, and the top of the price list. Start here so every number below it has a scale to sit against — most businesses do not buy this one.
 
@@ -741,22 +745,22 @@ Fair questions
 
 ## How much does AI implementation cost?
 
-01 How much does AI implementation cost for a small business? +
+01 How much does AI implementation cost for a small business?
 The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in, and a Full Back Office build starts at $95,000. For how our numbers compare to the wider market — hourly, boutique, Big Four — see What an AI Consultant Costs in 2026 ; for the monthly costs after the build, see What AI Automation Costs to Run .
 
-02 Is there a guarantee? +
+02 Is there a guarantee?
 Yes, on delivery: if a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. The scope is fixed in writing before work begins, so the guarantee is against a spec both sides can read. We do not guarantee ROI numbers — nobody honestly can — but we do guarantee the thing you paid for shows up and runs.
 
-03 Does the audit fee count toward a build? +
+03 Does the audit fee count toward a build?
 Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. If the audit leads to a build, the diagnosis effectively costs you nothing.
 
-04 What does the AI Readiness Audit include? +
+04 What does the AI Readiness Audit include?
 A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.
 
-05 Why fixed prices instead of hourly? +
+05 Why fixed prices instead of hourly?
 Because that is how you would want to be treated. The exact price is quoted in writing before work begins and does not move after we start. You will not sit through three discovery calls to learn what something costs. If you are comparing firms, the ten questions in How to Choose an AI Consultant include this one — and a scope a vendor can’t inflate keeps the number fixed after you choose.
 
-06 What happens after the 90 days? +
+06 What happens after the 90 days?
 Your team is trained to run what we built, and you own all of it. If you want us to keep watching, Managed Services covers monitoring and maintenance as models and vendors shift: from $1,500 a month, cancel any month it stops earning its keep, and pay annually for 12 months at the price of 10. Whether to keep a retainer, name an internal owner, or hire is worked through in AI Consultant vs. In-House Hire .
 
 ### Want exact numbers?
@@ -1078,6 +1082,8 @@ Read the measured results
 
 Who we built it for
 
+Client facts : B:Side
+
 Type : SBA 504 · CDFI
 
 Touches : Borrower financials
@@ -1318,7 +1324,9 @@ Explore more client stories
 
 The guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
-The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. See the price list →
+The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+
+See the price list →
 
 Proof
 
@@ -1635,7 +1643,9 @@ See what a build like this costs
 
 The guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
-The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. See the price list →
+The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+
+See the price list →
 
 A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
 
@@ -1685,7 +1695,7 @@ Before The phone rings while everyone is on a job. The caller gets voicemail, an
 
 After Every call answered. The common questions handled, the appointment booked, the urgent ones routed to a person — and a transcript in your inbox by morning.
 
-How the 24/7 ai receptionist works →
+How it works →
 
 Booking
 
@@ -1695,7 +1705,7 @@ Before Your website answers nothing. A visitor with a question at 9pm leaves and
 
 After The agent answers the way your best employee would — trained on your services, prices, and policies — and books the visitor straight onto your calendar.
 
-How the website chat & booking agent works →
+How it works →
 
 Follow-up
 
@@ -1705,7 +1715,7 @@ Before A lead lands Friday night and waits in the inbox until Monday. By then th
 
 After Every lead gets a real reply in under a minute, then follow-ups drafted in your voice until they answer or ask you to stop.
 
-How the instant lead response works →
+How it works →
 
 Recovery
 
@@ -1715,7 +1725,7 @@ Before A call you couldn’t take is just gone. No name, no number worth chasing
 
 After The caller gets an immediate text: who you are, when you’ll call back, and a link to book. The smallest build here, and one of the most effective.
 
-How the missed-call text-back works →
+How it works →
 
 Reputation
 
@@ -1725,7 +1735,7 @@ Before Happy customers forget to leave reviews. Unhappy ones don’t.
 
 After It asks at the right moment after the job, routes the unhappy ones to you privately first, and drafts your reply to every review that lands.
 
-How the review & reputation agent works →
+How it works →
 
 And so on
 
@@ -1747,7 +1757,7 @@ The hardware
 
 A machine in your building, bought in your name, configured to run open-source AI models locally. Other vendors rent you a seat on their server. This one is your property from the first day.
 
-How the private ai server works →
+How it works →
 
 The gatekeeper
 
@@ -1755,7 +1765,7 @@ The gatekeeper
 
 Sits between your people and any AI model. Personal information is stripped from prompts and documents before anything leaves — then the cleaned text goes to a local model or a commercial one. Your choice, because the filter makes the model swappable.
 
-How the data privacy filter works →
+How it works →
 
 The memory
 
@@ -1763,7 +1773,7 @@ The memory
 
 Everything the company knows, in a form AI can use: the structured records and the emails, notes, and policies around them, joined so one question can cross both. Your business remembers more than any one person in it. This is where that memory goes so it can be asked.
 
-How the company knowledge base works →
+How it works →
 
 The front door
 
@@ -1771,7 +1781,7 @@ The front door
 
 The system lives where your team already works. No new app, no new login, no training deck. Finished work arrives in the channel, and a person approves it there.
 
-How the slack & teams integration works →
+How it works →
 
 The workspace
 
@@ -1779,7 +1789,7 @@ The workspace
 
 Your own chat interface: on your server, behind your filter, connected to your knowledge base. What your staff wanted from the consumer chatbots, without the part where your customer data leaves the building.
 
-How the private company chat works →
+How it works →
 
 The plumbing
 
@@ -1787,7 +1797,7 @@ The plumbing
 
 QuickBooks first, because that is where Main Street keeps its books. Reconciliation prepared, invoices chased, reports drafted — nothing posts until a person approves it. More connectors as your stack requires.
 
-How the business system connectors works →
+How it works →
 
 The receipts
 
@@ -1795,7 +1805,7 @@ The receipts
 
 Stress tests that run against your system on a schedule, results on a dashboard you can open yourself, and an audit trail behind every action. Included with every build, because a system nobody is testing is a system nobody should trust.
 
-How the testing & monitoring works →
+How it works →
 
 The rule
 
@@ -1944,7 +1954,9 @@ Book the free assessment →
 
 The guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
-The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. See the price list →
+The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+
+See the price list →
 
 Fair questions
 
@@ -1956,22 +1968,22 @@ Ask it directly. Security questions land with the founder, not a sales queue.
 
 Ask a security question
 
-01 Does our data leave our building? +
+01 Does our data leave our building?
 For regulated work, no — the models run on your own hardware, and in normal operation no client file leaves your network. That is how MARCUS runs at a regulated SBA lender today. When a cloud model is the right call for a workflow, we say so in the written quote and you decide.
 
-02 Do AI models see our customers’ personal information? +
+02 Do AI models see our customers’ personal information?
 No. Microsoft Presidio detects and removes names, Social Security numbers, and account numbers before any model reads a document. The model sees the work, not the identity.
 
-03 How is stored data protected? +
+03 How is stored data protected?
 Everything stored is encrypted at rest, and every action the system takes is written to an append-only audit log secured as a tamper-evident chain.
 
-04 Can we audit what the system did? +
+04 Can we audit what the system did?
 Yes. The audit log is append-only and tamper-evident: entries can be added but never edited or deleted, so compliance can prove nothing was altered after the fact.
 
-05 Can the AI act on its own? +
+05 Can the AI act on its own?
 No. Nothing sends, files, posts, or pays until a person approves it. The system never decides eligibility, credit, or price — those numbers come from your systems of record, never from a model’s memory.
 
-06 Has this architecture run in a regulated environment? +
+06 Has this architecture run in a regulated environment?
 Yes. MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, entirely on-prem. The case is published with the client’s written permission.
 
 Read next A plain-English walkthrough of this architecture, with the production figures behind it: private AI for small business .
@@ -2080,22 +2092,22 @@ You don’t have to be sure about AI to book. The whole point of the assessment 
 
 Pick a time →
 
-01 What exactly is the assessment? +
+01 What exactly is the assessment?
 A free 30-minute working session with a senior advisor. We walk your workflows: where the time goes, what it costs, what a machine could carry. You leave with a plain-language read on where AI pays in your business and a rough dollar range. It ends there unless you want more. We reply within 24 hours to set a time.
 
-02 Is it really free? +
+02 Is it really free?
 Yes. No card, no catch. 30 minutes with a senior advisor, a clear read on your business, and that’s it. We do this because the businesses worth building with tend to start here.
 
-03 What if AI isn’t right for my business? +
+03 What if AI isn’t right for my business?
 Then we’ll tell you. Sometimes the answer is “wait a quarter,” or “you don’t need us for this.” You’ll leave with 30 minutes back and a clear answer, which is more than most firms hand out.
 
-04 Do I need to prepare anything? +
+04 Do I need to prepare anything?
 No. Come as you are. It helps if you can speak to how the work moves day to day: where the time goes, where things pile up. That’s all the prep there is.
 
-05 Who actually shows up to the call? +
+05 Who actually shows up to the call?
 A senior advisor, the person who would scope and build your project, not a junior rep reading off a script.
 
-06 What happens to the details I submit? +
+06 What happens to the details I submit?
 They go to us so we can prepare for your call. That’s all. Your details never enter a marketing list, and if we never work together they go nowhere at all.
 
 ========================================================================
@@ -2318,19 +2330,19 @@ They are the same numbers as everywhere else, published in full — audits, spri
 
 Read the price list
 
-01 Do you actually meet in person around Denver? +
+01 Do you actually meet in person around Denver?
 Yes, and in person means at your place: your shop in RiNo, your office in the Tech Center, your yard in Lakewood, a job trailer if that is where the work is. We do not keep a storefront in Denver and will not pretend to. When distance wins we work remotely, at the same fixed prices.
 
-02 Have you built anything for a Denver company? +
+02 Have you built anything for a Denver company?
 Yes. MARCUS was built for B:Side Capital, an SBA 504 and CDFI lender headquartered in Denver: 14 AI agents across 7 departments, running on their own hardware with no borrower file leaving the building. It is published with their written permission and the measured numbers came off a tamper-evident audit log.
 
-03 We do prevailing-wage and public work. Can the paperwork be handled? +
+03 We do prevailing-wage and public work. Can the paperwork be handled?
 That is the most common first build we scope on the Front Range. Pay applications assembled on the cycle, lien waivers tracked across every tier of sub, certified payroll and prevailing-wage records built from the same source data rather than rebuilt by hand. A person signs everything; the machine does the assembly and the chasing.
 
-04 We hold data that cannot go to a public model. Does that rule you out? +
+04 We hold data that cannot go to a public model. Does that rule you out?
 It is the case we designed for. The models run on hardware you own, in your building, and identifiers are stripped before any model reads a document. That is the whole architecture behind the lender build above, and it is itemized on our security page.
 
-05 How much does it cost in Denver? +
+05 How much does it cost in Denver?
 Exactly what it costs anywhere else — the list is published, not quoted per market, so a Denver address buys neither a discount nor a premium. The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in.
 
 Start here
@@ -2568,19 +2580,19 @@ They are the same numbers as everywhere else, published in full — audits, spri
 
 Read the price list
 
-01 Do you actually meet in person around the Valley? +
+01 Do you actually meet in person around the Valley?
 Yes, and in person means at your place: your office in Tempe, your restaurant in Old Town, your job trailer in Chandler, your practice in Mesa. There is no Phoenix storefront and we will not invent one. When distance wins we work remotely, at the same fixed prices.
 
-02 We are a restaurant group. What would you build first? +
+02 We are a restaurant group. What would you build first?
 Almost always the invoice stack. Thirty-odd supplier invoices a week arriving as email, PDF and photographs, coded and matched against what was actually delivered, with price changes and short-ships flagged in the week they happen instead of the quarter they surface in. Tip reporting and health-department documentation usually follow.
 
-03 We are a growing medical or dental practice. Can you touch patient data? +
+03 We are a growing medical or dental practice. Can you touch patient data?
 Only inside your environment. The models run on hardware in your building, so a record read by that machine has not left the practice, and a Presidio-class filter strips identifiers before any model reads a document. HIPAA also requires a signed business associate agreement before any vendor handles PHI — settle that in the first thirty minutes, not after scoping. We build nothing clinical.
 
-04 Arizona lien deadlines are tight. Does that fit the construction build? +
+04 Arizona lien deadlines are tight. Does that fit the construction build?
 It is the reason contractors call. The twenty-day preliminary notice, pay applications, waivers per tier and certified payroll are the usual first scope — trivial paperwork when it happens on time and expensive when it does not. The machine assembles and chases; a person signs.
 
-05 How much does it cost in Phoenix? +
+05 How much does it cost in Phoenix?
 The same as it costs in Denver, or anywhere else we work: the price list is published rather than negotiated market by market. The AI Readiness Audit runs $3,500–$8,500. An AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. Managed Services runs from $1,500 a month with no lock-in.
 
 Start here
@@ -2728,16 +2740,16 @@ The full price list is published — audits, sprints, managed services, all on o
 
 Read the price list
 
-01 How much does an AI consultant cost per hour? +
+01 How much does an AI consultant cost per hour?
 Independent AI consultants typically bill $100–$300 an hour; specialists with deep machine-learning backgrounds run $200–$500. The total depends on hours, which almost nobody quotes in advance — which is why we price fixed instead.
 
-02 How much should a small business budget for AI consulting? +
+02 How much should a small business budget for AI consulting?
 Roughly $21,500–$68,500 in year one at our published prices: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins — with 100% of the audit fee credited toward the sprint when it is signed within 60 days.
 
-03 Why are Big Four AI engagements so expensive? +
+03 Why are Big Four AI engagements so expensive?
 They are built for enterprises: layers of analysts, governance frameworks, and brand assurance. Engagements commonly start around $250,000 — rational at 40,000 employees, mismatched at 40.
 
-04 Is fixed-price better than hourly for AI projects? +
+04 Is fixed-price better than hourly for AI projects?
 For small and mid-size businesses, usually yes. AI work carries unusual scope uncertainty, and hourly billing hands all of it to the buyer. A fixed price forces the seller to scope before selling.
 
 Start here
@@ -2877,16 +2889,16 @@ The full price list is published — audits, sprints, managed services, all on o
 
 Read the price list
 
-01 How do I know if my business is ready for AI? +
+01 How do I know if my business is ready for AI?
 Run the 20 checks on this page: documented workflows, exportable data, a named owner with review time, and a number on what the manual work costs. Sixteen or more and you are ready to build; nine or fewer means fix the foundations first.
 
-02 What should be in place before hiring an AI consultant? +
+02 What should be in place before hiring an AI consultant?
 At minimum: your three most repetitive workflows named, one of them written down, a person with two to three hours a week to review outputs, and a budget range. Those four save you money in week one of any engagement.
 
-03 Do I need clean data before starting with AI? +
+03 Do I need clean data before starting with AI?
 No — nobody's data is clean. You need to know which system is the truth for each core fact and be able to export it without calling a vendor. That is a policy decision more often than a purchase.
 
-04 Is there a free automated readiness assessment? +
+04 Is there a free automated readiness assessment?
 Yes — the AI-Ready Score: fourteen questions, about seven minutes, a 0–100 score, and the one constraint to fix first. No sales call follows it.
 
 Start here
@@ -3028,16 +3040,16 @@ The full price list is published — audits, sprints, managed services, all on o
 
 Read the price list
 
-01 What should I ask an AI consultant before hiring them? +
+01 What should I ask an AI consultant before hiring them?
 Ten questions: the exact cost and when you learn it, whether they guarantee ROI (they should not), the real timeline, who scopes versus who builds, whether they can say wait, tool incentives, where your data goes, who can overrule the system, what you own at handoff, and proof of a real build.
 
-02 What are red flags when hiring an AI consultant? +
+02 What are red flags when hiring an AI consultant?
 Guaranteed ROI numbers, transformation promised in weeks, prices only available after a discovery sequence, unverifiable scarcity, tool recommendations that always land on a partner product, and case studies with no names.
 
-03 Should an AI consultant guarantee ROI? +
+03 Should an AI consultant guarantee ROI?
 No — and a guarantee is itself a red flag. Real results depend on your execution, so a serious firm quotes ranges and publishes its assumptions.
 
-04 What should you own at the end of an AI project? +
+04 What should you own at the end of an AI project?
 Everything: the systems, credentials, documentation, and prompts, with your team trained to run them. Ongoing help should be optional — ours is a monthly retainer from $1,500 with no lock-in.
 
 Start here

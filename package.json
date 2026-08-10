@@ -55,7 +55,8 @@
     "tokens:check": "node scripts/check-tokens.mjs",
     "css:check": "node scripts/check-css.mjs",
     "mono:check": "node scripts/check-mono.mjs",
-    "qa:matrix": "node scripts/qa-matrix.mjs"
+    "qa:matrix": "node scripts/qa-matrix.mjs",
+    "portrait:sq": "node scripts/build-portrait-sq.mjs"
   },
   "dependencies": {
     "image-size": "^1.2.1",

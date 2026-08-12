@@ -1589,23 +1589,61 @@ heuristic may decide to defer.
   fires **1–2s earlier**, on the frame's document rather than on the app, and
   clearing there left a blank cream box for that whole gap. `load` keeps its
   `calendly_loaded` analytics and nothing else.
-  - **A 5s per-mount timer is the FALLBACK, and only that.** The earlier note
-    here said "never on a timer", and the reasoning behind it still stands as
-    stated — a timer *as the primary signal* either lies about a slow frame or
-    leaves the label sitting on top of a live calendar. What it did not cover
-    is a listener that never fires at all (an extension, a future change to
-    Calendly's postMessage names), which strands the label forever. A backstop
-    behind a real signal is not the thing that was ruled out.
+  - **The 5s timer that CLEARED the label is gone (2026-08-10). A 12s timer
+    REWORDS it instead (`.is-slow`).** The old note justified the clear as a
+    backstop against a listener that never fires, on the premise that a stuck
+    label could end up sitting on top of a live calendar. **That premise is
+    wrong, and the note two bullets down always said so:** the `::before` is
+    painted UNDER the iframe, and a rendered calendar is an opaque surface, so
+    it hides the label with no signal from us. There was nothing for the
+    backstop to back up. What it actually did was hide the evidence — measured
+    on 2026-08-10, with Calendly not painting at all, the label came off on
+    schedule and left the visitor facing 978px of empty cream with nothing to
+    read and nowhere to go.
+  - **Being under the iframe is what makes the label self-correcting**, and it
+    is the whole design. The label is visible if and only if the frame has not
+    painted, which is exactly when it should be. So the timer never needs to
+    guess whether the embed worked — it only chooses the wording.
+  - **12s, not 5.** This is now a statement that the third party is in
+    trouble, not a race with a slow-but-fine load. Calendly's booking page is
+    a client-rendered SPA: the event-type URL returns a ~2KB shell with an
+    empty `<div id="root">`, and nothing exists until **~2.5 MB brotli of
+    CSS + JS** lands from `assets.calendly.com` (measured 2026-08-10:
+    `booking-*.css` 1.30 MB, `booking-*.js` 1.29 MB). That is a long time on a
+    phone and must not be called a failure.
+  - **`.is-ready` is declared LAST of the three** — it is the same `(0,2,0)` as
+    `.is-slow`, so source order is what lets a real paint win over the timer.
+    Verified by toggling both classes on a probe element: `is-slow` alone gives
+    the slow wording, `is-slow` + `is-ready` gives `none`.
+  - **`assets.calendly.com` gets its own preconnect, and it is the one that
+    matters.** The two `calendly.com` preconnects only warm the shell; the
+    handshake to the asset origin could not start until that shell arrived and
+    was parsed. Plain form only — both files load as ordinary
+    `<script>`/`<link rel=stylesheet>` with no `crossorigin`, so the anonymous
+    socket the `calendly.com` pair needs would sit unused.
+  - **There is now an always-visible escape hatch below the embed**
+    (`.cal-fallback`): "Calendar not showing up? Open the scheduler in a new
+    tab — or send the form below." **Deliberately not gated on `.is-slow`.**
+    The embed is a third-party app we cannot repair from here; making the only
+    route out of a broken scheduler depend on the same scripting that just
+    failed to produce one is the bug, not the fix. Quiet styling — it is an
+    escape hatch, not a second CTA. No arrow, so the LINK SYSTEM reads it as
+    in-text STYLE A rather than a standalone STYLE B action.
+  - **With JS off the label used to lie**, announcing a load that could never
+    start (no script, no iframe, "Loading the scheduler…" forever). A
+    `<noscript><style>` in the head drops the `::before` and collapses
+    `min-height`, so the `<noscript>` link inside `.cal-embed` is what shows.
   - **It does NOT share the funnel latch, deliberately.** `funnelFired` exists
     so a re-emitted `event_type_viewed` cannot inflate the top of the funnel.
     But a prefill rebuild is a second *real* paint that must clear the
     placeholder again, so `markReady()` is called on every such message and the
     latch is applied only to the Plausible call. Wiring the placeholder to the
     latch leaves it stuck up after any rebuild.
-  - The timer is re-armed per mount (each rebuild gets its own 5s grace) and
+  - The timer is re-armed per mount (each rebuild gets its own 12s grace) and
     cleared by `markReady()`, so a fired paint cannot be undone by a stale
     timeout. The placeholder still goes back up during a rebuild, because that
-    is a real load.
+    is a real load — and `.is-slow` comes off with it, so a rebuild after a
+    stalled mount starts from the neutral wording and earns its own verdict.
   - `pointer-events: none` on the `::before`. It already sat under the iframe
     (both positioned at `z-index: auto`, and the `::before` precedes the iframe
     in paint order — hit-tested, the card's centre resolves to `<iframe>`), so

@@ -233,12 +233,12 @@ Read the measured results →
 
 ## Christopher Myers.
 
-A professor, an entrepreneur, and an operator: 26 years in service of Main Street.
+A professor, an entrepreneur, and an operator: 20 years in service of Main Street.
 
 Christopher Myers
 CEO, B:Side Capital + Fund · Founder & Chairman, Main & Machine · Professor, ASU W.P. Carey · Author
 
-He’s CEO of B:Side Capital and Fund , a professor at ASU’s W.P. Carey School, and an author with 26 years backing Main Street. He pairs that judgment with a team of AI-native builders who never had to unlearn the old way. One name owns every build.
+He’s CEO of B:Side Capital and Fund , a professor at ASU’s W.P. Carey School, and an author with 20 years backing Main Street. He pairs that judgment with a team of AI-native builders who never had to unlearn the old way. One name owns every build.
 
 Who builds this, and why the name matters →
 
@@ -896,7 +896,7 @@ A fixed price, quoted in writing before we start. And a straight answer within 2
 ========================================================================
 PAGE: Who Builds This: Christopher Myers & Main & Machine
 URL: https://www.mainandmachine.com/about/
-SUMMARY: Christopher Myers: 26 years backing Main Street, and an AI-native team building fixed-price systems in about 90 days from Denver and Phoenix.
+SUMMARY: Christopher Myers: 20 years backing Main Street, and an AI-native team building fixed-price systems in about 90 days from Denver and Phoenix.
 ========================================================================
 
 - Main & Machine
@@ -913,7 +913,7 @@ The firm : v.2026
 
 Founder : Christopher Myers
 
-Backing Main Street : 26 years
+Backing Main Street : 20 years
 
 Hubs : Denver & Phoenix
 
@@ -925,7 +925,7 @@ Updated : July 2026
 
 ## Christopher Myers.
 
-A professor, an entrepreneur, and an operator: 26 years in service of Main Street.
+A professor, an entrepreneur, and an operator: 20 years in service of Main Street.
 
 Christopher Myers
 CEO, B:Side Capital + Fund · Founder & Chairman, Main & Machine · Professor, ASU W.P. Carey · Author
@@ -940,7 +940,7 @@ Also : CEO, B:Side Capital + Fund · Professor of entrepreneurship, ASU W.P. Car
 
 Verify : LinkedIn · ASU faculty profile · Amazon author page · B:Side Capital
 
-Christopher has spent 26 years backing Main Street, today as CEO of B:Side Capital and Fund , a professor of entrepreneurship at ASU’s W.P. Carey School, and the author of several books on small business. Main & Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building.
+Christopher has spent 20 years backing Main Street, today as CEO of B:Side Capital and Fund , a professor of entrepreneurship at ASU’s W.P. Carey School, and the author of several books on small business. Main & Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building.
 
 As chairman, he pairs his own senior judgment with a team of AI-native builders : digital natives who never had to unlearn the old way. One operator stays accountable for every build. The future doesn’t belong to the people who can do what AI does; it belongs to the people who can take what the machine produces and be accountable for it.
 
@@ -2020,6 +2020,8 @@ What is eating your team’s time? (optional — rides along with your booking)
 
 The advisor reads this before your call. One line is plenty.
 
+Calendar not showing up? Open the scheduler in a new tab — or send the form below and we’ll reply within 24 hours.
+
 Pick a slot and it’s booked. The calendar invite and confirmation arrive from Calendly right away.
 
 Prefer we reach out? Use the form — we email within 24 hours
@@ -2066,7 +2068,7 @@ You leave with a clear read. That’s where it ends unless you want more.
 
 ### Christopher Myers
 
-Founder & Chairman. The person who scopes your work is the one accountable for the build. 26 years backing Main Street.
+Founder & Chairman. The person who scopes your work is the one accountable for the build. 20 years backing Main Street.
 
 ## Why it’s free
 
@@ -2134,7 +2136,7 @@ Clusters Construction · federal & aerospace · professional services
 
 Named local build B:Side Capital — MARCUS
 
-Coverage Front Range in person, remote across the US
+Coverage Front Range in person, remote US-wide
 
 Main & Machine
 
@@ -2384,7 +2386,7 @@ Clusters Hospitality · construction · healthcare
 
 Regulated pattern On-prem, PHI stays put
 
-Coverage Valley-wide in person, remote across the US
+Coverage Valley-wide in person, remote US-wide
 
 Main & Machine
 

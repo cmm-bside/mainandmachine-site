@@ -67,6 +67,15 @@ a.essay__pn-cell:hover{ background:var(--surface-hi); box-shadow:inset 0 3px 0 v
 
 const RECENT_ON_HOME = 6;
 const ARCHIVE_BATCH = 12;
+const POST_TITLE_SUFFIX = ` | ${BLOG_NAME}`;
+const POST_TITLE_HARD_MAX = 65;
+
+function postDocumentTitle(post) {
+	const title = post.seoTitle || post.title;
+	return `${title}${POST_TITLE_SUFFIX}`.length <= POST_TITLE_HARD_MAX
+		? `${title}${POST_TITLE_SUFFIX}`
+		: title;
+}
 
 // The ONE place a post's "last modified" is decided — JSON-LD dateModified,
 // the sitemap <lastmod>, and the visible "Updated" stamp all call this.
@@ -625,7 +634,7 @@ ${footer()}
 ${pageScripts()}`;
 
 	return `${head({
-		title: `${post.seoTitle || post.title} | ${BLOG_NAME}`,
+		title: postDocumentTitle(post),
 		description: post.seoDescription || post.excerpt,
 		canonical,
 		ogImage: og,

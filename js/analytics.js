@@ -23,12 +23,34 @@
  *   newsletter_subscribed { page }             beehiiv form submit
  *   guide_read            { page, guide }      75% scroll depth, once
  *   calculator_emailed    { page, industry, team_band }  estimate emailed to self
+ *
+ * Microsoft Ads UET (tag 343267453) also lives here — base loader at the foot
+ * of this file, conversion pushes ride the SAME trigger points as the
+ * Plausible events (never a separate listener, so the two systems can't
+ * disagree about what counts). Two goals:
+ *   book_appointment  — /book/ inline block, on calendly.event_scheduled
+ *   submit_lead_form  — /book/ inline block on the fallback form's `ok`
+ *                       response; every .estimate-form submit (below); the
+ *                       Score app fires its own on completion
+ * Unlike Plausible, UET sets cookies (Microsoft's MUID) — disclosed on
+ * /privacy/, and the reason the CSP allows bat.bing.net (see _headers).
  */
 (function () {
   function fire(name, props) {
     if (typeof window.plausible === "function") {
       window.plausible(name, { props: props });
     }
+  }
+  // Microsoft Ads conversion push. Safe before — or entirely without — the UET
+  // base tag at the foot of this file: uetq is a plain array until bat.js
+  // consumes it, so on dev/preview hosts (where the loader never runs) these
+  // pushes are inert.
+  function uet(action, label) {
+    window.uetq = window.uetq || [];
+    window.uetq.push("event", action, {
+      event_category: action === "book_appointment" ? "appointment" : "lead",
+      event_label: label,
+    });
   }
   var PAGE = location.pathname;
 
@@ -193,6 +215,10 @@
       industry: form.getAttribute("data-industry") || "",
       team_band: teamBand(form.getAttribute("data-team") || 0),
     });
+    // An emailed estimate is a captured lead — the UET goal fires with it.
+    // Deliberately NOT a document-wide form listener: the beehiiv subscribe
+    // and careers application forms are not leads and must not count.
+    uet("submit_lead_form", PAGE);
   }, true);
 
   /* ---------- newsletter_subscribed: beehiiv subscribe forms ------------- */
@@ -239,5 +265,32 @@
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     check(); // short pages: already past 75% on load
+  })();
+
+  /* ---------- Microsoft Ads UET base tag (343267453) --------------------- */
+  // Gated to the production hostname, same reasoning as the Score app's
+  // Plausible gate: local dev and pages.dev previews must never register a
+  // pageLoad or a conversion against the ad account. Off-host, uetq stays a
+  // plain array and every uet() push above is a no-op.
+  // bat.bing.net is Microsoft's current CDN host for bat.js (the older
+  // bat.bing.com also serves it); both are allowed in the CSP (_headers).
+  (function () {
+    if (!/(^|\.)mainandmachine\.com$/.test(location.hostname)) return;
+    window.uetq = window.uetq || [];
+    var o = { ti: "343267453", enableAutoSpaTracking: true };
+    o.ts = new Date().getTime();
+    var n = document.createElement("script");
+    n.src = "https://bat.bing.net/bat.js?ti=" + o.ti;
+    n.async = 1;
+    n.onload = n.onreadystatechange = function () {
+      var s = this.readyState;
+      if (s && s !== "loaded" && s !== "complete") return;
+      o.q = window.uetq;
+      window.uetq = new UET(o);
+      window.uetq.push("pageLoad");
+      n.onload = n.onreadystatechange = null;
+    };
+    var i = document.getElementsByTagName("script")[0];
+    i.parentNode.insertBefore(n, i);
   })();
 })();

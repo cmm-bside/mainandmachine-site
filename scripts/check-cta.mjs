@@ -77,7 +77,11 @@ const REQUIRED = [
 	["origin guard", /e\.origin\s*!==\s*'https:\/\/calendly\.com'/],
 	["calendly.event_type_viewed → calendly_widget_viewed", /'calendly\.event_type_viewed'\s*:\s*'calendly_widget_viewed'/],
 	["calendly.date_and_time_selected → calendly_time_selected", /'calendly\.date_and_time_selected'\s*:\s*'calendly_time_selected'/],
-	["calendly.event_scheduled → calendly_booked", /calendly\.event_scheduled[\s\S]{0,1600}plausible\('calendly_booked'/],
+	// The window spans the handler's event_scheduled branch: the once-latch, the
+	// Microsoft Ads book_appointment push (2026-08-23), and the sessionStorage
+	// stash all sit between the two anchors. Widen it if that branch grows;
+	// what the guard protects is that the mapping EXISTS, not the branch's size.
+	["calendly.event_scheduled → calendly_booked", /calendly\.event_scheduled[\s\S]{0,2400}plausible\('calendly_booked'/],
 	["namespace check on the event name", /indexOf\('calendly\.'\)\s*!==\s*0/],
 	["duplicate-include latch", /window\.__mmBooking/],
 ];

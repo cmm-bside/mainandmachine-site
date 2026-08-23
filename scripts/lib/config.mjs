@@ -78,6 +78,13 @@ export const BEEHIIV_SUBSCRIBE_FALLBACK = COMPANY.blog.subscribeUrl;
 // Optional explicit subscribe URL; otherwise derived from a post's web_url host.
 export const BEEHIIV_SUBSCRIBE_URL = process.env.BEEHIIV_SUBSCRIBE_URL || "";
 
+// --- Soro (public RSS; no key) ---
+// Public token from the Active mainandmachine.com Soro widget. Keep the env
+// override for hard-failure tests and diagnostics; production needs no key.
+export const SORO_RSS_URL =
+	process.env.SORO_RSS_URL ||
+	"https://app.trysoro.com/api/rss/cc30c271-2540-413d-a787-18f14f3e5b3b";
+
 // --- Generated artifact paths (all gitignored) ---
 export const DATA_MODULE_PATH = path.join(ROOT, "src", "data", "blog-posts.js");
 export const BLOG_DATA_DIR = path.join(ROOT, "blog-data"); // served at /blog-data/

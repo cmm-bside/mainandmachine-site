@@ -1,15 +1,16 @@
 #!/usr/bin/env node
-// Build-time Beehiiv fetcher for "The Ampersand".
+// Build-time Beehiiv + Soro fetcher for "The Ampersand".
 //
-// Pulls confirmed posts from the Beehiiv v2 API, extracts + sanitizes the
-// RSS article HTML, and writes ONE source of truth for the rest of the build:
+// Pulls confirmed editorial posts from the Beehiiv v2 API and SEO articles
+// from Soro's public RSS feed, then writes ONE source of truth for the build:
 //
 //   src/data/blog-posts.js   — light INDEX (no bodyHtml; searchText trimmed)
 //   blog-data/index.json     — same index, as JSON, for the client search/teaser
 //   blog-data/<slug>.json    — per-post body (bodyHtml + full searchText)
 //
 // Contract:
-//   - No key set (fresh clone / local dev)  -> write an empty blog, exit 0.
+//   - No Beehiiv key (fresh clone / local)   -> validate Soro, then write an
+//                                               empty blog so blog:build blocks.
 //   - Key set but the fetch/config fails     -> exit non-zero (fail the deploy
 //     rather than ship stale or empty content).
 import fs from "node:fs";
@@ -28,6 +29,7 @@ import {
 	BEEHIIV_API_KEY,
 	BEEHIIV_PUBLICATION_ID,
 	BEEHIIV_SUBSCRIBE_URL,
+	SORO_RSS_URL,
 	DATA_MODULE_PATH,
 	BLOG_DATA_DIR,
 	BLOG_INDEX_JSON,
@@ -44,9 +46,26 @@ const BODY_SEARCH_CAP = 2000; // searchText length in per-post body files
 // Entry
 // ---------------------------------------------------------------------------
 export async function run() {
+	if (!SORO_RSS_URL) {
+		throw new Error(
+			"Soro RSS feed is not configured. Supply the real mainandmachine.com feed UUID before shipping; do not guess it.",
+		);
+	}
+	if (BEEHIIV_API_KEY && !BEEHIIV_PUBLICATION_ID) {
+		// Key present but no publication id == misconfiguration. Fail loudly.
+		throw new Error(
+			"BEEHIIV_API_KEY is set but BEEHIIV_PUBLICATION_ID is missing. Set both, or unset the key for an empty build.",
+		);
+	}
+
+	// Start Soro first in every environment. Even a local build without the
+	// private Beehiiv key must prove the public feed is live XML; this also
+	// makes SORO_RSS_URL=<bogus> npm run blog:fetch a real hard-failure check.
+	const soroItemsPromise = fetchSoroItems();
 	if (!BEEHIIV_API_KEY) {
-		// Still a graceful fallback so `npm install` and offline work succeed,
-		// but blog:build now REFUSES to prerender an empty archive unless
+		await soroItemsPromise;
+		// Keep the existing local no-key fallback, but blog:build REFUSES to
+		// prerender the resulting empty archive unless
 		// ALLOW_EMPTY_BLOG=1 is set explicitly — a silent empty fetch used to
 		// sail through the whole pipeline (2026-07-31 audit).
 		console.warn(
@@ -56,31 +75,31 @@ export async function run() {
 		writeEmpty();
 		return;
 	}
-	if (!BEEHIIV_PUBLICATION_ID) {
-		// Key present but no publication id == misconfiguration. Fail loudly.
-		throw new Error(
-			"BEEHIIV_API_KEY is set but BEEHIIV_PUBLICATION_ID is missing. Set both, or unset the key for an empty build.",
-		);
-	}
 
-	const raw = await fetchAllPosts();
-	const posts = raw
+	const [raw, soroItems] = await Promise.all([
+		fetchAllPosts(),
+		soroItemsPromise,
+	]);
+	const beehiivPosts = raw
 		.map(normalizePost)
-		.filter((p) => p && p.slug && !p.hiddenFromFeed)
+		.filter((p) => p && p.slug && !p.hiddenFromFeed);
+	const soroPosts = soroItems.map(mapSoroPost);
+	const posts = dedupePosts([...beehiivPosts, ...soroPosts])
 		.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
 
-	// Self-host every image (hero + inline) so nothing hotlinks beehiiv's S3.
+	// Self-host every image (hero + inline) from either source.
 	await localizeImages(posts);
 
-	// Nothing is written until we are sure this is the right publication.
-	assertPublicationIdentity(posts);
+	// The identity assertion is deliberately Beehiiv-only: a Soro slug that
+	// happens to overlap a committed link must never mask a wrong publication.
+	assertPublicationIdentity(beehiivPosts);
 
-	const publicationUrl = derivePublicationUrl(posts);
+	const publicationUrl = derivePublicationUrl(beehiivPosts);
 	const subscribeUrl = deriveSubscribeUrl(publicationUrl);
 
 	writeOutputs(posts, { publicationUrl, subscribeUrl });
 	console.log(
-		`[blog:fetch] Wrote ${posts.length} post(s). publicationUrl=${publicationUrl || "(none)"}`,
+		`[blog:fetch] Wrote ${posts.length} post(s) (${beehiivPosts.length} Beehiiv, ${soroPosts.length} Soro). publicationUrl=${publicationUrl || "(none)"}`,
 	);
 }
 
@@ -186,6 +205,161 @@ async function fetchAllPosts() {
 		page += 1;
 	} while (page <= totalPages);
 	return all;
+}
+
+// ---------------------------------------------------------------------------
+// Soro RSS
+// ---------------------------------------------------------------------------
+// Soro controls this compact RSS 2.0 shape, so a dependency-free reader is
+// easier to audit than a general XML parser. Copy is decoded and then passed
+// through the exact sanitizer used by the existing blog; no voice transform
+// or description synthesis runs for Soro posts.
+function decodeXmlEntities(text) {
+	return String(text || "")
+		.replace(/&#x([0-9a-f]+);/gi, (match, hex) => {
+			const codePoint = Number.parseInt(hex, 16);
+			return Number.isInteger(codePoint) && codePoint <= 0x10ffff
+				? String.fromCodePoint(codePoint)
+				: match;
+		})
+		.replace(/&#(\d+);/g, (match, decimal) => {
+			const codePoint = Number(decimal);
+			return Number.isInteger(codePoint) && codePoint <= 0x10ffff
+				? String.fromCodePoint(codePoint)
+				: match;
+		})
+		.replace(/&lt;/gi, "<")
+		.replace(/&gt;/gi, ">")
+		.replace(/&quot;/gi, '"')
+		.replace(/&apos;/gi, "'")
+		.replace(/&amp;/gi, "&");
+}
+
+function rssTag(item, tag) {
+	const match = String(item || "").match(
+		new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, "i"),
+	);
+	if (!match) return "";
+	const inner = match[1].trim();
+	const cdata = inner.match(/^<!\[CDATA\[([\s\S]*?)\]\]>$/i);
+	return decodeXmlEntities(cdata ? cdata[1] : inner).trim();
+}
+
+async function fetchSoroItems(feedUrl = SORO_RSS_URL, fetchImpl = fetch) {
+	if (!feedUrl) {
+		throw new Error("Soro RSS feed URL is missing.");
+	}
+
+	const url = new URL(feedUrl);
+	// The feed is CDN-backed and can lag a publish by an hour. A unique query
+	// parameter forces every production build through to origin.
+	url.searchParams.set("cb", String(Date.now()));
+	const response = await fetchImpl(url, {
+		headers: { Accept: "application/rss+xml, application/xml, text/xml" },
+		cache: "no-store",
+	});
+	const body = await response.text().catch(() => "");
+
+	// When the Soro widget is inactive the endpoint returns HTTP 200 with a
+	// plain-text notice. Treat either condition as fatal so a build can never
+	// succeed after silently dropping every Soro post.
+	if (!response.ok || !/<rss[\s>]/i.test(body)) {
+		const notice = body.replace(/\s+/g, " ").trim().slice(0, 160);
+		throw new Error(
+			`Soro RSS fetch failed (${response.status} ${response.statusText || "unknown status"})${notice ? `: ${notice}` : ""}`,
+		);
+	}
+
+	return [...body.matchAll(/<item\b[^>]*>([\s\S]*?)<\/item>/gi)].map(
+		(match) => match[1],
+	);
+}
+
+function soroSlug(link, guid) {
+	let slug = "";
+	try {
+		const pathname = new URL(link).pathname.replace(/\/+$/, "");
+		slug = pathname.split("/").pop() || "";
+		try {
+			slug = decodeURIComponent(slug);
+		} catch {
+			// Keep the encoded last segment; it is still the vendor's exact slug.
+		}
+	} catch {
+		// Soro's guid is the documented fallback when link is not a URL.
+	}
+	if (!slug) slug = String(guid || "").trim();
+
+	// A slug becomes a directory name during prerender. Reject path separators,
+	// traversal, control characters, and other unsafe guid fallbacks rather
+	// than writing outside /blog/ or silently changing the vendor's identifier.
+	if (!slug || slug === "." || slug === ".." || /[\\/\0-\x1f\x7f]/.test(slug)) {
+		return "";
+	}
+	return slug;
+}
+
+function mapSoroPost(item) {
+	const title = rssTag(item, "title");
+	const link = rssTag(item, "link");
+	const guid = rssTag(item, "guid");
+	const description = rssTag(item, "description");
+	const content = rssTag(item, "content:encoded");
+	const pubDate = rssTag(item, "pubDate");
+	const media = String(item || "").match(
+		/<media:content\b[^>]*\burl=["']([^"']+)["']/i,
+	);
+	const cover = media ? decodeXmlEntities(media[1]).trim() : "";
+	const slug = soroSlug(link, guid);
+	const bodyHtml = sanitizeArticle(content);
+	const plain = htmlToText(bodyHtml);
+	const publishedAt = unixToIso(pubDate);
+
+	const label = title || slug || guid || "untitled item";
+	if (!title) throw new Error(`Soro RSS item "${label}" has no title.`);
+	if (!slug) throw new Error(`Soro RSS item "${label}" has no safe slug or guid.`);
+	if (!bodyHtml) throw new Error(`Soro RSS item "${label}" has no usable content:encoded body.`);
+	if (!publishedAt) throw new Error(`Soro RSS item "${label}" has an invalid pubDate.`);
+
+	// Soro's description is already the vendor-authored card/meta copy. Keep it
+	// verbatim after XML decoding; synthesize only when the tag is empty.
+	const excerpt = description || clip(plain, 157);
+	const heroImage = cover ? { assetUrl: cover, alt: title } : null;
+	return {
+		slug,
+		title,
+		excerpt,
+		publishedAt,
+		updatedAt: publishedAt,
+		seoTitle: title,
+		seoDescription: excerpt,
+		heroImage,
+		socialImage: heroImage,
+		bodyHtml,
+		searchText: plain.toLowerCase().slice(0, BODY_SEARCH_CAP),
+		popularity: 0,
+		url: `/blog/${slug}/`,
+		webUrl: "",
+		hiddenFromFeed: false,
+		source: "soro",
+	};
+}
+
+function dedupePosts(posts) {
+	const out = [];
+	const seen = new Set();
+	for (const post of posts) {
+		if (!post?.slug) continue;
+		if (seen.has(post.slug)) {
+			console.warn(
+				`[blog:fetch] Duplicate slug "${post.slug}" from ${post.source || "Beehiiv"}; keeping the first item.`,
+			);
+			continue;
+		}
+		seen.add(post.slug);
+		out.push(post);
+	}
+	return out;
 }
 
 // ---------------------------------------------------------------------------
@@ -604,7 +778,19 @@ function writeEmpty() {
 	});
 }
 
-export { normalizePost, extractArticle, sanitizeArticle, localizeImages, committedPostSlugs, assertPublicationIdentity };
+export {
+	normalizePost,
+	extractArticle,
+	sanitizeArticle,
+	localizeImages,
+	committedPostSlugs,
+	assertPublicationIdentity,
+	decodeXmlEntities,
+	rssTag,
+	fetchSoroItems,
+	mapSoroPost,
+	dedupePosts,
+};
 
 // Run only when invoked directly (not when imported by a test).
 if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {

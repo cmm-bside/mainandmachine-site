@@ -78,6 +78,33 @@ Read rates as: `score_completed / score_started` (tool completion),
 `calendly_booked / (calendly_loaded + booking_form_submitted)` (intent →
 booked), `calendly_booked / unique visitors` (the number that matters).
 
+## Microsoft Ads UET (tag 343267453, added 2026-08-23)
+
+Conversion tracking for Microsoft Advertising, feeding two goals. The base
+tag (`bat.bing.net/bat.js`) loads from the foot of `js/analytics.js`, **gated
+to `*.mainandmachine.com` hostnames** like the Score app's Plausible gate —
+dev and previews never register a pageLoad or conversion. Off-host, `uetq`
+stays a plain array and every push is inert. CSP: `bat.bing.net` +
+`bat.bing.com` in script/img/connect-src (`_headers`).
+
+**Unlike Plausible, UET sets cookies (MUID) and can feed remarketing
+audiences.** Disclosed on /privacy/ ("Advertising measurement", the cookies
+bullet, and Microsoft in the provider list). The no-PII contract applies
+unchanged: labels are constant strings or page paths, never a payload field.
+
+| Goal | UET event | Rides | Fires when |
+|---|---|---|---|
+| Book appointment | `book_appointment` | `calendly_booked` (`book/index.html`) | `calendly.event_scheduled`, inside the same origin check + once-latch |
+| Submit lead form | `submit_lead_form` | `booking_form_submitted` (`book/index.html`) | the fallback form's `ok` response, not the submit attempt |
+| Submit lead form | `submit_lead_form` | `calculator_emailed` (`js/analytics.js`) | any `.estimate-form` submit (/calculator/ + guide worksheets) |
+| Submit lead form | `submit_lead_form` | `score_completed` (Score app, `lib/analytics.ts`) | assessment scored — the app carries its own base tag |
+
+Deliberately NOT conversions: the beehiiv subscribe form (an audience, not a
+lead), the careers application, and `booking_details_added` (stage-2
+enrichment of a conversion already counted). A document-wide form listener
+would have counted all three — that is why the pushes ride named events
+instead of a generic `submit` hook.
+
 ## The booking funnel
 
     cta_book_click ──► calendly_widget_viewed ──► calendly_time_selected ──► calendly_booked

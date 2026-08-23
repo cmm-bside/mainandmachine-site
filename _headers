@@ -27,20 +27,31 @@
 #   frame-ancestors 'self'    — mirrors X-Frame-Options: SAMEORIGIN
 #   frame-src https://calendly.com — the /book/ inline scheduler (the site's
 #                               only iframe; direct embed, no widget.js)
-#   script-src 'self' 'unsafe-inline' https://plausible.io
+#   script-src 'self' 'unsafe-inline' https://plausible.io https://bat.bing.net https://bat.bing.com
 #                             — 'self': /js/*.js + Cloudflare /cdn-cgi/ email-decode;
 #                               'unsafe-inline': inline init blocks + onclick="window.print()";
-#                               plausible.io: analytics loader
+#                               plausible.io: analytics loader;
+#                               bat.bing.net/.com: Microsoft Ads UET (bat.js —
+#                               loaded from js/analytics.js, production host only;
+#                               .net is the current CDN host, .com the older one
+#                               bat.js may still chain-load from)
 #   style-src 'self' 'unsafe-inline'
 #                             — 'self': styles.css; 'unsafe-inline': inline style=
 #                               attrs + <style> blocks (fonts self-hosted, no CDN CSS)
-#   img-src 'self' data:      — 'self': og-image/icons/content; data:: SVG film-grain
-#                               in styles.css, inline SVG icons, SVG favicon
+#   img-src 'self' data: https://bat.bing.net https://bat.bing.com
+#                             — 'self': og-image/icons/content; data:: SVG film-grain
+#                               in styles.css, inline SVG icons, SVG favicon;
+#                               bat.bing.*: UET pixel-GET conversion beacons
 #   font-src 'self'           — self-hosted subsetted woff2 in /fonts/
-#   connect-src 'self' https://plausible.io https://formspree.io
+#   connect-src 'self' https://plausible.io https://formspree.io https://bat.bing.net https://bat.bing.com
 #                             — 'self': /api/book-assessment + /blog-data/*.json;
 #                               plausible.io: event beacons; formspree.io: careers form
-#                               (api.resend.com is server-side in the Pages Function, not here)
+#                               (api.resend.com is server-side in the Pages Function, not here);
+#                               bat.bing.*: UET fetch/sendBeacon conversion beacons
+#                               NOTE: if Microsoft's Clarity integration is ever
+#                               switched on for UET tag 343267453, bat.js will try
+#                               to load *.clarity.ms and this CSP will block it —
+#                               deliberate; add the origin only if that is wanted
 #   form-action 'self' https://theampersand.beehiiv.com
 #                             — 'self': same-origin forms; beehiiv: newsletter subscribe
 #   upgrade-insecure-requests — upgrade any stray http subresource (no-op in report-only)
@@ -74,8 +85,8 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Permissions-Policy: geolocation=(), microphone=(), camera=()
-  Content-Security-Policy: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
-  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://plausible.io https://formspree.io; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io https://bat.bing.net https://bat.bing.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://bat.bing.net https://bat.bing.com; font-src 'self'; connect-src 'self' https://plausible.io https://formspree.io https://bat.bing.net https://bat.bing.com; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
+  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; frame-src https://calendly.com; script-src 'self' 'unsafe-inline' https://plausible.io https://bat.bing.net https://bat.bing.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://bat.bing.net https://bat.bing.com; font-src 'self'; connect-src 'self' https://plausible.io https://formspree.io https://bat.bing.net https://bat.bing.com; form-action 'self' https://theampersand.beehiiv.com; upgrade-insecure-requests
 
 # Versioned assets: styles.css and /js/* are cache-busted via ?v=N (bump
 # ASSET_VERSION + the page refs on every change — enforced convention), and

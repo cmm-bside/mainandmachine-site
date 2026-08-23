@@ -950,6 +950,13 @@
 
     var done = false;
     function go(){ if(done) return; done = true; window.location.href = '/book/thanks/'; }
+    // Microsoft Ads "Submit lead form" goal — on the accepted `ok` response,
+    // like booking_form_submitted, never on the submit attempt. Pushed before
+    // the Plausible beacon so its request starts inside the redirect grace
+    // window. Inert off-production: the UET base tag (js/analytics.js) only
+    // loads on mainandmachine.com, so uetq stays a plain array elsewhere.
+    window.uetq = window.uetq || [];
+    window.uetq.push('event', 'submit_lead_form', { event_category: 'lead', event_label: '/book/' });
     if(typeof window.plausible === 'function'){
       window.plausible('booking_form_submitted', { props: { page: '/book/' }, callback: go });
       setTimeout(go, 400); // never let a blocked beacon hold the redirect
@@ -1236,6 +1243,10 @@
       engaged = true;
       if(funnelFired[evt]) return; // one booking, one event, one redirect
       funnelFired[evt] = true;
+      // Microsoft Ads "Book appointment" goal — same once-latch, same origin
+      // check, constant label (no payload field rides). See analytics-events.md.
+      window.uetq = window.uetq || [];
+      window.uetq.push('event', 'book_appointment', { event_category: 'appointment', event_label: 'calendly_free_assessment' });
       // Calendly's payload carries the invitee and event URIs but NOT the name
       // or email — those live behind their API. The URIs are still a real join
       // key, so stash them: the thanks page sends them with the prep details,
@@ -1270,6 +1281,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
 <script src="/js/nav.js?v=7"></script>
-<script src="/js/analytics.js?v=4"></script>
+<script src="/js/analytics.js?v=5"></script>
 </body>
 </html>

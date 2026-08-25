@@ -68,11 +68,11 @@ a.essay__pn-cell:hover{ background:var(--surface-hi); box-shadow:inset 0 3px 0 v
 const RECENT_ON_HOME = 6;
 const ARCHIVE_BATCH = 12;
 const POST_TITLE_SUFFIX = ` | ${BLOG_NAME}`;
-const POST_TITLE_HARD_MAX = 65;
+const POST_TITLE_MAX = 60;
 
 function postDocumentTitle(post) {
 	const title = post.seoTitle || post.title;
-	return `${title}${POST_TITLE_SUFFIX}`.length <= POST_TITLE_HARD_MAX
+	return `${title}${POST_TITLE_SUFFIX}`.length <= POST_TITLE_MAX
 		? `${title}${POST_TITLE_SUFFIX}`
 		: title;
 }

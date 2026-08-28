@@ -174,7 +174,11 @@ export const NOINDEX_ROUTES = ["/book/thanks/"];
 
 // Post slugs to exclude from the build entirely (test/placeholder posts that
 // exist in beehiiv but should never be indexed, linked, or sitemapped).
-export const EXCLUDED_POST_SLUGS = ["test"];
+// "the-person-still-signs" is pulled 2026-08-15 by request. It is being
+// deleted in beehiiv too, but the entry stays: the exclusion is what keeps the
+// post off the site if the beehiiv delete is ever undone or the post is
+// restored from a draft, and it costs nothing once the slug is gone upstream.
+export const EXCLUDED_POST_SLUGS = ["test", "the-person-still-signs"];
 
 // Display-date overrides keyed by slug. Beehiiv's publish_date drives dates by
 // default; an entry here overrides BOTH the shown date and the sort key (and

@@ -638,14 +638,41 @@ function sanitizeArticle(html) {
 		...COMMON_OPTS,
 		allowedTags: ALLOWED_TAGS,
 	});
-	return dropcapFirstParagraph(pass2.trim());
+	return dropcapFirstParagraph(figurizeImageCaptions(pass2.trim()));
+}
+
+// beehiiv emits an image credit as a bare <p> right after the image (usually
+// wrapped in a stray <span>), so it reads as the article's FIRST paragraph:
+// it took body type and the drop cap, and the essay appeared to open with
+// "Photo via Unsplash". Rewrite image + credit into a real figure/figcaption
+// pair, which the prose CSS already styles as a small mono caption.
+const CAPTION_MAX = 140;
+const FIG_RE =
+	/(<a\b[^>]*>\s*)?(<img\b[^>]*>)(\s*<\/a>)?(\s*(?:<span\b[^>]*>\s*)?<p\b[^>]*>([\s\S]*?)<\/p>(?:\s*<\/span>)?)?/gi;
+
+function figurizeImageCaptions(html) {
+	return html.replace(FIG_RE, (m, aOpen, img, aClose, capBlock, capInner) => {
+		// An opening <a> with no closing tag right after the image is a shape
+		// we did not expect — leave it exactly as it came.
+		if (aOpen && !aClose) return m;
+		const media = aOpen ? `${aOpen.trim()}${img}</a>` : img;
+		const text = capInner == null ? "" : htmlToText(capInner);
+		// Only a SHORT paragraph directly under an image is a credit line. A
+		// real opening paragraph stays a paragraph, outside the figure.
+		if (!text || text.length > CAPTION_MAX) {
+			return `<figure>${media}</figure>${capBlock || ""}`;
+		}
+		return `<figure>${media}<figcaption>${capInner.trim()}</figcaption></figure>`;
+	});
 }
 
 // Tag the first <p> with class "blog-dropcap" (the prose CSS styles ::first-letter).
+// The alternation swallows whole <figure> blocks first, so a caption can never
+// be mistaken for the opening paragraph.
 function dropcapFirstParagraph(html) {
 	let done = false;
-	return html.replace(/<p\b([^>]*)>/i, (m, attrs) => {
-		if (done) return m;
+	return html.replace(/<figure\b[\s\S]*?<\/figure>|<p\b([^>]*)>/gi, (m, attrs) => {
+		if (done || attrs === undefined) return m;
 		done = true;
 		const cls = attrs.match(/\bclass="([^"]*)"/i);
 		if (cls) {

@@ -2836,13 +2836,13 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 /* =========================================================
    FORM SYSTEM — the site's one set of form components
    Promoted 2026-07-31 from /book/'s page-scoped block.
-   ADOPTION IS PARTIAL. /book/ and /book/thanks/ use these.
-   /careers/ does NOT: it still runs its own .cr-field /
-   .cr-grid / .cr-card, defined in a page-scoped <style>
-   block on that page (~84 rules), which is the duplication
-   this promotion was meant to end. Porting /careers/ over is
-   the outstanding half of the job — until it happens, a change
-   here does not reach the careers form.
+   ADOPTED SITEWIDE as of 2026-08-28: /book/, /book/thanks/ and
+   /careers/ all run on these classes. /careers/ had migrated its
+   fields but was still missing the .formcard__bar / .formcard__body
+   frame, so its form sat with NO inset inside the card — every
+   input ran edge to edge and the labels read as full-width strips.
+   The page-local .cr-file__* / .cr-grid / .cr-foot copies are gone;
+   the only careers-specific form rule left is a wider row gap.
 
    Contract: a control is .input regardless of tag (input,
    textarea, select). A wrapper is .field. Invalid state is
@@ -2877,10 +2877,12 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 /* ---- field + label ---- */
 .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .field.full { grid-column: 1 / -1; }
-.field > label { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--tx-mute); display: flex; gap: 6px; align-items: baseline; }
+.field > label { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .1em; text-transform: uppercase; color: var(--tx-mute); display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; }
 .field .req { color: var(--accent); font-weight: 700; }
-/* helper text riding inside a label — prose, so it leaves the mono label set */
-.field .opt { font-family: var(--sans); color: var(--tx-faint); text-transform: none; letter-spacing: normal; font-size: var(--t-sm); }
+/* "(optional)" riding inside a label — stays in the mono label set, one step
+   smaller and a shade quieter, so a label reads as ONE system rather than a
+   mono word followed by a sans one (2026-08-28; was sans/sentence case). */
+.field .opt { font-family: var(--mono); font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; color: var(--tx-faint); opacity: .8; font-weight: 400; }
 
 /* ---- the control ---- */
 .input {
@@ -2888,7 +2890,11 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
   border: 1px solid var(--line); padding: 14px 15px; width: 100%; height: 52px;
   transition: border-color .15s var(--ease), box-shadow .15s var(--ease); border-radius: 0;
 }
-.input::placeholder { color: var(--tx-faint); }
+/* Placeholders sit a step lighter than the label so an example value is not
+   mistaken for a filled-in one. --tx-faint aliases --ink-muted, the same colour
+   as the label. This mix is held at the AA floor (≥4.5:1 on --surface-hi) —
+   lighter would fail contrast, so this is as far as it goes. */
+.input::placeholder { color: color-mix(in srgb, var(--ink-muted) 88%, var(--surface-hi)); opacity: 1; }
 .input:hover { border-color: rgba(29,24,18,0.30); }
 .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 textarea.input { min-height: 132px; height: auto; resize: vertical; line-height: 1.55; }
@@ -2927,7 +2933,7 @@ select.input:invalid { color: var(--tx-faint); }
 .seg__opt input:focus-visible + span { box-shadow: inset 0 0 0 2px var(--accent); }
 
 /* ---- file drop zone ---- */
-.filedrop { position: relative; border: 1.5px dashed var(--line); background: var(--surface-hi); padding: 20px 18px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: border-color .15s var(--ease), background .15s var(--ease); }
+.filedrop { position: relative; border: 1px dashed var(--line); background: var(--surface-hi); padding: 20px 18px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: border-color .15s var(--ease), background .15s var(--ease); }
 .filedrop:hover { border-color: var(--accent); }
 .filedrop.has-file { border-style: solid; border-color: var(--accent); }
 .filedrop__icon { width: 40px; height: 40px; flex: none; border: 1.5px solid var(--tx); display: grid; place-items: center; font-family: var(--mono); font-size: var(--fs-12); font-weight: 700; color: var(--tx); }
@@ -2943,7 +2949,7 @@ select.input:invalid { color: var(--tx-faint); }
 /* ---- footer / submit ---- */
 .formfoot { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
 .submitrow { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
-.formfoot .note { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; max-width: 50ch; }
+.formfoot .note { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; max-width: 50ch; margin-top: 14px; }
 .formfoot .note b { color: var(--accent); font-weight: 700; }
 .formfoot__error {
   margin: 16px 0 0; font-family: var(--mono); font-size: var(--fs-13); line-height: 1.5;

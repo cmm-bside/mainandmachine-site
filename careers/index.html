@@ -23,7 +23,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: Build AI for Main Street." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=141" />
+<link rel="stylesheet" href="/styles.css?v=142" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -178,27 +178,23 @@
 @media (max-width: 900px) { .cr-apply { grid-template-columns: 1fr; gap: 44px; } }
 .cr-aside__lede { margin: 18px 0 28px; }
 .cr-aside__spec { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; }
-.cr-aside__row { display: flex; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line-soft); font-size: var(--fs-13); align-items: baseline; }
-.cr-aside__row:last-child { border-bottom: 0; }
+/* rows mirror .step's rhythm exactly (15px, hairline BETWEEN items, none on
+   the ends) so the two lists in this column read as one system */
+.cr-aside__row { display: flex; gap: 12px; padding: 15px 0; border-top: 1px solid var(--line-soft); font-size: var(--fs-13); align-items: baseline; }
+.cr-aside__row:first-child { border-top: 0; padding-top: 0; }
+.cr-aside__row:last-child { padding-bottom: 0; }
 .cr-aside__row .k { color: var(--accent-text); min-width: 18px; }
 .cr-aside__row .v { color: var(--tx-mute); letter-spacing: .01em; }
 .cr-aside__row .v b { color: var(--tx); font-weight: 700; }
 .cr-after { margin-top: var(--s-32); border-top: 1px solid var(--line); padding-top: var(--s-24); }
 .cr-after__lbl { display: block; font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase; color: var(--tx-mute); margin-bottom: var(--s-16); }
 
-/* résumé drop zone */
-.cr-file__icon { width: 40px; height: 40px; flex: none; border: 1.5px solid var(--tx); display: grid; place-items: center; font-family: var(--mono); font-size: var(--fs-12); font-weight: 700; color: var(--tx); }
-.cr-file__text { font-size: var(--fs-16); color: var(--tx-mute); line-height: 1.35; min-width: 0; }
-.cr-file__text b { color: var(--tx); font-weight: 700; word-break: break-word; }
-.cr-file__text .sub { font-family: var(--mono); font-size: var(--fs-12); color: var(--tx-faint); display: block; margin-top: 3px; text-transform: uppercase; }
-/* the input overlays the whole drop zone: native click + drag target, ≥44px */
-
-.cr-foot { margin-top: 28px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-.cr-foot .privacy { font-family: var(--sans); font-size: var(--t-sm); color: var(--tx-faint); letter-spacing: normal; max-width: 38ch; line-height: 1.5; }
-
-/* send states */
-
-@media (max-width: 560px) { .cr-grid { grid-template-columns: 1fr; } }
+/* The form itself runs entirely on the shared FORM SYSTEM in styles.css
+   (.formcard / .frow / .field / .input / .filedrop / .formfoot). The one
+   careers-only rule: a 24px row gap. /book/ keeps the system's 16px because
+   its rows are grouped under .fgroup headings; this form has no groups, so
+   the rows themselves have to carry the rhythm. */
+#applyForm .frow { row-gap: var(--s-24); }
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="/js/pa"></script>
@@ -372,6 +368,8 @@
       </div>
 
       <div class="formcard" id="formCard">
+        <div class="formcard__bar"><span>Application</span><span><b>*</b> required</span></div>
+        <div class="formcard__body">
         <form id="applyForm" novalidate>
           <div class="frow">
             <div class="field">
@@ -408,14 +406,16 @@
             </div>
             <div class="field full">
               <label for="f-note">Cover note <span class="req">*</span></label>
-              <textarea class="input" id="f-note" name="message" placeholder="What are you great at, what have you built, and why does this work pull at you?" required aria-describedby="err-note"></textarea>
+              <textarea class="input" id="f-note" name="message" placeholder="What are you great at, and what have you built?" required aria-describedby="err-note"></textarea>
               <span class="field__err" id="err-note">Please tell us a little about you.</span>
             </div>
           </div>
 
-          <div class="cr-foot">
-            <button type="submit" class="btn btn--primary btn--lg" id="submitBtn">Submit application <span class="arr">→</span></button>
-            <p class="privacy">We use your details only to consider your application. We never share them.</p>
+          <div class="formfoot">
+            <div class="submitrow">
+              <button type="submit" class="btn btn--primary btn--lg" id="submitBtn">Submit application <span class="arr">→</span></button>
+            </div>
+            <p class="note">We use your details only to consider your application. We never share them.</p>
           </div>
 
           <p class="formstatus error" id="errorMsg">Something went wrong sending your application. Please email <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a> directly, or try again.</p>
@@ -425,6 +425,7 @@
           <div class="icon">✓</div>
           <h3>Application received.</h3>
           <p>Thanks for reaching out. Your application is on its way to the founder. If we see a fit, we’ll be in touch by email. We read every one.</p>
+        </div>
         </div>
       </div>
     </div>

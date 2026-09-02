@@ -90,7 +90,8 @@ const PRICING_PAGES = ["index.html", "pricing/index.html", "llms.txt"];
 // Known-bad variants that must never appear anywhere.
 const FORBIDDEN = [
   /hello@mainandmachine\.com/, // pages show the canonical contact address only (hello@ is the mail FROM identity, functions/ only)
-  /\(480\)\s*805-9983/, // phone must be 480-805-9983, not (480) 805-9983
+  /\(928\)\s*363-6639/, // phone must be 928-363-6639, not (928) 363-6639
+  /480[-.\s]?805[-.\s]?9983/, // retired phone number (replaced 2026-09-02) — canonical is 928-363-6639
   /Denvor|Pheonix/, // spelling drift
   /Featured in/, // press credit is always attributed to the founder
   /\$12,000–\$45,000/, // retired sprint band (pre-2026-07 repricing) — canonical is $18,000–$60,000

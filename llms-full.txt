@@ -3,7 +3,7 @@
 # https://www.mainandmachine.com/ , concatenated with page delimiters.
 # The condensed fact sheet lives at https://www.mainandmachine.com/llms.txt
 # Canonical business facts: AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue).
-# Contact: cmyers@mainandmachine.com · 480-805-9983 · Denver, CO & Phoenix, AZ.
+# Contact: cmyers@mainandmachine.com · 928-363-6639 · Denver, CO & Phoenix, AZ.
 
 ========================================================================
 PAGE: AI Consulting for Small Business | Main & Machine
@@ -1344,6 +1344,8 @@ You’re reading it
 
 More client stories are clearing review as each client signs off on the numbers.
 
+Read next The architecture MARCUS runs on, control by control: how we handle client data . The concept explained end to end, with these figures in context: private AI for small business . The measured scorecard: 1,240 hours, 93% adoption, zero identifiers out .
+
 ========================================================================
 PAGE: MARCUS: 1,240 Hours Returned in 90 Days | Main & Machine
 URL: https://www.mainandmachine.com/work/marcus/results/
@@ -2140,7 +2142,7 @@ Coverage Front Range in person, remote US-wide
 
 Main & Machine
 
-480-805-9983
+928-363-6639
 
 Denver, CO
 
@@ -2390,7 +2392,7 @@ Coverage Valley-wide in person, remote US-wide
 
 Main & Machine
 
-480-805-9983
+928-363-6639
 
 Phoenix, AZ
 

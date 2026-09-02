@@ -115,9 +115,9 @@ export const COMPANY = {
   ],
   "coverage": "Remote across the US",
   "email": "cmyers@mainandmachine.com",
-  "phone": "480-805-9983",
-  "phoneE164": "+1-480-805-9983",
-  "phoneHref": "tel:+14808059983",
+  "phone": "928-363-6639",
+  "phoneE164": "+1-928-363-6639",
+  "phoneHref": "tel:+19283636639",
   "_blog_note": "The Ampersand, published on beehiiv. CADENCE IS A CLAIM, not decoration: it appears in the footer kicker on ~40 pages, in llms.txt, and in the blog chrome, so it lived in scripts/lib/config.mjs as BLOG_CADENCE where nothing tied it to the rest of the facts. \"weekly\" was retired deliberately when publishing paused after the June 2026 essay — restore it here ONLY if weekly publishing actually resumes, and never as an aspiration. There is no Substack; beehiiv is the only publishing surface.",
   "blog": {
     "name": "The Ampersand",

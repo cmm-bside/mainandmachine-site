@@ -19,7 +19,7 @@ everywhere.
 
 | Concern in the brief | Finding |
 |---|---|
-| `480-360-5128` as a second/tracking phone | **Zero occurrences in the repo.** Only `480-805-9983` (41 files) and `+1-480-805-9983` (39 files). Confirmed with you: one line, no tracking number |
+| `480-360-5128` as a second/tracking phone | **Zero occurrences in the repo.** Only `928-363-6639` (41 files) and `+1-928-363-6639` (39 files). Confirmed with you: one line, no tracking number |
 | Sprint band `$12,000–$45,000` vs `$18,000–$60,000` | **`$12,000` appears in zero HTML files.** `$18,000–$60,000` on 27. The retired band was already a hard-fail token in `check-facts.mjs` |
 | A stray `$45,000` in `pricing/index.html` | **Not a price claim** — it is inside a CSS comment describing grid alignment (`pricing/index.html:41`) |
 | Blog cadence "weekly" vs "a few times a month" | **No conflict.** All 41 pages say "a few times a month". Every "weekly" hit is a MARCUS proof stat ("93% weekly adoption by week six") |

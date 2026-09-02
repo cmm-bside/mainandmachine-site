@@ -92,7 +92,7 @@ for (const rel of REFERRERS) {
 	if (!fs.existsSync(path.join(ROOT, rel))) continue;
 	// CONTENT ONLY — the footer and nav are excluded, the same way cta:check and
 	// qa:matrix exclude chrome. The footer's contact line reads
-	// "cmyers@… · 480-805-9983 · Denver and Phoenix", where the city names are a
+	// "cmyers@… · 928-363-6639 · Denver and Phoenix", where the city names are a
 	// LOCATION STATEMENT that happens to be linked. Rewriting it to "AI
 	// consulting in Denver and AI consulting in Phoenix" is bad copy, and that
 	// block is duplicated across 40 pages plus templates.mjs, so it would also

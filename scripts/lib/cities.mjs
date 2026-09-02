@@ -43,7 +43,7 @@ export function hub(slug) {
 
 /**
  * The NAP line, one derivation used by both the visible block and the guard.
- * "Main & Machine · 480-805-9983 · Denver, CO".
+ * "Main & Machine · 928-363-6639 · Denver, CO".
  *
  * Deliberately the SHORT state code, matching the LocalBusiness node's
  * addressRegion and the site's own "Denver, CO / Phoenix, AZ" in

@@ -64,8 +64,8 @@ const CANONICAL_ENDPOINTS = new Set(
 
 const PHONE_FORMS = new Set([
 	...phoneForms(COMPANY),
-	COMPANY.phone.replace(/-/g, ""),        // 4808059983
-	COMPANY.phoneHref.replace(/^tel:/, ""), // +14808059983
+	COMPANY.phone.replace(/-/g, ""),        // 9283636639
+	COMPANY.phoneHref.replace(/^tel:/, ""), // +19283636639
 ]);
 
 // Tokens that must never appear again, with the reason shown on failure.

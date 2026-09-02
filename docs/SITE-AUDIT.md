@@ -305,7 +305,7 @@ hardcoded in 41 HTML files" are both true. The guards catch drift by
 `facts` = number of `data-fact` spans on the page. Price/phone counts are **total
 occurrences of the literal in the file** (prose + meta + JSON-LD combined).
 
-| page | data-fact spans | 480-805-9983 | $3,500 | $8,500 | $18,000 | $60,000 | $1,500 | $95,000 | $45,000 | email |
+| page | data-fact spans | 928-363-6639 | $3,500 | $8,500 | $18,000 | $60,000 | $1,500 | $95,000 | $45,000 | email |
 |---|---|---|---|---|---|---|---|---|---|---|
 | `index.html` | 11 | 3 | 5 | 2 | 3 | 3 | 2 | 1 | – | 4 |
 | `pricing/index.html` | **19** | 2 | 9 | 7 | 8 | 10 | 8 | 6 | **1** | 3 |

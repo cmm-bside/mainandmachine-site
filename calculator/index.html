@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=142" />
+<link rel="stylesheet" href="/styles.css?v=143" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -379,8 +379,8 @@
 
 <!-- ============ FOOTER ============ -->
 <!-- METHODOLOGY:auto -->
-<section class="section paper-2">
-  <div class="wrap prose-2">
+<section class="section paper-2 section--close-96">
+  <div class="wrap">
     <div class="head-block">
       <div>
         <span class="kicker">MM-ROI-v1</span>
@@ -388,23 +388,29 @@
       </div>
       <p>The whole model, written out. If you disagree with an assumption, change it above &mdash; that is what it is there for.</p>
     </div>
-
-    <h3>What the calculator outputs</h3>
-    <p>Three figures. <strong>Modeled return per year</strong> is the annual value the assumptions imply for a team your size. <strong>Payback period</strong> is how long the published sprint cost takes to be covered by that return. <strong>Net first year</strong> is the return minus the build cost over twelve months. None of the three is a forecast of your business; all three are arithmetic on stated inputs.</p>
-
-    <h3>The three inputs</h3>
-    <p><strong>Manual administrative work: about $4,000 per employee per year.</strong> This is the cost of assembling, re-keying and chasing &mdash; the preparation work that sits in front of a decision rather than being the decision. It is a conservative planning figure, not a survey result. In practice it assumes a few hours a week per person on work a system can absorb. Our audits find this category first because it is the easiest to measure and the hardest to defend.</p>
-    <p><strong>Revenue lost to slow follow-up: about $2,000 per employee per year.</strong> Enquiries that go cold before anyone replies. This one is deliberately small, because it is the assumption most likely to be argued with and we would rather understate it. If your business turns on inbound enquiry volume, it is almost certainly low for you.</p>
-    <p><strong>Build cost: the published price of an AI Implementation Sprint, <span data-fact="price-sprint">$18,000–$60,000</span>.</strong> Not a modeled number and not a range we invent per visitor &mdash; it is the same figure on the <a href="/pricing/">price list</a>, quoted fixed in writing before work begins. The model uses it directly so the payback figure cannot quietly assume a cheaper build than we sell.</p>
-
-    <h3>A worked example</h3>
-    <p>Take a 25-person firm. The model applies $4,000 of absorbable manual work per employee, giving $100,000 a year, and $2,000 of slow-follow-up loss per employee, giving $50,000. It does not claim all of that is recoverable &mdash; it applies a recovery fraction, because no system absorbs a whole category of human work, and the fraction is what separates a model from a sales pitch. The result is set against the sprint cost to produce a payback period in months.</p>
-    <p>Run the same arithmetic on a 6-person shop and the return falls below the build cost for a single workflow. That outcome is not a bug in the calculator. It is the calculator telling you the honest answer, which is why the tool does not gate its output behind a form.</p>
-
-    <h3>What the model deliberately does not do</h3>
-    <p>It does not model headcount reduction. Our largest published build returned <a href="/work/marcus/results/">1,240 staff hours in 90 days</a> without removing a role, and a calculator that assumed otherwise would be modelling a different business than the one we build for.</p>
-    <p>It does not compound. Year-two returns are not projected forward, because the assumptions that hold for twelve months do not obviously hold for thirty-six.</p>
-    <p>It does not price your business. The output is a range built from averages. The number that matters comes out of an <a href="/services/#audit">AI Readiness Audit</a> at <span data-fact="price-audit">$3,500–$8,500</span>, which measures your workflows instead of assuming them.</p>
+    <!-- head-block → .prose-2 → p.section-action: the homepage #problem shape.
+         The wrap itself used to BE the .prose-2 grid, so the head-block and every
+         h3/p flowed into two columns in document order and each sub-heading
+         landed in a different column from its own paragraphs. -->
+    <div class="prose-2">
+      <div>
+        <h3>What the calculator outputs</h3>
+        <p>Three figures. <strong>Modeled return per year</strong> is the annual value the assumptions imply for a team your size. <strong>Payback period</strong> is how long the published sprint cost takes to be covered by that return. <strong>Net first year</strong> is the return minus the build cost over twelve months. None of the three is a forecast of your business; all three are arithmetic on stated inputs.</p>
+        <h3>The three inputs</h3>
+        <p><strong>Manual administrative work: about $4,000 per employee per year.</strong> This is the cost of assembling, re-keying and chasing &mdash; the preparation work that sits in front of a decision rather than being the decision. It is a conservative planning figure, not a survey result. In practice it assumes a few hours a week per person on work a system can absorb. Our audits find this category first because it is the easiest to measure and the hardest to defend.</p>
+        <p><strong>Revenue lost to slow follow-up: about $2,000 per employee per year.</strong> Enquiries that go cold before anyone replies. This one is deliberately small, because it is the assumption most likely to be argued with and we would rather understate it. If your business turns on inbound enquiry volume, it is almost certainly low for you.</p>
+        <p><strong>Build cost: the published price of an AI Implementation Sprint, <span data-fact="price-sprint">$18,000–$60,000</span>.</strong> Not a modeled number and not a range we invent per visitor &mdash; it is the same figure on the <a href="/pricing/">price list</a>, quoted fixed in writing before work begins. The model uses it directly so the payback figure cannot quietly assume a cheaper build than we sell.</p>
+      </div>
+      <div>
+        <h3>A worked example</h3>
+        <p>Take a 25-person firm. The model applies $4,000 of absorbable manual work per employee, giving $100,000 a year, and $2,000 of slow-follow-up loss per employee, giving $50,000. It does not claim all of that is recoverable &mdash; it applies a recovery fraction, because no system absorbs a whole category of human work, and the fraction is what separates a model from a sales pitch. The result is set against the sprint cost to produce a payback period in months.</p>
+        <p>Run the same arithmetic on a 6-person shop and the return falls below the build cost for a single workflow. That outcome is not a bug in the calculator. It is the calculator telling you the honest answer, which is why the tool does not gate its output behind a form.</p>
+        <h3>What the model deliberately does not do</h3>
+        <p>It does not model headcount reduction. Our largest published build returned <a href="/work/marcus/results/">1,240 staff hours in 90 days</a> without removing a role, and a calculator that assumed otherwise would be modelling a different business than the one we build for.</p>
+        <p>It does not compound. Year-two returns are not projected forward, because the assumptions that hold for twelve months do not obviously hold for thirty-six.</p>
+        <p>It does not price your business. The output is a range built from averages. The number that matters comes out of an <a href="/services/#audit">AI Readiness Audit</a> at <span data-fact="price-audit">$3,500–$8,500</span>, which measures your workflows instead of assuming them.</p>
+      </div>
+    </div>
     <p class="section-action"><a href="/guides/ai-roi-math-small-business/">The full ROI math, worked&nbsp;<span class="arr">&#8594;</span></a></p>
   </div>
 </section>

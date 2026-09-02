@@ -906,7 +906,121 @@ fold and the hero read as unfinished rather than as composed. **Now 811px.**
   + fontBoundingBoxAscent − actualBoundingBoxAscent`, via a canvas
   `measureText` with the element's computed font. Align to the rect and the card
   sits 8px high while every number says it is correct.
-#### Headline reveal — the timing budget (2026-08-04)
+#### Page heroes — the homepage's 96px, sitewide (2026-09-01)
+
+**Every page now opens the way the homepage does.** The homepage hero was the
+one section exempt from `--section-y` (sized to the screen: 96px top and
+bottom, eyebrow flush-top, first ink 96px under the nav). Every other page
+opened at the full **160px step plus 30px of blockified touch padding on the
+crumb links** — first ink at **175px** under the nav, against the homepage's
+96 — and closed at 160. That single difference is most of why interior pages
+read as a different site above the fold. Measured before/after at 1440, all
+54 routes:
+
+| | homepage | interior before | interior after |
+|---|---|---|---|
+| hero padding | 96 / 96 | 160 / 160 | **96 / 96** |
+| nav → first ink | 96 | 175 (120+15 at ≤1024, 96+15 at ≤768) | **96** at every width |
+| crumb row height | — | 52px (17 + 30 phantom) | **22px** (its line box) |
+| crumb → eyebrow | — | 40.3 (32 + 8.31 phantom leading) | **32** |
+| eyebrow → H1 | 16 | 17.17 | **16** |
+| spec card top − H1 cap | 0.00 | 3.4 (`/pricing/`) … −48 (`/security/`) | **0.00 / 0.22 / −0.02** |
+| hero bottom (`/pricing/`) | — | 996px | **838px** |
+
+- **One rule, one class list, in the HERO block of `styles.css`:**
+  `.pagehero .sechero .cr-hero .story-hero .thankshero .bloghero` take 96/96;
+  `.legal-hero` (`/privacy/`, `/terms/`) and `.nf` (`/404.html`) take the 96
+  top only, because their single section is also the page's last and the foot
+  keeps the full closing step like every other final section. `.bookhero`
+  keeps its fold-tuned 96/48. All are named one-per-class in
+  `SECTION_Y_EXEMPT` in `qa-matrix.mjs`, so a hero class that drifts is named
+  in the failure. **Three page-local overrides had to go** — `.cr-hero
+  { padding-block: var(--section-y) }`, `.sechero { padding-bottom }`,
+  `.thankshero { padding-bottom: clamp(40px,5vw,64px) }` — because a page
+  `<style>` sits after `styles.css` and wins at equal specificity. Two
+  sections had no hero class at all (`/work/marcus/` and
+  `/work/marcus/results/` opened in a bare `section.paper`); they now carry
+  `.story-hero`. `.pagehero` was deliberately NOT reused there — it also
+  brings h1 margins and `.lead` sizing (same reasoning as `.bloghero`).
+- **The crumb phantom is cancelled everywhere**, not just on `/book/`:
+  `.crumb a, .sechero__crumb a, .legal__crumb a, .thankshero__crumb a
+  { margin-block: -15px }` in the TOUCH TARGETS block. The 30px was layout
+  air, not hit area — the 44px box is intact. `.sechero__crumb`,
+  `.thankshero__crumb` and `.legal__crumb` also moved 26 → 32 to match the
+  40-page `.crumb`.
+- **Every hero eyebrow is flush-top** (FLUSH-TOP EYEBROWS list). In a hero the
+  eyebrow always starts a column and never shares a line, and crumb→eyebrow
+  has to BE the crumb's 32px margin rather than 32 + 8.31.
+- **The spec-card offset is a formula on every hero, like the homepage's.**
+  `.pagehero__grid > .statrail`, `.sechero__grid > .statrail` and
+  `.story-hero .head-block > .statrail` take
+  `calc(var(--eyebrow-h) + var(--s-2) + 0.146 * var(--fs-39))`; `/careers/`'s
+  fluid H1 takes `0.141 * var(--cr-h1-size)`. The old flat 52px (and
+  `/contact/`'s page-local 46px, and `/careers/`'s 57px) were tuned against
+  the phantom leading and could not survive its removal. The results page's
+  card ALSO needed `padding-top: 0`: `.head-block > :nth-child(2)` carries the
+  section header's 7.7px optical offset as padding, which inside a bordered
+  card was a blank strip above the header bar.
+- **Measurement trap:** at 941px the results-page eyebrow wraps to two lines,
+  so the card sits 13px high there. That is the eyebrow's copy width, not the
+  formula — same failure mode the homepage has with a wrapping eyebrow.
+
+**Section rhythm fixes made in the same pass**, each a deviation from the
+homepage measured by the same probe:
+
+- **Eyebrow outside the header block took no step.** `/work/marcus/` puts the
+  kicker above `.head-block` on four sections, `/careers/` above `.cr-hire`;
+  the h2 landed **1px** under it. Rhythm layer:
+  `:is(.kicker, .eyebrow, .tick-lbl) + :is(.head-block, .section-head, .cr-hire)
+  { margin-top: var(--s-2) }`.
+- **`.prose > :first-child { margin-top: 0 }`** — `.prose h2 { margin-top:
+  1.8em }` is unconditional, so all 14 guides' articles opened 58px below the
+  padding edge (218px from the section top against 160).
+- **`.svc__tagline`** joined the H2→intro list (it is a `<div>`, so it sat at
+  16 on all three service sections of `/services/`).
+- **`/calculator/`'s methodology block was a layout bug**, not a spacing one:
+  the `.wrap` itself was the `.prose-2` grid, so the head-block and every
+  h3/p flowed into two columns in document order and each sub-heading landed
+  in a different column from its own paragraphs. Now head-block → `.prose-2`
+  (two column `<div>`s) → `p.section-action`, the `/` `#problem` shape, and
+  the section takes `.section--close-96` because it now ends thin.
+  `.prose-2 > div > h3:not(:first-child)` takes a `--s-2` step so a
+  sub-heading reads as opening a topic.
+- **`.buildlinks` had no padding rule at all** — the "from the catalog" strip
+  on nine pages rendered at the full `--section-y`, one line of links inside
+  320px of air, while its sibling `.citylinks` was 32. Both now share
+  `padding-block: var(--s-32)`, and all three thin strips (`.napband`,
+  `.citylinks`, `.buildlinks`) are named as thin banners in
+  `SECTION_Y_EXEMPT` — the one override the rhythm layer allows. They had
+  shipped 2026-08-09 without being named and were failing `qa:matrix`
+  silently on ~20 routes.
+- **Inline margins off the scale were removed from the pages** (18 / 20 / 22
+  / 28 / 30 / 46 / 48 / `clamp(24,4vw,44)`) and replaced by rhythm-layer or
+  page-local rules on the step scale: `/work/marcus/` (11 of them — `.mk-sub`
+  is the sub-section label, block-level and `--block-gap` above),
+  `/work/` (`.story-feat`, `.builds__note`), `/services/` (`.cmp__wrap +
+  .lead`), the FAQ aside on `/security/` and `/book/`, `.closer` on six
+  industry pages and `/guides/` (`.wrap > .closer:first-child`), the blog
+  heroes' h1 in `build-blog.mjs`. The `style="margin-top:14px"` on
+  `.tick-lbl` inside pricing rows is the homepage's own and stays.
+
+- **`/work/marcus/`'s "Read next" strip sat AFTER `</html>`.** A `RELATED:auto`
+  block (no generator for it exists in this repo) had been appended past the
+  end of the document, so the browser hoisted it below the footer and the page
+  scrolled into ~175px of dead space on every phone width — `sweep:mobile`'s
+  `dead-scroll` check had been red on that route, identically at HEAD. It now
+  sits inside `<main>` after `#more-stories`, markers intact. Only page with
+  the defect (checked every tracked HTML file).
+
+Verified after: `qa:matrix` ALL ROWS PASS on every touched route at 1440 /
+1024 / 768 / 375 (section-y, links, buttons, contrast, container, chrome),
+`sweep:mobile` green on every route except `/about/`'s four verify-list
+links (a pre-existing 15px tap-target finding, identical at HEAD, not a
+spacing matter), `mono:check` unchanged from HEAD, and the offline build guards
+(`facts` / `head` / `css` / `tokens` / `placeholders` / `cta` / `meta` /
+`book` / `crumbs` / `cities` / `seo`). Cache-buster 142 → 143.
+
+### Headline reveal — the timing budget (2026-08-04)
 
 The accent line "Main Street." **completes within 1.2s of first paint**, measured
 on Fast 3G + 4× CPU throttle. It was **2476ms**, and the payoff line sat hidden

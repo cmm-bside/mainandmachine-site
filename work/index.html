@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=142" />
+<link rel="stylesheet" href="/styles.css?v=143" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -42,7 +42,7 @@
    ========================================================= */
 
 /* ---- featured client story (ink) ---- */
-.story-feat { display: grid; grid-template-columns: 1.5fr 1fr; border: 1px solid var(--ink); border-radius: var(--r-md); background: var(--ink); color: var(--dtx); text-decoration: none; transition: box-shadow .15s var(--ease); }
+.story-feat { margin-top: var(--s-3); display: grid; grid-template-columns: 1.5fr 1fr; border: 1px solid var(--ink); border-radius: var(--r-md); background: var(--ink); color: var(--dtx); text-decoration: none; transition: box-shadow .15s var(--ease); }
 @media (max-width: 820px) { .story-feat { grid-template-columns: 1fr; } }
 .story-feat:hover { box-shadow: inset 0 3px 0 var(--accent-ink); }
 .story-feat__body { padding: clamp(var(--s-32), 4vw, var(--s-48)); display: flex; flex-direction: column; }
@@ -328,7 +328,7 @@
       </div>
     </div>
 
-    <a class="story-feat" href="/work/marcus/" aria-label="Read the full MARCUS teardown" style="margin-top: clamp(var(--s-24), 4vw, var(--s-32));">
+    <a class="story-feat" href="/work/marcus/" aria-label="Read the full MARCUS teardown">
       <div class="story-feat__body">
         <span class="story-feat__tag">Full teardown · B:Side Capital</span>
         <h2>MARCUS: a private AI back office for a regulated lender</h2>
@@ -382,7 +382,7 @@
         </div>
       </div>
 <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
-    <p class="builds__note" style="margin-top:20px;"><a href="/work/marcus/results/">Read the MARCUS measured results&nbsp;<span class="arr">&#8594;</span></a></p>
+    <p class="builds__note"><a href="/work/marcus/results/">Read the MARCUS measured results&nbsp;<span class="arr">&#8594;</span></a></p>
   </div>
 </section>
 

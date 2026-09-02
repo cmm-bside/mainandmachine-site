@@ -23,7 +23,7 @@
 <meta name="twitter:image:alt" content="Main &amp; Machine: Where your data goes." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=142" />
+<link rel="stylesheet" href="/styles.css?v=143" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -192,17 +192,16 @@
    Written for the buyer's IT/compliance reviewer; the
    architecture is the one MARCUS runs on (see /work/marcus/).
    ========================================================= */
-.sechero { padding-bottom: var(--section-y); }
 .sechero__crumb {
   font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase;
-  color: var(--tx-faint); display: flex; gap: 10px; align-items: center; margin-bottom: 26px;
+  color: var(--tx-faint); display: flex; gap: 10px; align-items: center; margin-bottom: var(--s-32);
 }
 .sechero__crumb a { color: var(--tx-mute); }
 .sechero__crumb a:hover { color: var(--tx); }
 .sechero__crumb .sep { opacity: 1; color: var(--ink-muted); }
 .sechero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (max-width: 940px) { .sechero__grid { grid-template-columns: 1fr; gap: 36px; } }
-.sechero h1 { margin: 22px 0 24px; }
+.sechero h1 { margin: 0 0 24px; }
 .sechero .lead { font-size: clamp(var(--fs-16), 1.5vw, var(--fs-20)); }
 
 /* the five controls — document order = the data's path through the system */
@@ -422,7 +421,7 @@
       <div>
         <span class="kicker">Fair questions</span>
         <h2 class="h2 mt-s">What compliance asks.</h2>
-        <div class="faq__aside" style="margin-top:28px;">
+        <div class="faq__aside">
           <h3 class="accent-tx" style="color:var(--accent-ink);">Something we didn’t cover?</h3>
           <p>Ask it directly. Security questions land with the founder, not a sales queue.</p>
           <a class="btn btn--secondary" href="/contact/">Ask a security question</a>

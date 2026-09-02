@@ -307,12 +307,12 @@ ${rest.length
 	const body = `${topbar()}
 ${nav()}
 <main id="main" tabindex="-1">
-<section class="section section--tight paper bloghero">
+<section class="section paper bloghero">
   <div class="wrap">
     <div class="head-block" style="align-items:flex-end;">
       <div>
         <span class="kicker">Writing / ${esc(BLOG_NAME)}</span>
-        <h1 class="h-hero" style="font-size:clamp(var(--fs-39),6vw,var(--fs-78));margin-top:14px;">${esc(BLOG_NAME)}.</h1>
+        <h1 class="h-hero" style="font-size:clamp(var(--fs-39),6vw,var(--fs-78));">${esc(BLOG_NAME)}.</h1>
       </div>
       <p class="lead">A newsletter about building durable things in a noisy time. No hype, no countdown timers, no ten-step funnel. If you want to understand how we think before you ever talk to us, start here.</p>
     </div>
@@ -439,12 +439,12 @@ ${topBatches.length > 1 ? moreBtn("top") : ""}</div>`;
 	const body = `${topbar()}
 ${nav()}
 <main id="main" tabindex="-1">
-<section class="section section--tight paper bloghero">
+<section class="section paper bloghero">
   <div class="wrap">
     <div class="head-block" style="align-items:flex-end;">
       <div>
         <span class="kicker">Writing / Archive</span>
-        <h1 class="h-hero" style="font-size:clamp(var(--fs-31),5vw,var(--fs-61));margin-top:14px;">The full archive.</h1>
+        <h1 class="h-hero" style="font-size:clamp(var(--fs-31),5vw,var(--fs-61));">The full archive.</h1>
       </div>
       <p class="lead">Everything from ${esc(BLOG_NAME)}, in order, or sorted by what’s been read most. Search across every essay below.</p>
     </div>

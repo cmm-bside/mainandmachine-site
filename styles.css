@@ -347,6 +347,22 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
    to the eyebrow as well, the eyebrow's line-box leading has to go — see the
    FLUSH-TOP EYEBROWS rule below. */
 .hero { padding-block: var(--s-96); }
+/* PAGE HEROES take the same 96px (2026-09-01). The homepage hero was the ONE
+   exception to --section-y because it answers to the screen; every other page
+   opened at the full 160px step PLUS 30px of blockified touch padding on the
+   crumb links, so its first ink sat 175px below the nav against the
+   homepage's 96 — the single largest whitespace difference on the site, and
+   the reason interior pages read as a different site above the fold. Now
+   every hero opens at 96 and closes at 96, its eyebrow is flush-top (below),
+   and the crumb row measures its own line box (TOUCH TARGETS block).
+   .bookhero keeps its 96/48 — fold-tuned, see book/index.html. Single-section
+   pages (/privacy/, /terms/, /404.html) take the 96 top only: their one
+   section is also the page's last, and the foot keeps the full closing step
+   like every other final section. The hero→next-band seam is therefore
+   96 + 160 sitewide, exactly what the homepage measures. Named in
+   SECTION_Y_EXEMPT in scripts/qa-matrix.mjs, one entry per class. */
+:is(.pagehero, .sechero, .cr-hero, .story-hero, .thankshero, .bloghero, .legal-hero, .nf) { padding-top: var(--s-96); }
+:is(.pagehero, .sechero, .cr-hero, .story-hero, .thankshero, .bloghero) { padding-bottom: var(--s-96); }
 /* FLUSH-TOP EYEBROWS. `.kicker` is an inline-flex, so it baseline-aligns
    inside a line box of the column's inherited 26.86px line-height and its
    border box lands 8.31px BELOW the padding edge. Anywhere an eyebrow starts a
@@ -359,8 +375,12 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
    eyebrow is inline by design, where it can share a line with other content.
    .bookhero joined 2026-08-03: its eyebrow starts the left column of a
    two-column hero whose right column is a .statrail, and the two tops were
-   8.31px apart — the same defect the homepage hero had, on the same shape. */
-:is(.hero, .calcband__intro, .bookhero) .kicker { display: flex; line-height: var(--eyebrow-lh); }
+   8.31px apart — the same defect the homepage hero had, on the same shape.
+   Every page hero joined 2026-09-01: in a hero the eyebrow always starts a
+   column (under the crumb, beside a spec card), never shares a line, and the
+   crumb→eyebrow gap has to BE the crumb's 32px margin rather than 32 + 8.31.
+   The spec-card offset formulas below assume it. */
+:is(.hero, .calcband__intro, .bookhero, .pagehero, .sechero, .cr-hero, .story-hero, .thankshero, .bloghero, .legal-hero, .nf) .kicker { display: flex; line-height: var(--eyebrow-lh); }
 .hero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (max-width: 940px) { .hero__grid { grid-template-columns: 1fr; gap: var(--s-48); } }
 .hero h1 { margin: 12px 0 10px; }
@@ -1404,7 +1424,25 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   .hero__grid > .statrail {
     margin-top: calc(var(--eyebrow-h) + var(--s-2) + 0.0998 * var(--h-hero-size));
   }
-  .pagehero__grid > .statrail { margin-top: 52px; }
+  /* Page heroes (2026-09-01): same construction for the .h2-sized H1 the
+     interior heroes use. --fs-39 is a fixed length, so the fluid term does not
+     drift, but it is still written as a multiple of the font size rather than
+     a flat number so it survives a type-scale change. 0.146em is Archivo's
+     ink inset at line-height 1.0 (half-leading is slightly negative there),
+     measured the same way as the 0.0998 above. The old flat 52px was tuned
+     against the eyebrow's 8.31px phantom leading, which is gone. Verified
+     card-top − cap-top = 0.00px at 1440 / 1280 / 1024 / 941 on /pricing/,
+     /method/, /contact/, /security/ and every build page. */
+  .pagehero__grid > .statrail,
+  .sechero__grid > .statrail,
+  .story-hero .head-block > .statrail {
+    margin-top: calc(var(--eyebrow-h) + var(--s-2) + 0.146 * var(--fs-39));
+    /* /work/marcus/results/ builds its hero on .head-block, whose second child
+       takes the section header's 7.7px optical offset as PADDING — inside a
+       bordered card that is a blank strip above the header bar. The card
+       aligns by margin like the others; the offset is for a bare paragraph. */
+    padding-top: 0;
+  }
 }
 .statrail__row:hover{ background: color-mix(in srgb, var(--accent) 5%, transparent); }
 /* A .statrail may be marked up as a <dl> (rows are <div><dt>/<dd> groups) so
@@ -1467,6 +1505,10 @@ dl.statrail, .statrail dt, .statrail dd { margin: 0; }
 /* column wrappers (one balanced grid, no orphan cells): paragraphs
    stacked inside a column keep paragraph rhythm, not the grid gap */
 .prose-2 > div{ display:flex; flex-direction:column; gap:1em; }
+/* a sub-heading inside a column takes an extra step above it, so it reads as
+   opening a topic rather than as another paragraph (used on /calculator/'s
+   methodology block, which is head-block → .prose-2 → p.section-action) */
+.prose-2 > div > h3:not(:first-child){ margin-top: var(--s-2); }
 @media(max-width:760px){ .prose-2{ grid-template-columns:1fr; } }
 
 /* ---- why us 2x2 ---- */
@@ -2404,12 +2446,14 @@ h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
 
    KNOWN EXCEPTION to "zero visual change": the crumb rows are `display: flex`,
    which BLOCKIFIES their links, so there the 15px is 30px of real layout
-   height (a 17px row measures 47px). /book/ cancels it with the negative
-   margin this block already prescribes, because that row sits above the fold
-   on the page's conversion screen (see .bookhero__crumb in book/index.html).
-   .crumb / .sechero__crumb / .legal__crumb still carry it on ~40 pages and are
-   deliberately left alone — the fix is one line each, but it moves every
-   interior page's hero geometry and that is its own pass, not a side effect.
+   height (a 17px row measures 47px). /book/ cancelled it first with the
+   negative margin this block already prescribes, because that row sits above
+   the fold on the page's conversion screen (see .bookhero__crumb in
+   book/index.html). The other four crumb classes carried it on ~50 pages
+   until 2026-09-01, when the page-hero pass (HERO block) took every hero to
+   the homepage's 96px and cancelled it everywhere at once — the 30px was
+   layout air, not hit area, and it was the difference between a crumb that
+   sits 96px under the nav and one that sits 111. The 44px hit box is intact.
    ========================================================= */
 .crumb a, .bookhero__crumb a, .legal__crumb a, .sechero__crumb a,
 .tick-lbl a, h3 a,
@@ -2418,6 +2462,10 @@ h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
    line box, so the hit area reaches 44px without moving a glyph or changing
    a row height. */
 .bio__press .press-list a, .cmp th a { padding-block: 15px; }
+/* the crumb rows are flex, so cancel the padding's LAYOUT height (not its
+   hit area) — see the note above. .bookhero__crumb does the same in
+   book/index.html. */
+.crumb a, .sechero__crumb a, .legal__crumb a, .thankshero__crumb a { margin-block: -15px; }
 /* "Inc." is 23px wide — under the 24px floor. The outlets sit on a 1.6em gap
    with an 8px-margin middot between them, so ±4px cannot overlap a neighbour. */
 .bio__press .press-list a { padding-inline: 4px; margin-inline: -4px; }
@@ -3310,7 +3358,27 @@ select.input:invalid { color: var(--tx-faint); }
    nudge and is correct in most of the places it appears — it was only ever
    wrong where it set the H2 -> intro step, which wants 24. */
 :is(.kicker, .eyebrow, .tick-lbl, .doc__sub) + :is(h1, h2, h3, .h1, .h2) { margin-top: var(--s-2); }
-:is(h1, h2, .h1, .h2) + :is(p, .lead, .sub, .prose) { margin-top: var(--s-3); }
+/* An eyebrow that sits OUTSIDE the header block (/work/marcus/ puts the kicker
+   above .head-block on four sections, /careers/ above .cr-hire) took no step
+   at all: the h2 landed 1px under it, the only eyebrow→H2 on the site that
+   was not 16. The step belongs to the pair, not to the h2's parent. */
+:is(.kicker, .eyebrow, .tick-lbl) + :is(.head-block, .section-head, .cr-hire) { margin-top: var(--s-2); }
+/* .svc__tagline is the one-line intro under the three service H2s on
+   /services/ — a <div>, so it missed the list and sat at the .mt-s 16. */
+:is(h1, h2, .h1, .h2) + :is(p, .lead, .sub, .prose, .svc__tagline) { margin-top: var(--s-3); }
+/* A running-prose article opens flush with its section's padding edge, like
+   every other section's first eyebrow. `.prose h2 { margin-top: 1.8em }` is
+   unconditional, so the fourteen guides whose article opens with an <h2>
+   began 58px below the edge — 218px from the section top against 160. */
+.prose > :first-child { margin-top: 0; }
+/* .closer's own 48px top is a within-section step; when the strip opens a
+   section (the "which service fits first" bands on six industry pages) the
+   section padding already does that job. Was an inline `margin-top:0` on
+   every instance. */
+.wrap > .closer:first-child { margin-top: 0; }
+/* the comparison table's closing lead on /services/ takes the H2→intro step
+   rather than an inline 20px */
+.cmp__wrap + .lead { margin-top: var(--s-3); }
 
 /* ---- 3. sibling cards / rows ----
    Only genuine card collections. Deliberately NOT included: the two-column
@@ -4192,7 +4260,11 @@ body:has(.nav.is-open) .stickybook { transform: translateY(110%); }
 .cxi__item p { font-size: var(--t-sm); line-height: 1.55; margin: 0; max-width: 62ch; }
 .cxi__go { margin-top: var(--s-2); }
 /* The one-line city cross-link on the industry pages. */
-.citylinks { padding-block: var(--s-32); }
+/* Both link strips are the same thin banner. .buildlinks never had a padding
+   rule of its own and rendered at the full --section-y on nine pages — one
+   line of links inside 320px of air. Named as thin banners in qa-matrix's
+   SECTION_Y_EXEMPT (2026-09-01). */
+.citylinks, .buildlinks { padding-block: var(--s-32); }
 .citylinks__p { font-size: var(--t-sm); color: var(--ink-muted); margin: 0; max-width: 90ch; }
 .citylinks__p .tick-lbl { margin-right: var(--s-12); }
 

@@ -10,6 +10,7 @@ var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]
   var toggle = nav.querySelector('.nav__toggle');
   var menu = nav.querySelector('.nav__links');
   if (!toggle || !menu) return;
+  nav.classList.add('has-menu-js');
 
   function setOpen(open) {
     nav.classList.toggle('is-open', open);
@@ -68,6 +69,9 @@ var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]
       caret.setAttribute('aria-expanded', 'false');
       if (focusCaret) caret.focus();
     }
+    item.addEventListener('mouseenter', function () { open(false); });
+    item.addEventListener('mouseleave', function () { if (!item.contains(document.activeElement)) close(false); });
+    item.addEventListener('focusout', function (e) { if (!item.contains(e.relatedTarget)) close(false); });
     caret.addEventListener('click', function (e) {
       e.preventDefault(); e.stopPropagation();
       if (item.classList.contains('is-open')) close(false); else open(false);

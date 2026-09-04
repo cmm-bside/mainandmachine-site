@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=143" />
+<link rel="stylesheet" href="/styles.css?v=144" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -155,8 +155,6 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org",
-        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -232,22 +230,31 @@
     </a>
     <nav class="nav__links" id="nav-links">
       <span class="nav__item nav__item--menu">
-        <a href="/services/">Services</a>
-        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <a href="/services/">Solutions</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Solutions menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
         <div class="nav__menu" id="nav-services-menu">
-          <a href="/services/">Compare all three</a>
-          <a href="/services/#audit">AI Readiness Audit</a>
-          <a href="/services/#sprint">Implementation Sprint</a>
-          <a href="/services/#managed">Managed Services</a>
+          <a href="/services/">Compare services</a>
+          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
+          <a href="/services/ai-implementation/">AI Implementation</a>
+          <a href="/services/managed-ai-services/">Managed AI Services</a>
+          <a href="/services/builds/">Systems we build</a>
+          <a href="/industries/">Industries we serve</a>
+          <a href="/method/">How we work</a>
         </div>
       </span>
-      <a href="/work/" class="is-active" aria-current="page">Proof</a>
+      <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/score/">Your Score</a>
-      <a href="/method/">Method</a>
-      <a href="/about/">Who We Are</a>
-      <a href="/blog/">Blog</a>
-      <a href="/contact/">Contact</a>
+      <span class="nav__item nav__item--menu">
+        <a href="/guides/">Resources</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-resources-menu" aria-label="Resources menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-resources-menu">
+          <a href="/guides/">Buyer’s guides</a>
+          <a href="/score/">AI-Ready Score</a>
+          <a href="/calculator/">ROI calculator</a>
+          <a href="/blog/">The Ampersand</a>
+        </div>
+      </span>
+      <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
       <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
@@ -366,19 +373,19 @@
       <div class="scoregrid scoregrid--compact">
         <div class="score" data-figure="hours-returned">
           <div class="score__n tick-num">1,240<small>hrs</small></div>
-          <p class="score__d">Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work.</p>
+          <p class="score__d">Staff preparation hours returned in the reported 90-day window. Annualized, that is approximately 5,000 hours, or 2.4 full-time equivalents of preparation capacity; it is not measured annual cash savings.</p>
         </div>
         <div class="score" data-figure="weekly-adoption">
           <div class="score__n tick-num">93<small>%</small></div>
-          <p class="score__d">Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck.</p>
+          <p class="score__d">Of staff using MARCUS weekly by week six, through tools they already used.</p>
         </div>
         <div class="score" data-figure="identifiers-out">
           <div class="score__n tick-num">0</div>
-          <p class="score__d">Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists.</p>
+          <p class="score__d">Borrower identifiers reported as sent to outside models during the measurement window. Prompts and documents passed through the privacy filter; mandatory filtering is not a guarantee of perfect detection.</p>
         </div>
         <div class="score" data-figure="human-approved">
           <div class="score__n tick-num">100<small>%</small></div>
-          <p class="score__d">Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted.</p>
+          <p class="score__d">Of consequential actions approved by a person before sending, filing, posting, or paying during the reported measurement window.</p>
         </div>
       </div>
 <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
@@ -455,9 +462,9 @@
         <h2>Services</h2>
         <ul>
           <li><a href="/services/">Compare all three</a></li>
-          <li><a href="/services/#audit">AI Readiness Audit</a></li>
-          <li><a href="/services/#sprint">Implementation Sprint</a></li>
-          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/ai-implementation/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-ai-services/">Managed Services</a></li>
           <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
@@ -492,7 +499,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.foundernote,.teardown,.story-feat,.closer,.foot__top > *"></script>
 
-<script src="/js/nav.js?v=7"></script>
+<script src="/js/nav.js?v=8"></script>
 <script src="/js/analytics.js?v=5"></script>
 </body>
 </html>

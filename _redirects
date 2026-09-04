@@ -2,10 +2,9 @@
 # The sample audit moved from the Work section into Services (2026-06).
 /work/sample-audit/  /services/sample-audit/  301
 
-# Three service detail pages consolidated into /services/ anchored sections (2026-06).
-/services/ai-readiness-audit/   /services/#audit    301
-/services/implementation-sprint/  /services/#sprint  301
-/services/managed-services/     /services/#managed  301
+# Older service names now resolve to the dedicated service pages.
+/services/implementation-sprint/  /services/ai-implementation/  301
+/services/managed-services/     /services/managed-ai-services/  301
 
 # The AI-Ready Score app (Vercel) is reverse-proxied onto the apex — /score/*
 # and the PRINTED book-QR short links /s/* — by functions/score/[[path]].js and
@@ -17,3 +16,7 @@
 # apex /report/<token>, which the apex never served. Persistent report URLs
 # now live at /score/report/<token>; rescue the old form.
 /report/*  /score/report/:splat  301
+
+# The retired essay is replaced by the related guide to human review.
+/blog/the-person-still-signs  /blog/human-in-the-loop-ai-systems/  301
+/blog/the-person-still-signs/  /blog/human-in-the-loop-ai-systems/  301

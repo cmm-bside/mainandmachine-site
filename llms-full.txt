@@ -1,222 +1,66 @@
 # Main & Machine — llms-full.txt
-# The complete visible text of the 15 most important pages on
+# The complete visible text of the 18 most important pages on
 # https://www.mainandmachine.com/ , concatenated with page delimiters.
 # The condensed fact sheet lives at https://www.mainandmachine.com/llms.txt
 # Canonical business facts: AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue).
 # Contact: cmyers@mainandmachine.com · 928-363-6639 · Denver, CO & Phoenix, AZ.
 
 ========================================================================
-PAGE: AI Consulting for Small Business | Main & Machine
+PAGE: AI Implementation for Small Business | Main & Machine
 URL: https://www.mainandmachine.com/
-SUMMARY: Working AI agents and automations inside your business, at a fixed price quoted in writing before we start. Denver, Phoenix & remote across the US.
+SUMMARY: AI systems for intake, follow-up, reporting, and connected tools. Fixed-price projects your team owns. Denver, Phoenix, and across the US.
 ========================================================================
 
 AI implementation for small & mid-size business
 
-# The machine belongs to Main Street.
+# AI systems that take repetitive work off your team.
 
-Other AI firms hand you a deck. We build the working systems that run inside your business. Fixed price, quoted in writing. Live in about 90 days — or we keep building at no charge until it is.
+We build systems that handle repetitive intake, follow-up, reporting, and work between your tools. Get a clear scope, a written price, and a working system your team owns.
 
 Book a free assessment →
-Get your AI-Ready Score
+See what we’ve built
 
-30 minutes with a senior advisor. Free. A straight answer.
+30 minutes with a senior advisor. Bring one workflow that slows you down.
 
-Spec Sheet v.2026
+Fixed project price You own the build Humans stay in control
 
-Audits from $3,500
+What this looks like Example workflow
 
-Guarantee Live in 90 days
+## From inbox to action.
 
-Approach Human-centric
+Less copying, chasing, and checking. A clear handoff at every step.
 
-Builds Agents · Automations
+- 01
 
-Hubs Denver & Phoenix
+### A request comes in
 
-Updated July 2026
+Email, a form, or a call starts the workflow.
 
-01 / The problem with most AI work
+- 02
 
-## Most AI projects fail. The ones that “work” can cost you something worse.
+### The system prepares the work
 
-Most companies that spend on AI see almost nothing change. We exist to fix that.
+Captures details, updates your tools, and drafts the next step.
 
-26%
+- 03
 
-74%
+### Your team handles the judgment
 
-built AI capability that made it past proof of concept.
+Approves consequential actions and resolves exceptions.
 
-spent the money and have yet to show tangible value.
+- 04
 
-74% — No tangible value
-26% — Past proof of concept
+### The work keeps moving
 
-We exist for the 26% .
+Approved follow-ups go out. Every action leaves a record.
 
-Source: Boston Consulting Group, Where’s the Value in AI? , October 2024 — a survey of 1,000 executives across 59 countries.
+Explore systems we build
 
-There is a second failure nobody mentions: AI that technically works but buries why decisions get made and turns your best people into ticket-closers.
+Built. Used. Measured.
 
-We build the other kind. Every system we ship can be explained, questioned, and overruled by a person who owns it.
+## Working inside a regulated lender.
 
-The machine is never the answer to “why did this happen.” A person is.
-
-How we work →
-
-02 / What we actually do
-
-## We implement. That is the whole difference.
-
-Plenty of AI experts have a framework and a workshop. We go into your business, find the three workflows costing you the most, and build the fix. Fixed price before we start.
-
-A: Custom agents
-
-### Software that drafts the repetitive decisions.
-
-It clears the routine work and drafts the hard calls, then routes the final judgment to a person who owns it.
-
-B: Automations & workflow
-
-### Work moves between your tools on its own.
-
-It connects the systems you already use, so nothing waits on a person to copy and paste it.
-
-C: Integrations & data
-
-### One source of truth you can trust.
-
-We make your data do something instead of sitting in five systems that do not talk to each other.
-
-Example builds
-Browse the build catalog →
-
-- 24/7 AI receptionist
-
-- Instant lead response
-
-- Business system connectors
-
-- Company knowledge base
-
-03 / How to work with us
-
-## Three ways in. Priced in plain numbers.
-
-You will not have to sit through three discovery calls to learn what something costs. Here is the short version. The price list has every line item.
-
-Most start here
-
-01
-
-Timeline
-2 to 4 weeks
-
-Fixed price
-$3,500–$8,500
-
-### AI Readiness Audit
-
-The Blueprint — most businesses start here. You leave holding it, whether or not we build it.
-
-We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
-
-100% of the fee credits toward a sprint signed within 60 days.
-
-Read the full spec →
-
-02
-
-Timeline
-4 to 12 weeks
-
-Fixed quote after scoping
-$18,000–$60,000
-
-### AI Implementation Sprint
-
-The 90-Day Build — live in your operation in about 90 days, or we keep building free until it is.
-
-Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
-
-Exact price quoted in writing before work begins. It does not move after we start.
-
-Guaranteed live in 90 days, or we keep building at no charge.
-
-Read the full spec →
-
-03
-
-Timeline
-Ongoing
-
-Retainer
-From $1,500/month
-
-### Managed Services
-
-The Service Contract — machines need maintenance. No lock-in; annual is 12 months for the price of 10, unused months refunded.
-
-We keep what we built healthy, watch what changes, and evolve the systems as your business does.
-
-Read the full spec →
-
-The fine print
-
-Every path here starts with the same free 30-minute assessment. We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar.
-
-The ceiling: when a business wants the whole back office carried rather than one workflow, that is a MARCUS-class build — From $95,000 , four per year. Everything above is where most businesses start.
-
-The same numbers, pointed at your business
-
-## What would this cost for us?
-
-Two inputs. A real range, built from the same price list published on this site, not a teaser that ends in “call us.”
-
-Run your real numbers →
-Full breakdown + share
-
-Estimate.v1
-A model, not a promise
-
-01 / Industry
-
-Professional services
-Retail & e-commerce
-Healthcare & wellness
-Construction & trades
-Hospitality & food service
-
-Law, accounting, insurance, consulting, financial advisory.
-
-02 / Team size
-25
-
-5 50 100
-
-Modeled return / year
-For 25 people
-
-+$17,013–+$148,263
-
-a year, net of run costs — stress-tested low end to full-recovery high end
-
-- Total opportunity $150,000
-
-- Run costs / year -$1,737
-
-- Sprint investment (one-time) -$18,000
-
-- Payback on that build 1–13 months
-
-How this is modeled →
-
-04 / Proof it works
-
-## One build we can name, and the numbers it returned.
-
-MARCUS runs 14 AI agents across 7 departments for B:Side Capital, a regulated SBA & CDFI lender — entirely in-house, with no borrower file leaving the building. The first 90 days of full-fleet operation, measured off the audit log:
+MARCUS is a private AI system built for B:Side Capital. Its first 90 days of full-fleet operation returned these internally measured results.
 
 1,240 hrs
 Prep hours returned, 90 days
@@ -227,336 +71,602 @@ Weekly use by week six
 0
 Identifiers sent outside
 
-Read the measured results →
+Founder-affiliated deployment: Christopher Myers is CEO of B:Side Capital and Fund. Results are specific to this operation; see the measurement notes and limits.
+Read the results and methodology
 
-05 / Who builds this
+Start with the work
 
-## Christopher Myers.
+## Where is your team losing time?
 
-A professor, an entrepreneur, and an operator: 20 years in service of Main Street.
+You don’t need an AI strategy to start a conversation. You need a problem worth solving.
 
-Christopher Myers
-CEO, B:Side Capital + Fund · Founder & Chairman, Main & Machine · Professor, ASU W.P. Carey · Author
+Intake & follow-up
 
-He’s CEO of B:Side Capital and Fund , a professor at ASU’s W.P. Carey School, and an author with 20 years backing Main Street. He pairs that judgment with a team of AI-native builders who never had to unlearn the old way. One name owns every build.
+### Get back to customers faster.
 
-Who builds this, and why the name matters →
+Capture new inquiries, route requests, and keep follow-ups from falling through the cracks.
+Explore lead response
 
-Our founder’s work has been covered in Forbes The Wall Street Journal The New York Times Inc. TechCrunch MSNBC Fox Business
+Knowledge & reporting
 
-06 / Where are you?
+### Find the answer. Skip the hunt.
 
-## Pick the door that fits you today.
+Help your team find company information and prepare routine work from approved sources.
+Explore a company knowledge base
 
-Three doors. No wrong answer.
+Connected operations
 
-01 / Ready
+### Stop moving the same data twice.
 
-### I want to see where AI pays in my business.
+Connect the systems you already use so records, updates, and handoffs move together.
+Explore system connections
 
-Book the free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. No obligation, no pitch.
+A clear path to a working system
 
-Book a free assessment →
+## Know the work. Know the price.
 
-02 / Decided
+Start with an audit if the opportunity is unclear. Go straight to a sprint when you know what needs building.
 
-### Skip the audit — scope a sprint.
+01 / Find the opportunity
 
-You already know what you want built. Book a scoping call and we quote a fixed-price Implementation Sprint in writing — no audit in between.
+### AI Readiness Audit
 
-Scope a sprint
+$3,500–$8,500
+Prioritized workflows, an ROI model, and a build plan. A decision you can act on.
+2 to 4 weeks · The Blueprint
+See audit deliverables
 
-03 / Curious
+02 / Put it to work
 
-### I’d rather see where I stand first.
+### Implementation Sprint
 
-Take the AI-Ready Score. Fourteen questions, seven minutes, and a straight answer about whether your company is ready — before you talk to anyone.
+$18,000–$60,000
+Build, integrate, test, and launch a scoped system. Training and documentation included.
+4 to 12 weeks · The 90-Day Build
+See how we build
 
-Get your score
+03 / Keep improving
+
+### Managed AI Services
+
+From $1,500/month
+Monitoring, maintenance, and improvements after launch. Optional support without lock-in.
+The Service Contract
+See ongoing support
+
+Need a broader build? The Full Back Office is From $95,000 for a multi-department engagement. See what it includes .
+Audit credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+Our delivery guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+Compare scope, costs, and terms
+
+Christopher Myers · Founder & Chairman
+
+The machine belongs to Main Street.
+
+## Built by people who know what it means to run a business.
+
+Christopher Myers leads Main & Machine alongside a team of AI-native builders. He is CEO of B:Side Capital and Fund, a professor at ASU’s W. P. Carey School, and an author with 20 years serving small businesses.
+We start with the work, define who stays accountable, and build around your team’s judgment.
+Meet the team How we handle your data
+
+One useful conversation
+
+## Bring us the work that keeps piling up.
+
+We’ll talk through the workflow, the constraints, and whether a build makes sense. You’ll leave with a clear next step.
+Book a free assessment → Free · 30 minutes · No obligation
+
+### Still exploring?
+
+Check your readiness before booking, or work through the economics.
+Get your AI-Ready Score Estimate the opportunity Read the buyer’s guides
 
 ========================================================================
-PAGE: AI Services for Small Business: Audit, Sprint, Managed
+PAGE: AI Services for Small Business | Main & Machine
 URL: https://www.mainandmachine.com/services/
-SUMMARY: Custom agents, automations and integrations for small business. Audits from $3,500, sprints to $60,000, about 90 days. Denver, Phoenix and remote US.
+SUMMARY: Compare AI audits, implementation and ongoing support for small business. Published prices, clear deliverables and a free assessment to find the right fit.
 ========================================================================
 
 - Main & Machine
 
 - Services
 
-Services
+AI services for small business
 
-# Three ways in.
+# Find the right project. Build it. Keep it working.
 
-An audit that maps where AI actually pays, a sprint that builds the highest-payback workflow, and managed services that keeps it healthy. Fixed prices, quoted in writing before we start. Not sure whether your problem needs an agent, an automation, or an integration? Sort the three in nine minutes .
+Choose the engagement that fits the decision in front of you: investigate an unclear opportunity, build a defined workflow, or maintain a system already in use. Every path starts with a free conversation.
+Find the right next step → See what we build →
+Free 30-minute AI Opportunity Assessment. We reply within 24 hours.
 
-Not sure which? Book a free assessment →
+The engagement At a glance
+Audit $3,500–$8,500
+Sprint $18,000–$60,000
+Managed From $1,500/month
+Price Agreed in writing
 
-Price list Published
+Compare the engagements
 
-Audits $3,500–$8,500
+## What you need determines where we start.
 
-Sprints $18,000–$60,000
+A free assessment checks fit. A paid audit investigates. A sprint builds. Ongoing support is a separate choice.
 
-Managed From $1,500/mo
-
-Lock-in None
-
-Delivery ~90 days
-
-At a glance
-
-## The three services, side by side.
-
-Price, timeline, and what each one delivers. The whole offer, one row each. Jump to any of the three below.
-
-Main & Machine services compared: price, timeline, and deliverables.
+Service, investment, timeline and the decision each engagement supports.
 
 Service
 Price
 Timeline
-What it delivers
+Choose it when
 
-AI Readiness Audit : $3,500–$8,500 : 2 to 4 weeks : A workflow map and a phased plan you own. The handful of places AI actually pays.
+AI Readiness Audit : $3,500–$8,500 : 2 to 4 weeks : You need to identify and rank the useful AI opportunities.
 
-AI Implementation Sprint : $18,000–$60,000 : 4 to 12 weeks : The highest-payback workflow built, tested in your operation, and handed to your team.
+AI Implementation Sprint : $18,000–$60,000 : 4 to 12 weeks : You have a defined workflow ready to scope and build.
 
-Managed Services : From $1,500/mo : Ongoing : Monitoring, maintenance, and new automations as the work changes.
+Managed Services : From $1,500/month : Ongoing : You want help maintaining a system we built.
 
-There is a fourth, rarer door: The Full Back Office — a MARCUS-class, multi-department build. From $95,000 , four taken per year.
+Need several departments connected? The Full Back Office is a separate MARCUS-class engagement, From $95,000 . Four taken per year.
 
-Service 01 · 2–4 weeks · $3,500–$8,500
+Investigate the opportunity
 
-## AI Readiness Audit.
+## AI Readiness Audit
 
-The Blueprint — most businesses start here. You leave holding it, whether or not we build it.
+Map the workflow, weigh the effort and payoff, and leave with a phased plan you own. Useful when you know work is slow but do not yet know which project to commission.
+$3,500–$8,500 over 2 to 4 weeks . The recommendation can be to build, simplify, or wait.
+100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
 
-We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us.
+Decide with a concrete deliverable
+- Workflow map
 
-### What it is
+- Ranked opportunities
 
-Two to four weeks inside your real operation — the AI Readiness Audit, and we call it The Blueprint . Not a survey. Not a maturity model. Not a slide deck about the future of work.
+- Phased plan you own
 
-We start where the work actually happens. Where the time goes, where the money leaks, where a person is doing work a machine should be doing. We walk the workflows with the people who run them and put a cost on each one, so the plan rests on your numbers instead of someone’s framework.
+See audit scope and deliverables →
 
-What comes out is a phased plan you own outright. Build it with us, build it with another firm, build it in-house. The plan is yours either way, priced and sequenced so you can act on it without us in the room. And if you do build with us, it pays you back: 100% of your Blueprint fee credits toward your 90-Day Build signed within 60 days, up to 25% of the Build’s price.
+Put the plan into operation
 
-And sometimes the right call is to wait a quarter. When the numbers say so, the audit says so, in writing. You will not be talked into building something your own data does not support. What the audit contains — and deliberately doesn’t — is spelled out in the audit guide .
+## AI Implementation Sprint
 
-### Who it’s for
+A defined workflow built and tested inside your operation, with your team trained to run it. Bring the audit plan, or go directly to scoping if you already know what needs to be built.
+$18,000–$60,000 , fixed in writing before work begins; typically 4 to 12 weeks .
+If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
-Businesses of 5 to 100 people, $1M to $50M in revenue, past the point where the owner can hold everything in their head, and not yet big enough for a Fortune 500 budget.
+From scope to handoff
+- Working agents, automations or integrations
 
-### An example build
+- Testing in your operational workflow
 
-Intake agent : qualifies the request before a person touches it. Reads the incoming email or form, asks for the details that are missing, and routes the job to the right person with a clean summary attached. The win: every request arrives qualified, summarized, and routed before a person reads it.
+- Team training and ownership
 
-Illustrative builds, not client claims. What we’d actually scope is whatever your free assessment shows is worth automating first. If the audit finds something worth building, the Implementation Sprint builds it.
+See implementation scope →
 
-What you leave with
+Maintain the system
 
-- A workflow map of your real operations
+## Managed Services
 
-- The handful of places AI actually pays
+Optional monitoring, maintenance and an agreed block of improvements for systems we built. Keep someone responsible for the changes in the workflow and the tools beneath it.
+From $1,500/month . No lock-in. Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.
+Your team can also run the system itself. You keep ownership either way.
+
+Agreed ongoing coverage
+- Testing and monitoring
+
+- Maintenance and tuning
+
+- Improvements and a monthly report
+
+See support and ownership →
+
+Make the work concrete
+
+## See the artifact before the sales call.
+
+A sample plan, a catalog of useful workflows, and a documented implementation help you decide what belongs in your business.
+
+Before implementation
+
+### Read a sample audit
+
+A representative workflow map and ranked opportunities. The structure of the deliverable, clearly labeled as a sample.
+Open the sample →
+What can be built
+
+### Explore the build catalog
+
+Lead response, company knowledge, system connections and more. Understand the purpose and scope of each component.
+Browse the catalog →
+A real implementation
+
+### Review the MARCUS case
+
+The system built for B:Side Capital, where our founder is CEO. A related-company deployment with its methods and limits disclosed.
+Read the case →
+
+Questions, answered
+
+## Before you decide.
+
+Compare the published prices and bring your specific workflow to the call.
+
+01 Is the free assessment a paid audit? No. The free 30-minute assessment helps establish fit and the next step. The paid audit is a separate 2 to 4 weeks engagement that produces a workflow map and phased plan.
+02 Can we skip the paid audit? Yes, when your workflow is already defined and can be scoped. Start with the same free assessment and ask to scope an Implementation Sprint directly.
+03 What is the audit credit? 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+04 Do we have to buy ongoing support? No. Managed Services is optional. You own what we build, and your team is trained to run it.
+
+Start with a conversation
+
+## Start with the work, not a tool.
+
+Bring a recurring bottleneck or a workflow you already want built. We will discuss the right engagement before you commit.
+Book a free assessment →
+
+30 minutes to discuss the work, your constraints, and the next step that makes sense.
+Main & Machine
+
+========================================================================
+PAGE: AI Readiness Audit: Scope & Pricing | Main & Machine
+URL: https://www.mainandmachine.com/services/ai-readiness-audit/
+SUMMARY: Find the right first AI project. Get a workflow map, ranked opportunities and a plan you own. Fixed $3,500–$8,500; 2–4 weeks.
+========================================================================
+
+- Main & Machine
+
+- Services
+
+- AI Readiness Audit
+
+AI Readiness Audit
+
+# Know which AI project is worth building.
+
+The AI Readiness Audit maps how work moves through your business, identifies the useful opportunities, and gives you a phased plan you own. Start with the economics and constraints before committing to a build.
+Discuss your first project → Read the sample audit →
+Free 30-minute AI Opportunity Assessment. We reply within 24 hours.
+
+The engagement At a glance
+Fixed price $3,500–$8,500
+Timeline 2 to 4 weeks
+Deliverable A plan you own
+Next step Build, simplify, or wait
+
+What you buy
+
+## A decision document for your operation.
+
+### Map the work as it happens
+
+We look at the handoffs, systems and repeated tasks behind a workflow. The map makes delays and duplicate effort visible before a tool is chosen.
+
+### Rank the useful opportunities
+
+The audit weighs expected benefit against effort, data readiness and the decisions a person needs to own. Estimates are ranges with assumptions, not guaranteed savings.
+
+### Decide what happens next
+
+You leave with an ordered plan and a recommendation about where to start. An audit can support a build, a simpler process change, or a decision to wait.
+
+The deliverable
+- A map of the workflows examined
+
+- A ranked set of opportunities
+
+- Effort and payoff ranges with assumptions
 
 - A phased plan you own outright
 
-- A straight read on whether to build at all
+See the deliverable structure →
 
-See a sample audit deliverable →
-See the full price list →
+Check the fit
 
-### Questions about the audit
+## Useful when the problem needs a closer look.
 
-01 What is the AI Readiness Audit? Two to four weeks inside your real operation. We map your workflows, put a cost on each one, and hand you a phased plan you own, whether or not you build it with us.
+### You know the work is slow, but the first project is unclear
 
-02 How much does the AI Readiness Audit cost? $3,500–$8,500, quoted as a fixed price in writing before work begins. The exact number depends on the size and complexity of your operation. 100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+The audit is for established teams with repeated operational work: intake, documents, follow-up, reporting, or information moving between tools. We work with businesses of 5–100 people and $1M–$50M in revenue.
 
-03 How long does the audit take? 2 to 4 weeks.
+### Bring the people who know the workflow
 
-04 What do I leave with? A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all.
+The useful starting material is the process you run today, examples of the work, the tools involved, and the people responsible for it. Discuss any access or data restrictions in the free assessment before sharing sensitive records.
 
-05 What if the audit says don’t build? Then it says so, in writing. Sometimes the right call is to wait a quarter. You will not be talked into a build your own numbers do not support. To gauge readiness before spending anything, run the 20-point readiness checklist yourself.
+### Already know what to build?
 
-Service 02 · 4–12 weeks · $18,000–$60,000
+A paid audit is not a mandatory toll. If your workflow is defined, we can discuss direct Implementation Sprint scoping . If a basic tool or process fix would solve it, a custom build may be unnecessary.
 
-## AI Implementation Sprint.
+Before commissioning an audit
+- Name the operational bottleneck
 
-The 90-Day Build — live in your operation in about 90 days, or we keep building free until it is.
+- Identify the workflow owner
 
-Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
+- Describe the systems involved
 
-### What it is
+- Explain data and approval constraints
 
-Small, working, tested. You watch it run and earn your trust before it touches anything that matters.
+Use the readiness checklist →
 
-A sprint takes the workflows worth automating and builds the thing that fixes them. Agents that draft the repetitive decisions and route the judgment calls back to a person. Automations between the systems you already run. Integrations that pull your data into one source of truth instead of five systems that disagree.
+Read before buying
 
-One team runs it from kickoff to handoff. The advisor who scopes your sprint is the one who builds it; no junior team quietly takes over after you sign. Each workflow lands in about 90 days, because a project without a deadline is a project that dies.
+## See what the plan looks like.
 
-And before any of it starts, you get the exact price in writing. It does not move after we start. Handoff means your team trained to run all of it, and ownership of all of it.
+The sample audit shows two representative pages: an intake workflow map and a ranked set of opportunities. It uses the real deliverable structure; its composed workflow is not a client result.
+The audit itself is $3,500–$8,500 , fixed in writing before work begins, over 2 to 4 weeks . It buys analysis and a plan. Software implementation is a separate engagement.
+100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
 
-If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+Choose your next step
+- Read the sample before the call
 
-### Who it’s for
+- Bring one recurring bottleneck
 
-Teams of 5 to 100 people, $1M to $50M in revenue, with workflows worth automating and named. Most arrive by way of the audit . Some already know exactly what they want built and skip straight to scoping.
+- Get a clear recommendation on fit
 
-### Example builds
+Understand the audit in detail →
 
-An intake agent, invoice follow-up, an ops data sync. See a concrete before/after for each in what a build looks like .
+Questions, answered
 
-Illustrative builds, not client claims. For a sprint we shipped, 14 agents across 7 departments, see the MARCUS case .
+## Before you decide.
 
-What you leave with
+Compare the published prices and bring your specific workflow to the call.
 
-- Working agents built to your workflow
+01 Is this the same as the free assessment? No. The free assessment is a 30-minute conversation about fit and possible next steps. The paid audit takes 2 to 4 weeks and produces a workflow map, ranked opportunities and a phased plan for your business.
+02 Do I have to hire you to build the plan? No. You own the audit and can use it with us, another firm, or your own team. The recommendation may be to wait or to use a simpler tool.
+03 How does the audit credit work? 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. The cap depends on the sprint price; the written quote makes the credit clear.
+04 Can we go straight to implementation? Yes, when you already have a defined workflow and enough detail to scope it. Start with the free assessment, tell us what you want built, and we can quote a sprint without a paid audit.
 
-- Automations across your existing stack
+Start with a conversation
 
-- Integrations into one source of truth
+## Start with the bottleneck.
 
-- Your team trained to run all of it
-
-See the full price list →
-
-### Questions about the sprint
-
-01 What is the AI Implementation Sprint? A fixed-scope build of the highest-payback workflow your audit surfaced, typically 4 to 12 weeks, about 90 days per workflow. Guaranteed: if a scoped workflow is not live within 90 days, we keep building at no charge until it is.
-
-02 How much does an Implementation Sprint cost? $18,000–$60,000, quoted as a fixed price in writing before any work begins. For how that compares to the wider market, see What an AI Consultant Costs in 2026 .
-
-03 How long does a sprint take? 4 to 12 weeks, depending on scope.
-
-04 Do I need an audit first? Usually. Most sprints start with the AI Readiness Audit so the build rests on your numbers instead of a guess.
-
-05 What does a finished sprint look like? A working system your team actually uses. The closest published example is MARCUS: 14 AI agents across 7 departments we built for B:Side Capital, a regulated lender.
-
-Service 03 · Ongoing · Monthly · no lock-in
-
-## Managed Services.
-
-The Service Contract — machines need maintenance. No lock-in; annual is 12 months for the price of 10, unused months refunded.
-
-We keep what we built healthy, watch what changes, and evolve the systems as your business does. Optional, never required.
-
-### What it is
-
-Models shift. Vendors change their APIs and their prices. A workflow that ran clean in March can drift by September. And the failure is silent: nothing crashes, the system just starts being confidently wrong until a customer notices. Managed Services means someone is watching for that before it costs you anything.
-
-Concretely, every month: the tests we wrote for your build keep running against the live system, and you can see the results. Model and vendor changes get patched before they reach you. Anything your team flags as wrong becomes tuning, included. A standing block of build time goes to the automation you thought of after handoff. And you get one page — what ran, what it caught, what changed — in plain numbers.
-
-A retainer should survive on usefulness, not paperwork. If we are not earning the fee in a given month, you should be able to act on that immediately. So you can.
-
-And because you own everything we build, leaving is clean. No license to surrender, no hostage data, no exit fee. The month it stops paying is the month you stop paying.
-
-### Who it’s for
-
-You could put a person on this. At 5 to 100 employees, most businesses should not. The retainer buys the watching without the headcount, and your team stays trained to run everything either way.
-
-### An example
-
-Operations data sync : a build like this touches three vendors’ software, and any of the three can change without asking you first. Managed Services is the watch on all of it: the same job keeps showing the same status everywhere, even as the tools underneath it move.
-
-We manage what we build, so the road here runs through the audit and the sprint . For a system we built and now run, see the MARCUS case .
-
-What the retainer covers
-
-- Continuous testing on every deployed system
-
-- Patching as models and vendors shift
-
-- Tuning when your team flags a miss
-
-- A build block for new automations, monthly
-
-- A one-page monthly report, plain numbers
-
-- No lock-in: leave whenever it stops paying
-
-See the full price list →
-
-### Questions about managed services
-
-01 What are Managed Services? Ongoing monitoring and maintenance for what we build, keeping the system healthy after handoff. From $1,500 a month, no lock-in, and 12 months cost the price of 10 when paid annually.
-
-02 How much do Managed Services cost? From $1,500 a month with no lock-in; the exact amount depends on what is running. Pay annually and 12 months cost the price of 10. The audit and sprint that lead here run $3,500–$8,500 and $18,000–$60,000 respectively.
-
-03 Is Managed Services required? No. It is optional, never required. You can run what we build yourself. The hire-or-engage math behind that choice is in AI Consultant vs. In-House Hire .
-
-04 Do you only manage what you built? The road here runs through the audit and the sprint, so yes. We manage systems we built and understand.
-
-Picture it
-
-## What a build looks like.
-
-One concrete before/after per category. Illustrative, not client claims. Read these and you should be able to name the first thing you’d want built.
-
-Custom agent
-
-### Intake agent
-
-Before A new lead or application lands in an inbox and waits while someone re-keys it, runs the checks, and decides where it goes.
-
-After The agent reads every submission, runs the checks, and drafts the reply, then hands a person finished work to approve, send back, or escalate.
-
-Automation
-
-### Invoice follow-up
-
-Before Overdue invoices slip because chasing them is nobody’s full-time job, and the awkward ones get put off.
-
-After The automation tracks what’s outstanding, drafts each reminder in your voice on schedule, and flags the judgment calls for a person to send.
-
-Integration
-
-### Ops data sync
-
-Before The same job shows a different status in your CRM, your billing tool, and your project software, so no number gets trusted.
-
-After One integration keeps them in sync, so every system shows the same source of truth and your team stops reconciling by hand.
-
-Illustrative builds, not client claims. Patterns, not specific clients. For one we actually shipped, 14 AI agents across 7 departments for a regulated lender, see the MARCUS teardown . For the full parts list, front of house to back of house, see the build catalog .
-
-The parts list
-
-## Every system we build, priced.
-
-AI receptionists, intake and billing agents, automations, integrations — ordered like parts, not commissioned like software.
-
-Browse the build catalog →
-
-The math
-
-## Same rigor. A fraction of the bill.
-
-The Big Four do versions of this work at prices buyers report starting around half a million. We built the same discipline for Main Street.
-
-Our largest standard sprint
-$60,000
-
-A full Implementation Sprint, fixed in writing before we start — and guaranteed live in 90 days.
-
-vs
-
-A Big Four engagement, as quoted to buyers
-$500,000+
-
-Eight times the cost, before the work begins. Our largest standard sprint costs less than their kickoff meeting. That figure is what buyers report being quoted — the global firms publish no minimums.
-
-Start here
-Every path here starts with the same free 30-minute assessment. A senior advisor walks your workflows and tells you what is worth automating, and what is not. We reply within 24 hours.
-
+Tell us where work stalls. We will discuss whether an audit, direct sprint scoping, or a simpler fix makes sense.
 Book a free assessment →
 
-A fixed price, quoted in writing before we start, and a straight answer within 24 hours.
+30 minutes to discuss the work, your constraints, and the next step that makes sense.
+Main & Machine
 
-— Christopher Myers, Founder
+========================================================================
+PAGE: AI Implementation Services | Main & Machine
+URL: https://www.mainandmachine.com/services/ai-implementation/
+SUMMARY: Turn a defined workflow into a working AI system. Fixed $18,000–$60,000, testing and team handoff included. See scope and delivery.
+========================================================================
+
+- Main & Machine
+
+- Services
+
+- AI Implementation
+
+AI Implementation
+
+# Put a defined AI workflow to work.
+
+The AI Implementation Sprint turns an agreed operational problem into a working system: custom agents, automations, or integrations tested in your business and handed to a team trained to run them.
+Scope an implementation → Explore the build catalog →
+Free 30-minute AI Opportunity Assessment. We reply within 24 hours.
+
+The engagement At a glance
+Fixed quote $18,000–$60,000
+Timeline 4 to 12 weeks
+Ownership Your system
+After launch Optional support
+
+Scope before software
+
+## Know what will be built and what it will do.
+
+### Choose a defined workflow
+
+Start with a recurring operational job and a clear owner. Scope the inputs, expected outputs, systems involved and exceptions before work begins. The written quote fixes the scope and price.
+
+### Test inside the real operation
+
+We build against your actual process and test how the system handles ordinary work and the cases that need review. Your team sees the workflow run and learns how to operate it.
+
+### Make the handoff part of the build
+
+A finished sprint includes the working system, its integrations and team training. You own what we build. Ongoing monitoring and maintenance are available separately.
+
+Included in the agreed scope
+- Working agents, automations or integrations
+
+- Connections to the systems in scope
+
+- Testing against the operational workflow
+
+- Team training and handoff
+
+See how delivery works →
+
+Picture the work
+
+## The workflow determines the system.
+
+### An inquiry becomes prepared work
+
+A lead response workflow collects the information your team needs, routes it and prepares the next step. Any automatic replies or actions need explicit boundaries agreed for that build.
+
+### Records move between the right tools
+
+A system connector reduces manual re-entry between the tools you already use. The scope identifies the source of truth, the data that moves, and how exceptions are handled.
+
+### Company knowledge becomes usable
+
+A knowledge base helps people find answers in approved business material. The useful output includes sources a person can check, not simply a fluent answer.
+
+Examples from the catalog
+- Instant Lead Response
+
+- Business System Connectors
+
+- Company Knowledge Base
+
+- Catalog examples show suitability, not promised client results.
+
+Compare the available builds →
+
+Investment and responsibility
+
+## Fixed scope. A written price.
+
+An AI Implementation Sprint is $18,000–$60,000 , quoted fixed before work begins. Typical delivery is 4 to 12 weeks , about 90 days per workflow.
+If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+Your workflow owner helps explain the process, make decisions and review the system in operation. Discuss tool access, data handling, third-party costs and what the agreed scope covers before starting.
+If discovery is needed first, the AI Readiness Audit creates the plan. 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+
+Evidence and limits
+- Read the MARCUS implementation
+
+- Built for B:Side Capital, where our founder is CEO
+
+- A multi-department deployment, beyond a standard sprint
+
+- Results from one operation are not a forecast for yours
+
+Read the measured results →
+
+Questions, answered
+
+## Before you decide.
+
+Compare the published prices and bring your specific workflow to the call.
+
+01 Do we need a paid audit first? Only when the opportunity needs more investigation. If your workflow is defined and can be scoped, you can go directly from the free assessment to a written sprint quote.
+02 What does the delivery guarantee say? If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+03 What happens after handoff? Your team is trained to run the system. Managed Services → is optional; you can maintain what we build yourself.
+04 Is a whole back office one standard sprint? The Full Back Office is a separate, multi-department engagement, From $95,000 . The MARCUS case shows that larger class of build; it is not a promise that every standard sprint includes the same breadth.
+
+Start with a conversation
+
+## Bring the workflow you want built.
+
+We will discuss the problem, the systems it touches and whether it is ready for a fixed scope.
+Book a free assessment →
+
+30 minutes to discuss the work, your constraints, and the next step that makes sense.
+Main & Machine
+
+========================================================================
+PAGE: Managed AI Services & Support | Main & Machine
+URL: https://www.mainandmachine.com/services/managed-ai-services/
+SUMMARY: Keep your deployed AI systems useful with monitoring, maintenance and agreed improvements. Optional support from $1,500/month. No lock-in.
+========================================================================
+
+- Main & Machine
+
+- Services
+
+- Managed AI Services
+
+Managed AI Services
+
+# Keep your AI working as the business changes.
+
+Optional Managed Services provides monitoring, maintenance and agreed improvements for systems we built. Your team keeps ownership while we help maintain the workflow as models, vendors and operating needs change.
+Discuss ongoing support → See pricing and terms →
+Free 30-minute AI Opportunity Assessment. We reply within 24 hours.
+
+The engagement At a glance
+Retainer From $1,500/month
+Timeline Ongoing
+Commitment No lock-in
+For Systems we built
+
+What the retainer does
+
+## Keep the working system useful.
+
+### Watch the workflow
+
+Tests and monitoring help identify when a deployed system stops behaving as expected. Your team can flag misses so those examples inform tuning and review.
+
+### Maintain the dependencies
+
+Models, APIs and connected tools change. Maintenance addresses the changes relevant to the systems in your agreed coverage, with testing around the updates.
+
+### Improve what is already running
+
+An agreed block of build time supports new automations and improvements. A plain-language monthly report explains what ran, what was caught and what changed.
+
+The agreed coverage
+- Testing and monitoring for deployed systems
+
+- Maintenance as models and vendors change
+
+- Tuning informed by your team’s feedback
+
+- A defined monthly block for improvements
+
+- A one-page monthly report
+
+See testing and monitoring →
+
+Decide who will maintain it
+
+## Buy support when it solves a real ownership problem.
+
+### Choose support when your team needs a maintenance partner
+
+Someone needs to own failed runs, tool changes, access and updates. The retainer helps a small team carry that work without leaving every issue with the person whose day job is somewhere else.
+
+### Keep a person accountable inside the business
+
+Your workflow owner remains part of the decision process. They can review the report, flag problems and decide which improvements are worth doing next.
+
+### Run it yourself when that is the better fit
+
+Managed Services is optional. If you have the people and capacity to operate the system, you can do that. The implementation handoff still includes training and ownership.
+
+Agree the boundaries in writing
+- The systems covered
+
+- The monitoring and maintenance scope
+
+- The improvement time included
+
+- How your team reports and reviews issues
+
+Compare support and internal ownership →
+
+Pricing and flexibility
+
+## A retainer that can earn its place.
+
+Managed Services starts at From $1,500/month . The quote depends on the systems and coverage agreed. Keep third-party tool and model costs visible alongside the service fee when assessing the total running cost.
+No lock-in. Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.
+We manage systems we built and understand. Your implementation can follow a paid audit or go directly to sprint scoping when the workflow is already defined. A paid audit is not a requirement for every engagement.
+The MARCUS case shows a system built for B:Side Capital, where our founder is CEO. It demonstrates a related-company deployment, not a guaranteed result for every customer.
+
+Related decisions
+- Plan the implementation first
+
+- Understand ongoing costs
+
+- Review data handling
+
+Compare all service prices →
+
+Questions, answered
+
+## Before you decide.
+
+Compare the published prices and bring your specific workflow to the call.
+
+01 Is Managed Services required? No. It is optional. You own what we build and your team is trained to operate it, whether you choose ongoing support or manage it yourself.
+02 Do you maintain systems another firm built? Our Managed Services offering covers systems we built and understand. Bring an existing system to the assessment if you need help deciding what should happen next.
+03 What does annual payment change? Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.
+04 Does the retainer cover unlimited new work? The retainer includes an agreed block of improvement work. The written scope defines the systems covered and the build time included; a new workflow or larger change needs its scope agreed.
+
+Start with a conversation
+
+## Decide who owns the work after launch.
+
+Tell us what is running and what your team needs to maintain. We will discuss the support that fits.
+Book a free assessment →
+
+30 minutes to discuss the work, your constraints, and the next step that makes sense.
+Main & Machine
 
 ========================================================================
 PAGE: AI Consulting Pricing: Fixed, Published, No Discovery Call
 URL: https://www.mainandmachine.com/pricing/
-SUMMARY: Audits $3,500–$8,500. Implementation sprints $18,000–$60,000, fixed quote in writing. The full price list, on the page.
+SUMMARY: Compare Main & Machine’s audit, implementation, and ongoing support. Published prices, complete audit-credit terms, and scope and operating-cost guidance.
 ========================================================================
 
 - Main & Machine
@@ -565,9 +675,9 @@ SUMMARY: Audits $3,500–$8,500. Implementation sprints $18,000–$60,000, fixed
 
 Pricing
 
-# Three ways in. Priced in plain numbers.
+# Clear prices. Choose the right scope.
 
-You will not have to sit through three discovery calls to learn what something costs. Here is the price list.
+Start with a defined workflow or an audit to find one. These are our published service ranges; your scope and fixed price are agreed in writing before work begins.
 
 Price list : Published
 
@@ -583,15 +693,113 @@ Quote : Fixed, in writing
 
 Guarantee : Live in 90 days
 
-The ceiling
+The price list
 
-## The ceiling: from $95,000, four per year.
+## The three ways most businesses start.
 
-The MARCUS class, and the top of the price list. Start here so every number below it has a scale to sit against — most businesses do not buy this one.
+Use the audit when you need to identify and price the opportunity. Choose a sprint when the workflow is defined. Add Managed Services if you want us to keep maintaining the delivered system.
+
+Most start here
+
+01
+
+Timeline
+2 to 4 weeks
+
+Fixed price
+$3,500–$8,500
+
+100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+
+### AI Readiness Audit
+
+The Blueprint — most businesses start here. You leave holding it, whether or not we build it.
+
+A costed workflow map, a shortlist of opportunities, and a phased plan you own. Use it with us, another builder, or your own team. The credit toward a later sprint is limited to the terms shown alongside the price.
+
+What you leave with
+
+- A workflow map of your real operations
+
+- The handful of places AI actually pays
+
+- A phased plan you own outright
+
+- A straight read on whether to build at all
+
+Read the full spec →
+
+02
+
+Timeline
+4 to 12 weeks
+
+Fixed quote after scoping
+$18,000–$60,000
+
+Exact price quoted in writing before work begins. It does not move after we start.
+
+If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+
+### AI Implementation Sprint
+
+The 90-Day Build — live in your operation in about 90 days, or we keep building free until it is.
+
+Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
+
+What you leave with
+
+- Working agents built to your workflow
+
+- Automations across your existing stack
+
+- Integrations into one source of truth
+
+- Your team trained to run all of it
+
+Read the full spec →
+
+03
+
+Timeline
+Ongoing
+
+Retainer
+From $1,500/month
+
+Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.
+
+### Managed Services
+
+The Service Contract — machines need maintenance. No lock-in; annual is 12 months for the price of 10, unused months refunded.
+
+We keep what we built healthy, watch what changes, and evolve the systems as your business does.
+
+What you leave with
+
+- Continuous testing on every deployed system
+
+- Patching as models and vendors shift
+
+- Tuning, plus a monthly build block
+
+- A one-page monthly report, plain numbers
+
+- No lock-in: leave whenever it stops paying
+
+Read the full spec →
+
+Begin with the free 30-minute assessment . We discuss fit, constraints, and the next step. If you already know the workflow, ask about direct sprint scoping. For an early modeled estimate, use the calculator .
+
+Multi-department work
+
+## For a full back office. From $95,000.
+
+For a business connecting work across multiple departments. The Full Back Office is scoped separately from a standard sprint. MARCUS shows the architecture and depth of work in this class.
 
 Four per year
 
-01
+04
 
 Timeline
 One to two quarters
@@ -625,121 +833,33 @@ If a scoped workflow is not live in your operation within 90 days, we keep build
 
 Book a free assessment →
 
-The price list
+Budget for the whole workflow
 
-## And the three ways most businesses start.
+## Know what is built. Know what it costs to run.
 
-Audit, sprint, retainer: every price fixed and quoted in writing before any work begins. The audit is where most businesses start.
+A lower project price is only useful if it covers the work you need. Compare scope, operating costs, ownership, and support together.
 
-Most start here
+### The build scope
 
-02
+- The workflow, systems, and integrations included
 
-Timeline
-2 to 4 weeks
+- Inputs, exceptions, human approvals, and acceptance criteria
 
-Fixed price
-$3,500–$8,500
+- Your team’s access, review time, and decisions needed
 
-100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+- The fixed price and how a requested scope change is handled
 
-### AI Readiness Audit
+### Life after launch
 
-The Blueprint — most businesses start here. You leave holding it, whether or not we build it.
+- Model usage, third-party tools, and hardware where needed
 
-We map your workflows, find where AI actually pays, and hand you a plan you own, whether or not you build it with us. In our shorthand: 100% of your Blueprint fee credits toward your 90-Day Build signed within 60 days, up to 25% of the Build’s price.
+- Who owns the delivered work and holds vendor accounts
 
-What you leave with
+- Training, operating instructions, and maintenance responsibilities
 
-- A workflow map of your real operations
+- Optional Managed Services, with coverage agreed in writing
 
-- The handful of places AI actually pays
-
-- A phased plan you own outright
-
-- A straight read on whether to build at all
-
-Read the full spec →
-
-03
-
-Timeline
-4 to 12 weeks
-
-Fixed quote after scoping
-$18,000–$60,000
-
-Exact price quoted in writing before work begins. It does not move after we start.
-
-If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
-
-### AI Implementation Sprint
-
-The 90-Day Build — live in your operation in about 90 days, or we keep building free until it is.
-
-Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.
-
-What you leave with
-
-- Working agents built to your workflow
-
-- Automations across your existing stack
-
-- Integrations into one source of truth
-
-- Your team trained to run all of it
-
-Read the full spec →
-
-04
-
-Timeline
-Ongoing
-
-Retainer
-From $1,500/month
-
-Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.
-
-### Managed Services
-
-The Service Contract — machines need maintenance. No lock-in; annual is 12 months for the price of 10, unused months refunded.
-
-We keep what we built healthy, watch what changes, and evolve the systems as your business does.
-
-What you leave with
-
-- Continuous testing on every deployed system
-
-- Patching as models and vendors shift
-
-- Tuning, plus a monthly build block
-
-- A one-page monthly report, plain numbers
-
-- No lock-in: leave whenever it stops paying
-
-Read the full spec →
-
-Every path here starts with the same free 30-minute assessment . We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar. Want a rough number first? Run the calculator .
-
-The math
-
-## Same rigor. A fraction of the bill.
-
-The Big Four do versions of this work at prices buyers report starting around half a million. We built the same discipline for Main Street.
-
-Our largest standard sprint
-$60,000
-
-A full Implementation Sprint, fixed in writing before we start — and guaranteed live in 90 days.
-
-vs
-
-A Big Four engagement, as quoted to buyers
-$500,000+
-
-Eight times the cost, before the work begins. Our largest standard sprint costs less than their kickoff meeting. That figure is what buyers report being quoted — the global firms publish no minimums.
+Understand ongoing costs →
 
 Fair questions
 
@@ -752,7 +872,7 @@ The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implem
 Yes, on delivery: if a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. The scope is fixed in writing before work begins, so the guarantee is against a spec both sides can read. We do not guarantee ROI numbers — nobody honestly can — but we do guarantee the thing you paid for shows up and runs.
 
 03 Does the audit fee count toward a build?
-Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. If the audit leads to a build, the diagnosis effectively costs you nothing.
+Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. The cap means some audit fees may remain uncredited. Your proposal shows the credit and the remaining amount. The credit is the smaller of your audit fee and one quarter of the sprint price.
 
 04 What does the AI Readiness Audit include?
 A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.
@@ -765,14 +885,14 @@ Your team is trained to run what we built, and you own all of it. If you want us
 
 ### Want exact numbers?
 
-The assessment is where ranges become a fixed quote in writing: 30 minutes, free. No obligation.
+The free assessment helps establish the right next step. A fixed implementation quote follows an agreed scope; complex work may need a paid audit first.
 
 Book a free assessment →
 
 ========================================================================
 PAGE: AI Implementation: Discover, Build, Evolve | Main & Machine
 URL: https://www.mainandmachine.com/method/
-SUMMARY: Discover, build, evolve: one senior team from kickoff to handoff, working systems in about 90 days. Denver, Phoenix and remote across the US.
+SUMMARY: See how Main & Machine scopes, builds, tests, and hands over AI workflows. Understand your team’s role, delivery milestones, and optional ongoing support.
 ========================================================================
 
 - Main & Machine
@@ -783,7 +903,7 @@ The method
 
 # Discover. Build. Evolve.
 
-Three phases. One team from kickoff to handoff. No junior account managers parachuted in between.
+A defined workflow, a written scope, and a team accountable for putting it to work. Here is how discovery, building, and handoff fit together.
 
 The method v.2026
 
@@ -791,7 +911,7 @@ Phases Three
 
 Delivery ~90 days
 
-Team Senior, start to finish
+Team One accountable lead
 
 Quote Fixed, in writing
 
@@ -799,14 +919,14 @@ Quote Fixed, in writing
 
 ## How a build actually runs.
 
-The same three phases on every engagement, in the same order. No phase gets skipped, and none runs forever.
+Every build needs a clear problem, tested delivery, and an owner after launch. A paid audit is useful when the problem needs investigation. If your workflow is already defined, we can start with sprint scoping. Ongoing Managed Services is optional.
 
 01
 
 ### Discover
 
 learn the business first
-We learn the business before we touch the technology. Where the time goes, where the money leaks, where a person is doing work a machine should be doing.
+We map the workflow with the people who run it: the inputs, handoffs, time, cost, and exceptions. The audit produces a plan you own; direct sprint scoping starts from a workflow you have already identified.
 
 - Workflow + cost mapping
 
@@ -819,7 +939,7 @@ We learn the business before we touch the technology. Where the time goes, where
 ### Build
 
 inside your real operation
-We build inside your real operation, not a sandbox. Small, working, tested. You watch it run and earn your trust before it touches anything that matters.
+We build around your existing tools, test real cases, and check the agreed approval and exception paths. Your team sees what the system does before accepting the workflow for everyday use.
 
 - Small, working, tested
 
@@ -832,7 +952,7 @@ We build inside your real operation, not a sandbox. Small, working, tested. You 
 ### Evolve
 
 as the work changes
-Businesses move. We tune, extend, and retire systems as the work changes, so what we built stays useful instead of becoming the next thing you work around.
+Your team owns the delivered system and can run it after handoff. If you choose Managed Services, we monitor, maintain, and improve the agreed systems as your work and vendors change.
 
 - Tune and extend
 
@@ -842,21 +962,21 @@ Businesses move. We tune, extend, and retire systems as the work changes, so wha
 
 02 / The first 90 days
 
-## What happens in the first 90 days?
+## From scoped workflow to working system.
 
-Thirteen weeks, three movements: discover, build, hand off. This is the AI Implementation Sprint — we call it The 90-Day Build , because the interval and the guarantee are the same fact. The exact price is quoted in writing before week 1; see the Implementation Sprint spec or the price list . The week-by-week version — including why two-week promises stall — is in the timeline guide .
+An AI Implementation Sprint typically takes 4 to 12 weeks , depending on scope. A separate audit, if needed, takes 2 to 4 weeks . The written agreement defines the build scope and timeline; the delivery guarantee applies to the scoped workflow. See the Implementation Sprint or price list .
 
-Weeks 1–2
+Before the build
 Discover
-Walk the workflows with the people who run them, and cost each one.
+Confirm the workflow, systems, inputs, responsibilities, and acceptance criteria before work begins.
 
-Weeks 3–10
+During the build
 Build
-Build and test inside your live operation, proving each piece before it touches anything that matters.
+Build and test against real cases. Review outputs, exceptions, and approval paths with the people who will use them.
 
-Weeks 11–13
+At handoff
 Handoff
-Train your team and hand everything over. You own all of it.
+Train your team, review the operating instructions, and hand over the delivered system. Decide who will monitor and maintain it.
 
 03 / The promise
 
@@ -866,11 +986,11 @@ The list on the left is what we sign up for. The list on the right is what no ho
 
 ### What we promise
 
-- Prices on this page, in plain numbers: no discovery call required to learn the cost
+- Published price ranges before a call, with the scoped price agreed in writing
 
 - Fixed scope and a fixed price agreed before we start
 
-- The advisor who scopes your project is the one who builds it
+- One accountable operator for scope and sign-off, supported by the build team
 
 - Vendor-neutral recommendations, including the free tool when the free one wins
 
@@ -880,7 +1000,7 @@ The list on the left is what we sign up for. The list on the right is what no ho
 
 - Guaranteed ROI numbers: we quote ranges; real results depend on your execution
 
-- Magic in a couple of weeks: real implementation runs about 90 days per workflow
+- A universal timeline: integration, data, testing, and customer dependencies affect the work
 
 - That AI is right for you right now: sometimes the honest answer is “wait a quarter”
 
@@ -896,7 +1016,7 @@ A fixed price, quoted in writing before we start. And a straight answer within 2
 ========================================================================
 PAGE: Who Builds This: Christopher Myers & Main & Machine
 URL: https://www.mainandmachine.com/about/
-SUMMARY: Christopher Myers: 20 years backing Main Street, and an AI-native team building fixed-price systems in about 90 days from Denver and Phoenix.
+SUMMARY: Meet Christopher Myers and Main & Machine’s build team. Learn who scopes, builds, and signs off on your AI implementation in Denver, Phoenix, and remotely.
 ========================================================================
 
 - Main & Machine
@@ -942,7 +1062,7 @@ Verify : LinkedIn · ASU faculty profile · Amazon author page · B:Side Capital
 
 Christopher has spent 20 years backing Main Street, today as CEO of B:Side Capital and Fund , a professor of entrepreneurship at ASU’s W.P. Carey School, and the author of several books on small business. Main & Machine grew out of that same work: the conviction that you can build something durable without losing the part that made it worth building.
 
-As chairman, he pairs his own senior judgment with a team of AI-native builders : digital natives who never had to unlearn the old way. One operator stays accountable for every build. The future doesn’t belong to the people who can do what AI does; it belongs to the people who can take what the machine produces and be accountable for it.
+Christopher combines his operating experience with a team of AI-native builders . His role is to scope the work, hold the judgment calls, and sign off; the team turns that scope into working systems. That accountability stays visible from the first conversation through handoff.
 
 Our founder’s work has been covered in: Forbes The Wall Street Journal The New York Times Inc. TechCrunch MSNBC Fox Business
 
@@ -958,15 +1078,15 @@ Don’t take the bio’s word for it
 
 02 / The team
 
-## The build team is young on purpose.
+## Experienced judgment. Hands-on builders.
 
-Around twenty-five AI-native technologists, most of them students and recent graduates, who have never known work without these tools and have nothing to unlearn. Every build runs under one accountable operator with twenty-six years backing Main Street. That pairing is the whole company: fluency with the new, judgment from the old.
+Around twenty-five AI-native technologists, including students and recent graduates, build under one accountable operator. Christopher Myers brings 20 years backing Main Street: he scopes the work, owns the judgment calls, and signs off. The build team implements the systems. You should know both who does the work and who is responsible for the result.
 
 03 / Why us
 
-## What makes us hard to copy.
+## What you can hold us to.
 
-Four things, none of which a competitor can bolt on next quarter.
+Published prices, vendor-neutral recommendations, a named accountable operator, and a team that builds the system. These are practical questions to bring to the first call.
 
 01: Prices stated plainly
 
@@ -988,9 +1108,9 @@ Christopher Myers scopes the work, holds the judgment calls, and signs off, so y
 
 04: Built by digital natives
 
-### The people building your systems never had to unlearn the old way.
+### A build team with an accountable operator.
 
-They did not learn AI in a weekend bootcamp. They grew up with it, building under one accountable operator.
+The team builds agents, automations, and integrations around your workflows. Christopher owns scope and sign-off. Read how discovery, testing, and handoff work before you decide.
 
 04 / The name
 
@@ -1022,7 +1142,7 @@ A fixed price, quoted in writing before we start. And a straight answer within 2
 ========================================================================
 PAGE: MARCUS: A Private AI Back Office for B:Side Capital
 URL: https://www.mainandmachine.com/work/marcus/
-SUMMARY: How we built MARCUS: 14 AI agents that run a regulated lender's back office on-prem, no borrower file leaving the building. A B:Side Capital client story.
+SUMMARY: How Main & Machine built MARCUS for B:Side Capital: 14 AI agents across 7 departments, local document processing, and human approval of consequential work.
 ========================================================================
 
 - Main & Machine
@@ -1033,9 +1153,9 @@ SUMMARY: How we built MARCUS: 14 AI agents that run a regulated lender's back of
 
 Client story · B:Side Capital
 
-# We built a team of AI agents that runs a lender’s back office, without a single file leaving the building.
+# AI agents that prepare a lender’s back-office work. People own the decisions.
 
-B:Side Capital, an SBA 504 and CDFI lender, came to us with hundreds of process documents and one hard requirement: automate the repetitive work, but never give up control of the data or the decisions. We built MARCUS to do exactly that.
+B:Side Capital, an SBA 504 and CDFI lender led by our founder Christopher Myers, needed to reduce repetitive preparation without giving up control of data or decisions. We built MARCUS around its process documents and existing tools: local document processing, filtered model access, and human approval of consequential actions.
 
 Build something like MARCUS →
 See how it works
@@ -1058,25 +1178,25 @@ Updated : July 2026
 
 First 90 days, measured
 
-## A year in, here is what it actually returned.
+## What the first 90 days returned.
 
 1,240 hrs
 
-Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work.
+Staff preparation hours returned in the reported 90-day window. Annualized, that is approximately 5,000 hours, or 2.4 full-time equivalents of preparation capacity; it is not measured annual cash savings.
 
 93 %
 
-Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck.
+Of staff using MARCUS weekly by week six, through tools they already used.
 
 0
 
-Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists.
+Borrower identifiers reported as sent to outside models during the measurement window. Prompts and documents passed through the privacy filter; mandatory filtering is not a guarantee of perfect detection.
 
 100 %
 
-Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted.
+Of consequential actions approved by a person before sending, filing, posting, or paying during the reported measurement window.
 
-Measurement window: the first 90 days of full-fleet operation. Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.
+Measurement window: the first 90 days of full-fleet operation. Results are reported by B:Side Capital and reconciled against its audit log, with written approval on file. Preparation time returned is operating capacity, not a claim of reduced payroll. Annualized equivalents are not measured annual savings.
 
 Read the measured results
 
@@ -1092,7 +1212,7 @@ Stakes : Regulated · auditable
 
 B:Side Capital is a mission-driven lender, an SBA 504 and CDFI institution whose work touches sensitive borrower financials at every step: intake, eligibility, underwriting support, funding, portfolio monitoring, and the high-stakes work of servicing distressed loans. It’s a business where a single mishandled document isn’t an inconvenience; it’s a compliance event.
 
-That’s the kind of environment most AI tools quietly avoid. It’s the kind we build for.
+Sensitive documents, established processes, and accountable decisions shaped the build from the start.
 
 The problem
 
@@ -1100,7 +1220,7 @@ The problem
 
 Before anyone can make a decision, someone has to gather the documents, pull the reports, run the checks, and draft the paperwork. The same steps, over and over, across seven departments. That preparation is where the bottlenecks form.
 
-The obvious fix, feed it all to a cloud AI, was a non-starter. Borrower data can’t leave a controlled environment. Eligibility, credit, and pricing can’t be decided by a black box. And every action a regulator might ask about has to be provable, after the fact, down to the source.
+The team needed a defined boundary around borrower documents and a reviewable path from source records to prepared work. Eligibility, credit, and pricing remained with the people responsible for them. The system had to show its sources and record its actions.
 
 The brief, in one line
 
@@ -1112,7 +1232,7 @@ The solution
 
 MARCUS is not an app B:Side’s team had to learn. It’s a colleague that lives inside the tools they already use: Slack, their lending systems, the browser. It does the gathering, checking, and drafting, then hands finished, organized work to a person to approve.
 
-Built entirely from B:Side’s own process documentation, every step MARCUS takes traces back to how the institution already works. Nothing was invented.
+B:Side’s process documentation defined the workflows and the sources each agent should use. That made the work reviewable against the institution’s own operating rules.
 
 Four surfaces the team already knows
 
@@ -1223,29 +1343,29 @@ Highest exposure, built last
 
 The most delicate work, payment relief and loan resolution, was deliberately built last, once trust in the system was already established.
 
-Your data never leaves the building
+The local processing path
 
-## The whole system runs in-house. On purpose.
+## Local processing. Defined data boundaries.
 
-Most AI vendors ask you to trust their cloud. We did the opposite. MARCUS runs on a single secured machine in B:Side’s own server closet. The models that read borrower documents run right there, in the building.
+MARCUS processes borrower documents on a secured machine in B:Side’s own server closet. A privacy filter scans prompts and documents before model processing. Selected tasks can use a commercial model on filtered text, as described in the results and architecture detail .
 
 L1
 
 ### Local by default
 
-The AI lives on B:Side’s own hardware, not someone else’s cloud. In normal operation, nothing about a file is sent to an outside service.
+Borrower-document processing runs on B:Side’s hardware. External model use is a separate routing decision for selected tasks on filtered text; local deployment does not make every downstream service local.
 
 L2
 
-### PII stripped before the model ever sees it
+### Identifiers filtered before model processing
 
-Microsoft Presidio detects and removes names, SSNs, and account numbers first. The model sees the work, not the identity.
+Microsoft Presidio detects supported identifiers for removal before model processing. Detection is imperfect; seeded tests, routing limits, and review are part of the control.
 
 L3
 
 ### Encrypted and tamper-evident
 
-Everything stored is fully encrypted, and every action writes to an append-only log secured as a tamper-evident chain. Compliance can prove nothing was altered.
+Stored documents and work products are encrypted. Actions are recorded in an append-only, hash-chained log so changes to recorded entries can be checked.
 
 B:Side server closet On-prem
 
@@ -1253,11 +1373,11 @@ B:Side server closet On-prem
 
 raw · sensitive · stays put
 
-↓ Presidio strips PII
+↓ Presidio detects and removes identifiers
 
 #### Local model
 
-reads the work, not the identity
+processes filtered text
 
 ↓ encrypt + log to chain
 
@@ -1265,9 +1385,9 @@ reads the work, not the identity
 
 append-only · tamper-evident
 
-⛌ No borrower file leaves this box in normal operation.
+⛌ Local document-processing path shown. Selected external tasks use filtered text.
 
-This is what makes MARCUS usable in a regulated lending environment at all, and it’s the part most teams can’t build.
+The diagram shows the local processing path. Read the security review for deployment choices, filter limitations, and the questions to ask about your own workflow.
 
 One rule behind everything
 
@@ -1349,7 +1469,7 @@ Read next The architecture MARCUS runs on, control by control: how we handle cli
 ========================================================================
 PAGE: MARCUS: 1,240 Hours Returned in 90 Days | Main & Machine
 URL: https://www.mainandmachine.com/work/marcus/results/
-SUMMARY: MARCUS results: 1,240 staff hours returned in 90 days, 93% weekly adoption, zero borrower identifiers sent to an outside model. Figures from the audit log.
+SUMMARY: MARCUS at B:Side Capital: internally measured results, measurement methods, founder affiliation, and limits from 90 days of full-fleet operation.
 ========================================================================
 
 - Main & Machine
@@ -1362,9 +1482,9 @@ SUMMARY: MARCUS results: 1,240 staff hours returned in 90 days, 93% weekly adopt
 
 Client results · B:Side Capital · First 90 days
 
-# Fourteen agents. Seven departments. Zero files that ever left the building.
+# Fourteen agents. Seven departments. The first 90 days, in practice.
 
-B:Side Capital — an SBA 504 and CDFI lender — asked us to wire what they already had into something that could be asked questions: on a machine they own, behind a filter they control. B:Side is our founder’s own company; MARCUS ran on his money and his name before we offered a version of it to anyone else. We commissioned the server in February 2026 and brought MARCUS up in waves across a 90-day implementation sprint, which passed its end-of-sprint go/no-go review in May 2026. These are the measured numbers from the first 90 days of full-fleet operation after that review.
+MARCUS prepares documents, answers questions from company records, and stages work for review at B:Side Capital, an SBA 504 and CDFI lender. Christopher Myers leads both B:Side and Main & Machine; this was a deployment inside the business he operates. The server was commissioned in February 2026. The figures below are the approved first-party results for the first 90 days of full-fleet operation, published July 31, 2026.
 
 Build something like MARCUS →
 Read how it was built
@@ -1377,31 +1497,35 @@ Window : First 90 days of full-fleet operation
 
 Published : 31 July 2026
 
-Verified by : Audit log
+Evidence source : Audit log
 
 Signed off : Christopher Myers, in both capacities — founder of Main & Machine and CEO of B:Side Capital. Written approval on file.
 
 01 / The headline scorecard
 
-## Four numbers the board asked for. All four came off the log.
+## What changed for the team. Reported from the deployment.
 
 1,240 hrs
 
-Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work.
+Staff preparation hours returned in the reported 90-day window. Annualized, that is approximately 5,000 hours, or 2.4 full-time equivalents of preparation capacity; it is not measured annual cash savings.
 
 93 %
 
-Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck.
+Of staff using MARCUS weekly by week six, through tools they already used.
 
 0
 
-Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists.
+Borrower identifiers reported as sent to outside models during the measurement window. Prompts and documents passed through the privacy filter; mandatory filtering is not a guarantee of perfect detection.
 
 100 %
 
-Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted.
+Of consequential actions approved by a person before sending, filing, posting, or paying during the reported measurement window.
 
-Measurement window: the first 90 days of full-fleet operation. Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.
+Measurement window: the first 90 days of full-fleet operation. Results are reported by B:Side Capital and reconciled against its audit log, with written approval on file. Preparation time returned is operating capacity, not a claim of reduced payroll. Annualized equivalents are not measured annual savings.
+
+How to read these results. These are B:Side’s reported operational figures, signed off by Christopher Myers in his roles at both organizations. They are not an independent audit. The measurement window is described as the first 90 days of full-fleet operation; exact start and end dates are not published here.
+
+Capacity is not cash savings. Preparation time returned is capacity available for other work. Annualized equivalents are not measured annual savings. The public summary does not include the underlying time-study baseline or staff denominator; ask about the evidence and assumptions when comparing it with your own operation.
 
 02 / The frame
 
@@ -1414,11 +1538,11 @@ B:Side already had the data, the front door, and the books — process documents
 So we built the seven things below, in order, each one proven on real files before the next shipped. The highest-exposure work — funds movement, distressed assets — was deliberately built last, behind the strictest gates, once trust was established. Here is what each piece did.
 
 03 / Private AI server
-Every other AI vendor rents you access to a machine in someone else’s building. We put the machine in theirs.
+B:Side owns the hardware used for local model processing and can maintain or replace the model independently of the workflow.
 
 ## One box, in a locked room, with B:Side’s name on the invoice.
 
-Specified, procured, installed, and configured to run open-source models locally — bought in B:Side’s name, their property from day one, at cost, with zero markup. An owner who can’t evaluate a model architecture can absolutely evaluate a box in a locked room. It also settled the data question before it was asked.
+We specified and configured a server to run open-source models locally. The hardware was purchased in B:Side’s name at cost, with zero markup. This gave the team ownership of the local processing environment.
 
 We have already swapped the local model once for a newer one — better answers, same workflows, nobody retrained. Once the machine is yours and the filter is in place, the model is just a part you replace.
 
@@ -1428,28 +1552,28 @@ Uptime since commissioning in February 2026 — one planned maintenance window, 
 
 2.1M
 
-Model calls processed entirely on-premises in 90 days. In normal operation, none left the building.
+Local model calls processed on B:Side’s hardware during the reported 90-day window. Selected external-model tasks are a separate processing route.
 
 $0
 
-Hardware markup. Bought at cost, in the client's name. That we do not mark it up is the point.
+Hardware markup. The server was bought at cost in the client’s name.
 
 1
 
 Mid-flight model upgrade, completed in an evening, with zero workflow changes for staff.
 
-How it’s sold: hardware at cost in the client’s name · fixed configuration fee by workload tier · monthly care for patching, updates, and the replacement path.
+Ownership: B:Side owns the server. Hardware, configuration, and ongoing care are separate parts of evaluating a comparable deployment.
 
 04 / Data privacy filter
-Their people were already pasting customer data into a chatbot. This is how that stopped being a problem.
+Staff needed a controlled route for using models with company information, rather than choosing a public chatbot independently.
 
-## Every prompt, every document, scrubbed before any model reads it.
+## A privacy filter before model processing.
 
-The filter sits between every person and every model. Prompts and attachments are scanned, personal identifiers stripped, and only then forwarded — to the local model or a commercial one, B:Side’s choice per task. Files get read, scrubbed, and passed through as clean text. There is no route around it, which is why the compliance answer is a design fact rather than a policy hope.
+Prompts and attachments pass through a filter that detects and removes supported personal identifiers. Tasks can then route to a local model or, by B:Side’s choice, to a commercial model on filtered text. Mandatory filtering establishes the route; it does not guarantee every identifier was detected.
 
 We don’t take the filter’s accuracy on faith. A seeded set of documents carrying known, planted identifiers runs against it every month — and every miss becomes a new test case.
 
-Once it was in place, “model of your choice” became a feature instead of a risk: routine work routes to the local model, heavier reasoning to a commercial one, on scrubbed text only.
+Routine work can use the local model while selected tasks use external reasoning on filtered text. External processing remains a data-handling decision. The recall result below describes the seeded test set, not a guarantee of perfect detection in every production document.
 
 100 %
 
@@ -1461,13 +1585,13 @@ Personal identifiers detected and stripped — names, SSNs, account numbers — 
 
 99.8 %
 
-Detection recall on the monthly seeded red-team test — measured, not claimed, and improving each cycle.
+Detection recall on the monthly seeded test set. This measures known test identifiers, not every possible identifier in production.
 
 0
 
-PII incidents since the filter went live. The number the board actually asks about.
+PII incidents reported since the filter went live.
 
-How it’s sold: fixed install + monthly. It closes like a security purchase, not a transformation project — and it sells standalone to companies with no interest in agents at all.
+Data boundary: Review which tasks can use external models, what text they receive, and how filtering is tested before choosing a deployment.
 
 05 / Company knowledge base
 The company remembers more than any one person in it. This is where that memory went so it could be asked questions.
@@ -1476,7 +1600,7 @@ The company remembers more than any one person in it. This is where that memory 
 
 Structured loan records on one side; process documents, correspondence, and policies on the other — joined so a single question can cross both. A lender has loans and findings the way a contractor has jobs and change orders: same shape, different nouns.
 
-We didn’t design their memory from scratch. B:Side answered the knowledge-base questionnaire — core entity, event stream, document sources, access rules — in one working session, and that answer sheet generated the tables, indexes, ingestion pipeline, and read tools. It is what turned a six-week build into two.
+B:Side defined the core records, events, document sources, and access rules in a knowledge-base questionnaire. Those answers guided the tables, indexes, ingestion pipeline, and read tools. The reported delivery time below starts from the completed questionnaire.
 
 2 wks
 
@@ -1494,20 +1618,20 @@ Questions asked by staff by month three — the questions that used to wait for 
 
 Of answers delivered with a citation to the source document or record. The rest say they do not know, and escalate to a person.
 
-How it’s sold: fixed build fee, tiered by source-system and entity count. The anchor of the line.
+Dependencies: The knowledge base depends on useful source records and defined access rules. Start by identifying which questions it must answer and which sources are authoritative.
 
 06 / Where the work arrives
 The best interface is the one their people were already staring at.
 
 ## No new app. No new login. The first question came eleven minutes after go-live.
 
-MARCUS lives inside B:Side’s Slack. Work arrives as messages; approvals happen where the conversation already is. Every owner who has been burned by software was burned by adoption, not capability — so we killed the adoption objection before it could be raised.
+MARCUS works inside B:Side’s Slack, where staff already communicate. Prepared work and approvals arrive in the same channels, reducing the need to switch tools to review a task.
 
-The entire rollout, per division, was a twenty-minute introduction. There was no training deck, because there was nothing new to learn.
+Each division received a short introduction to the workflow. Familiar tools reduced interface training; staff still needed to understand what the system prepared, what to check, and when to escalate.
 
 11 min
 
-From go-live to the first real staff question — no training session had happened yet. None was needed.
+From go-live to the first real staff question, before the introductory session.
 
 93 %
 
@@ -1517,16 +1641,16 @@ Weekly active adoption by week six, across all seven divisions — including the
 
 Of all MARCUS interactions happen in Slack — finished work delivered to the channel where the team already works.
 
-How it’s sold: fixed and thin, bundled with the knowledge base by default. Mostly configuration — its job is to make the knowledge base feel real in week one. It did.
+Adoption: Put prepared work where staff already work, then measure whether they use it and how often it needs correction.
 
 07 / A workspace of their own
-A chat tool for the whole company — except the company owns it, and nothing leaves the building.
+A company chat workspace connected to approved records and the same filtering and routing controls.
 
 ## A branded workspace for everyone who just wants to ask something.
 
 Slack is for teams who want finished work delivered to them. The chat workspace is for the other moments — drafting, summarizing, looking something up — connected to the knowledge base, running on B:Side’s server, behind B:Side’s filter. Staff opened it the way they would open any chat tool, because that is exactly what it looks like.
 
-And the pattern we predicted happened on schedule: in week two, someone asked it about last year’s loans. Before the knowledge base was connected, it couldn’t answer. That single unanswered question did more to sell the knowledge base internally than any pitch we could have made.
+In week two, a question about historical loans exposed the need to connect the knowledge base. The interface alone could not answer a question about records it could not access. That shaped the next integration step.
 
 380 /wk
 
@@ -1534,13 +1658,13 @@ Conversations per week by month three — policy lookups, document summaries, an
 
 100 %
 
-Of chat traffic routed through the privacy filter — the paste-into-a-chatbot habit, made safe instead of banned.
+Of chat traffic routed through the privacy filter in the reported deployment.
 
 Wk 2
 
-When the first question about loan history arrived — the knowledge base selling itself, in the wild.
+When the first question about loan history identified a need to connect the knowledge base.
 
-How it’s sold: fixed setup + monthly care. Paired with the privacy filter, it is the most natural first purchase in the line.
+Scope: The chat interface, company knowledge, and model hosting are related components. A useful scope states what information is connected and who can access it.
 
 08 / Connected to the books
 The books already knew the answer. This is what it took to ask.
@@ -1549,7 +1673,7 @@ The books already knew the answer. This is what it took to ask.
 
 The accounting connector let MARCUS see the books: month-end reconciliation arrives prepared with exceptions flagged, vendor invoices arrive pre-coded with the source attached, aging receivables get follow-ups drafted the day they cross the threshold. A person approves every entry before anything posts — that is not a limitation, it is the design.
 
-The connector code is a durable internal library; the deployment is the billable event. Build it once, deploy it against every client.
+The connector prepares work against B:Side’s existing accounting records. The review remains with the person responsible for the books, with sources and exceptions available before anything posts.
 
 Month-end reconciliation prep
 
@@ -1583,16 +1707,16 @@ Reconciliation mismatches surfaced automatically before month-end — found by t
 
 Improvement in average days-to-collect on fee invoices, from follow-ups drafted the day an invoice ages past threshold.
 
-How it’s sold: fixed price per connector, from a published catalog — ordering parts, not commissioning software. See the build catalog .
+Integration: A comparable build starts with your accounting and operating systems. The build catalog describes capabilities that can be included in a scoped engagement.
 
 09 / Proof it still works
 Anyone can demo an AI. We show ours failing, on purpose, on a schedule.
 
-## Every break gets found by the tests, not by their staff.
+## Test the exceptions before they reach the team.
 
-Every night, a stress harness runs against B:Side’s live configuration — eligibility edge cases, malformed documents, planted identifiers, adversarial prompts — and posts the results to a dashboard B:Side’s own team reads. When something breaks, the harness finds it before a staff member does. That is not a promise; it is a count we can show you.
+Nightly tests exercise B:Side’s configuration against eligibility edge cases, malformed documents, planted identifiers, and adversarial prompts. The results appear on a dashboard the team can review. The reported regression count below describes issues caught during the measurement period; tests cannot establish that every possible failure has been covered.
 
-Behind every action sits the audit trail: an append-only, hash-chained log. When a question comes up about what MARCUS did and why, the answer is a lookup, not an investigation.
+An append-only, hash-chained log records system actions. It helps the team trace an action to its trigger, source, and approval, and check recorded entries for changes.
 
 2,100
 
@@ -1608,9 +1732,9 @@ Entries on the tamper-evident audit log — every action traceable to its trigge
 
 84 %
 
-Of the harness is generic assertion-running; the remainder is client-specific fixtures. Which means it deploys anywhere — including on AI systems somebody else built.
+Of the test harness consists of reusable assertion-running code; the remainder consists of client-specific test cases.
 
-How it’s sold: bundled with every build, never optional — it is the differentiation. Plus a standalone fixed-fee assessment for systems built elsewhere: the only item in the line sellable to someone who is not a client yet.
+After launch: A test suite and audit trail ship with the build. Optional Managed Services adds ongoing monitoring and maintenance of the agreed systems.
 
 10 / One rule behind everything
 
@@ -1656,7 +1780,7 @@ A fixed price, quoted in writing before we start, and a straight answer within 2
 ========================================================================
 PAGE: AI Build Catalog: Receptionists, Agents & Automations
 URL: https://www.mainandmachine.com/services/builds/
-SUMMARY: Every system we build, priced: AI receptionists, intake and billing agents, automations and integrations. Fixed prices, published, no discovery call.
+SUMMARY: Explore AI receptionists, workflow agents, private AI, and integrations. See which capabilities can be included in a scoped Main & Machine engagement.
 ========================================================================
 
 - Main & Machine
@@ -1669,7 +1793,7 @@ The build catalog
 
 # What we build.
 
-The stock parts. Front of house: systems that answer, book, and follow up while you work. Back of house: the private machinery they run on. Everything here is delivered through the same three services , at the prices already published — and the catalog is a record of what we build, not a limit on it.
+Choose the workflow first. These capabilities can answer inquiries, prepare work, connect your tools, or provide a private place to use AI. They are scoped within our published services, not sold at a separate price per item. Your quote states which capabilities and integrations are included.
 
 Ask which parts your business needs →
 
@@ -1735,7 +1859,7 @@ Reputation
 
 Before Happy customers forget to leave reviews. Unhappy ones don’t.
 
-After It asks at the right moment after the job, routes the unhappy ones to you privately first, and drafts your reply to every review that lands.
+After It invites customers to leave an honest review after the job, gives everyone the same review opportunity, and drafts your responses. Service issues go to your team separately.
 
 How it works →
 
@@ -1765,7 +1889,7 @@ The gatekeeper
 
 ### Data privacy filter
 
-Sits between your people and any AI model. Personal information is stripped from prompts and documents before anything leaves — then the cleaned text goes to a local model or a commercial one. Your choice, because the filter makes the model swappable.
+Sits between your people and any AI model. Supported identifiers are detected and removed from prompts and documents before processing. The scope defines local or external model use; filtering reduces exposure but cannot guarantee perfect detection.
 
 How it works →
 
@@ -1813,15 +1937,15 @@ The rule
 
 ### It prepares. You decide.
 
-Every build in this catalog obeys the same rule: the system gathers, checks, and drafts. Nothing sends, files, posts, or pays until a person approves it. The final judgment stays with someone who owns it.
+Every build has an agreed operating boundary. Routine replies and bookings can run within that boundary. Consequential decisions and exceptions go to a person for approval. The scope makes clear what the system can do and who remains accountable.
 
-Patterns, not client claims — except one we can name: MARCUS , 14 AI agents across 7 departments for a regulated lender, runs on every part of this list.
+These are workflow patterns, not results claims. The back-office components are demonstrated in MARCUS, the 14-agent system across 7 departments at B:Side Capital. Front-of-house examples show additional capabilities to discuss during scoping.
 
 How to buy any of it
 
 ## One catalog. The same three doors.
 
-Nothing here is bought off a shelf. Every item arrives through the services you already know, at the published prices .
+A scoped engagement can include several capabilities. The published ranges describe the audit, sprint, or ongoing service; they are not prices to multiply by the number of items you choose.
 
 01 · The audit picks
 
@@ -1855,7 +1979,7 @@ A fixed price, quoted in writing before we start, and a straight answer within 2
 ========================================================================
 PAGE: Security & Data Handling | Main & Machine
 URL: https://www.mainandmachine.com/security/
-SUMMARY: On-prem local models, PII stripped before any model reads a document, encryption at rest, a tamper-evident audit log, and a human sign-off on every action.
+SUMMARY: Review Main & Machine’s deployment options, privacy filtering, audit logs, and approval boundaries. Practical questions for your IT and security review.
 ========================================================================
 
 - Main & Machine
@@ -1864,49 +1988,49 @@ SUMMARY: On-prem local models, PII stripped before any model reads a document, e
 
 Security & data handling
 
-# Where your data goes — and where it never goes.
+# Know where your data goes. Know who stays in control.
 
-This page is written for the person who reviews vendors for a living: your IT lead, your compliance officer, your fractional CISO. It describes the architecture our builds inherit — the same one running a regulated lender’s back office today. Bring your security questionnaire; the answers below are the ones we put in writing.
+Review the deployment, data handling, and approval controls before you commit. These are the controls used in MARCUS, the system running at B:Side Capital, and the questions we work through for your own build. Your written scope identifies the deployment and controls that apply to your workflow.
 
 The architecture In production
 
-Models Local · on-prem
+Models Local-first
 
-PII Stripped pre-model
+PII Filtered pre-model
 
 Storage Encrypted at rest
 
 Audit log Append-only chain
 
-Actions Human-approved
+Actions Defined approvals
 
 01 / The controls
 
 ## Five controls, in the order your data meets them.
 
-Most AI vendors ask you to trust their cloud. We built the opposite: a stack where the sensitive thing stays put and every step leaves evidence.
+A useful security review follows the data: where it enters, what the model receives, where results are stored, and who can authorize an action. Deployment choices belong in that review before work begins.
 
 C-01
 
 ### Local models, on your hardware.
 
-For regulated work, the models that read your documents run on a machine in your own building , not someone else’s cloud. In normal operation, nothing about a client file is sent to an outside service. When a cloud model is genuinely the right tool for a workflow, that trade-off is stated in the fixed quote — in writing, before work begins — and you decide.
+For regulated workflows, local models can run on hardware you own. In MARCUS, borrower documents are processed locally; selected tasks can route filtered text to a commercial model. When external processing is appropriate, the data boundary and trade-off are described in the written quote for you to decide.
 
 Deployment: on-prem by default for regulated data
 
 C-02
 
-### PII is stripped before any model reads a document.
+### Personal information is filtered before model processing.
 
-Microsoft Presidio — an open-source PII engine you can inspect yourself — detects and removes names, Social Security numbers, and account numbers first. The model sees the work, not the identity. This isn’t a policy promise; it’s a pipeline stage the document physically passes through.
+Microsoft Presidio detects supported personal identifiers such as names, Social Security numbers, and account numbers so they can be removed before model processing. Automated detection can miss information. The filter is one control alongside deployment restrictions, access decisions, and tests using known identifiers. Read Presidio’s documented limitations .
 
 Engine: Microsoft Presidio · runs before model ingestion
 
 C-03
 
-### Everything stored is encrypted at rest.
+### Stored documents and work products are encrypted.
 
-Documents, extracted data, and work products are fully encrypted where they sit. A copied disk is a useless disk.
+MARCUS encrypts stored documents, extracted data, and work products. Encryption helps protect stored information; access to the running system and its keys still matters. Review those responsibilities as part of your deployment.
 
 Scope: all stored documents and derived data
 
@@ -1914,7 +2038,7 @@ C-04
 
 ### Every action writes to an append-only, tamper-evident log.
 
-Each action the system takes is appended to an audit log secured as a tamper-evident chain : entries can be added, never edited or deleted. When your auditor asks what happened, compliance can prove nothing was altered — not assert it, prove it.
+MARCUS records actions in an append-only, hash-chained audit log. The chain makes changes to recorded entries detectable when verified. It provides evidence for a review; it does not replace access control, retention decisions, or an investigation of the underlying action.
 
 Property: append-only · chained · verifiable
 
@@ -1922,31 +2046,31 @@ C-05
 
 ### A person signs off on every consequential action.
 
-Nothing sends, files, posts, or pays until a person approves it. The system shows its work — what it did, what it’s asking for, the source it relied on — and a person approves, sends it back, or escalates. While a request waits, nothing moves.
+Consequential actions require human approval. In MARCUS, financial and lending work is prepared for a person to approve, return, or escalate. A customer-facing workflow may handle routine replies or bookings within its agreed scope. The scope must distinguish those actions from decisions that wait for approval.
 
 Rule: the machine prepares; people decide
 
-02 / The other half of the page title
+02 / Before you approve a build
 
-## What never happens.
+## Bring these questions to the review.
 
-- No client file leaves your network in normal operation on a regulated deployment.
+- Deployment. Which work stays local, which can use external services, and what information can cross that boundary?
 
-- No model reads raw PII. Identity is stripped before ingestion, not redacted after.
+- Access. Who can read the records, administer the system, approve actions, and revoke access?
 
-- No action fires on its own. Send, file, post, pay — all of it waits for a human approval.
+- Retention. Where are source files, work products, backups, and audit records kept?
 
-- No number comes from a model’s memory. Eligibility, credit, price — those come from your systems of record.
+- Decisions. What can run automatically, what needs a person, and where does an exception go?
 
-- No quiet edits. The audit log only grows; it cannot be rewritten.
+- Evidence. What is tested, how are failures reported, and what does an audit-log review establish?
 
-- No resold software. We’re vendor-neutral — nothing on this page depends on you buying a product we profit from.
+- Responsibilities. Which controls belong to your team, to Main & Machine, and to a third-party provider?
 
 03 / Not a policy document
 
 ## This architecture is running right now.
 
-MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: 0 ( the measured results ).
+MARCUS supports B:Side Capital, a regulated SBA 504 / CDFI lender led by our founder: 14 AI agents across 7 departments, built from ~840 source documents. It combines local processing, a privacy filter, an audit trail, and human approval of consequential actions. The published results report borrower identifiers sent to an outside model: 0 during the reported measurement window. Read the results and their limits .
 
 Read the MARCUS case study
 
@@ -1971,22 +2095,22 @@ Ask it directly. Security questions land with the founder, not a sales queue.
 Ask a security question
 
 01 Does our data leave our building?
-For regulated work, no — the models run on your own hardware, and in normal operation no client file leaves your network. That is how MARCUS runs at a regulated SBA lender today. When a cloud model is the right call for a workflow, we say so in the written quote and you decide.
+It depends on the agreed deployment. Local processing can keep source documents on your hardware; selected tasks may use external models on filtered text. We describe external processing in the written quote so you can review the data boundary before work begins.
 
 02 Do AI models see our customers’ personal information?
-No. Microsoft Presidio detects and removes names, Social Security numbers, and account numbers before any model reads a document. The model sees the work, not the identity.
+A privacy filter detects and removes supported identifiers before processing. Automated detection is imperfect, so we review the data, deployment restrictions, and additional controls for the workflow. Passing a document through a filter is not a guarantee that every identifier was removed.
 
 03 How is stored data protected?
-Everything stored is encrypted at rest, and every action the system takes is written to an append-only audit log secured as a tamper-evident chain.
+MARCUS encrypts stored documents and work products and records actions in an append-only, hash-chained audit log. Your deployment review should also cover access, keys, backups, and retention.
 
 04 Can we audit what the system did?
-Yes. The audit log is append-only and tamper-evident: entries can be added but never edited or deleted, so compliance can prove nothing was altered after the fact.
+Yes. An append-only, hash-chained log records system actions and supports checking for changes to recorded entries. Your review should establish who can access the log, how it is retained, and how verification is performed.
 
 05 Can the AI act on its own?
-No. Nothing sends, files, posts, or pays until a person approves it. The system never decides eligibility, credit, or price — those numbers come from your systems of record, never from a model’s memory.
+The scope defines that boundary. Routine replies and bookings can run within agreed rules; consequential actions require approval. MARCUS prepares financial and lending work for people to review and uses systems of record for eligibility, credit, and price inputs.
 
 06 Has this architecture run in a regulated environment?
-Yes. MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, entirely on-prem. The case is published with the client’s written permission.
+Yes. MARCUS supports B:Side Capital, a regulated SBA 504 / CDFI lender led by our founder, with 14 AI agents across 7 departments. The case is published with permission. Its controls and reported results are evidence of that deployment, not a certification of every future build.
 
 Read next A plain-English walkthrough of this architecture, with the production figures behind it: private AI for small business .
 
@@ -2002,9 +2126,9 @@ SUMMARY: A senior advisor walks your workflows and shows where AI pays, what it'
 
 The AI Opportunity Assessment
 
-# 30 minutes. No pitch. A straight answer.
+# Find your next useful AI project.
 
-Pick a time below and it’s booked. Or send the form and we’ll reach out within 24 hours. Either way, a senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth, including when the smart move is to wait a quarter.
+Bring one repetitive workflow. In a free 30-minute call, a senior advisor will help you assess the opportunity, identify the constraints, and choose a sensible next step. Pick a time below, or send the form for a reply within 24 hours.
 
 Assessment Free
 
@@ -2074,7 +2198,7 @@ Founder & Chairman. The person who scopes your work is the one accountable for t
 
 ## Why it’s free
 
-Scoping is the work. We quote a fixed price in writing before anything starts, and you cannot quote a fixed price without knowing what you are quoting. The first thirty minutes is unavoidable — we just don’t charge for it.
+The assessment establishes fit and the next step. A final scope and fixed project price may need a follow-up conversation or a paid audit. We quote that work in writing before a project starts.
 
 We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar.
 
@@ -2630,8 +2754,8 @@ The Field Guide / 01
 
 # What an AI consultant costs in 2026.
 
-Christopher Myers — Founder, Main & Machine Updated August 2026
-Reviewed by Christopher Myers, August 2026
+Christopher Myers — Founder, Main & Machine Updated September 2026
+Reviewed by Christopher Myers, September 2026
 
 Most firms make you book a call to learn a number. Here is the whole market instead — hourly rates, boutique projects, Big Four quotes — and exactly where we sit in it.
 
@@ -2725,7 +2849,7 @@ Three things are deliberately not in those prices. There is no discovery-call ga
 
 ## How should a small business budget for AI in 2026?
 
-Plan for roughly $21,500–$68,500 in year one if you build: an audit plus one implementation sprint, at our prices — with 100% of the audit fee credited toward the sprint when it is signed within 60 days. Budget zero for strategy decks, and treat any year-one number above $150,000 as an enterprise price that wandered into the wrong meeting.
+Plan for roughly $21,500–$68,500 in year one if you build: an audit plus one implementation sprint, at our prices — with 100% of the audit fee credited toward the sprint when it is signed within 60 days, up to 25% of the sprint price. Budget zero for strategy decks, and treat any year-one number above $150,000 as an enterprise price that wandered into the wrong meeting.
 
 Two smaller lines belong in the budget too. Running costs: the tools and model usage behind a working system typically land between $50 and $500 a month for a small business — that band is ours, from the systems we run, but the model rates underneath it are public. Anthropic publishes a per-million-token price for every model it sells , input and output billed separately, so you can price the usage half of the bill yourself before anyone quotes you. Real money either way, but a fraction of what the manual work cost. If you are weighing whether a $25-a-month subscription is enough instead, that question has its own guide . And maintenance: models and vendors shift, so either someone in-house watches the system or a retainer does. Ours is monthly with no lock-in, priced by what is running.
 
@@ -2748,7 +2872,7 @@ Read the price list
 Independent AI consultants typically bill $100–$300 an hour; specialists with deep machine-learning backgrounds run $200–$500. The total depends on hours, which almost nobody quotes in advance — which is why we price fixed instead.
 
 02 How much should a small business budget for AI consulting?
-Roughly $21,500–$68,500 in year one at our published prices: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins — with 100% of the audit fee credited toward the sprint when it is signed within 60 days.
+Before audit credits and ongoing costs, the audit and build total $21,500–$68,500: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins — with 100% of the audit fee credited toward the sprint when it is signed within 60 days, up to 25% of the sprint price.
 
 03 Why are Big Four AI engagements so expensive?
 They are built for enterprises: layers of analysts, governance frameworks, and brand assurance. Engagements commonly start around $250,000 — rational at 40,000 employees, mismatched at 40.
@@ -2785,7 +2909,7 @@ The Field Guide / 02
 
 # The AI readiness checklist: 20 points.
 
-Christopher Myers — Founder, Main & Machine Updated August 2026
+Christopher Myers — Founder, Main & Machine Updated September 2026
 
 Run it in an afternoon, without hiring anyone — including us. Twenty checks across your workflows, data, team, and economics, with scoring bands that include the answer nobody sells: wait.
 
@@ -2934,7 +3058,7 @@ The Field Guide / 04
 
 # How to choose an AI consultant.
 
-Christopher Myers — Founder, Main & Machine Updated August 2026
+Christopher Myers — Founder, Main & Machine Updated September 2026
 
 Ten questions that separate builders from hype merchants. Ask every firm all ten — including us. The good ones answer in plain English; the rest answer in adjectives.
 
@@ -3104,3 +3228,71 @@ URL: https://www.mainandmachine.com/guides/
   You're skeptical of AI. Good — most projects fail and the hype is self-serving. What the skeptic has right, and a first step that requires no belief.
 - [Private AI for Small Business](/guides/private-ai-for-small-business/)
   What private AI means, who genuinely needs it, and what it costs: on-prem models, PII stripping, audit logs — with figures from a live regulated build.
+
+========================================================================
+INDEX: The Ampersand — all 31 essays
+URL: https://www.mainandmachine.com/blog/
+========================================================================
+
+- [AI Managed Services That Keep Work Moving](/blog/ai-managed-services/) — 2026-09-04
+  AI managed services keep the systems behind your team working, improving, and accountable after implementation, without adding full-time AI staff daily.
+- [AI Workflow Automation for Operations That Works](/blog/ai-workflow-automation-for-operations/) — 2026-09-03
+  AI workflow automation for operations cuts repetitive work, connects business systems, and keeps people accountable for the decisions that matter most.
+- [AI Employee Training Program That People Use](/blog/ai-employee-training-program/) — 2026-09-02
+  An AI employee training program should teach real workflows, protect judgment, and prove adoption before your business scales a weak process company.
+- [How to Measure AI ROI Before You Spend More](/blog/how-to-measure-ai-roi/) — 2026-09-01
+  Learn how to measure AI ROI with a practical model for labor, revenue, risk, adoption, and costs before you fund another workflow or tool with confidence.
+- [Explainable AI for Business Decisions That Hold Up](/blog/explainable-ai-for-business-decisions/) — 2026-08-31
+  Explainable AI for business decisions gives leaders clear reasons, practical controls, and audit trails before automation affects customers, cash, or staff
+- [Human in the Loop AI Systems That Keep Work Accountable](/blog/human-in-the-loop-ai-systems/) — 2026-08-30
+  Human in the loop AI systems help businesses automate repetitive work while keeping experienced people responsible for approvals, exceptions, and outcomes.
+- [Single Source of Truth Business Data That Works](/blog/single-source-of-truth-business-data/) — 2026-08-29
+  Build a single source of truth business data system that connects your tools, cuts manual work, and gives people reliable facts for better decisions now.
+- [Integrate CRM With AI Automation That Works](/blog/integrate-crm-with-ai-automation/) — 2026-08-28
+  Learn how to integrate CRM with AI automation without creating bad data, black-box decisions, or brittle workflows that your team cannot manage later.
+- [How to Automate Invoice Processing With AI](/blog/automate-invoice-processing-with-ai/) — 2026-08-27
+  Learn how to automate invoice processing with AI while keeping approvals, exception handling, vendor data, and final payment decisions under clear control.
+- [AI Lead Response Automation That Holds Up](/blog/ai-lead-response-automation/) — 2026-08-26
+  AI lead response automation cuts delays without handing customer decisions to a bot. Learn what to automate, what people should own, and how to measure it.
+- [How Long Does AI Implementation Take for SMBs?](/blog/how-long-does-ai-implementation-take/) — 2026-08-25
+  How long does AI implementation take? Most small and mid-size businesses can reach production in 30 to 90 days when scope, data, and ownership are clear.
+- [How Much Does AI Implementation Cost for SMBs?](/blog/how-much-does-ai-implementation-cost/) — 2026-08-24
+  How much does AI implementation cost? See practical price ranges, the scope behind each number, and how to model a defensible business return before you buy
+- [What an AI Readiness Audit Should Actually Find](/blog/ai-readiness-audit/) — 2026-08-23
+  An AI readiness audit exposes costly workflows, weak data, security gaps, and adoption risks before you spend money building the wrong system at scale.
+- [AI Consulting for Small Business That Ships](/blog/ai-consulting-for-small-business-that-ships/) — 2026-08-23
+  AI consulting for small business should fix costly workflows, not create slides. Learn what to buy, what it costs, and how to keep control of decisions.
+- [What a Construction Estimator Should Never Automate](/blog/what-a-construction-estimator-should-never-automate/) — 2026-08-18
+  The machine may count. The estimator still sends the number.
+- [Will This Replace My Office Manager?](/blog/will-this-replace-my-office-manager/) — 2026-08-15
+  The honest answer is no. Sometimes the honest answer is you should not buy this.
+- [Seventy Years of Overnight Success](/blog/seventy-years-of-overnight-success/) — 2026-06-05
+  The technology that seems to have arrived overnight has been failing, recovering, and quietly compounding since Eisenhower was president.
+- [What the Machine Cannot Do](/blog/what-the-machine-cannot-do/) — 2026-05-29
+  After two years of lists about what AI can do, the more valuable list is the other one, and it is the foundation everything durable gets built on.
+- [Where Your Data Goes](/blog/where-your-data-goes/) — 2026-05-22
+  The most important AI policy in your company is the answer to one question: what happens to what we type in?
+- [Open Models, Closed Models](/blog/open-models-closed-models/) — 2026-05-15
+  The choice between renting intelligence and owning it is older than the technology, and the tradeoffs are the usual ones.
+- [Teaching the Machine Your Business](/blog/teaching-the-machine-your-business/) — 2026-05-08
+  The model arrives knowing the world and ignorant of you, and closing that gap is most of the real work of implementation.
+- [What an Agent Actually Is](/blog/what-an-agent-actually-is/) — 2026-05-01
+  An agent is a model with hands, and hands change the arithmetic of both value and risk.
+- [How to Talk to the Machine](/blog/how-to-talk-to-the-machine/) — 2026-04-24
+  The quality of the output is mostly a property of the request, and writing a good request is a learnable skill.
+- [Why the Machine Makes Things Up](/blog/why-the-machine-makes-things-up/) — 2026-04-17
+  Hallucination is a design property, and the businesses that do well treat it as a known cost rather than a recurring surprise.
+- [Sorting the Vocabulary](/blog/sorting-the-vocabulary/) — 2026-04-10
+  Five terms cover most of what any vendor will ever say to you, and knowing them is most of the defense.
+- [The Buildings Behind the Intelligence](/blog/the-buildings-behind-the-intelligence/) — 2026-04-03
+  The intelligence feels weightless, and the infrastructure behind it is some of the heaviest industry on earth.
+- [Why Everything Happened at Once](/blog/why-everything-happened-at-once/) — 2026-03-27
+  Three slow curves crossed in the same decade, and the crossing explains both the breakthrough and the noise.
+- [The Currency of the Machine](/blog/the-currency-of-the-machine/) — 2026-03-20
+  Tokens are how the machine reads, how the vendors charge, and why the meter is worth understanding before the bill arrives.
+- [How the Machine Learns](/blog/how-the-machine-learns/) — 2026-03-13
+  Training a model is closer to an apprenticeship than to programming, and the difference explains both its power and its blind spots.
+- [The Prediction Engine](/blog/the-prediction-engine/) — 2026-03-06
+  A large language model is a machine for guessing the next word, and that turns out to be enough to change how work gets done.
+- [How to Smell the Hype](/blog/how-to-smell-the-hype/) — 2026-02-27
+  A field guide to evaluating AI claims, for owners who will hear a thousand of them this year.

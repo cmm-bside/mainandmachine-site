@@ -11,6 +11,7 @@
 // SEO/JSON-LD is built ONLY from post metadata, never the body. Reads nothing
 // from the network. Tolerates a missing data module (fresh clone) -> empty blog.
 import fs from "node:fs";
+import { POST_SEO_DESCRIPTIONS } from "./lib/post-seo.mjs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
@@ -117,6 +118,9 @@ const ALLOW_EMPTY_BLOG = process.env.ALLOW_EMPTY_BLOG === "1";
 
 async function main() {
 	const { posts, meta } = await loadData();
+	for (const post of posts) {
+		if (POST_SEO_DESCRIPTIONS[post.slug]) post.seoDescription = POST_SEO_DESCRIPTIONS[post.slug];
+	}
 
 	// Canonical order: newest first, enforced at render time. The fetch file is
 	// usually already sorted, but dateOverride re-stamps publishedAt after the
@@ -193,7 +197,8 @@ async function loadData() {
 function loadBody(slug) {
 	try {
 		const json = JSON.parse(fs.readFileSync(path.join(BLOG_DATA_DIR, `${slug}.json`), "utf8"));
-		return json.bodyHtml || "";
+		// Retired essay links now lead to the relevant published human-review guide.
+		return (json.bodyHtml || "").replaceAll("/blog/the-person-still-signs/", "/blog/human-in-the-loop-ai-systems/");
 	} catch {
 		return "";
 	}
@@ -222,7 +227,7 @@ function thumb(post, cls) {
 	const img = hi && hi.assetUrl;
 	if (!img) return `<div class="${cls} is-empty"></div>`;
 	const dims = hi.width && hi.height ? ` width="${hi.width}" height="${hi.height}"` : "";
-	return `<div class="${cls}"><img loading="lazy" decoding="async"${dims} alt="${attr(hi.alt || `${post.title}: illustrated diagram from ${BLOG_NAME}`)}" src="${attr(img)}" /></div>`;
+	return `<div class="${cls}"><img loading="lazy" decoding="async"${dims} alt="${attr(hi.alt || `${post.title}: illustrated diagram from ${BLOG_NAME}`)}" src="${attr(img)}"${hi.srcset ? ` srcset="${attr(hi.srcset)}" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) 50vw, 440px"` : ""} /></div>`;
 }
 
 function card(post) {
@@ -535,7 +540,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 		: "";
 	const heroDims = hero && hero.width && hero.height ? ` width="${hero.width}" height="${hero.height}"` : "";
 	const heroBlock = hero
-		? `<figure class="essay__hero"><img src="${attr(hero.assetUrl)}"${heroDims} decoding="async" alt="${attr(hero.alt || `${post.title}: illustrated diagram from ${BLOG_NAME}`)}" />${heroCap}</figure>`
+		? `<figure class="essay__hero"><img src="${attr(hero.assetUrl)}"${heroDims}${hero.srcset ? ` srcset="${attr(hero.srcset)}" sizes="(max-width: 760px) calc(100vw - 40px), 960px"` : ""} fetchpriority="high" decoding="async" alt="${attr(hero.alt || `${post.title}: illustrated diagram from ${BLOG_NAME}`)}" />${heroCap}</figure>`
 		: "";
 
 	const shareUrl = encodeURIComponent(canonical);

@@ -14,39 +14,10 @@
     'hospitality':          { manual: 2400, revenue: 2200, note: 'Restaurants, hotels, catering, venues.' }
   };
 
-  /* Calibrated to /guides/ai-roi-math-small-business/, which is the canonical
-     math. Two things come from it verbatim:
-
-       stress   — "Cut both lines in half … and assume the build captures only
-                   a quarter of that" → 0.5 x 0.25 = 0.125 of the modeled drag.
-                   Stated twice in the guide, and it reproduces both of its
-                   worked examples exactly ($18,750 and $6,000 a year).
-       run cost — "call it up to $6,000 a year on top."
-
-     THE FRAME MATTERS AS MUCH AS THE RATE. This used to report a year-one NET,
-     subtracting the whole one-time build from a single year of stressed
-     return. That made the low bound negative across 91% of the inputs —
-     including the guide's own 25-person example, which the guide concludes
-     "still pays back inside eighteen months … has room to be substantially
-     wrong and still clear." The calculator was calling that firm a loss while
-     the guide called it a buy.
-
-     The guide never computes a year-one net for the stress case. It compares an
-     ANNUAL RETURN against a ONE-TIME build cost and reports payback. So does
-     this now: both bounds are annual, net of run costs, and the build is shown
-     beside them as the thing being paid back. On that footing the low bound is
-     negative only under ~8-11 people, which is what "thin" actually means. */
-  /* Run costs SCALE with headcount across the band the running-costs guide
-     publishes ($50–$500 a month), rather than being pinned at the ceiling.
-     A flat $6,000 was what made the guide's own 10-person construction case
-     render "+$0 · does not pay back" while Guide 13 calls it a three-to-five
-     year payback — a five-person shop does not pay a hundred-person shop's
-     model bill. Linear from $50/mo at 5 people to $500/mo at 100, so the
-     $6,000/yr figure Guide 13 quotes stays exactly the ceiling it describes.
-
-     Both of Guide 13's worked examples reproduce on this:
-       25-person professional services → 13 months  ("inside eighteen months")
-       10-person construction          → 3.5 years  ("three-to-five-year")   */
+  /* Headcount defaults are planning assumptions, not measured savings or a
+     quote. The lower sensitivity case captures 12.5% of opportunity. The
+     100% case is a theoretical ceiling, never a predicted or typical result.
+     Actual capture and costs can be supplied as a third compute argument. */
   var RUN_MIN_MONTH = 50;
   var RUN_MAX_MONTH = 500;
   var RUN_MIN_EMP = 5;
@@ -90,32 +61,46 @@
     return label(a) + '–' + label(b);
   }
 
-  function compute(industryKey, teamSize){
-    var r = rates[industryKey];
-    var emp = Number(teamSize);
+  function numberOr(value, fallback, min, max){
+    var n = value === '' || value == null ? NaN : Number(value);
+    return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
+  }
+
+  function compute(industryKey, teamSize, options){
+    options = options || {};
+    var r = rates[industryKey] || rates['professional-services'];
+    var emp = numberOr(teamSize, 25, RUN_MIN_EMP, RUN_MAX_EMP);
     var manual = emp * r.manual;
     var revenue = emp * r.revenue;
     var total = manual + revenue;                 /* modeled annual drag */
-    var implementation = Math.min(60000, Math.max(18000, 720 * emp)); /* one-time */
-    var runCost = runCostYear(emp);
+    var defaultImplementation = Math.min(60000, Math.max(18000, 720 * emp));
+    var implementation = numberOr(options.implementation, defaultImplementation, 0, 100000000);
+    var runCost = Math.round(numberOr(options.monthlyRunCost, runCostYear(emp) / 12, 0, 1000000) * 12);
+    var capturePercent = numberOr(options.capturePercent, STRESS_CAPTURE * 100, 0, 100);
+    var captured = total * capturePercent / 100;
+    var annualNet = captured - runCost;
     var annualHigh = total - runCost;             /* all of the drag recovered */
     var annualLow = (total * STRESS_CAPTURE) - runCost; /* the guide's stress test */
     return {
       r:r, emp:emp, manual:manual, revenue:revenue, total:total,
       implementation:implementation, runCost: runCost,
-      annualLow: annualLow, annualHigh: annualHigh
+      annualLow: annualLow, annualHigh: annualHigh,
+      capturePercent: capturePercent, captured: captured, annualNet: annualNet,
+      firstYearNet: annualNet - implementation,
+      firstYearLow: annualLow - implementation,
+      firstYearHigh: annualHigh - implementation
     };
   }
 
   /* Returns an update(target) function that eases the money fields from the
      previous estimate to the target over 400ms, calling paint() each frame.
      Respects prefers-reduced-motion (paints instantly). */
-  var MONEY = ['manual','revenue','total','implementation','runCost','annualLow','annualHigh'];
+  var MONEY = ['manual','revenue','total','implementation','runCost','annualLow','annualHigh','captured','annualNet','firstYearNet','firstYearLow','firstYearHigh'];
   function animator(paint){
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var prev = null, frame = 0;
     function lerp(a, b, t){
-      var out = { r: b.r, emp: b.emp };
+      var out = { r: b.r, emp: b.emp, capturePercent: b.capturePercent };
       MONEY.forEach(function(k){ out[k] = a[k] + (b[k] - a[k]) * t; });
       return out;
     }

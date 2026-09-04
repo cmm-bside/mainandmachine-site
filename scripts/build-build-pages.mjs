@@ -197,7 +197,7 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
       <div class="statrail crop">
         <div class="statrail__bar"><span>The build</span><span><b>Spec</b></span></div>
         <div class="statrail__row"><span class="statrail__k">Delivered through</span><span class="statrail__v statrail__v--sm">${esc(tier.name)}</span></div>
-        <div class="statrail__row"><span class="statrail__k">Price</span><span class="statrail__v"><span data-fact="${priceFact}">${esc(tier.price)}</span></span></div>
+        <div class="statrail__row"><span class="statrail__k">Service range</span><span class="statrail__v"><span data-fact="${priceFact}">${esc(tier.price)}</span></span></div>
         <div class="statrail__row"><span class="statrail__k">Timeline</span><span class="statrail__v"><span data-fact="timeline-${b.tier}">${esc(tier.timeline)}</span></span></div>
         <div class="statrail__row"><span class="statrail__k">${esc(assurance.label)}</span><span class="statrail__v statrail__v--sm">${esc(assurance.value)}</span></div>
       </div>
@@ -213,7 +213,7 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
         <span class="kicker">Who feels it most</span>
         <h2 class="h2 mt-s">Where this one earns its keep.</h2>
       </div>
-      <p>Every sector we work in has a version of this problem. These four feel it hardest, and they are where we have built it most often.</p>
+      <p>These industries commonly have this workflow. Fit depends on your volume, tools, exceptions, and the cost of the manual work; these links are examples of suitability, not a list of customer deployments.</p>
     </div>
     <ul class="buildpage__inds">
             ${inds}
@@ -229,10 +229,10 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
         <span class="kicker">The arithmetic</span>
         <h2 class="h2 mt-s">${esc(b.painHeading)}</h2>
       </div>
-      <p>No invented example here. The method is below; the numbers are yours to put into it.</p>
+      <p>Start with your actual workload and costs. Treat the calculation as a way to test the opportunity, not a promise of revenue or savings.</p>
     </div>
     <div class="prose-2">
-      <p><strong>What to count.</strong> ${b.countThis}. That is the arithmetic, and it is yours to run &mdash; we would rather hand you the method than a number invented for a page.</p>
+      <p><strong>What to count.</strong> ${b.countThis}. Use gross profit rather than total revenue when valuing recovered business. Subtract software, maintenance, and human review costs, and avoid counting the same saved time twice.</p>
       <p>The <a href="/calculator/">ROI calculator</a> models the same shape across a whole team, and its assumptions are published in full underneath it. The number that actually matters comes out of an <a href="/services/#audit">AI Readiness Audit</a>, which measures your workflows instead of averaging them.</p>
     </div>
     <!-- BUILD-PAGE:WORKED-EXAMPLE ${b.slug} -->
@@ -253,11 +253,11 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
         <span class="kicker">How it gets built</span>
         <h2 class="h2 mt-s">Discover, build, evolve.</h2>
       </div>
-      <p>The same three phases as every other engagement. Nothing about this build gets its own process.</p>
+      <p>Define the operating boundary before choosing a model or a tool. Your written scope connects the workflow to the systems, decisions, and people it depends on.</p>
     </div>
     <div class="prose-2">
-      <p><strong>Discover.</strong> We walk the workflow as it runs today &mdash; who touches it, where it stalls, what it costs when it slips. That is the AI Readiness Audit, and it ends in a written document you own.</p>
-      <p><strong>Build.</strong> A fixed quote in writing before work begins, then the system goes into your real operation rather than a demo environment. A person stays in the loop on anything a customer sees.</p>
+      <p><strong>Discover.</strong> We review the workflow, its volume, the tools involved, and what happens when an exception arrives. Use an AI Readiness Audit when that needs investigation, or discuss direct sprint scoping if it is already defined.</p>
+      <p><strong>Build.</strong> Agree the scope and fixed quote before work begins. Define routine actions that may run automatically, decisions requiring human approval, and the tests the workflow must pass.</p>
       <p><strong>Evolve.</strong> Once it is live it needs watching: what it handles, what it escalates, what changed in your business since. That is Managed Services, and it is optional.</p>
       <p class="section-action"><a href="/method/">How we work <span class="arr">&#8594;</span></a></p>
     </div>
@@ -275,9 +275,9 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
         <span class="kicker">What it costs</span>
         <h2 class="h2 mt-s">Delivered through ${esc(tier.name)}.</h2>
       </div>
-      <p>This build has no price of its own. It is scoped and delivered inside a published service, at the published price.</p>
+      <p>The range below is for the delivering service, not a per-feature price. Your quote identifies the capabilities, integrations, and operating requirements included in the engagement.</p>
     </div>
-    <p class="buildpage__price">An <a href="/services/#audit">AI Readiness Audit</a> runs <span data-fact="price-audit">${esc(COMPANY.services.find((s) => s.key === "audit").price)}</span> and tells you whether this build is the right first move. The build itself is delivered in ${esc(tier.name)}. <span data-fact="${priceFact}">${esc(tier.price)}</span>, quoted fixed in writing before work begins.</p>
+    <p class="buildpage__price">An <a href="/services/#audit">AI Readiness Audit</a> runs <span data-fact="price-audit">${esc(COMPANY.services.find((s) => s.key === "audit").price)}</span> and tells you whether this build is the right first move. This capability is delivered through ${esc(tier.name)}; several related capabilities may share one scoped engagement. <span data-fact="${priceFact}">${esc(tier.price)}</span>, quoted fixed in writing before work begins.</p>
     <p class="section-action"><a href="/pricing/">Read the price list&nbsp;<span class="arr">&#8594;</span></a></p>
   </div>
 </section>

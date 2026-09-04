@@ -4,14 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MARCUS: A Private AI Back Office for B:Side Capital</title>
-<meta name="description" content="How we built MARCUS: 14 AI agents that run a regulated lender's back office on-prem, no borrower file leaving the building. A B:Side Capital client story." />
+<meta name="description" content="How Main &amp; Machine built MARCUS for B:Side Capital: 14 AI agents across 7 departments, local document processing, and human approval of consequential work." />
 <link rel="canonical" href="https://www.mainandmachine.com/work/marcus/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
 <meta property="og:title" content="MARCUS: A Private AI Back Office for B:Side Capital" />
-<meta property="og:description" content="14 AI agents running a regulated lender's back office entirely in-house, with no borrower file leaving the building. The high end of what Main &amp; Machine builds. Published with B:Side Capital's permission." />
+<meta property="og:description" content="How Main &amp; Machine built MARCUS for B:Side Capital: 14 AI agents across 7 departments, local document processing, and human approval of consequential work." />
 <meta property="og:url" content="https://www.mainandmachine.com/work/marcus/" />
 <!-- TODO: dedicated 1200×630 share card at /images/og/marcus.png — reusing the work card for now. -->
 <meta property="og:image" content="https://www.mainandmachine.com/images/og/work-marcus.png" />
@@ -23,12 +23,12 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="MARCUS: A Private AI Back Office for B:Side Capital" />
-<meta name="twitter:description" content="14 AI agents running a regulated lender's back office entirely in-house, with no borrower file leaving the building. Published with B:Side Capital's permission." />
+<meta name="twitter:description" content="How Main &amp; Machine built MARCUS for B:Side Capital: 14 AI agents across 7 departments, local document processing, and human approval of consequential work." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/work-marcus.png" />
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=143" />
+<link rel="stylesheet" href="/styles.css?v=144" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -269,8 +269,6 @@ dl.mk-stats{ margin-bottom: 0; }
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org",
-        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -288,7 +286,7 @@ dl.mk-stats{ margin-bottom: 0; }
       "url": "https://www.mainandmachine.com/work/marcus/",
       "datePublished": "2026-06-24",
       "dateModified": "2026-07-31",
-      "description": "Main & Machine built MARCUS — 14 AI agents that run a regulated lender's back office entirely on-prem, with no borrower file leaving the building.",
+      "description": "How Main & Machine built MARCUS for B:Side Capital: 14 AI agents across 7 departments, local document processing, and human approval of consequential work.",
       "about": "AI implementation for a regulated SBA 504 / CDFI lender",
       "isPartOf": {
         "@id": "https://www.mainandmachine.com/#website"
@@ -399,22 +397,31 @@ dl.mk-stats{ margin-bottom: 0; }
     </a>
     <nav class="nav__links" id="nav-links">
       <span class="nav__item nav__item--menu">
-        <a href="/services/">Services</a>
-        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <a href="/services/">Solutions</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Solutions menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
         <div class="nav__menu" id="nav-services-menu">
-          <a href="/services/">Compare all three</a>
-          <a href="/services/#audit">AI Readiness Audit</a>
-          <a href="/services/#sprint">Implementation Sprint</a>
-          <a href="/services/#managed">Managed Services</a>
+          <a href="/services/">Compare services</a>
+          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
+          <a href="/services/ai-implementation/">AI Implementation</a>
+          <a href="/services/managed-ai-services/">Managed AI Services</a>
+          <a href="/services/builds/">Systems we build</a>
+          <a href="/industries/">Industries we serve</a>
+          <a href="/method/">How we work</a>
         </div>
       </span>
-      <a href="/work/" class="is-active" aria-current="page">Proof</a>
+      <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/score/">Your Score</a>
-      <a href="/method/">Method</a>
-      <a href="/about/">Who We Are</a>
-      <a href="/blog/">Blog</a>
-      <a href="/contact/">Contact</a>
+      <span class="nav__item nav__item--menu">
+        <a href="/guides/">Resources</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-resources-menu" aria-label="Resources menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-resources-menu">
+          <a href="/guides/">Buyer’s guides</a>
+          <a href="/score/">AI-Ready Score</a>
+          <a href="/calculator/">ROI calculator</a>
+          <a href="/blog/">The Ampersand</a>
+        </div>
+      </span>
+      <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
       <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
@@ -439,8 +446,8 @@ dl.mk-stats{ margin-bottom: 0; }
     <div class="mk-hero">
       <div>
         <span class="kicker">Client story · B:Side Capital</span>
-        <h1 class="h-hero h-hero--story">We built a team of AI agents that runs a lender’s back office, <span class="accent-tx">without a single file leaving the&nbsp;building.</span></h1>
-        <p class="lead">B:Side Capital, an SBA 504 and CDFI lender, came to us with hundreds of process documents and one hard requirement: automate the repetitive work, but never give up control of the data or the decisions. We built MARCUS to do exactly that.</p>
+        <h1 class="h-hero h-hero--story">AI agents that prepare a lender’s back-office work. <span class="accent-tx">People own the&nbsp;decisions.</span></h1>
+        <p class="lead">B:Side Capital, an SBA 504 and CDFI lender led by our founder Christopher Myers, needed to reduce repetitive preparation without giving up control of data or decisions. We built MARCUS around its process documents and existing tools: local document processing, filtered model access, and human approval of consequential actions.</p>
         <div class="hero__cta">
           <a data-cta="page-hero" class="btn btn--primary btn--lg" href="/book/">Build something like MARCUS <span class="arr">&#8594;</span></a>
           <a class="btn btn--secondary btn--lg" href="#solution">See how it works</a>
@@ -466,29 +473,29 @@ dl.mk-stats{ margin-bottom: 0; }
 <section class="section ink section--tight deco-amp">
   <div class="wrap">
     <span class="kicker">First 90 days, measured</span>
-    <h2 class="h2 mt-s">A year in, here is what it actually returned.</h2>
+    <h2 class="h2 mt-s">What the first 90 days returned.</h2>
     <!-- BUILD-LOG:MARCUS-SCORECARD-COMPACT — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
       <div class="scoregrid scoregrid--compact">
         <div class="score" data-figure="hours-returned">
           <div class="score__n tick-num">1,240<small>hrs</small></div>
-          <p class="score__d">Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work.</p>
+          <p class="score__d">Staff preparation hours returned in the reported 90-day window. Annualized, that is approximately 5,000 hours, or 2.4 full-time equivalents of preparation capacity; it is not measured annual cash savings.</p>
         </div>
         <div class="score" data-figure="weekly-adoption">
           <div class="score__n tick-num">93<small>%</small></div>
-          <p class="score__d">Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck.</p>
+          <p class="score__d">Of staff using MARCUS weekly by week six, through tools they already used.</p>
         </div>
         <div class="score" data-figure="identifiers-out">
           <div class="score__n tick-num">0</div>
-          <p class="score__d">Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists.</p>
+          <p class="score__d">Borrower identifiers reported as sent to outside models during the measurement window. Prompts and documents passed through the privacy filter; mandatory filtering is not a guarantee of perfect detection.</p>
         </div>
         <div class="score" data-figure="human-approved">
           <div class="score__n tick-num">100<small>%</small></div>
-          <p class="score__d">Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted.</p>
+          <p class="score__d">Of consequential actions approved by a person before sending, filing, posting, or paying during the reported measurement window.</p>
         </div>
       </div>
 <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
     <!-- BUILD-LOG:MARCUS-WINDOW — rendered from data/build-log.json. Never hand-edit. -->
-        <p class="window-note">Measurement window: the first 90 days of full-fleet operation. Every figure on this page is reconstructable from the tamper-evident audit log — that is the point of having one.</p>
+        <p class="window-note">Measurement window: the first 90 days of full-fleet operation. Results are reported by B:Side Capital and reconciled against its audit log, with written approval on file. Preparation time returned is operating capacity, not a claim of reduced payroll. Annualized equivalents are not measured annual savings.</p>
 <!-- /BUILD-LOG:MARCUS-WINDOW -->
     <div class="hero__cta">
       <a class="btn btn--secondary" href="/work/marcus/results/">Read the measured results</a>
@@ -514,7 +521,7 @@ dl.mk-stats{ margin-bottom: 0; }
       </div>
       <div>
         <p class="lead lead--loose">B:Side Capital is a mission-driven lender, an SBA 504 and CDFI institution whose work touches sensitive borrower financials at every step: intake, eligibility, underwriting support, funding, portfolio monitoring, and the high-stakes work of servicing distressed loans. It’s a business where a single mishandled document isn’t an inconvenience; it’s a compliance event.</p>
-        <p class="mk-punch">That’s the kind of environment most AI tools quietly avoid. <span class="accent-tx">It’s the kind we build for.</span></p>
+        <p class="mk-punch">Sensitive documents, established processes, and accountable decisions shaped the build from the start.</p>
       </div>
     </div>
   </div>
@@ -530,7 +537,7 @@ dl.mk-stats{ margin-bottom: 0; }
     </div>
     <div class="prose-2">
       <p class="lead lead--loose">Before anyone can make a decision, someone has to gather the documents, pull the reports, run the checks, and draft the paperwork. The same steps, over and over, across seven departments. That preparation is where the bottlenecks form.</p>
-      <p class="lead lead--loose">The obvious fix, feed it all to a cloud AI, was a non-starter. Borrower data can’t leave a controlled environment. Eligibility, credit, and pricing can’t be decided by a black box. And every action a regulator might ask about has to be provable, after the fact, down to the source.</p>
+      <p class="lead lead--loose">The team needed a defined boundary around borrower documents and a reviewable path from source records to prepared work. Eligibility, credit, and pricing remained with the people responsible for them. The system had to show its sources and record its actions.</p>
     </div>
     <p class="kicker kicker--plain mk-sub">The brief, in one line</p>
     <p class="mk-brief">Take the prep off our people’s plate, without ever taking them out of control.</p>
@@ -547,7 +554,7 @@ dl.mk-stats{ margin-bottom: 0; }
       </div>
       <div>
         <p class="lead lead--loose">MARCUS is not an app B:Side’s team had to learn. It’s a colleague that lives inside the tools they already use: Slack, their lending systems, the browser. It does the gathering, checking, and drafting, then hands finished, organized work to a person to approve.</p>
-        <p class="lead lead--loose">Built entirely from B:Side’s own process documentation, every step MARCUS takes traces back to how the institution already works. Nothing was invented.</p>
+        <p class="lead lead--loose">B:Side’s process documentation defined the workflows and the sources each agent should use. That made the work reviewable against the institution’s own operating rules.</p>
       </div>
     </div>
 
@@ -681,10 +688,10 @@ dl.mk-stats{ margin-bottom: 0; }
 <!-- ============ 6 · PRIVACY & CONTROL ============ -->
 <section class="section ink">
   <div class="wrap">
-    <span class="kicker">Your data never leaves the building</span>
+    <span class="kicker">The local processing path</span>
     <div class="head-block">
-      <h2 class="h2">The whole system runs in-house. <span class="accent-tx">On&nbsp;purpose.</span></h2>
-      <p class="lead lead--loose">Most AI vendors ask you to trust their cloud. We did the opposite. MARCUS runs on a single secured machine in B:Side’s own server closet. The models that read borrower documents run right there, in the building.</p>
+      <h2 class="h2">Local processing. <span class="accent-tx">Defined data&nbsp;boundaries.</span></h2>
+      <p class="lead lead--loose">MARCUS processes borrower documents on a secured machine in B:Side’s own server closet. A privacy filter scans prompts and documents before model processing. Selected tasks can use a commercial model on filtered text, as described in the <a href="/work/marcus/results/">results and architecture detail</a>.</p>
     </div>
 
     <div class="mk-priv">
@@ -693,21 +700,21 @@ dl.mk-stats{ margin-bottom: 0; }
           <span class="ln">L1</span>
           <div>
             <h3>Local by default</h3>
-            <p>The AI lives on B:Side’s own hardware, not someone else’s cloud. In normal operation, nothing about a file is sent to an outside service.</p>
+            <p>Borrower-document processing runs on B:Side’s hardware. External model use is a separate routing decision for selected tasks on filtered text; local deployment does not make every downstream service local.</p>
           </div>
         </div>
         <div class="mk-layer">
           <span class="ln">L2</span>
           <div>
-            <h3>PII stripped before the model ever sees it</h3>
-            <p>Microsoft Presidio detects and removes names, SSNs, and account numbers first. The model sees the work, not the identity.</p>
+            <h3>Identifiers filtered before model processing</h3>
+            <p>Microsoft Presidio detects supported identifiers for removal before model processing. Detection is imperfect; seeded tests, routing limits, and review are part of the control.</p>
           </div>
         </div>
         <div class="mk-layer">
           <span class="ln">L3</span>
           <div>
             <h3>Encrypted and tamper-evident</h3>
-            <p>Everything stored is fully encrypted, and every action writes to an append-only log secured as a tamper-evident chain. Compliance can prove nothing was altered.</p>
+            <p>Stored documents and work products are encrypted. Actions are recorded in an append-only, hash-chained log so changes to recorded entries can be checked.</p>
           </div>
         </div>
       </div>
@@ -715,14 +722,14 @@ dl.mk-stats{ margin-bottom: 0; }
       <div class="mk-closet">
         <div class="mk-closet__tag"><span>B:Side server closet</span><span>On-prem</span></div>
         <div class="mk-box"><h4>Borrower document</h4><div class="d">raw · sensitive · stays put</div></div>
-        <div class="mk-flowarrow">↓ Presidio strips PII</div>
-        <div class="mk-box mk-box--core"><h4>Local model</h4><div class="d">reads the work, not the identity</div></div>
+        <div class="mk-flowarrow">↓ Presidio detects and removes identifiers</div>
+        <div class="mk-box mk-box--core"><h4>Local model</h4><div class="d">processes filtered text</div></div>
         <div class="mk-flowarrow">↓ encrypt + log to chain</div>
         <div class="mk-box"><h4>Encrypted store &amp; audit chain</h4><div class="d">append-only · tamper-evident</div></div>
-        <div class="mk-ext">⛌&nbsp;&nbsp;<b>No borrower file leaves this box in normal operation.</b></div>
+        <div class="mk-ext">⛌&nbsp;&nbsp;<b>Local document-processing path shown. Selected external tasks use filtered text.</b></div>
       </div>
     </div>
-    <p class="lead lead--loose mk-after" style="max-width: 62ch;">This is what makes MARCUS usable in a regulated lending environment at all, and it’s the part most teams can’t build.</p>
+    <p class="lead lead--loose mk-after" style="max-width: 62ch;">The diagram shows the local processing path. Read the <a href="/security/">security review</a> for deployment choices, filter limitations, and the questions to ask about your own workflow.</p>
   </div>
 </section>
 
@@ -864,9 +871,9 @@ dl.mk-stats{ margin-bottom: 0; }
         <h2>Services</h2>
         <ul>
           <li><a href="/services/">Compare all three</a></li>
-          <li><a href="/services/#audit">AI Readiness Audit</a></li>
-          <li><a href="/services/#sprint">Implementation Sprint</a></li>
-          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/ai-implementation/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-ai-services/">Managed Services</a></li>
           <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
@@ -901,7 +908,7 @@ dl.mk-stats{ margin-bottom: 0; }
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".mk-hero > *,.mk-client > *,.head-block > *,.prose-2 > *,.mk-surfaces > *,.mk-stats > *,.mk-map,.mk-buildorder > *,.mk-priv > *,.mk-flow > *,.mk-rules > *,.mk-outcome > *,.mk-closer > *,.mk-storieshead > *,.mk-stories > *,.foot__top > *"></script>
 
-<script src="/js/nav.js?v=7"></script>
+<script src="/js/nav.js?v=8"></script>
 <script src="/js/analytics.js?v=5"></script>
 </body>
 </html>

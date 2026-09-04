@@ -13,22 +13,22 @@ export const MARCUS = {
     "hours-returned": {
       "value": "1,240",
       "unit": "hrs",
-      "desc": "Staff hours of preparation returned in 90 days — a ~5,000-hour annual run rate, roughly 2.4 full-time people of pure prep work."
+      "desc": "Staff preparation hours returned in the reported 90-day window. Annualized, that is approximately 5,000 hours, or 2.4 full-time equivalents of preparation capacity; it is not measured annual cash savings."
     },
     "weekly-adoption": {
       "value": "93",
       "unit": "%",
-      "desc": "Of staff using MARCUS weekly by week six — with no new app, no new login, and no training deck."
+      "desc": "Of staff using MARCUS weekly by week six, through tools they already used."
     },
     "identifiers-out": {
       "value": "0",
       "unit": "",
-      "desc": "Borrower identifiers sent to any outside model. Every prompt and document cleared the privacy filter first. No exceptions, because no bypass exists."
+      "desc": "Borrower identifiers reported as sent to outside models during the measurement window. Prompts and documents passed through the privacy filter; mandatory filtering is not a guarantee of perfect detection."
     },
     "human-approved": {
       "value": "100",
       "unit": "%",
-      "desc": "Of consequential actions approved by a person before anything sent, filed, posted, or paid. Zero unapproved actions — verified by the audit log, not asserted."
+      "desc": "Of consequential actions approved by a person before sending, filing, posting, or paying during the reported measurement window."
     },
     "uptime": {
       "value": "99.96",
@@ -38,12 +38,12 @@ export const MARCUS = {
     "model-calls": {
       "value": "2.1M",
       "unit": "",
-      "desc": "Model calls processed entirely on-premises in 90 days. In normal operation, none left the building."
+      "desc": "Local model calls processed on B:Side’s hardware during the reported 90-day window. Selected external-model tasks are a separate processing route."
     },
     "hardware-markup": {
       "value": "$0",
       "unit": "",
-      "desc": "Hardware markup. Bought at cost, in the client's name. That we do not mark it up is the point."
+      "desc": "Hardware markup. The server was bought at cost in the client’s name."
     },
     "model-swaps": {
       "value": "1",
@@ -63,12 +63,12 @@ export const MARCUS = {
     "detection-recall": {
       "value": "99.8",
       "unit": "%",
-      "desc": "Detection recall on the monthly seeded red-team test — measured, not claimed, and improving each cycle."
+      "desc": "Detection recall on the monthly seeded test set. This measures known test identifiers, not every possible identifier in production."
     },
     "pii-incidents": {
       "value": "0",
       "unit": "",
-      "desc": "PII incidents since the filter went live. The number the board actually asks about."
+      "desc": "PII incidents reported since the filter went live."
     },
     "kb-build-time": {
       "value": "2",
@@ -93,7 +93,7 @@ export const MARCUS = {
     "first-question": {
       "value": "11",
       "unit": "min",
-      "desc": "From go-live to the first real staff question — no training session had happened yet. None was needed."
+      "desc": "From go-live to the first real staff question, before the introductory session."
     },
     "adoption-week-six": {
       "value": "93",
@@ -113,12 +113,12 @@ export const MARCUS = {
     "chat-filtered": {
       "value": "100",
       "unit": "%",
-      "desc": "Of chat traffic routed through the privacy filter — the paste-into-a-chatbot habit, made safe instead of banned."
+      "desc": "Of chat traffic routed through the privacy filter in the reported deployment."
     },
     "kb-demand-week": {
       "value": "Wk 2",
       "unit": "",
-      "desc": "When the first question about loan history arrived — the knowledge base selling itself, in the wild."
+      "desc": "When the first question about loan history identified a need to connect the knowledge base."
     },
     "invoices-staged": {
       "value": "640",
@@ -153,7 +153,7 @@ export const MARCUS = {
     "harness-generic": {
       "value": "84",
       "unit": "%",
-      "desc": "Of the harness is generic assertion-running; the remainder is client-specific fixtures. Which means it deploys anywhere — including on AI systems somebody else built."
+      "desc": "Of the test harness consists of reusable assertion-running code; the remainder consists of client-specific test cases."
     }
   }
 };

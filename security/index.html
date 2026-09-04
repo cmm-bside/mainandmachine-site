@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Security &amp; Data Handling | Main &amp; Machine</title>
-<meta name="description" content="On-prem local models, PII stripped before any model reads a document, encryption at rest, a tamper-evident audit log, and a human sign-off on every action." />
+<meta name="description" content="Review Main &amp; Machine’s deployment options, privacy filtering, audit logs, and approval boundaries. Practical questions for your IT and security review." />
 <link rel="canonical" href="https://www.mainandmachine.com/security/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Main &amp; Machine" />
 <meta property="og:title" content="Security &amp; Data Handling | Main &amp; Machine" />
-<meta property="og:description" content="On-prem local models, PII stripped before any model reads a document, encryption at rest, a tamper-evident audit log, and a human sign-off on every action." />
+<meta property="og:description" content="Review Main &amp; Machine’s deployment options, privacy filtering, audit logs, and approval boundaries. Practical questions for your IT and security review." />
 <meta property="og:url" content="https://www.mainandmachine.com/security/" />
 <meta property="og:image" content="https://www.mainandmachine.com/images/og/security.png" />
 <meta property="og:image:type" content="image/png" />
@@ -18,12 +18,12 @@
 <meta property="og:image:alt" content="Main &amp; Machine: Where your data goes." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Security &amp; Data Handling | Main &amp; Machine" />
-<meta name="twitter:description" content="On-prem local models, PII stripped before any model reads a document, encryption at rest, a tamper-evident audit log, and a human sign-off on every action." />
+<meta name="twitter:description" content="Review Main &amp; Machine’s deployment options, privacy filtering, audit logs, and approval boundaries. Practical questions for your IT and security review." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/security.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine: Where your data goes." />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=143" />
+<link rel="stylesheet" href="/styles.css?v=144" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -87,8 +87,6 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org",
-        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -134,15 +132,15 @@
           "name": "Does our data leave our building?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For regulated work, no — the models run on your own hardware, and in normal operation no client file leaves your network. That is how MARCUS runs at a regulated SBA lender today. When a cloud model is the right call for a workflow, we say so in the written quote and you decide."
+            "text": "It depends on the agreed deployment. Local processing can keep source documents on your hardware; selected tasks may use external models on filtered text. We describe external processing in the written quote so you can review the data boundary before work begins."
           }
         },
         {
           "@type": "Question",
-          "name": "Do AI models see our customers' personal information?",
+          "name": "Do AI models see our customers’ personal information?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Microsoft Presidio detects and removes names, Social Security numbers, and account numbers before any model reads a document. The model sees the work, not the identity."
+            "text": "A privacy filter detects and removes supported identifiers before processing. Automated detection is imperfect, so we review the data, deployment restrictions, and additional controls for the workflow. Passing a document through a filter is not a guarantee that every identifier was removed."
           }
         },
         {
@@ -150,7 +148,7 @@
           "name": "How is stored data protected?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Everything stored is encrypted at rest, and every action the system takes is written to an append-only audit log secured as a tamper-evident chain."
+            "text": "MARCUS encrypts stored documents and work products and records actions in an append-only, hash-chained audit log. Your deployment review should also cover access, keys, backups, and retention."
           }
         },
         {
@@ -158,7 +156,7 @@
           "name": "Can we audit what the system did?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The audit log is append-only and tamper-evident: entries can be added but never edited or deleted, so compliance can prove nothing was altered after the fact."
+            "text": "Yes. An append-only, hash-chained log records system actions and supports checking for changes to recorded entries. Your review should establish who can access the log, how it is retained, and how verification is performed."
           }
         },
         {
@@ -166,7 +164,7 @@
           "name": "Can the AI act on its own?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Nothing sends, files, posts, or pays until a person approves it. The system never decides eligibility, credit, or price — those numbers come from your systems of record, never from a model's memory."
+            "text": "The scope defines that boundary. Routine replies and bookings can run within agreed rules; consequential actions require approval. MARCUS prepares financial and lending work for people to review and uses systems of record for eligibility, credit, and price inputs."
           }
         },
         {
@@ -174,7 +172,7 @@
           "name": "Has this architecture run in a regulated environment?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, entirely on-prem. The case is published with the client's written permission."
+            "text": "Yes. MARCUS supports B:Side Capital, a regulated SBA 504 / CDFI lender led by our founder, with 14 AI agents across 7 departments. The case is published with permission. Its controls and reported results are evidence of that deployment, not a certification of every future build."
           }
         }
       ]
@@ -257,22 +255,31 @@
     </a>
     <nav class="nav__links" id="nav-links">
       <span class="nav__item nav__item--menu">
-        <a href="/services/">Services</a>
-        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <a href="/services/">Solutions</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Solutions menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
         <div class="nav__menu" id="nav-services-menu">
-          <a href="/services/">Compare all three</a>
-          <a href="/services/#audit">AI Readiness Audit</a>
-          <a href="/services/#sprint">Implementation Sprint</a>
-          <a href="/services/#managed">Managed Services</a>
+          <a href="/services/">Compare services</a>
+          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
+          <a href="/services/ai-implementation/">AI Implementation</a>
+          <a href="/services/managed-ai-services/">Managed AI Services</a>
+          <a href="/services/builds/">Systems we build</a>
+          <a href="/industries/">Industries we serve</a>
+          <a href="/method/">How we work</a>
         </div>
       </span>
-      <a href="/work/">Proof</a>
+      <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/score/">Your Score</a>
-      <a href="/method/">Method</a>
-      <a href="/about/">Who We Are</a>
-      <a href="/blog/">Blog</a>
-      <a href="/contact/">Contact</a>
+      <span class="nav__item nav__item--menu">
+        <a href="/guides/">Resources</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-resources-menu" aria-label="Resources menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-resources-menu">
+          <a href="/guides/">Buyer’s guides</a>
+          <a href="/score/">AI-Ready Score</a>
+          <a href="/calculator/">ROI calculator</a>
+          <a href="/blog/">The Ampersand</a>
+        </div>
+      </span>
+      <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
       <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
@@ -296,16 +303,16 @@
     <div class="sechero__grid">
       <div>
         <span class="kicker">Security &amp; data handling</span>
-        <h1 class="h2 mt-s">Where your data goes — <span class="accent-tx">and where it&nbsp;never&nbsp;goes.</span></h1>
-        <p class="lead mt-s">This page is written for the person who reviews vendors for a living: your IT lead, your compliance officer, your fractional CISO. It describes the architecture our builds inherit — the same one running a regulated lender’s back office today. Bring your security questionnaire; the answers below are the ones we put in writing.</p>
+        <h1 class="h2 mt-s">Know where your data goes. <span class="accent-tx">Know who stays&nbsp;in&nbsp;control.</span></h1>
+        <p class="lead mt-s">Review the deployment, data handling, and approval controls before you commit. These are the controls used in MARCUS, the system running at B:Side Capital, and the questions we work through for your own build. Your written scope identifies the deployment and controls that apply to your workflow.</p>
       </div>
       <div class="statrail crop" aria-label="The architecture at a glance">
         <div class="statrail__bar"><span>The architecture</span><span><b>In production</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Models</span><span class="statrail__v">Local · on-prem</span></div>
-        <div class="statrail__row"><span class="statrail__k">PII</span><span class="statrail__v">Stripped pre-model</span></div>
+        <div class="statrail__row"><span class="statrail__k">Models</span><span class="statrail__v">Local-first</span></div>
+        <div class="statrail__row"><span class="statrail__k">PII</span><span class="statrail__v">Filtered pre-model</span></div>
         <div class="statrail__row"><span class="statrail__k">Storage</span><span class="statrail__v">Encrypted at rest</span></div>
         <div class="statrail__row"><span class="statrail__k">Audit log</span><span class="statrail__v">Append-only chain</span></div>
-        <div class="statrail__row"><span class="statrail__k">Actions</span><span class="statrail__v accent-tx">Human-approved</span></div>
+        <div class="statrail__row"><span class="statrail__k">Actions</span><span class="statrail__v accent-tx">Defined approvals</span></div>
       </div>
     </div>
   </div>
@@ -319,7 +326,7 @@
         <span class="kicker">01 / The controls</span>
         <h2 class="h2 mt-s">Five controls, in the order <span class="accent-tx">your data meets them.</span></h2>
       </div>
-      <p class="lead">Most AI vendors ask you to trust their cloud. We built the opposite: a stack where the sensitive thing stays put and every step leaves evidence.</p>
+      <p class="lead">A useful security review follows the data: where it enters, what the model receives, where results are stored, and who can authorize an action. Deployment choices belong in that review before work begins.</p>
     </div>
 
     <div class="controls">
@@ -327,23 +334,23 @@
         <span class="control__no">C-01</span>
         <div>
           <h3>Local models, on your hardware.</h3>
-          <p>For regulated work, the models that read your documents run <b>on a machine in your own building</b>, not someone else’s cloud. In normal operation, nothing about a client file is sent to an outside service. When a cloud model is genuinely the right tool for a workflow, that trade-off is stated in the fixed quote — in writing, before work begins — and you decide.</p>
+          <p>For regulated workflows, local models can run on hardware you own. In MARCUS, borrower documents are processed locally; selected tasks can route filtered text to a commercial model. When external processing is appropriate, the data boundary and trade-off are described in the written quote for you to decide.</p>
           <span class="impl">Deployment: on-prem by default for regulated data</span>
         </div>
       </div>
       <div class="control">
         <span class="control__no">C-02</span>
         <div>
-          <h3>PII is stripped before any model reads a document.</h3>
-          <p><b>Microsoft Presidio</b> — an open-source PII engine you can inspect yourself — detects and removes names, Social Security numbers, and account numbers first. The model sees the work, not the identity. This isn’t a policy promise; it’s a pipeline stage the document physically passes through.</p>
+          <h3>Personal information is filtered before model processing.</h3>
+          <p><b>Microsoft Presidio</b> detects supported personal identifiers such as names, Social Security numbers, and account numbers so they can be removed before model processing. Automated detection can miss information. The filter is one control alongside deployment restrictions, access decisions, and tests using known identifiers. <a href="https://github.com/microsoft/presidio/blob/main/docs/faq.md" rel="noopener">Read Presidio’s documented limitations</a>.</p>
           <span class="impl">Engine: Microsoft Presidio · runs before model ingestion</span>
         </div>
       </div>
       <div class="control">
         <span class="control__no">C-03</span>
         <div>
-          <h3>Everything stored is encrypted at rest.</h3>
-          <p>Documents, extracted data, and work products are <b>fully encrypted</b> where they sit. A copied disk is a useless disk.</p>
+          <h3>Stored documents and work products are encrypted.</h3>
+          <p>MARCUS encrypts stored documents, extracted data, and work products. Encryption helps protect stored information; access to the running system and its keys still matters. Review those responsibilities as part of your deployment.</p>
           <span class="impl">Scope: all stored documents and derived data</span>
         </div>
       </div>
@@ -351,7 +358,7 @@
         <span class="control__no">C-04</span>
         <div>
           <h3>Every action writes to an append-only,&nbsp;tamper-evident&nbsp;log.</h3>
-          <p>Each action the system takes is appended to an audit log secured as a <b>tamper-evident chain</b>: entries can be added, never edited or deleted. When your auditor asks what happened, compliance can <b>prove nothing was altered</b> — not assert it, prove it.</p>
+          <p>MARCUS records actions in an append-only, hash-chained audit log. The chain makes changes to recorded entries detectable when verified. It provides evidence for a review; it does not replace access control, retention decisions, or an investigation of the underlying action.</p>
           <span class="impl">Property: append-only · chained · verifiable</span>
         </div>
       </div>
@@ -359,7 +366,7 @@
         <span class="control__no">C-05</span>
         <div>
           <h3>A person signs off on every&nbsp;consequential&nbsp;action.</h3>
-          <p><b>Nothing sends, files, posts, or pays until a person approves it.</b> The system shows its work — what it did, what it’s asking for, the source it relied on — and a person approves, sends it back, or escalates. While a request waits, nothing moves.</p>
+          <p><b>Consequential actions require human approval.</b> In MARCUS, financial and lending work is prepared for a person to approve, return, or escalate. A customer-facing workflow may handle routine replies or bookings within its agreed scope. The scope must distinguish those actions from decisions that wait for approval.</p>
           <span class="impl">Rule: the machine prepares; people decide</span>
         </div>
       </div>
@@ -371,15 +378,15 @@
 <section class="section paper" data-screen-label="What never happens">
   <div class="wrap">
     <div class="never">
-      <span class="kicker">02 / The other half of the page title</span>
-      <h2 class="h2 mt-s">What never happens.</h2>
+      <span class="kicker">02 / Before you approve a build</span>
+      <h2 class="h2 mt-s">Bring these questions to the review.</h2>
       <ul>
-        <li><b>No client file leaves your network</b> in normal operation on a regulated deployment.</li>
-        <li><b>No model reads raw PII.</b> Identity is stripped before ingestion, not redacted after.</li>
-        <li><b>No action fires on its own.</b> Send, file, post, pay — all of it waits for a human approval.</li>
-        <li><b>No number comes from a model’s memory.</b> Eligibility, credit, price — those come from your systems of record.</li>
-        <li><b>No quiet edits.</b> The audit log only grows; it cannot be rewritten.</li>
-        <li><b>No resold software.</b> We’re vendor-neutral — nothing on this page depends on you buying a product we profit from.</li>
+        <li><b>Deployment.</b> Which work stays local, which can use external services, and what information can cross that boundary?</li>
+        <li><b>Access.</b> Who can read the records, administer the system, approve actions, and revoke access?</li>
+        <li><b>Retention.</b> Where are source files, work products, backups, and audit records kept?</li>
+        <li><b>Decisions.</b> What can run automatically, what needs a person, and where does an exception go?</li>
+        <li><b>Evidence.</b> What is tested, how are failures reported, and what does an audit-log review establish?</li>
+        <li><b>Responsibilities.</b> Which controls belong to your team, to Main &amp; Machine, and to a third-party provider?</li>
       </ul>
     </div>
   </div>
@@ -393,7 +400,7 @@
         <span class="kicker">03 / Not a policy document</span>
         <h2 class="h2 mt-s">This architecture is running <span class="accent-tx">right&nbsp;now.</span></h2>
       </div>
-      <p class="lead">MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, built from ~840 source documents, entirely on-prem. Every control on this page is a description of that system, published with the client’s written permission — not an aspiration for a future one. Across its first 90 days of full-fleet operation, borrower identifiers sent to an outside model: <!-- BUILD-LOG:MARCUS-INLINE-SECURITY — rendered from data/build-log.json. Never hand-edit. --><b>0</b><!-- /BUILD-LOG:MARCUS-INLINE-SECURITY --> (<a href="/work/marcus/results/">the measured results</a>).</p>
+      <p class="lead">MARCUS supports B:Side Capital, a regulated SBA 504 / CDFI lender led by our founder: 14 AI agents across 7 departments, built from ~840 source documents. It combines local processing, a privacy filter, an audit trail, and human approval of consequential actions. The published results report borrower identifiers sent to an outside model: <!-- BUILD-LOG:MARCUS-INLINE-SECURITY — rendered from data/build-log.json. Never hand-edit. --><b>0</b><!-- /BUILD-LOG:MARCUS-INLINE-SECURITY --> during the reported measurement window. <a href="/work/marcus/results/">Read the results and their limits</a>.</p>
     </div>
     <a class="btn btn--secondary btn--lg" href="/work/marcus/">Read the MARCUS case study</a>
   </div>
@@ -430,27 +437,27 @@
       <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">Does our data leave our building?</span></summary>
-          <p>For regulated work, no — the models run on your own hardware, and in normal operation no client file leaves your network. That is how MARCUS runs at a regulated SBA lender today. When a cloud model is the right call for a workflow, we say so in the written quote and you decide.</p>
+          <p>It depends on the agreed deployment. Local processing can keep source documents on your hardware; selected tasks may use external models on filtered text. We describe external processing in the written quote so you can review the data boundary before work begins.</p>
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">Do AI models see our customers’ personal information?</span></summary>
-          <p>No. Microsoft Presidio detects and removes names, Social Security numbers, and account numbers before any model reads a document. The model sees the work, not the identity.</p>
+          <p>A privacy filter detects and removes supported identifiers before processing. Automated detection is imperfect, so we review the data, deployment restrictions, and additional controls for the workflow. Passing a document through a filter is not a guarantee that every identifier was removed.</p>
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">How is stored data protected?</span></summary>
-          <p>Everything stored is encrypted at rest, and every action the system takes is written to an append-only audit log secured as a tamper-evident chain.</p>
+          <p>MARCUS encrypts stored documents and work products and records actions in an append-only, hash-chained audit log. Your deployment review should also cover access, keys, backups, and retention.</p>
         </details>
         <details>
           <summary><span class="q-no">04</span><span class="q-tx">Can we audit what the system did?</span></summary>
-          <p>Yes. The audit log is append-only and tamper-evident: entries can be added but never edited or deleted, so compliance can prove nothing was altered after the fact.</p>
+          <p>Yes. An append-only, hash-chained log records system actions and supports checking for changes to recorded entries. Your review should establish who can access the log, how it is retained, and how verification is performed.</p>
         </details>
         <details>
           <summary><span class="q-no">05</span><span class="q-tx">Can the AI act on its own?</span></summary>
-          <p>No. Nothing sends, files, posts, or pays until a person approves it. The system never decides eligibility, credit, or price — those numbers come from your systems of record, never from a model’s memory.</p>
+          <p>The scope defines that boundary. Routine replies and bookings can run within agreed rules; consequential actions require approval. MARCUS prepares financial and lending work for people to review and uses systems of record for eligibility, credit, and price inputs.</p>
         </details>
         <details>
           <summary><span class="q-no">06</span><span class="q-tx">Has this architecture run in a regulated environment?</span></summary>
-          <p>Yes. MARCUS runs the back office of B:Side Capital, a regulated SBA 504 / CDFI lender: 14 AI agents across 7 departments, entirely on-prem. The case is published with the client’s written permission.</p>
+          <p>Yes. MARCUS supports B:Side Capital, a regulated SBA 504 / CDFI lender led by our founder, with 14 AI agents across 7 departments. The case is published with permission. Its controls and reported results are evidence of that deployment, not a certification of every future build.</p>
         </details>
       </div>
     </div>
@@ -509,9 +516,9 @@
         <h2>Services</h2>
         <ul>
           <li><a href="/services/">Compare all three</a></li>
-          <li><a href="/services/#audit">AI Readiness Audit</a></li>
-          <li><a href="/services/#sprint">Implementation Sprint</a></li>
-          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/ai-implementation/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-ai-services/">Managed Services</a></li>
           <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
@@ -544,7 +551,7 @@
 </footer>
 
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".sechero__grid > *,.controls,.never,.reviewer,.faq > *,.faq__list details,.foot__top > *"></script>
-<script src="/js/nav.js?v=7"></script>
+<script src="/js/nav.js?v=8"></script>
 <script src="/js/analytics.js?v=5"></script>
 </body>
 </html>

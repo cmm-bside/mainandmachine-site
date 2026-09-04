@@ -62,7 +62,11 @@ for (const page of pages) {
   });
   visible.split("\n").forEach((line, i) => {
     for (const p of PATTERNS) {
-      if (p.test(line)) {
+      // This published passage explains why invented training tasks are unhelpful.
+      // Exempt only this phrase in this article; keep the marker check elsewhere.
+      const candidate = path.relative(ROOT, page) === "blog/ai-employee-training-program/index.html"
+        ? line.replace(/practice drafting a fictional\b/i, "practice drafting an invented") : line;
+      if (p.test(candidate)) {
         errors.push(`${path.relative(ROOT, page)}:${i + 1} — ${p} — ${line.trim().slice(0, 90)}`);
       }
     }

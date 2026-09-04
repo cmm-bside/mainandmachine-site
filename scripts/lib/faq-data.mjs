@@ -7,7 +7,7 @@
 
 // Shared answer fragments — keep prices/locations consistent everywhere.
 const COST =
-	"The AI Readiness Audit runs $3,500–$8,500, and 100% of the fee credits toward a sprint signed within 60 days. An AI Implementation Sprint runs $18,000–$60,000, quoted as a fixed price in writing before any work begins — and if a scoped workflow is not live within 90 days, we keep building at no charge until it is. Managed Services runs from $1,500 a month with no lock-in.";
+	"The AI Readiness Audit runs $3,500–$8,500, and 100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. An AI Implementation Sprint runs $18,000–$60,000, quoted as a fixed price in writing before any work begins — and if a scoped workflow is not live within 90 days, we keep building at no charge until it is. Managed Services runs from $1,500 a month with no lock-in.";
 const COST_SHORT =
 	"The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins and guaranteed live within 90 days.";
 // NOTE: there is deliberately no shared REMOTE / TIMELINE answer any more.
@@ -38,7 +38,7 @@ export const FAQ = {
 		heading: "What AI consulting costs.",
 		items: [
 			{ q: "How much does an AI consultant cost per hour?", a: "Independent AI consultants typically bill $100–$300 an hour; specialists with deep machine-learning backgrounds run $200–$500. The total depends on hours, which almost nobody quotes in advance — which is why we price fixed instead." },
-			{ q: "How much should a small business budget for AI consulting?", a: "Roughly $21,500–$68,500 in year one at our published prices: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins — with 100% of the audit fee credited toward the sprint when it is signed within 60 days." },
+			{ q: "How much should a small business budget for AI consulting?", a: "Before audit credits and ongoing costs, the audit and build total $21,500–$68,500: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins — with 100% of the audit fee credited toward the sprint when it is signed within 60 days, up to 25% of the sprint price." },
 			{ q: "Why are Big Four AI engagements so expensive?", a: "They are built for enterprises: layers of analysts, governance frameworks, and brand assurance. Engagements commonly start around $250,000 — rational at 40,000 employees, mismatched at 40." },
 			{ q: "Is fixed-price better than hourly for AI projects?", a: "For small and mid-size businesses, usually yes. AI work carries unusual scope uncertainty, and hourly billing hands all of it to the buyer. A fixed price forces the seller to scope before selling." },
 		],
@@ -107,7 +107,7 @@ export const FAQ = {
 		label: "Audit guide FAQ",
 		heading: "What an audit delivers.",
 		items: [
-			{ q: "What does an AI readiness audit cost?", a: "Ours costs $3,500–$8,500, fixed in writing before work begins, and takes 2–4 weeks. 100% of the fee credits toward a sprint signed within 60 days. The price is published in full on the pricing page — no discovery call required to learn it." },
+			{ q: "What does an AI readiness audit cost?", a: "Ours costs $3,500–$8,500, fixed in writing before work begins, and takes 2–4 weeks. 100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. The price is published in full on the pricing page — no discovery call required to learn it." },
 			{ q: "What do you get at the end of an AI readiness audit?", a: "Four things in writing: a workflow map of your real operations with hours and costs on each step, a shortlist of where AI genuinely pays with rough dollar ranges, a phased implementation plan, and outright ownership of the document. It is vendor-neutral and usable with any builder, or alone." },
 			{ q: "Is an AI readiness audit the same as an AI strategy engagement?", a: "No. Strategy engagements typically cost $25,000–$100,000 and deliver a vision deck and roadmap without prices; an audit is a short diagnostic that produces your numbers — hours, costs, and a shortlist. It is also not a sales document: sometimes the written conclusion is to wait a quarter and build nothing yet." },
 			{ q: "Can you see a sample audit before buying one?", a: "Yes. We publish two pages of a sample audit at mainandmachine.com/services/sample-audit/, built to the exact template a real engagement ends in, and you should ask any firm you are considering for the equivalent." },
@@ -157,8 +157,8 @@ export const FAQ = {
 		label: "ROI math FAQ",
 		heading: "The model, published.",
 		items: [
-			{ q: "How do you calculate AI ROI for a small business?", a: "Model two lines against one cost: manual work ($2,400–$4,000 per employee per year depending on industry) plus lost capacity ($1,800–$2,800 per employee per year), against an implementation estimate of $720 per employee, floored at $18,000 and capped at $60,000. Treat the result as a first read, never a promise." },
-			{ q: "What does AI implementation cost for a 25-person firm?", a: "About $18,000 in our published model ($720 × 25 employees), which is the floor of our Implementation Sprint range of $18,000–$60,000, quoted as a fixed price in writing before work begins." },
+			{ q: "How do you calculate AI ROI for a small business?", a: "Apply a capture percentage to the modeled annual opportunity, subtract twelve months of running costs, then subtract the one-time investment for first-year net. The calculator starts with industry assumptions and lets you edit capture and costs. No result is guaranteed." },
+			{ q: "What does AI implementation cost for a 25-person firm?", a: "The default planning estimate is $18,000, using $720 × 25 employees. It is not a quote. Actual Implementation Sprints cost $18,000–$60,000, with scope and price agreed in writing before work begins." },
 			{ q: "Is the ROI of AI guaranteed?", a: "No, and anyone guaranteeing it is selling. The math breaks when the workflows are not truly repetitive, when adoption fails, or when the estimate counts work you would never have staffed anyway." },
 			{ q: "Where do the per-employee ROI numbers come from?", a: "They are our published model assumptions — the same rates behind our online ROI calculator — stated as team-wide averages. An AI Readiness Audit ($3,500–$8,500, 2–4 weeks) replaces them with your measured numbers." },
 		],

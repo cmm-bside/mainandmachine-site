@@ -107,6 +107,9 @@ export const STATIC_ROUTES = [
 	"/method/",
 	"/about/",
 	"/services/",
+	"/services/ai-readiness-audit/",
+	"/services/ai-implementation/",
+	"/services/managed-ai-services/",
 	"/services/sample-audit/",
 	"/services/builds/",
 	"/services/builds/instant-lead-response/",
@@ -165,7 +168,7 @@ export const STATIC_ROUTES = [
 export const PROXIED_ROUTES = ["/score/"];
 // Proxied routes have no local file for git-derived dates; lastmod is pinned
 // here to the proxied app's last content deploy. Bump when the app ships.
-export const PROXIED_LASTMOD = { "/score/": "2026-07-13" };
+export const PROXIED_LASTMOD = { "/score/": "2026-09-04" };
 
 // On-disk pages that are deliberately NOT sitemapped: post-conversion pages
 // that only exist as redirect targets (each must carry a robots noindex meta
@@ -229,4 +232,4 @@ export const POST_TOPICS = {
 export const POST_TOPIC_FALLBACK = { href: "/services/", label: "What we actually build" };
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "143";
+export const ASSET_VERSION = "144";

@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=143" />
+<link rel="stylesheet" href="/styles.css?v=144" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -112,8 +112,6 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org",
-        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -131,7 +129,7 @@
       "description": "Main & Machine's full AI ROI model, published: per-industry manual-work and lost-capacity rates, the implementation cost formula, a fully worked 25-person example — and the three things that break the math.",
       "url": "https://www.mainandmachine.com/guides/ai-roi-math-small-business/",
       "datePublished": "2026-07-13",
-      "dateModified": "2026-08-09",
+      "dateModified": "2026-09-04",
       "author": {
         "@id": "https://www.mainandmachine.com/#person-cmyers"
       },
@@ -192,7 +190,7 @@
       "name": "How do you calculate AI ROI for a small business?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Model two lines against one cost: manual work ($2,400–$4,000 per employee per year depending on industry) plus lost capacity ($1,800–$2,800 per employee per year), against an implementation estimate of $720 per employee, floored at $18,000 and capped at $60,000. Treat the result as a first read, never a promise."
+        "text": "Apply a capture percentage to the modeled annual opportunity, subtract twelve months of running costs, then subtract the one-time investment for first-year net. The calculator starts with industry assumptions and lets you edit capture and costs. No result is guaranteed."
       }
     },
     {
@@ -200,7 +198,7 @@
       "name": "What does AI implementation cost for a 25-person firm?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "About $18,000 in our published model ($720 × 25 employees), which is the floor of our Implementation Sprint range of $18,000–$60,000, quoted as a fixed price in writing before work begins."
+        "text": "The default planning estimate is $18,000, using $720 × 25 employees. It is not a quote. Actual Implementation Sprints cost $18,000–$60,000, with scope and price agreed in writing before work begins."
       }
     },
     {
@@ -245,22 +243,31 @@
     </a>
     <nav class="nav__links" id="nav-links">
       <span class="nav__item nav__item--menu">
-        <a href="/services/">Services</a>
-        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <a href="/services/">Solutions</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Solutions menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
         <div class="nav__menu" id="nav-services-menu">
-          <a href="/services/">Compare all three</a>
-          <a href="/services/#audit">AI Readiness Audit</a>
-          <a href="/services/#sprint">Implementation Sprint</a>
-          <a href="/services/#managed">Managed Services</a>
+          <a href="/services/">Compare services</a>
+          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
+          <a href="/services/ai-implementation/">AI Implementation</a>
+          <a href="/services/managed-ai-services/">Managed AI Services</a>
+          <a href="/services/builds/">Systems we build</a>
+          <a href="/industries/">Industries we serve</a>
+          <a href="/method/">How we work</a>
         </div>
       </span>
-      <a href="/work/">Proof</a>
+      <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/score/">Your Score</a>
-      <a href="/method/">Method</a>
-      <a href="/about/">Who We Are</a>
-      <a href="/blog/">Blog</a>
-      <a href="/contact/">Contact</a>
+      <span class="nav__item nav__item--menu">
+        <a href="/guides/">Resources</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-resources-menu" aria-label="Resources menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-resources-menu">
+          <a href="/guides/">Buyer’s guides</a>
+          <a href="/score/">AI-Ready Score</a>
+          <a href="/calculator/">ROI calculator</a>
+          <a href="/blog/">The Ampersand</a>
+        </div>
+      </span>
+      <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
       <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
@@ -287,8 +294,8 @@
         <span class="kicker">The Field Guide / 13</span>
         <h1 class="h2 mt-s">What is the real ROI math of AI for a 5–100 person <span class="accent-tx">business?</span></h1>
         <!-- BYLINE:auto -->
-        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated August 2026</span>
-      <span class="byline__reviewed">Reviewed by Christopher Myers, August 2026</span></p>
+        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated September 2026</span>
+      <span class="byline__reviewed">Reviewed by Christopher Myers, September 2026</span></p>
         <!-- /BYLINE:auto -->
         <p class="lead mt-s">Most firms keep their ROI model in a black box and hand you the output. Here is our entire model — every rate, the cost formula, one fully worked example, and the three things that break it.</p>
       </div>
@@ -309,8 +316,8 @@
     <article class="prose">
 
       <h2>What is the real ROI math of AI for a small business?</h2>
-      <p>Two modeled cost lines — manual work and lost capacity — weighed against one implementation cost, with every assumption published. For a 25-person professional-services firm, the model says $150,000 a year of drag against roughly $18,000 to build, and the whole calculation is only as good as its assumptions, which is why this guide shows you every one of them.</p>
-      <p>These are the exact numbers behind <a href="/calculator/">our ROI calculator</a>, laid out in prose instead of a widget. Read them as what they are: a model — our published averages, useful for a first read of whether AI is worth investigating at your size, and built to be replaced by your measured numbers the moment you have them. Nothing on this page is a promise, and the last two sections explain why we refuse to make one.</p>
+      <p>Start with an opportunity assumption, apply a realistic captured share, then subtract operating and implementation costs. At the calculator’s defaults for a 25-person professional-services firm, first-year net is −$987: $18,750 of captured value minus $1,737 running costs and an $18,000 build. This is a sensitivity case, not a prediction.</p>
+      <p>These are the exact numbers behind <a href="/calculator/">our ROI calculator</a>, laid out in prose instead of a widget. Read them as what they are: a model — our published planning assumptions, useful for a first read of whether AI is worth investigating at your size, and built to be replaced by your measured numbers the moment you have them. Nothing on this page is a promise, and the last two sections explain why we refuse to make one.</p>
 
       <h2>What does the “manual work” line&nbsp;actually&nbsp;measure?</h2>
       <p>The modeled cost of hours your team spends on repetitive, rule-following work a machine could carry: re-keying data between systems, drafting routine emails and documents, chasing statuses, reconciling records, copying answers from one place to another. We model it at $4,000 per employee per year in professional services, with different rates by industry.</p>
@@ -369,15 +376,18 @@
       <p class="gtable-note">Our published model assumptions — the same rates behind the calculator. Team-wide averages, not per-person promises; an audit replaces them with your measured numbers.</p>
       <p>If you want the operational detail behind any row — which workflows drive the number in your world — the industry pages walk through it: <a href="/industries/professional-services/">professional services</a> is the deepest of the five. Two notes on using the table. If your business straddles categories — a design-build firm that is half construction and half professional services — blend the rows by headcount rather than picking the flattering one. And if any rate strikes you as too high for your operation, cut it in half and rerun the math; a model you have deliberately discounted and that still clears is telling you more than one you swallowed whole.</p>
 
-      <h2>What does implementation cost in this model?</h2>
-      <p>min($60,000, max($18,000, $720 × employees)). In plain English: $720 per employee, with a floor of $18,000 and a ceiling of $60,000 — which is, not coincidentally, the published range of our <a href="/services/#sprint">Implementation Sprint</a>.</p>
-      <p>The floor exists because a real build has fixed costs that do not shrink with headcount: mapping the workflow, wiring the systems, testing, training the team. The ceiling exists because our unit of work is one workflow at a time, not an enterprise program — past roughly 83 employees the formula stops climbing, because the workflow does not get harder just because the org chart got longer. A 10-person firm models at the $18,000 floor; a 25-person firm at $18,000 as well — the floor is where the formula starts to climb; a 100-person firm at the $60,000 cap. Real quotes are produced by an audit and fixed in writing before work begins, but this formula is what the calculator uses, and it lands inside the real range on purpose. All of it is on <a href="/pricing/">the pricing page</a>.</p>
-
+      <h2>What do the default costs mean?</h2>
+      <p>The starting investment is min($60,000, max($18,000, $720 × employees)). This is a headcount-based planning proxy within the published <a href="/services/ai-implementation/">Implementation Sprint</a> range, not a quote or a claim that headcount determines project complexity. Replace it with the actual scoped investment.</p>
+      <p>The default running-cost assumption scales linearly from $50 per month at five employees to $500 at one hundred, then rounds the annual total to the nearest dollar. For 25 employees it is $1,737 per year; for ten it is $884. This relationship is a modeling convenience, not usage research. The <a href="/calculator/">calculator</a> lets you edit monthly cost, investment and captured share.</p>
+      <h2>How are annual net, first-year net and payback different?</h2>
+      <p>Annual captured value = modeled opportunity × capture percentage. Annual net = captured value − twelve months of running costs. First-year net = annual net − one-time investment. Simple payback = investment ÷ positive annual net. If annual net is zero or negative, the modeled build does not pay back.</p>
+      <p>The first year here is twelve months of operation, with the full initial investment subtracted. It excludes the pre-launch period. Audit fees, managed services, hardware not included in your investment, internal review and training time, taxes and financing are excluded unless you enter them in the cost inputs. Use a full cash-flow model for a purchase decision.</p>
       <h2>How does the math work for a 25-person firm?</h2>
-      <p>Take a 25-person professional-services firm and run every line. Manual work: 25 × $4,000 = $100,000 a year; lost capacity: 25 × $2,000 = $50,000 a year; modeled drag: $150,000 a year against an implementation estimate of $720 × 25 = $18,000.</p>
-      <p>On those numbers the conclusion writes itself: if a build recovers even a fifth of the modeled drag — $30,000 a year — it pays for itself inside eight months, and the model’s full figure would pay it back in weeks. Add the running costs to be fair: the tools and model usage behind a working system typically run $50–$500 a month, so call it up to $6,000 a year on top. The arithmetic still clears easily.</p>
-      <p>Now stress-test it the way you would any forecast. Cut both lines in half — $75,000 of modeled drag — and assume the build captures only a quarter of that: $18,750 a year against $18,000 up front still pays back inside eighteen months, run costs included. The model has room to be substantially wrong and still clear.</p>
-      <p>Run the same math at the other end of our range and the model gets noticeably less enthusiastic. A 10-person <a href="/industries/construction/">construction firm</a> models at 10 × $3,000 + 10 × $1,800 = $48,000 a year of drag, against the $18,000 implementation floor. Apply the same discount — half the drag, a quarter captured — and the build returns $6,000 a year against $18,000 up front plus run costs: a three-to-five-year payback. The model itself is saying “thin, maybe wait” unless the hours are unusually concentrated in one workflow. A model that can say “wait” is the only kind worth publishing.</p>
+      <p>The professional-services baseline is 25 × $4,000 of manual-work opportunity plus 25 × $2,000 of capacity opportunity: $150,000 per year. At the default 12.5% capture, modeled value is $18,750. Running costs of $1,737 leave $17,013 annual net. Subtract the $18,000 investment and first-year net is <strong>−$987</strong>; simple payback is about thirteen operating months.</p>
+      <p>The 12.5% setting comes from the earlier sensitivity example: halve the opportunity and capture one quarter of that reduced figure. It is an illustrative downside scenario, not a proven minimum. Actual capture can be zero. At 100% capture, first-year net would be $130,263, but recovering every dollar is a theoretical ceiling, not a typical result or a forecast.</p>
+      <p>A 10-person <a href="/industries/construction/">construction firm</a> starts at $48,000 opportunity. At 12.5% capture it yields $6,000 before costs. Subtract $884 running costs and $18,000 investment: annual net is $5,116, first-year net is <strong>−$12,884</strong>, and simple payback is about 42 operating months. Changing the inputs can make either example better or worse; a positive answer is not assumed.</p>
+      <h2>When does saved time become financial value?</h2>
+      <p>Recovered hours do not automatically reduce payroll. A cash return needs evidence such as avoided overtime, a deferred hire, lower contractor cost or additional work sold at a measured gross margin. Count additional gross profit, not sales revenue, and do not count the same hour once as saved labor and again as revenue capacity. The baseline is an opportunity estimate until those assumptions are validated.</p>
 
       <h2>What breaks the model?</h2>
       <p>Three things, and at least one of them applies to most businesses. The workflows are not actually repetitive; adoption fails; or the estimate counts work you would never have staffed anyway.</p>
@@ -387,7 +397,7 @@
 
       <h2>Why won’t we promise&nbsp;ROI&nbsp;numbers?</h2>
       <p>Because everything above is our published set of assumptions, not your measured facts, and a promise built on assumptions is fiction with a signature. That is why no page on this site quotes a guaranteed return — this one included.</p>
-      <p>What we do instead is stage the certainty. The <a href="/calculator/">calculator</a> gives you a free first read using the rates in this guide — run your own headcount through it. The same model does heavier work in <a href="/guides/ai-consultant-vs-in-house/">the build-versus-hire comparison</a>, if your alternative is a full-time hire. And when the first read looks worth testing, an <a href="/services/#audit">AI Readiness Audit</a> &mdash; we call it <span data-fact="name-audit">The Blueprint</span> &mdash; $3,500–$8,500, 2–4 weeks, replaces every average on this page with your workflows, your hours, and your rates, then prices the build as a fixed quote in writing. Sometimes the audit’s answer is that the drag is real but the workflows are not automatable yet, and the recommendation is to wait. If you would rather start smaller than that, the <a data-cta="prose" href="/book/">free 30-minute assessment</a> is a conversation about which of your numbers would survive the audit — we reply within 24 hours.</p>
+      <p>What we do instead is stage the certainty. The <a href="/calculator/">calculator</a> gives you a free first read using the rates in this guide — run your own headcount through it. The same model does heavier work in <a href="/guides/ai-consultant-vs-in-house/">the build-versus-hire comparison</a>, if your alternative is a full-time hire. And when the first read looks worth testing, an <a href="/services/ai-readiness-audit/">AI Readiness Audit</a> &mdash; we call it <span data-fact="name-audit">The Blueprint</span> &mdash; $3,500–$8,500, 2–4 weeks, replaces every average on this page with your workflows, your hours, and your rates, then prices the build as a fixed quote in writing. Sometimes the audit’s answer is that the drag is real but the workflows are not automatable yet, and the recommendation is to wait. If you would rather start smaller than that, the <a data-cta="prose" href="/book/">free 30-minute assessment</a> is a conversation about which of your numbers would survive the audit — we reply within 24 hours.</p>
 
       <form class="estimate-form" data-source="/guides/ai-roi-math-small-business/" novalidate>
         <label for="wsRoi">Want this as a worksheet for your numbers?</label>
@@ -415,11 +425,11 @@
       <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">How do you calculate AI ROI for a small business?</span></summary>
-          <p>Model two lines against one cost: manual work ($2,400–$4,000 per employee per year depending on industry) plus lost capacity ($1,800–$2,800 per employee per year), against an implementation estimate of $720 per employee, floored at $18,000 and capped at $60,000. Treat the result as a first read, never a promise.</p>
+          <p>Apply a capture percentage to the modeled annual opportunity, subtract twelve months of running costs, then subtract the one-time investment for first-year net. The calculator starts with industry assumptions and lets you edit capture and costs. No result is guaranteed.</p>
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">What does AI implementation cost for a 25-person firm?</span></summary>
-          <p>About $18,000 in our published model ($720 × 25 employees), which is the floor of our Implementation Sprint range of $18,000–$60,000, quoted as a fixed price in writing before work begins.</p>
+          <p>The default planning estimate is $18,000, using $720 × 25 employees. It is not a quote. Actual Implementation Sprints cost $18,000–$60,000, with scope and price agreed in writing before work begins.</p>
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">Is the ROI of AI guaranteed?</span></summary>
@@ -497,9 +507,9 @@
         <h2>Services</h2>
         <ul>
           <li><a href="/services/">Compare all three</a></li>
-          <li><a href="/services/#audit">AI Readiness Audit</a></li>
-          <li><a href="/services/#sprint">Implementation Sprint</a></li>
-          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/ai-implementation/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-ai-services/">Managed Services</a></li>
           <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
@@ -556,7 +566,7 @@
   });
 })();
 </script>
-<script src="/js/nav.js?v=7"></script>
+<script src="/js/nav.js?v=8"></script>
 <script src="/js/analytics.js?v=5"></script>
 </body>
 </html>

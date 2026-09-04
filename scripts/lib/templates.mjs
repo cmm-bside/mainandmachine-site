@@ -199,22 +199,31 @@ export function nav() {
     </a>
     <nav class="nav__links" id="nav-links">
       <span class="nav__item nav__item--menu">
-        <a href="/services/">Services</a>
-        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <a href="/services/">Solutions</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Solutions menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
         <div class="nav__menu" id="nav-services-menu">
-          <a href="/services/">Compare all three</a>
-          <a href="/services/#audit">AI Readiness Audit</a>
-          <a href="/services/#sprint">Implementation Sprint</a>
-          <a href="/services/#managed">Managed Services</a>
+          <a href="/services/">Compare services</a>
+          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
+          <a href="/services/ai-implementation/">AI Implementation</a>
+          <a href="/services/managed-ai-services/">Managed AI Services</a>
+          <a href="/services/builds/">Systems we build</a>
+          <a href="/industries/">Industries we serve</a>
+          <a href="/method/">How we work</a>
         </div>
       </span>
-      <a href="/work/">Proof</a>
+      <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/score/">Your Score</a>
-      <a href="/method/">Method</a>
-      <a href="/about/">Who We Are</a>
-      <a href="/blog/" class="is-active" aria-current="page">Blog</a>
-      <a href="/contact/">Contact</a>
+      <span class="nav__item nav__item--menu">
+        <a href="/guides/">Resources</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-resources-menu" aria-label="Resources menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-resources-menu">
+          <a href="/guides/">Buyer’s guides</a>
+          <a href="/score/">AI-Ready Score</a>
+          <a href="/calculator/">ROI calculator</a>
+          <a href="/blog/">The Ampersand</a>
+        </div>
+      </span>
+      <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
       <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
@@ -269,9 +278,9 @@ export function footer() {
         <h2>Services</h2>
         <ul>
           <li><a href="/services/">Compare all three</a></li>
-          <li><a href="/services/#audit">AI Readiness Audit</a></li>
-          <li><a href="/services/#sprint">Implementation Sprint</a></li>
-          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/ai-implementation/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-ai-services/">Managed Services</a></li>
           <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
@@ -341,7 +350,7 @@ export function subscribeBand(subscribeUrl, publicationUrl) {
 
 // Scripts shared by every blog page: mobile nav + subscribe enhancement + search.
 export function pageScripts() {
-	return `<script src="/js/nav.js?v=7"></script>
+	return `<script src="/js/nav.js?v=8"></script>
 <script src="/js/analytics.js?v=5"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

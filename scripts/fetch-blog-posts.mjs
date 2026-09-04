@@ -19,6 +19,8 @@ import { createHash } from "node:crypto";
 import { pathToFileURL } from "node:url";
 import sanitizeHtml from "sanitize-html";
 import imageSize from "image-size";
+import { POST_SEO_DESCRIPTIONS } from "./lib/post-seo.mjs";
+import { optimizeBlogImage } from "./lib/blog-images.mjs";
 import {
 	ROOT,
 	LOCAL_SCRATCH_DIRS,
@@ -86,6 +88,10 @@ export async function run() {
 	const soroPosts = soroItems.map(mapSoroPost);
 	const posts = dedupePosts([...beehiivPosts, ...soroPosts])
 		.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
+
+	for (const post of posts) {
+		if (POST_SEO_DESCRIPTIONS[post.slug]) post.seoDescription = POST_SEO_DESCRIPTIONS[post.slug];
+	}
 
 	// Self-host every image (hero + inline) from either source.
 	await localizeImages(posts);
@@ -392,13 +398,14 @@ async function localizeImages(posts) {
 				post.heroImage.assetUrl = local.src;
 				post.heroImage.width = local.width;
 				post.heroImage.height = local.height;
+				post.heroImage.srcset = local.srcset;
 				downloaded++;
 			}
 		}
 		// socialImage is the SAME object reference as heroImage (set in
 		// normalizePost), so the rewrite above already covers it.
 		const before = post.bodyHtml;
-		post.bodyHtml = await rewriteBodyImages(post.bodyHtml, post.slug, post.title, cache);
+		post.bodyHtml = (await rewriteBodyImages(post.bodyHtml, post.slug, post.title, cache)).replaceAll("/blog/the-person-still-signs/", "/blog/human-in-the-loop-ai-systems/");
 		if (post.bodyHtml !== before) downloaded++;
 	}
 	pruneImageDirs(keepSlugs);
@@ -418,6 +425,8 @@ async function fetchImage(remoteUrl, slug, cache) {
 		const file = `${hash}.${ext}`;
 		const dir = path.join(BLOG_IMAGES_DIR, slug);
 		fs.mkdirSync(dir, { recursive: true });
+		const optimized = await optimizeBlogImage(buf, { dir, publicDir: `${BLOG_IMAGES_PUBLIC}/${slug}`, hash });
+		if (optimized) { cache.set(remoteUrl, optimized); return optimized; }
 		fs.writeFileSync(path.join(dir, file), buf);
 		let width = null, height = null;
 		try {
@@ -447,7 +456,8 @@ async function rewriteBodyImages(html, slug, title, cache) {
 		if (!isRemote(src)) continue;
 		const local = await fetchImage(src, slug, cache);
 		if (!local) continue;
-		let next = tag.replace(/\ssrc="[^"]*"/i, ` src="${local.src}"`);
+		let next = tag.replace(/\ssrc="[^"]*"/i, ` src="${local.src}"`).replace(/\s(?:srcset|sizes)="[^"]*"/gi, "");
+		if (local.srcset) next = next.replace(/<img\b/i, `<img srcset="${local.srcset}" sizes="(max-width: 760px) calc(100vw - 40px), 760px"`);
 		if (local.width && !/\swidth=/i.test(next)) {
 			next = next.replace(/<img\b/i, `<img width="${local.width}" height="${local.height}"`);
 		}

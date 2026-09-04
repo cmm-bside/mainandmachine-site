@@ -12,7 +12,7 @@
 //                   AI systems that want source copy rather than the summary.
 import fs from "node:fs";
 import path from "node:path";
-import { ROOT, SITE_ORIGIN, STATIC_ROUTES } from "./lib/config.mjs";
+import { ROOT, SITE_ORIGIN, STATIC_ROUTES, EXCLUDED_POST_SLUGS } from "./lib/config.mjs";
 import { COMPANY } from "../src/data/company.mjs";
 
 // Stamped into llms.txt so consumers can tell how fresh the fact sheet is.
@@ -73,15 +73,15 @@ visible copy of the most important pages, with page delimiters.
 Every price is published; the exact number is quoted fixed, in writing,
 before work begins.
 
-- [${audit.name}](/services/#audit)${named("audit")}: $3,500–$8,500, 2–4 weeks.
+- [${audit.name}](/services/ai-readiness-audit/)${named("audit")}: $3,500–$8,500, 2–4 weeks.
   A workflow map of your real operations, the handful of places AI actually
   pays, and a phased plan you own outright — whether or not you build with us.
-- [${sprint.name}](/services/#sprint)${named("sprint")}: $18,000–$60,000 fixed quote,
+- [${sprint.name}](/services/ai-implementation/)${named("sprint")}: $18,000–$60,000 fixed quote,
   4–12 weeks. Working agents, automations, and integrations built inside
   your real operation, with your team trained to run them. About 90 days
   per workflow. Guarantee: if a scoped workflow is not live within 90 days,
   we keep building at no charge until it is.
-- [${managed.name}](/services/#managed)${named("managed")}: from $1,500/month, no lock-in.
+- [${managed.name}](/services/managed-ai-services/)${named("managed")}: from $1,500/month, no lock-in.
   Monitoring and maintenance on every deployed system; leave any month it
   stops paying. Pay annually and 12 months cost the price of 10.
 - The Full Back Office: from $95,000 — a MARCUS-class, multi-department
@@ -208,6 +208,9 @@ before work begins.
 const FULL_PAGES = [
   "/",
   "/services/",
+  "/services/ai-readiness-audit/",
+  "/services/ai-implementation/",
+  "/services/managed-ai-services/",
   "/pricing/",
   "/method/",
   "/about/",
@@ -334,11 +337,11 @@ function summaryIndex() {
   let posts = [];
   try {
     const mod = fs.readFileSync(path.join(ROOT, "src", "data", "blog-posts.js"), "utf8");
-    const m = /export const posts = (\[[\s\S]*?\]);/.exec(mod);
+    const m = /export const posts\s*=\s*(\[[\s\S]*?\]);/.exec(mod);
     if (m) posts = JSON.parse(m[1]);
   } catch { /* no data module locally */ }
   const essays = posts
-    .filter((p) => p && p.slug && p.title)
+    .filter((p) => p && p.slug && p.title && !EXCLUDED_POST_SLUGS.includes(p.slug))
     .map((p) => {
       const when = (p.publishedAt || "").slice(0, 10);
       const blurb = (p.excerpt || p.subtitle || "").replace(/\s+/g, " ").trim();

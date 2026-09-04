@@ -45,7 +45,7 @@
 <link rel="preconnect" href="https://assets.calendly.com" />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=143" />
+<link rel="stylesheet" href="/styles.css?v=144" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -109,8 +109,6 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org",
-        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -354,22 +352,31 @@
     </a>
     <nav class="nav__links" id="nav-links">
       <span class="nav__item nav__item--menu">
-        <a href="/services/">Services</a>
-        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <a href="/services/">Solutions</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Solutions menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
         <div class="nav__menu" id="nav-services-menu">
-          <a href="/services/">Compare all three</a>
-          <a href="/services/#audit">AI Readiness Audit</a>
-          <a href="/services/#sprint">Implementation Sprint</a>
-          <a href="/services/#managed">Managed Services</a>
+          <a href="/services/">Compare services</a>
+          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
+          <a href="/services/ai-implementation/">AI Implementation</a>
+          <a href="/services/managed-ai-services/">Managed AI Services</a>
+          <a href="/services/builds/">Systems we build</a>
+          <a href="/industries/">Industries we serve</a>
+          <a href="/method/">How we work</a>
         </div>
       </span>
-      <a href="/work/">Proof</a>
+      <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/score/">Your Score</a>
-      <a href="/method/">Method</a>
-      <a href="/about/">Who We Are</a>
-      <a href="/blog/">Blog</a>
-      <a href="/contact/">Contact</a>
+      <span class="nav__item nav__item--menu">
+        <a href="/guides/">Resources</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-resources-menu" aria-label="Resources menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-resources-menu">
+          <a href="/guides/">Buyer’s guides</a>
+          <a href="/score/">AI-Ready Score</a>
+          <a href="/calculator/">ROI calculator</a>
+          <a href="/blog/">The Ampersand</a>
+        </div>
+      </span>
+      <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
       <a aria-label="Book a free assessment" class="btn btn--primary" href="#request" aria-current="page"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
@@ -393,8 +400,8 @@
     <div class="bookhero__grid">
       <div>
         <span class="kicker">The AI Opportunity Assessment</span>
-        <h1 class="h2 mt-s">30 minutes. No pitch. <span class="accent-tx">A straight answer.</span></h1>
-        <p class="lead mt-s">Pick a time below and it’s booked. Or send the form and we’ll reach out within 24 hours. Either way, a senior advisor walks your workflows and shows you where AI actually pays, where it does not, and what it is worth, including when the smart move is to wait a quarter.</p>
+        <h1 class="h2 mt-s">Find your next <span class="accent-tx">useful AI project.</span></h1>
+        <p class="lead mt-s">Bring one repetitive workflow. In a free 30-minute call, a senior advisor will help you assess the opportunity, identify the constraints, and choose a sensible next step. Pick a time below, or send the form for a reply within 24 hours.</p>
       </div>
       <div class="statrail crop" aria-label="What the assessment is">
         <div class="statrail__bar"><span>Assessment</span><span><b>Free</b></span></div>
@@ -567,7 +574,7 @@
 
         <div class="panel">
           <h2 class="panel__t">Why it&rsquo;s free</h2>
-          <p>Scoping is the work. We quote a fixed price in writing before anything starts, and you cannot quote a fixed price without knowing what you are quoting. The first thirty minutes is unavoidable &mdash; we just don&rsquo;t charge for it.</p>
+          <p>The assessment establishes fit and the next step. A final scope and fixed project price may need a follow-up conversation or a paid audit. We quote that work in writing before a project starts.</p>
           <p style="margin-top:12px;">We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar.</p>
         </div>
         <div class="panel panel--ink crop">
@@ -630,21 +637,7 @@
 </main>
 <footer class="foot">
   <div class="wrap">
-    <div class="foot__signup">
-        <div class="foot__signup-copy">
-          <span class="kicker kicker--plain">The Ampersand · free, a few times a month</span>
-          <h2>Plain-English AI for Main Street.</h2>
-          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
-        </div>
-        <div>
-          <form class="signup" data-beehiiv-subscribe action="https://theampersand.beehiiv.com/subscribe" method="get" target="_blank" aria-label="Subscribe to The Ampersand">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
-            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&rarr;</span></button>
-          </form>
-          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
-        </div>
-      </div>
-      <div class="foot__top">
+    <div class="foot__top">
       <div class="foot__brand">
         <a class="logo ink" href="/" aria-label="Main &amp; Machine home" style="background:transparent;">
           <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
@@ -670,9 +663,9 @@
         <h2>Services</h2>
         <ul>
           <li><a href="/services/">Compare all three</a></li>
-          <li><a href="/services/#audit">AI Readiness Audit</a></li>
-          <li><a href="/services/#sprint">Implementation Sprint</a></li>
-          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/ai-implementation/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-ai-services/">Managed Services</a></li>
           <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
@@ -1280,7 +1273,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
-<script src="/js/nav.js?v=7"></script>
+<script src="/js/nav.js?v=8"></script>
 <script src="/js/analytics.js?v=5"></script>
 </body>
 </html>

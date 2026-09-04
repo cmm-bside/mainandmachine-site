@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=143" />
+<link rel="stylesheet" href="/styles.css?v=144" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -121,8 +121,6 @@
         "https://www.entrepreneur.com/author/christopher-myers",
         "https://search.asu.edu/profile/559969",
         "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-        "https://www.bside.org",
-        "https://www.thebsideway.com",
         "https://www.forbes.com/sites/chrismyers/",
         "https://www.inc.com/author/chris-myers"
       ],
@@ -169,7 +167,7 @@
       "name": "What are the calculator's assumptions?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Two per-employee figures and one cost. It assumes roughly $4,000 a year of manual administrative work per employee that a system can absorb, and roughly $2,000 a year of revenue lost to slow follow-up per employee. Against those it sets the published cost of an AI Implementation Sprint, $18,000\u2013$60,000, quoted fixed in writing. Every one of those three numbers is visible on this page and adjustable in the model."
+        "text": "Industry and team size set an assumed opportunity baseline. You can edit the captured share, monthly running cost and one-time investment. First-year net subtracts both twelve months of running costs and the build investment. Fees and other costs not entered are excluded."
       }
     },
     {
@@ -177,7 +175,7 @@
       "name": "Where do the $4,000 and $2,000 figures come from?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "They are conservative planning figures, not survey results, and we publish them so you can argue with them. The manual-work figure assumes a few hours a week per employee spent assembling, re-keying and chasing \u2014 the categories our audits find first. The lost-revenue figure assumes a small number of enquiries a year that go cold before anyone replies. If either sounds high or low for your business, change it: the model is the method, not the number."
+        "text": "They are planning assumptions for professional services, not survey results or proven savings. Other industries use different published rates. Adjust the captured share and replace the baseline with measured workflow costs before making an investment decision."
       }
     },
     {
@@ -190,10 +188,10 @@
     },
     {
       "@type": "Question",
-      "name": "Why is the modeled return the same for every industry?",
+      "name": "Does industry change the estimate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It is not the return that is fixed \u2014 it is the method. Industry selection changes which workflow the model treats as the first build, because a contractor's paper cycle and a clinic's intake queue have different shapes. What stays constant is the arithmetic and the published sprint cost, so two businesses of the same size can compare like with like."
+        "text": "Yes. Each industry has different manual-work and capacity-value assumptions, listed in the model guide. The formulas are shared. Changing industry changes the opportunity baseline; it does not prove which workflow your business should automate."
       }
     }
   ]
@@ -222,22 +220,31 @@
     </a>
     <nav class="nav__links" id="nav-links">
       <span class="nav__item nav__item--menu">
-        <a href="/services/">Services</a>
-        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Services menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <a href="/services/">Solutions</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Solutions menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
         <div class="nav__menu" id="nav-services-menu">
-          <a href="/services/">Compare all three</a>
-          <a href="/services/#audit">AI Readiness Audit</a>
-          <a href="/services/#sprint">Implementation Sprint</a>
-          <a href="/services/#managed">Managed Services</a>
+          <a href="/services/">Compare services</a>
+          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
+          <a href="/services/ai-implementation/">AI Implementation</a>
+          <a href="/services/managed-ai-services/">Managed AI Services</a>
+          <a href="/services/builds/">Systems we build</a>
+          <a href="/industries/">Industries we serve</a>
+          <a href="/method/">How we work</a>
         </div>
       </span>
-      <a href="/work/">Proof</a>
+      <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/score/">Your Score</a>
-      <a href="/method/">Method</a>
-      <a href="/about/">Who We Are</a>
-      <a href="/blog/">Blog</a>
-      <a href="/contact/">Contact</a>
+      <span class="nav__item nav__item--menu">
+        <a href="/guides/">Resources</a>
+        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-resources-menu" aria-label="Resources menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
+        <div class="nav__menu" id="nav-resources-menu">
+          <a href="/guides/">Buyer’s guides</a>
+          <a href="/score/">AI-Ready Score</a>
+          <a href="/calculator/">ROI calculator</a>
+          <a href="/blog/">The Ampersand</a>
+        </div>
+      </span>
+      <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
       <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
@@ -261,8 +268,8 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">The numbers</span>
-        <h1 class="h2 mt-s">What this is worth, <span class="accent-tx">roughly.</span></h1>
-        <p class="lead mt-s">Pick your industry. Move the team-size slider. See what automating the right handful of workflows could return each year, and how fast the build pays back. Ranges, not promises: we run your real numbers in the free assessment.</p>
+        <h1 class="h2 mt-s">Test the assumptions. <span class="accent-tx">See the full cost.</span></h1>
+        <p class="lead mt-s">Start with an industry and team size, then change the share of opportunity captured and the costs. See the net value after running costs and the build investment. These are planning assumptions, not measured savings or a forecast.</p>
       </div>
     </div>
   </div>
@@ -308,11 +315,27 @@
             <div class="roi__scale"><span>5</span><span>50</span><span>100</span></div>
           </div>
 
-          <div class="roi__assume">
+          <div class="roi__field">
+            <label class="tick-lbl" for="calcCapture">03 / Opportunity captured (%)</label>
+            <input class="input" type="number" id="calcCapture" min="0" max="100" step="0.5" value="12.5" aria-describedby="calcCaptureHelp" />
+            <p class="roi__note" id="calcCaptureHelp">12.5% is a sensitivity case, not an expected result. 100% is the theoretical ceiling.</p>
+          </div>
+          <div class="roi__field">
+            <label class="tick-lbl" for="calcMonthly">04 / Monthly running cost ($)</label>
+            <input class="input" type="number" id="calcMonthly" min="0" max="1000000" step="0.01" value="144.75" aria-describedby="calcCostsHelp" />
+          </div>
+          <div class="roi__field">
+            <label class="tick-lbl" for="calcInvestment">05 / One-time investment ($)</label>
+            <input class="input" type="number" id="calcInvestment" min="0" max="100000000" step="1" value="18000" aria-describedby="calcCostsHelp" />
+            <p class="roi__note" id="calcCostsHelp">Defaults are headcount-based planning estimates. Replace them with your scoped costs. Audit fees, managed services, internal labor and other extras are excluded unless you add them here.</p>
+          </div>
+          <button class="btn btn--secondary" id="calcReset" type="button">Reset planning assumptions</button>
+
+          <div class="roi__assume" id="assumptions">
             <span class="tick-lbl">Assumptions</span>
             <ul>
               <li><span>Manual work / employee</span><span class="mono tab" id="calcAManual">$4,000/yr</span></li>
-              <li><span>Lost revenue / employee</span><span class="mono tab" id="calcARevenue">$2,000/yr</span></li>
+              <li><span>Capacity value / employee</span><span class="mono tab" id="calcARevenue">$2,000/yr</span></li>
               <li><span>Sprint investment</span><span class="mono tab" id="calcAImpl">$18,000</span></li>
               <li><span>Run costs (tools + model usage)</span><span class="mono tab" id="calcARun">$1,737/yr</span></li>
             </ul>
@@ -321,23 +344,26 @@
 
         <!-- output -->
         <div class="roi__output">
-          <span class="tick-lbl">Output / Annual return, modeled</span>
+          <span class="tick-lbl">Output / Selected scenario</span>
           <ul class="roi__rows">
-            <li><span>Repetitive manual work</span><span class="mono tab roi__pos" id="calcManual">+$100,000</span></li>
-            <li><span>Lost revenue (capacity)</span><span class="mono tab roi__pos" id="calcRevenue">+$50,000</span></li>
+            <li><span>Manual-work opportunity</span><span class="mono tab roi__pos" id="calcManual">+$100,000</span></li>
+            <li><span>Capacity opportunity</span><span class="mono tab roi__pos" id="calcRevenue">+$50,000</span></li>
+            <li><span>Value at selected capture</span><span class="mono tab" id="calcCaptured">+$18,750</span></li>
+            <li><span>Annual net after running costs</span><span class="mono tab" id="calcAnnualNet">+$17,013</span></li>
             <li><span>Run costs / year</span><span class="mono tab roi__neg" id="calcRun">-$1,737</span></li>
             <li><span>Sprint investment (one-time)</span><span class="mono tab roi__neg" id="calcImpl">-$18,000</span></li>
-            <li><span>Payback on that build</span><span class="mono tab" id="calcPayback">1–13 months</span></li>
+            <li><span>Payback at selected capture</span><span class="mono tab" id="calcPayback">13 months</span></li>
           </ul>
           <div class="roi__net">
             <div class="roi__nethead">
-              <span class="accent-tx">Modeled return / year</span>
+              <span class="accent-tx">First-year net after build</span>
               <span id="calcFor">For 25 people</span>
             </div>
-            <div class="roi__big tab" id="calcRoi">+$17,013–+$148,263</div>
-            <p class="roi__bigunit">a year, net of run costs — stress-tested low end to full-recovery high end</p>
+            <div class="roi__big tab" id="calcRoi" aria-live="polite" aria-atomic="true">-$987</div>
+            <p class="roi__bigunit">12 operating months at your selected capture, after running costs and one-time investment</p>
           </div>
-          <p class="roi__disclaim">A model, not a promise. Both ends are annual, net of run costs, and the sprint is a one-time cost the return pays back &mdash; the same comparison <a href="/guides/ai-roi-math-small-business/">Guide 13</a> makes. The high end assumes the build recovers all of the modeled drag; the low end applies the guide&rsquo;s stress test, half the drag with a quarter of that captured. On thin cases the payback stretches to years rather than months &mdash; that is the model telling you to wait, and Guide 13 shows the full math. The sprint cost is our published price; the savings are round assumptions you can see above, not your books. We run your real numbers in the free assessment, then commit to fixed scope in writing. The full model — every rate, a worked example, and what breaks it — is published in <a href="/guides/ai-roi-math-small-business/">the ROI math guide</a>; what a live system costs monthly is in <a href="/guides/what-ai-automation-costs-to-run/">the running-costs guide</a>.</p>
+          <p class="roi__note">At 100% capture, the first-year ceiling is <strong id="calcCeiling">+$130,263</strong>. Full recovery is a theoretical limit, not a prediction or typical result.</p>
+          <p class="roi__disclaim">A planning model, not a promise. Saved time is not automatically cash savings; count it only when you can explain how it produces value. Use gross profit rather than sales revenue, and do not count the same recovered hours twice. The default opportunity rates are assumptions, not survey averages. The first year means twelve months of operation; it does not include the pre-launch period. Audit fees, managed services, internal time, taxes and financing are excluded unless included in your inputs. <a href="/guides/ai-roi-math-small-business/">Read the formula and worked examples</a>.</p>
         </div>
       </div>
 
@@ -356,12 +382,12 @@
     <!-- Email me this estimate — NOT a gate: the numbers above stay visible
          whether or not this is used. One field, no obligation. -->
     <form class="estimate-form" id="estimateForm" data-source="/calculator/" novalidate>
-      <label for="estimateEmail">Email me this estimate</label>
+      <label for="estimateEmail">Email the baseline model</label>
       <div class="estimate-form__row">
         <input class="input" type="email" id="estimateEmail" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Your email address" required inputmode="email" />
         <button class="btn btn--secondary" type="submit" id="estimateBtn">Send it</button>
       </div>
-      <p class="estimate-form__note" id="estimateNote">Your inputs, the assumptions behind them, and the guarantee. Nothing else, and you are not subscribed to anything.</p>
+      <p class="estimate-form__note" id="estimateNote">Emails the industry and team-size baseline. Use Share this estimate to save your edited capture and cost scenario. No newsletter subscription.</p>
     </form>
     <div class="roi__cta">
       <a data-cta="calculator" class="btn btn--primary btn--lg" id="calcBook" href="/book/">Run your real numbers: book the free assessment <span class="arr">&#8594;</span></a>
@@ -370,7 +396,7 @@
         <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span></p>
         <p><a href="/pricing/">See the price list&nbsp;<span class="arr">&#8594;</span></a></p>
       </div>
-      <p>The two ends are not a forecast and neither is a typical result: the high end assumes the build recovers all of the modeled drag, the low end applies the stress test in <a href="/guides/ai-roi-math-small-business/">Guide 13</a>. Where you land is what the assessment is for. <b style="color:var(--tx);">If your numbers don’t work, we’ll tell you.</b></p>
+      <p>A positive modeled result is a reason to validate the inputs, not a promise to buy. A negative result stays visible. We can help measure the workflow and compare it with a simpler alternative in the free assessment.</p>
     </div>
     <p class="roi__note" style="margin-top:var(--s-16);">Cost is half the question. Find out if you’re ready.</p>
         <p class="section-action"><a href="/score/">Get your AI-Ready Score&nbsp;<span class="arr">&#8594;</span></a></p>
@@ -394,21 +420,19 @@
          landed in a different column from its own paragraphs. -->
     <div class="prose-2">
       <div>
-        <h3>What the calculator outputs</h3>
-        <p>Three figures. <strong>Modeled return per year</strong> is the annual value the assumptions imply for a team your size. <strong>Payback period</strong> is how long the published sprint cost takes to be covered by that return. <strong>Net first year</strong> is the return minus the build cost over twelve months. None of the three is a forecast of your business; all three are arithmetic on stated inputs.</p>
-        <h3>The three inputs</h3>
-        <p><strong>Manual administrative work: about $4,000 per employee per year.</strong> This is the cost of assembling, re-keying and chasing &mdash; the preparation work that sits in front of a decision rather than being the decision. It is a conservative planning figure, not a survey result. In practice it assumes a few hours a week per person on work a system can absorb. Our audits find this category first because it is the easiest to measure and the hardest to defend.</p>
-        <p><strong>Revenue lost to slow follow-up: about $2,000 per employee per year.</strong> Enquiries that go cold before anyone replies. This one is deliberately small, because it is the assumption most likely to be argued with and we would rather understate it. If your business turns on inbound enquiry volume, it is almost certainly low for you.</p>
-        <p><strong>Build cost: the published price of an AI Implementation Sprint, <span data-fact="price-sprint">$18,000–$60,000</span>.</strong> Not a modeled number and not a range we invent per visitor &mdash; it is the same figure on the <a href="/pricing/">price list</a>, quoted fixed in writing before work begins. The model uses it directly so the payback figure cannot quietly assume a cheaper build than we sell.</p>
+        <h3>The calculation</h3>
+        <p><strong>Annual opportunity</strong> = employees × (the industry's manual-work rate + capacity-value rate). The rates are published assumptions. The selected capture percentage reduces that opportunity to the value in your scenario.</p>
+        <p><strong>Annual net value</strong> = opportunity × capture percentage − twelve months of running costs. <strong>First-year net</strong> subtracts the one-time investment as well. <strong>Payback</strong> divides investment by positive annual net value; zero or negative annual net does not pay back.</p>
+        <h3>Editable assumptions</h3>
+        <p>Change capture, monthly running costs and one-time investment. The starting investment uses $720 per employee, floored at $18,000 and capped at $60,000. That is a planning proxy within the published <span data-fact="price-sprint">$18,000–$60,000</span> sprint range, not a quote calculated from headcount.</p>
+        <p>Default running cost scales from $50 a month at five employees to $500 at one hundred. It is a convenience assumption, not a measured relationship between employees and model usage. Once you edit a cost, changing headcount keeps your cost in place. Reset restores the planning defaults.</p>
       </div>
       <div>
-        <h3>A worked example</h3>
-        <p>Take a 25-person firm. The model applies $4,000 of absorbable manual work per employee, giving $100,000 a year, and $2,000 of slow-follow-up loss per employee, giving $50,000. It does not claim all of that is recoverable &mdash; it applies a recovery fraction, because no system absorbs a whole category of human work, and the fraction is what separates a model from a sales pitch. The result is set against the sprint cost to produce a payback period in months.</p>
-        <p>Run the same arithmetic on a 6-person shop and the return falls below the build cost for a single workflow. That outcome is not a bug in the calculator. It is the calculator telling you the honest answer, which is why the tool does not gate its output behind a form.</p>
-        <h3>What the model deliberately does not do</h3>
-        <p>It does not model headcount reduction. Our largest published build returned <a href="/work/marcus/results/">1,240 staff hours in 90 days</a> without removing a role, and a calculator that assumed otherwise would be modelling a different business than the one we build for.</p>
-        <p>It does not compound. Year-two returns are not projected forward, because the assumptions that hold for twelve months do not obviously hold for thirty-six.</p>
-        <p>It does not price your business. The output is a range built from averages. The number that matters comes out of an <a href="/services/#audit">AI Readiness Audit</a> at <span data-fact="price-audit">$3,500–$8,500</span>, which measures your workflows instead of assuming them.</p>
+        <h3>The default 25-person example</h3>
+        <p>Professional services starts at $100,000 of manual-work opportunity plus $50,000 of capacity opportunity. At 12.5% capture, that is $18,750 of modeled annual value. Subtract $1,737 running costs and the $18,000 one-time investment: <strong>first-year net is −$987</strong>. Annual net before the build cost is $17,013 and simple payback is about thirteen operating months.</p>
+        <h3>What this cannot prove</h3>
+        <p>The 100% capture figure is a theoretical ceiling. Neither it nor the 12.5% case is a forecast, a confidence interval or a guaranteed result. Actual results can be worse, including no return.</p>
+        <p>Recovered hours are not automatically payroll savings. Revenue capacity needs demand, adoption and gross margin to become value. Avoid double-counting labor value and the revenue generated by the same hours. Add audit fees, managed services, internal review time and other relevant costs to make a complete business case.</p>
       </div>
     </div>
     <p class="section-action"><a href="/guides/ai-roi-math-small-business/">The full ROI math, worked&nbsp;<span class="arr">&#8594;</span></a></p>
@@ -426,19 +450,19 @@
     <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">What are the calculator's assumptions?</span></summary>
-          <p>Two per-employee figures and one cost. It assumes roughly $4,000 a year of manual administrative work per employee that a system can absorb, and roughly $2,000 a year of revenue lost to slow follow-up per employee. Against those it sets the published cost of an AI Implementation Sprint, $18,000–$60,000, quoted fixed in writing. Every one of those three numbers is visible on this page and adjustable in the model.</p>
+          <p>Industry and team size set an assumed opportunity baseline. You can edit the captured share, monthly running cost and one-time investment. First-year net subtracts both twelve months of running costs and the build investment. Fees and other costs not entered are excluded.</p>
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">Where do the $4,000 and $2,000 figures come from?</span></summary>
-          <p>They are conservative planning figures, not survey results, and we publish them so you can argue with them. The manual-work figure assumes a few hours a week per employee spent assembling, re-keying and chasing — the categories our audits find first. The lost-revenue figure assumes a small number of enquiries a year that go cold before anyone replies. If either sounds high or low for your business, change it: the model is the method, not the number.</p>
+          <p>They are planning assumptions for professional services, not survey results or proven savings. Other industries use different published rates. Adjust the captured share and replace the baseline with measured workflow costs before making an investment decision.</p>
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">Is this a projection of what we will save?</span></summary>
           <p>No, and the distinction matters. It is a model, not a promise. It shows what the stated assumptions imply arithmetically for a business your size. Your real numbers come out of an AI Readiness Audit, which measures your actual workflows rather than a per-employee average.</p>
         </details>
         <details>
-          <summary><span class="q-no">04</span><span class="q-tx">Why is the modeled return the same for every industry?</span></summary>
-          <p>It is not the return that is fixed — it is the method. Industry selection changes which workflow the model treats as the first build, because a contractor's paper cycle and a clinic's intake queue have different shapes. What stays constant is the arithmetic and the published sprint cost, so two businesses of the same size can compare like with like.</p>
+          <summary><span class="q-no">04</span><span class="q-tx">Does industry change the estimate?</span></summary>
+          <p>Yes. Each industry has different manual-work and capacity-value assumptions, listed in the model guide. The formulas are shared. Changing industry changes the opportunity baseline; it does not prove which workflow your business should automate.</p>
         </details>
     </div>
   </div>
@@ -489,9 +513,9 @@
         <h2>Services</h2>
         <ul>
           <li><a href="/services/">Compare all three</a></li>
-          <li><a href="/services/#audit">AI Readiness Audit</a></li>
-          <li><a href="/services/#sprint">Implementation Sprint</a></li>
-          <li><a href="/services/#managed">Managed Services</a></li>
+          <li><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></li>
+          <li><a href="/services/ai-implementation/">Implementation Sprint</a></li>
+          <li><a href="/services/managed-ai-services/">Managed Services</a></li>
           <li><a href="/pricing/">Pricing</a></li>
         </ul>
       </div>
@@ -527,7 +551,7 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.roi,.roi-sharebar,.roi__cta,.foot__top > *"></script>
 
 <!-- ============ SHARED ESTIMATE MODEL (rates + math live in one file, used here and on the homepage band) ============ -->
-<script src="/js/roi.js?v=4"></script>
+<script src="/js/roi.js?v=5"></script>
 
 <!-- ============ URL STATE (runs before the calculator so its first update() reflects the URL) ============ -->
 <script>
@@ -536,9 +560,16 @@
   var sel = document.getElementById('calcIndustry');
   var range = document.getElementById('calcRange');
   var ind = params.get('industry');
-  if(sel && ind && window.MMRoi && MMRoi.rates[ind]){ sel.value = ind; }
-  var team = parseInt(params.get('team'), 10);
-  if(range && !isNaN(team)){ range.value = Math.min(100, Math.max(5, team)); }
+  if(sel && ind && window.MMRoi && MMRoi.rates[ind]) sel.value = ind;
+  var team = Number(params.get('team'));
+  if(range && params.has('team') && Number.isFinite(team)) range.value = Math.min(100, Math.max(5, team));
+  [['capture','calcCapture'],['monthly','calcMonthly'],['investment','calcInvestment']].forEach(function(pair){
+    var el = document.getElementById(pair[1]), value = params.get(pair[0]);
+    if(el && value !== null && value !== '' && Number.isFinite(Number(value))){
+      el.value = Math.min(Number(el.max), Math.max(Number(el.min), Number(value)));
+      el.dataset.edited = 'true';
+    }
+  });
 })();
 </script>
 
@@ -547,58 +578,45 @@
 (function(){
   var industry = document.getElementById('calcIndustry');
   if(!industry || !window.MMRoi) return;
-  var range   = document.getElementById('calcRange');
-  var count   = document.getElementById('calcCount');
-  var note    = document.getElementById('calcNote');
-  var forEl   = document.getElementById('calcFor');
+  var range = document.getElementById('calcRange');
+  var capture = document.getElementById('calcCapture');
+  var monthly = document.getElementById('calcMonthly');
+  var investment = document.getElementById('calcInvestment');
   var fmt = MMRoi.fmt, signed = MMRoi.signed;
-
-  var els = {
-    aManual:  document.getElementById('calcAManual'),
-    aRevenue: document.getElementById('calcARevenue'),
-    aImpl:    document.getElementById('calcAImpl'),
-    manual:   document.getElementById('calcManual'),
-    revenue:  document.getElementById('calcRevenue'),
-    impl:     document.getElementById('calcImpl'),
-    roi:      document.getElementById('calcRoi'),
-    payback:  document.getElementById('calcPayback'),
-    total:    document.getElementById('calcTotal'),
-    aRun:     document.getElementById('calcARun'),
-    run:      document.getElementById('calcRun')
-  };
-
-  function paintStatic(m){
-    note.textContent = m.r.note;
-    count.textContent = m.emp;
-    range.setAttribute('aria-valuenow', m.emp);
-    forEl.textContent = 'For ' + m.emp + (m.emp === 1 ? ' person' : ' people');
-    els.aManual.textContent  = fmt(m.r.manual) + '/yr';
-    els.aRevenue.textContent = fmt(m.r.revenue) + '/yr';
-  }
-
-  function paintNumbers(v){
-    els.aImpl.textContent   = fmt(v.implementation);
-    els.manual.textContent  = signed(v.manual);
-    els.revenue.textContent = signed(v.revenue);
-    els.impl.textContent    = signed(-v.implementation);
-    els.roi.textContent     = MMRoi.band(v);
-    if(els.payback) els.payback.textContent = MMRoi.paybackLabel(v);
-    els.total.textContent   = fmt(v.total);
-    if(els.aRun) els.aRun.textContent = fmt(v.runCost) + '/yr';
-    if(els.run)  els.run.textContent  = signed(-v.runCost);
-  }
-
-  var animate = MMRoi.animator(paintNumbers);
-
+  function text(id, value){ document.getElementById(id).textContent = value; }
   function update(){
-    var m = MMRoi.compute(industry.value, range.value);
-    range.style.setProperty('--roi-fill', ((range.value - range.min) / (range.max - range.min) * 100) + '%');
-    paintStatic(m);
-    animate(m);
+    var base = MMRoi.compute(industry.value, range.value);
+    if(!monthly.dataset.edited) monthly.value = (base.runCost / 12).toFixed(2);
+    if(!investment.dataset.edited) investment.value = base.implementation;
+    var m = MMRoi.compute(industry.value, range.value, {
+      capturePercent: capture.value, monthlyRunCost: monthly.value, implementation: investment.value
+    });
+    range.style.setProperty('--roi-fill', ((range.value-range.min)/(range.max-range.min)*100)+'%');
+    range.setAttribute('aria-valuenow', m.emp);
+    text('calcNote',m.r.note); text('calcCount',m.emp); text('calcFor','For '+m.emp+' people');
+    text('calcAManual',fmt(m.r.manual)+'/yr'); text('calcARevenue',fmt(m.r.revenue)+'/yr');
+    text('calcAImpl',fmt(m.implementation)); text('calcARun',fmt(m.runCost)+'/yr');
+    text('calcManual',signed(m.manual)); text('calcRevenue',signed(m.revenue));
+    text('calcImpl',signed(-m.implementation)); text('calcRun',signed(-m.runCost));
+    text('calcCaptured',signed(m.captured)); text('calcAnnualNet',signed(m.annualNet));
+    text('calcRoi',signed(m.firstYearNet)); text('calcTotal',fmt(m.total));
+    text('calcCeiling',signed(m.firstYearHigh));
+    text('calcPayback',m.annualNet > 0 ? (m.implementation === 0 ? 'No initial investment' : (m.implementation/m.annualNet*12 < 1 ? 'Under 1 month' : Math.round(m.implementation/m.annualNet*12)+' months')) : 'Does not pay back');
+    document.dispatchEvent(new Event('mm-roi-updated'));
   }
-
-  industry.addEventListener('change', update);
-  range.addEventListener('input', update);
+  industry.addEventListener('change',update); range.addEventListener('input',update);
+  [capture,monthly,investment].forEach(function(el){
+    el.addEventListener('input',function(){ el.dataset.edited='true'; update(); });
+    el.addEventListener('change',function(){
+      var fallback = el === capture ? 12.5 : el === monthly ? MMRoi.compute(industry.value,range.value).runCost/12 : MMRoi.compute(industry.value,range.value).implementation;
+      el.value = el.value === '' || !Number.isFinite(Number(el.value)) ? fallback : Math.min(Number(el.max),Math.max(Number(el.min),Number(el.value)));
+      update();
+    });
+  });
+  document.getElementById('calcReset').addEventListener('click',function(){
+    [capture,monthly,investment].forEach(function(el){ delete el.dataset.edited; });
+    capture.value=12.5; update();
+  });
   update();
 })();
 </script>
@@ -612,13 +630,17 @@
 
   var book = document.getElementById('calcBook');
   function sync(){
-    var qs = '?industry=' + encodeURIComponent(sel.value) + '&team=' + range.value;
-    history.replaceState(null, '', location.pathname + qs);
-    if(book) book.href = '/book/' + qs + '&service=sprint';
+    var params = new URLSearchParams(location.search);
+    params.set('industry',sel.value); params.set('team',range.value);
+    [['capture','calcCapture'],['monthly','calcMonthly'],['investment','calcInvestment']].forEach(function(pair){
+      var el=document.getElementById(pair[1]);
+      if(el.value !== '' && Number.isFinite(Number(el.value))) params.set(pair[0],Math.min(Number(el.max),Math.max(Number(el.min),Number(el.value))));
+    });
+    history.replaceState(null,'',location.pathname+'?'+params.toString()+location.hash);
+    if(book) book.href='/book/?industry='+encodeURIComponent(sel.value)+'&team='+range.value+'&service=sprint';
   }
-  sel.addEventListener('change', sync);
-  range.addEventListener('input', sync);
-  sync(); /* the URL always encodes the current state */
+  document.addEventListener('mm-roi-updated',sync);
+  sync();
 
   var share = document.getElementById('calcShare');
   if(!share) return;
@@ -629,8 +651,8 @@
       setTimeout(function(){ share.textContent = label; }, 1600);
     };
     if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(location.href).then(done, done);
-    } else { done(); }
+      navigator.clipboard.writeText(location.href).then(done, function(){ share.textContent="Copy the address from your browser"; });
+    } else { share.textContent="Copy the address from your browser"; }
   });
 })();
 </script>
@@ -682,7 +704,7 @@
   });
 })();
 </script>
-<script src="/js/nav.js?v=7"></script>
+<script src="/js/nav.js?v=8"></script>
 <script src="/js/analytics.js?v=5"></script>
 <script>
 /* Calculator engagement -> Plausible. Fires ONCE per session on the first real

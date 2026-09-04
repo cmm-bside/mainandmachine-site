@@ -137,8 +137,6 @@ export const COMPANY = {
       "https://www.entrepreneur.com/author/christopher-myers",
       "https://search.asu.edu/profile/559969",
       "https://www.amazon.com/stores/author/B01LBGCKWM/about",
-      "https://www.bside.org",
-      "https://www.thebsideway.com",
       "https://www.forbes.com/sites/chrismyers/",
       "https://www.inc.com/author/chris-myers"
     ]

@@ -84,6 +84,9 @@ export const CRUMB_LABELS = {
 	"/industries/retail/": "Retail & e-commerce",
 
 	// Services
+	"/services/ai-readiness-audit/": "AI Readiness Audit",
+	"/services/ai-implementation/": "AI Implementation",
+	"/services/managed-ai-services/": "Managed AI Services",
 	"/services/builds/": "The Build Catalog",
 	"/services/builds/instant-lead-response/": "Instant Lead Response",
 	"/services/builds/missed-call-text-back/": "Missed-Call Text-Back",

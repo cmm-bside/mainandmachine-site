@@ -49,7 +49,7 @@
     "audit": "node scripts/audit.mjs",
     "audit:shots": "node scripts/screenshot-routes.mjs",
     "test:book": "node scripts/test-book-assessment.mjs",
-    "build:static": "npm run blog:fetch && npm run blog:build && npm run facts:render && npm run llms:build && npm run work:build && npm run testimonials:build && npm run seo:check && npm run seo:regression && npm run freshness:check && npm run dates:check && npm run facts:check && npm run llms:check && npm run head:check && npm run tokens:check && npm run css:check && npm run placeholders:check && npm run links:check && npm run book:check && npm run cta:check && npm run meta:check && npm run quarter:check && npm run numbers:check && npm run jsonld:presence && npm run jsonld:drift && npm run crumbs:check && npm run cities:check && npm run security:check && npm run test:roi",
+    "build:static": "npm run blog:fetch && npm run blog:build && npm run facts:render && npm run llms:build && npm run work:build && npm run testimonials:build && npm run seo:check && npm run seo:regression && npm run freshness:check && npm run dates:check && npm run facts:check && npm run llms:check && npm run head:check && npm run tokens:check && npm run css:check && npm run placeholders:check && npm run links:check && npm run book:check && npm run cta:check && npm run meta:check && npm run quarter:check && npm run numbers:check && npm run jsonld:presence && npm run jsonld:drift && npm run crumbs:check && npm run cities:check && npm run security:check && npm run test:roi && npm run test:css-build && npm run css:build",
     "postinstall": "ALLOW_EMPTY_BLOG=1 node scripts/build-blog.mjs",
     "preview": "python3 -m http.server 8000",
     "tokens:check": "node scripts/check-tokens.mjs",
@@ -57,9 +57,12 @@
     "mono:check": "node scripts/check-mono.mjs",
     "qa:matrix": "node scripts/qa-matrix.mjs",
     "portrait:sq": "node scripts/build-portrait-sq.mjs",
-    "test:roi": "node scripts/test-roi-model.mjs"
+    "test:roi": "node scripts/test-roi-model.mjs",
+    "css:build": "node scripts/minify-css.mjs",
+    "test:css-build": "node scripts/test-css-build.mjs"
   },
   "dependencies": {
+    "esbuild": "0.25.12",
     "image-size": "^1.2.1",
     "sanitize-html": "^2.13.0",
     "sharp": "^0.35.4"

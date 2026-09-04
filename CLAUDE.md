@@ -1662,40 +1662,26 @@ Calendly booking as its `a1` answer, so the advisor reads it before the call.
 - A malformed link is therefore byte-identical to a bare `/book/`, which is the
   property that makes this safe to link from anywhere.
 
-### /book/ scheduler — eager mount + a hero sized to the fold (2026-08-03)
+### /book/ scheduler — deliberate launch (2026-09-04)
 
-The Calendly embed is the site's conversion moment. At 1440×900 the whole card
-started below the fold — **panel header at 975px, calendar at 1194px** — and
-the iframe was created by an **IntersectionObserver** (`rootMargin: 600px`).
+The booking card begins with an accessible **Choose a time** button. The
+request form and direct calendar link are available immediately. The inline
+calendar and its optional context field open only after button activation;
+there is no page-load, timer, or intersection-observer mount. Keyboard
+activation follows the same path, and repeated activation preserves the open
+calendar and the visitor's selection.
 
-**Measure the observer before blaming it.** It was NOT what made the
-"Loading the scheduler…" placeholder dwell at desktop sizes: 600px of root
-margin already covered an embed 1193px down a 900px viewport, so it fired at
-**+4ms with no scroll** — indistinguishable from the eager mount's +3ms. The
-dwell is Calendly's own weight (**~25s to `load` on Fast 3G**, unchanged by
-when we start it). What the observer really cost was a **cliff below ~593px of
-viewport height**, where the embed stopped intersecting the expanded root and
-genuinely required a scroll: measured `NO — requires a scroll` at 580 / 500 /
-400px tall, `yes` at 600 and up. Short windows and landscape phones sat on the
-wrong side of it. After the change every one of those mounts without scrolling.
-
-**The observer is deleted, not kept as a fallback.** The inline script sits at
-the foot of `<body>`, so `document.readyState` is already `interactive` and the
-frame goes out on the spot; the `DOMContentLoaded` listener is only for the
-case where it is not. There is no browser that would run this script and fail
-to mount early, and a fallback path nobody exercises is a path that rots.
-`loading="eager"` is set explicitly — it is the default, but this frame starts
-below the fold on a short viewport, which is exactly the shape a browser
-heuristic may decide to defer.
+Mobile testing found a 17.25s median simulated LCP when the calendar loaded
+with the page. Its third-party dependencies also pushed desktop transfer to
+4.45 MB. The launcher keeps those downloads out of the initial page and avoids
+an empty calendar-sized area before the visitor chooses scheduling. It adds
+one deliberate action; **it does not make Calendly itself load faster**. The
+iframe uses `loading="eager"` once activated. Measure bookings per booking-page
+visitor across this change; widget views now occur only after activation.
 
 - **Still not `widget.js`.** `script-src` does not allow `assets.calendly.com`
   and must not be loosened. The direct iframe IS the integration; booking
   events arrive via `postMessage` either way.
-- **Two preconnects in the head, and they are not redundant.** The socket pool
-  keys on the anonymous flag, so the `crossorigin` (credentials-omitted)
-  connection is a *different* one from the credentialed connection an iframe
-  NAVIGATION uses. Drop the plain one and the iframe re-handshakes from cold.
-  preconnect is a resource hint, not a fetch, so CSP does not apply to either.
 - **The placeholder comes off when CALENDLY PAINTS, not when our iframe loads
   (revised 2026-08-04).** `.cal-embed.is-ready::before { content: none }` is now
   set by `markReady()`, armed from `calendly.event_type_viewed` — the

@@ -79,6 +79,8 @@ await context.route("https://evil.example/**", (route) =>
 
 // Plausible calls land in Node, so a redirect cannot destroy the record.
 const fired = [];
+const calendarRequests = [];
+context.on("request", (request) => { if (new URL(request.url()).hostname === "calendly.com") calendarRequests.push(request.url()); });
 await context.exposeBinding("__mmRecord", (_src, ev) => { fired.push(ev); });
 await context.addInitScript(() => {
 	window.plausible = function (name, opts) {
@@ -89,12 +91,41 @@ await context.addInitScript(() => {
 });
 
 const page = await context.newPage();
-await page.goto(`http://127.0.0.1:${PORT}/book/`, { waitUntil: "load" });
+await page.goto(`http://127.0.0.1:${PORT}/book/?service=sprint&industry=retail&team=25&utm_source=funnel-test`, { waitUntil: "load" });
 
-// The page mounts the Calendly iframe itself; wait for that frame to exist.
+// The page and request form must be usable before any calendar request.
+check("calendar waits for deliberate activation", calendarRequests.length === 0 && await page.locator("#calEmbed iframe").count() === 0, JSON.stringify(calendarRequests));
+check("request form available before activation", await page.locator("#assessForm").isVisible(), "request form hidden");
+check("direct calendar link available before activation", await page.locator(".cal-fallback a").first().isVisible(), "direct link hidden");
+check("launcher announces collapsed panel", await page.locator("#calLaunch").getAttribute("aria-expanded") === "false" && !await page.locator("#calPanel").isVisible(), "initial panel state");
+const initialContext = await page.locator("#cal-workflows").inputValue();
+check("tool context is prepared before activation", /retail/.test(initialContext) && /25/.test(initialContext), initialContext);
+await page.locator("#calLaunch").focus();
+await page.keyboard.press("Enter");
+
+// Native keyboard activation mounts the existing direct iframe integration.
 await page.waitForFunction(() => !!document.querySelector("#calEmbed iframe"), null, { timeout: 15000 });
-const calFrame = page.frames().find((f) => f.url().startsWith("https://calendly.com/"));
+let calFrame = page.frames().find((f) => f.url().startsWith("https://calendly.com/"));
 if (!calFrame) { console.error("FAIL: the Calendly iframe never mounted."); process.exit(1); }
+check("launcher expands and focuses its panel", await page.locator("#calLaunch").getAttribute("aria-expanded") === "true" && await page.locator("#calPanel").evaluate((el) => el === document.activeElement), "expanded/focus state");
+const frameUrl = new URL(calFrame.url());
+check("first calendar carries the current context", frameUrl.searchParams.get("a1") === initialContext, frameUrl.toString());
+check("calendar URL and theme retained", frameUrl.pathname === "/cmyers-mainandmachine/30min" && frameUrl.searchParams.get("embed_type") === "Inline" && ["background_color", "text_color", "primary_color"].every((key) => /^[0-9a-f]{6}$/.test(frameUrl.searchParams.get(key))), frameUrl.toString());
+const firstCount = calendarRequests.length;
+await page.locator("#calLaunch").click();
+check("repeated activation preserves the mounted calendar", calendarRequests.length === firstCount && await page.locator("#calEmbed iframe").count() === 1, JSON.stringify(calendarRequests));
+check("iframe load alone does not claim calendar readiness", !await page.locator("#calEmbed").evaluate((el) => el.classList.contains("is-ready")), "calendar marked ready on iframe load");
+
+// A context edit before selection still rebuilds and preserves the answer.
+await page.locator("#cal-workflows").fill("Invoice reconciliation");
+await page.locator("#cal-workflows").blur();
+await page.waitForFunction(() => document.querySelector("#calEmbed iframe")?.src.includes("a1=Invoice+reconciliation"));
+await page.waitForFunction(() => !!document.querySelector("#calEmbed iframe")?.contentWindow);
+for (let i = 0; i < 60 && !page.frames().some((f) => f.url().includes("a1=Invoice+reconciliation")); i++) await page.waitForTimeout(50);
+calFrame = page.frames().find((f) => f.url().startsWith("https://calendly.com/") && f.url().includes("a1=Invoice+reconciliation"));
+check("edited context reaches the calendar before selection", !!calFrame, "prefill rebuild missing");
+if (!calFrame) throw new Error("Prefill frame never loaded");
+
 
 // Tolerates a detached frame. If the origin guard is broken, a forged
 // event_scheduled drives the real redirect to /book/thanks/ and tears every
@@ -106,6 +137,10 @@ const post = async (frame, data) => {
 };
 const settle = () => page.waitForTimeout(150);
 const namesSince = (n) => fired.slice(n).map((e) => e.name);
+
+// A frame error keeps the direct link available and announces the fallback.
+await page.locator("#calEmbed iframe").evaluate((el) => el.dispatchEvent(new Event("error")));
+check("frame error explains fallback without hiding it", await page.locator("#calEmbed").evaluate((el) => el.classList.contains("is-slow")) && /taking longer/.test(await page.locator("#calStatus").textContent()) && await page.locator(".cal-fallback a").first().isVisible(), "missing slow/fallback state");
 
 // ---- 1 & 3a: event_type_viewed, once ------------------------------------
 let mark = fired.length;
@@ -135,6 +170,14 @@ await post(calFrame, { event: "calendly.date_and_time_selected", payload: {} });
 await settle();
 check("date_and_time_selected is latched (repeat fires nothing)",
 	namesSince(mark).length === 0, `got ${JSON.stringify(namesSince(mark))}`);
+
+// A selected slot must survive subsequent context edits.
+const selectedUrl = calFrame.url();
+const selectedCount = calendarRequests.length;
+await page.locator("#cal-workflows").fill("Updated notes after choosing a slot");
+await page.locator("#cal-workflows").blur();
+await settle();
+check("selection protects calendar from prefill rebuild", calendarRequests.length === selectedCount && calFrame.url() === selectedUrl, JSON.stringify(calendarRequests));
 
 // ---- 4: a hostile origin sending the exact same payloads ----------------
 const evilFrame = await (async () => {
@@ -220,6 +263,13 @@ check("no invitee payload field reaches the props",
 check("calendly_booked props are exactly { page }",
 	props && Object.keys(props).length === 1 && props.page === "/book/",
 	`props ${propsJson}`);
+
+// No-JavaScript visitors retain a working direct calendar route.
+const noScriptContext = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+const noScriptPage = await noScriptContext.newPage();
+await noScriptPage.goto(`http://127.0.0.1:${PORT}/book/`, { waitUntil: "load" });
+check("no-JavaScript calendar path remains usable", !await noScriptPage.locator("#calLaunch").isVisible() && await noScriptPage.locator("noscript .cal-fallback a").isVisible() && await noScriptPage.locator("#calEmbed iframe").count() === 0, "no-script direct link or launcher state");
+await noScriptContext.close();
 
 await browser.close();
 server.close();

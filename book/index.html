@@ -21,31 +21,10 @@
 <meta name="twitter:description" content="A senior advisor walks your workflows and shows where AI pays, what it's worth, and when to wait. Free, no pitch, reply within 24 hours." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/book.png" />
 <meta name="twitter:image:alt" content="Main &amp; Machine: 30 minutes. No pitch. A straight answer." />
-<!-- The scheduler iframe is mounted at DOMContentLoaded (see the Calendly block
-     at the foot of this file), so the connection is worth warming in the head.
-     preconnect is a resource HINT, not a fetch — CSP does not apply to it, so
-     this costs nothing against the frame-src https://calendly.com policy.
-     BOTH forms are needed and they are not redundant: the socket pool keys on
-     the anonymous flag, so the crossorigin (credentials-omitted) connection is
-     a DIFFERENT one from the credentialed connection an iframe NAVIGATION uses.
-     Drop the plain one and the iframe re-handshakes from cold. -->
-<link rel="preconnect" href="https://calendly.com" />
-<link rel="preconnect" href="https://calendly.com" crossorigin />
-<!-- assets.calendly.com is a SECOND origin, and it is the one that actually
-     gates the paint: calendly.com/<user>/<event> returns a ~2KB shell with an
-     empty <div id="root">, and the booking UI does not exist until a stylesheet
-     and a script land from assets.calendly.com. Measured 2026-08-10, brotli off
-     the wire: booking-*.css 1.30 MB, booking-*.js 1.29 MB — 2.5 MB before one
-     pixel of calendar. That handshake could not start until the shell arrived
-     and was parsed; warming it here overlaps it with our own page load.
-     Plain form only. Both files are loaded by the frame as ordinary
-     <script>/<link rel=stylesheet> with no crossorigin attribute, so they use
-     the credentialed socket — the anonymous one the pair above needs would sit
-     unused here. -->
-<link rel="preconnect" href="https://assets.calendly.com" />
+<!-- The calendar is requested only after the visitor chooses to open it. -->
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=144" />
+<link rel="stylesheet" href="/styles.css?v=145" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -254,8 +233,12 @@
    this card's own header and its one optional field. */
 #schedule .formcard__body { padding-top: var(--s-24); }
 .cal-q { max-width: 640px; }
-/* The 720px is the iframe's RESERVED height, and it is reserved before the
-   iframe exists: the frame is absolutely positioned, so it is out of flow and
+.cal-launch-copy { margin: 0 0 var(--s-16); color: var(--tx-mute); }
+.cal-panel { margin-top: var(--s-24); }
+.cal-panel[hidden] { display: none; }
+.cal-status { margin: var(--s-16) 0 0; color: var(--tx-mute); font-size: var(--t-sm); }
+/* After the visitor opens the panel, 720px is reserved before the
+   iframe paints: the frame is absolutely positioned, so it is out of flow and
    contributes nothing to this box either way. The card measures 720px on the
    parse, on the mount and on the load — the swap cannot shift the page. */
 /* background is --paper-card to match .formcard around it, and to match the
@@ -318,11 +301,8 @@
 @media (max-width: 700px) { .cal-embed { min-height: 980px; } }
 @media (max-width: 560px) { .frow { grid-template-columns: 1fr; } }
 </style>
-<!-- With scripting off no iframe is ever mounted, so the placeholder announced
-     a load that was never going to start — "Loading the scheduler…" as a
-     permanent state. The <noscript> link inside .cal-embed is the real content
-     in that case; this lets it be seen. -->
-<noscript><style>.cal-embed::before { content: none; } .cal-embed { display: flex; align-items: center; justify-content: center; min-height: 0; padding: var(--s-40); }</style></noscript>
+<!-- The direct booking route stays usable when scripting is unavailable. -->
+<noscript><style>#calLaunch { display: none; }</style></noscript>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="/js/pa"></script>
 <script>
@@ -418,20 +398,24 @@
 <section class="section paper-2" id="request" data-screen-label="Request form">
   <div class="wrap">
 
-    <!-- PRIMARY — pick a time now (inline Calendly, lazy-loaded) -->
+    <!-- PRIMARY — choose a time; inline Calendly opens on deliberate activation. -->
     <div class="schedwrap">
       <div class="formcard" id="schedule">
         <div class="formcard__bar"><span>Pick a time now</span><span><b>Fastest</b></span></div>
         <div class="formcard__body">
+          <p class="cal-launch-copy">Find a 30-minute slot that works for you.</p>
+          <button class="btn btn--primary" type="button" id="calLaunch" aria-controls="calPanel" aria-expanded="false">Choose a time <span class="arr" aria-hidden="true">&#8594;</span></button>
+          <div class="cal-panel" id="calPanel" role="region" aria-label="Choose an assessment time" tabindex="-1" hidden>
           <div class="field cal-q">
             <label for="cal-workflows">What is eating your team’s time? <span class="opt">(optional — rides along with your booking)</span></label>
             <input class="input" type="text" id="cal-workflows" placeholder="Intake, billing, quoting…" />
             <span class="field__hint">The advisor reads this before your call. One line is plenty.</span>
           </div>
-          <div class="cal-embed" id="calEmbed" data-cal-url="https://calendly.com/cmyers-mainandmachine/30min">
-            <noscript><a href="https://calendly.com/cmyers-mainandmachine/30min">Open the scheduler in a new tab&nbsp;<span class="arr">&#8594;</span></a></noscript>
+          <p class="cal-status" id="calStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+          <div class="cal-embed" id="calEmbed" data-cal-url="https://calendly.com/cmyers-mainandmachine/30min"></div>
           </div>
-          <p class="cal-fallback">Calendar not showing up? <a href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">Open the scheduler in a new tab</a> — or send the form below and we’ll reply within 24 hours.</p>
+          <p class="cal-fallback">You can also <a href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">open the calendar in a new tab</a>, or send the form below for a reply within 24 hours.</p>
+          <noscript><p class="cal-fallback">To choose a time, <a href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">open the calendar in a new tab</a>.</p></noscript>
           <p class="cal-note"><b>Pick a slot and it’s booked.</b> The calendar invite and confirmation arrive from Calendly right away.</p>
         </div>
       </div>
@@ -504,7 +488,7 @@
 
             <!-- C — The work -->
             <div class="fgroup">
-              <div class="fgroup__head"><span class="fgroup__no">C</span><span class="fgroup__t">Proof</span></div>
+              <div class="fgroup__head"><span class="fgroup__no">C</span><span class="fgroup__t">Your workflow</span></div>
               <div class="frow frow--1">
                 <div class="field">
                   <label for="workflows">What is eating your team’s time? <span class="opt">(optional)</span></label>
@@ -960,21 +944,11 @@
 })();
 
 // ---- Calendly inline (the primary path) ----
-// A plain iframe, mounted at DOMContentLoaded. It used to be created by an
-// IntersectionObserver at rootMargin 600px. Measured, that observer was NOT
-// what made the "Loading the scheduler…" placeholder dwell at desktop sizes —
-// 600px of margin already covered the embed, so it fired at +4ms with no
-// scroll. What it did cost was a cliff below ~593px of viewport height, where
-// the embed stopped intersecting the expanded root and genuinely needed a
-// scroll before it would even be requested. The card IS the conversion; it does
-// not get to depend on the window being tall enough. The observer path is gone
-// rather than kept as a fallback — there is no browser where mounting early
-// fails that would also run this script, and a dead code path is a thing that
-// rots.
-//
-// Still NOT Calendly's widget.js: script-src does not allow assets.calendly.com
-// and must not be loosened. The iframe is the whole integration, and booking
-// events arrive via postMessage regardless.
+// The first frame mounts only when the visitor activates “Choose a time”.
+// This keeps the page and request form usable before the vendor loads. The
+// calendar itself still takes time to load after activation; this does not
+// make Calendly's payload smaller or its booking UI faster.
+// Still a direct iframe, not widget.js: the existing CSP remains unchanged.
 (function(){
   // Idempotence guard. If this block is ever included twice — a duplicated
   // script tag, a partial pasted into another page — a second run would mount a
@@ -984,7 +958,10 @@
   window.__mmBooking = true;
 
   var mount = document.getElementById('calEmbed');
-  if(!mount) return;
+  var launch = document.getElementById('calLaunch');
+  var panel = document.getElementById('calPanel');
+  var status = document.getElementById('calStatus');
+  if(!mount || !launch || !panel) return;
   var base = mount.getAttribute('data-cal-url');
   var qEl = document.getElementById('cal-workflows');
   var iframe = null, loadedFired = false, readyTimer = null;
@@ -1017,10 +994,15 @@
     if(readyTimer){ clearTimeout(readyTimer); readyTimer = null; }
     mount.classList.remove('is-slow');
     mount.classList.add('is-ready');
+    if(status) status.textContent = 'The calendar is ready. Choose an available time below.';
   }
   function markSlow(){
+    if(readyTimer) clearTimeout(readyTimer);
     readyTimer = null;
-    if(!mount.classList.contains('is-ready')) mount.classList.add('is-slow');
+    if(!mount.classList.contains('is-ready')) {
+      mount.classList.add('is-slow');
+      if(status) status.textContent = 'The calendar is taking longer to load. You can open it in a new tab or send the form below.';
+    }
   }
   // The a1 value the LIVE iframe was built with, and whether the visitor has
   // committed inside the embed. Both gate the prefill rebuild below.
@@ -1113,9 +1095,7 @@
     var f = document.createElement('iframe');
     f.src = calUrl();
     f.title = 'Schedule your free 30-minute AI Opportunity Assessment';
-    // Explicit, though it is the default: this frame starts below the fold on a
-    // short viewport, which is exactly the shape a browser heuristic may decide
-    // to defer. The whole point of this change is that it does not get deferred.
+    // Once requested, start immediately even if the panel extends below the fold.
     f.setAttribute('loading', 'eager');
     // Placeholder back up while THIS frame loads — including a prefill rebuild,
     // which is a real load and should say so. Both classes come off, not just
@@ -1127,6 +1107,8 @@
     mount.classList.remove('is-slow');
     if(readyTimer) clearTimeout(readyTimer);
     readyTimer = setTimeout(markSlow, 12000);
+    if(status) status.textContent = 'Loading available times…';
+    f.addEventListener('error', function(){ if(f === iframe) markSlow(); });
     f.addEventListener('load', function(){
       // Deliberately does NOT clear the placeholder — see markReady() above.
       // This event still means something and keeps its own analytics: it is
@@ -1142,14 +1124,15 @@
     appliedQ = qEl ? qEl.value.trim() : '';
   }
 
-  // This script is at the foot of <body>, so readyState is usually already
-  // 'interactive' and the frame goes out on the spot; the listener is for the
-  // case where it is not.
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', mountFrame, { once: true });
-  } else {
-    mountFrame();
-  }
+  // No observer, timer or page-load hook starts the calendar. Keyboard
+  // activation has the same behavior as a pointer click. Repeated activation
+  // focuses the open panel without throwing away a visitor's calendar state.
+  launch.addEventListener('click', function(){
+    panel.hidden = false;
+    launch.setAttribute('aria-expanded', 'true');
+    if(!iframe) mountFrame();
+    panel.focus({ preventScroll: true });
+  });
 
   // Typed (or edited) the qualifying answer? Rebuild the iframe with the new
   // a1 — the answer must be attached to the embed URL before booking to ride
@@ -1273,7 +1256,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
-<script src="/js/nav.js?v=8"></script>
-<script src="/js/analytics.js?v=5"></script>
+<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/analytics.js?v=5"></script>
 </body>
 </html>

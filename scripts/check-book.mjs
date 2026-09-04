@@ -26,6 +26,15 @@ const REQUIRED = [
   // check-booking-quarter verifies it has not rolled over; this asserts only
   // that /book/ still carries the chip at all.
   '<span data-fact="booking-quarter">',
+  'id="calLaunch" aria-controls="calPanel" aria-expanded="false"',
+  'id="calPanel" role="region" aria-label="Choose an assessment time" tabindex="-1" hidden',
+  'id="calStatus" role="status" aria-live="polite"',
+  'id="assessForm"',
+  "launch.addEventListener('click', function(){",
+  'if(!iframe) mountFrame();',
+  '<noscript><p class="cal-fallback">',
+  'href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener"',
+
 ];
 for (const s of REQUIRED) {
   if (!html.includes(s)) errors.push(`/book: missing required text "${s}"`);
@@ -43,6 +52,13 @@ for (const bad of ["limited slots", 'href="/#work"', "<title>Book an Assessment"
 
 // Phone must not be hard-required (it's conditional on preferred contact).
 if (/name="phone"[^>]*\brequired\b/.test(html)) errors.push("/book: phone input is hard-required");
+
+// Opening the page must not start the calendar or reserve a blank frame.
+// The runtime funnel test verifies this by observing requests and interaction.
+if (/<iframe\b[^>]*calendly/i.test(html) || /DOMContentLoaded['"][^\n]*mountFrame/.test(html))
+  errors.push("/book: calendar must mount only after deliberate launcher activation");
+if (/<script\b[^>]*src=["'][^"']*assets\.calendly\.com/i.test(html))
+  errors.push("/book: keep the direct iframe integration; widget.js must not be added");
 
 if (errors.length) {
   console.error(`[book:check] FAILED with ${errors.length} issue(s):`);

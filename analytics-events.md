@@ -211,7 +211,8 @@ Network filtered to `/api/event`, then:
       `{guide:"ai-consultant-cost"}`; keep scrolling → no repeat.
 - [ ] Any footer: submit the newsletter form → `newsletter_subscribed`;
       confirm the POST body contains **no email**.
-- [ ] /book/: load the page → `calendly_loaded` **and** `calendly_widget_viewed`
+- [ ] /book/: load the page → no calendar events. Activate **Choose a time**
+      → `calendly_loaded` **and** `calendly_widget_viewed`
       (one each). Pick a date/time → exactly one `calendly_time_selected`; back
       out to the calendar and pick again → **no second** event of either name.
       Book a test slot → `calendly_booked` (cancel the booking after).

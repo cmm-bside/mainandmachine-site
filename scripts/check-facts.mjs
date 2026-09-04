@@ -206,6 +206,8 @@ for (const { page, html } of noteCorpus) {
   const visible = html.replace(/<script[\s\S]*?<\/script>/g, "");
   for (const m of visible.matchAll(CREDIT_CLAUSE)) {
     const clause = m[0].replace(/\s+/g, " ").trim();
+    if (!/up to 25% of the sprint price/i.test(clause))
+      fail(`${page}: audit credit omits the cap of 25% of the sprint price`);
     if (!ROLLOVER_WINDOW.test(clause))
       fail(
         `${page}: "${clause}" states the audit credit without its condition — ` +

@@ -154,8 +154,8 @@ h1, h2, h3 { font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; text-
 .btn .arr { display: inline-block; transition: transform 150ms ease; }
 .btn:hover .arr { transform: translateX(2px); }
 
-/* PRIMARY — accent fill, paper text, trailing arrow */
-.btn--primary { background: var(--accent); color: var(--paper); }
+/* PRIMARY — accent fill, white text (5.06:1), trailing arrow. */
+.btn--primary { background: var(--accent); color: #fff; }
 .btn--primary:hover { background: #A93517; }   /* ~8% darker than --accent */
 
 /* SECONDARY — outline; identical box; no arrow; inverts on hover */

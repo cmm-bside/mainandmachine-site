@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Fail the build when src/data/page-dates.json has rotted behind git — i.e.
-// when a page was committed after its recorded sitemap <lastmod>.
+// when main content or SEO metadata changed after its sitemap <lastmod>.
+// Shared navigation/footer and stylesheet-cache edits do not imply a review.
 //
 //   npm run dates:check
 //
@@ -26,6 +27,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { ROOT, STATIC_ROUTES } from "./lib/config.mjs";
+import { lastEditorialCommitDate } from "./lib/page-editorial-date.mjs";
 
 const EDITORIAL_DATES = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/guide-editorial-dates.json"), "utf8"));
 
@@ -67,7 +69,7 @@ let checked = 0;
 for (const route of STATIC_ROUTES) {
 	const file = routeToFile(route);
 	if (!fs.existsSync(path.join(ROOT, file))) continue;
-	const committed = EDITORIAL_DATES[route] || git(["log", "-1", "--format=%cs", "--", file]);
+	const committed = EDITORIAL_DATES[route] || lastEditorialCommitDate(ROOT, file);
 	// No commit yet = a brand-new page. build-page-dates.mjs keeps the previous
 	// value in that case by design, so it is not drift.
 	if (!committed || !/^\d{4}-\d{2}-\d{2}$/.test(committed)) continue;
@@ -101,4 +103,4 @@ if (stale.length) {
 
 if (untracked.length) process.exit(1);
 
-console.log(`[dates:check] OK — sitemap lastmod matches git for all ${checked} static route(s).`);
+console.log(`[dates:check] OK — sitemap lastmod covers editorial history for all ${checked} static route(s).`);

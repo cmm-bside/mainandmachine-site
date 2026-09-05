@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Generate src/data/page-dates.json — the real last-modified date (YYYY-MM-DD)
-// of each static route, taken from git history (the date of the last commit
-// that touched the route's index.html).
+// of each static route, taken from the last git commit that changed main
+// content or SEO metadata. Shared navigation and cache edits do not count.
 //
 // Run this LOCALLY (where full git history exists) whenever static pages
 // change: `npm run seo:dates`. The result is committed and read by the sitemap
@@ -13,8 +13,8 @@
 // stamping "today" on everything.
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
 import { ROOT, STATIC_ROUTES } from "./lib/config.mjs";
+import { lastEditorialCommitDate } from "./lib/page-editorial-date.mjs";
 
 const EDITORIAL_DATES = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/guide-editorial-dates.json"), "utf8"));
 
@@ -23,18 +23,6 @@ const OUT = path.join(ROOT, "src", "data", "page-dates.json");
 function routeToFile(route) {
 	const rel = route === "/" ? "index.html" : `${route.replace(/^\/|\/$/g, "")}/index.html`;
 	return rel;
-}
-
-function gitLastDate(file) {
-	try {
-		const out = execFileSync("git", ["log", "-1", "--format=%cs", "--", file], {
-			cwd: ROOT,
-			encoding: "utf8",
-		}).trim();
-		return /^\d{4}-\d{2}-\d{2}$/.test(out) ? out : null;
-	} catch {
-		return null;
-	}
 }
 
 function main() {
@@ -54,7 +42,9 @@ function main() {
 		// Untracked/brand-new pages have no git history yet. Fall back to the
 		// file's own mtime so a new route still gets a lastmod instead of being
 		// silently dropped from the sitemap.
-		let date = EDITORIAL_DATES[route] || gitLastDate(file) || prev[route] || null;
+		let date = EDITORIAL_DATES[route] || lastEditorialCommitDate(ROOT, file) || prev[route] || null;
+		// A manually reviewed, uncommitted change can already have a newer date.
+		if (prev[route] && (!date || prev[route] > date)) date = prev[route];
 		if (!date) {
 			try { date = fs.statSync(abs).mtime.toISOString().slice(0, 10); } catch { /* keep null */ }
 		}

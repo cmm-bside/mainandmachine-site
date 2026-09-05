@@ -12,6 +12,7 @@
   function save(key, value) { try { sessionStorage.setItem(key, JSON.stringify(value)); } catch (_) { /* memory still allows a safe retry */ } }
   function remove(key) { try { sessionStorage.removeItem(key); } catch (_) {} }
   function track(name, props) { try { if (typeof window.plausible === 'function') window.plausible(name, { props: props || {page: location.pathname} }); } catch (_) { /* analytics must never change submission state */ } }
+  function issue(reason) { track('workflow_plan_submit_issue', {page: location.pathname, reason: reason}); }
   var receipt = read(RECEIPT);
   if (document.getElementById('plan-receipt')) {
     if (receipt && UUID.test(receipt.requestId || '') && Number.isFinite(Date.parse(receipt.deadlineAt))) {
@@ -31,8 +32,9 @@
   var submit = document.getElementById('plan-submit');
   var back = document.getElementById('plan-back');
   var next = document.getElementById('plan-next');
-  var fields = ['workflow','tools','frequency','name','email','company','website'];
-  function value(id) { return document.getElementById(id).value.trim(); }
+  var fields = ['workflow','tools','name','email','company'];
+  function value(id) { var el = document.getElementById(id); return el && typeof el.value === 'string' ? el.value.trim() : ''; }
+  function expandContext() { var details = document.getElementById('plan-context'); if (details) details.open = true; }
   function notice(message, focus) { status.textContent = message; status.hidden = false; if (focus) status.focus(); }
   function fieldError(id, message) {
     var el = document.getElementById(id), error = document.getElementById(id + '-error');
@@ -55,23 +57,21 @@
     if (part === 1 || part === 'all') {
       if (value('workflow').length < 20) errors.workflow = 'Add a little more detail (at least 20 characters) so we can give you a useful recommendation.';
       if (value('workflow').length > 4000) errors.workflow = 'Keep your description under 4,000 characters.';
+      if (value('tools').length > 600) errors.tools = 'Keep your tools list under 600 characters.';
     }
     if (part === 2 || part === 'all') {
       if (value('name').length < 2) errors.name = 'Please enter your name.';
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value('email'))) errors.email = 'Enter a valid email so we can send your plan.';
       if (value('company').length < 2) errors.company = 'Please enter your business name.';
-      if (value('website')) {
-        try { var url = new URL(/^https?:\/\//i.test(value('website')) ? value('website') : 'https://' + value('website')); if (!/^https?:$/.test(url.protocol) || !url.hostname.includes('.') || /\s/.test(value('website'))) throw new Error(); }
-        catch (_) { errors.website = 'Enter a website such as yourbusiness.com, or leave this blank.'; }
-      }
     }
     return errors;
   }
   function showErrors(errors) {
     fields.forEach(function (id) { fieldError(id, errors[id]); });
-    var first = Object.keys(errors).find(function (id) { return document.getElementById(id); });
+    var first = Object.keys(errors).find(function (id) { return fields.includes(id) && document.getElementById(id); });
     if (!first) return false;
-    go(['workflow','tools','frequency'].includes(first) ? 1 : 2, false);
+    go(['workflow','tools'].includes(first) ? 1 : 2, false);
+    if (first === 'tools') expandContext();
     document.getElementById(first).focus();
     return true;
   }
@@ -80,9 +80,10 @@
     back.disabled = locked; next.disabled = locked;
   }
   function restore(payload) {
-    fields.forEach(function (id) { document.getElementById(id).value = payload[id] || ''; });
-    var radio = form.querySelector('input[name="workflowType"][value="' + (['leads','operations','reporting','documents','other'].includes(payload.workflowType) ? payload.workflowType : 'other') + '"]');
-    if (radio) radio.checked = true;
+    fields.forEach(function (id) { var el = document.getElementById(id); if (el) el.value = typeof payload[id] === 'string' ? payload[id] : ''; });
+    if (value('tools')) expandContext();
+    // Keep the stored object intact: older requests can contain fields that no
+    // longer have inputs. Reconstructing it would break provider idempotency.
     frozen = Object.freeze(payload); lock(true); go(2, false);
     submit.textContent = 'Retry the same request →';
     notice('A previous send has not been confirmed in this tab. Your details are saved. Retry this same request to check its status without creating a duplicate.', false);
@@ -96,20 +97,20 @@
     if (!began && event.target.id !== 'companyUrl') { began = true; track('workflow_plan_started'); }
     if (event.target.id) fieldError(event.target.id, '');
   });
-  next.addEventListener('click', function () { if (!showErrors(errorsFor(1))) { go(2, true); track('workflow_plan_details'); } });
+  next.addEventListener('click', function () { if (!showErrors(errorsFor(1))) { go(2, true); track('workflow_plan_details'); } else { issue('validation'); } });
   back.addEventListener('click', function () { if (!frozen) go(1, true); });
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
     if (sending || Date.now() < retryAt) return;
     if (step === 1) { next.click(); return; }
-    if (!frozen && showErrors(errorsFor('all'))) return;
+    if (!frozen && showErrors(errorsFor('all'))) { issue('validation'); return; }
     if (!frozen) {
-      var type = form.querySelector('input[name="workflowType"]:checked');
-      var payload = { requestId: crypto.randomUUID(), submittedAt: new Date().toISOString(), startedAt: startedAt, workflowType: type ? type.value : 'other', companyUrl: value('companyUrl') };
+      var payload = { requestId: crypto.randomUUID(), submittedAt: new Date().toISOString(), startedAt: startedAt, workflowType: 'other', frequency: '', website: '', companyUrl: value('companyUrl') };
       fields.forEach(function (id) { payload[id] = value(id); });
       frozen = Object.freeze(payload); save(PENDING, frozen);
     }
     if (Date.now() - Date.parse(frozen.submittedAt) >= 23 * 3600000) {
+      issue('expired');
       notice('This request can no longer be retried safely. Please contact us with reference ' + frozen.requestId + ' before sending another request.', true); contact.hidden = false; submit.disabled = true; return;
     }
     sending = true; lock(true); submit.disabled = true; submit.textContent = 'Sending your workflow…';
@@ -133,20 +134,24 @@
         }
         window.location.assign('/plan/thanks/'); return;
       }
-      if (response.status === 422 && data.errors) {
-        var metaError = data.errors.submittedAt || data.errors.startedAt || data.errors.requestId || data.errors.workflowType;
+      if (response.status === 422 && data.errors && typeof data.errors === 'object' && !Array.isArray(data.errors) && Object.keys(data.errors).length) {
+        var missingField = Object.keys(data.errors).find(function (id) { return !fields.includes(id) || !document.getElementById(id); });
+        var metaError = missingField ? data.errors[missingField] : '';
         if (data.errors.submittedAt && /too old/i.test(data.errors.submittedAt)) {
+          issue('expired');
           notice('This request is too old to retry safely. Please contact us with reference ' + frozen.requestId + ' before sending another.', true);
           contact.hidden = false; submit.textContent = 'Please contact us'; submit.disabled = true; return;
         }
         // A definitive validation rejection has not sent email. Keep the fields
         // editable, and explain non-field/device-clock failures explicitly.
+        issue('validation');
         remove(PENDING); frozen = null; lock(false); var hasFieldErrors = showErrors(data.errors);
         if (data.errors.startedAt) startedAt = Date.now();
         notice(metaError ? metaError + ' Your details are still here; correct the issue before sending again.' : 'Please check the highlighted details and send again.', !!metaError && !hasFieldErrors);
         submit.textContent = 'Get my free plan →'; submit.disabled = false; return;
       }
       if (data.retryable === false || [403,409,413,415,422].includes(response.status)) {
+        issue('rejected');
         notice('We couldn’t confirm this request. Please contact us with reference ' + frozen.requestId + '. Your details are still here; don’t send a new request until we’ve checked it.', true);
         contact.hidden = false; submit.textContent = 'Please contact us'; submit.disabled = true; return;
       }
@@ -154,6 +159,7 @@
       retryAt = Date.now() + Math.min(Math.max(seconds, 0), 3600) * 1000;
       throw new Error('unconfirmed');
     } catch (_) {
+      issue('unconfirmed');
       notice('We couldn’t confirm the send. Your original request is saved in this tab. Retry the same request; you won’t need to re-enter your details.', true);
       contact.hidden = false;
       function retryButton() {

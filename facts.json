@@ -79,7 +79,7 @@
   },
   "runningCosts": "$50–$500/month illustrative planning band for tools and model usage; excludes build, internal labor, hardware, and optional Managed Services from $1,500/month. Actual usage and provider terms determine cost.",
   "delivery": "~90 days per workflow, fixed price quoted in writing before work",
-  "freeOffer": "30-minute AI Opportunity Assessment, reply within 24 hours",
+  "freeOffer": "A free preliminary recommendation on one workflow, based on submitted information and reviewed by Christopher Myers within 24 hours. No call or purchase is required.",
   "audience": {
     "headcount": "5–100",
     "revenue": "$1M–$50M"
@@ -151,6 +151,20 @@
     "Small business operations",
     "Workflow automation"
   ],
+  "workflowPlan": {
+    "name": "24-Hour Workflow Plan",
+    "path": "/plan/",
+    "samplePath": "/plan/sample/",
+    "price": 0,
+    "priceCurrency": "USD",
+    "scope": "A free preliminary recommendation on one workflow, based on the information you submit.",
+    "reviewer": "Christopher Myers",
+    "reviewWithinHours": 24,
+    "callRequired": false,
+    "purchaseRequired": false,
+    "summary": "A free preliminary recommendation on one workflow, based on submitted information and reviewed by Christopher Myers within 24 hours. No call or purchase is required.",
+    "paidAuditDistinction": "This preliminary recommendation is separate from the paid AI Readiness Audit, which includes deeper discovery, workflow mapping, and scoped analysis."
+  },
   "approvedClaims": {
     "assessment": {
       "text": "Start with a free 30-minute assessment to discuss one workflow and the next step. If substantial discovery is needed, we scope a paid audit; a fixed build quote follows an agreed scope.",

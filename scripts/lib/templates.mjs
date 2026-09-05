@@ -221,37 +221,14 @@ export function nav() {
       <span class="logo__plate" aria-hidden="true">M<span class="amp">&amp;</span>M</span>
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
-    <nav class="nav__links" id="nav-links">
-      <span class="nav__item nav__item--menu">
-        <a href="/services/">Solutions</a>
-        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-services-menu" aria-label="Solutions menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
-        <div class="nav__menu" id="nav-services-menu">
-          <a href="/services/">Compare services</a>
-          <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>
-          <a href="/services/ai-implementation/">AI Implementation</a>
-          <a href="/services/managed-ai-services/">Managed AI Services</a>
-          <a href="/services/builds/">Systems we build</a>
-          <a href="/industries/">Industries we serve</a>
-          <a href="/method/">How we work</a>
-        </div>
-      </span>
+    <nav class="nav__links" id="nav-links" aria-label="Main navigation">
+      <a href="/services/">How we help</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
-      <span class="nav__item nav__item--menu">
-        <a href="/guides/">Resources</a>
-        <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-resources-menu" aria-label="Resources menu"><span class="nav__caret-glyph" aria-hidden="true"></span></button>
-        <div class="nav__menu" id="nav-resources-menu">
-          <a href="/guides/">Buyer’s guides</a>
-          <a href="/score/">AI-Ready Score</a>
-          <a href="/calculator/">ROI calculator</a>
-          <a href="/blog/">The Ampersand</a>
-        </div>
-      </span>
       <a href="/blog/">Blog</a>
-      <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a data-cta="nav" aria-label="Get a free workflow plan (free plan)" class="btn btn--primary" href="/plan/"><span class="btn__full">Get a free workflow plan</span><span class="btn__short" aria-hidden="true">Free plan</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Get my free plan" class="btn btn--primary" href="/plan/"><span class="btn__full">Get my free plan</span><span class="btn__short" aria-hidden="true">Free plan</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -320,7 +297,7 @@ export function footer() {
       <div class="foot__col">
         <h2>Contact</h2>
         <ul>
-          <li><a data-cta="footer" href="/plan/">Get a free workflow plan</a></li>
+          <li><a data-cta="footer" href="/plan/">Get my free plan</a></li>
           <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:${attr(COMPANY.email)}">${esc(COMPANY.email)}</a></li>
           <li><a href="${attr(COMPANY.phoneHref)}">${esc(COMPANY.phone)}</a></li>
@@ -348,7 +325,7 @@ export function subscribeBand() {
 
 // Scripts shared by every blog page: mobile nav and search.
 export function pageScripts() {
-	return `<script defer src="/js/nav.js?v=10"></script>
+	return `<script defer src="/js/nav.js?v=11"></script>
 <script defer src="/js/analytics.js?v=8"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

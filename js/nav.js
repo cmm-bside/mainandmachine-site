@@ -173,7 +173,7 @@ var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]
   bar.className = 'stickybook';
   // &nbsp; before the arrow, like every other mono CTA in the markup — this one
   // is built here rather than authored, so it has to opt in by hand.
-  bar.innerHTML = '<a class="stickybook__cta" data-cta="sticky-bar" href="/plan/">Get a free workflow plan&nbsp;<span class="arr">&#8594;</span></a>'
+  bar.innerHTML = '<a class="stickybook__cta" data-cta="sticky-bar" href="/plan/">Get my free plan&nbsp;<span class="arr">&#8594;</span></a>'
     + '<button class="stickybook__x" type="button" aria-label="Dismiss offer bar">&times;</button>';
   d.body.appendChild(bar);
 

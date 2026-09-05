@@ -1,13 +1,18 @@
 # Main & Machine
 
-> AI consulting and implementation for small and mid-size businesses
-> (5–100 employees, $1M–$50M revenue). Fixed-price audits $3,500–$8,500;
-> implementation sprints $18,000–$60,000, fixed quote in writing, delivered
-> in ~90 days per workflow. Every scoped workflow is guaranteed live within
-> 90 days or we keep building at no charge. Hubs in Denver, CO and Phoenix, AZ; remote across
-> the US. Founded by Christopher Myers.
-> The free 30-minute assessment is the front door.
+> AI consulting and implementation for small and mid-size businesses.
+> We connect existing software and automate repetitive office tasks, including
+> customer follow-up and moving approved information between systems.
+> Hubs in Denver, CO and Phoenix, AZ; remote across the US.
+> Founded by Christopher Myers.
 
+## Start with one task
+
+[Get a free 24-Hour Workflow Plan](/plan/) is the primary starting point.
+
+A free preliminary recommendation on one workflow, based on submitted information and reviewed by Christopher Myers within 24 hours. No call or purchase is required.
+This preliminary recommendation is separate from the paid AI Readiness Audit, which includes deeper discovery, workflow mapping, and scoped analysis.
+Prefer to talk? [Book a free 30-minute assessment](/book/) directly.
 Start with a free 30-minute assessment to discuss one workflow and the next step. If substantial discovery is needed, we scope a paid audit; a fixed build quote follows an agreed scope.
 An advisor from Main & Machine discusses your workflow and next step. Christopher Myers is accountable for scoping and sign-off; the build team implements agreed work. Your scheduling confirmation identifies the meeting host.
 
@@ -31,7 +36,7 @@ visible copy of the most important pages, with page delimiters.
   [Amazon author page](https://www.amazon.com/stores/author/B01LBGCKWM/about)
 - Hubs: Denver, CO and Phoenix, AZ · remote across the US
 - Delivery: ~90 days per workflow, fixed price quoted in writing before work
-- Free offer: 30-minute AI Opportunity Assessment, reply within 24 hours
+- Free offer: A free preliminary recommendation on one workflow, based on submitted information and reviewed by Christopher Myers within 24 hours. No call or purchase is required.
 - Contact: cmyers@mainandmachine.com · 928-363-6639
 - Operating principle: every system we build can be explained, questioned,
   and overruled by an accountable human.
@@ -95,6 +100,9 @@ before work begins.
 
 ## Free tools
 
+- [24-Hour Workflow Plan](/plan/) — A free preliminary recommendation on one workflow, based on submitted information and reviewed by Christopher Myers within 24 hours. No call or purchase is required.
+  This preliminary recommendation is separate from the paid AI Readiness Audit, which includes deeper discovery, workflow mapping, and scoped analysis.
+  [See a sample plan](/plan/sample/).
 - [The AI-Ready Score](/score/) — free seven-minute self-assessment:
   fourteen questions across three phases (Map, Prove, Expand). You get a
   0–100 score and the one constraint to fix first. No sales call.
@@ -146,7 +154,8 @@ before work begins.
 ## Key pages
 
 - [Home](/) — what we build and why
-- [Free assessment](/book/) — 30 minutes, reply within 24 hours
+- [24-Hour Workflow Plan](/plan/) — the primary starting point; one workflow, reviewed within 24 hours
+- [Free assessment](/book/) — book a 30-minute conversation directly if you prefer
 - [Who we are](/about/) — the founder, the AI-native build team, the name
 - [Denver](/denver/) · [Phoenix](/phoenix/) — the two hubs, in person
 - [Contact](/contact/) — email or call Main & Machine

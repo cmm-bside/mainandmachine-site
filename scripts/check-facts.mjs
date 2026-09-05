@@ -91,7 +91,13 @@ const ALL_PAGES = [
 const CONTACT_PAGES = ALL_PAGES.filter((p) => !["404.html"].includes(p)).concat("llms.txt");
 
 // Pages that must carry the pricing facts.
-const PRICING_PAGES = ["index.html", "pricing/index.html", "llms.txt"];
+// The short homepage introduces the build band; the pricing page and fact
+// sheet retain the full commercial range. data-fact validation remains global.
+const PRICING_PAGES = {
+  "index.html": ["$18,000", "$60,000"],
+  "pricing/index.html": ["$3,500", "$8,500", "$18,000", "$60,000", "$95,000", "$1,500"],
+  "llms.txt": ["$3,500", "$8,500", "$18,000", "$60,000", "$95,000", "$1,500"],
+};
 
 // Known-bad variants that must never appear anywhere.
 const FORBIDDEN = [
@@ -115,10 +121,10 @@ for (const page of CONTACT_PAGES) {
     fail(`${page}: missing Denver/Phoenix location facts`);
 }
 
-for (const page of PRICING_PAGES) {
+for (const [page, requiredPrices] of Object.entries(PRICING_PAGES)) {
   const html = read(page);
   if (!html) continue;
-  for (const value of ["$3,500", "$8,500", "$18,000", "$60,000", "$95,000", "$1,500"]) {
+  for (const value of requiredPrices) {
     if (!html.includes(value)) fail(`${page}: missing canonical price ${value}`);
   }
 }

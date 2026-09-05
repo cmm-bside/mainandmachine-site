@@ -1,5 +1,5 @@
 # Main & Machine — llms-full.txt
-# The complete visible text of the 18 most important pages on
+# The complete visible text of the 20 most important pages on
 # https://www.mainandmachine.com/ , concatenated with page delimiters.
 # The condensed fact sheet lives at https://www.mainandmachine.com/llms.txt
 # Canonical business facts: AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue).
@@ -8,42 +8,51 @@
 ========================================================================
 PAGE: AI Implementation for Small Business | Main & Machine
 URL: https://www.mainandmachine.com/
-SUMMARY: AI systems for intake, follow-up, reporting, and connected tools. Fixed-price projects your team owns. Denver, Phoenix, and across the US.
+SUMMARY: AI and automation for small businesses: connect existing software, reduce repetitive office work, and start with a free plan reviewed within 24 hours.
 ========================================================================
 
-AI implementation for small & mid-size business
+AI & automation for small businesses
 
-# AI systems that give your team time back.
+# Less busywork. More time back.
 
-We build AI systems for intake, follow-up, reporting, and the work between your tools. Clear scope. Written price. Yours to own.
+We connect your existing software and automate repetitive office tasks—from following up with customers to moving information between systems.
 
-[Book a free assessment →](/book/)
-[See what we’ve built](/work/marcus/results/)
+[Get my free plan](/plan/)
+[Prefer to talk? Book a free call](/book/)
 
-Free · 30 minutes · One useful next step
+Reviewed by Christopher Myers · Emailed within 24 hours · No call required
 
-Built and used at B:Side Capital.
-A founder-affiliated deployment in a regulated lender. [See the measured results →](/work/marcus/results/)
+Your free plan
 
-Intake → follow-up Illustrative workflow
+## A useful answer before you spend.
 
-01 · A request arrives Your existing inbox
+- What to fix first
 
-02 · The system prepares
+- One practical step you can use
 
-## A clear next step.
+- What still needs checking
 
-✓ Details captured ✓ Customer record updated ✓ Response drafted
+Based on the task you describe. The answer may be a simpler process or a tool you already have.
 
-03 · Your team decides Review. Approve. Send.
-Human
-judgment
+Start with one task
 
-The repetitive work is prepared. The consequential decisions stay with you.
+## What keeps taking your time?
+
+### Following up with leads.
+
+Prepare replies and follow-up reminders from the inquiries already reaching your inbox.
+
+### Chasing invoices and paperwork.
+
+Collect missing details, prepare routine documents, and flag invoices that need a person’s attention.
+
+### Copying the same data twice.
+
+Move approved information between your systems, with checks for missing or conflicting records.
 
 Built. Used. Measured.
 
-## Real work. Reported results.
+## A working system at B:Side Capital.
 
 MARCUS at B:Side Capital.
 Internally measured over its first 90 days of full-fleet operation.
@@ -58,105 +67,160 @@ Weekly use by week six
 Identifiers sent outside
 
 Founder-affiliated deployment: Christopher Myers is CEO of B:Side Capital and Fund. Results are specific to this operation; see the measurement notes and limits.
-[Read the results and methodology](/work/marcus/results/)
+[See the results and methodology](/work/marcus/results/)
 
-Start with the work
+What happens next
 
-## Where is your team losing time?
+## Start free. Decide from there.
 
-You don’t need an AI strategy to start a conversation. You need a problem worth solving.
+-
 
-01 Intake & follow-up
+### Tell us about the work.
 
-### Get back to customers faster.
+Describe one repetitive task and where it gets stuck.
 
-Capture inquiries, route requests, and prepare the next follow-up.
-[Explore](/services/builds/instant-lead-response/)
+-
 
-02 Knowledge & reporting
+### We review it.
 
-### Find the answer. Skip the hunt.
+Christopher Myers reviews your request and the details you share.
 
-Find company information and prepare routine work from approved sources.
-[Explore](/services/builds/company-knowledge-base/)
+-
 
-03 Connected operations
+### Get your plan.
 
-### Stop moving the same data twice.
+Within 24 hours, receive a preliminary recommendation and a practical first step. Use it yourself or ask us to help.
 
-Connect your existing tools so records, updates, and handoffs move together.
-[Explore](/services/builds/business-system-connectors/)
+Christopher Myers
+Founder & Chairman · Your plan reviewer
 
-Inside the build · MARCUS
-
-## See how the work fits together.
-
-Company knowledge, document preparation, and human review—connected inside an operating business.
-MARCUS was built for B:Side Capital, the lender our founder leads. Explore the system, its reported results, and the limits of those measurements.
-[Explore the case study](/work/marcus/results/)
-
-Simplified system map · B:Side Capital deployment
-[Open the full system map ↗](/images/diagrams/marcus-workflow.svg)
-
-A clear path to a working system
-
-## Know the work. Know the price.
-
-Start with an audit if the opportunity is unclear. Go straight to a sprint when you know what needs building.
-
-01 / Find the opportunity
-
-### AI Readiness Audit
-
-$3,500–$8,500
-Prioritized workflows, an ROI model, and a build plan. A decision you can act on.
-2 to 4 weeks · The Blueprint
-[See audit deliverables](/services/ai-readiness-audit/)
-
-02 / Put it to work
-
-### Implementation Sprint
+### Want us to build it?
 
 $18,000–$60,000
-Build, integrate, test, and launch a scoped system. Training and documentation included.
-4 to 12 weeks · The 90-Day Build
-[See how we build](/services/ai-implementation/)
 
-03 / Keep improving
+Implementation Sprints build, connect, test, and launch an agreed workflow. A fixed quote follows an agreed scope, before paid work begins.
 
-### Managed AI Services
+Paid audits are available when the scope needs deeper investigation. Ongoing support is optional.
 
-From $1,500/month
-Monitoring, maintenance, and improvements after launch. Optional support without lock-in.
-The Service Contract
-[See ongoing support](/services/managed-ai-services/)
+[See paid services and pricing](/pricing/)
 
-Need a broader build? The Full Back Office is From $95,000 for a multi-department engagement. [See what it includes](/pricing/#backoffice).
-Audit credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
-Our delivery guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
-[Compare scope, costs, and terms](/pricing/)
+Your next step
 
-Christopher Myers · Founder & Chairman
+## Tell us what keeps piling up.
 
-The machine belongs to Main Street.
+You don’t need to know whether it needs AI. Describe the work. We’ll help you find the first move.
 
-## Built by people who know the weight of running a business.
+[Get my free plan](/plan/)
+[Prefer to talk? Book a free call](/book/)
 
-Christopher Myers leads Main & Machine alongside a team of AI-native builders. He is CEO of B:Side Capital and Fund, a professor at ASU’s W. P. Carey School, and an author with 20 years serving small businesses.
-We start with the work, define who stays accountable, and build around your team’s judgment.
-[Who builds your system](/about/)[How we handle your data](/security/)
+Free · Emailed within 24 hours · No call required
 
-One useful conversation
+========================================================================
+PAGE: Free Workflow Plan in 24 Hours | Main & Machine
+URL: https://www.mainandmachine.com/plan/
+SUMMARY: Tell us about one repetitive task. Christopher Myers reviews your free workflow plan, emailed within 24 hours. No call or purchase required.
+========================================================================
 
-## Bring us the work that keeps piling up.
+Free workflow plan
 
-We’ll talk through the workflow, the constraints, and whether a build makes sense. You’ll leave with a clear next step.
-[Book a free assessment →](/book/) Free · 30 minutes · No obligation
+# What does your team keep doing by hand?
 
-### Still exploring?
+Describe one repetitive task. Get a practical plan by email within 24 hours.
 
-Check your readiness before booking, or work through the economics.
-[Get your AI-Ready Score](/score/)[Estimate the opportunity](/calculator/)[Read the buyer’s guides](/guides/)
+Free. Reviewed by Christopher Myers.
+No call or purchase required.
+
+[See a sample plan](/plan/sample/)
+
+What happens next
+
+## A useful first step. Yours to keep.
+
+Use the plan yourself, share it with your team, or ask us to help.
+[Christopher Myers](/about/)
+Founder, Main & Machine
+
+What will I get? A short recommendation for the task you describe: what to fix first, a practical step or template, and the assumptions still to check. We may recommend a simpler process or a tool you already have. [See a sample plan](/plan/sample/).
+
+Is it really free? Yes. Christopher Myers will review your request and we’ll email your plan within 24 hours. No call or purchase is required.
+
+How is this different from a paid audit? The free plan is an initial recommendation on one task, based on what you share. We haven’t inspected your systems or validated savings. A [paid AI Readiness Audit](/services/ai-readiness-audit/) investigates your operation, prioritizes opportunities, and develops an ROI model and build plan.
+
+- [Main & Machine](/)
+
+- Workflow plan
+
+========================================================================
+PAGE: Sample Workflow Plan: Invoice Follow-Up | Main & Machine
+URL: https://www.mainandmachine.com/plan/sample/
+SUMMARY: See a one-page example workflow plan for invoice follow-up: what to fix first, a reminder you can use, human approval, and the questions before a build.
+========================================================================
+
+- [Main & Machine](/)
+
+- [Workflow plan](/plan/)
+
+- Sample plan
+
+Print this plan
+
+Main & Machine Sample / One workflow, one page
+
+# An invoice follow-up plan.
+
+Illustrative example. Not a client result.
+
+Example situation: a small commercial maintenance business follows up on overdue invoices manually. Payment updates and customer replies live in different places, so each reminder needs another check.
+
+## The recommendation Fix the status first.
+
+Start with a reliable overdue-invoice list and your accounting system’s reminder features. AI may help draft unusual replies; it should not decide what a customer owes. The accounting ledger remains the source of truth.
+
+Assign one person to check payments, credits, disputes, and promised payment dates before anything goes out.
+
+## The proposed workflow Prepare. Review. Record.
+
+- Prepare: pull open invoices from the accounting system into a review list. Use a saved message for routine reminders.
+
+- Review: a named person checks the live balance and approves each send. Conflicting records or disputed invoices stay on hold.
+
+- Record: save the reminder and any reply against the invoice. Pause follow-up when payment arrives or the customer raises an issue.
+
+## Copy and adapt A reminder you can use.
+
+Subject: Checking in on invoice [number]
+
+Hi [name], our records show invoice [number] for [amount], due [date], is open. Could you confirm the payment status? If you’ve already paid or something needs correcting, please let me know.
+
+Thank you,
+[sender]
+
+Replace the brackets and verify the details before sending.
+
+## A small test Check whether it helps.
+
+For one week, record time spent per reminder, records needing correction, and reminders sent in error. Compare with the current process before widening the test.
+
+Success means: less checking time without more incorrect reminders. Stop if payment status cannot be verified reliably. No savings estimate is justified yet.
+
+## Before a build Answer three questions.
+
+Can your accounting system already support this flow? Who owns approval and exceptions? How will payments and replies update the list?
+
+This proposal assumes usable invoice records, access to current payment status, and an accountable reviewer. Check those assumptions first.
+
+## Budget context Standard features first.
+
+This example is not a project quote. If custom work is justified, our paid audit is $3,500–$8,500 ; implementation sprints are $18,000–$60,000 . A fixed quote follows an agreed scope.
+
+Ongoing care is optional. Managed Services: From $1,500/month . Software and usage costs are separate and need checking.
+
+Your next step: bring one workflow you want to improve. We’ll help identify a useful first move. Request a free workflow plan at mainandmachine.com/plan/ , or book a conversation if you prefer.
+
+Illustrative scenario and proposed steps only. No client data or measured results. Scope and pricing require confirmation.
+
+[Get my free plan](/plan/)
+[Prefer to talk? Book a free assessment](/book/)
 
 ========================================================================
 PAGE: AI Services for Small Business | Main & Machine
@@ -2110,6 +2174,8 @@ Choose a time
 You can also [open the calendar in a new tab](https://calendly.com/cmyers-mainandmachine/30min), or [request a reply within 24 hours](#book).
 
 What is eating your team’s time? (optional — rides along with your booking)
+
+When you open the calendar, this note (up to 500 characters) is shared with Calendly to prepare your booking. You can edit or clear it first.
 
 The advisor reads this before your call. One line is plenty.
 

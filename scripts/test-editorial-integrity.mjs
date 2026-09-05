@@ -3,11 +3,13 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { marcusMeasuredSummary } from '../src/data/approved-claims.mjs';
 import { claimFindings } from './lib/claim-rules.mjs';
 import { applyBlogEditorialCache } from './lib/blog-editorial-cache.mjs';
 import { POST_EXCERPTS } from './lib/post-seo.mjs';
 import { bylineHtml, modifiedIso, removeLegacyGuideUpdatedRow } from './lib/byline.mjs';
+import { editorialSignature, lastEditorialCommitDate } from './lib/page-editorial-date.mjs';
 
 assert.deepEqual(claimFindings('<p>No borrower <em>file</em> leaves the building.</p>'), ['borrower-boundary']);
 assert.deepEqual(claimFindings('<meta name="description" content="No borrower file leaves the building.">'), ['borrower-boundary']);
@@ -62,4 +64,31 @@ try {
   assert.equal(applyBlogEditorialCache(temp), 1);
   assert.equal(JSON.parse(fs.readFileSync(path.join(temp, 'blog-data/ai-managed-services.json'))).excerpt, POST_EXCERPTS[post.slug]);
 } finally { fs.rmSync(temp, { recursive: true, force: true }); }
-console.log('[test:editorial] OK — claim scope, byline deduplication, explicit dates, and feed override preservation.');
+// Real history demonstrates that repeated navigation-only releases do not
+// claim a new editorial date, while a changed destination or offer does.
+const dateRepo = fs.mkdtempSync(path.join(os.tmpdir(), 'mm-page-dates-'));
+try {
+  const git = (args, env = {}) => execFileSync('git', args, { cwd: dateRepo, stdio: 'ignore', env: { ...process.env, ...env } });
+  git(['init']);
+  const original = '<html><head><title>Workflow plan</title><meta name="description" content="A preliminary recommendation."><link rel="stylesheet" href="/styles.css?v=1"></head><body><header>Old menu</header><main><h1>One task</h1><a href="/plan/">Get a free workflow plan</a><img src="/diagram.svg" alt="Workflow"></main><footer>Old footer</footer></body></html>';
+  const commit = (html, day) => {
+    fs.writeFileSync(path.join(dateRepo, 'index.html'), html);
+    git(['add', 'index.html']);
+    git(['-c', 'user.name=Editorial QA', '-c', 'user.email=qa@example.invalid', '-c', 'commit.gpgsign=false', 'commit', '-m', 'fixture'], { GIT_AUTHOR_DATE: `${day}T12:00:00Z`, GIT_COMMITTER_DATE: `${day}T12:00:00Z` });
+  };
+  commit(original, '2026-09-01');
+  const chrome = original.replace('Old menu', 'Short menu').replace('Old footer', 'Short footer').replace('v=1', 'v=2').replace('Get a free workflow plan', 'Get my free plan');
+  commit(chrome, '2026-09-02');
+  assert.equal(lastEditorialCommitDate(dateRepo, 'index.html'), '2026-09-01', 'shared chrome, equivalent CTA labels and cache versions cannot manufacture freshness');
+  const linked = chrome.replace('href="/plan/"', 'href="/plan/sample/"');
+  commit(linked, '2026-09-03');
+  assert.equal(lastEditorialCommitDate(dateRepo, 'index.html'), '2026-09-03', 'a changed main-content destination is substantive');
+  const described = linked.replace('A preliminary recommendation.', 'A free preliminary recommendation.');
+  commit(described, '2026-09-04');
+  commit(described.replace('Short menu', 'Latest menu'), '2026-09-05');
+  assert.equal(lastEditorialCommitDate(dateRepo, 'index.html'), '2026-09-04', 'metadata changes survive a later chrome-only release');
+  assert.notEqual(editorialSignature(original), editorialSignature(original.replace('One task', 'One reviewed task')));
+  assert.notEqual(editorialSignature(original), editorialSignature(original.replace('/diagram.svg', '/new-diagram.svg')));
+  assert.notEqual(editorialSignature(original), editorialSignature(original.replace('</head>', '<script type="application/ld+json">{"@type":"Offer","price":0}</script></head>')));
+} finally { fs.rmSync(dateRepo, { recursive: true, force: true }); }
+console.log('[test:editorial] OK — claim scope, byline dates, feed preservation, and content-based sitemap dates.');

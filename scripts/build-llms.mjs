@@ -40,13 +40,15 @@ const measuredSummary = marcusMeasuredSummary(MARCUS_PROOF);
 
 const out = `# ${COMPANY.name}
 
-> AI consulting and implementation for small and mid-size businesses
-> (${COMPANY.audience.headcount} employees, ${COMPANY.audience.revenue} revenue). Fixed-price audits $3,500–$8,500;
-> implementation sprints $18,000–$60,000, fixed quote in writing, delivered
-> in ~90 days per workflow. Every scoped workflow is guaranteed live within
-> 90 days or we keep building at no charge. Hubs in Denver, CO and Phoenix, AZ; remote across
-> the US. Founded by ${COMPANY.founder.name}.
-> The ${COMPANY.workflowPlan.name} is the primary starting point.
+> AI consulting and implementation for small and mid-size businesses.
+> We connect existing software and automate repetitive office tasks, including
+> customer follow-up and moving approved information between systems.
+> Hubs in Denver, CO and Phoenix, AZ; remote across the US.
+> Founded by ${COMPANY.founder.name}.
+
+## Start with one task
+
+[Get a free ${COMPANY.workflowPlan.name}](${COMPANY.workflowPlan.path}) is the primary starting point.
 
 ${COMPANY.workflowPlan.summary}
 ${COMPANY.workflowPlan.paidAuditDistinction}

@@ -2421,16 +2421,11 @@ table.cmp .cmp__time{ white-space:nowrap; }
 p, li, figcaption, .lead, .hero__note { text-wrap: pretty; }
 h1, h2, h3, h4, .h2, .h-hero { text-wrap: balance; }
 
-/* Long words at display size are wider than a phone. "Implementation" alone is
-   298px at 39px type, against the 280px of content a 320px viewport has, so it
-   sized its grid track and scrolled the page sideways — five headings did this
-   with no NBSP pin involved. `hyphens: auto` only breaks a word when a break is
-   actually needed to fit, so nothing hyphenates while there is room; it also
-   lowers min-content, which is what stops the track from overflowing in the
-   first place. Scoped to narrow widths: desktop headings never need it, and
-   the pages already declare lang="en" for the hyphenation dictionary. */
+/* Keep display words intact on phones; scale long interior-page headings to
+   fit the available column instead of inserting dictionary hyphens. */
 @media (max-width: 480px) {
-  h1, h2, h3, h4, .h1, .h2, .h-hero { hyphens: auto; }
+  h1, h2, h3, h4, .h1, .h2, .h-hero { hyphens: none; overflow-wrap: normal; }
+  main:not(.home-upgrade) :is(h1.h1, h1.h2, h1.h-hero) { font-size: clamp(29px, 8.2vw, 38px); }
 }
 
 /* =========================================================
@@ -4643,4 +4638,80 @@ section.ink, .ink--grid {
   --dtx-mute: var(--on-dark-muted);
   --dtx-faint: var(--on-dark-muted);
   --mono-on-dark: var(--on-dark-muted);
+}
+
+
+/* Comparable offers share content rows while single-column cards stay compact. */
+@media (min-width: 901px) {
+  @supports (grid-template-rows: subgrid) {
+    .funnel-offers { row-gap: 0; }
+    .funnel-offers > .funnel-offer { display: grid; grid-template-rows: subgrid; grid-row: span 7; row-gap: 0; }
+    .funnel-offers > .funnel-offer > .funnel-offer-link { margin-top: 0; align-self: start; }
+    .funnel-offers > .funnel-offer > .funnel-terms { align-self: stretch; }
+  }
+}
+
+/* Booking expectations follow the action, so the first screen stays actionable. */
+.book-expectations { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; border-top: 1px solid var(--line); margin-top: 32px; padding-top: 24px; }
+.book-expectations h2 { font: 700 19px/1.3 var(--sans); letter-spacing: -.02em; margin: 0 0 10px; }
+.book-expectations p { font-size: 15px; line-height: 1.6; color: var(--tx-mute); margin: 0; }
+
+/* Results move from the headline evidence to methods, then optional depth. */
+.results-affiliation { font-size: 14px; line-height: 1.65; color: var(--tx-mute); max-width: 64ch; margin-top: 18px; }
+.results-jump { display: flex; flex-wrap: wrap; gap: 8px 28px; border-top: 1px solid var(--line); padding-top: 22px; margin-top: 30px; }
+.results-jump a { display: inline-flex; min-height: 44px; align-items: center; font-size: 15px; }
+.results-source { font-size: 14px; line-height: 1.65; color: var(--dtx-mute); margin: 18px 0 0; max-width: 90ch; }
+.results-method__facts { margin-top: 32px; }
+.results-method__facts > div { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 28px; border-top: 1px solid var(--line); padding: 22px 0; }
+.results-method__facts dt { font-size: 17px; font-weight: 700; }
+.results-method__facts dd { margin: 0; font-size: 16px; line-height: 1.65; max-width: 80ch; }
+.results-details > .wrap > .lead { max-width: 65ch; margin-bottom: 32px; }
+.results-chapter { border-top: 1px solid var(--line); }
+.results-chapter:last-child { border-bottom: 1px solid var(--line); }
+.results-chapter > summary { display: grid; grid-template-columns: 32px 1fr auto; align-items: center; gap: 12px 20px; padding: 26px 0; cursor: pointer; list-style: none; }
+.results-chapter > summary::-webkit-details-marker { display: none; }
+.results-chapter > summary::after { content: '+'; font-size: 26px; grid-column: 3; grid-row: 1 / span 2; }
+.results-chapter[open] > summary::after { content: '−'; }
+.results-chapter > summary > span:first-child { font: 12px/1.5 var(--mono); color: var(--tx-mute); }
+.results-chapter > summary strong { font-size: 25px; line-height: 1.25; letter-spacing: -.025em; }
+.results-chapter > summary > span:last-child { grid-column: 2; font-size: 14px; color: var(--tx-mute); }
+.results-chapter > summary:focus-visible { outline: 2px solid var(--rust); outline-offset: 5px; }
+.results-chapter__body > .section { padding-block: 28px 40px; background: transparent; }
+.results-chapter__body > .section > .wrap { max-width: none; width: auto; padding-inline: 0; margin-inline: 0; }
+.results-chapter__body .evidence-detail__title { max-width: 42ch; }
+
+/* Sample audit: assumptions and the decision are readable without a spreadsheet. */
+.sample-assumptions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin: 26px 0; }
+.sample-assumptions > div { display: flex; flex-direction: column; gap: 6px; padding: 15px 0; border-top: 1px solid var(--line); }
+.sample-assumptions span { font-size: 14px; color: var(--tx-mute); }
+.sample-assumptions b { font-size: 17px; line-height: 1.4; }
+.sample-economics { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 24px 0; font-size: 15px; }
+.sample-economics caption { text-align: left; font-weight: 700; font-size: 18px; padding-bottom: 14px; }
+.sample-economics th, .sample-economics td { padding: 14px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.sample-economics th:first-child { width: 48%; padding-left: 0; }
+.sample-economics thead { background: var(--paper-2); }
+.sample-economics thead th:first-child { padding-left: 12px; }
+.sample-economics tbody th { font-weight: 500; }
+.sample-formula, .sample-caution { font-size: 15px; line-height: 1.65; }
+.sample-caution { border-left: 3px solid var(--rust); padding-left: 18px; margin-top: 22px; }
+.sample-phases { list-style: none; padding: 0; margin: 24px 0; }
+.sample-phases li { padding: 22px 0; border-top: 1px solid var(--line); }
+.sample-phases h3 { font-size: 21px; line-height: 1.3; margin-bottom: 12px; }
+.sample-phases p { font-size: 16px; line-height: 1.65; margin: 10px 0 0; }
+@media (max-width: 700px) {
+  .book-expectations { grid-template-columns: 1fr; gap: 22px; }
+  .results-method__facts > div { grid-template-columns: 1fr; gap: 10px; }
+  .results-chapter > summary { column-gap: 12px; }
+  .results-chapter > summary strong { font-size: 22px; }
+  .sample-assumptions { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .sample-economics { font-size: 13px; }
+  .sample-economics th, .sample-economics td { padding: 12px 8px; }
+  .sample-economics th:first-child { width: 46%; }
+}
+@media print {
+  .results-chapter::details-content { display: block; content-visibility: visible; }
+  .sample-economics { font-size: 11px; }
+  .sample-caution { font-size: 12px; }
 }

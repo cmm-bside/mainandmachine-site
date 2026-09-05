@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=150" />
+<link rel="stylesheet" href="/styles.css?v=151" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -285,7 +285,7 @@ dl.mk-stats{ margin-bottom: 0; }
       "headline": "MARCUS: a private AI back office for B:Side Capital",
       "url": "https://www.mainandmachine.com/work/marcus/",
       "datePublished": "2026-06-24",
-      "dateModified": "2026-07-31",
+      "dateModified": "2026-09-04",
       "description": "How Main & Machine built MARCUS for B:Side Capital: 14 AI agents across 7 departments, local document processing, and human approval of consequential work.",
       "about": "AI implementation for a regulated SBA 504 / CDFI lender",
       "isPartOf": {
@@ -462,7 +462,7 @@ dl.mk-stats{ margin-bottom: 0; }
           <div class="statrail__row"><dt class="statrail__k">Sector</dt><dd class="statrail__v">SBA 504 / CDFI lender</dd></div>
           <div class="statrail__row"><dt class="statrail__k">Footprint</dt><dd class="statrail__v">7 departments</dd></div>
           <div class="statrail__row"><dt class="statrail__k">The team</dt><dd class="statrail__v accent-tx">14 AI agents</dd></div>
-          <div class="statrail__row"><dt class="statrail__k">Runs</dt><dd class="statrail__v">In-house, on-prem</dd></div>
+          <div class="statrail__row"><dt class="statrail__k">Runs</dt><dd class="statrail__v">Local + hybrid</dd></div>
           <div class="statrail__row"><dt class="statrail__k">Updated</dt><dd class="statrail__v"><time datetime="2026-07-31">July 2026</time></dd></div>
         </dl>
       </div>
@@ -479,19 +479,19 @@ dl.mk-stats{ margin-bottom: 0; }
       <div class="scoregrid scoregrid--compact">
         <div class="score" data-figure="hours-returned">
           <div class="score__n tick-num">1,240<small>hrs</small></div>
-          <p class="score__d">Staff preparation hours returned in the reported 90-day window. Annualized, that is approximately 5,000 hours, or 2.4 full-time equivalents of preparation capacity; it is not measured annual cash savings.</p>
+          <p class="score__d">Staff preparation hours returned during the reported 90-day window. This is operating capacity, not measured cash savings.</p>
         </div>
         <div class="score" data-figure="weekly-adoption">
           <div class="score__n tick-num">93<small>%</small></div>
-          <p class="score__d">Of staff using MARCUS weekly by week six, through tools they already used.</p>
+          <p class="score__d">Of staff using MARCUS weekly by week six. The public summary does not include the staff denominator.</p>
         </div>
         <div class="score" data-figure="identifiers-out">
           <div class="score__n tick-num">0</div>
-          <p class="score__d">Borrower identifiers reported as sent to outside models during the measurement window. Prompts and documents passed through the privacy filter; mandatory filtering is not a guarantee of perfect detection.</p>
+          <p class="score__d">Borrower identifiers reported as sent to outside models during the measurement window. Filtering is required; detection is not guaranteed to be perfect.</p>
         </div>
         <div class="score" data-figure="human-approved">
           <div class="score__n tick-num">100<small>%</small></div>
-          <p class="score__d">Of consequential actions approved by a person before sending, filing, posting, or paying during the reported measurement window.</p>
+          <p class="score__d">Of consequential actions approved by a person during the reported window, before sending, filing, posting, or paying.</p>
         </div>
       </div>
 <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
@@ -739,7 +739,7 @@ dl.mk-stats{ margin-bottom: 0; }
   <div class="wrap">
     <span class="kicker">One rule behind everything</span>
     <h2 class="h2">MARCUS prepares the work. <span class="accent-tx">People&nbsp;decide.</span></h2>
-    <p class="lead lead--loose" style="max-width: 64ch;">Nothing sends, files, posts, or pays until a person approves it. MARCUS never decides eligibility, credit, or price. Those numbers come from systems, never from memory. Every request arrives the same way.</p>
+    <p class="lead lead--loose" style="max-width: 64ch;">Consequential sending, filing, posting, and paying require a person’s approval. MARCUS does not decide eligibility, credit, or price. Those numbers come from systems, never from memory. Every request arrives the same way.</p>
 
     <div class="mk-flow">
       <div class="mk-flow__step">
@@ -910,6 +910,6 @@ dl.mk-stats{ margin-bottom: 0; }
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".mk-hero > *,.mk-client > *,.head-block > *,.prose-2 > *,.mk-surfaces > *,.mk-stats > *,.mk-map,.mk-buildorder > *,.mk-priv > *,.mk-flow > *,.mk-rules > *,.mk-outcome > *,.mk-closer > *,.mk-storieshead > *,.mk-stories > *,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=5"></script>
+<script defer src="/js/analytics.js?v=6"></script>
 </body>
 </html>

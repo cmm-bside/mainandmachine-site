@@ -24,7 +24,7 @@ export const BUILDS = [
 		kicker: "Answering",
 		title: "24/7 AI Receptionist for Small Business | Main & Machine",
 		description:
-			"An AI receptionist that answers every call, handles routine questions, and books appointments. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
+			"An AI receptionist for routine calls, questions, and appointment requests, with escalation rules. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
 		// The quotable definition. Answer engines lift the first paragraph, so it
 		// has to stand alone with no pronouns pointing back at a headline.
 		definition:
@@ -78,7 +78,7 @@ export const BUILDS = [
 		kicker: "Follow-up",
 		title: "Instant Lead Response for Small Business | Main & Machine",
 		description:
-			"Every lead gets a real reply in under a minute, then follow-ups drafted in your voice. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
+			"Drafts timely lead replies and follow-ups in your voice, with review and escalation rules. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
 		definition:
 			"Instant lead response is a system that answers every inbound enquiry within a minute of it arriving — web form, email, or ad platform — with a real reply rather than an autoresponder, then keeps drafting follow-ups in your voice until the person answers or asks you to stop. Speed is the whole mechanism: the business that replies first usually wins the job, and most leads that arrive outside office hours are gone by Monday.",
 		industries: ["construction", "professional-services", "retail", "hospitality"],
@@ -270,7 +270,7 @@ export const BUILDS = [
 		tier: "sprint",
 		faq: [
 			["Our staff already use ChatGPT. Why change?",
-			 "Because you cannot see what they pasted into it. A private interface gives them the same usefulness with your records staying inside the building and an audit trail behind every question."],
+			 "A managed interface can limit access to approved records and make review easier. Define where each request is processed, what is logged, and which external routes are permitted; the interface alone does not guarantee privacy."],
 			["Is it as good as the consumer tools?",
 			 "The useful comparison is your actual workflow: access to the right records, answer quality, controls, and cost. We test those requirements before deciding whether a private setup or an existing business tool is the better fit."],
 			["Do we need the server and the knowledge base first?",

@@ -42,6 +42,10 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: "Invalid request." }, 400);
   }
 
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return json({ ok: false, error: "Invalid request." }, 400);
+  }
+
   // --- spam: honeypot (must be empty) ---
   // Bots fill every field; humans never see this one.
   if (typeof body.company_url === "string" && body.company_url.trim() !== "") {

@@ -24,12 +24,8 @@ export const LOCAL_SCRATCH_DIRS = new Set([
 	// flood this list exists to stop, and it appears the moment someone runs a
 	// background task, not from anything they did wrong.
 	".claude",
-	// design/ holds home-reference.html, the rendered visual spec. It IS
-	// committed and IS deployed (robots.txt disallows it), so it is not scratch
-	// in the sense above — but it is not a site page either, and it was already
-	// being swept into placeholders:check (44 -> 45 pages). A mock is allowed to
-	// contain the words a real page may not; without this, adding "TODO" to the
-	// spec would fail the site build.
+	// Retired design references are not public site pages; the former
+	// home-reference.html was removed from the tracked deployment output.
 	"design",
 	// docs/ holds SITE-AUDIT.md, the PR write-ups and the Lighthouse report
 	// HTML. None of it is a site page, and the Lighthouse reports in particular
@@ -232,4 +228,4 @@ export const POST_TOPICS = {
 export const POST_TOPIC_FALLBACK = { href: "/services/", label: "What we actually build" };
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "150";
+export const ASSET_VERSION = "151";

@@ -15,7 +15,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { STATIC_ROUTES, ROOT } from "./lib/config.mjs";
-import { bylineHtml, modifiedIso, YMYL_GUIDES } from "./lib/byline.mjs";
+import { bylineHtml, modifiedIso, removeLegacyGuideUpdatedRow } from "./lib/byline.mjs";
 
 const CHECK = process.argv.includes("--check");
 const only = (process.argv.find((a) => a.startsWith("--only=")) || "").split("=")[1];
@@ -35,13 +35,13 @@ for (const route of guides) {
 	const abs = path.join(ROOT, rel);
 	if (!fs.existsSync(abs)) continue;
 	const original = fs.readFileSync(abs, "utf8");
-	let html = original;
+	let html = removeLegacyGuideUpdatedRow(original);
 
 	const iso = modifiedIso(route);
 	if (!iso) { problems.push(`${rel}: no date in src/data/page-dates.json — run npm run seo:dates`); continue; }
 
 	// --- 1. visible byline ---
-	const block = `${OPEN}\n        ${bylineHtml(route, { reviewed: YMYL_GUIDES.has(route) })}\n        ${CLOSE}`;
+	const block = `${OPEN}\n        ${bylineHtml(route)}\n        ${CLOSE}`;
 	const re = new RegExp(`${OPEN}[\\s\\S]*?${CLOSE}`);
 	if (re.test(html)) html = html.replace(re, block);
 	else {
@@ -72,6 +72,7 @@ for (const route of guides) {
 		},
 	);
 
+	html = html.replace(/^[\t ]+$/gm, "");
 	if (html !== original) {
 		changed++; report.push(rel);
 		if (!CHECK) fs.writeFileSync(abs, html);

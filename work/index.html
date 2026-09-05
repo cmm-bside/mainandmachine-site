@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=150" />
+<link rel="stylesheet" href="/styles.css?v=151" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -288,7 +288,7 @@
         <div class="statrail__row"><span class="statrail__k">Sector</span><span class="statrail__v">SBA 504 / CDFI</span></div>
         <div class="statrail__row"><span class="statrail__k">The team</span><span class="statrail__v accent-tx">14 AI agents</span></div>
         <div class="statrail__row"><span class="statrail__k">Footprint</span><span class="statrail__v">7 departments</span></div>
-        <div class="statrail__row"><span class="statrail__k">Runs</span><span class="statrail__v">In-house, on-prem</span></div>
+        <div class="statrail__row"><span class="statrail__k">Runs</span><span class="statrail__v">Local + hybrid</span></div>
       </div>
     </div>
   </div>
@@ -300,7 +300,7 @@
     <div class="foundernote">
       <span class="foundernote__tag">Why we lead with our own company</span>
       <blockquote class="foundernote__q">
-        <p>I didn’t start Main &amp; Machine to sell AI. I built MARCUS to run my own company: B:Side Capital, a regulated SBA and CDFI lender, where a wrong call has real consequences and a borrower’s file never leaves the building. I made every mistake on my own operation first, with my own money and my own name on the line. Only once I trusted it with the thing I’m accountable for did I take it to anyone else. <b>We sell exactly one thing: what we already proved on ourselves.</b></p>
+        <p>I didn’t start Main &amp; Machine to sell AI. I built MARCUS to run my own company: B:Side Capital, a regulated SBA and CDFI lender, where a wrong call has real consequences. I made every mistake on my own operation first, with my own money and my own name on the line. Only once I trusted it with the thing I’m accountable for did I take it to anyone else. <b>We sell exactly one thing: what we already proved on ourselves.</b></p>
       </blockquote>
       <p class="foundernote__by"><b>Christopher Myers</b> · Founder &amp; Chairman, Main &amp; Machine · CEO, B:Side Capital</p>
     </div>
@@ -322,12 +322,12 @@
       <div class="teardown__cell">
         <span class="tick-lbl">The problem</span>
         <h3>Prep ate the days.</h3>
-        <p>B:Side Capital is a regulated SBA 504 and CDFI lender. Before anyone decides anything, someone gathers the documents, pulls the reports, and drafts the paperwork. The same steps, over and over, across seven departments. And none of it could move to a cloud tool: borrower files can’t leave the building.</p>
+        <p>B:Side Capital is a regulated SBA 504 and CDFI lender. Before anyone decides anything, someone gathers the documents, pulls the reports, and drafts the paperwork. The same steps, over and over, across seven departments. The team needed a controlled boundary around borrower documents and a record of how the system used them.</p>
       </div>
       <div class="teardown__cell">
         <span class="tick-lbl">What we built</span>
         <h3>Fourteen agents, in-house.</h3>
-        <p>We read roughly 840 of B:Side’s own process documents and built fourteen AI agents, one for each step of the lending lifecycle, running entirely on B:Side’s own infrastructure. No borrower file leaves the building, and every action traces back to a real procedure.</p>
+        <p>We read roughly 840 of B:Side’s own process documents and built fourteen AI agents across seven departments. Borrower documents are processed locally; selected tasks can use external reasoning on filtered text. The system prepares work against B:Side’s procedures, with human approval for consequential actions.</p>
       </div>
       <div class="teardown__cell">
         <span class="tick-lbl">Who stays in control</span>
@@ -374,19 +374,19 @@
       <div class="scoregrid scoregrid--compact">
         <div class="score" data-figure="hours-returned">
           <div class="score__n tick-num">1,240<small>hrs</small></div>
-          <p class="score__d">Staff preparation hours returned in the reported 90-day window. Annualized, that is approximately 5,000 hours, or 2.4 full-time equivalents of preparation capacity; it is not measured annual cash savings.</p>
+          <p class="score__d">Staff preparation hours returned during the reported 90-day window. This is operating capacity, not measured cash savings.</p>
         </div>
         <div class="score" data-figure="weekly-adoption">
           <div class="score__n tick-num">93<small>%</small></div>
-          <p class="score__d">Of staff using MARCUS weekly by week six, through tools they already used.</p>
+          <p class="score__d">Of staff using MARCUS weekly by week six. The public summary does not include the staff denominator.</p>
         </div>
         <div class="score" data-figure="identifiers-out">
           <div class="score__n tick-num">0</div>
-          <p class="score__d">Borrower identifiers reported as sent to outside models during the measurement window. Prompts and documents passed through the privacy filter; mandatory filtering is not a guarantee of perfect detection.</p>
+          <p class="score__d">Borrower identifiers reported as sent to outside models during the measurement window. Filtering is required; detection is not guaranteed to be perfect.</p>
         </div>
         <div class="score" data-figure="human-approved">
           <div class="score__n tick-num">100<small>%</small></div>
-          <p class="score__d">Of consequential actions approved by a person before sending, filing, posting, or paying during the reported measurement window.</p>
+          <p class="score__d">Of consequential actions approved by a person during the reported window, before sending, filing, posting, or paying.</p>
         </div>
       </div>
 <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
@@ -402,7 +402,7 @@
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
-      <p class="lead mt-s">Want your operation on this shelf? It starts with a <b>free 30-minute assessment</b>: a senior advisor walks three of your workflows and tells you what’s worth building, if anything.</p>
+      <p class="lead mt-s">Want your operation on this shelf? It starts with a <b>free 30-minute assessment</b>: we discuss one workflow, its constraints, and whether a build is worth investigating.</p>
       <div class="hero__cta">
         <a data-cta="final-cta" class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
       </div>
@@ -413,7 +413,7 @@
       </div>
     </div>
     <div class="final__promise">
-      <p>A fixed price, quoted in writing before we start. And a straight answer within 24 hours.</p>
+      <p>We reply within 24 hours. A fixed quote follows an agreed scope, before paid work begins.</p>
       <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
@@ -501,6 +501,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.foundernote,.teardown,.story-feat,.closer,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=5"></script>
+<script defer src="/js/analytics.js?v=6"></script>
 </body>
 </html>

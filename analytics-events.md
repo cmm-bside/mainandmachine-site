@@ -25,8 +25,9 @@ industry keys, and coarse bands (score band, headcount band). Never a name,
 email, phone, free-text answer, raw score, or dollar output. Custom events
 change ONLY by editing `js/analytics.js` (static site) or
 `lib/analytics.ts` (Score app) — no inline one-offs, except the /book/ page's
-five booking events (`calendly_loaded`, `calendly_widget_viewed`,
-`calendly_time_selected`, `calendly_booked`, `booking_form_submitted`), which
+booking events (`calendly_loaded`, `calendly_widget_viewed`,
+`calendly_time_selected`, `calendly_booked`, `booking_form_submitted`,
+`booking_form_failed`), which
 live in `book/index.html` next to the code they measure, and
 `booking_details_added`, which lives in `book/thanks/index.html` for the same
 reason (it measures the stage-2 form on that page).
@@ -62,9 +63,15 @@ the pre-change `hero` bucket should be read as "hero + pre-footer + page hero".
 | engagement | `cta_score_click` | `page`, `location` (hero·ticker·nav·door·footer·calculator) | any `/score` link clicked in a known region | `js/analytics.js` |
 | engagement | `score_started` | `page` | "Get my score" — first question shown | Score app |
 | engagement | `score_completed` | `page`, `band` | assessment scored (band, never the number) | Score app |
+| engagement | `score_report_opened` | `page`, `surface` | onscreen or persistent report rendered | Score app |
+| lead | `score_report_requested` | `page` | report API accepts the request; delivery happens separately | Score app |
+| recovery | `score_report_request_failed` | `page` | report request failed and can be retried | Score app |
 | engagement | `calculator_interacted` | `page`, `industry`, `team_band` (1–10 · 11–25 · 26–50 · 51–100), `at` (`first-touch` · `cta-click`) | either ROI calculator. `first-touch` once per page load, debounced 400ms so a slider drag reports the SETTLED value; `cta-click` once more if they then click the calculator's own booking CTA, carrying the state they acted on. An untouched calculator fires neither. | `js/analytics.js` |
 | engagement | `guide_read` | `page`, `guide` (slug) | 75% scroll depth on a `/guides/<slug>/` page, once | `js/analytics.js` |
-| intent | `cta_book_click` | `page`, `location` (the link's own `data-cta`; + `score-report` from the app's report door) | any `/book` link clicked, anywhere | both |
+| intent | `cta_book_click` | `page`, `location` (the link's own `data-cta`; + `score-results` or `score-report` from the app) | any `/book` link clicked, anywhere | both |
+| intent | `calendly_opened` | `page` | visitor deliberately activates the calendar, once | `js/analytics.js` |
+| intent | `booking_form_started` | `page` | first non-honeypot form input, once | `js/analytics.js` |
+| recovery | `booking_form_failed` | `page` | fallback request fails; no successful lead event | `book/index.html` |
 | intent | `calendly_loaded` | `page` | the /book/ scheduler **iframe** fires `load` — our side of the embed | `book/index.html` |
 | intent | `calendly_widget_viewed` | `page` | Calendly's `calendly.event_type_viewed` — **its** booking UI actually rendered. Once per page load. | `book/index.html` |
 | intent | `calendly_time_selected` | `page` | Calendly's `calendly.date_and_time_selected` — a slot is picked but not confirmed. Once per page load. | `book/index.html` |
@@ -75,8 +82,7 @@ the pre-change `hero` bucket should be read as "hero + pre-footer + page hero".
 | audience | `newsletter_subscribed` | `page` | any beehiiv subscribe form submitted (closest observable moment; beehiiv confirms in its own tab) | `js/analytics.js` |
 
 Read rates as: `score_completed / score_started` (tool completion),
-`calendly_booked / (calendly_loaded + booking_form_submitted)` (intent →
-booked), `calendly_booked / unique visitors` (the number that matters).
+`calendly_booked / calendly_widget_viewed` (scheduler completion), `calendly_booked / unique visitors` (the number that matters).
 
 ## Microsoft Ads UET (tag 343267453, added 2026-08-23)
 
@@ -97,7 +103,8 @@ unchanged: labels are constant strings or page paths, never a payload field.
 | Book appointment | `book_appointment` | `calendly_booked` (`book/index.html`) | `calendly.event_scheduled`, inside the same origin check + once-latch |
 | Submit lead form | `submit_lead_form` | `booking_form_submitted` (`book/index.html`) | the fallback form's `ok` response, not the submit attempt |
 | Submit lead form | `submit_lead_form` | `calculator_emailed` (`js/analytics.js`) | any `.estimate-form` submit (/calculator/ + guide worksheets) |
-| Submit lead form | `submit_lead_form` | `score_completed` (Score app, `lib/analytics.ts`) | assessment scored — the app carries its own base tag |
+| Submit lead form | `submit_lead_form` | `score_report_requested` (Score app, `lib/analytics.ts`) | report request accepted by the API; not email delivery |
+| Book appointment | `book_appointment` | `calendly_booked` (Score app) | validated Calendly success message, once |
 
 Deliberately NOT conversions: the beehiiv subscribe form (an audience, not a
 lead), the careers application, and `booking_details_added` (stage-2
@@ -156,16 +163,20 @@ a once-only bottom would understate every rate above.
    `guide_read`, `calendly_loaded`, **`calendly_widget_viewed`**,
    **`calendly_time_selected`**, `booking_form_submitted`,
    `calendly_booked`, `newsletter_subscribed`, `calculator_emailed`,
-   `booking_details_added`. Mark `calendly_booked` as the conversion.
+   `booking_details_added`, `calendly_opened`, `booking_form_started`,
+   `booking_form_failed`, `score_report_requested`,
+   `score_report_request_failed`, `score_report_opened`. Mark `calendly_booked`
+   as the appointment conversion; keep accepted requests separate.
 2. Funnels (if on a plan with funnels): the booking funnel is
    `cta_book_click` → `calendly_widget_viewed` → `calendly_time_selected` →
    `calendly_booked`. The wider acquisition funnel is visit →
    `score_started` → `score_completed` → `cta_book_click` → `calendly_booked`.
    Add `location` as a custom property on `cta_book_click` to break the first
    step down by placement.
-3. GA4 (Score app only) is unchanged — `score_complete` stays the key event
-   there; see `ai-ready-score/lib/analytics.ts` header for the custom
-   dimensions list.
+3. GA4 (Score app only): treat `score_complete` as engagement,
+   `email_submit` as an accepted report request, and `report_calendly_booked`
+   as a confirmed appointment. Review existing dashboard goal settings; code
+   changes do not change previously configured key events.
 
 ## Related decisions
 
@@ -242,3 +253,27 @@ Network filtered to `/api/event`, then:
       `{location:"score-report"}`, and the URL carries
       `ctx=score&phase=<map|prove|expand>` alongside the report UTMs.
 - [ ] Realtime dashboard shows each event within ~30s of firing.
+
+## Attribution and private report links
+
+The static site keeps first-touch `utm_source`, `utm_medium`, `utm_campaign`,
+and `utm_content` in session storage and appends them to public booking/Score
+links. Only bounded campaign identifiers are accepted; names, emails, arbitrary
+query text and report tokens are not persisted. A public Score phase may follow
+the journey so the request and calendar retain context. Calendar inline and
+direct links carry the same campaign identifiers. Existing destination values
+and same-page anchors are preserved.
+
+Persistent Score reports contain a capability token. Their HTTP and metadata
+referrer policy is `origin`. Plausible redacts tokens in page URLs, referrers
+and event/download props. GA and UET are not initialized for private report
+URLs or token-bearing referrers, and explicit events repeat that guard. The
+onscreen report remains on `/score/`; persistent reports are reached by ordinary
+full-document email links. No client router transition enters a report route.
+UET automatic SPA URL tracking is disabled; normal acquisition page loads and
+explicit public funnel events remain enabled. Future use of a client router for
+private reports requires revisiting automatic-provider privacy before shipping.
+
+Accepted requests, confirmed calendar messages, delivered emails, CRM records
+and sales are separate facts. Local tests validate requests and mock delivery
+providers; they do not prove a live inbox receipt or closed sale.

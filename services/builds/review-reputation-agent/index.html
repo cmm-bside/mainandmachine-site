@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=150" />
+<link rel="stylesheet" href="/styles.css?v=151" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -57,15 +57,13 @@
 .doc__body h2 { font-size: clamp(var(--fs-20), 2.2vw, var(--fs-25)); letter-spacing: -0.01em; margin: 6px 0 8px; }
 .doc__sub { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; margin-bottom: 24px; }
 
-/* redaction bars */
-.redact {
-  display: inline-block; background: var(--ink); color: transparent; user-select: none;
-  height: .95em; vertical-align: middle; min-width: 88px; border-radius: 1px;
-}
-.redact--sm { min-width: 54px; }
-.redact--lg { min-width: 130px; }
-
 /* workflow map table */
+.doc__body .map{font-size:15px}
+.doc__body .rank p{font-size:16px;line-height:1.6}
+.doc__body .rank h3{font-size:20px}
+.doc__sub{max-width:75ch}
+.doc__bar{background:var(--paper-tan)}
+@media print{.map{font-size:11px!important}.doc__body .rank p{font-size:12px}}
 .map { width: 100%; border-collapse: collapse; font-size: var(--fs-13); background: var(--surface-hi); }
 .map th {
   font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase;
@@ -77,8 +75,8 @@
 .map-wrap { overflow-x: auto; }
 
 /* At phone widths the five-column map can't fit — restack each row into a
-   redacted-document block: step number as a mono label, then each column
-   as a label/value pair. Keeps every cell (and redaction bar) readable
+   document block: step number as a mono label, then each column
+   as a label/value pair. Keeps every cell readable
    without horizontal scrolling. */
 @media (max-width: 640px) {
   .map, .map tbody, .map tr, .map td { display: block; width: 100%; }
@@ -431,7 +429,7 @@
     </div>
     <div class="prose-2">
       <p><strong>What to count.</strong> completed jobs, review invitations, responses, and the staff time spent requesting and replying to reviews. Use gross profit rather than total revenue when valuing recovered business. Subtract software, maintenance, and human review costs, and avoid counting the same saved time twice.</p>
-      <p>The <a href="/calculator/">ROI calculator</a> models the same shape across a whole team, and its assumptions are published in full underneath it. The number that actually matters comes out of an <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>, which measures your workflows instead of averaging them.</p>
+      <p>The <a href="/calculator/">ROI calculator</a> models the same shape across a whole team, and its assumptions are published in full underneath it. The number that actually matters comes out of an <a href="/services/#audit">AI Readiness Audit</a>, which measures your workflows instead of averaging them.</p>
     </div>
     <!-- BUILD-PAGE:WORKED-EXAMPLE review-reputation-agent -->
     <!-- NEEDS-INPUT (review-reputation-agent.workedExample): the worked example is deliberately
@@ -475,7 +473,7 @@
       </div>
       <p>The range below is for the delivering service, not a per-feature price. Your quote identifies the capabilities, integrations, and operating requirements included in the engagement.</p>
     </div>
-    <p class="buildpage__price">An <a href="/services/ai-readiness-audit/">AI Readiness Audit</a> runs <span data-fact="price-audit">$3,500–$8,500</span> and tells you whether this build is the right first move. This capability is delivered through AI Implementation Sprint; several related capabilities may share one scoped engagement. <span data-fact="price-sprint">$18,000–$60,000</span>, quoted fixed in writing before work begins.</p>
+    <p class="buildpage__price">An <a href="/services/#audit">AI Readiness Audit</a> runs <span data-fact="price-audit">$3,500–$8,500</span> and tells you whether this build is the right first move. This capability is delivered through AI Implementation Sprint; several related capabilities may share one scoped engagement. <span data-fact="price-sprint">$18,000–$60,000</span>, quoted fixed in writing before work begins.</p>
     <p class="section-action"><a href="/pricing/">Read the price list&nbsp;<span class="arr">&#8594;</span></a></p>
   </div>
 </section>
@@ -516,7 +514,7 @@
     <div>
       <span class="kicker">Next step</span>
       <h2 class="h2 mt-s">30 minutes. A straight answer.</h2>
-      <p>A senior advisor walks your workflows and tells you whether this build is worth doing &mdash; including when the answer is not yet.</p>
+      <p>Bring one workflow to the free assessment. We will discuss whether this build fits, what needs scoping, and when the better answer is not yet.</p>
     </div>
     <div class="hero__cta">
       <a class="btn btn--primary" href="/book/" data-cta="build-page-final">Book a free assessment <span class="arr">&#8594;</span></a>
@@ -606,6 +604,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.doc,.doc-caption,.doc-actions,.final .wrap > *,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=5"></script>
+<script defer src="/js/analytics.js?v=6"></script>
 </body>
 </html>

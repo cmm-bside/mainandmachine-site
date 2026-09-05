@@ -11,7 +11,8 @@
 // SEO/JSON-LD is built ONLY from post metadata, never the body. Reads nothing
 // from the network. Tolerates a missing data module (fresh clone) -> empty blog.
 import fs from "node:fs";
-import { POST_SEO_DESCRIPTIONS } from "./lib/post-seo.mjs";
+import { applyPostEditorialOverrides } from "./lib/post-seo.mjs";
+import { applyBlogEditorialCache } from "./lib/blog-editorial-cache.mjs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
@@ -118,9 +119,10 @@ function modifiedOf(post) {
 const ALLOW_EMPTY_BLOG = process.env.ALLOW_EMPTY_BLOG === "1";
 
 async function main() {
+	applyBlogEditorialCache(ROOT);
 	const { posts, meta } = await loadData();
 	for (const post of posts) {
-		if (POST_SEO_DESCRIPTIONS[post.slug]) post.seoDescription = POST_SEO_DESCRIPTIONS[post.slug];
+		applyPostEditorialOverrides(post);
 	}
 
 	// Canonical order: newest first, enforced at render time. The fetch file is
@@ -530,6 +532,8 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	const structured = structureArticle(bodyHtml);
 	const tocHtml = renderToc(structured.chapters);
 	const hasToc = !!tocHtml;
+	const sourceEdition = /^https:\/\/theampersand\.beehiiv\.com\/p\//.test(post.webUrl || "")
+		? `<p>Source edition: <a href="${attr(post.webUrl)}">${esc(post.title)} in The Ampersand</a>.</p>` : "";
 	const proseInner = bodyHtml
 		? renderArticleBody(structured)
 		: `<p>This essay is being mirrored from beehiiv. <a href="${attr(post.webUrl || "/blog/")}">Read it here</a>.</p>`;
@@ -561,7 +565,9 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	// alone is not a credential.
 	const authorCredit =
 		`<a href="/about/" rel="author" title="Founder, ${esc(BRAND)}">${esc(AUTHOR)}</a>`;
-	const metaRow = [authorCredit, esc(formatDate(post.publishedAt)), updatedStamp ? esc(updatedStamp) : "", `${minutes} min read`]
+	const publishedStamp = post.publishedAt ? `Published <time datetime="${attr(post.publishedAt)}">${esc(formatDate(post.publishedAt))}</time>` : "";
+	const updatedTime = updatedStamp ? `Updated <time datetime="${attr(modifiedOf(post))}">${esc(formatDate(modifiedOf(post)))}</time>` : "";
+	const metaRow = [authorCredit, publishedStamp, updatedTime, `${minutes} min read`]
 		.filter(Boolean)
 		.map((part) => `<span>${part}</span>`)
 		.join("");
@@ -585,6 +591,7 @@ ${nav()}
       <div class="essay__col">
         <div class="prose">
 ${proseInner}
+${sourceEdition}
         </div>
         <p class="essay__seealso"><span class="tick-lbl">Where this shows up</span><a href="${attr(seeAlso.href)}">${esc(seeAlso.label)} <span class="arr">&#8594;</span></a></p>
         <div class="essay__share">

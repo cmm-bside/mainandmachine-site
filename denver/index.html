@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=150" />
+<link rel="stylesheet" href="/styles.css?v=151" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -231,7 +231,7 @@
           "name": "Have you built anything for a Denver company?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. MARCUS was built for B:Side Capital, an SBA 504 and CDFI lender headquartered in Denver: 14 AI agents across 7 departments, running on their own hardware with no borrower file leaving the building. It is published with their written permission and the measured numbers came off a tamper-evident audit log."
+            "text": "Yes. MARCUS was built for B:Side Capital, an SBA 504 and CDFI lender headquartered in Denver: 14 AI agents across 7 departments. MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted. MARCUS results are reported by B:Side Capital for the first 90 days of full-fleet operation and reconciled against its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party operational results, not an independent audit or a promise of another client’s outcome."
           }
         },
         {
@@ -247,7 +247,7 @@
           "name": "We hold data that cannot go to a public model. Does that rule you out?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It is the case we designed for. The models run on hardware you own, in your building, and identifiers are stripped before any model reads a document. That is the whole architecture behind the lender build above, and it is itemized on our security page."
+            "text": "Not necessarily. If your records cannot use an external model, that restriction must be explicit in the scope and tested in the deployment. Local models can process records on hardware you control; any external route requires a separate data review. Filtering can miss identifiers and does not replace routing limits or access controls."
           }
         },
         {
@@ -473,7 +473,7 @@
     <div class="prose-2">
       <div>
         <h3>Construction and the trades</h3>
-        <p>The Front Range has been building continuously for a decade, and the paper has not kept up with the work. Pay applications, lien waivers across four tiers of sub, prevailing-wage documentation on anything touching public money, submittal logs, OSHA records. Colorado&rsquo;s trust-fund statute makes the payment chain unforgiving: the documentation either exists on the 25th or the cash moves a month late. That is the cycle we most often get called about.</p>
+        <p>Construction work around the Front Range carries a second workload: pay applications, waivers, payroll records, and submittals. Start with the paperwork that repeatedly delays a review or payment. The applicable deadlines and required documents belong in the scope; the system prepares and flags, while the responsible person checks and signs.</p>
         <p><a href="/industries/construction/">More on this&nbsp;<span class="arr">&#8594;</span></a></p>
       </div>
       <div>
@@ -514,7 +514,7 @@
       </li>
       <li class="cxi__item">
         <h3 class="cxi__h">Healthcare &amp; wellness in Denver</h3>
-        <p>Practices and clinics across the metro carry scheduling, intake and coding on staff who were hired to do something else. The record never leaves the practice: models run on hardware in your building, which is the architecture Colorado operators ask about first.</p>
+        <p>Practices and clinics across the metro carry scheduling, intake, and coding preparation on busy teams. Start with one administrative handoff and review patient-data requirements before selecting local, cloud, or hybrid processing. Clinical decisions remain with the practice.</p>
         <p class="cxi__go"><a href="/industries/healthcare/">Healthcare &amp; wellness &rarr; what we build&nbsp;<span class="arr">&#8594;</span></a></p>
       </li>
       <li class="cxi__item">
@@ -543,7 +543,7 @@
       <p class="lead">One build, published with permission, with the numbers off the log.</p>
     </div>
     <div class="prose-2">
-      <div><p style="color:var(--dtx-mute);">B:Side Capital is an SBA 504 and CDFI lender headquartered here in Denver. We built MARCUS for them: 14 AI agents across 7 departments, running entirely on their own hardware, with no borrower file leaving the building. It is published with their written permission, the measured numbers came off a tamper-evident audit log, and it is the reason we can talk about regulated work in this city without hand-waving. Read <a href="/work/marcus/">how it was built</a> or <a href="/work/marcus/results/">what it returned in its first 90 days</a>.</p></div>
+      <div><p style="color:var(--dtx-mute);">B:Side Capital is an SBA 504 and CDFI lender headquartered in Denver, where our founder is CEO. We built MARCUS across 7 departments with 14 AI agents. Borrower documents are processed locally; selected tasks can use external reasoning on filtered text, with human approval for consequential actions. <a href="/work/marcus/">Read the architecture</a> and <a href="/work/marcus/results/">the first 90 days of reported results</a>, including the measurement limits. It is affiliated first-party evidence, not a forecast for another business.</p></div>
       <div>
         <!-- BUILD-LOG:MARCUS-SCORECARD-COMPACT — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
         <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
@@ -605,7 +605,7 @@
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">Have you built anything for a Denver company?</span></summary>
-          <p>Yes. MARCUS was built for B:Side Capital, an SBA 504 and CDFI lender headquartered in Denver: 14 AI agents across 7 departments, running on their own hardware with no borrower file leaving the building. It is published with their written permission and the measured numbers came off a tamper-evident audit log.</p>
+          <p>Yes. MARCUS was built for B:Side Capital, an SBA 504 and CDFI lender headquartered in Denver: 14 AI agents across 7 departments. MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted. MARCUS results are reported by B:Side Capital for the first 90 days of full-fleet operation and reconciled against its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party operational results, not an independent audit or a promise of another client’s outcome.</p>
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">We do prevailing-wage and public work. Can the paperwork be handled?</span></summary>
@@ -613,7 +613,7 @@
         </details>
         <details>
           <summary><span class="q-no">04</span><span class="q-tx">We hold data that cannot go to a public model. Does that rule you out?</span></summary>
-          <p>It is the case we designed for. The models run on hardware you own, in your building, and identifiers are stripped before any model reads a document. That is the whole architecture behind the lender build above, and it is itemized on our security page.</p>
+          <p>Not necessarily. If your records cannot use an external model, that restriction must be explicit in the scope and tested in the deployment. Local models can process records on hardware you control; any external route requires a separate data review. Filtering can miss identifiers and does not replace routing limits or access controls.</p>
         </details>
         <details>
           <summary><span class="q-no">05</span><span class="q-tx">How much does it cost in Denver?</span></summary>
@@ -638,7 +638,7 @@
       <p class="hero__note" style="color:var(--dtx-mute);">Free. No obligation. No pitch. We reply within 24 hours.</p>
     </div>
     <div class="final__promise">
-      <p>A fixed price, quoted in writing before we start, and a straight answer within 24 hours.</p>
+      <p>We reply within 24 hours. A fixed quote follows an agreed scope, before paid work begins.</p>
       <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
@@ -726,6 +726,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.svc__item,.industries .ind,.faq > *,.faq__list details,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=5"></script>
+<script defer src="/js/analytics.js?v=6"></script>
 </body>
 </html>

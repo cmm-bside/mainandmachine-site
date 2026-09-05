@@ -78,7 +78,7 @@
     "_countedOn": "Date the count was last verified by hand (YYYY-MM-DD). facts:render stamps it into the ticker so the claim is dated, not vague; check-facts.mjs FAILS the build once it is more than 21 days old. Recount, update this date, run npm run facts:render.",
     "countedOn": "2026-07-30"
   },
-  "runningCosts": "$50–$500/month typical (tools + model usage) for a small business",
+  "runningCosts": "$50–$500/month illustrative planning band for tools and model usage; excludes build, internal labor, hardware, and optional Managed Services from $1,500/month. Actual usage and provider terms determine cost.",
   "delivery": "~90 days per workflow, fixed price quoted in writing before work",
   "freeOffer": "30-minute AI Opportunity Assessment, reply within 24 hours",
   "audience": {

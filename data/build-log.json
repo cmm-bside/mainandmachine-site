@@ -23,28 +23,28 @@
         "key": "hours-returned",
         "value": "1,240",
         "unit": "hrs",
-        "desc": "Staff preparation hours returned in the reported 90-day window. Annualized, that is approximately 5,000 hours, or 2.4 full-time equivalents of preparation capacity; it is not measured annual cash savings.",
+        "desc": "Staff preparation hours returned during the reported 90-day window. This is operating capacity, not measured cash savings.",
         "source": "audit-log"
       },
       {
         "key": "weekly-adoption",
         "value": "93",
         "unit": "%",
-        "desc": "Of staff using MARCUS weekly by week six, through tools they already used.",
+        "desc": "Of staff using MARCUS weekly by week six. The public summary does not include the staff denominator.",
         "source": "audit-log"
       },
       {
         "key": "identifiers-out",
         "value": "0",
         "unit": "",
-        "desc": "Borrower identifiers reported as sent to outside models during the measurement window. Prompts and documents passed through the privacy filter; mandatory filtering is not a guarantee of perfect detection.",
+        "desc": "Borrower identifiers reported as sent to outside models during the measurement window. Filtering is required; detection is not guaranteed to be perfect.",
         "source": "audit-log"
       },
       {
         "key": "human-approved",
         "value": "100",
         "unit": "%",
-        "desc": "Of consequential actions approved by a person before sending, filing, posting, or paying during the reported measurement window.",
+        "desc": "Of consequential actions approved by a person during the reported window, before sending, filing, posting, or paying.",
         "source": "audit-log"
       }
     ],

@@ -16,6 +16,8 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { ROOT, STATIC_ROUTES } from "./lib/config.mjs";
 
+const EDITORIAL_DATES = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/guide-editorial-dates.json"), "utf8"));
+
 const OUT = path.join(ROOT, "src", "data", "page-dates.json");
 
 function routeToFile(route) {
@@ -52,7 +54,7 @@ function main() {
 		// Untracked/brand-new pages have no git history yet. Fall back to the
 		// file's own mtime so a new route still gets a lastmod instead of being
 		// silently dropped from the sitemap.
-		let date = gitLastDate(file) || prev[route] || null;
+		let date = EDITORIAL_DATES[route] || gitLastDate(file) || prev[route] || null;
 		if (!date) {
 			try { date = fs.statSync(abs).mtime.toISOString().slice(0, 10); } catch { /* keep null */ }
 		}

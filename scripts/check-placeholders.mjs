@@ -51,10 +51,17 @@ const CONTENT_ATTRS = /\b(?:alt|title|aria-label)=("([^"]*)"|'([^']*)')/gi;
 // claim, TODO, or fixture elsewhere on either page still fails the guard.
 const SAMPLE_DISCLOSURES = {
   "services/sample-audit/index.html": [
-    "This example follows a fictional service business",
+    "Follow a fictional service business from workflow map to ranked opportunities",
+    "Fictional assumptions · Not a forecast",
+    "These assumptions are fictional.",
+    "fictional inputs become observed workflow data",
+    "The business, inputs, costs, and modeled results are fictional; they are not a client result or quote.",
     "Fictional example · Not client work",
     "An illustrative priority order for the same fictional business.",
     "The service business, workflow details, and priorities are fictional examples.",
+  ],
+  "guides/what-is-an-ai-readiness-audit/index.html": [
+    "The business and figures are fictional, not client findings or a quote.",
   ],
   "guides/index.html": [
     "A legible fictional example shows the workflow map",

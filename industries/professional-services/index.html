@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=150" />
+<link rel="stylesheet" href="/styles.css?v=151" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -234,7 +234,7 @@
       "name": "Is our client data safe?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It can be built so nothing leaves your office. MARCUS — the system we built for B:Side Capital, a regulated lender — runs entirely on the client's own hardware: PII is stripped before any model reads a document, and every action writes to a tamper-evident log. A firm holding privileged files can ask for the same pattern."
+        "text": "Define approved data routes, access, retention, and review requirements before building. MARCUS processes borrower documents locally and can route selected tasks to external models on filtered text. Filtering can miss identifiers; privileged or restricted files may require additional limits agreed in scope."
       }
     },
     {
@@ -258,7 +258,7 @@
       "name": "How much does it cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins and guaranteed live within 90 days."
+        "text": "The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. If a scoped workflow is not live within 90 days, we keep building at no charge until it is."
       }
     },
     {
@@ -421,15 +421,17 @@
   </div>
 </section>
 
+<section class="section paper"><div class="wrap prose"><h2>Which handoff is slowing your firm?</h2><p>The examples below focus on a law firm. In accounting, the comparable starting question may be how missing client documents are chased. In consulting, it may be how approved material becomes a proposal draft. In insurance, it may be how inquiries and documents reach the right reviewer. These are illustrative scoping questions, not client results.</p><p>For repeated data entry, inspect <a href="/services/builds/business-system-connectors/">Business System Connectors</a>. For finding approved material, inspect the <a href="/services/builds/company-knowledge-base/">Company Knowledge Base</a>. Bring the actual handoff to the assessment so we can establish the right scope.</p></div></section>
 <!-- ============ WHICH SERVICE FITS FIRST (ink) ============ -->
 <section class="section ink">
   <div class="wrap">
     <div class="closer">
       <span class="kicker">Which service fits first</span>
-      <p>For most firms the right first move is the <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go before anyone builds anything. For a firm shaped like yours, that usually means four questions — where intake time goes, what unbilled work is aging, which systems disagree about matter status, and which documents get rebuilt from scratch when they should be assembled. Two pages of a sample audit are published at <a href="/services/sample-audit/">the sample audit</a> — built to the exact template a real engagement ends in — so you can read the document before you spend a dollar. Pricing is published, in plain numbers: <a href="/pricing/">audits run $3,500–$8,500; sprints $18,000–$60,000, fixed quote in writing</a>.</p>
+      <p>If the opportunity needs investigation, start with the <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>: two to four weeks mapping where the hours actually go before anyone builds anything. For a firm shaped like yours, that usually means four questions — where intake time goes, what unbilled work is aging, which systems disagree about matter status, and which documents get rebuilt from scratch when they should be assembled. An illustrative sample audit is published at <a href="/services/sample-audit/">the sample audit</a> — showing how a workflow, its economics, and the next step are presented — so you can read the document before you spend a dollar. Pricing is published, in plain numbers: <a href="/pricing/">audits run $3,500–$8,500; sprints $18,000–$60,000, fixed quote in writing</a>.</p>
     </div>
   </div>
 </section>
+<section class="section paper section--tight"><div class="wrap prose"><p><b>Already know the handoff?</b> Bring one example from your firm, the systems it touches, and the person who reviews the result. A defined workflow can go straight to <a href="/services/ai-implementation/">sprint scoping</a>. Use sample records without sensitive details until data handling is agreed.</p></div></section>
 
 <!-- ============ WHAT THIS COSTS ============ -->
 <section class="section paper">
@@ -477,63 +479,10 @@
   <div class="wrap">
     <div class="closer">
       <span class="kicker">How a regulated firm should think about this</span>
-      <p>If your first objection is confidentiality, you are thinking about this correctly. A firm holding privileged files has the same problem as a lender holding borrower files — and a lender is the strongest analogy we can offer. <a href="/work/marcus/">MARCUS</a>, the system we built for B:Side Capital, runs entirely on the client’s own hardware: PII is stripped before any model reads a document, and every action writes to a tamper-evident log. That is the pattern a regulated firm should demand from any vendor, ours included: ask where the model runs, what it sees before redaction, and who can prove what happened afterward. A vendor who cannot answer those three in plain English has answered them. Where your files go, and where they should never go, is the subject of <a href="/blog/where-your-data-goes/">Where Your Data Goes</a>.</p>
+      <p>If your first objection is confidentiality, start there. <a href="/work/marcus/">MARCUS</a>, built for B:Side Capital where our founder is CEO, processes borrower documents locally. Selected tasks can use external reasoning on filtered text; consequential actions require human approval. Identifier detection can miss sensitive information, and a hash-chained log needs verification. The <a href="/security/">security page</a> explains those limits. A law firm still needs a review of its own confidentiality duties, access rules, and permitted data flows; a lender deployment does not settle them.</p>
     </div>
   </div>
-</section>
-<!-- FAQ:auto -->
-<section class="section paper-2">
-  <div class="wrap">
-    <div class="faq">
-      <div>
-        <span class="kicker">Fair questions</span>
-        <h2 class="h2 mt-s">AI for professional services firms.</h2>
-        <div class="faq__aside">
-          <h3 class="accent-tx">Want the numbers?</h3>
-          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
-        </div>
-      </div>
-      <div class="faq__list">
-        <details>
-          <summary><span class="q-no">01</span><span class="q-tx">What can AI do for a professional services firm?</span></summary>
-          <p>Usually the intake and coordination work — qualifying requests, summarizing, routing, and prepping the repetitive documents — so your people spend time on judgment, not handoffs.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">02</span><span class="q-tx">Is our client data safe?</span></summary>
-          <p>It can be built so nothing leaves your office. MARCUS — the system we built for B:Side Capital, a regulated lender — runs entirely on the client's own hardware: PII is stripped before any model reads a document, and every action writes to a tamper-evident log. A firm holding privileged files can ask for the same pattern.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">03</span><span class="q-tx">Do we need to replace our practice management software?</span></summary>
-          <p>No. We build an integration layer on the practice management, billing, and document tools you already run. Nothing gets ripped out; the systems you have start talking to each other.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">04</span><span class="q-tx">What happens to billable-hour economics?</span></summary>
-          <p>The hours you bill are judgment hours, and those stay human. What the machine takes is the non-billable wrapper — intake write-ups, chasing invoices, reconciling status — so more of the week is billable in the first place. On flat-fee work, the same recovered capacity shows up as margin.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">05</span><span class="q-tx">How much does it cost?</span></summary>
-          <p>The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins and guaranteed live within 90 days.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">06</span><span class="q-tx">How long does it take?</span></summary>
-          <p>An audit is 2 to 4 weeks; a build is 4 to 12.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">07</span><span class="q-tx">Do you work remotely or on-site?</span></summary>
-          <p>Firms near our Denver, Colorado or Phoenix, Arizona hubs can put us in the conference room; everyone else in the US works with us remotely. Reading how matters actually move rarely requires a room, and the fixed prices do not change either way.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">08</span><span class="q-tx">Is there a real example?</span></summary>
-          <p>The closest published case is MARCUS — 14 AI agents we built for B:Side Capital, a regulated lender.</p>
-        </details>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /FAQ:auto -->
-
-<!-- ============ START HERE (ink) ============ -->
+</section><!-- ============ START HERE (ink) ============ -->
 <!-- CITY:CITY-LINKS -->
 <section class="section section--tight paper-2 citylinks">
   <div class="wrap">
@@ -545,9 +494,62 @@
 <!-- BUILD-LINKS:auto -->
 <section class="section section--tight paper-2 buildlinks">
   <div class="wrap">
-    <p class="citylinks__p"><span class="tick-lbl">From the catalog</span> Builds most often scoped here: <a href="/services/builds/company-knowledge-base/">company knowledge base</a>, <a href="/services/builds/instant-lead-response/">instant lead response</a>, <a href="/services/builds/private-company-chat/">private company chat</a>. Every one is delivered through the same three services, at the published prices.</p>
+    <p class="citylinks__p"><span class="tick-lbl">From the catalog</span> Explore relevant build components: <a href="/services/builds/company-knowledge-base/">company knowledge base</a>, <a href="/services/builds/instant-lead-response/">instant lead response</a>, <a href="/services/builds/private-company-chat/">private company chat</a>. These are scoped within an engagement; suitability and inclusions depend on the workflow.</p>
   </div>
 </section>
+
+<!-- FAQ:auto -->
+<section class="section paper-2">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">AI for professional services firms.</h2>
+        <div class="faq__aside">
+          <h3 class="accent-tx">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">What can AI do for a professional services firm?</span><span class="q-pm">+</span></summary>
+          <p>Usually the intake and coordination work — qualifying requests, summarizing, routing, and prepping the repetitive documents — so your people spend time on judgment, not handoffs.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">Is our client data safe?</span><span class="q-pm">+</span></summary>
+          <p>Define approved data routes, access, retention, and review requirements before building. MARCUS processes borrower documents locally and can route selected tasks to external models on filtered text. Filtering can miss identifiers; privileged or restricted files may require additional limits agreed in scope.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">Do we need to replace our practice management software?</span><span class="q-pm">+</span></summary>
+          <p>No. We build an integration layer on the practice management, billing, and document tools you already run. Nothing gets ripped out; the systems you have start talking to each other.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">What happens to billable-hour economics?</span><span class="q-pm">+</span></summary>
+          <p>The hours you bill are judgment hours, and those stay human. What the machine takes is the non-billable wrapper — intake write-ups, chasing invoices, reconciling status — so more of the week is billable in the first place. On flat-fee work, the same recovered capacity shows up as margin.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">05</span><span class="q-tx">How much does it cost?</span><span class="q-pm">+</span></summary>
+          <p>The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. If a scoped workflow is not live within 90 days, we keep building at no charge until it is.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">06</span><span class="q-tx">How long does it take?</span><span class="q-pm">+</span></summary>
+          <p>An audit is 2 to 4 weeks; a build is 4 to 12.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">07</span><span class="q-tx">Do you work remotely or on-site?</span><span class="q-pm">+</span></summary>
+          <p>Firms near our Denver, Colorado or Phoenix, Arizona hubs can put us in the conference room; everyone else in the US works with us remotely. Reading how matters actually move rarely requires a room, and the fixed prices do not change either way.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">08</span><span class="q-tx">Is there a real example?</span><span class="q-pm">+</span></summary>
+          <p>The closest published case is MARCUS — 14 AI agents we built for B:Side Capital, a regulated lender.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
 <!-- /BUILD-LINKS:auto -->
 
 <section class="section ink final">
@@ -555,13 +557,13 @@
     <div class="final__cta">
       <span class="kicker">Start here</span>
       <h2 class="h2 mt-s">See the wins in <span class="accent-tx">professional services.</span></h2>
-      <p class="lead mt-s">30 minutes with a senior advisor who walks your intake, billing, and matter workflows and tells you what is worth automating, and what is not — in person from our Denver and Phoenix hubs, or remote anywhere in the US.</p>
+      <p class="lead mt-s">Bring one intake, billing, and matter workflow to a free 30-minute assessment. We will discuss the bottleneck, the constraints, and a sensible next step.</p>
       <div class="hero__cta">
         <a data-cta="final-cta" class="btn btn--primary btn--lg" href="/book/?industry=professional-services">Book a free assessment <span class="arr">&#8594;</span></a>
       </div>
     </div>
     <div class="final__promise">
-      <p>A fixed price, quoted in writing before we start, and a straight answer within 24 hours.</p>
+      <p>We reply within 24 hours. A fixed quote follows an agreed scope, before paid work begins.</p>
       <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
@@ -649,6 +651,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.closer,.builds > *,.final .hero__cta,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=5"></script>
+<script defer src="/js/analytics.js?v=6"></script>
 </body>
 </html>

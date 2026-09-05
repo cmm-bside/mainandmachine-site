@@ -19,7 +19,7 @@ import { createHash } from "node:crypto";
 import { pathToFileURL } from "node:url";
 import sanitizeHtml from "sanitize-html";
 import imageSize from "image-size";
-import { POST_SEO_DESCRIPTIONS } from "./lib/post-seo.mjs";
+import { applyPostEditorialOverrides } from "./lib/post-seo.mjs";
 import { optimizeBlogImage } from "./lib/blog-images.mjs";
 import {
 	ROOT,
@@ -90,7 +90,7 @@ export async function run() {
 		.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
 
 	for (const post of posts) {
-		if (POST_SEO_DESCRIPTIONS[post.slug]) post.seoDescription = POST_SEO_DESCRIPTIONS[post.slug];
+		applyPostEditorialOverrides(post);
 	}
 
 	// Self-host every image (hero + inline) from either source.

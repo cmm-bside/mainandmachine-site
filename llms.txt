@@ -8,7 +8,10 @@
 > the US. Founded by Christopher Myers.
 > The free 30-minute assessment is the front door.
 
-Last updated: 2026-09-04
+Start with a free 30-minute assessment to discuss one workflow and the next step. If substantial discovery is needed, we scope a paid audit; a fixed build quote follows an agreed scope.
+An advisor from Main & Machine discusses your workflow and next step. Christopher Myers is accountable for scoping and sign-off; the build team implements agreed work. Your scheduling confirmation identifies the meeting host.
+
+Generated: 2026-09-05
 
 Full page text for AI systems: [llms-full.txt](/llms-full.txt) — the complete
 visible copy of the most important pages, with page delimiters.
@@ -39,8 +42,8 @@ Every price is published; the exact number is quoted fixed, in writing,
 before work begins.
 
 - [AI Readiness Audit](/services/ai-readiness-audit/) ("The Blueprint"): $3,500–$8,500, 2–4 weeks.
-  A workflow map of your real operations, the handful of places AI actually
-  pays, and a phased plan you own outright — whether or not you build with us.
+  A workflow map of your operations, ranked opportunities with assumptions
+  and costs, and a phased plan you own outright — whether or not you build with us.
 - [AI Implementation Sprint](/services/ai-implementation/) ("The 90-Day Build"): $18,000–$60,000 fixed quote,
   4–12 weeks. Working agents, automations, and integrations built inside
   your real operation, with your team trained to run them. About 90 days
@@ -53,49 +56,34 @@ before work begins.
   build. Four taken per year.
 - Audit-to-sprint credit: 100% of the audit fee credits toward a sprint
   signed within 60 days, up to 25% of the sprint price.
-- [Pricing](/pricing/) — the full price list, on the page. Our largest
-  standard sprint ($60,000) is roughly a tenth of a Big Four kickoff
-  meeting ($500,000+ minimums).
+- [Pricing](/pricing/) — published scope, timelines, price bands, and terms.
+  Compare proposals on the same deliverables and total ownership cost.
 - [Build catalog](/services/builds/) — every system we build, priced:
   AI receptionists, intake and billing agents, automations, integrations.
-- [Sample audit deliverable](/services/sample-audit/) — a representative sample
-  built to the real audit template, shown before you buy it.
+- [Sample audit deliverable](/services/sample-audit/) — Four sample pages show a workflow map, ranked opportunities, an economic worksheet, and a phased recommendation. The business, inputs, costs, and modeled results are fictional; they are not a client result or quote.
 
 ## Proof: the MARCUS case
 
 - [MARCUS](/work/marcus/) — a private AI back office built for
   B:Side Capital, an SBA 504 / CDFI lender: 14 AI agents across
-  7 departments, built from ~840 source documents, running
-  entirely on-prem — no borrower file leaves the building in normal
-  operation. PII is stripped by Microsoft Presidio before any model reads
-  a document; every action writes to a tamper-evident audit log; nothing
-  sends, files, posts, or pays until a person approves it. Published with
-  the client's permission.
-- [MARCUS measured results](/work/marcus/results/) — the scorecard
-  from the first 90 days of full-fleet operation: 1,240 staff hours of
-  preparation returned, 93% weekly staff adoption by week six, 0 borrower
-  identifiers sent to any outside model, and 100% of consequential actions
-  approved by a person first. Every figure is reconstructable from the
-  tamper-evident audit log, and every figure on the page renders from
-  data/build-log.json rather than being typed into the HTML.
-- [Proof](/work/) — builds shown plainly, with a standing rule: numbers and
-  client quotes on that page render only from a build log, and quotes appear
-  only with the client's written sign-off on file. Missing numbers stay
-  blank rather than invented.
+  7 departments, built from ~840 source documents.
+  MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted.
+- [MARCUS measured results](/work/marcus/results/) — The first 90-day scorecard reports 1,240 staff hours of preparation returned, 93% weekly staff adoption by week six, 0 borrower identifiers sent to an outside model in that window, and 100% of consequential actions approved by a person first.
+  MARCUS results are reported by B:Side Capital for the first 90 days of full-fleet operation and reconciled against its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party operational results, not an independent audit or a promise of another client’s outcome.
+  Preparation time returned is operating capacity, not automatically reduced payroll or cash savings. Annualized equivalents and calculator scenarios are estimates, not measured annual results or guarantees.
+- [Proof](/work/) — published operational evidence and its measurement limits.
+  Case figures render from data/build-log.json; client quotes require written
+  sign-off. A published case is evidence to inspect, not a result guarantee.
 
 ## Security & data handling
 
-- [Security](/security/) — where client data goes, and where it never goes.
-  Five controls, in the order data meets them: (1) local models on the
-  client's own hardware — for regulated work, no client file leaves the
-  building in normal operation; (2) PII stripped by Microsoft Presidio
-  before any model reads a document — the model sees the work, not the
-  identity; (3) everything stored is encrypted at rest; (4) every action
-  writes to an append-only, tamper-evident audit log — compliance can prove
-  nothing was altered; (5) a human signs off on every consequential action —
-  nothing sends, files, posts, or pays until a person approves it. The
-  architecture is the one MARCUS runs in production at a regulated SBA
-  lender, not a policy aspiration.
+- [Security](/security/) — documented MARCUS controls and deployment boundaries.
+  MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted.
+  Presidio, originally developed at Microsoft, detects supported personal identifiers for removal before model processing. Automated detection can miss information; filtering is one control alongside routing restrictions, access decisions, and tests using known identifiers.
+  MARCUS records actions in an append-only, hash-chained audit log. The chain makes changes to recorded entries detectable when verified; it does not independently validate the underlying action or every operational metric.
+  Consequential actions require human approval. The documented controls include
+  encryption at rest; each new engagement defines its data routes, access,
+  retention, approvals, and tests before production use.
 
 ## Method
 
@@ -110,23 +98,24 @@ before work begins.
 - [The AI-Ready Score](/score/) — free seven-minute self-assessment:
   fourteen questions across three phases (Map, Prove, Expand). You get a
   0–100 score and the one constraint to fix first. No sales call.
-- [ROI calculator](/calculator/) — modeled annual return by industry and
-  team size, plus how fast the build pays back. Ranges, not promises.
+- [ROI calculator](/calculator/) — editable opportunity capture, running costs,
+  and investment assumptions; shows first-year net and modeled recovery time.
+  Preparation time returned is operating capacity, not automatically reduced payroll or cash savings. Annualized equivalents and calculator scenarios are estimates, not measured annual results or guarantees.
 
 ## Guides
 
 - [The Field Guide](/guides/) — practical answers to AI buying questions,
   real published prices throughout
 - [What an AI consultant costs in 2026](/guides/ai-consultant-cost/) —
-  the market's ranges (hourly, boutique, Big Four) and where ours sit
+  published offers, cost drivers, and how to compare proposals
 - [AI readiness checklist](/guides/ai-readiness-checklist/) — 20 points
   an owner can run in an afternoon, no consultant required
 - [AI consultant vs. in-house hire](/guides/ai-consultant-vs-in-house/) —
-  the hiring math, with break-even headcounts
+  compare the workload, management, and total cost of each option
 - [How to choose an AI consultant](/guides/how-to-choose-an-ai-consultant/) —
   10 questions that separate builders from hype merchants
 - [What AI automation costs to run](/guides/what-ai-automation-costs-to-run/) —
-  the monthly reality after the build: tokens, tools, maintenance ($50–$500/mo)
+  tools, model usage, internal review, and optional paid support, separately
 - [Agents vs. automations vs. integrations](/guides/ai-agents-vs-automations-vs-integrations/) —
   which one your problem needs, and why it's often the cheaper one
 - [How long AI implementation takes](/guides/how-long-ai-implementation-takes/) —
@@ -136,7 +125,7 @@ before work begins.
 - [Where AI data actually goes](/guides/ai-data-cloud-vs-on-prem/) —
   cloud vs. on-prem for a small business, matched to what's in the documents
 - [ChatGPT vs. custom AI](/guides/chatgpt-vs-custom-ai/) —
-  when a $25 subscription wins and where it stalls
+  when a subscription solves the work and when a custom workflow is useful
 - [Signs you are NOT ready for AI](/guides/signs-you-are-not-ready-for-ai/) —
   and the 90-day plan that costs almost nothing instead
 - [How to scope an AI project a vendor can't inflate](/guides/how-to-scope-an-ai-project/) —
@@ -148,7 +137,7 @@ before work begins.
 
 ## Industries
 
-- [Who this is for](/industries/) — five industries with the clearest wins:
+- [Who this is for](/industries/) — candidate workflows across five industries:
   [professional services](/industries/professional-services/) ·
   [retail](/industries/retail/) · [healthcare](/industries/healthcare/) ·
   [construction & trades](/industries/construction/) ·
@@ -160,7 +149,7 @@ before work begins.
 - [Free assessment](/book/) — 30 minutes, reply within 24 hours
 - [Who we are](/about/) — the founder, the AI-native build team, the name
 - [Denver](/denver/) · [Phoenix](/phoenix/) — the two hubs, in person
-- [Contact](/contact/) — email or call; both land with the founder
+- [Contact](/contact/) — email or call Main & Machine
 - [Careers](/careers/) — join the build team
 - [The Ampersand](/blog/) — plain-English AI essays, a few times a month
   ([archive](/blog/archive/), [RSS](/blog/rss.xml))

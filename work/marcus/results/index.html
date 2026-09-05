@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=150" />
+<link rel="stylesheet" href="/styles.css?v=151" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -125,11 +125,11 @@
       "@type": "Article",
       "@id": "https://www.mainandmachine.com/work/marcus/results/#article",
       "headline": "MARCUS Measured Results: 14 Agents, 7 Departments",
-      "description": "Measured results from MARCUS, a 14-agent system running an SBA 504 and CDFI lender's back office on-premises: 1,240 staff hours returned in its first 90 days of full-fleet operation, 93% weekly adoption, and zero borrower identifiers sent to any outside model.",
+      "description": "First-party operational results from MARCUS at B:Side Capital, where Main & Machine founder Christopher Myers is CEO. Borrower documents are processed locally; selected tasks can use external models on filtered text. Read the reported outcomes, measurement limits, and methodology.",
       "url": "https://www.mainandmachine.com/work/marcus/results/",
       "image": "https://www.mainandmachine.com/images/og/work-marcus-results.png",
       "datePublished": "2026-07-31",
-      "dateModified": "2026-08-01",
+      "dateModified": "2026-09-04",
       "author": {
         "@id": "https://www.mainandmachine.com/#person-cmyers"
       },
@@ -286,7 +286,8 @@
       <div>
         <span class="kicker">Client results &middot; B:Side Capital &middot; First 90 days</span>
         <h1 class="h1 mt-s">MARCUS at work. <span class="accent-tx">The first 90 days.</span></h1>
-        <p class="lead mt-s">MARCUS prepares documents, answers questions from company records, and stages work for review at B:Side Capital, an SBA 504 and CDFI lender. Christopher Myers leads both B:Side and Main &amp; Machine; this was a deployment inside the business he operates. The server was commissioned in February 2026. The figures below are the approved first-party results for the first 90 days of full-fleet operation, published July 31, 2026.</p>
+        <p class="lead mt-s">MARCUS prepares documents, finds answers in company records, and stages work for human review at B:Side Capital, an SBA 504 and CDFI lender.</p>
+        <p class="results-affiliation">These are B:Side’s reported results from a founder-affiliated deployment: Christopher Myers leads both organizations. The figures are first-party, not independently audited.</p>
         <div class="hero__cta mt-s">
           <a data-cta="page-hero" class="btn btn--primary btn--lg" href="/book/">Build something like MARCUS <span class="arr">&#8594;</span></a>
           <a class="btn btn--secondary btn--lg" href="/work/marcus/">Read how it was built</a>
@@ -298,14 +299,12 @@
         <div class="statrail__row"><dt class="statrail__k">Window</dt><dd class="statrail__v statrail__v--sm">First 90 days of full-fleet operation</dd></div>
         <div class="statrail__row"><dt class="statrail__k">Published</dt><dd class="statrail__v statrail__v--sm"><time datetime="2026-07-31">31 July 2026</time></dd></div>
         <div class="statrail__row"><dt class="statrail__k">Evidence source</dt><dd class="statrail__v accent-tx">Audit log</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Signed off</dt><dd class="statrail__v statrail__v--sm">Christopher Myers, in both capacities &mdash; founder of Main &amp; Machine and CEO of B:Side Capital. Written approval on file.</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Method</dt><dd class="statrail__v statrail__v--sm"><a href="#methodology">Sources, definitions, and limits ↓</a></dd></div>
       </dl>
     </div>
 
-    <nav class="evidence-path" aria-label="Three chapters of deployment evidence">
-      <a href="#evidence-foundation"><span class="tick-lbl">Evidence 01</span><b>Prepare from company records.</b><span>Owned hardware, privacy filtering, and useful knowledge.</span></a>
-      <a href="#evidence-workflow"><span class="tick-lbl">Evidence 02</span><b>Deliver into the team’s day.</b><span>Slack, a shared workspace, and accounting preparation.</span></a>
-      <a href="#evidence-control"><span class="tick-lbl">Evidence 03</span><b>Keep decisions accountable.</b><span>Tests, an audit trail, and a person who approves.</span></a>
+    <nav class="results-jump" aria-label="On this results page">
+      <a href="#scorecard">Reported results</a><a href="#architecture">How the system works</a><a href="#methodology">Measurement notes</a><a href="#build-details">Explore build details</a>
     </nav>
   </div>
 </section>
@@ -314,34 +313,31 @@
 <section class="section ink" id="scorecard">
   <div class="wrap">
     <span class="kicker">01 / The headline scorecard</span>
-    <h2 class="h2 mt-s">What changed for the team. <span class="accent-tx">Reported from the&nbsp;deployment.</span></h2>
+    <h2 class="h2 mt-s">What changed for the team.</h2>
     <!-- BUILD-LOG:MARCUS-SCORECARD — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
         <div class="scoregrid">
           <div class="score" data-figure="hours-returned">
             <div class="score__n tick-num">1,240<small>hrs</small></div>
-            <p class="score__d">Staff preparation hours returned in the reported 90-day window. Annualized, that is approximately 5,000 hours, or 2.4 full-time equivalents of preparation capacity; it is not measured annual cash savings.</p>
+            <p class="score__d">Staff preparation hours returned during the reported 90-day window. This is operating capacity, not measured cash savings.</p>
           </div>
           <div class="score" data-figure="weekly-adoption">
             <div class="score__n tick-num">93<small>%</small></div>
-            <p class="score__d">Of staff using MARCUS weekly by week six, through tools they already used.</p>
+            <p class="score__d">Of staff using MARCUS weekly by week six. The public summary does not include the staff denominator.</p>
           </div>
           <div class="score" data-figure="identifiers-out">
             <div class="score__n tick-num">0</div>
-            <p class="score__d">Borrower identifiers reported as sent to outside models during the measurement window. Prompts and documents passed through the privacy filter; mandatory filtering is not a guarantee of perfect detection.</p>
+            <p class="score__d">Borrower identifiers reported as sent to outside models during the measurement window. Filtering is required; detection is not guaranteed to be perfect.</p>
           </div>
           <div class="score" data-figure="human-approved">
             <div class="score__n tick-num">100<small>%</small></div>
-            <p class="score__d">Of consequential actions approved by a person before sending, filing, posting, or paying during the reported measurement window.</p>
+            <p class="score__d">Of consequential actions approved by a person during the reported window, before sending, filing, posting, or paying.</p>
           </div>
         </div>
 <!-- /BUILD-LOG:MARCUS-SCORECARD -->
     <!-- BUILD-LOG:MARCUS-WINDOW — rendered from data/build-log.json. Never hand-edit. -->
         <p class="window-note">Measurement window: the first 90 days of full-fleet operation. Results are reported by B:Side Capital and reconciled against its audit log, with written approval on file. Preparation time returned is operating capacity, not a claim of reduced payroll. Annualized equivalents are not measured annual savings.</p>
 <!-- /BUILD-LOG:MARCUS-WINDOW -->
-    <div class="prose-2 mt-l">
-      <p><b>How to read these results.</b> These are B:Side’s reported operational figures, signed off by Christopher Myers in his roles at both organizations. They are not an independent audit. The measurement window is described as the first 90 days of full-fleet operation; exact start and end dates are not published here.</p>
-      <p><b>Capacity is not cash savings.</b> Preparation time returned is capacity available for other work. Annualized equivalents are not measured annual savings. The public summary does not include the underlying time-study baseline or staff denominator; ask about the evidence and assumptions when comparing it with your own operation.</p>
-    </div>
+    <p class="results-source">Founder-affiliated, first-party reporting. <a href="#methodology">Read the measurement definitions, missing context, and approval details <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
@@ -368,10 +364,30 @@
   </div>
 </section>
 
+<section class="section paper-2 results-method" id="methodology" aria-labelledby="methodology-title">
+  <div class="wrap">
+    <div class="head-block"><div><span class="kicker">Sources and limits</span><h2 class="h2 mt-s" id="methodology-title">How to read the results.</h2></div><p class="lead">Use these figures to understand one deployment. A comparable result in your business needs its own baseline, scope, and measurement.</p></div>
+    <dl class="results-method__facts">
+      <div><dt>Period and publication</dt><dd>The first 90 days of full-fleet operation, published July 31, 2026. The server was commissioned in February 2026. Exact measurement start and end dates are not published here.</dd></div>
+      <div><dt>Source and approval</dt><dd>B:Side reports the figures and reconciled them against its audit log. Christopher Myers signed off in his roles at both organizations; written approval is on file. This is not an independent audit.</dd></div>
+      <div><dt>Preparation time</dt><dd>The preparation-time figure measures returned capacity during the stated window. Annualizing it assumes a similar workload and rate of time returned throughout the year. That would be an estimate, not measured annual savings or a claim of reduced payroll.</dd></div>
+      <div><dt>Adoption and review</dt><dd>Weekly adoption measures staff use by week six. Human approval covers consequential actions during the reported window. The staff denominator and underlying time-study baseline are not included in this public summary.</dd></div>
+      <div><dt>Data handling</dt><dd>Source documents are processed locally. Selected tasks can use external reasoning on filtered text. The external-identifier figure describes reported exposure during this window; a mandatory filter does not guarantee perfect detection. <a href="/security/">Read the deployment controls and limitations</a>.</dd></div>
+      <div><dt>Comparison with your business</dt><dd>Include review time, exceptions, operating costs, and the useful work returned capacity would support. <a data-cta="prose" href="/book/?service=sprint">Discuss the evidence and assumptions</a> before using these figures in an investment decision.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section paper results-details" id="build-details" aria-labelledby="build-details-title">
+  <div class="wrap">
+    <span class="kicker">The implementation record</span><h2 class="h2 mt-s" id="build-details-title">Explore the work behind the figures.</h2>
+    <p class="lead mt-s">Open a chapter for the delivered components, reported measurements, and operating boundaries.</p>
+    <details class="results-chapter">
+      <summary><span>01</span><strong>Prepare from company records</strong><span>Server · filtering · knowledge</span></summary>
+      <div class="results-chapter__body">
 <!-- ============ 4 · 01 PRIVATE SERVER ============ -->
 <section class="section paper evidence-detail evidence-detail--chapter" id="evidence-foundation">
   <div class="wrap">
-    <header class="evidence-chapter"><span class="kicker">Evidence chapter 01</span><h2 class="h2 mt-s">Prepare from company records.</h2><p class="lead mt-s">The foundation gives the team a controlled place to process documents and retrieve useful answers.</p></header>
     <span class="tick-lbl">Private AI server</span>
     <p class="lead mt-s">B:Side owns the hardware used for local model processing and can maintain or replace the model independently of the workflow.</p>
     <h3 class="evidence-detail__title">One box, in a locked room, with B:Side&rsquo;s name on the invoice.</h3>
@@ -485,9 +501,13 @@
 </section>
 
 <!-- ============ 7 · 04 SLACK & TEAMS ============ -->
+      </div>
+    </details>
+    <details class="results-chapter">
+      <summary><span>02</span><strong>Deliver into the team’s day</strong><span>Slack · workspace · accounting</span></summary>
+      <div class="results-chapter__body">
 <section class="section paper-2 evidence-detail evidence-detail--chapter" id="evidence-workflow">
   <div class="wrap">
-    <header class="evidence-chapter"><span class="kicker">Evidence chapter 02</span><h2 class="h2 mt-s">Deliver into the team’s day.</h2><p class="lead mt-s">Prepared work belongs where staff already communicate, review, and keep records.</p></header>
     <span class="tick-lbl">Where the work arrives</span>
     <p class="lead mt-s">The best interface is the one their people were already staring at.</p>
     <h3 class="evidence-detail__title">No new app. No new login. The first question came eleven minutes after&nbsp;go-live.</h3>
@@ -614,9 +634,13 @@
 </section>
 
 <!-- ============ 10 · 07 TESTING ============ -->
+      </div>
+    </details>
+    <details class="results-chapter">
+      <summary><span>03</span><strong>Keep decisions accountable</strong><span>Testing · approval · escalation</span></summary>
+      <div class="results-chapter__body">
 <section class="section paper evidence-detail evidence-detail--chapter" id="evidence-control">
   <div class="wrap">
-    <header class="evidence-chapter"><span class="kicker">Evidence chapter 03</span><h2 class="h2 mt-s">Keep decisions accountable.</h2><p class="lead mt-s">Tests and traceable approvals make the operating rules visible after launch.</p></header>
     <span class="tick-lbl">Proof it still works</span>
     <p class="lead mt-s">Anyone can demo an AI. We show ours failing, on purpose, on a schedule.</p>
     <h3 class="evidence-detail__title">Test the exceptions before they reach the team.</h3>
@@ -660,7 +684,7 @@
         <span class="tick-lbl">One rule behind everything</span>
         <h3 class="evidence-detail__title">MARCUS prepares the work. <span class="accent-tx">People&nbsp;decide.</span></h3>
       </div>
-      <p class="lead">Nothing sends, files, posts, or pays until a person approves it. While a request waits, nothing moves.</p>
+      <p class="lead">Consequential sending, filing, posting, and payments wait for human approval. Routine routing and escalation follow the agreed rules.</p>
     </div>
     <div class="prose-2">
       <div>
@@ -692,6 +716,11 @@
   </div>
 </section>
 
+      </div>
+    </details>
+  </div>
+</section>
+
 <!-- TESTIMONIALS: rendered by scripts/build-testimonials.mjs — do not hand-edit -->
 <!-- /TESTIMONIALS -->
 
@@ -700,7 +729,7 @@
   <div class="wrap">
     <div class="final__cta">
       <span class="kicker">Start here</span>
-      <p class="lead mt-s">You already have the data, the front door, and the books. We wire them into something you can ask &mdash; on a machine you own, behind a filter you control, with your people approving every consequential action. Every path here starts with the same free 30-minute assessment, and we reply within 24 hours.</p>
+      <p class="lead mt-s">Bring the workflow you want to improve. We’ll discuss the systems involved, data handling, human review, and the scope a useful build would need. Start with a free 30-minute assessment; we reply to requests within 24 hours.</p>
       <div class="hero__cta">
         <a data-cta="final-cta" class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
         <a class="btn btn--secondary btn--lg" href="/pricing/#backoffice">See what a build like this costs</a>
@@ -798,5 +827,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".head-block > *,.scoregrid > *,.figs > *,.ba > *,.bound > *,.prose-2 > *,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=5"></script>
+<script defer src="/js/analytics.js?v=6"></script>
+<script defer src="/js/results.js?v=1"></script>
 </body>

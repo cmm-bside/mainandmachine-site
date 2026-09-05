@@ -4,14 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Where Does Your AI Data Actually Go? | Main &amp; Machine</title>
-<meta name="description" content="Cloud AI sends your documents to the provider's servers; on-premise keeps them home. Which your business needs, by data type — and when cloud is fine." />
+<meta name="description" content="Compare local, cloud, and hybrid AI data flows, provider terms, filter limits, and the questions to resolve before connecting business records." />
 <link rel="canonical" href="https://www.mainandmachine.com/guides/ai-data-cloud-vs-on-prem/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Main &amp; Machine" />
 <meta property="og:title" content="Where Does Your AI Data Actually Go? | Main &amp; Machine" />
-<meta property="og:description" content="Cloud AI sends your documents to the provider's servers; on-premise keeps them home. Which your business needs, by data type — and when cloud is fine." />
+<meta property="og:description" content="Compare local, cloud, and hybrid AI data flows, provider terms, filter limits, and the questions to resolve before connecting business records." />
 <meta property="og:url" content="https://www.mainandmachine.com/guides/ai-data-cloud-vs-on-prem/" />
 <meta property="og:image" content="https://www.mainandmachine.com/images/og/guides-ai-data-cloud-vs-on-prem.png" />
 <meta property="og:image:type" content="image/png" />
@@ -22,12 +22,12 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Where Does Your AI Data Actually Go? | Main &amp; Machine" />
-<meta name="twitter:description" content="Cloud AI sends your documents to the provider's servers; on-premise keeps them home. Which your business needs, by data type — and when cloud is fine." />
+<meta name="twitter:description" content="Compare local, cloud, and hybrid AI data flows, provider terms, filter limits, and the questions to resolve before connecting business records." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/guides-ai-data-cloud-vs-on-prem.png" />
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=150" />
+<link rel="stylesheet" href="/styles.css?v=151" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -126,7 +126,7 @@
       "@type": "Article",
       "@id": "https://www.mainandmachine.com/guides/ai-data-cloud-vs-on-prem/#article",
       "headline": "Where Does Your AI Data Actually Go?",
-      "description": "Cloud AI sends your prompts and documents to the provider's servers; on-premise AI keeps them on your hardware. Which deployment fits which data type — and when cloud is the right call.",
+      "description": "Compare local, cloud, and hybrid AI data flows, provider terms, filter limits, and the questions to resolve before connecting business records.",
       "url": "https://www.mainandmachine.com/guides/ai-data-cloud-vs-on-prem/",
       "datePublished": "2026-07-13",
       "dateModified": "2026-09-04",
@@ -190,7 +190,7 @@
       "name": "Does ChatGPT use my business data to train its models?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "On business and API tiers, the major providers' standard terms say no; consumer and free tiers often permit training use unless you opt out. Check the tier you are actually on — the data terms live in the plan, not the model."
+        "text": "OpenAI states that its business products and API do not use business data for training by default. Consumer settings and other providers have different terms. Check the exact product, retention settings, connected tools, and current agreement before using sensitive records."
       }
     },
     {
@@ -198,7 +198,7 @@
       "name": "Does a small business need on-premise AI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Usually not. On-prem earns its cost in three situations: a regulator can ask where your data went, a contract forbids third-party processing, or a breach of one dataset would end the business. Otherwise a business-tier cloud deployment, with PII stripping where customer data flows, is the right call."
+        "text": "The answer depends on the records, contracts, access requirements, and operating budget. Local processing can help restrict data routes, while approved cloud services may fit other workflows. Neither deployment choice alone makes a system compliant or private."
       }
     },
     {
@@ -206,7 +206,7 @@
       "name": "How do you use AI on regulated data like health or lending records?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Run the model on hardware you control so records never leave, and strip identifying details before any model reads a document. That is how MARCUS runs at an SBA lender: 14 agents entirely on-prem, PII removed by Microsoft Presidio first, encrypted at rest, with an append-only tamper-evident audit log."
+        "text": "MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted. Presidio, originally developed at Microsoft, detects supported personal identifiers for removal before model processing. Automated detection can miss information; filtering is one control alongside routing restrictions, access decisions, and tests using known identifiers."
       }
     },
     {
@@ -214,7 +214,7 @@
       "name": "What is the middle path between cloud AI and on-premise AI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Local PII stripping before cloud calls: software on your side replaces names, numbers, and identifiers with placeholders, and only the redacted text travels to the cloud model. You get cloud-grade models without shipping the sensitive details, at far less cost than hosting a model yourself."
+        "text": "A hybrid deployment can process documents locally and send selected, filtered text to an external model. Identifier detection can miss sensitive information; decide what may leave, test the filter, and prohibit external processing where the risk or agreement requires it."
       }
     }
   ]
@@ -295,17 +295,16 @@
         <span class="kicker">The Field Guide / 09</span>
         <h1 class="h2 mt-s">Where does your AI data <span class="accent-tx">actually&nbsp;go?</span></h1>
         <!-- BYLINE:auto -->
-        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated September 2026</span>
-      <span class="byline__reviewed">Reviewed by Christopher Myers, September 2026</span></p>
+        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated <time datetime="2026-09-04">September 2026</time></span></p>
         <!-- /BYLINE:auto -->
         <p class="lead mt-s">Most owners sign the vendor agreement without reading the data clause. This guide is that clause, translated — cloud, on-premise, and the middle path, by data type.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
         <div class="statrail__bar"><span>Field Guide</span><span><b>No. 09</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">9 min</span></div>
+        <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">4 min</span></div>
         <div class="statrail__row"><span class="statrail__k">Paths compared</span><span class="statrail__v statrail__v--sm">Cloud · hybrid · on-prem</span></div>
         <div class="statrail__row"><span class="statrail__k">On-prem proof</span><span class="statrail__v accent-tx">MARCUS · 14 agents</span></div>
-        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v"><time datetime="2026-07-29">July 2026</time></span></div>
+
       </div>
     </div>
   </div>
@@ -315,124 +314,58 @@
 <section class="section paper-2">
   <div class="wrap">
     <article class="prose">
-
       <h2>Where does your data go when you use cloud AI?</h2>
-      <p>When you paste text into ChatGPT or send a document through an AI API, that content travels over the internet to the provider’s servers, gets processed there, and the response comes back. Your prompt, your document, and usually some metadata physically leave your building.</p>
-      <p>That is not a scandal; it is how cloud software has worked for twenty years. Your email, your accounting system, and your CRM already live on someone else’s servers. But AI feels different for a reason: the whole point of the tool is to read your material — contracts, customer lists, financials, the things you would not forward to a stranger. So the question is not “does my data leave?” It does. The questions that matter are what the provider is allowed to do with it once it arrives, and what is inside the documents you are sending. The Ampersand essay <a href="/blog/where-your-data-goes/">Where Your Data Goes</a> walks the journey step by step; this guide is the decision framework built on top of it.</p>
+      <p>The content you send is processed by the provider. Your prompt, attached documents, and associated metadata can leave your own systems. Connected apps, logs, backups, and support access may create additional routes. Draw those routes before deciding whether a product fits the workflow.</p>
+      <p>Location is only one part of the answer. You also need to know who can use the data, how long it is kept, and how it is removed. A promise about model training does not answer those questions.</p>
 
       <h2>Does the provider train on your data?</h2>
-      <p>On business and API tiers, usually not — the major providers’ standard terms say business data is not used to train their models. Consumer tiers are different: free and personal accounts often permit training use unless you find the setting and opt out.</p>
-      <p>This is the single most misunderstood distinction in small-business AI, and it lives in the pricing page, not the product. The $20 consumer subscription and the business API can run the exact same model with entirely different data terms. So check the tier you are actually on — not the one the vendor’s blog post describes. Then read the two other clauses that matter: retention (how long prompts are kept, and whether a zero-retention option exists) and subprocessors (who else touches the data in transit). “Contractually fine” is a real and reasonable standard for most business data. But contractual fine-ness has a boundary, and the boundary is what is <i>in</i> the documents.</p>
-
-      <p>One more risk hides outside the contract entirely: shadow AI. If your business has no sanctioned tool and no policy, employees are already pasting customer emails and spreadsheets into personal ChatGPT accounts — the consumer tier, with the consumer terms. The fix is not a ban; bans just push the pasting onto phones. The fix is giving people a business-tier tool and a one-page rule about what may go into it, which costs less than one month of pretending it is not happening.</p>
+      <p>Check the exact product, tier, settings, and agreement. For example, <a href="https://openai.com/enterprise-privacy/" rel="noopener" target="_blank">OpenAI says business and API data is not used for training by default</a>, with exceptions for data you explicitly opt to share. That does not mean the service processes no data or retains nothing.</p>
+      <p>Record the training terms, retention settings, processing location, subprocessors, and connected-app permissions together. Give staff an approved tool and a short rule about which information may go into it. Do not assume a personal account has the terms your business needs.</p>
 
       <h2>What changes when the data is regulated?</h2>
-      <p>Everything. Health records, lending files, Social Security numbers, and similar regulated data are governed by law, not just by your vendor agreement — and a clean contract with an AI provider does not by itself make you compliant.</p>
-      <p>If you run a <a href="/industries/healthcare/">medical or dental practice</a>, HIPAA decides where patient data may travel, and sending records to an AI tool without a business associate agreement is a violation regardless of how good the provider’s security is. Lenders answer to examiners who will ask exactly where borrower files went and expect a documented answer. The pattern generalizes: for regulated data, “the provider promises not to train on it” is not the bar. The bar is being able to prove, to a regulator, where every record went and who read it. That is a different architecture — which is why the next two sections exist.</p>
+      <p>Your legal, contractual, and operational obligations become part of the design. Encryption and a no-training clause are controls, not a complete compliance decision.</p>
+      <p>For healthcare, <a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html" rel="noopener" target="_blank">HHS permits cloud processing of ePHI with the required BAA and compliance safeguards</a>. HIPAA does not simply require a server in the practice. Have the responsible reviewer assess the data flow, agreements, access, retention, and incident responsibilities before patient data is connected.</p>
 
       <h2>What does on-premise AI actually mean?</h2>
-      <p>On-premise (or local) AI means the model itself runs on hardware you control — your server, your building or your private cloud tenancy — so documents are processed where they already live. Nothing goes to OpenAI, Anthropic, or anyone else, because the intelligence comes to the data instead of the data going to the intelligence.</p>
-      <p>This is not theoretical; it is how we built <a href="/work/marcus/">MARCUS</a> for B:Side Capital, an SBA 504 / CDFI lender — a regulated business where borrower files simply do not get to leave. MARCUS runs 14 AI agents across 7 departments, entirely on-prem. Before any model reads a document, Microsoft Presidio strips the PII — names, SSNs, account numbers — so even the local model works on redacted text. Everything is encrypted at rest, every action lands in an append-only, tamper-evident audit log, and nothing sends, files, posts, or pays without human approval. That is what “your data never leaves” looks like when it has to survive an examiner. The complete architecture is public on <a href="/security/">our security page</a> — read it even if you never hire us, because it is a useful checklist for interrogating anyone else’s claims.</p>
+      <p>On-premise AI runs on hardware at your premises. A model in a private cloud tenancy is hosted elsewhere, even if the infrastructure is dedicated to you. Either design still needs a map of external connections, backups, telemetry, updates, and support access.</p>
+      <p><a href="/work/marcus/">MARCUS</a>, built for B:Side Capital where our founder is CEO, processes borrower documents locally. Selected tasks can use external reasoning on filtered text. Consequential actions require human approval. That is a specific architecture, not a claim that all processing stays inside the building. The <a href="/security/">security page</a> describes its controls and their limits.</p>
 
-      <h2>Is there a middle path between cloud&nbsp;and&nbsp;on-prem?</h2>
-      <p>Yes: strip the sensitive fields locally before anything goes to a cloud model. A PII-scrubbing layer such as Presidio runs on your side, replaces names, numbers, and identifiers with placeholders, and only the redacted text makes the trip.</p>
-      <p>The cloud model still does what it is good at — reading, summarizing, drafting — but the identifying details never left your network, and the response gets re-matched to the real records locally. This hybrid pattern covers a surprising share of real cases: a firm that wants cloud-grade models on customer correspondence without shipping the customer list, a clinic that wants help with documentation without transmitting patient identities. It costs less than full on-prem because you are not hosting the model, and it converts “we can’t use AI, our data is sensitive” into an engineering detail. Which model family sits behind it — open weights you host or a closed API you call — is its own trade-off, covered in <a href="/blog/open-models-closed-models/">Open Models, Closed Models</a>.</p>
+      <h2>What is a hybrid AI deployment?</h2>
+      <p>A hybrid deployment keeps some processing local and sends permitted material to external services for selected tasks. A privacy filter can detect supported identifiers and replace them before that transfer.</p>
+      <p>Filtering does not prove that the remaining text is anonymous. <a href="https://github.com/data-privacy-stack/presidio/blob/main/docs/faq.md" rel="noopener" target="_blank">Presidio documents that automated detection can miss sensitive information</a>. Context can also identify someone. Decide what may leave, test representative and difficult cases, and define what happens when the filter or the external service fails.</p>
 
       <h2>Which deployment fits which data?</h2>
-      <p>Match the deployment to the most sensitive data in the workflow, not to the average. One table covers the sensible defaults.</p>
-      <div class="gtable-wrap">
-        <table class="gtable">
-          <thead>
-            <tr>
-              <th scope="col">Data in the workflow</th>
-              <th scope="col">Examples</th>
-              <th scope="col">Sensible deployment</th>
-              <th scope="col">Why</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><b>Public</b></td>
-              <td>Marketing copy, published prices, job posts</td>
-              <td>Any cloud tool, any tier</td>
-              <td>Nothing to protect — optimize for cost and quality</td>
-            </tr>
-            <tr>
-              <td><b>Internal business</b></td>
-              <td>SOPs, drafts, meeting notes, non-sensitive financials</td>
-              <td>Cloud on a business/API tier</td>
-              <td>No-training terms and retention controls are enough</td>
-            </tr>
-            <tr>
-              <td><b>Customer PII</b></td>
-              <td>Names + contact details, order histories, correspondence</td>
-              <td>Cloud with local PII stripping (hybrid)</td>
-              <td>The model helps; the identifiers never travel</td>
-            </tr>
-            <tr>
-              <td><b>Regulated</b></td>
-              <td>Health records, lending files, SSNs</td>
-              <td>On-prem, or hybrid only with counsel’s sign-off</td>
-              <td>Law sets the bar; you must prove where every record went</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="gtable-note">Defaults, not legal advice — a workflow inherits the requirements of the most sensitive data that touches it.</p>
-      <p>The inheritance rule is the one people miss. An invoice-drafting workflow sounds like internal business data — until you notice the invoices contain patient names, at which point the whole workflow is regulated. Classify by the worst thing in the pipe, not the average.</p>
+      <p>Use this as a starting checklist. The most sensitive input, contractual restriction, and required control can change the answer.</p>
+      <div class="gtable-wrap"><table class="gtable">
+        <thead><tr><th scope="col">Data</th><th scope="col">Possible starting point</th><th scope="col">Check before use</th></tr></thead>
+        <tbody>
+          <tr><td><b>Public material</b></td><td>An approved cloud tool</td><td>Usage rights, accuracy, and whether attachments contain nonpublic data</td></tr>
+          <tr><td><b>Internal business material</b></td><td>A business or API service with suitable terms</td><td>Access, training terms, retention, location, and connected apps</td></tr>
+          <tr><td><b>Customer identifiers</b></td><td>A reviewed cloud, hybrid, or local design</td><td>Permitted processing, minimization, filter limits, and contractual duties</td></tr>
+          <tr><td><b>Regulated or restricted records</b></td><td>A design approved against the actual requirements</td><td>Required agreements, risk review, access, logs, retention, and incident handling</td></tr>
+        </tbody></table></div>
+      <p class="gtable-note">A local server is not a compliance certificate. A cloud service is not automatically unsuitable. The documented data flow and responsibilities decide.</p>
 
-      <h2>Does a 20-person business actually need on-prem?</h2>
-      <p>Usually not. If your most sensitive asset is internal documents and everyday customer records, a business-tier cloud deployment with sane retention settings — plus PII stripping where customer data flows — is the right call, and on-prem would be paying enterprise money to solve a problem you do not have.</p>
-      <p>On-prem costs real money: hardware or dedicated hosting, maintenance, and models that trail the frontier. It earns that cost in exactly three situations — a regulator can ask where your data went; a contract (often with your own enterprise customers) forbids third-party processing; or a breach of one specific dataset would end the business. If none of those describes you, take the cloud dividend: better models, lower cost, and a running bill that typically lands at $50–$500 a month rather than an infrastructure line item. Anyone steering a 20-person e-commerce shop toward on-prem is selling complexity. Anyone waving a lender onto consumer-tier ChatGPT is selling negligence. The deployment should be an output of <a href="/services/">the diagnostic work</a>, never a default — and it is one of the ten questions in <a href="/guides/how-to-choose-an-ai-consultant/">our guide to vetting consultants</a>.</p>
+      <h2>Does a 20-person business need on-premise AI?</h2>
+      <p>Headcount is not the test. Start with the data that cannot be sent to a third party, the terms you have agreed to, and the workload the model must handle. If an approved cloud service meets those needs, compare it with the cost and responsibility of operating hardware.</p>
+      <p>For a local option, budget hardware, administration, backups, security updates, electricity, and model testing. For cloud or hybrid, budget usage, tools, access controls, and oversight. Our <a href="/guides/what-ai-automation-costs-to-run/">running-cost guide</a> separates those expenses.</p>
 
-      <h2>What should you ask before signing any AI&nbsp;vendor&nbsp;agreement?</h2>
-      <p>Five questions, answered in writing: Is our data used for training on this tier? How long are prompts and outputs retained, and can retention be set to zero? Who are the subprocessors? Where is the data processed geographically? And what happens to our data when we leave?</p>
-      <p>A serious vendor answers all five from documents they already have — a data processing addendum, a security page, a subprocessor list. Evasion on any of them is your answer, and so is the phrase “we take security very seriously” offered in place of a document. Keep the answers in the deal file; if a customer or regulator ever asks where their data went, that folder is the difference between an afternoon and a very bad month. If you want the same interrogation applied to your own setup — what data your workflows actually touch, and which deployment that implies — that is part of what an <a href="/services/ai-readiness-audit/">AI Readiness Audit</a> maps, at the published prices on <a href="/pricing/">the pricing page</a>. Or start smaller: <a data-cta="prose" href="/book/">book the free 30-minute assessment</a>, tell us what data you handle, and we will give you a straight read on whether cloud, hybrid, or on-prem even belongs in your conversation. We reply within 24 hours.</p>
-
+      <h2>What should you ask before signing?</h2>
+      <ol>
+        <li>What exact records and fields does this workflow use?</li>
+        <li>Where does each copy go, including prompts, logs, and backups?</li>
+        <li>Who can access it, and which providers or subprocessors handle it?</li>
+        <li>What are the training, retention, deletion, and exit terms?</li>
+        <li>Which actions need approval, what failures stop the workflow, and who investigates?</li>
+      </ol>
+      <p>Keep the answers with the scope. If the data path is unclear, that is useful discovery work for an <a href="/services/ai-readiness-audit/">AI Readiness Audit</a>. For an initial discussion, bring the type of data and the workflow to the <a data-cta="prose" href="/book/">free 30-minute assessment</a>; use examples without sensitive records until the handling arrangements are agreed.</p>
     </article>
   </div>
-</section>
-<!-- FAQ:auto -->
-<section class="section paper-2">
-  <div class="wrap">
-    <div class="faq">
-      <div>
-        <span class="kicker">Fair questions</span>
-        <h2 class="h2 mt-s">Where AI data goes.</h2>
-        <div class="faq__aside">
-          <h3 class="accent-tx">Want the numbers?</h3>
-          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
-          <a class="btn btn--secondary" href="/pricing/">Read the price list</a>
-        </div>
-      </div>
-      <div class="faq__list">
-        <details>
-          <summary><span class="q-no">01</span><span class="q-tx">Does ChatGPT use my business data to train its models?</span></summary>
-          <p>On business and API tiers, the major providers' standard terms say no; consumer and free tiers often permit training use unless you opt out. Check the tier you are actually on — the data terms live in the plan, not the model.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">02</span><span class="q-tx">Does a small business need on-premise AI?</span></summary>
-          <p>Usually not. On-prem earns its cost in three situations: a regulator can ask where your data went, a contract forbids third-party processing, or a breach of one dataset would end the business. Otherwise a business-tier cloud deployment, with PII stripping where customer data flows, is the right call.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">03</span><span class="q-tx">How do you use AI on regulated data like health or lending records?</span></summary>
-          <p>Run the model on hardware you control so records never leave, and strip identifying details before any model reads a document. That is how MARCUS runs at an SBA lender: 14 agents entirely on-prem, PII removed by Microsoft Presidio first, encrypted at rest, with an append-only tamper-evident audit log.</p>
-        </details>
-        <details>
-          <summary><span class="q-no">04</span><span class="q-tx">What is the middle path between cloud AI and on-premise AI?</span></summary>
-          <p>Local PII stripping before cloud calls: software on your side replaces names, numbers, and identifiers with placeholders, and only the redacted text travels to the cloud model. You get cloud-grade models without shipping the sensitive details, at far less cost than hosting a model yourself.</p>
-        </details>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /FAQ:auto -->
-
-<!-- ============ START HERE (ink) ============ -->
+</section><!-- ============ START HERE (ink) ============ -->
 <!-- BUILD-LINKS:auto -->
 <section class="section section--tight paper-2 buildlinks">
   <div class="wrap">
-    <p class="citylinks__p"><span class="tick-lbl">From the catalog</span> Builds most often scoped here: <a href="/services/builds/private-ai-server/">private ai server</a>, <a href="/services/builds/data-privacy-filter/">data privacy filter</a>. Every one is delivered through the same three services, at the published prices.</p>
+    <p class="citylinks__p"><span class="tick-lbl">From the catalog</span> Explore relevant build components: <a href="/services/builds/private-ai-server/">private ai server</a>, <a href="/services/builds/data-privacy-filter/">data privacy filter</a>. These are scoped within an engagement; suitability and inclusions depend on the workflow.</p>
   </div>
 </section>
 <!-- /BUILD-LINKS:auto -->
@@ -443,6 +376,43 @@
     <p class="citylinks__p"><span class="tick-lbl">Read next</span> The full picture, including the production figures: <a href="/guides/private-ai-for-small-business/">Private AI for small business</a>.</p>
   </div>
 </section>
+
+<!-- FAQ:auto -->
+<section class="section paper-2">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="kicker">Fair questions</span>
+        <h2 class="h2 mt-s">Where AI data goes.</h2>
+        <div class="faq__aside">
+          <h3 class="accent-tx">Want the numbers?</h3>
+          <p>The full price list is published — audits, sprints, managed services, all on one page.</p>
+          <a class="btn btn--primary" href="/pricing/">Read the price list <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary><span class="q-no">01</span><span class="q-tx">Does ChatGPT use my business data to train its models?</span><span class="q-pm">+</span></summary>
+          <p>OpenAI states that its business products and API do not use business data for training by default. Consumer settings and other providers have different terms. Check the exact product, retention settings, connected tools, and current agreement before using sensitive records.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">02</span><span class="q-tx">Does a small business need on-premise AI?</span><span class="q-pm">+</span></summary>
+          <p>The answer depends on the records, contracts, access requirements, and operating budget. Local processing can help restrict data routes, while approved cloud services may fit other workflows. Neither deployment choice alone makes a system compliant or private.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">03</span><span class="q-tx">How do you use AI on regulated data like health or lending records?</span><span class="q-pm">+</span></summary>
+          <p>MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted. Presidio, originally developed at Microsoft, detects supported personal identifiers for removal before model processing. Automated detection can miss information; filtering is one control alongside routing restrictions, access decisions, and tests using known identifiers.</p>
+        </details>
+        <details>
+          <summary><span class="q-no">04</span><span class="q-tx">What is the middle path between cloud AI and on-premise AI?</span><span class="q-pm">+</span></summary>
+          <p>A hybrid deployment can process documents locally and send selected, filtered text to an external model. Identifier detection can miss sensitive information; decide what may leave, test the filter, and prohibit external processing where the risk or agreement requires it.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /FAQ:auto -->
+
 <!-- /PILLAR-LINK:auto -->
 
 <section class="section ink final">
@@ -450,14 +420,14 @@
     <div class="final__cta">
       <span class="kicker">Start here</span>
       <h2 class="h2 mt-s">Not sure which deployment <span class="accent-tx">your data&nbsp;needs?</span></h2>
-      <p class="lead mt-s">Tell us what your workflows touch — patient records, borrower files, or plain business documents — and a senior advisor gives you a straight read in 30 minutes. Free, and we reply within 24 hours.</p>
+      <p class="lead mt-s">Tell us what one workflow touches: patient records, borrower files, or ordinary business documents. We will discuss the requirements and the next step in a free 30-minute assessment. We reply within 24 hours.</p>
       <div class="hero__cta">
         <a data-cta="final-cta" class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
         <a class="btn btn--secondary btn--lg" href="/security/">Read the security architecture</a>
       </div>
     </div>
     <div class="final__promise">
-      <p>A fixed price, quoted in writing before we start, and a straight answer within 24 hours.</p>
+      <p>We reply within 24 hours. A fixed quote follows an agreed scope, before paid work begins.</p>
       <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
@@ -545,6 +515,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=5"></script>
+<script defer src="/js/analytics.js?v=6"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=150" />
+<link rel="stylesheet" href="/styles.css?v=151" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -239,7 +239,7 @@
           "name": "We are a growing medical or dental practice. Can you touch patient data?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Only inside your environment. The models run on hardware in your building, so a record read by that machine has not left the practice, and a Presidio-class filter strips identifiers before any model reads a document. HIPAA also requires a signed business associate agreement before any vendor handles PHI — settle that in the first thirty minutes, not after scoping. We build nothing clinical."
+            "text": "Administrative workflows may be suitable after reviewing the records, permitted processing routes, access, and required agreements with your compliance adviser. When a vendor acts as a business associate, the required agreement and safeguards must be in place before PHI is shared. Local processing and privacy filters alone do not establish compliance. We do not build clinical decision systems."
           }
         },
         {
@@ -478,7 +478,7 @@
       </div>
       <div>
         <h3>Construction riding the build-out</h3>
-        <p>The residential and commercial build-out across the Valley has the same shape as the Front Range&rsquo;s but a different tempo: more subs, faster cycles, and Arizona&rsquo;s own lien-notice deadlines to hit. The twenty-day preliminary notice is the kind of paperwork that is trivial when it happens on time and expensive when it does not. Pay applications, waivers and certified payroll are the usual first build.</p>
+        <p>Valley contractors juggle pay applications, notices, waivers, and payroll records alongside the work on site. Choose one recurring bottleneck and document the applicable deadlines with the responsible reviewer. An automation can assemble the packet and flag missing pieces; a person remains accountable for what is sent or signed.</p>
         <p><a href="/industries/construction/">More on this&nbsp;<span class="arr">&#8594;</span></a></p>
       </div>
       <div>
@@ -543,7 +543,7 @@
       <p class="lead">One build, published with permission, with the numbers off the log.</p>
     </div>
     <div class="prose-2">
-      <div><p style="color:var(--dtx-mute);">The system we point Valley healthcare and finance operators at is MARCUS, built for an SBA 504 and CDFI lender: 14 AI agents across 7 departments, running on the client&rsquo;s own hardware, identifiers stripped before any model reads a document, every action written to a tamper-evident log. It is a lender rather than a practice, but the constraint is identical &mdash; records that regulators expect to stay put. Read <a href="/work/marcus/">how it was built</a>, or <a href="/security/">the security architecture on its own</a>.</p></div>
+      <div><p style="color:var(--dtx-mute);">Our published reference is MARCUS at B:Side Capital, an SBA 504 and CDFI lender where our founder is CEO: 14 AI agents across 7 departments. It processes borrower documents locally and can use external reasoning on filtered text for selected tasks. Consequential actions require approval. <a href="/work/marcus/">Read the build</a> or <a href="/security/">the controls and their limits</a>. It offers useful design lessons; it is not evidence of healthcare outcomes or a compliance certification.</p></div>
       <div>
         <!-- BUILD-LOG:MARCUS-SCORECARD-COMPACT — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
         <!-- /BUILD-LOG:MARCUS-SCORECARD-COMPACT -->
@@ -609,7 +609,7 @@
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">We are a growing medical or dental practice. Can you touch patient data?</span></summary>
-          <p>Only inside your environment. The models run on hardware in your building, so a record read by that machine has not left the practice, and a Presidio-class filter strips identifiers before any model reads a document. HIPAA also requires a signed business associate agreement before any vendor handles PHI — settle that in the first thirty minutes, not after scoping. We build nothing clinical.</p>
+          <p>Administrative workflows may be suitable after reviewing the records, permitted processing routes, access, and required agreements with your compliance adviser. When a vendor acts as a business associate, the required agreement and safeguards must be in place before PHI is shared. Local processing and privacy filters alone do not establish compliance. We do not build clinical decision systems.</p>
         </details>
         <details>
           <summary><span class="q-no">04</span><span class="q-tx">Arizona lien deadlines are tight. Does that fit the construction build?</span></summary>
@@ -638,7 +638,7 @@
       <p class="hero__note" style="color:var(--dtx-mute);">Free. No obligation. No pitch. We reply within 24 hours.</p>
     </div>
     <div class="final__promise">
-      <p>A fixed price, quoted in writing before we start, and a straight answer within 24 hours.</p>
+      <p>We reply within 24 hours. A fixed quote follows an agreed scope, before paid work begins.</p>
       <span class="final__sig">&mdash; Christopher Myers, Founder</span>
     </div>
   </div>
@@ -726,6 +726,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.svc__item,.industries .ind,.faq > *,.faq__list details,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=5"></script>
+<script defer src="/js/analytics.js?v=6"></script>
 </body>
 </html>

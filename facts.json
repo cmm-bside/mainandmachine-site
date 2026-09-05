@@ -3,6 +3,7 @@
     "source": "https://www.mainandmachine.com/facts.json",
     "description": "Canonical business facts for Main & Machine, generated from the same source of truth as llms.txt. Human-readable fact sheet: /llms.txt · full page text: /llms-full.txt",
     "generatedFrom": "src/data/site-facts.json",
+    "claimsFrom": "src/data/approved-claims.mjs",
     "schemaVersion": 1
   },
   "name": "Main & Machine",
@@ -76,7 +77,7 @@
     "remaining": 4,
     "countedOn": "2026-07-30"
   },
-  "runningCosts": "$50–$500/month typical (tools + model usage) for a small business",
+  "runningCosts": "$50–$500/month illustrative planning band for tools and model usage; excludes build, internal labor, hardware, and optional Managed Services from $1,500/month. Actual usage and provider terms determine cost.",
   "delivery": "~90 days per workflow, fixed price quoted in writing before work",
   "freeOffer": "30-minute AI Opportunity Assessment, reply within 24 hours",
   "audience": {
@@ -148,5 +149,71 @@
     "Retrieval-augmented generation",
     "Small business operations",
     "Workflow automation"
-  ]
+  ],
+  "approvedClaims": {
+    "assessment": {
+      "text": "Start with a free 30-minute assessment to discuss one workflow and the next step. If substantial discovery is needed, we scope a paid audit; a fixed build quote follows an agreed scope.",
+      "sources": [
+        "/book/",
+        "/services/ai-readiness-audit/",
+        "/pricing/"
+      ]
+    },
+    "advisor": {
+      "text": "An advisor from Main & Machine discusses your workflow and next step. Christopher Myers is accountable for scoping and sign-off; the build team implements agreed work. Your scheduling confirmation identifies the meeting host.",
+      "sources": [
+        "/book/",
+        "/about/"
+      ]
+    },
+    "assessmentData": {
+      "text": "We use your details to respond and assess the requested work, as described in our privacy policy. Requesting an assessment does not subscribe you to marketing.",
+      "sources": [
+        "/book/",
+        "/privacy/"
+      ]
+    },
+    "sampleAudit": {
+      "text": "Four sample pages show a workflow map, ranked opportunities, an economic worksheet, and a phased recommendation. The business, inputs, costs, and modeled results are fictional; they are not a client result or quote.",
+      "sources": [
+        "/services/sample-audit/"
+      ]
+    },
+    "marcusArchitecture": {
+      "text": "MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted.",
+      "sources": [
+        "/security/",
+        "/work/marcus/results/"
+      ]
+    },
+    "privacyFilter": {
+      "text": "Presidio, originally developed at Microsoft, detects supported personal identifiers for removal before model processing. Automated detection can miss information; filtering is one control alongside routing restrictions, access decisions, and tests using known identifiers.",
+      "sources": [
+        "/security/",
+        "https://github.com/data-privacy-stack/presidio/blob/main/docs/faq.md"
+      ]
+    },
+    "auditLog": {
+      "text": "MARCUS records actions in an append-only, hash-chained audit log. The chain makes changes to recorded entries detectable when verified; it does not independently validate the underlying action or every operational metric.",
+      "sources": [
+        "/security/",
+        "/work/marcus/results/"
+      ]
+    },
+    "evidenceLimits": {
+      "text": "MARCUS results are reported by B:Side Capital for the first 90 days of full-fleet operation and reconciled against its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party operational results, not an independent audit or a promise of another client’s outcome.",
+      "sources": [
+        "/work/marcus/results/",
+        "/about/"
+      ]
+    },
+    "timeValue": {
+      "text": "Preparation time returned is operating capacity, not automatically reduced payroll or cash savings. Annualized equivalents and calculator scenarios are estimates, not measured annual results or guarantees.",
+      "sources": [
+        "/work/marcus/results/",
+        "/calculator/",
+        "/guides/ai-roi-math-small-business/"
+      ]
+    }
+  }
 }

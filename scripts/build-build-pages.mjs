@@ -303,7 +303,7 @@ ${faqHtml}
     <div>
       <span class="kicker">Next step</span>
       <h2 class="h2 mt-s">30 minutes. A straight answer.</h2>
-      <p>A senior advisor walks your workflows and tells you whether this build is worth doing &mdash; including when the answer is not yet.</p>
+      <p>Bring one workflow to the free assessment. We will discuss whether this build fits, what needs scoping, and when the better answer is not yet.</p>
     </div>
     <div class="hero__cta">
       <a class="btn btn--primary" href="/book/" data-cta="build-page-final">Book a free assessment <span class="arr">&#8594;</span></a>

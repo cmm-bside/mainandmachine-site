@@ -55,7 +55,6 @@ for (const s of MUST_CONTAIN) {
 // comparison. Anything else is presumed stale/drifted and fails.
 const MARKET_CONTEXT = [
   "$60,000",   // "largest standard sprint" framing (sprint priceHigh)
-  "$500,000+", // Big Four kickoff comparison
   "$3,500",    // audit floor used standalone
   "$1M",       // audience revenue band halves ($1M–$50M renders as tokens)
   "$50M",
@@ -63,7 +62,6 @@ const MARKET_CONTEXT = [
   "$18,000",   // sprint floor standalone (implementation model)
   "$95,000",   // Full Back Office floor
   "$1,500",    // Managed Services floor
-  "$25",       // ChatGPT-seat market comparison (guides)
 ];
 const allowed = new Set([
   audit.price, sprint.price, COMPANY.audience.revenue,

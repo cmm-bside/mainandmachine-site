@@ -4,14 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Private AI for Small Business | Main &amp; Machine</title>
-<meta name="description" content="What private AI means, who genuinely needs it, and what it costs: on-prem models, PII stripping, audit logs — with figures from a live regulated build." />
+<meta name="description" content="Assess private AI by its data flows, access, filter limits, and operating costs. Read the architecture and qualified results from our lender deployment." />
 <link rel="canonical" href="https://www.mainandmachine.com/guides/private-ai-for-small-business/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Main &amp; Machine" />
 <meta property="og:title" content="Private AI for Small Business | Main &amp; Machine" />
-<meta property="og:description" content="What private AI means, who genuinely needs it, and what it costs: on-prem models, PII stripping, audit logs — with figures from a live regulated build." />
+<meta property="og:description" content="Assess private AI by its data flows, access, filter limits, and operating costs. Read the architecture and qualified results from our lender deployment." />
 <meta property="og:url" content="https://www.mainandmachine.com/guides/private-ai-for-small-business/" />
 <meta property="og:image" content="https://www.mainandmachine.com/images/og/guides-private-ai-for-small-business.png" />
 <meta property="og:image:type" content="image/png" />
@@ -22,13 +22,13 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Private AI for Small Business | Main &amp; Machine" />
-<meta name="twitter:description" content="What private AI means, who genuinely needs it, and what it costs: on-prem models, PII stripping, audit logs — with figures from a live regulated build." />
+<meta name="twitter:description" content="Assess private AI by its data flows, access, filter limits, and operating costs. Read the architecture and qualified results from our lender deployment." />
 <meta name="twitter:image" content="https://www.mainandmachine.com/images/og/guides-private-ai-for-small-business.png" />
 <meta name="twitter:image:alt" content="Private AI for small business &mdash; Main &amp; Machine" />
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=150" />
+<link rel="stylesheet" href="/styles.css?v=151" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -118,7 +118,7 @@
       "@type": "Article",
       "@id": "https://www.mainandmachine.com/guides/private-ai-for-small-business/#article",
       "headline": "Private AI for Small Business",
-      "description": "What private AI means, who genuinely needs it, and what it costs: on-prem models, PII stripping, audit logs — with figures from a live regulated build.",
+      "description": "Assess private AI by its data flows, access, filter limits, and operating costs. Read the architecture and qualified results from our lender deployment.",
       "url": "https://www.mainandmachine.com/guides/private-ai-for-small-business/",
       "author": {
         "@id": "https://www.mainandmachine.com/#person-cmyers"
@@ -174,7 +174,7 @@
       "name": "Is private AI the same as on-premise AI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In practice, yes. Private AI means the model runs on hardware you control and your documents are not sent to an outside service. On-premise is the usual way to achieve that: a machine in your building, bought in your name, running open-source models. The distinction that matters is not the word — it is whether a file leaves your network."
+        "text": "No. Private AI describes control over access and data handling; on-premise describes where a system runs. A local, private-cloud, or hybrid deployment can have different boundaries. Define which documents and requests may leave, who can access them, and how that is tested."
       }
     },
     {
@@ -182,7 +182,7 @@
       "name": "Do we need private AI, or is a ChatGPT subscription enough?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "If nothing in your documents is regulated or confidential, a subscription is almost certainly enough and you should not buy a build. Private AI earns its cost when a specific class of document cannot leave your control — borrower financials, patient records, privileged client files. The test is not company size. It is whether you can name the document."
+        "text": "A business subscription may fit individual drafting and research. Restricted records or workflows spanning several systems may require additional controls or a custom build. Decide from the workflow, exact product terms, contracts, and approved data routes; neither a subscription nor a private server is sufficient by itself."
       }
     },
     {
@@ -190,7 +190,7 @@
       "name": "What does private AI actually cost to run each month?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Running cost is tools plus model usage, and on owned hardware the model usage is electricity rather than per-token billing. The build itself is delivered through an AI Implementation Sprint at $18,000–$60,000, quoted fixed in writing before work begins. Our published guide to monthly running costs covers the ongoing side in detail."
+        "text": "Budget tools, model usage or local compute, electricity, hardware maintenance, internal review, and any support. Our illustrative $50–$500 tools-and-model allowance excludes build, hardware, staff time, and optional Managed Services from $1,500 a month. Implementation Sprints cost $18,000–$60,000, with scope and price agreed in writing."
       }
     },
     {
@@ -198,15 +198,15 @@
       "name": "Is a local model good enough, or do we lose capability?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "For reading documents, drafting, classifying and answering from your own records, local models are sufficient — that is the work most businesses actually need. Where a task genuinely needs a frontier model, a privacy filter strips identifiers first and sends cleaned text out, so the capability is available without the identities travelling with it."
+        "text": "Test the chosen local model against representative documents, required answer quality, latency, and available hardware. Selected tasks may benefit from external reasoning, but only through approved data routes. Automated filtering can miss sensitive information, so it does not make every cloud request appropriate."
       }
     },
     {
       "@type": "Question",
-      "name": "How do we prove to an auditor that data never left?",
+      "name": "How do we verify where data was processed?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "With a log, not an assurance. Every action writes to an append-only, tamper-evident audit log: entries can be added, never edited or deleted. In our largest published deployment, 100% of prompts and attachments cleared the privacy filter before reaching any model, and there were zero PII incidents since the filter went live."
+        "text": "MARCUS records actions in an append-only, hash-chained audit log. The chain makes changes to recorded entries detectable when verified; it does not independently validate the underlying action or every operational metric. Review the approved routes, network and application records, access controls, retention, and verification procedures. A log or a mandatory privacy filter alone does not prove that no sensitive information left the environment."
       }
     },
     {
@@ -214,7 +214,7 @@
       "name": "Who is accountable when the system gets something wrong?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A person, because nothing fires on its own. Send, file, post and pay all wait for human approval — the machine prepares and people decide. In the deployment above, 100% of consequential actions were approved by a person before anything was sent, filed, posted or paid."
+        "text": "Name a person who owns the workflow, reviews exceptions, and can stop or overrule it. Define routine actions that may run automatically and consequential actions that require approval. In the reported MARCUS measurement window, all consequential actions were approved by a person first; that is first-party evidence from one deployment."
       }
     }
   ]
@@ -294,10 +294,9 @@
         <span class="kicker">The Field Guide / Pillar</span>
         <h1 class="h2 mt-s">Private AI for small business, <span class="accent-tx">explained by a live deployment.</span></h1>
         <!-- BYLINE:auto -->
-        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated September 2026</span>
-      <span class="byline__reviewed">Reviewed by Christopher Myers, September 2026</span></p>
+        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated <time datetime="2026-09-04">September 2026</time></span></p>
         <!-- /BYLINE:auto -->
-        <p class="lead mt-s">Private AI means the model runs on hardware you control and your documents never leave your network. This page explains what that actually requires, who genuinely needs it, what it costs, and how it differs from a ChatGPT subscription &mdash; using the architecture and the measured figures from a regulated lender running it in production today.</p>
+        <p class="lead mt-s">Private AI starts with control over where your data is processed and who can use it. Here is how to assess a local or hybrid system, what it costs, and what our published lender deployment can—and cannot—tell you.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
         <div class="statrail__bar"><span>Field Guide</span><span><b>Private AI</b></span></div>
@@ -313,48 +312,48 @@
 <section class="section paper-2 section--close-96">
   <div class="wrap prose-2">
     <h2 class="h2">What is private AI?</h2>
-    <p>Private AI is artificial intelligence that runs on infrastructure you control, using models that read your documents without those documents being sent to an outside service. The usual implementation is on-premise: a physical machine in your building, bought in your name, running open-source models locally.</p>
-    <p>The word &ldquo;private&rdquo; is used loosely in this market, so it is worth being precise about what it does and does not mean. It does not mean a vendor promising not to train on your data. It does not mean a checkbox in an enterprise plan. It means the file does not leave your network, and you can prove it.</p>
-    <p>On our deployments, on-prem is the default for regulated data, and in normal operation nothing about a client file is sent to an outside service. Where a cloud model is genuinely the right tool, identifiers are stripped before anything is sent &mdash; which is a different architecture from sending the document and trusting a policy.</p>
+    <p>“Private AI” is a broad label. Specify the arrangement: a model on hardware in your building, a dedicated hosted environment, or a hybrid that sends selected material to an external service. Each needs explicit data flows, access rules, and operating responsibilities.</p>
+    <p>The useful question is not whether the vendor calls it private. Ask which documents, text, logs, and backups leave your systems, who can access them, and what the contract permits.</p>
+    <p>Our published MARCUS deployment processes borrower documents locally. Selected tasks can use external reasoning on filtered text. That design is described on <a href="/security/">our security page</a>; it is not a promise that every client deployment has the same boundary.</p>
 
     <h2 class="h2">How is private AI different from a ChatGPT subscription?</h2>
     <p>A consumer subscription is a seat on somebody else&rsquo;s server. That is not a criticism; for a great deal of work it is exactly right, and it costs a fraction of a build. The difference is what happens to the document.</p>
-    <p>When your bookkeeper pastes a client&rsquo;s financials into a consumer chatbot, three things are true at once: the work gets done, the file has left your control, and there is no log you can read afterwards. The first is why staff do it. The second and third are why a regulated business cannot.</p>
-    <p>A private deployment changes the arithmetic rather than the interface. Staff get the same usefulness, on your hardware, with an audit trail behind every question. We cover the capability trade-offs in detail in <a href="/guides/chatgpt-vs-custom-ai/">ChatGPT vs. custom AI</a>, and the deployment decision itself in <a href="/guides/ai-data-cloud-vs-on-prem/">where your AI data actually goes</a>.</p>
+    <p>A cloud chatbot processes the material you send on an outside service. Whether it fits depends on the product, agreement, retention settings, permissions, and the information involved. Personal and business accounts should not be treated as interchangeable.</p>
+    <p>A local deployment can keep document processing on infrastructure you control, but the model still needs testing against the actual job. Audit trails, access controls, and integration behavior must be designed and checked; they do not appear because the server is local.</p>
 
     <h2 class="h2">Who actually needs private AI?</h2>
     <p>Not everyone, and the honest version of this page says so early. If nothing in your documents is regulated or confidential, private AI is insurance against a risk you do not carry, and a subscription will serve you better for less.</p>
-    <p>The businesses that genuinely need it share one property: a specific class of document that cannot leave their control. In practice that is three groups.</p>
-    <p><strong>Lenders and financial institutions.</strong> Borrower financials touch every step of the work &mdash; intake, credit, eligibility, pricing. This is the case our published deployment was built for: an SBA 504 and CDFI lender whose borrower data could not leave a controlled environment, which made feeding it to a cloud AI a non-starter.</p>
-    <p><strong>Healthcare practices and clinics.</strong> The patient record is the constraint. Scheduling, intake and coding are all workflows AI handles well, and all of them touch the record. See <a href="/industries/healthcare/">AI for healthcare and wellness</a>.</p>
+    <p>Start with workflows whose records have specific restrictions on third-party processing. These are reasons to investigate the boundary, not proof that every business in an industry needs local hardware.</p>
+    <p><strong>Lenders and financial institutions.</strong> Borrower records require a documented handling decision. Our published case is B:Side Capital, where our founder is CEO; its requirements shaped the local processing and approval controls.</p>
+    <p><strong>Healthcare practices and clinics.</strong> Assess patient-data handling, required agreements, and the administrative workflow before selecting a deployment. <a href="/industries/healthcare/">Our healthcare page</a> explains the boundary around clinical decisions.</p>
     <p><strong>Legal and professional services.</strong> Privileged client files carry an obligation that a vendor&rsquo;s terms of service does not discharge. See <a href="/industries/professional-services/">AI for professional services</a>.</p>
     <p>The test is not company size or revenue. It is whether you can name the document that cannot leave.</p>
 
     <h2 class="h2">What does a private AI system actually consist of?</h2>
-    <p>Five controls, in the order data meets them. This is the architecture on <a href="/security/">our security page</a>, and it is the one running in production at a regulated lender rather than a policy aspiration.</p>
-    <p><strong>1. Local models on your own hardware.</strong> The machine sits in your building. For regulated work, no client file leaves the network in normal operation.</p>
-    <p><strong>2. PII stripped before any model reads a document.</strong> Microsoft Presidio &mdash; an open-source PII engine you can inspect yourself &mdash; detects and removes names, Social Security numbers and account numbers first. Identity is stripped before ingestion, not redacted after. The model sees the work, not the identity.</p>
-    <p><strong>3. Everything stored is encrypted at rest.</strong> Documents, extracted data and work products, all of them, where they sit. A copied disk is a useless disk.</p>
-    <p><strong>4. An append-only, tamper-evident audit log.</strong> Every action is appended to a log where entries can be added but never edited or deleted. When an auditor asks what happened, compliance can prove it rather than assert it.</p>
-    <p><strong>5. A person signs off on every consequential action.</strong> Nothing sends, files, posts or pays until a human approves it. The system shows its work &mdash; what it did, what it is asking for, the source it relied on &mdash; and a person approves, returns or escalates it. The machine prepares; people decide.</p>
+    <p>Five controls to evaluate, drawn from <a href="/security/">the MARCUS architecture</a>. Your scope must establish which controls apply and how they will be tested.</p>
+    <p><strong>1. A defined processing boundary.</strong> State which documents stay local and which tasks may use external services. Include backups, logs, and support access in that map.</p>
+    <p><strong>2. Identifier filtering with known limits.</strong> A filter such as Presidio detects supported identifiers before permitted external processing. Detection can miss sensitive information; test it alongside the other controls.</p>
+    <p><strong>3. Encryption and controlled access.</strong> MARCUS encrypts stored documents and work products. Key management, permissions, backups, and recovery still require named owners.</p>
+    <p><strong>4. A log that can be verified.</strong> MARCUS records actions in an append-only, hash-chained log. Verification can reveal changes to recorded entries; the log does not replace retention rules, access controls, or investigation.</p>
+    <p><strong>5. Approval for consequential actions.</strong> MARCUS prepares work for people to approve before consequential sending, filing, posting, or paying. Routine automatic actions in other builds need their own agreed boundaries.</p>
     <p>The build that carries controls 1 and 2 is the <a href="/services/builds/private-ai-server/">private AI server</a> and its <a href="/services/builds/data-privacy-filter/">data privacy filter</a>.</p>
 
     <h2 class="h2">Does private AI actually work in production?</h2>
     <p>This is the question most pages on this topic cannot answer, so here are figures from a system that is running rather than a diagram of one that could.</p>
-    <p><a href="/work/marcus/">MARCUS</a> is a private AI back office built for B:Side Capital, an SBA 504 and CDFI lender: 14 agents across 7 departments, built entirely from the institution&rsquo;s own process documentation, running on-premises. It is published with the client&rsquo;s permission, and every figure below is reconstructable from the tamper-evident audit log.</p>
-    <p>Over the first 90 days of full-fleet operation: <strong>1,240 staff hours</strong> of preparation returned. <strong>93%</strong> of staff using it weekly by week six, with no new app, no new login and no training deck. <strong>Zero</strong> borrower identifiers sent to any outside model. <strong>100%</strong> of consequential actions approved by a person before anything was sent, filed, posted or paid.</p>
-    <p>On the privacy machinery specifically: <strong>2.1 million</strong> model calls processed entirely on-premises in those 90 days. <strong>1.9 million</strong> personal identifiers detected and stripped. <strong>100%</strong> of prompts and attachments cleared the filter before reaching any model, because no bypass exists. Detection recall measures <strong>99.8%</strong> on a monthly seeded red-team test &mdash; measured, not claimed. There have been <strong>zero</strong> PII incidents since the filter went live.</p>
-    <p>Two of those numbers matter more than the headline. The adoption figure, because a private system nobody opens returns nothing regardless of its architecture. And the incident count, because it is the number a board actually asks about. The <a href="/work/marcus/results/">full scorecard</a> shows the rest.</p>
+    <p><a href="/work/marcus/">MARCUS</a> is a back office built for B:Side Capital, an SBA 504 and CDFI lender where our founder is CEO: 14 agents across 7 departments, drawing on the institution’s process documentation. B:Side reports the results below, reconciled against its audit log, with written approval on file. This is affiliated first-party evidence, not an independent study.</p>
+    <p>Over the first 90 days of full-fleet operation, B:Side reported <strong>1,240 staff hours</strong> of preparation returned, <strong>93%</strong> weekly adoption by week six, <strong>zero</strong> borrower identifiers sent to outside models, and <strong>100%</strong> human approval of consequential actions. Time returned is capacity, not a claim that payroll fell.</p>
+    <p>The published operating figures include <strong>2.1 million</strong> local model calls and <strong>1.9 million</strong> identifiers detected and stripped in the reported 90-day window. <strong>100%</strong> of prompts and attachments passed through the filter. The reported <strong>99.8%</strong> detection recall comes from a monthly seeded test, not every possible production document. B:Side reports <strong>zero</strong> PII incidents since the filter went live; mandatory filtering is not perfect detection.</p>
+    <p>Read the <a href="/work/marcus/results/">full scorecard and its measurement limits</a> before using these figures in a buying decision. They describe one operation. Your workflow, adoption, review time, and data need their own test.</p>
 
     <h2 class="h2">What does private AI cost to buy and to run?</h2>
     <p>There are two costs and they behave differently.</p>
-    <p>The build is delivered through an AI Implementation Sprint at <span data-fact="price-sprint">$18,000–$60,000</span>, quoted fixed in writing before work begins, with hardware quoted as part of that scope rather than billed as a surprise afterwards. If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. An <a href="/services/ai-readiness-audit/">AI Readiness Audit</a> at <span data-fact="price-audit">$3,500–$8,500</span> tells you first whether this is your right move.</p>
-    <p>The running cost is different in kind from a subscription. On owned hardware, model usage is electricity rather than per-token billing, which is why volume behaves so differently at scale &mdash; 2.1 million model calls in 90 days does not produce a 2.1-million-call invoice. What remains is tools, maintenance and monitoring; <a href="/guides/what-ai-automation-costs-to-run/">what AI automation costs to run</a> covers that monthly reality in full.</p>
+    <p>A defined private-AI workflow can be scoped as an AI Implementation Sprint at <span data-fact="price-sprint">$18,000–$60,000</span>, with a fixed quote before work begins. Hardware and third-party costs must be identified in the quote. A multi-department build is a separate engagement: the Full Back Office starts at $95,000. <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span> An <a href="/services/ai-readiness-audit/">AI Readiness Audit</a> can investigate the business case first.</p>
+    <p>Owned hardware avoids a provider’s per-token invoice for the local calls it handles. It still costs money to operate: electricity, administration, backups, maintenance, and replacement capacity. Selected external reasoning adds usage charges. The <a href="/guides/what-ai-automation-costs-to-run/">running-cost guide</a> separates tools from support and staff time.</p>
     <p>One number worth stating plainly because vendors rarely do: we buy the hardware at cost, in the client&rsquo;s name, at zero markup. You own the machine.</p>
 
     <h2 class="h2">What are the honest limitations?</h2>
-    <p>A local open-source model is not a frontier model. For reading documents, drafting, classifying and answering from your own records &mdash; the work most businesses actually need &mdash; it is sufficient. For open-ended general reasoning, the frontier models are ahead, which is exactly what the privacy filter exists to make available: cleaned text goes out, identifiers stay in.</p>
-    <p>Private AI is also not a compliance certificate. It is an architecture that makes compliance provable. The proof comes from the audit log, and a log nobody reads is just a file.</p>
+    <p>Test the model on your actual documents, including difficult examples and cases it should refuse. Local and external models have different cost, capability, and operating tradeoffs; neither is the right answer just because of where it runs.</p>
+    <p>Private AI is not a compliance certificate. A documented architecture and verified logs can support a review; they do not establish compliance by themselves.</p>
     <p>And it is a build, not a purchase. If your first instinct is that this sounds like a lot for a business your size, that instinct is often correct, and the audit is the cheap way to find out.</p>
 
     <h2 class="h2">Where should you start?</h2>
@@ -374,27 +373,27 @@
     <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">Is private AI the same as on-premise AI?</span></summary>
-          <p>In practice, yes. Private AI means the model runs on hardware you control and your documents are not sent to an outside service. On-premise is the usual way to achieve that: a machine in your building, bought in your name, running open-source models. The distinction that matters is not the word — it is whether a file leaves your network.</p>
+          <p>No. Private AI describes control over access and data handling; on-premise describes where a system runs. A local, private-cloud, or hybrid deployment can have different boundaries. Define which documents and requests may leave, who can access them, and how that is tested.</p>
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">Do we need private AI, or is a ChatGPT subscription enough?</span></summary>
-          <p>If nothing in your documents is regulated or confidential, a subscription is almost certainly enough and you should not buy a build. Private AI earns its cost when a specific class of document cannot leave your control — borrower financials, patient records, privileged client files. The test is not company size. It is whether you can name the document.</p>
+          <p>A business subscription may fit individual drafting and research. Restricted records or workflows spanning several systems may require additional controls or a custom build. Decide from the workflow, exact product terms, contracts, and approved data routes; neither a subscription nor a private server is sufficient by itself.</p>
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">What does private AI actually cost to run each month?</span></summary>
-          <p>Running cost is tools plus model usage, and on owned hardware the model usage is electricity rather than per-token billing. The build itself is delivered through an AI Implementation Sprint at $18,000–$60,000, quoted fixed in writing before work begins. Our published guide to monthly running costs covers the ongoing side in detail.</p>
+          <p>Budget tools, model usage or local compute, electricity, hardware maintenance, internal review, and any support. Our illustrative $50–$500 tools-and-model allowance excludes build, hardware, staff time, and optional Managed Services from $1,500 a month. Implementation Sprints cost $18,000–$60,000, with scope and price agreed in writing.</p>
         </details>
         <details>
           <summary><span class="q-no">04</span><span class="q-tx">Is a local model good enough, or do we lose capability?</span></summary>
-          <p>For reading documents, drafting, classifying and answering from your own records, local models are sufficient — that is the work most businesses actually need. Where a task genuinely needs a frontier model, a privacy filter strips identifiers first and sends cleaned text out, so the capability is available without the identities travelling with it.</p>
+          <p>Test the chosen local model against representative documents, required answer quality, latency, and available hardware. Selected tasks may benefit from external reasoning, but only through approved data routes. Automated filtering can miss sensitive information, so it does not make every cloud request appropriate.</p>
         </details>
         <details>
-          <summary><span class="q-no">05</span><span class="q-tx">How do we prove to an auditor that data never left?</span></summary>
-          <p>With a log, not an assurance. Every action writes to an append-only, tamper-evident audit log: entries can be added, never edited or deleted. In our largest published deployment, 100% of prompts and attachments cleared the privacy filter before reaching any model, and there were zero PII incidents since the filter went live.</p>
+          <summary><span class="q-no">05</span><span class="q-tx">How do we verify where data was processed?</span></summary>
+          <p>MARCUS records actions in an append-only, hash-chained audit log. The chain makes changes to recorded entries detectable when verified; it does not independently validate the underlying action or every operational metric. Review the approved routes, network and application records, access controls, retention, and verification procedures. A log or a mandatory privacy filter alone does not prove that no sensitive information left the environment.</p>
         </details>
         <details>
           <summary><span class="q-no">06</span><span class="q-tx">Who is accountable when the system gets something wrong?</span></summary>
-          <p>A person, because nothing fires on its own. Send, file, post and pay all wait for human approval — the machine prepares and people decide. In the deployment above, 100% of consequential actions were approved by a person before anything was sent, filed, posted or paid.</p>
+          <p>Name a person who owns the workflow, reviews exceptions, and can stop or overrule it. Define routine actions that may run automatically and consequential actions that require approval. In the reported MARCUS measurement window, all consequential actions were approved by a person first; that is first-party evidence from one deployment.</p>
         </details>
     </div>
   </div>
@@ -405,7 +404,7 @@
     <div>
       <span class="kicker">Next step</span>
       <h2 class="h2 mt-s">30 minutes. A straight answer.</h2>
-      <p>A senior advisor walks your workflows and tells you whether private AI is worth doing &mdash; including when the answer is not yet.</p>
+      <p>Bring one workflow and its data requirements. We will discuss whether private AI deserves further scoping, including when the answer is not yet.</p>
     </div>
     <div class="hero__cta">
       <a class="btn btn--primary" href="/book/" data-cta="pillar-private-ai">Book a free assessment <span class="arr">&#8594;</span></a>
@@ -495,6 +494,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=5"></script>
+<script defer src="/js/analytics.js?v=6"></script>
 </body>
 </html>

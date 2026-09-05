@@ -31,7 +31,7 @@
  *   book_appointment  — /book/ inline block, on calendly.event_scheduled
  *   submit_lead_form  — /book/ inline block on the fallback form's `ok`
  *                       response; every .estimate-form submit (below); the
- *                       Score app fires its own on completion
+ *                       Score app fires its own on an accepted report request
  * Unlike Plausible, UET sets cookies (Microsoft's MUID) — disclosed on
  * /privacy/, and the reason the CSP allows bat.bing.net (see _headers).
  */
@@ -53,6 +53,56 @@
     });
   }
   var PAGE = location.pathname;
+
+  // Keep first-touch campaign identifiers and the public Score phase through
+  // internal browsing. Never persist arbitrary query text or contact details.
+  var JOURNEY_KEY = "mm:journey";
+  var journey = {};
+  var campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+  function safeCampaign(v) { return typeof v === "string" && /^[a-z0-9._~-]{1,100}$/i.test(v); }
+  try {
+    var stored = JSON.parse(sessionStorage.getItem(JOURNEY_KEY) || "{}");
+    campaignKeys.forEach(function (key) { if (safeCampaign(stored[key])) journey[key] = stored[key]; });
+    if (stored.ctx === "score" && /^(map|prove|expand)$/.test(stored.phase)) {
+      journey.ctx = "score"; journey.phase = stored.phase;
+    }
+  } catch (_) { /* storage unavailable or invalid — current URL still works */ }
+  var incoming = new URLSearchParams(location.search);
+  campaignKeys.forEach(function (key) {
+    var value = incoming.get(key);
+    if (!journey[key] && safeCampaign(value)) journey[key] = value;
+  });
+  if (incoming.get("ctx") === "score" && /^(map|prove|expand)$/.test(incoming.get("phase") || "")) {
+    journey.ctx = "score"; journey.phase = incoming.get("phase");
+  }
+  try { sessionStorage.setItem(JOURNEY_KEY, JSON.stringify(journey)); } catch (_) { /* optional attribution */ }
+  function carryJourney(a) {
+    if ((a.getAttribute("href") || "").charAt(0) === "#") return;
+    var u;
+    try { u = new URL(a.href, location.href); } catch (_) { return; }
+    if (u.origin !== location.origin || !/^\/(book|score)(?:\/|$)/.test(u.pathname)) return;
+    Object.keys(journey).forEach(function (key) {
+      if (!u.searchParams.has(key)) u.searchParams.set(key, journey[key]);
+    });
+    a.href = u.href;
+  }
+  // Normal links preserve open-in-new-tab, keyboard activation and copy-link
+  // behavior. Only the known public journey identifiers are carried forward.
+  document.querySelectorAll("a[href]").forEach(carryJourney);
+
+  var calendarOpened = false, requestStarted = false;
+  document.addEventListener("click", function (e) {
+    if (!calendarOpened && e.target.closest && e.target.closest("#calLaunch")) {
+      calendarOpened = true;
+      fire("calendly_opened", { page: PAGE });
+    }
+  });
+  document.addEventListener("input", function (e) {
+    if (!requestStarted && e.target.closest && e.target.closest("#assessForm") && e.target.id !== "company_url") {
+      requestStarted = true;
+      fire("booking_form_started", { page: PAGE });
+    }
+  });
 
   // Coarse headcount bands — the no-PII contract allows the band, never the
   // number. Shared by calculator_interacted and calculator_emailed.
@@ -103,11 +153,15 @@
       var t = e.target;
       var a = t && t.closest ? t.closest("a[href]") : null;
       if (!a) return;
-      var href = a.getAttribute("href") || "";
+      carryJourney(a);
+      var destination;
+      try { destination = new URL(a.href, location.href); } catch (_) { return; }
+      if (destination.origin !== location.origin) return;
+      var href = destination.pathname;
       var name =
-        href.indexOf("/score") === 0
+        /^\/score(?:\/|$)/.test(href)
           ? "cta_score_click"
-          : href.indexOf("/book") === 0
+          : /^\/book(?:\/|$)/.test(href)
             ? "cta_book_click"
             : null;
       if (!name) return;

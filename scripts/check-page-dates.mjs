@@ -27,6 +27,8 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { ROOT, STATIC_ROUTES } from "./lib/config.mjs";
 
+const EDITORIAL_DATES = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/guide-editorial-dates.json"), "utf8"));
+
 const DATES_PATH = path.join(ROOT, "src", "data", "page-dates.json");
 
 const git = (args) => {
@@ -65,7 +67,7 @@ let checked = 0;
 for (const route of STATIC_ROUTES) {
 	const file = routeToFile(route);
 	if (!fs.existsSync(path.join(ROOT, file))) continue;
-	const committed = git(["log", "-1", "--format=%cs", "--", file]);
+	const committed = EDITORIAL_DATES[route] || git(["log", "-1", "--format=%cs", "--", file]);
 	// No commit yet = a brand-new page. build-page-dates.mjs keeps the previous
 	// value in that case by design, so it is not drift.
 	if (!committed || !/^\d{4}-\d{2}-\d{2}$/.test(committed)) continue;

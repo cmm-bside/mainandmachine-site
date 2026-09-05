@@ -17,7 +17,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { STATIC_ROUTES, ROOT } from "./lib/config.mjs";
-import { modifiedIso, updatedLabel, AUTHOR_NAME, YMYL_GUIDES } from "./lib/byline.mjs";
+import { modifiedIso, updatedLabel, AUTHOR_NAME } from "./lib/byline.mjs";
 
 let errors = 0;
 const fail = (m) => { console.error("  ERROR  " + m); errors++; };
@@ -30,7 +30,7 @@ for (const route of guides) {
 	const abs = path.join(ROOT, rel);
 	if (!fs.existsSync(abs)) continue;
 	const html = fs.readFileSync(abs, "utf8");
-	const visible = html.replace(/<script[\s\S]*?<\/script>/g, " ");
+	const visible = html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ");
 
 	// Byline present, and it credits the author with a link to /about/.
 	if (!/class="byline"/.test(html)) { fail(`${rel}: no byline component`); continue; }
@@ -46,7 +46,7 @@ for (const route of guides) {
 	const wantLabel = updatedLabel(route);
 	const wantIso = modifiedIso(route);
 	if (shown[1] !== wantLabel)
-		fail(`${rel}: visible stamp says "${shown[1]}" but git last-commit is "${wantLabel}"`);
+		fail(`${rel}: visible stamp says "${shown[1]}" but editorial date is "${wantLabel}"`);
 
 	// The machine-readable one, on every Article node.
 	let sawArticle = false;
@@ -57,7 +57,7 @@ for (const route of guides) {
 			if (!["Article", "BlogPosting"].includes([].concat(n["@type"] || [])[0])) continue;
 			sawArticle = true;
 			if (n.dateModified !== wantIso)
-				fail(`${rel}: JSON-LD dateModified is "${n.dateModified}" but git last-commit is "${wantIso}"`);
+				fail(`${rel}: JSON-LD dateModified is "${n.dateModified}" but editorial date is "${wantIso}"`);
 			// The visible month must be the same month the JSON-LD claims.
 			if (n.dateModified && updatedLabel(route) && !String(n.dateModified).startsWith(wantIso.slice(0, 7)))
 				fail(`${rel}: JSON-LD dateModified "${n.dateModified}" is a different month from the visible "${shown[1]}"`);
@@ -67,12 +67,13 @@ for (const route of guides) {
 	}
 	if (!sawArticle) fail(`${rel}: no Article node to carry dateModified`);
 
-	// YMYL guides carry the reviewer line.
-	if (YMYL_GUIDES.has(route) && !/class="byline__reviewed"/.test(html))
-		fail(`${rel}: YMYL guide is missing the "Reviewed by" line`);
-	// …and non-YMYL guides must not, or the signal means nothing.
-	if (!YMYL_GUIDES.has(route) && /class="byline__reviewed"/.test(html))
-		fail(`${rel}: carries a "Reviewed by" line but is not in YMYL_GUIDES — either add it there or remove the line`);
+	// Never infer a named human review from a route category or a git commit.
+	if (/class="byline__reviewed"/.test(html))
+		fail(`${rel}: unverified named review line; publish only a separately confirmed review`);
+	if ((html.match(/class="byline__updated"/g) || []).length !== 1 || /class="statrail__k">Updated<\/span>/.test(html))
+		fail(`${rel}: keep exactly one visible editorial date, in the byline`);
+	if (wantIso > new Date().toISOString().slice(0, 10))
+		fail(`${rel}: editorial date is in the future`);
 
 	checked++;
 }

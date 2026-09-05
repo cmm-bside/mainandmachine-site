@@ -7,7 +7,6 @@ import {
 	ASSET_VERSION,
 	DEFAULT_OG_IMAGE,
 	COMPANY,
-	BEEHIIV_SUBSCRIBE_FALLBACK,
 } from "./config.mjs";
 // The footer brand block carries the audit floor. The static pages stamp it as
 // a data-fact span; a generated surface derives it from the same single
@@ -268,14 +267,11 @@ export function footer() {
         <div class="foot__signup-copy">
           <span class="kicker kicker--plain">${esc(BLOG_NAME)} · free, a few times a month</span>
           <h2>Plain-English AI for Main Street.</h2>
-          <p>Short essays on building durable things in a noisy time. One field, no spam, leave anytime.</p>
+          <p>Short essays on building durable things in a noisy time. Read the latest or explore the archive.</p>
         </div>
         <div>
-          <form class="signup" data-beehiiv-subscribe action="${attr(BEEHIIV_SUBSCRIBE_FALLBACK)}" method="get" target="_blank" aria-label="Subscribe to ${attr(BLOG_NAME)}">
-            <input class="signup__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Email address" required inputmode="email" />
-            <button class="btn btn--primary" type="submit">Subscribe <span class="arr">&#8594;</span></button>
-          </form>
-          <p class="signup__note">Delivered by Beehiiv. No spam &mdash; unsubscribe anytime.</p>
+          <a class="btn btn--primary" href="/blog/">Read The Ampersand <span class="arr">&#8594;</span></a>
+          <p class="signup__note"><a href="/blog/rss.xml">Follow the RSS feed</a> · Free to read, no signup needed.</p>
         </div>
     </div>
     <div class="foot__top">
@@ -339,24 +335,19 @@ export function footer() {
 </footer>`;
 }
 
-// Subscribe band (ink). subscribeUrl is wired into the form action; blog.js
-// enhances submit to carry the email. Falls back to "#" when unconfigured.
-export function subscribeBand(subscribeUrl, publicationUrl) {
-	const action = subscribeUrl || BEEHIIV_SUBSCRIBE_FALLBACK;
+// Blog reading band, shared by the archive and article pages.
+export function subscribeBand() {
 	return `<section class="section paper ampersand-subscribe">
   <div class="wrap ampersand-subscribe__inner">
-    <div><span class="tick-lbl">${esc(BLOG_NAME)}</span><h2>Keep a place for good judgment.</h2><p>Free essays, a few times a month. Unsubscribe whenever you like.</p><a href="/blog/archive/">Browse the archive <span aria-hidden="true">→</span></a></div>
-    <div><form class="subform" data-beehiiv-subscribe action="${attr(action)}" method="get" target="_blank">
-      <input type="email" name="email" placeholder="Email address" aria-label="Email address for The Ampersand" required inputmode="email" />
-      <button class="btn btn--primary" type="submit">Get the essays <span class="arr">&#8594;</span></button>
-    </form><p class="ampersand-subscribe__fine">Newsletter delivered by beehiiv.</p></div>
+    <div><span class="tick-lbl">${esc(BLOG_NAME)}</span><h2>Keep a place for good judgment.</h2><p>Free essays on building durable things in a noisy time.</p><a href="/blog/archive/">Browse the archive <span aria-hidden="true">→</span></a></div>
+    <div><a class="btn btn--primary" href="/blog/">Read the latest <span class="arr">&#8594;</span></a><p class="ampersand-subscribe__fine"><a href="/blog/rss.xml">Follow the RSS feed</a> · No signup needed.</p></div>
   </div>
 </section>`;
 }
 
-// Scripts shared by every blog page: mobile nav + subscribe enhancement + search.
+// Scripts shared by every blog page: mobile nav and search.
 export function pageScripts() {
 	return `<script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=6"></script>
+<script defer src="/js/analytics.js?v=7"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

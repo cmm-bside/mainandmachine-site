@@ -68,22 +68,6 @@
 		});
 	}
 
-	/* ---------- subscribe wiring ---------- */
-	function wireSubscribe(meta) {
-		var url = meta && meta.subscribeUrl;
-		if (!url) return;
-		var nodes = document.querySelectorAll("[data-beehiiv-subscribe]");
-		Array.prototype.forEach.call(nodes, function (node) {
-			if (node.tagName === "FORM") {
-				node.setAttribute("action", url);
-				node.setAttribute("method", "get");
-				node.setAttribute("target", "_blank");
-			} else if (node.tagName === "A") {
-				node.setAttribute("href", url);
-			}
-		});
-	}
-
 	/* ---------- client search ---------- */
 	function tokenize(q) { return q.toLowerCase().split(/\s+/).filter(Boolean); }
 
@@ -287,14 +271,12 @@
 		wireToc();
 		var needsData =
 			document.getElementById("amp-posts") ||
-			document.getElementById("blog-search") ||
-			document.querySelector("[data-beehiiv-subscribe]");
+			document.getElementById("blog-search");
 		if (!needsData) return;
 		loadIndex().then(function (payload) {
 			var posts = payload.posts || [];
 			renderTeaser(posts);
 			wireSearch(posts);
-			wireSubscribe(payload.meta || {});
 		});
 	}
 

@@ -1,19 +1,8 @@
 #!/usr/bin/env node
-// Build-time Beehiiv + Soro fetcher for "The Ampersand".
-//
-// Pulls confirmed editorial posts from the Beehiiv v2 API and SEO articles
-// from Soro's public RSS feed, then writes ONE source of truth for the build:
-//
-//   src/data/blog-posts.js   — light INDEX (no bodyHtml; searchText trimmed)
-//   blog-data/index.json     — same index, as JSON, for the client search/teaser
-//   blog-data/<slug>.json    — per-post body (bodyHtml + full searchText)
-//
-// Contract:
-//   - No Beehiiv key (fresh clone / local)   -> validate Soro, then write an
-//                                               empty blog so blog:build blocks.
-//   - Key set but the fetch/config fails     -> exit non-zero (fail the deploy
-//     rather than ship stale or empty content).
+// Offline build reader for The Ampersand. Soro synchronization is a separate
+// scheduled operation that commits full articles and images before deployment.
 import fs from "node:fs";
+import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { pathToFileURL } from "node:url";
@@ -28,9 +17,6 @@ import {
 	SITE_ORIGIN,
 	BLOG_NAME,
 	BLOG_DESCRIPTION,
-	BEEHIIV_API_KEY,
-	BEEHIIV_PUBLICATION_ID,
-	BEEHIIV_SUBSCRIBE_URL,
 	SORO_RSS_URL,
 	DATA_MODULE_PATH,
 	BLOG_DATA_DIR,
@@ -40,7 +26,6 @@ import {
 	POST_DATE_OVERRIDES,
 } from "./lib/config.mjs";
 
-const API_BASE = "https://api.beehiiv.com/v2";
 const INDEX_SEARCH_CAP = 300; // searchText length in the bundled index
 const BODY_SEARCH_CAP = 2000; // searchText length in per-post body files
 
@@ -48,65 +33,12 @@ const BODY_SEARCH_CAP = 2000; // searchText length in per-post body files
 // Entry
 // ---------------------------------------------------------------------------
 export async function run() {
-	if (!SORO_RSS_URL) {
-		throw new Error(
-			"Soro RSS feed is not configured. Supply the real mainandmachine.com feed UUID before shipping; do not guess it.",
-		);
-	}
-	if (BEEHIIV_API_KEY && !BEEHIIV_PUBLICATION_ID) {
-		// Key present but no publication id == misconfiguration. Fail loudly.
-		throw new Error(
-			"BEEHIIV_API_KEY is set but BEEHIIV_PUBLICATION_ID is missing. Set both, or unset the key for an empty build.",
-		);
-	}
-
-	// Start Soro first in every environment. Even a local build without the
-	// private Beehiiv key must prove the public feed is live XML; this also
-	// makes SORO_RSS_URL=<bogus> npm run blog:fetch a real hard-failure check.
-	const soroItemsPromise = fetchSoroItems();
-	if (!BEEHIIV_API_KEY) {
-		await soroItemsPromise;
-		// Keep the existing local no-key fallback, but blog:build REFUSES to
-		// prerender the resulting empty archive unless
-		// ALLOW_EMPTY_BLOG=1 is set explicitly — a silent empty fetch used to
-		// sail through the whole pipeline (2026-07-31 audit).
-		console.warn(
-			"[blog:fetch] BEEHIIV_API_KEY not set — writing an empty blog.\n" +
-				"             blog:build will FAIL on this unless you set ALLOW_EMPTY_BLOG=1 (local dev only).",
-		);
-		writeEmpty();
-		return;
-	}
-
-	const [raw, soroItems] = await Promise.all([
-		fetchAllPosts(),
-		soroItemsPromise,
-	]);
-	const beehiivPosts = raw
-		.map(normalizePost)
-		.filter((p) => p && p.slug && !p.hiddenFromFeed);
-	const soroPosts = soroItems.map(mapSoroPost);
-	const posts = dedupePosts([...beehiivPosts, ...soroPosts])
-		.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
-
-	for (const post of posts) {
-		applyPostEditorialOverrides(post);
-	}
-
-	// Self-host every image (hero + inline) from either source.
-	await localizeImages(posts);
-
-	// The identity assertion is deliberately Beehiiv-only: a Soro slug that
-	// happens to overlap a committed link must never mask a wrong publication.
-	assertPublicationIdentity(beehiivPosts);
-
-	const publicationUrl = derivePublicationUrl(beehiivPosts);
-	const subscribeUrl = deriveSubscribeUrl(publicationUrl);
-
-	writeOutputs(posts, { publicationUrl, subscribeUrl });
-	console.log(
-		`[blog:fetch] Wrote ${posts.length} post(s) (${beehiivPosts.length} Beehiiv, ${soroPosts.length} Soro). publicationUrl=${publicationUrl || "(none)"}`,
-	);
+	const { readArchive } = await import("./lib/blog-archive.mjs");
+	const posts = readArchive();
+	for (const post of posts) applyPostEditorialOverrides(post);
+	assertPublicationIdentity(posts);
+	writeOutputs(posts, { publicationUrl: `${SITE_ORIGIN}/blog/`, subscribeUrl: "" });
+	console.log(`[blog:fetch] Built ${posts.length} posts from the permanent local archive.`);
 }
 
 // ---------------------------------------------------------------------------
@@ -157,7 +89,7 @@ function assertPublicationIdentity(posts) {
 	const junk = [...returned].filter((slug) => NON_PRODUCTION_SLUGS.has(slug));
 	console.error(
 		`[blog:fetch] ABORTED — wrong publication.\n` +
-			`  BEEHIIV_PUBLICATION_ID returned ${posts.length} post(s), and NOT ONE of them is a slug this\n` +
+			`  The archive returned ${posts.length} post(s), and NOT ONE of them is a slug this\n` +
 			`  site links to. Committed pages reference ${linked.size} essay(s) by name; the overlap is zero.\n` +
 			(junk.length
 				? `  The result contains ${junk.map((j) => `"${j}"`).join(", ")} — a placeholder post, which is a\n` +
@@ -166,51 +98,9 @@ function assertPublicationIdentity(posts) {
 			`  Returned: ${[...returned].slice(0, 8).join(", ") || "(none)"}\n` +
 			`  Expected at least one of: ${[...linked].sort().slice(0, 8).join(", ")}\n` +
 			`\n` +
-			`  Fix BEEHIIV_PUBLICATION_ID (and BEEHIIV_API_KEY, which scopes it) in the Cloudflare Pages\n` +
-			`  project so they point at the publication holding the essay archive. Nothing was written.`,
+			`  Restore the correct permanent article archive. Nothing was written.`,
 	);
 	process.exit(1);
-}
-
-// ---------------------------------------------------------------------------
-// Beehiiv API
-// ---------------------------------------------------------------------------
-async function fetchAllPosts() {
-	const all = [];
-	let page = 1;
-	let totalPages = 1;
-	do {
-		const url = new URL(
-			`${API_BASE}/publications/${BEEHIIV_PUBLICATION_ID}/posts`,
-		);
-		url.searchParams.set("status", "confirmed");
-		url.searchParams.set("limit", "100");
-		url.searchParams.set("page", String(page));
-		url.searchParams.set("order_by", "publish_date");
-		url.searchParams.set("direction", "desc");
-		// RSS content = clean article HTML (web content is a hydrated shell,
-		// email content is table markup). stats = views/opens for "Top".
-		url.searchParams.append("expand[]", "free_rss_content");
-		url.searchParams.append("expand[]", "stats");
-
-		const res = await fetch(url, {
-			headers: {
-				Authorization: `Bearer ${BEEHIIV_API_KEY}`,
-				Accept: "application/json",
-			},
-		});
-		if (!res.ok) {
-			const body = await res.text().catch(() => "");
-			throw new Error(
-				`Beehiiv API ${res.status} ${res.statusText} on page ${page}: ${body.slice(0, 300)}`,
-			);
-		}
-		const json = await res.json();
-		if (Array.isArray(json.data)) all.push(...json.data);
-		totalPages = Number(json?.total_pages) || 1;
-		page += 1;
-	} while (page <= totalPages);
-	return all;
 }
 
 // ---------------------------------------------------------------------------
@@ -261,8 +151,9 @@ async function fetchSoroItems(feedUrl = SORO_RSS_URL, fetchImpl = fetch) {
 	// parameter forces every production build through to origin.
 	url.searchParams.set("cb", String(Date.now()));
 	const response = await fetchImpl(url, {
-		headers: { Accept: "application/rss+xml, application/xml, text/xml" },
+		headers: { Accept: "application/rss+xml, application/xml, text/xml", "User-Agent": "Mozilla/5.0 MainAndMachine" },
 		cache: "no-store",
+		signal: AbortSignal.timeout(30000),
 	});
 	const body = await response.text().catch(() => "");
 
@@ -324,7 +215,7 @@ function mapSoroPost(item) {
 	const label = title || slug || guid || "untitled item";
 	if (!title) throw new Error(`Soro RSS item "${label}" has no title.`);
 	if (!slug) throw new Error(`Soro RSS item "${label}" has no safe slug or guid.`);
-	if (!bodyHtml) throw new Error(`Soro RSS item "${label}" has no usable content:encoded body.`);
+	if (!plain.trim()) throw new Error(`Soro RSS item "${label}" has no usable content:encoded body.`);
 	if (!publishedAt) throw new Error(`Soro RSS item "${label}" has an invalid pubDate.`);
 
 	// Soro's description is already the vendor-authored card/meta copy. Keep it
@@ -348,6 +239,7 @@ function mapSoroPost(item) {
 		webUrl: "",
 		hiddenFromFeed: false,
 		source: "soro",
+		sourceId: guid || link,
 	};
 }
 
@@ -402,20 +294,22 @@ async function localizeImages(posts) {
 				downloaded++;
 			}
 		}
-		// socialImage is the SAME object reference as heroImage (set in
-		// normalizePost), so the rewrite above already covers it.
+		if (post.socialImage && isRemote(post.socialImage.assetUrl)) {
+			const local = await fetchImage(post.socialImage.assetUrl, post.slug, cache);
+			if (local) Object.assign(post.socialImage, { assetUrl: local.src, width: local.width, height: local.height, srcset: local.srcset });
+		}
 		const before = post.bodyHtml;
 		post.bodyHtml = (await rewriteBodyImages(post.bodyHtml, post.slug, post.title, cache)).replaceAll("/blog/the-person-still-signs/", "/blog/human-in-the-loop-ai-systems/");
 		if (post.bodyHtml !== before) downloaded++;
 	}
-	pruneImageDirs(keepSlugs);
+	// Permanent archives retain historical images even when the feed changes.
 	console.log(`[blog:fetch] Self-hosted images for ${keepSlugs.size} post(s) (${cache.size} unique asset(s)).`);
 }
 
 async function fetchImage(remoteUrl, slug, cache) {
 	if (cache.has(remoteUrl)) return cache.get(remoteUrl);
 	try {
-		const res = await fetch(remoteUrl, { headers: { Accept: "image/*" } });
+		const res = await fetch(remoteUrl, { headers: { Accept: "image/*", "User-Agent": "Mozilla/5.0 MainAndMachine" }, signal: AbortSignal.timeout(30000) });
 		if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
 		const buf = Buffer.from(await res.arrayBuffer());
 		const ct = (res.headers.get("content-type") || "").split(";")[0].trim().toLowerCase();
@@ -736,24 +630,6 @@ function clip(s, n) {
 	return (sp > 60 ? cut.slice(0, sp) : cut).trim() + "…";
 }
 
-function derivePublicationUrl(posts) {
-	for (const p of posts) {
-		if (p.webUrl) {
-			try {
-				return `https://${new URL(p.webUrl).host}`;
-			} catch {
-				/* ignore */
-			}
-		}
-	}
-	return "";
-}
-
-function deriveSubscribeUrl(publicationUrl) {
-	if (BEEHIIV_SUBSCRIBE_URL) return BEEHIIV_SUBSCRIBE_URL;
-	return publicationUrl ? `${publicationUrl}/subscribe` : "";
-}
-
 // ---------------------------------------------------------------------------
 // Output
 // ---------------------------------------------------------------------------
@@ -770,6 +646,7 @@ function writeOutputs(posts, { publicationUrl, subscribeUrl }) {
 		description: BLOG_DESCRIPTION,
 		count: posts.length,
 		generatedAt: new Date().toISOString(),
+		revision: process.env.CF_PAGES_COMMIT_SHA || execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
 		origin: SITE_ORIGIN,
 		publicationUrl,
 		subscribeUrl,
@@ -806,13 +683,6 @@ function writeOutputs(posts, { publicationUrl, subscribeUrl }) {
 			fs.rmSync(path.join(BLOG_DATA_DIR, f));
 		}
 	}
-}
-
-function writeEmpty() {
-	writeOutputs([], {
-		publicationUrl: "",
-		subscribeUrl: BEEHIIV_SUBSCRIBE_URL || "",
-	});
 }
 
 export {

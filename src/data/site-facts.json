@@ -111,12 +111,13 @@
   "phone": "928-363-6639",
   "phoneE164": "+1-928-363-6639",
   "phoneHref": "tel:+19283636639",
-  "_blog_note": "The Ampersand, published on beehiiv. CADENCE IS A CLAIM, not decoration: it appears in the footer kicker on ~40 pages, in llms.txt, and in the blog chrome, so it lived in scripts/lib/config.mjs as BLOG_CADENCE where nothing tied it to the rest of the facts. \"weekly\" was retired deliberately when publishing paused after the June 2026 essay — restore it here ONLY if weekly publishing actually resumes, and never as an aspiration. There is no Substack; beehiiv is the only publishing surface.",
+  "_blog_note": "The Ampersand is a blog hosted on this site. Soro articles are saved to a permanent archive automatically; no newsletter signup.",
   "blog": {
     "name": "The Ampersand",
     "cadence": "a few times a month",
-    "platform": "beehiiv",
-    "subscribeUrl": "https://theampersand.beehiiv.com/subscribe"
+    "platform": "Main & Machine",
+    "url": "https://www.mainandmachine.com/blog/",
+    "rssUrl": "https://www.mainandmachine.com/blog/rss.xml"
   },
   "_sameAs_note": "Verified official profile URLs — the sameAs arrays in every JSON-LD graph. One @id is one entity, so all ~40 hand-embedded Person blocks must carry `person` EXACTLY and IN ORDER; check-facts.mjs fails the build until they do. These moved here from PERSON_SAMEAS/ORG_SAMEAS in scripts/lib/templates.mjs so a profile list is not a second source of truth living in a template file. NEVER invent a URL: sameAs pointing at a wrong page is worse than a short list. Coverage ARTICLES (TechCrunch, Fox Business) belong in the .bio__press strips, not here — sameAs is for profile pages of the person. WSJ / NYT / MSNBC are asserted in his Inc. bio but no verifiable profile URL was found as of 2026-07-31, so those outlets stay unlinked. Still TODO when real URLs exist: GitHub org, Crunchbase.",
   "sameAs": {

@@ -112,8 +112,9 @@
   "blog": {
     "name": "The Ampersand",
     "cadence": "a few times a month",
-    "platform": "beehiiv",
-    "subscribeUrl": "https://theampersand.beehiiv.com/subscribe"
+    "platform": "Main & Machine",
+    "url": "https://www.mainandmachine.com/blog/",
+    "rssUrl": "https://www.mainandmachine.com/blog/rss.xml"
   },
   "sameAs": {
     "org": [

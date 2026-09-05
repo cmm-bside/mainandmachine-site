@@ -37,7 +37,6 @@ import {
 	EXCLUDED_POST_SLUGS,
 	POST_TOPICS,
 	POST_TOPIC_FALLBACK,
-	BEEHIIV_SUBSCRIBE_FALLBACK,
 } from "./lib/config.mjs";
 import {
 	esc,
@@ -135,7 +134,7 @@ async function main() {
 	if (posts.length === 0 && !ALLOW_EMPTY_BLOG) {
 		console.error(
 			"[blog:build] FAILED — the blog index contains 0 posts.\n" +
-				"  The beehiiv fetch returned nothing, so this build would ship an empty\n" +
+				"  The permanent archive returned nothing, so this build would ship an empty\n" +
 				"  archive and 404 every committed /blog/<slug>/ link.\n" +
 				"    · deploy:      set BEEHIIV_API_KEY + BEEHIIV_PUBLICATION_ID, re-run `npm run blog:fetch`\n" +
 				"    · local dev:   ALLOW_EMPTY_BLOG=1 npm run blog:build  (never in CI/deploy)"
@@ -266,9 +265,9 @@ function searchBar(placeholder) {
 }
 
 function emptyState(subscribeUrlRaw) {
-	const subscribeUrl = subscribeUrlRaw || BEEHIIV_SUBSCRIBE_FALLBACK;
+	const subscribeUrl = "/blog/rss.xml";
 	const cta = subscribeUrl
-		? `<a class="btn btn--primary btn--lg" data-beehiiv-subscribe href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Get the essays <span class="arr">&#8594;</span></a>`
+		? `<a class="btn btn--primary btn--lg" href="${attr(subscribeUrl)}" target="_blank" rel="noopener">Follow the RSS feed <span class="arr">&#8594;</span></a>`
 		: "";
 	return `<div class="feed__empty crop">
   <span class="kicker kicker--plain">${esc(BLOG_NAME)}</span>
@@ -532,11 +531,8 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	const structured = structureArticle(bodyHtml);
 	const tocHtml = renderToc(structured.chapters);
 	const hasToc = !!tocHtml;
-	const sourceEdition = /^https:\/\/theampersand\.beehiiv\.com\/p\//.test(post.webUrl || "")
-		? `<p>Source edition: <a href="${attr(post.webUrl)}">${esc(post.title)} in The Ampersand</a>.</p>` : "";
-	const proseInner = bodyHtml
-		? renderArticleBody(structured)
-		: `<p>This essay is being mirrored from beehiiv. <a href="${attr(post.webUrl || "/blog/")}">Read it here</a>.</p>`;
+	if (!bodyHtml?.trim()) throw new Error(`Missing archived article body: ${post.slug}`);
+	const proseInner = renderArticleBody(structured);
 
 	// Lead figure — framed, caption optional (caption left, source/credit right).
 	// Images stay natural (Main & Machine doesn't grayscale its art).
@@ -591,7 +587,6 @@ ${nav()}
       <div class="essay__col">
         <div class="prose">
 ${proseInner}
-${sourceEdition}
         </div>
         <p class="essay__seealso"><span class="tick-lbl">Where this shows up</span><a href="${attr(seeAlso.href)}">${esc(seeAlso.label)} <span class="arr">&#8594;</span></a></p>
         <div class="essay__share">

@@ -20,7 +20,6 @@
  * runs in build:static. /score links still use the region inference below.
  *
  *   calculator_interacted { page, industry, team_band, at } first-touch · cta-click
- *   newsletter_subscribed { page }             beehiiv form submit
  *   guide_read            { page, guide }      75% scroll depth, once
  *   calculator_emailed    { page, industry, team_band }  estimate emailed to self
  *
@@ -270,24 +269,9 @@
       team_band: teamBand(form.getAttribute("data-team") || 0),
     });
     // An emailed estimate is a captured lead — the UET goal fires with it.
-    // Deliberately NOT a document-wide form listener: the beehiiv subscribe
-    // and careers application forms are not leads and must not count.
+    // Deliberately NOT a document-wide form listener: careers application forms are not leads and must not count.
     uet("submit_lead_form", PAGE);
   }, true);
-
-  /* ---------- newsletter_subscribed: beehiiv subscribe forms ------------- */
-  // Fires on submit (the form GETs to beehiiv in a new tab, so submit is the
-  // closest observable moment to a confirmed subscribe). Email never rides.
-  document.addEventListener(
-    "submit",
-    function (e) {
-      var f = e.target;
-      if (f && f.hasAttribute && f.hasAttribute("data-beehiiv-subscribe")) {
-        fire("newsletter_subscribed", { page: PAGE });
-      }
-    },
-    true,
-  );
 
   /* ---------- guide_read: 75% scroll depth on a guide detail page -------- */
   (function () {

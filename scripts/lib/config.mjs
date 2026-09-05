@@ -1,5 +1,5 @@
 // Shared config for the build-time blog pipeline (fetch + prerender).
-// One source of truth for site identity, paths, and Beehiiv env.
+// One source of truth for site identity, paths, and the Soro feed.
 // Business facts come from the canonical facts file — never restate them here.
 import path from "node:path";
 import { COMPANY } from "../../src/data/company.mjs";
@@ -61,19 +61,6 @@ export const BLOG_DESCRIPTION_META =
 // SVG og:images are not rendered by LinkedIn/X/Facebook/iMessage previews.
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
 
-// --- Beehiiv (read from env only; never commit the key) ---
-export const BEEHIIV_API_KEY = process.env.BEEHIIV_API_KEY || "";
-export const BEEHIIV_PUBLICATION_ID = process.env.BEEHIIV_PUBLICATION_ID || "";
-// The publication's own subscribe page. This is the SAME URL the footer form on
-// every committed page posts to, so it lives here rather than being hardcoded
-// twice. The generated blog forms fall back to it when a fetch produced no
-// meta.subscribeUrl — previously they shipped action="#" and depended entirely
-// on a runtime JS rewrite, which meant a subscribe form that did nothing at all
-// with JS off or before blog.js ran.
-export const BEEHIIV_SUBSCRIBE_FALLBACK = COMPANY.blog.subscribeUrl;
-// Optional explicit subscribe URL; otherwise derived from a post's web_url host.
-export const BEEHIIV_SUBSCRIBE_URL = process.env.BEEHIIV_SUBSCRIBE_URL || "";
-
 // --- Soro (public RSS; no key) ---
 // Public token from the Active mainandmachine.com Soro widget. Keep the env
 // override for hard-failure tests and diagnostics; production needs no key.
@@ -85,9 +72,7 @@ export const SORO_RSS_URL =
 export const DATA_MODULE_PATH = path.join(ROOT, "src", "data", "blog-posts.js");
 export const BLOG_DATA_DIR = path.join(ROOT, "blog-data"); // served at /blog-data/
 export const BLOG_INDEX_JSON = path.join(BLOG_DATA_DIR, "index.json");
-// Self-hosted blog images (downloaded from beehiiv at fetch time so nothing
-// hotlinks S3). Written to /images/blog/<slug>/ and served from the deploy
-// output; gitignored like the rest of the generated blog.
+// Permanent, committed article images. The build never downloads them.
 export const BLOG_IMAGES_DIR = path.join(ROOT, "images", "blog");
 export const BLOG_IMAGES_PUBLIC = "/images/blog";
 export const BLOG_DIR = path.join(ROOT, "blog"); // served at /blog/

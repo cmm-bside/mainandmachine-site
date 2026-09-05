@@ -1,53 +1,76 @@
 name: Scheduled static rebuild
 
-# Main & Machine's production site is built by the Cloudflare Pages native
-# Git integration. Blog posts are pulled only during that native build, so a
-# publish in Beehiiv or Soro needs a new Cloudflare build before it is live.
-#
-# This workflow deliberately does not check out code, build, or deploy. It
-# only POSTs the existing production-branch Deploy Hook so Cloudflare follows
-# the same single build path used for every normal production deploy.
-#
-# Existing one-time setup:
-#   Cloudflare Pages -> Settings -> Builds & deployments -> Deploy hooks
-#   GitHub -> Settings -> Secrets and variables -> Actions
-#   Repository secret: CF_DEPLOY_HOOK_URL
-
+# Save Soro articles permanently, then use the existing Cloudflare build path.
+# The skip prefix prevents the archive commit racing the explicit deploy hook.
+# A failed sync cannot change the deployed site. Missing RSS items are retained.
 on:
   schedule:
-    # Eight builds/day (~240/month). Minute 23 avoids top-of-hour congestion.
+    # Every three hours; GitHub may delay scheduled runs.
     - cron: '23 */3 * * *'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: scheduled-static-rebuild
+  group: scheduled-rebuild
   cancel-in-progress: false
 
 jobs:
   trigger-rebuild:
-    name: Trigger Cloudflare production rebuild
+    name: Archive Soro articles and publish
     runs-on: ubuntu-latest
+    timeout-minutes: 55
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies without publishing content
+        run: npm ci --ignore-scripts
+      - name: Check archive safeguards
+        run: npm run test:blog
+      - name: Sync and save articles
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            # This is an ephemeral runner checkout. If another change reached
+            # main, merge the feed again against that complete newer archive.
+            git fetch origin main
+            git reset --hard origin/main
+            npm run blog:sync
+            npm run build:static
+            git add content/blog/posts.json images/blog
+            if git diff --cached --quiet; then
+              break
+            fi
+            git commit -m '[CF-Pages-Skip] Archive Soro blog articles'
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" = 3 ]; then
+              echo '::error::Could not save the archive after concurrent updates.'
+              exit 1
+            fi
+          done
       - name: Fire Cloudflare Pages deploy hook
         env:
           DEPLOY_HOOK_URL: ${{ secrets.CF_DEPLOY_HOOK_URL }}
         run: |
-          set -eu
           if [ -z "${DEPLOY_HOOK_URL}" ]; then
-            echo "::error::CF_DEPLOY_HOOK_URL secret is not set. Add the production-branch Cloudflare Pages Deploy Hook URL as a GitHub Actions repository secret."
+            echo '::error::CF_DEPLOY_HOOK_URL secret is not set.'
             exit 1
           fi
-
-          status=$(curl --silent --show-error --output /tmp/deploy-hook-response.json --write-out '%{http_code}' --request POST "${DEPLOY_HOOK_URL}")
-          case "${status}" in
-            2??)
-              echo "Cloudflare accepted the production rebuild request (HTTP ${status})."
-              ;;
-            *)
-              echo "::error::Cloudflare deploy hook returned HTTP ${status}; no build was triggered by this workflow."
-              exit 1
-              ;;
-          esac
+          # Trigger even without new articles, so a previously failed publish
+          # is retried. Cloudflare remains the only service that builds/deploys.
+          status=$(curl --retry 3 --retry-delay 2 --connect-timeout 15 --max-time 60 -sS -X POST -o /dev/null -w '%{http_code}' "${DEPLOY_HOOK_URL}")
+          if [ "${status}" -lt 200 ] || [ "${status}" -ge 300 ]; then
+            echo "::error::Deploy hook returned HTTP ${status}"
+            exit 1
+          fi
+      - name: Verify the saved articles reached production
+        run: node scripts/check-blog-published.mjs

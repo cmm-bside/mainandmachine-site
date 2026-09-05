@@ -20,7 +20,7 @@
 //             which promotes warnings to errors.
 import fs from "node:fs";
 import path from "node:path";
-import { ROOT, SITE_ORIGIN, LOCAL_SCRATCH_DIRS } from "./lib/config.mjs";
+import { ROOT, SITE_ORIGIN, LOCAL_SCRATCH_DIRS, ASSET_VERSION } from "./lib/config.mjs";
 
 const STRICT = process.argv.includes("--strict") || process.env.HEAD_CHECK_STRICT === "1";
 
@@ -100,6 +100,13 @@ const descriptions = new Map(); // desc text  -> [pages]
 for (const { file, route } of pages) {
   const page = rel(file);
   const html = fs.readFileSync(file, "utf8");
+  // A relative homepage reference must advance with the shared stylesheet,
+  // just like absolute references on interior pages, or cached browsers lag.
+  for (const m of matchAll(/<link\b[^>]*\bhref=["'](\/?styles\.css(?:\?[^"']*)?)["'][^>]*>/gi, html)) {
+    if (new URL(m[1], SITE_ORIGIN + "/").searchParams.get("v") !== ASSET_VERSION)
+      fail(page, `stylesheet cache version must be ${ASSET_VERSION}: ${m[1]}`);
+  }
+
 
   // 1. <title>
   const titleTags = matchAll(/<title>([\s\S]*?)<\/title>/gi, html);

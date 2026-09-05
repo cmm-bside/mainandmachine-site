@@ -1083,6 +1083,7 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
      `--ink-muted: var(--ink-muted)` would resolve to the rebound value. The
      light islands read this token instead, and it is never rebound. */
   --muted-on-light: #5F5547;
+  --muted-on-texture: #4F463A;
   --ink-muted:    var(--muted-on-light);  /* clears AA on ivory, cards and stone */
   --panel:        #221C15;   /* raised panel on ink */
   --panel-ink:    #D8D2C6;   /* text on ink — 11.21:1 on --panel */
@@ -3983,14 +3984,14 @@ p, li, dd { text-wrap: pretty; }
    an empty HALF of a two-column band and has nothing to do once the columns
    stack. This one is the band's surface at every width.
 
-   Line alpha is the reference's .028 and that is what ships. It may go to .04
-   and no higher if the grid still reads as absent on real hardware.
+   The approved September texture treatment raises the line alpha to .045.
+   Grid text gets a brighter muted step below to retain contrast at crossings.
    ========================================================= */
 .ink--grid{
   background-color: var(--ink-grid);
   background-image:
-    linear-gradient(rgba(240,235,224,.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(240,235,224,.028) 1px, transparent 1px);
+    linear-gradient(rgba(240,235,224,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240,235,224,.045) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
@@ -4032,8 +4033,8 @@ p, li, dd { text-wrap: pretty; }
 section.ink {
   background-color: var(--ink-grid);
   background-image:
-    linear-gradient(rgba(240,235,224,.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(240,235,224,.028) 1px, transparent 1px);
+    linear-gradient(rgba(240,235,224,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240,235,224,.045) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
@@ -4619,3 +4620,27 @@ aside.deliverable-preview > a { display: inline-flex; align-items: center; gap: 
 
 @media (max-width: 440px) { .foot .logo__plate { display: none; } }
 .foot .logo { min-height: 44px; }
+
+/* Material contrast: selected stone bands carry fine paper grain while their
+   opaque cards remain smooth. A static, tiled background creates no overlay,
+   stacking context or hit target. The SVG contains the approved 22% opacity. */
+.paper-texture, .workflow-artifact {
+  background-image: url('/images/textures/paper-grain-v1.svg');
+  background-size: 180px 180px;
+  background-repeat: repeat;
+  background-blend-mode: soft-light;
+  --ink-muted: var(--muted-on-texture);
+  --tx-mute: var(--muted-on-texture);
+  --tx-faint: var(--muted-on-texture);
+  --mono-on-cream: var(--muted-on-texture);
+  --accent-text: color-mix(in srgb, var(--accent) 78%, #000);
+}
+/* Small text remains readable where the two grid lines cross. Light cards
+   inside these sections retain their existing light-surface token resets. */
+section.ink, .ink--grid {
+  --on-dark-muted: #B5AC9F;
+  --accent-ink: #EE7A50;
+  --dtx-mute: var(--on-dark-muted);
+  --dtx-faint: var(--on-dark-muted);
+  --mono-on-dark: var(--on-dark-muted);
+}

@@ -4355,7 +4355,7 @@ main :is(.phase, .svc-detail__card, .svc-detail__deliv) { --card-t3-size: 16px; 
 .home-text-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 15px; }
 .home-note { font-size: 13px; line-height: 1.6; color: var(--tx-mute); margin-top: 14px; }
 .home-evidence { display: flex; gap: 16px; align-items: center; border-top: 1px solid var(--line); padding-top: 22px; margin-top: 26px; }
-.home-evidence__mark { color: var(--tx); font-family: var(--sans); font-size: 38px; font-weight: 800; letter-spacing: -.1em; flex: 0 0 44px; }
+.home-evidence__mark { display: block; width: 44px; height: auto; flex: 0 0 44px; }
 .home-evidence p { font-size: 12px; line-height: 1.65; color: var(--tx-mute); margin: 0; max-width: none; }
 .home-evidence strong { font-size: 13px; color: var(--tx); }
 .home-evidence a { text-decoration: underline; text-underline-offset: 3px; }

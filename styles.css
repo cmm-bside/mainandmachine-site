@@ -4402,7 +4402,15 @@ main :is(.phase, .svc-detail__card, .svc-detail__deliv) { --card-t3-size: 16px; 
 .home-usecase p { font-size: 16px; line-height: 1.6; color: var(--tx-mute); margin: 0; }
 .home-usecase > a { display: flex; align-items: center; gap: 16px; min-height: 44px; font-size: 14px; font-weight: 650; text-decoration: underline; text-underline-offset: 4px; }
 .home-usecase > a span { font-size: 22px; }
-.home-case { padding-top: 0; }
+/* A distinct stone chapter between the ivory service list and textured pricing.
+   Preserve normal section spacing so the diagram never touches the boundary. */
+.section.home-case {
+  background-color: color-mix(in srgb, var(--paper-tan) 92%, var(--ink));
+  padding-block: var(--section-pad);
+  --ink-muted: var(--muted-on-texture);
+  --tx-mute: var(--muted-on-texture);
+  --label: var(--muted-on-texture);
+}
 .home-case__grid { display: grid; grid-template-columns: .9fr 1.15fr; gap: 64px; align-items: center; }
 .home-case__copy p { font-size: 17px; line-height: 1.65; color: var(--tx-mute); margin-bottom: 18px; }
 .home-case__copy h2 { max-width: 19ch; }

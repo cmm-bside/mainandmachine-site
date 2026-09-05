@@ -20,10 +20,9 @@
    the literals here were dead weight that still read like the truth. They are
    gone; the canonical layer below is the only place a brand value is typed. */
 :root {
-  /* cool steel — the Machine. The one hue outside the paper/ink/rust system,
-     so it has no canonical-token equivalent and stays a literal here. */
-  --blueprint:  #d9dee2;
-  --blueprint-2:#cdd4da;
+  /* Legacy tool surfaces share the warm stone palette. */
+  --blueprint:  var(--paper-tan);
+  --blueprint-2:var(--paper-tan);
 
   /* 10% rust wash — derives from the canonical --accent */
   --accent-soft: color-mix(in srgb, var(--rust) 10%, transparent);
@@ -1068,8 +1067,8 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
      ===================================================================== */
 
   /* ---- colour ---- */
-  --paper:        #F0EBE1;   /* page surface — warm cream, Main Street */
-  --paper-tan:    #E4DBC8;   /* deeper cream band */
+  --paper:        #FAF8F3;   /* clean ivory page canvas */
+  --paper-tan:    #DDD3C3;   /* stone sections and workflow backplates */
   --ink:          #1B1611;   /* warm machine-shop black — surfaces AND body text */
   /* The reference's dark band, one step up from --ink and NOT derivable from
      it (the three channels move by different amounts: +6/+4/+3). Scoped to
@@ -1083,12 +1082,14 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
      --ink-muted itself; var() substitution is lazy, so a reset written as
      `--ink-muted: var(--ink-muted)` would resolve to the rebound value. The
      light islands read this token instead, and it is never rebound. */
-  --muted-on-light: #685E4F;
-  --ink-muted:    var(--muted-on-light);  /* muted text on paper — 4.89:1 on --paper, AA */
+  --muted-on-light: #5F5547;
+  --ink-muted:    var(--muted-on-light);  /* clears AA on ivory, cards and stone */
   --panel:        #221C15;   /* raised panel on ink */
   --panel-ink:    #D8D2C6;   /* text on ink — 11.21:1 on --panel */
   --accent:       #C6401E;   /* THE single rust. See the AA note on --accent-text. */
   --rule:         #D6CCBA;   /* hairline on paper */
+  --rule-strong:  #B8AA96;   /* major card boundaries; internal rules stay quiet */
+  --control-edge: color-mix(in srgb, var(--ink) 50%, var(--paper-tan));
   --rule-dark:    #3A3227;   /* hairline on ink */
 
   /* ---- spacing: step scale (8px base) ---- */
@@ -1108,10 +1109,9 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   /* ---- colour aliases ---- */
   --cream:        var(--paper);       /* legacy name for the page surface */
   --cream-band:   var(--paper-tan);
-  /* Raised card surface. The page surface is --paper, so a card has to sit a
-     step ABOVE it or every card flattens into the section behind it. Derived
-     from --paper so it tracks the brand colour instead of drifting. */
-  --paper-card:   color-mix(in srgb, var(--paper), #fff 40%);
+  /* A clean warm-white card on ivory or stone, defined independently so
+     changing the page canvas does not flatten the card hierarchy. */
+  --paper-card:   #FFFDF8;
   --paper-2:      var(--paper-tan);
   --ink-2:        var(--panel);
   --ink-3:        var(--rule-dark);
@@ -1167,13 +1167,10 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   /* Hover lift for cards: one step brighter than --paper-card, so hovers stop
      jumping to a hardcoded #fff that no token controlled. Derived, like the card. */
   --surface-hi:  color-mix(in srgb, var(--paper), #fff 70%);
-  /* Rust for SMALL text. Plain --accent is 4.26:1 on --paper and 3.68:1 on
-     --paper-tan — both AA fails — so accent-sized text has never used the raw
-     token. Darkened until it clears 4.5:1 on the DEEPEST surface it lands on:
-     5.40:1 on --paper, 4.67:1 on --paper-tan. (88% is the exact AA threshold
-     on tan at 4.52; 86% leaves margin.) */
-  --accent-text: color-mix(in srgb, var(--accent) 86%, #000);
-  --accent-deep: color-mix(in srgb, var(--accent) 82%, #000);  /* derived: link hover, 5.81:1 */
+  /* Small rust links need a darker derivative on the deeper stone surface.
+     Button fills and the separately rebound accent on ink stay unchanged. */
+  --accent-text: color-mix(in srgb, var(--accent) 82%, #000); /* small links on stone */
+  --accent-deep: color-mix(in srgb, var(--accent) 76%, #000); /* darker link hover */
   /* Accent TEXT on dark. Decoupled from --rust-bright (2026-08-01 contrast
      pass): that token still drives the primary button's hover BACKGROUND, so
      the two must be free to move independently. 5.61:1 on --ink, 5.27:1 on
@@ -1196,10 +1193,7 @@ main:has(> .final:last-child) + .foot { padding-top: 0; border-top: 1px dashed r
   /* Mono label floor: near-black, 10.61:1 on paper. Was #3A322A, a near
      duplicate of --rule-dark #3A3227 — consolidated onto the token. */
   --tx-label:    var(--rule-dark);
-  /* The faint step: secondary text that recedes without failing AA.
-     4.89:1 on --paper, 5.24:1 on --paper-card. Was #6E6353, a near duplicate
-     of --ink-muted #6E6455 — consolidated onto the token.
-     NOTE: 4.22:1 on --paper-tan, so keep it off the deepest band. */
+  /* Secondary text shares the AA-safe muted step on every light surface. */
   --tx-faint:    var(--ink-muted);
   --tx-mute:     var(--ink-muted);      /* was #635b50 — same step, consolidated */
   /* Was #8A8071: 4.62:1 on --ink but 4.34:1 on --panel and 4.19:1 on the
@@ -2930,12 +2924,12 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
 /* "(optional)" riding inside a label — stays in the mono label set, one step
    smaller and a shade quieter, so a label reads as ONE system rather than a
    mono word followed by a sans one (2026-08-28; was sans/sentence case). */
-.field .opt { font-family: var(--mono); font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; color: var(--tx-faint); opacity: .8; font-weight: 400; }
+.field .opt { font-family: var(--mono); font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; color: var(--tx-faint); font-weight: 400; }
 
 /* ---- the control ---- */
 .input {
   font-family: var(--sans); font-size: var(--fs-16); color: var(--tx); background: var(--surface-hi);
-  border: 1px solid var(--line); padding: 14px 15px; width: 100%; height: 52px;
+  border: 1px solid var(--control-edge); padding: 14px 15px; width: 100%; height: 52px;
   transition: border-color .15s var(--ease), box-shadow .15s var(--ease); border-radius: 0;
 }
 /* Placeholders sit a step lighter than the label so an example value is not
@@ -2943,7 +2937,7 @@ h1, h2, h3, h4, .h-hero, .hero__headline, .h2, .h3 { text-wrap: balance; }
    as the label. This mix is held at the AA floor (≥4.5:1 on --surface-hi) —
    lighter would fail contrast, so this is as far as it goes. */
 .input::placeholder { color: color-mix(in srgb, var(--ink-muted) 88%, var(--surface-hi)); opacity: 1; }
-.input:hover { border-color: rgba(29,24,18,0.30); }
+.input:hover { border-color: var(--ink-muted); }
 .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 textarea.input { min-height: 132px; height: auto; resize: vertical; line-height: 1.55; }
 select.input {
@@ -2968,12 +2962,12 @@ select.input:invalid { color: var(--tx-faint); }
 .hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
 
 /* ---- segmented control ---- */
-.seg { display: flex; border: 1px solid var(--line); background: var(--surface-hi); }
+.seg { display: flex; border: 1px solid var(--control-edge); background: var(--surface-hi); }
 .seg__opt { flex: 1; position: relative; }
 .seg__opt input { position: absolute; opacity: 0; pointer-events: none; }
 .seg__opt span {
   display: block; text-align: center; padding: 13px 8px; font-size: var(--fs-13); font-weight: 600;
-  color: var(--tx-mute); cursor: pointer; border-right: 1px solid var(--line); transition: background .15s var(--ease), color .15s var(--ease);
+  color: var(--tx-mute); cursor: pointer; border-right: 1px solid var(--control-edge); transition: background .15s var(--ease), color .15s var(--ease);
 }
 .seg__opt:last-child span { border-right: 0; }
 .seg__opt:hover span { background: var(--paper-2); }
@@ -2981,7 +2975,7 @@ select.input:invalid { color: var(--tx-faint); }
 .seg__opt input:focus-visible + span { box-shadow: inset 0 0 0 2px var(--accent); }
 
 /* ---- file drop zone ---- */
-.filedrop { position: relative; border: 1px dashed var(--line); background: var(--surface-hi); padding: 20px 18px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: border-color .15s var(--ease), background .15s var(--ease); }
+.filedrop { position: relative; border: 1px dashed var(--control-edge); background: var(--surface-hi); padding: 20px 18px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: border-color .15s var(--ease), background .15s var(--ease); }
 .filedrop:hover { border-color: var(--accent); }
 .filedrop.has-file { border-style: solid; border-color: var(--accent); }
 .filedrop__icon { width: 40px; height: 40px; flex: none; border: 1.5px solid var(--tx); display: grid; place-items: center; font-family: var(--mono); font-size: var(--fs-12); font-weight: 700; color: var(--tx); }
@@ -3275,7 +3269,7 @@ select.input:invalid { color: var(--tx-faint); }
   --tx-label:      var(--rule-dark);
   --mono-on-cream: var(--muted-on-light);
   --label:         var(--muted-on-light);
-  --accent-text:   color-mix(in srgb, var(--accent) 86%, #000);
+  --accent-text:   color-mix(in srgb, var(--accent) 82%, #000);
   --dtx-faint:     var(--muted-on-light);
 }
 :is(.roi, .bound__i) :is(h1, h2, h3, h4, h5, h6) { color: var(--ink); }
@@ -4317,7 +4311,11 @@ body:has(.nav.is-open) .stickybook { transform: translateY(110%); }
 }
 .section--tight { padding-block: var(--section-y-tight); }
 :is(.pagehero, .sechero, .cr-hero, .story-hero, .thankshero, .bloghero, .legal-hero) { padding-block: 64px; }
-:is(.pagehero, .sechero, .cr-hero, .story-hero, .thankshero, .bloghero) { background-image: none; }
+:is(.paper, .paper-2, .blueprint, .hero, .pagehero, .sechero, .bookhero, .cr-hero, .story-hero, .thankshero, .bloghero) { background-image: none; }
+.nav { background: var(--paper); }
+/* Card boundaries carry the light hierarchy; internal dividers remain subtle. */
+:is(.paper, .paper-2, .blueprint) :is(.home-card, .home-case__figure, .statrail, .spec-card, .svc-detail__card, .roi, .contact-card, .gcard, .path, .formcard, .request-choice, .cal-embed) { border-color: var(--rule-strong); }
+.paper-2 .home-card--featured { border-top-color: var(--accent); }
 :is(.pagehero, .sechero, .cr-hero, .story-hero, .thankshero) h1 {
   font-size: var(--type-interior); line-height: 1.06; letter-spacing: -.032em;
   max-width: 22ch; margin: 16px 0 24px; font-weight: 800;
@@ -4360,8 +4358,8 @@ main :is(.phase, .svc-detail__card, .svc-detail__deliv) { --card-t3-size: 16px; 
 .home-evidence p { font-size: 12px; line-height: 1.65; color: var(--tx-mute); margin: 0; max-width: none; }
 .home-evidence strong { font-size: 13px; color: var(--tx); }
 .home-evidence a { text-decoration: underline; text-underline-offset: 3px; }
-.workflow-artifact { margin: 0; background: var(--paper-card); border: 1px solid var(--line); position: relative; }
-.workflow-artifact__top { display: flex; justify-content: space-between; gap: 12px; padding: 18px 24px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 11px; line-height: 1.5; color: var(--tx-mute); }
+.workflow-artifact { margin: 0; background: var(--paper-tan); border: 1px solid var(--rule-strong); position: relative; }
+.workflow-artifact__top { display: flex; justify-content: space-between; gap: 12px; padding: 18px 24px; border-bottom: 1px solid var(--rule-strong); font-family: var(--mono); font-size: 11px; line-height: 1.5; color: var(--tx-mute); }
 .workflow-artifact__sample { text-align: right; }
 .workflow-artifact__stage { padding: 28px 32px 24px; }
 .workflow-artifact__input, .workflow-artifact__review { display: flex; align-items: center; gap: 16px; }
@@ -4369,16 +4367,16 @@ main :is(.phase, .svc-detail__card, .svc-detail__deliv) { --card-t3-size: 16px; 
 .workflow-artifact svg { width: 30px; height: 30px; flex: 0 0 30px; color: var(--tx-mute); }
 .workflow-artifact__label { font: 11px/1.4 var(--mono); letter-spacing: .025em; display: block; color: var(--tx-mute); }
 .workflow-artifact strong { display: block; font-size: 17px; line-height: 1.35; margin-top: 5px; font-weight: 650; }
-.workflow-artifact__connector { height: 26px; margin-left: 27px; border-left: 1px solid var(--rule); position: relative; }
+.workflow-artifact__connector { height: 26px; margin-left: 27px; border-left: 1px solid var(--rule-strong); position: relative; }
 .workflow-artifact__connector::after { content: ''; position: absolute; left: -3px; bottom: 0; width: 5px; height: 5px; border-right: 1px solid var(--tx-mute); border-bottom: 1px solid var(--tx-mute); transform: rotate(45deg); }
-.workflow-artifact__work { padding: 22px 24px; background: var(--paper); border: 1px solid var(--line); }
+.workflow-artifact__work { padding: 22px 24px; background: var(--paper-card); border: 1px solid var(--rule-strong); }
 .workflow-artifact__work-head { display: flex; align-items: center; justify-content: space-between; }
 .workflow-artifact__symbol { color: var(--accent); font: 800 29px/1 var(--sans); }
 .home-upgrade .workflow-artifact h2 { font-size: 28px; margin: 10px 0 18px; line-height: 1.1; }
 .workflow-artifact__outputs { display: grid; gap: 9px; font-size: 14px; line-height: 1.4; }
 .workflow-artifact__outputs span { display: flex; align-items: center; gap: 10px; }
 .workflow-artifact__outputs i { color: var(--accent-text); font-style: normal; }
-.workflow-artifact__review { border: 1px solid var(--accent); padding: 18px 14px; }
+.workflow-artifact__review { border: 1px solid var(--accent); background: var(--paper-card); padding: 18px 14px; }
 .workflow-artifact__review svg { color: var(--accent-text); }
 .workflow-artifact__human { margin-left: auto; padding-left: 10px; border-left: 1px solid var(--line); font: 11px/1.45 var(--mono); color: var(--accent-text); }
 .workflow-artifact figcaption { font-size: 13px; line-height: 1.55; padding: 0 32px 24px; color: var(--tx-mute); }

@@ -24,7 +24,7 @@
 <!-- The calendar is requested only after the visitor chooses to open it. -->
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=147" />
+<link rel="stylesheet" href="/styles.css?v=148" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -924,23 +924,8 @@
   // fallback for the case where the stylesheet has not applied. Calendly wants
   // bare hex with no leading '#'.
   //
-  // background_color is --paper-card, NOT --paper, and the difference is
-  // visible. The embed sits inside .formcard, whose background is
-  // `color-mix(in srgb, var(--paper), #fff 40%)` = #F6F3ED. Painting the
-  // scheduler --paper (#F0EBE1) put a 6/255-darker rectangle inside that card —
-  // measured in situ off the live iframe: field #F0EBE1 against a #F6F3ED
-  // surround. Small, but it is a straight edge running the full width of the
-  // panel, which is exactly the kind of seam the eye finds. The .cal-embed
-  // wrapper below matches, so the loading state does not flash the other cream.
-  //
-  // **--paper-card is a color-mix(), so it does NOT serialise as hex.**
-  // getPropertyValue returns `color(srgb 0.96 0.95 0.93)` with 0..1 channels,
-  // and the old hex-only regex would have silently fallen through to the
-  // fallback — the failure mode being that the token stops tracking the palette
-  // while the code still looks like it reads it. Worse, an rgb()-shaped parser
-  // reads those 0..1 channels as BYTES and returns near-black; that trap has
-  // already cost this repo a phantom page of contrast failures. All three forms
-  // are parsed explicitly below.
+  // Match the scheduler to the warm-white card token, including the fallback.
+  // Accept hex, rgb() and color(srgb) so future token changes remain supported.
   function brandHex(token, fallback){
     var v = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
     var m = /^#?([0-9a-f]{6})$/i.exec(v);
@@ -965,7 +950,7 @@
       embed_type: 'Inline',
       hide_gdpr_banner: '1',
       hide_event_type_details: '1',
-      background_color: brandHex('--paper-card', 'f6f3ed'),
+      background_color: brandHex('--paper-card', 'fffdf8'),
       text_color:       brandHex('--ink',        '1b1611'),
       primary_color:    brandHex('--accent',     'c6401e')
     });

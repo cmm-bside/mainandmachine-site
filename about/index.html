@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=146" />
+<link rel="stylesheet" href="/styles.css?v=147" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -229,6 +229,26 @@
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init({ endpoint: "/api/event", formSubmissions: false })
 </script>
+<style>
+/* About: one real portrait, with responsibility visible beside the story. */
+.founder-intro{grid-template-columns:minmax(0,1.35fr) minmax(240px,.65fr);align-items:center;gap:64px}
+.founder-intro__portrait{max-width:360px;justify-self:end;margin:0;border:0;background:none}
+.founder-intro__portrait picture{display:block;aspect-ratio:1;overflow:hidden}
+.founder-intro__portrait img{display:block;width:100%;height:100%;object-fit:cover}
+.founder-intro__portrait figcaption{padding:16px 0 0;border-top:1px solid var(--rule)}
+.founder-intro__portrait .bio__role{font-size:13px;line-height:1.6}
+.founder-intro__location{margin-top:20px;color:var(--ink-muted);font-size:15px;line-height:1.6}
+.founder-intro__link{display:inline-flex;align-items:center;min-height:44px;margin-top:24px;font-weight:700;color:var(--ink);text-decoration-thickness:1px;text-underline-offset:5px}
+.accountability{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:40px;border-top:1px solid var(--ink)}
+.accountability article{padding:28px 28px 0 0}
+.accountability article+article{padding-left:28px;border-left:1px solid var(--rule)}
+.accountability h3{font-size:25px;line-height:1.2;margin:14px 0}
+.accountability p{font-size:17px;line-height:1.6;color:var(--ink-muted)}
+.accountability a{display:inline-flex;align-items:center;min-height:44px;margin-top:22px;font-size:14px;font-weight:700;color:var(--ink);text-underline-offset:4px}
+.founder-id dd a{display:inline-flex;align-items:center;min-height:44px;line-height:1.4;padding:4px 0}
+#accountability{scroll-margin-top:120px}
+@media(max-width:760px){.founder-intro{grid-template-columns:1fr;gap:32px}.founder-intro__portrait{justify-self:start;max-width:280px}.accountability{grid-template-columns:1fr}.accountability article,.accountability article+article{padding:24px 0;border-left:0}.accountability article+article{border-top:1px solid var(--rule)}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -279,7 +299,7 @@
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment (free call)" class="btn btn--primary" href="/book/"><span class="btn__full">Book a free assessment</span><span class="btn__short" aria-hidden="true">Free call</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -297,20 +317,25 @@
           <li><span aria-current="page">Who we are</span></li>
         </ol>
       </nav>
-    <div class="pagehero__grid">
+    <div class="pagehero__grid founder-intro">
       <div>
         <span class="kicker">Who we are</span>
-        <h1 class="h2 mt-s">Who builds this.</h1>
-        <p class="lead mt-s">Main &amp; Machine is an AI consulting and implementation firm for small and mid-size businesses, founded by Christopher Myers, with hubs in Denver and Phoenix and remote coverage across the US. It builds custom agents, workflow automations, and data integrations at fixed prices, delivered in about 90 days.</p>
+        <h1 class="h2 mt-s">People you can <span class="accent-tx">hold accountable.</span></h1>
+        <p class="lead mt-s">Christopher Myers scopes the work and signs off. Our build team turns that scope into working AI systems for small and mid-size businesses. You know who makes the decisions and who does the building.</p>
+        <p class="founder-intro__location">Based in Denver and Phoenix. Working with businesses across the US.</p>
+        <a class="founder-intro__link" href="#accountability">Meet the roles behind your build <span aria-hidden="true">→</span></a>
       </div>
-      <dl class="statrail crop" aria-label="The firm at a glance">
-        <div class="statrail__bar"><dt>The firm</dt><dd><b>v.2026</b></dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Founder</dt><dd class="statrail__v accent-tx">Christopher Myers</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Backing Main Street</dt><dd class="statrail__v">20 years</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Hubs</dt><dd class="statrail__v">Denver &amp; Phoenix</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Build team</dt><dd class="statrail__v">~25 AI-native</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Updated</dt><dd class="statrail__v"><time datetime="2026-07-29">July 2026</time></dd></div>
-      </dl>
+      <figure class="bio__portrait founder-intro__portrait">
+        <picture>
+          <source type="image/avif" srcset="/images/christopher-myers-hedcut.avif?v=3" />
+          <source type="image/webp" srcset="/images/christopher-myers-hedcut.webp?v=3" />
+          <img src="/images/christopher-myers-hedcut.png?v=3" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="768" height="768" loading="eager" fetchpriority="high" decoding="async" />
+        </picture>
+        <figcaption>
+          <span class="bio__name">Christopher Myers</span>
+          <span class="bio__role">CEO, B:Side Capital + Fund · Founder &amp; Chairman, Main &amp; Machine · Professor, ASU W.P. Carey · Author</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -327,17 +352,14 @@
     </div>
     <div class="bio">
       <div class="bio__aside">
-      <figure class="bio__portrait crop">
-        <picture>
-          <source type="image/avif" srcset="/images/christopher-myers-hedcut.avif?v=3" />
-          <source type="image/webp" srcset="/images/christopher-myers-hedcut.webp?v=3" />
-          <img src="/images/christopher-myers-hedcut.png?v=3" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="768" height="768" loading="lazy" decoding="async" />
-        </picture>
-        <figcaption>
-          <span class="bio__name">Christopher Myers</span>
-          <span class="bio__role">CEO, B:Side Capital + Fund · Founder &amp; Chairman, Main &amp; Machine · Professor, ASU W.P. Carey · Author</span>
-        </figcaption>
-      </figure>
+      <dl class="statrail crop" aria-label="The firm at a glance">
+        <div class="statrail__bar"><dt>The firm</dt><dd><b>v.2026</b></dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Founder</dt><dd class="statrail__v accent-tx">Christopher Myers</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Backing Main Street</dt><dd class="statrail__v">20 years</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Hubs</dt><dd class="statrail__v">Denver &amp; Phoenix</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Build team</dt><dd class="statrail__v">~25 AI-native</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Updated</dt><dd class="statrail__v"><time datetime="2026-07-29">July 2026</time></dd></div>
+      </dl>
       <p class="bio__note">Read his essay <a href="/blog/seventy-years-of-overnight-success/">Seventy Years of Overnight Success</a>, or see how every build runs in <a href="/method/">the method</a>. Skeptical of AI generally? <a href="/guides/ai-for-the-skeptical-owner/">Good — start here</a>.</p>
       </div>
       <div class="bio__prose">
@@ -370,7 +392,7 @@
 </section>
 
 <!-- ============ THE TEAM ============ -->
-<section class="section paper" data-screen-label="The team">
+<section class="section paper" id="accountability" data-screen-label="The team">
   <div class="wrap">
     <div class="head-block">
       <div>
@@ -378,6 +400,11 @@
         <h2 class="h2 mt-s">Experienced judgment. <span class="accent-tx">Hands-on&nbsp;builders.</span></h2>
       </div>
       <p class="lead">Around twenty-five AI-native technologists, including students and recent graduates, build under one accountable operator. Christopher Myers brings 20 years backing Main Street: he scopes the work, owns the judgment calls, and signs off. The build team implements the systems. You should know both who does the work and who is responsible for the result.</p>
+    </div>
+    <div class="accountability" aria-label="Who is responsible for what">
+      <article><span class="tick-lbl">Christopher Myers</span><h3>Scope &amp; sign-off.</h3><p>The founder holds the judgment calls, defines the work, and remains accountable for the result.</p><a href="#why">What you can hold us to <span aria-hidden="true">→</span></a></article>
+      <article><span class="tick-lbl">The build team</span><h3>Working systems.</h3><p>AI-native technologists build the agents, automations, and integrations around the agreed workflow.</p><a href="/method/">See the delivery process <span aria-hidden="true">→</span></a></article>
+      <article><span class="tick-lbl">Your people</span><h3>Business judgment.</h3><p>Your team brings the workflow knowledge and reviews prepared work. The system’s permissions and approval points belong in the scope.</p><a href="/security/">Read the operating boundaries <span aria-hidden="true">→</span></a></article>
     </div>
   </div>
 </section>
@@ -542,7 +569,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.bio > *,.why > div,.argument > .arg,.final .wrap > *,.foot__top > *"></script>
 
-<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/nav.js?v=9"></script>
 <script defer src="/js/analytics.js?v=5"></script>
 </body>
 </html>

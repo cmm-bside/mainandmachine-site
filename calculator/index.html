@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=146" />
+<link rel="stylesheet" href="/styles.css?v=147" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -197,8 +197,40 @@
   ]
 }
 </script>
+<style>
+.funnel-calculator .pagehero .lead { max-width: 62ch; }
+.funnel-calculator .roi__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+.funnel-calculator .roi__output { grid-column: 2; grid-row: 1; }
+.funnel-calculator .roi__inputs { grid-column: 1; grid-row: 1; }
+.funnel-calculator .roi__net { margin-top: 0; padding-top: 0; border-top: 0; }
+.funnel-calculator .roi__big { font-size: clamp(36px, 4vw, 52px); color: var(--tx); }
+.funnel-calculator .roi__nethead { flex-direction: column; align-items: start; gap: 8px; }
+.roi-summary-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0 0; padding-block: 20px; border-block: 1px solid var(--line); }
+.roi-summary-pair dt { font: 400 14px/1.4 var(--sans); color: var(--tx-mute); }
+.roi-summary-pair dd { margin: 8px 0 0; font: 700 22px/1.2 var(--sans); color: var(--tx); }
+.roi-summary-note { font: 400 14px/1.55 var(--sans); color: var(--tx-mute); margin-top: 20px; }
+.funnel-calculator .roi-details { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 16px; }
+.roi-details > summary { cursor: pointer; font: 600 15px/1.5 var(--sans); color: var(--tx); min-height: 44px; padding-block: 10px; }
+.roi-details > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.roi-details[open] > summary { margin-bottom: 16px; }
+.funnel-calculator .roi__field + .roi__field { margin-top: 24px; }
+.funnel-calculator #calcReset { margin-top: 20px; }
+.roi-live-mini { display: none; }
+.funnel-calculator .roi__cta .btn { flex-shrink: 0; }
+@media (max-width: 760px) {
+  .funnel-calculator .roi__grid { grid-template-columns: 1fr; }
+  .funnel-calculator .roi__output, .funnel-calculator .roi__inputs { grid-column: 1; grid-row: auto; }
+  .funnel-calculator .roi__output { border-bottom: 1px solid var(--line); }
+  .funnel-calculator .roi__inputs { border: 0; }
+  .roi-live-mini { display: block; margin-top: 24px; padding: 16px; border: 1px solid var(--line); background: var(--paper); }
+  .roi-live-mini > span { display: block; font-size: 14px; }
+  .roi-live-mini strong { display: block; margin-top: 8px; font: 700 28px/1.2 var(--sans); }
+  .roi-live-mini p { margin: 8px 0 0; font-size: 13px; color: var(--tx-mute); }
+  .funnel-calculator .roi__nethead { gap: 6px; }
+}
+</style>
 </head>
-<body>
+<body class="funnel-calculator">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ OPERATOR CHROME ============ -->
@@ -247,7 +279,7 @@
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment (free call)" class="btn btn--primary" href="/book/"><span class="btn__full">Book a free assessment</span><span class="btn__short" aria-hidden="true">Free call</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -288,6 +320,32 @@
       </div>
 
       <div class="roi__grid">
+        <div class="roi__output">
+          <span class="tick-lbl">Your selected scenario</span>
+          <div class="roi__net">
+            <div class="roi__nethead">
+              <span class="accent-tx">First-year net after build</span>
+              <span id="calcFor">For 25 people</span>
+            </div>
+            <div class="roi__big tab" id="calcRoi" aria-live="polite" aria-atomic="true">-$987</div>
+            <p class="roi__bigunit">12 operating months at your selected capture, after running costs and one-time investment</p>
+          </div>
+
+          <dl class="roi-summary-pair"><div><dt>Annual net after running costs</dt><dd id="calcAnnualNet">+$17,013</dd></div><div><dt>Payback at selected capture</dt><dd id="calcPayback">13 months</dd></div></dl>
+          <p class="roi-summary-note">Planning assumptions, not a forecast. Saved time is not automatically cash savings. Audit fees, managed services and internal time are excluded unless added to your inputs.</p>
+          <p class="roi__note">At 100% capture, the first-year ceiling is <strong id="calcCeiling">+$130,263</strong>. Full recovery is a theoretical limit, not a prediction or typical result.</p>
+
+          <details class="roi-details"><summary>See the full calculation and limits</summary>
+          <ul class="roi__rows">
+            <li><span>Manual-work opportunity</span><span class="mono tab roi__pos" id="calcManual">+$100,000</span></li>
+            <li><span>Capacity opportunity</span><span class="mono tab roi__pos" id="calcRevenue">+$50,000</span></li>
+            <li><span>Value at selected capture</span><span class="mono tab" id="calcCaptured">+$18,750</span></li>
+            <li><span>Run costs / year</span><span class="mono tab roi__neg" id="calcRun">-$1,737</span></li>
+            <li><span>Sprint investment (one-time)</span><span class="mono tab roi__neg" id="calcImpl">-$18,000</span></li>
+          </ul>
+          <p class="roi__disclaim">A planning model, not a promise. Saved time is not automatically cash savings; count it only when you can explain how it produces value. Use gross profit rather than sales revenue, and do not count the same recovered hours twice. The default opportunity rates are assumptions, not survey averages. The first year means twelve months of operation; it does not include the pre-launch period. Audit fees, managed services, internal time, taxes and financing are excluded unless included in your inputs. <a href="/guides/ai-roi-math-small-business/">Read the formula and worked examples</a>.</p>
+          </details>
+        </div>
         <!-- inputs -->
         <div class="roi__inputs">
           <div class="roi__field">
@@ -329,42 +387,20 @@
             <input class="input" type="number" id="calcInvestment" min="0" max="100000000" step="1" value="18000" aria-describedby="calcCostsHelp" />
             <p class="roi__note" id="calcCostsHelp">Defaults are headcount-based planning estimates. Replace them with your scoped costs. Audit fees, managed services, internal labor and other extras are excluded unless you add them here.</p>
           </div>
+          <div class="roi-live-mini"><span>First-year net after build</span><strong id="calcInlineNet">-$987</strong><p>12 operating months, after the costs above.</p></div>
           <button class="btn btn--secondary" id="calcReset" type="button">Reset planning assumptions</button>
 
-          <div class="roi__assume" id="assumptions">
-            <span class="tick-lbl">Assumptions</span>
+          <details class="roi__assume roi-details" id="assumptions"><summary>View the model assumptions</summary>
             <ul>
               <li><span>Manual work / employee</span><span class="mono tab" id="calcAManual">$4,000/yr</span></li>
               <li><span>Capacity value / employee</span><span class="mono tab" id="calcARevenue">$2,000/yr</span></li>
               <li><span>Sprint investment</span><span class="mono tab" id="calcAImpl">$18,000</span></li>
               <li><span>Run costs (tools + model usage)</span><span class="mono tab" id="calcARun">$1,737/yr</span></li>
             </ul>
-          </div>
+          </details>
         </div>
 
-        <!-- output -->
-        <div class="roi__output">
-          <span class="tick-lbl">Output / Selected scenario</span>
-          <ul class="roi__rows">
-            <li><span>Manual-work opportunity</span><span class="mono tab roi__pos" id="calcManual">+$100,000</span></li>
-            <li><span>Capacity opportunity</span><span class="mono tab roi__pos" id="calcRevenue">+$50,000</span></li>
-            <li><span>Value at selected capture</span><span class="mono tab" id="calcCaptured">+$18,750</span></li>
-            <li><span>Annual net after running costs</span><span class="mono tab" id="calcAnnualNet">+$17,013</span></li>
-            <li><span>Run costs / year</span><span class="mono tab roi__neg" id="calcRun">-$1,737</span></li>
-            <li><span>Sprint investment (one-time)</span><span class="mono tab roi__neg" id="calcImpl">-$18,000</span></li>
-            <li><span>Payback at selected capture</span><span class="mono tab" id="calcPayback">13 months</span></li>
-          </ul>
-          <div class="roi__net">
-            <div class="roi__nethead">
-              <span class="accent-tx">First-year net after build</span>
-              <span id="calcFor">For 25 people</span>
-            </div>
-            <div class="roi__big tab" id="calcRoi" aria-live="polite" aria-atomic="true">-$987</div>
-            <p class="roi__bigunit">12 operating months at your selected capture, after running costs and one-time investment</p>
-          </div>
-          <p class="roi__note">At 100% capture, the first-year ceiling is <strong id="calcCeiling">+$130,263</strong>. Full recovery is a theoretical limit, not a prediction or typical result.</p>
-          <p class="roi__disclaim">A planning model, not a promise. Saved time is not automatically cash savings; count it only when you can explain how it produces value. Use gross profit rather than sales revenue, and do not count the same recovered hours twice. The default opportunity rates are assumptions, not survey averages. The first year means twelve months of operation; it does not include the pre-launch period. Audit fees, managed services, internal time, taxes and financing are excluded unless included in your inputs. <a href="/guides/ai-roi-math-small-business/">Read the formula and worked examples</a>.</p>
-        </div>
+
       </div>
 
       <div class="roi__foot">
@@ -390,13 +426,8 @@
       <p class="estimate-form__note" id="estimateNote">Emails the industry and team-size baseline. Use Share this estimate to save your edited capture and cost scenario. No newsletter subscription.</p>
     </form>
     <div class="roi__cta">
-      <a data-cta="calculator" class="btn btn--primary btn--lg" id="calcBook" href="/book/">Run your real numbers: book the free assessment <span class="arr">&#8594;</span></a>
-      <div class="reversal">
-        <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
-        <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span></p>
-        <p><a href="/pricing/">See the price list&nbsp;<span class="arr">&#8594;</span></a></p>
-      </div>
-      <p>A positive modeled result is a reason to validate the inputs, not a promise to buy. A negative result stays visible. We can help measure the workflow and compare it with a simpler alternative in the free assessment.</p>
+      <a data-cta="calculator" class="btn btn--primary btn--lg" id="calcBook" href="/book/">Discuss your real numbers <span class="arr">&#8594;</span></a>
+      <p>Bring this scenario to a free 30-minute assessment. We can help validate the inputs and compare the workflow with a simpler alternative. <a href="/pricing/">See published service prices</a>.</p>
     </div>
     <p class="roi__note" style="margin-top:var(--s-16);">Cost is half the question. Find out if you’re ready.</p>
         <p class="section-action"><a href="/score/">Get your AI-Ready Score&nbsp;<span class="arr">&#8594;</span></a></p>
@@ -599,7 +630,7 @@
     text('calcManual',signed(m.manual)); text('calcRevenue',signed(m.revenue));
     text('calcImpl',signed(-m.implementation)); text('calcRun',signed(-m.runCost));
     text('calcCaptured',signed(m.captured)); text('calcAnnualNet',signed(m.annualNet));
-    text('calcRoi',signed(m.firstYearNet)); text('calcTotal',fmt(m.total));
+    text('calcRoi',signed(m.firstYearNet)); text('calcInlineNet',signed(m.firstYearNet)); text('calcTotal',fmt(m.total));
     text('calcCeiling',signed(m.firstYearHigh));
     text('calcPayback',m.annualNet > 0 ? (m.implementation === 0 ? 'No initial investment' : (m.implementation/m.annualNet*12 < 1 ? 'Under 1 month' : Math.round(m.implementation/m.annualNet*12)+' months')) : 'Does not pay back');
     document.dispatchEvent(new Event('mm-roi-updated'));
@@ -704,7 +735,7 @@
   });
 })();
 </script>
-<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/nav.js?v=9"></script>
 <script defer src="/js/analytics.js?v=5"></script>
 <script>
 /* Calculator engagement -> Plausible. Fires ONCE per session on the first real

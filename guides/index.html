@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=146" />
+<link rel="stylesheet" href="/styles.css?v=147" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -52,6 +52,29 @@
   .gcard:nth-last-child(-n+2){ border-bottom:1px solid var(--line); }
   .gcard:last-child{ border-bottom:0; }
 }
+
+/* Three reading paths give a long library a useful entry point. */
+.guide-paths{align-self:center;border-top:1px solid var(--ink);padding-top:20px}
+.guide-paths>a{display:flex;justify-content:space-between;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule);font-size:20px;font-weight:700;color:var(--ink);text-decoration:none}
+.guide-paths>a:hover{color:var(--accent)}
+.guide-group{display:grid;grid-template-columns:minmax(200px,.7fr) minmax(0,1.8fr);gap:48px;padding-top:48px;margin-top:40px;border-top:1px solid var(--ink);scroll-margin-top:110px}
+.guide-group__heading h2{font-size:32px;line-height:1.15;letter-spacing:-.03em;margin:14px 0}
+.guide-group__heading p{font-size:17px;line-height:1.6;color:var(--ink-muted)}
+.guide-group__cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.guide-group .gcard{padding:24px 0;border:0;border-top:1px solid var(--rule);background:none}
+.guide-group .gcard:hover{box-shadow:none;background:none}.guide-group .gcard:hover h3{text-decoration:underline;text-underline-offset:4px}
+.guide-group .gcard--featured{grid-column:1/-1;padding:28px;margin-bottom:12px;border:1px solid var(--rule);background:var(--paper)}
+.guide-group .gcard--featured:hover{background:var(--paper)}
+.guide-group .gcard--featured h3{font-size:28px;max-width:24ch}
+.guide-group .gcard__no{font-size:11px;text-transform:uppercase;color:var(--ink-muted)}
+.guide-group .gcard p{line-height:1.6}
+.guide-artifact{display:grid;grid-template-columns:1fr .8fr;gap:80px;align-items:center}
+.guide-artifact__sheet{display:block;padding:32px;border:1px solid var(--ink);box-shadow:8px 8px 0 var(--paper-tan);color:var(--ink);text-decoration:none}
+.guide-artifact__sheet>b{display:block;font-size:25px;line-height:1.2;margin:20px 0}
+.guide-artifact__sheet ol{margin:0;padding-left:24px}.guide-artifact__sheet li{padding:9px 0 9px 8px;border-top:1px solid var(--rule);font-size:16px}
+.guide-artifact__caption{display:block;margin-top:20px;color:var(--ink-muted);font-size:14px}
+@media(max-width:900px){.guide-group{grid-template-columns:minmax(0,1fr);gap:24px}.guide-group__heading{max-width:42ch}.guide-artifact{gap:40px}}
+@media(max-width:620px){.guide-group__cards{grid-template-columns:minmax(0,1fr)}.guide-group .gcard--featured{padding:24px}.guide-group{padding-top:32px}.guide-artifact{grid-template-columns:1fr}.guide-artifact__sheet{padding:24px}.guide-group__heading h2{font-size:28px}}
 </style>
 
 <!-- Structured data — facts must match src/data/company.mjs byte-for-byte (checked at build) -->
@@ -318,7 +341,7 @@
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment (free call)" class="btn btn--primary" href="/book/"><span class="btn__full">Book a free assessment</span><span class="btn__short" aria-hidden="true">Free call</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -340,15 +363,14 @@
       <div>
         <span class="kicker">The Field Guide</span>
         <h1 class="h2 mt-s">The buying questions, answered <span class="accent-tx">in the open.</span></h1>
-        <p class="lead mt-s">The Ampersand is where we think out loud. The Field Guide is where you shop: what AI help costs, whether you are ready for it, whether to hire or engage, and how to tell a builder from a hype merchant. Real prices throughout — ours included.</p>
+        <p class="lead mt-s">Practical guides for the decisions that come before an AI project: whether to start, what to budget, and how to choose the right help. Read the answer to your next question. Our prices and assumptions are in the open.</p>
       </div>
-      <div class="statrail crop" aria-label="Field Guide at a glance">
-        <div class="statrail__bar"><span>Field Guide</span><span><b>v.2026</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Guides</span><span class="statrail__v">14</span></div>
-        <div class="statrail__row"><span class="statrail__k">Format</span><span class="statrail__v accent-tx">Answer-first</span></div>
-        <div class="statrail__row"><span class="statrail__k">Prices cited</span><span class="statrail__v">Published</span></div>
-        <div class="statrail__row"><span class="statrail__k">Updated</span><span class="statrail__v"><time datetime="2026-07-29">July 2026</time></span></div>
-      </div>
+      <nav class="guide-paths" aria-label="Choose a reading path">
+        <span class="tick-lbl">Find your question</span>
+        <a href="#readiness"><span>Should we start?</span><span aria-hidden="true">↓</span></a>
+        <a href="#budget"><span>What should we budget?</span><span aria-hidden="true">↓</span></a>
+        <a href="#buying"><span>How do we buy well?</span><span aria-hidden="true">↓</span></a>
+      </nav>
     </div>
   </div>
 </section>
@@ -356,99 +378,113 @@
 <!-- ============ THE GUIDES ============ -->
 <section class="section paper-2">
   <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">Fourteen guides</span>
-        <h2 class="h2 mt-s">Start with the question <span class="accent-tx">you actually&nbsp;have.</span></h2>
-      </div>
-      <p class="lead">Each guide does one job. The first two sentences under every heading answer the heading’s question, so you can skim for the number you came for and leave.</p>
-    </div>
-    <div class="gcards">
-      <a class="gcard" href="/guides/ai-consultant-cost/">
-        <span class="gcard__no">Guide 01</span>
-        <h3>What an AI consultant costs in 2026.</h3>
-        <p>The whole market’s ranges — hourly independents, boutique projects, Big Four quotes — and where our published $3,500–$60,000 sits. With a comparison table.</p>
-        <span class="gcard__meta">8 min · Pricing</span>
-      </a>
-      <a class="gcard" href="/guides/ai-readiness-checklist/">
-        <span class="gcard__no">Guide 02</span>
-        <h3>The AI readiness checklist:&nbsp;20&nbsp;points.</h3>
+    <span class="kicker">Fourteen guides · Three reading paths</span>
+    <section class="guide-group" id="readiness" aria-labelledby="readiness-title">
+      <div class="guide-group__heading"><span class="tick-lbl">Reading path 01</span><h2 id="readiness-title">Should we start?</h2><p>Get clear on the problem before choosing a tool.</p></div>
+      <div class="guide-group__cards">
+      <a class="gcard gcard--featured" href="/guides/ai-readiness-checklist/">
+        <span class="gcard__no">Start here</span>
+        <h3>The AI readiness checklist: 20&nbsp;points.</h3>
         <p>A checklist you can run in an afternoon without hiring anyone. Score yourself, then see what the score means — including “wait.”</p>
         <span class="gcard__meta">9 min · Readiness</span>
       </a>
-      <a class="gcard" href="/guides/ai-consultant-vs-in-house/">
-        <span class="gcard__no">Guide 03</span>
-        <h3>AI consultant vs. in-house hire: the math.</h3>
-        <p>Hiring, engaging, or doing nothing — three options with real costs on each, and the break-even points where the answer flips.</p>
-        <span class="gcard__meta">8 min · Deciding</span>
-      </a>
-      <a class="gcard" href="/guides/how-to-choose-an-ai-consultant/">
-        <span class="gcard__no">Guide 04</span>
-        <h3>How to choose an AI consultant.</h3>
-        <p>Ten questions to ask any firm before you sign — including us. The good ones answer in plain English; the hype merchants answer in adjectives.</p>
-        <span class="gcard__meta">8 min · Vetting</span>
-      </a>
-      <a class="gcard" href="/guides/what-ai-automation-costs-to-run/">
-        <span class="gcard__no">Guide 05</span>
-        <h3>What AI automation costs to run.</h3>
-        <p>The monthly reality after the build: tokens, tools, maintenance — the $50–$500 band and what drives it. Including the case where running costs say don’t automate.</p>
-        <span class="gcard__meta">8 min · Running costs</span>
-      </a>
-      <a class="gcard" href="/guides/ai-agents-vs-automations-vs-integrations/">
-        <span class="gcard__no">Guide 06</span>
-        <h3>Agents vs. automations vs. integrations.</h3>
-        <p>Three words vendors use interchangeably, three different price tags. A decision path for which one your problem actually needs — often the cheaper one.</p>
-        <span class="gcard__meta">9 min · Sorting</span>
-      </a>
-      <a class="gcard" href="/guides/how-long-ai-implementation-takes/">
-        <span class="gcard__no">Guide 07</span>
-        <h3>How long AI implementation takes.</h3>
-        <p>Ninety days per workflow, week by week — and what the two-week promise actually delivers. What makes builds faster, and what quietly stalls them.</p>
-        <span class="gcard__meta">9 min · Timeline</span>
-      </a>
-      <a class="gcard" href="/guides/what-is-an-ai-readiness-audit/">
-        <span class="gcard__no">Guide 08</span>
-        <h3>The AI readiness audit, defined.</h3>
-        <p>What $3,500–$8,500 buys, what it deliberately doesn’t, and the sample deliverable you can read before spending a dollar. Sometimes the finding is “wait.”</p>
-        <span class="gcard__meta">8 min · The audit</span>
-      </a>
-      <a class="gcard" href="/guides/ai-data-cloud-vs-on-prem/">
-        <span class="gcard__no">Guide 09</span>
-        <h3>Where your AI data actually goes.</h3>
-        <p>Cloud, on-prem, and the middle path — matched to what’s actually in your documents. Written for the owner who signs the vendor agreement.</p>
-        <span class="gcard__meta">9 min · Data</span>
-      </a>
-      <a class="gcard" href="/guides/chatgpt-vs-custom-ai/">
-        <span class="gcard__no">Guide 10</span>
-        <h3>ChatGPT subscriptions vs. custom AI.</h3>
-        <p>The $25 seat wins more often than a consultant should admit. Where subscriptions genuinely stall, and the shelfware trap between the two.</p>
-        <span class="gcard__meta">8 min · Tools</span>
-      </a>
-      <a class="gcard" href="/guides/signs-you-are-not-ready-for-ai/">
-        <span class="gcard__no">Guide 11</span>
-        <h3>Signs you are not ready for AI.</h3>
-        <p>Six signs the money would be wasted — and a 90-day plan that costs almost nothing instead. The guide that tells you not to hire us yet.</p>
-        <span class="gcard__meta">9 min · Readiness</span>
-      </a>
-      <a class="gcard" href="/guides/how-to-scope-an-ai-project/">
-        <span class="gcard__no">Guide 12</span>
-        <h3>How to scope a project a vendor can’t inflate.</h3>
-        <p>The clauses that stop scope creep before it starts, the inflation patterns to catch in any proposal, and a template you can copy.</p>
-        <span class="gcard__meta">9 min · Procurement</span>
-      </a>
-      <a class="gcard" href="/guides/ai-roi-math-small-business/">
-        <span class="gcard__no">Guide 13</span>
-        <h3>The real ROI math, published.</h3>
-        <p>Our calculator’s whole model in the open — per-industry rates, one worked example, and everything that breaks it. A model, never a promise.</p>
-        <span class="gcard__meta">9 min · ROI</span>
-      </a>
       <a class="gcard" href="/guides/ai-for-the-skeptical-owner/">
-        <span class="gcard__no">Guide 14</span>
+        <span class="gcard__no">Then explore</span>
         <h3>For the owner who is skeptical of AI.</h3>
         <p>You might be right — most projects fail. Why skepticism is the trait that makes builds succeed, and a first step that requires no belief at all.</p>
         <span class="gcard__meta">8 min · Skeptics</span>
       </a>
-    </div>
+      <a class="gcard" href="/guides/signs-you-are-not-ready-for-ai/">
+        <span class="gcard__no">Then explore</span>
+        <h3>Signs you are not ready for AI.</h3>
+        <p>Six signs the money would be wasted — and a 90-day plan that costs almost nothing instead. The guide that tells you not to hire us yet.</p>
+        <span class="gcard__meta">9 min · Readiness</span>
+      </a>
+      <a class="gcard" href="/guides/chatgpt-vs-custom-ai/">
+        <span class="gcard__no">Then explore</span>
+        <h3>ChatGPT subscriptions vs. custom AI.</h3>
+        <p>The $25 seat wins more often than a consultant should admit. Where subscriptions genuinely stall, and the shelfware trap between the two.</p>
+        <span class="gcard__meta">8 min · Tools</span>
+      </a>
+      </div>
+    </section>
+    <section class="guide-group" id="budget" aria-labelledby="budget-title">
+      <div class="guide-group__heading"><span class="tick-lbl">Reading path 02</span><h2 id="budget-title">What should we budget?</h2><p>Compare the build, the running costs, and the alternative.</p></div>
+      <div class="guide-group__cards">
+      <a class="gcard gcard--featured" href="/guides/ai-consultant-cost/">
+        <span class="gcard__no">Start here</span>
+        <h3>What an AI consultant costs in 2026.</h3>
+        <p>The whole market’s ranges — hourly independents, boutique projects, Big Four quotes — and where our published $3,500–$60,000 sits. With a comparison table.</p>
+        <span class="gcard__meta">8 min · Pricing</span>
+      </a>
+      <a class="gcard" href="/guides/what-ai-automation-costs-to-run/">
+        <span class="gcard__no">Then explore</span>
+        <h3>What AI automation costs to run.</h3>
+        <p>The monthly reality after the build: tokens, tools, maintenance — the $50–$500 band and what drives it. Including the case where running costs say don’t automate.</p>
+        <span class="gcard__meta">8 min · Running costs</span>
+      </a>
+      <a class="gcard" href="/guides/ai-roi-math-small-business/">
+        <span class="gcard__no">Then explore</span>
+        <h3>The real ROI math, published.</h3>
+        <p>Our calculator’s whole model in the open — per-industry rates, one worked example, and everything that breaks it. A model, never a promise.</p>
+        <span class="gcard__meta">9 min · ROI</span>
+      </a>
+      <a class="gcard" href="/guides/ai-consultant-vs-in-house/">
+        <span class="gcard__no">Then explore</span>
+        <h3>AI consultant vs. in-house hire: the math.</h3>
+        <p>Hiring, engaging, or doing nothing — three options with real costs on each, and the break-even points where the answer flips.</p>
+        <span class="gcard__meta">8 min · Deciding</span>
+      </a>
+      </div>
+    </section>
+    <section class="guide-group" id="buying" aria-labelledby="buying-title">
+      <div class="guide-group__heading"><span class="tick-lbl">Reading path 03</span><h2 id="buying-title">How do we buy well?</h2><p>Know what to ask for, what to check, and who stays in control.</p></div>
+      <div class="guide-group__cards">
+      <a class="gcard gcard--featured" href="/guides/how-to-choose-an-ai-consultant/">
+        <span class="gcard__no">Start here</span>
+        <h3>How to choose an AI consultant.</h3>
+        <p>Ten questions to ask any firm before you sign — including us. The good ones answer in plain English; the hype merchants answer in adjectives.</p>
+        <span class="gcard__meta">8 min · Vetting</span>
+      </a>
+      <a class="gcard" href="/guides/how-to-scope-an-ai-project/">
+        <span class="gcard__no">Then explore</span>
+        <h3>How to scope a project a vendor can’t inflate.</h3>
+        <p>The clauses that stop scope creep before it starts, the inflation patterns to catch in any proposal, and a template you can copy.</p>
+        <span class="gcard__meta">9 min · Procurement</span>
+      </a>
+      <a class="gcard" href="/guides/what-is-an-ai-readiness-audit/">
+        <span class="gcard__no">Then explore</span>
+        <h3>The AI readiness audit, defined.</h3>
+        <p>What $3,500–$8,500 buys, what it deliberately doesn’t, and the sample deliverable you can read before spending a dollar. Sometimes the finding is “wait.”</p>
+        <span class="gcard__meta">8 min · The audit</span>
+      </a>
+      <a class="gcard" href="/guides/how-long-ai-implementation-takes/">
+        <span class="gcard__no">Then explore</span>
+        <h3>How long AI implementation takes.</h3>
+        <p>Ninety days per workflow, week by week — and what the two-week promise actually delivers. What makes builds faster, and what quietly stalls them.</p>
+        <span class="gcard__meta">9 min · Timeline</span>
+      </a>
+      <a class="gcard" href="/guides/ai-data-cloud-vs-on-prem/">
+        <span class="gcard__no">Then explore</span>
+        <h3>Where your AI data actually goes.</h3>
+        <p>Cloud, on-prem, and the middle path — matched to what’s actually in your documents. Written for the owner who signs the vendor agreement.</p>
+        <span class="gcard__meta">9 min · Data</span>
+      </a>
+      <a class="gcard" href="/guides/ai-agents-vs-automations-vs-integrations/">
+        <span class="gcard__no">Then explore</span>
+        <h3>Agents vs. automations vs. integrations.</h3>
+        <p>Three words vendors use interchangeably, three different price tags. A decision path for which one your problem actually needs — often the cheaper one.</p>
+        <span class="gcard__meta">9 min · Sorting</span>
+      </a>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section class="section paper">
+  <div class="wrap guide-artifact">
+    <div><span class="kicker">See the deliverable</span><h2 class="h2 mt-s">Read an audit before you buy one.</h2><p class="lead mt-s">A legible fictional example shows the workflow map, the opportunities, and the decisions a paid audit helps you make.</p><a class="btn btn--secondary mt-s" href="/services/sample-audit/">Open the sample audit <span aria-hidden="true">→</span></a></div>
+    <a class="guide-artifact__sheet" href="/services/sample-audit/"><span class="tick-lbl">Sample audit · Fictional example</span><b>A service request, mapped.</b><ol><li>Receive the request</li><li>Capture the details</li><li>Resolve missing information</li><li>Assign the work</li><li>Confirm the next step</li></ol><span class="guide-artifact__caption">Then rank what is worth improving.</span></a>
   </div>
 </section>
 
@@ -600,7 +636,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.gcards > .gcard,.closer,.faq__list details,.final .hero__cta,.foot__top > *"></script>
 
-<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/nav.js?v=9"></script>
 <script defer src="/js/analytics.js?v=5"></script>
 </body>
 </html>

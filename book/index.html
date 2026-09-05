@@ -24,7 +24,7 @@
 <!-- The calendar is requested only after the visitor chooses to open it. -->
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=146" />
+<link rel="stylesheet" href="/styles.css?v=147" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -176,128 +176,35 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110c'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23f3ede0'%3EM%3Ctspan fill='%23ec6c3d'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
 <style>
-/* BOOK AN ASSESSMENT — page-scoped LAYOUT ONLY. The form system, the numbered
-   agenda (.steps/.step) and the checklist (.pluslist) live in styles.css. */
-.bookhero { padding-bottom: var(--section-y); }
+/* Booking integration and form layout. The compact opening is scoped below. */
 .bookhero__crumb { font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--tx-faint); display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
-.bookhero__crumb a { color: var(--tx-mute); }
+.bookhero__crumb a { color: var(--tx-mute); margin-block: -15px; }
 .bookhero__crumb a:hover { color: var(--tx); }
-.bookhero__crumb .sep { opacity: 1; color: var(--ink-muted); }
-.bookhero__grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
-.bookhero h1 { margin: 12px 0 16px; }
-.bookhero .lead { font-size: clamp(var(--fs-16), 1.5vw, var(--fs-20)); margin-top: var(--s-16); }
-/* ---- SIZED TO THE VIEWPORT, like the homepage hero ----
-   The scheduler is this page's whole conversion, and it started BELOW the fold
-   at 1440x900: panel header at 975px, calendar at 1194px. The sitewide rhythm
-   put 480px of section padding above the calendar (160 hero top + 160 hero
-   bottom + 160 request top) before a single pixel of it could be seen.
-   These three are flat, not the --section-y ladder, for the same reason .hero
-   is: they answer to the SCREEN, not to the page. 96px is where --section-y
-   itself lands at <=768, so the hero just reaches that step early; the 48 + 48
-   across the cream/beige seam is one --s-96 gutter split by the colour change,
-   between a promise and the picker that are one flow. Nothing is deleted —
-   every element of the hero still ships, and #request keeps its full closing
-   step at the foot of a section that runs 3000px.
-   Both are named in SECTION_Y_EXEMPT in scripts/qa-matrix.mjs, so a THIRD
-   section drifting off --section-y still fails the check.
-   The floor here is the .statrail: at 305px it is the taller of the hero's two
-   columns, so trimming the headline's margins further buys nothing. Getting
-   the calendar above an 812px fold too would mean either cutting that shared
-   card down on this page alone or moving the context field below the embed —
-   where nobody would fill it in before booking. Neither is worth it. */
-.bookhero { padding-block: var(--s-96) var(--s-48); }
-#request { padding-top: var(--s-48); }
-/* The crumb links carry `padding-block: 15px` from the sitewide TOUCH TARGETS
-   block, whose premise is that vertical padding on an INLINE box paints
-   outside the line box and moves nothing. That premise does not hold here:
-   .bookhero__crumb is a flex container, so its links are blockified and the
-   padding became 30px of real layout height above the fold. Cancelled with the
-   negative margin that block already prescribes for its atomic boxes — the
-   44px hit area is untouched, the row is 17px again. */
-.bookhero__crumb a { margin-block: -15px; }
-/* the two-column booking layout */
-.book { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: clamp(28px, 4vw, 52px); align-items: start; }
+.bookhero__grid { display: grid; align-items: start; }
+.book { display: grid; grid-template-columns: 1.08fr .92fr; align-items: start; }
 .advisor { display: flex; gap: 14px; align-items: flex-start; }
-/* The FLEX ITEM is the <picture>, not the <img> — so `flex: none` below never
-   applied to the box that flex sizes. The wrapper shrank to 46px and the global
-   `img { max-width: 100% }` (styles.css) squeezed the portrait with it, so
-   object-fit: cover cropped the sides of the head off a square asset. */
 .advisor > picture { flex: none; display: block; }
-.advisor__portrait { width: 72px; height: 72px; flex: none; object-fit: cover; border: 1px solid var(--hairline); background: var(--paper-2); display: block; filter: saturate(0); mix-blend-mode: multiply; }
-.advisor__tx h3 { font-size: var(--fs-16); font-weight: 800; letter-spacing: -0.01em; }
-.advisor__tx p { font-size: var(--fs-13); color: var(--tx-mute); margin-top: 5px; line-height: 1.55; }
-/* pick-a-time (Calendly) card — the primary path */
-.schedwrap { max-width: 880px; margin: 0 auto; }
-/* Scoped to the scheduler card only — the assessment-request card below the
-   fold keeps the standard 36px interior. Nothing here is above the fold but
-   this card's own header and its one optional field. */
-#schedule .formcard__body { padding-top: var(--s-24); }
+.advisor__portrait { object-fit: cover; border: 1px solid var(--hairline); background: var(--paper-2); display: block; filter: saturate(0); mix-blend-mode: multiply; }
+.advisor__tx .advisor__name { font-weight: 800; letter-spacing: -.01em; line-height: 1.15; margin: 0; color: var(--tx); }
+.advisor__tx p:not(.advisor__name) { color: var(--tx-mute); margin-top: 5px; line-height: 1.55; }
 .cal-q { max-width: 640px; }
-.cal-launch-copy { margin: 0 0 var(--s-16); color: var(--tx-mute); }
 .cal-panel { margin-top: var(--s-24); }
 .cal-panel[hidden] { display: none; }
 .cal-status { margin: var(--s-16) 0 0; color: var(--tx-mute); font-size: var(--t-sm); }
-/* After the visitor opens the panel, 720px is reserved before the
-   iframe paints: the frame is absolutely positioned, so it is out of flow and
-   contributes nothing to this box either way. The card measures 720px on the
-   parse, on the mount and on the load — the swap cannot shift the page. */
-/* background is --paper-card to match .formcard around it, and to match the
-   background_color this page hands Calendly — see calUrl(). --paper here put a
-   6/255-darker panel inside the card, and flashed that same wrong cream behind
-   the loading placeholder before the iframe painted over it. */
+/* The reserved height accommodates all calendar steps, not just the initial
+   month picker. No iframe or reserved panel exists before launch. */
 .cal-embed { position: relative; margin-top: var(--s-16); min-height: 720px; border: 1px solid var(--line); background: var(--paper-card); }
-/* The branded placeholder. It comes off (the .is-ready class) when CALENDLY
-   PAINTS — its `calendly.event_type_viewed` postMessage — not on the iframe's
-   own `load` event, which fires 1–2s before the app renders and left a blank
-   cream box in the gap. A 5s per-mount timer is the FALLBACK only: a blocked
-   or dropped listener must never leave this label sitting on top of a working
-   calendar. It is deliberately not the primary signal — a timer alone either
-   lies about a slow frame or does exactly that.
-   `pointer-events: none` because the placeholder must never take a click. It
-   already sits under the iframe (both are positioned at z-index auto, and the
-   ::before precedes the iframe child in paint order), so this is belt and
-   braces for the window before the frame exists.
-
-   THE TIMER NO LONGER BLANKS THIS LABEL — it rewords it (.is-slow), and that
-   is the whole point. Being painted UNDER the iframe makes the label
-   self-correcting: a rendered calendar is an opaque surface, so it hides the
-   label with no signal from us, and the label can only be seen when the frame
-   is genuinely still blank. The old fallback cleared it outright at 5s on the
-   premise that a stuck label could end up sitting on top of a live calendar.
-   It cannot — the same comment above says so — and the cost of that premise
-   was the failure mode measured on 2026-08-10: Calendly not painting at all,
-   the label removed on schedule, and the visitor left facing 978px of empty
-   cream with nothing to read and nowhere to go. Say what is happening
-   instead. (.is-ready still clears the label outright and is LAST here on
-   purpose: it is the same (0,2,0) as .is-slow, so source order is what makes
-   a real paint win over the timer.) */
-.cal-embed::before { content: "Loading the scheduler…"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 var(--s-24); text-align: center; font-family: var(--mono); font-size: var(--fs-13); color: var(--tx-faint); letter-spacing: .08em; pointer-events: none; }
-.cal-embed.is-slow::before { content: "Still loading — Calendly is slow to respond. Use the link below to open it in a new tab, or send the form."; }
+/* The placeholder sits below the cross-origin frame. Readiness comes from
+   Calendly's event_type_viewed signal; a slow response keeps a useful escape. */
+.cal-embed::before { content: "Loading the scheduler…"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 var(--s-24); text-align: center; font-family: var(--sans); font-size: var(--t-sm); color: var(--tx-faint); pointer-events: none; }
+.cal-embed.is-slow::before { content: "Still loading — Calendly is slow to respond. Open it in a new tab using the link above, or request a reply below."; }
 .cal-embed.is-ready::before { content: none; }
 .cal-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-/* The escape hatch, and it is deliberately ALWAYS VISIBLE rather than revealed
-   by the .is-slow timer. The embed is a third-party app we do not control and
-   cannot repair from here; the one thing we can guarantee is that a visitor who
-   wants a time slot is never dependent on it rendering. Tying this to a class
-   would make the only route out of a broken scheduler depend on the same
-   scripting that just failed to produce one. Quiet by design — it is an
-   escape hatch, not a second CTA, and it must not compete with the calendar.
-   No arrow, so the LINK SYSTEM reads it as in-text STYLE A: it sits inside a
-   sentence, and STYLE B is for links standing alone on their own line. */
 .cal-fallback { margin-top: 12px; font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; }
-.cal-note { margin-top: 16px; font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; }
-.cal-note b { color: var(--accent); font-weight: 700; }
-.orpath { display: flex; align-items: center; gap: 18px; margin: clamp(32px, 4vw, 48px) 0; }
-.orpath::before, .orpath::after { content: ""; height: 1px; background: var(--line); flex: 1; }
-.orpath span { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; text-transform: none; color: var(--tx-mute); text-align: center; }
-/* faq tweak: this page only */
+.cal-note { font-family: var(--sans); color: var(--tx-mute); line-height: 1.6; }
 .faq--book .faq__aside { background: var(--ink); }
 .faq--book .faq__aside h3 { font-size: var(--fs-20); }
-@media (max-width: 940px) {
-  .bookhero__grid { grid-template-columns: 1fr; gap: 36px; }
-  .book { grid-template-columns: 1fr; }
-  .rail { position: static; }
-}
+@media (max-width: 940px) { .book { grid-template-columns: 1fr; } }
 @media (max-width: 700px) { .cal-embed { min-height: 980px; } }
 @media (max-width: 560px) { .frow { grid-template-columns: 1fr; } }
 </style>
@@ -309,8 +216,53 @@
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init({ endpoint: "/api/event", formSubmissions: false })
 </script>
+<style>
+.funnel-book .bookhero { padding-block: 52px 48px; }
+.funnel-book .bookhero__grid { grid-template-columns: minmax(0, 1.35fr) minmax(250px, .65fr); gap: 48px; align-items: center; }
+.funnel-book .bookhero h1 { max-width: 22ch; }
+.funnel-book .bookhero .lead { max-width: 54ch; font-size: 18px; line-height: 1.6; }
+.book-facts { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 20px 0 0; font: 600 15px/1.5 var(--sans); }
+.book-facts span + span { border-left: 1px solid var(--line); padding-left: 18px; }
+.book-advisor > .tick-lbl { display: block; margin-bottom: 12px; }
+.funnel-book .advisor__portrait { width: 64px; height: 64px; }
+.funnel-book .advisor__tx .advisor__name { font-size: 18px; }
+.funnel-book .advisor__tx p:not(.advisor__name) { font-size: 14px; max-width: 28ch; }
+.book-start { margin-top: 28px; }
+.funnel-book #request { padding-top: 0; }
+.book-start .schedwrap { max-width: none; }
+.book-start #schedule { border: 0; background: transparent; }
+.book-start #schedule .formcard__body { padding: 0; }
+.book-start .cal-panel { max-width: 880px; }
+.book-start .cal-embed { width: 100%; margin-inline: 0; }
+.book-start .cal-fallback, .book-start .cal-note { max-width: 70ch; }
+.book-start .cal-note { margin-top: 8px; font-size: 13px; }
+.request-choice { border: 1px solid var(--line); background: var(--paper-card); }
+.request-choice > summary { cursor: pointer; padding: 24px; font: 700 22px/1.35 var(--sans); }
+.request-choice > summary span { display: block; margin-top: 8px; font: 400 15px/1.55 var(--sans); color: var(--tx-mute); }
+.request-choice > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.request-choice[open] > summary { border-bottom: 1px solid var(--line); }
+.request-choice .book { padding: 24px; gap: 32px; }
+.request-choice .rail { position: static; }
+.request-choice .panel p { font: 400 16px/1.6 var(--sans); }
+@media (max-width: 768px) {
+  .funnel-book .bookhero { padding-block: 38px 38px; }
+  .funnel-book .bookhero__grid { grid-template-columns: 1fr; gap: 20px; }
+  .funnel-book .bookhero .lead { font-size: 17px; }
+  .funnel-book .bookhero h1 { font-size: 38px; line-height: 1.08; margin-block: 12px; }
+  .book-facts { margin-top: 16px; font-size: 14px; }
+  .book-advisor > .tick-lbl { margin-bottom: 8px; }
+  .funnel-book .advisor__portrait { width: 52px; height: 52px; }
+  .funnel-book .advisor__tx .advisor__name { font-size: 17px; }
+  .funnel-book .advisor__tx p:not(.advisor__name) { max-width: none; font-size: 13px; margin-top: 3px; }
+  .book-start { margin-top: 22px; }
+  .request-choice > summary { padding: 22px; font-size: 20px; }
+  .request-choice .book { padding: 0; }
+  .request-choice .rail { padding: 0 22px 22px; }
+  .request-choice .formcard { border: 0; }
+}
+</style>
 </head>
-<body>
+<body class="funnel-book">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ OPERATOR CHROME ============ -->
@@ -359,7 +311,7 @@
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a aria-label="Book a free assessment" class="btn btn--primary" href="#request" aria-current="page"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a aria-label="Book a free assessment (free call)" class="btn btn--primary" href="#request" aria-current="page"><span class="btn__full">Book a free assessment</span><span class="btn__short" aria-hidden="true">Free call</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -367,44 +319,31 @@
   </div>
 </header>
 <main id="main" tabindex="-1">
-
-<!-- ============ PAGE HEADER ============ -->
-<section class="section paper bookhero" data-screen-label="Book header">
-  <div class="wrap">
-    <nav class="bookhero__crumb" aria-label="Breadcrumb">
-        <ol class="crumb__list">
-          <li><a href="/">Main &amp; Machine</a></li>
-          <li><span aria-current="page">Book an assessment</span></li>
-        </ol>
-      </nav>
-    <div class="bookhero__grid">
-      <div>
-        <span class="kicker">The AI Opportunity Assessment</span>
-        <h1 class="h2 mt-s">Find your next <span class="accent-tx">useful AI project.</span></h1>
-        <p class="lead mt-s">Bring one repetitive workflow. In a free 30-minute call, a senior advisor will help you assess the opportunity, identify the constraints, and choose a sensible next step. Pick a time below, or send the form for a reply within 24 hours.</p>
-      </div>
-      <div class="statrail crop" aria-label="What the assessment is">
-        <div class="statrail__bar"><span>Assessment</span><span><b>Free</b></span></div>
-        <div class="statrail__row"><span class="statrail__k">Cost</span><span class="statrail__v accent-tx">$0</span></div>
-        <div class="statrail__row"><span class="statrail__k">Length</span><span class="statrail__v">30 minutes</span></div>
-        <div class="statrail__row"><span class="statrail__k">Format</span><span class="statrail__v">Call · remote</span></div>
-        <div class="statrail__row"><span class="statrail__k">Scheduling</span><span class="statrail__v">Instant · pick below</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BOOKING ============ -->
-<section class="section paper-2" id="request" data-screen-label="Request form">
-  <div class="wrap">
-
-    <!-- PRIMARY — choose a time; inline Calendly opens on deliberate activation. -->
-    <div class="schedwrap">
+<section class="section paper bookhero" data-screen-label="Book header"><div class="wrap">
+<nav class="bookhero__crumb" aria-label="Breadcrumb">
+    <ol class="crumb__list">
+      <li><a href="/">Main &amp; Machine</a></li>
+      <li><span aria-current="page">Book an assessment</span></li>
+    </ol>
+  </nav>
+<div class="bookhero__grid"><div><span class="kicker">The AI Opportunity Assessment</span><h1 class="h2 mt-s">Find your next <span class="accent-tx">useful AI project.</span></h1><p class="lead mt-s">Bring one repetitive workflow. We’ll discuss the opportunity, the constraints, and a sensible next step.</p><p class="book-facts"><span>Free</span><span>30 minutes</span><span>Remote call</span></p></div>
+<div class="book-advisor"><p class="tick-lbl">Accountable for the work</p>          <div class="advisor">
+            <picture>
+              <source type="image/webp" srcset="/images/christopher-myers-hedcut-sq.webp?v=3" />
+              <img class="advisor__portrait" src="/images/christopher-myers-hedcut-sq.png?v=3" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="72" height="72" loading="eager" decoding="async" />
+            </picture>
+            <div class="advisor__tx">
+              <p class="advisor__name">Christopher Myers</p>
+              <p>Founder &amp; Chairman. Accountable for the scope and the build.</p>
+            </div>
+          </div></div></div>
+<div class="book-start" id="request">    <div class="schedwrap">
       <div class="formcard" id="schedule">
-        <div class="formcard__bar"><span>Pick a time now</span><span><b>Fastest</b></span></div>
+
         <div class="formcard__body">
-          <p class="cal-launch-copy">Find a 30-minute slot that works for you.</p>
+
           <button class="btn btn--primary" type="button" id="calLaunch" aria-controls="calPanel" aria-expanded="false">Choose a time <span class="arr" aria-hidden="true">&#8594;</span></button>
+          <p class="cal-fallback">You can also <a href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">open the calendar in a new tab</a>, or <a href="#book">request a reply within 24 hours</a>.</p>
           <div class="cal-panel" id="calPanel" role="region" aria-label="Choose an assessment time" tabindex="-1" hidden>
           <div class="field cal-q">
             <label for="cal-workflows">What is eating your team’s time? <span class="opt">(optional — rides along with your booking)</span></label>
@@ -414,18 +353,17 @@
           <p class="cal-status" id="calStatus" role="status" aria-live="polite" aria-atomic="true"></p>
           <div class="cal-embed" id="calEmbed" data-cal-url="https://calendly.com/cmyers-mainandmachine/30min"></div>
           </div>
-          <p class="cal-fallback">You can also <a href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">open the calendar in a new tab</a>, or send the form below for a reply within 24 hours.</p>
+
           <noscript><p class="cal-fallback">To choose a time, <a href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">open the calendar in a new tab</a>.</p></noscript>
-          <p class="cal-note"><b>Pick a slot and it’s booked.</b> The calendar invite and confirmation arrive from Calendly right away.</p>
+          <p class="cal-note">Choose a slot to book. Calendly sends your invite and confirmation.</p>
         </div>
       </div>
     </div>
 
-    <div class="orpath" role="separator"><span>Prefer we reach out? Use the form — we email within 24 hours</span></div>
-
-    <!-- the form + rail -->
-    <div class="book" id="book">
-
+</div>
+</div></section>
+<section class="section paper-2" data-screen-label="Request form"><div class="wrap">
+<details class="request-choice" id="requestChoice"><summary>Prefer a reply? Request your assessment<span>We’ll email you within 24 hours to find a time.</span></summary><div class="book" id="book">
       <!-- FORM -->
       <div class="formcard">
         <div class="formcard__bar"><span>Assessment request</span><span><b>*</b> required</span></div>
@@ -506,74 +444,19 @@
               </div>
               <p class="formfoot__error" id="formError" role="alert" hidden></p>
               <p class="note"><b>We email you within 24 hours</b> to find a time that actually works. Your details go straight to the advisor who prepares your call.</p>
-              <div class="reversal">
-                <p><b>The guarantee:</b> <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p>
-                <p><b>The credit:</b> <span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span></p>
-        <p><a href="/pricing/">See the price list&nbsp;<span class="arr">&#8594;</span></a></p>
-              </div>
+
             </div>
 
           </form>
         </div>
       </div>
 
-      <!-- RAIL -->
-      <aside class="rail" aria-label="What to expect">
-        <div class="panel">
-          <h2 class="panel__t">What happens · 30 minutes</h2>
-          <div class="steps">
-            <div class="step"><span class="step__no">01</span><div><h3>We listen</h3><p>You walk us through how the work actually flows today. Plain language is plenty.</p></div></div>
-            <div class="step"><span class="step__no">02</span><div><h3>We map</h3><p>A senior advisor finds the handful of workflows quietly costing you the most.</p></div></div>
-            <div class="step"><span class="step__no">03</span><div><h3>We level with you</h3><p>Where AI pays, where it doesn’t, and a rough sense of what it’s worth.</p></div></div>
-            <div class="step"><span class="step__no">04</span><div><h3>You decide</h3><p>You leave with a clear read. That’s where it ends unless you want more.</p></div></div>
-          </div>
-        </div>
 
-        <div class="panel">
-          <h2 class="panel__t">What you leave with</h2>
-          <ul class="pluslist">
-            <li>A plain-language read on where AI would actually pay in your business</li>
-            <li>A rough dollar range on the opportunity, run against your real numbers</li>
-            <li>A clear “not yet” if that’s the call, said out loud</li>
-            <li>A read that’s yours to act on with us, another firm, or alone</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h2 class="panel__t">Who you’ll talk to</h2>
-          <div class="advisor">
-            <picture>
-              <source type="image/webp" srcset="/images/christopher-myers-hedcut-sq.webp?v=3" />
-              <img class="advisor__portrait" src="/images/christopher-myers-hedcut-sq.png?v=3" alt="Engraved portrait of Christopher Myers, founder of Main &amp; Machine" width="72" height="72" loading="lazy" decoding="async" />
-            </picture>
-            <div class="advisor__tx">
-              <h3>Christopher Myers</h3>
-              <p>Founder &amp; Chairman. The person who scopes your work is the one accountable for the build. 20 years backing Main Street.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- TESTIMONIALS:RAIL — rendered by scripts/build-testimonials.mjs — do not hand-edit -->
+<aside class="rail" aria-label="What to expect"><div class="panel"><h2 class="panel__t">What happens · 30 minutes</h2><div class="steps"><div class="step"><span class="step__no">01</span><div><h3>We listen</h3><p>Walk us through how the work flows today.</p></div></div><div class="step"><span class="step__no">02</span><div><h3>We assess the opportunity</h3><p>Discuss where AI may help, what it would need, and whether a simpler approach makes sense.</p></div></div><div class="step"><span class="step__no">03</span><div><h3>You decide</h3><p>Leave with a clear next step. No paid work starts without an agreed scope.</p></div></div></div></div>
+<!-- TESTIMONIALS:RAIL — rendered by scripts/build-testimonials.mjs — do not hand-edit -->
 <!-- /TESTIMONIALS:RAIL -->
-
-        <div class="panel">
-          <h2 class="panel__t">Why it&rsquo;s free</h2>
-          <p>The assessment establishes fit and the next step. A final scope and fixed project price may need a follow-up conversation or a paid audit. We quote that work in writing before a project starts.</p>
-          <p style="margin-top:12px;">We take a fixed number of builds each quarter. The free assessment is how we choose them, and how you check us before spending a dollar.</p>
-        </div>
-        <div class="panel panel--ink crop">
-          <h2 class="panel__t">The promise</h2>
-          <p>You’ll leave knowing what’s worth doing and what isn’t, and we’ll never pad the list to win the work. <b>Substance over sales.</b></p>
-          <p style="margin-top:12px;">If the assessment finds nothing worth building, we say so and you keep the notes. <b>That’s the whole transaction.</b></p>
-          <p style="margin-top:12px;">And if we do build, it is an AI Implementation Sprint &mdash; we call it <span data-fact="name-sprint">The 90-Day Build</span>, because the interval and the guarantee are the same fact. The exact terms sit under the form.</p>
-        </div>
-      </aside>
-
-    </div>
-
-  </div>
-</section>
-
+<div class="panel"><h2 class="panel__t">Why it’s free</h2><p>The assessment checks fit. A final scope and fixed project price may need a follow-up conversation or a paid audit. We quote that work in writing before it starts.</p><p><a href="/pricing/">See published prices <span class="arr">&#8594;</span></a></p></div></aside>
+</div></details></div></section>
 <!-- ============ FAQ ============ -->
 <section class="section paper" data-screen-label="FAQ">
   <div class="wrap">
@@ -1256,7 +1139,26 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
-<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/nav.js?v=9"></script>
 <script defer src="/js/analytics.js?v=5"></script>
+<script>
+// Old form anchors still reveal the chosen alternative, including without a
+// pointer. Native details remains usable when JavaScript is unavailable.
+(function(){
+  var choice = document.getElementById('requestChoice');
+  function revealRequest(){
+    if(!choice || !location.hash) return;
+    var target;
+    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch(e) { return; }
+    if(target && choice.contains(target)) choice.open = true;
+  }
+  window.addEventListener('hashchange', revealRequest);
+  document.addEventListener('click', function(event){
+    var link = event.target.closest && event.target.closest('a[href="#book"]');
+    if(link && choice) choice.open = true;
+  });
+  revealRequest();
+})();
+</script>
 </body>
 </html>

@@ -114,6 +114,31 @@ ${imgKnownSize ? `<meta property="og:image:width" content="1200" />
   plausible.init({ endpoint: "/api/event", formSubmissions: false })
 </script>
 ${extraHead}
+<style>
+/* Editorial surfaces: unfiltered vector artwork and a quieter reading finish. */
+.ampersand-title{font-size:clamp(38px,5vw,52px);line-height:1.05;letter-spacing:-.04em}
+.feed__featured-img img,.feed__card-img img,.essay__hero img{filter:none!important;mix-blend-mode:normal;object-fit:contain;background:var(--paper)}
+.feed__featured-img{aspect-ratio:3/2;background:var(--paper)}
+.feed__card-img{aspect-ratio:3/2;background:var(--paper)}
+.feed__card-img img{width:100%;height:100%}
+.essay__hero{max-width:900px;margin-left:auto;margin-right:auto;border:0}
+.essay__hero img{display:block;width:100%;height:auto;aspect-ratio:3/2}
+.essay__cap{font-size:12px;padding:12px 0;border-top:1px solid var(--rule);color:var(--ink-muted)}
+.essay__meta{font-size:13px;line-height:1.6;gap:8px 18px}
+.essay__head .essay__dek{font-size:20px;line-height:1.55;max-width:65ch}
+.essay__cta--quiet{display:block;background:none;border:0;border-top:1px solid var(--rule);padding:28px 0 0;max-width:900px;margin:0 auto;box-shadow:none}
+.essay__cta--quiet h2{font-size:28px;line-height:1.2}.essay__cta--quiet p{font-size:17px;line-height:1.6;color:var(--ink-muted);margin-top:12px;max-width:65ch}
+.essay__cta--quiet .essay__cta-actions{margin-top:20px}
+.ampersand-subscribe.section{padding-top:40px;padding-bottom:48px}
+.ampersand-subscribe__inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding-top:32px;border-top:1px solid var(--rule);align-items:center}
+.ampersand-subscribe h2{font-size:25px;line-height:1.2;margin:14px 0 10px}.ampersand-subscribe p{font-size:15px;line-height:1.6;color:var(--ink-muted)}
+.ampersand-subscribe__inner>div>a{display:inline-flex;align-items:center;min-height:44px;margin-top:12px;color:var(--ink);font-size:14px;text-underline-offset:4px}
+.ampersand-subscribe .subform{margin-top:0}.ampersand-subscribe .subform input{background:var(--paper);color:var(--ink);border:1px solid var(--ink-muted);min-width:0}
+.ampersand-subscribe .subform input::placeholder{color:var(--ink-muted)}
+.ampersand-subscribe .ampersand-subscribe__fine{font-size:12px;margin-top:12px}
+@media(max-width:760px){.ampersand-subscribe__inner{grid-template-columns:1fr;gap:24px}.essay__head .essay__dek{font-size:18px}.essay__cta--quiet h2{font-size:25px}.feed__featured-img{min-height:0}}
+@media(max-width:480px){.ampersand-subscribe .subform{display:flex;flex-direction:column;align-items:stretch}.ampersand-subscribe .subform>*{width:100%}}
+</style>
 ${ld}
 </head>`;
 }
@@ -226,7 +251,7 @@ export function nav() {
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment (free call)" class="btn btn--primary" href="/book/"><span class="btn__full">Book a free assessment</span><span class="btn__short" aria-hidden="true">Free call</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -316,41 +341,21 @@ export function footer() {
 // Subscribe band (ink). subscribeUrl is wired into the form action; blog.js
 // enhances submit to carry the email. Falls back to "#" when unconfigured.
 export function subscribeBand(subscribeUrl, publicationUrl) {
-	// Bake a real URL at build time. blog.js may still rewrite this to a
-	// publication-specific value, but that is an enhancement, not the thing
-	// that makes the form work: action="#" posted the reader back to the page.
 	const action = subscribeUrl || BEEHIIV_SUBSCRIBE_FALLBACK;
-	const archive = publicationUrl || subscribeUrl || BEEHIIV_SUBSCRIBE_FALLBACK;
-	return `<section class="section ink">
-  <div class="wrap">
-    <div class="news">
-      <div class="subcard crop">
-        <div class="tick-lbl"><span>${esc(BLOG_NAME)} / free</span><span>A few times a month</span></div>
-        <h3>Read before you ever pick up the phone.</h3>
-        <p class="lead" style="font-size:15px;">Free essays, a few times a month. One field. No sales pitches.</p>
-        <form class="subform" data-beehiiv-subscribe action="${attr(action)}" method="get" target="_blank">
-          <input type="email" name="email" placeholder="Email address" aria-label="Email address" required inputmode="email" />
-          <button class="btn btn--primary" type="submit">Get the essays <span class="arr">&#8594;</span></button>
-        </form>
-        <p style="font-family:var(--mono);font-size:11px;color:var(--dtx-faint);margin-top:14px;line-height:1.6;">Delivered by beehiiv. No spam, unsubscribe anytime.</p>
-      </div>
-      <div class="subnote">
-        <span class="kicker kicker--plain">Why subscribe</span>
-        <ul>
-          <li>Short essays you can read in one sitting</li>
-          <li>How we actually think about AI on Main Street</li>
-          <li>No pitches, no funnels. Leave whenever it stops paying</li>
-        </ul>
-        <a class="feed__archive" href="/blog/archive/">Full archive <span class="arr">&#8594;</span></a>
-      </div>
-    </div>
+	return `<section class="section paper ampersand-subscribe">
+  <div class="wrap ampersand-subscribe__inner">
+    <div><span class="tick-lbl">${esc(BLOG_NAME)}</span><h2>Keep a place for good judgment.</h2><p>Free essays, a few times a month. Unsubscribe whenever you like.</p><a href="/blog/archive/">Browse the archive <span aria-hidden="true">→</span></a></div>
+    <div><form class="subform" data-beehiiv-subscribe action="${attr(action)}" method="get" target="_blank">
+      <input type="email" name="email" placeholder="Email address" aria-label="Email address for The Ampersand" required inputmode="email" />
+      <button class="btn btn--primary" type="submit">Get the essays <span class="arr">&#8594;</span></button>
+    </form><p class="ampersand-subscribe__fine">Newsletter delivered by beehiiv.</p></div>
   </div>
 </section>`;
 }
 
 // Scripts shared by every blog page: mobile nav + subscribe enhancement + search.
 export function pageScripts() {
-	return `<script defer src="/js/nav.js?v=8"></script>
+	return `<script defer src="/js/nav.js?v=9"></script>
 <script defer src="/js/analytics.js?v=5"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

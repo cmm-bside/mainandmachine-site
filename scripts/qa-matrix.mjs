@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // qa-matrix — the design-system consistency matrix, rendered.
 //
-// Eight checks per route per width:
+// Nine checks per route per width:
 //   links      two link treatments only (STYLE A / STYLE B), and the invariant
 //              that underline + accent never co-occur at REST
 //   buttons    two button variants only, one 52px box, PRIMARY carries the
@@ -16,6 +16,7 @@
 //   widows     multi-line headings do not strand a one-word last line
 //   container  one container, max-width 1160px
 //   chrome     utility bar + footer are DOM-identical across pages
+//   booking    compact mobile launcher and a deliberate native form alternative
 //
 // Needs Playwright (deliberately not a dependency, as with sweep:mobile):
 //   npm i -D playwright && npm run qa:matrix
@@ -219,18 +220,14 @@ const audit = (cfg) => {
 	// `section.section.paper` and `#request` to `section.section.paper-2`, both
 	// of which name half the pages on the site. Same trap CLOSE_96_OTHER notes.
 	//
-	// `bottom: null` means "the sitewide --section-y" — /book/'s request section
-	// only pulls its TOP in, and keeps a full closing step at the foot of a
-	// section that runs 3000px.
+	// `bottom: null` means "the sitewide --section-y".
 	const SECTION_Y_EXEMPT = [
 		// The homepage hero: sized to fit the nav→first-dark-band run inside one
 		// 900px viewport (styles.css, HERO block).
 		{ sel: "section.hero", top: "96px", bottom: "96px" },
-		// /book/, both halves of the same measurement: the scheduler iframe is
-		// the page's conversion and started 294px below a 900px fold. 96 + 48 +
-		// 48 replaces 160 + 160 + 160 above it. See book/index.html.
-		{ sel: "section.bookhero", top: "96px", bottom: "48px" },
-		{ sel: "section#request", top: "48px", bottom: null },
+		// /book/: advisor and launcher now share a compact opening. #request
+		// is the launcher anchor within that hero, not a second padded section.
+		{ sel: "section.bookhero", top: window.innerWidth <= 768 ? "38px" : "52px", bottom: window.innerWidth <= 768 ? "38px" : "48px" },
 		// Every other page hero (2026-09-01): the homepage's 96/96, one entry per
 		// class so a hero class that drifts is named in the failure. See the
 		// PAGE HEROES note in the HERO block of styles.css.
@@ -366,6 +363,24 @@ const audit = (cfg) => {
 		return out.join("\n");
 	};
 
+	/* ---------- booking composition (only the booking destination) ---------- */
+	if (location.pathname === "/book/") {
+		const launch = document.getElementById("calLaunch");
+		const choice = document.getElementById("requestChoice");
+		const summary = choice?.querySelector(":scope > summary");
+		const request = document.getElementById("request");
+		const panel = document.getElementById("calPanel");
+		if (!launch || !vis(launch)) add("booking", "calendar launcher is not visible");
+		else if (window.innerWidth <= 768) {
+			const box = launch.getBoundingClientRect();
+			if (box.top < 0 || box.bottom > window.innerHeight) add("booking", "mobile launcher falls outside the first screen");
+		}
+		if (!(choice instanceof HTMLDetailsElement) || !summary || !vis(summary)) add("booking", "request form needs a visible native disclosure");
+		else if (choice.open) add("booking", "alternative form is expanded before it is chosen");
+		if (!request?.contains(launch)) add("booking", "booking navigation anchor does not lead to the launcher");
+		if (!panel?.hidden || launch?.getAttribute("aria-expanded") !== "false" || document.querySelector("#calEmbed iframe")) add("booking", "calendar starts before deliberate activation");
+	}
+
 	/* ---------- 6. heading widows (mutates: run last) ---------- */
 	let widows = 0;
 	const widowList = [];
@@ -447,7 +462,7 @@ for (const r of results) {
 	if (!barMajority.includes(r.route)) r.fails.push({ check: "chrome", detail: "utility bar DOM differs from the shared bar" });
 }
 
-const CHECKS = ["links", "buttons", "section-y", "min-11px", "contrast", "widows", "container", "chrome"];
+const CHECKS = ["links", "buttons", "section-y", "min-11px", "contrast", "widows", "container", "chrome", "booking"];
 const cell = (route, check) => {
 	const rows = results.filter((r) => r.route === route);
 	if (check === "widows") {

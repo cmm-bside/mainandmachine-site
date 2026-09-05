@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="art-title art-desc"><title id="art-title">A balance comparing a stack of work with the resources required to support it.</title><desc id="art-desc">Original conceptual illustration for The Ampersand. It is not a product screen or a chart of measured results.</desc><style>.stroke{stroke:#1B1611;stroke-width:3;fill:none}.route{stroke:#1B1611;stroke-width:3;fill:none;stroke-dasharray:10 9}.gate{stroke:#C6401E;stroke-width:8;fill:none}</style><rect width="1200" height="800" fill="#F0EBE1"/><path d="M64 58h1072M64 742h1072" stroke="#D6CCBA" stroke-width="2"/><path d="M64 58h68" stroke="#C6401E" stroke-width="5"/>
+    <path d="M600 300V648M488 652H712" stroke="#1B1611" stroke-width="14"/>
+    <path d="M210 289L990 226" stroke="#1B1611" stroke-width="13"/>
+    <circle cx="600" cy="257" r="30" fill="#C6401E"/>
+    <path d="M277 284L178 505M277 284L385 505M911 235L811 457M911 235L1020 457" stroke="#1B1611" stroke-width="3" fill="none"/>
+    <path d="M156 506H409Q390 582 282 582Q175 582 156 506M789 458H1041Q1020 534 914 534Q806 534 789 458" fill="#E4DBC8" stroke="#1B1611" stroke-width="3"/>
+    <g transform="rotate(-6 284 425.5)"><path d="M219 359h148v151h-148z" fill="#E4DBC8"/><rect x="210" y="350" width="148" height="151" fill="#F0EBE1" stroke="#1B1611" stroke-width="3"/><path d="M233.68 380.2h43.2752" stroke="#C6401E" stroke-width="6"/><path d="M233.68 408.89h100.64" stroke="#6E6455" stroke-width="2"/><path d="M233.68 423.235h100.64" stroke="#6E6455" stroke-width="2"/><path d="M233.68 437.58000000000004h69.4416" stroke="#6E6455" stroke-width="2"/></g>
+    <g fill="#E4DBC8" stroke="#1B1611" stroke-width="3"><path d="M852 410h122v38H852z"/><path d="M852 365h122v38H852z"/><path d="M852 320h122v38H852z"/></g>
+    <path d="M860 320h106v16H860z" fill="#C6401E"/></svg>

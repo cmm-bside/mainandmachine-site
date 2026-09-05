@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="art-title art-desc"><title id="art-title">A continuous path winding through several generations of machine components.</title><desc id="art-desc">Original conceptual illustration for The Ampersand. It is not a product screen or a chart of measured results.</desc><style>.stroke{stroke:#1B1611;stroke-width:3;fill:none}.route{stroke:#1B1611;stroke-width:3;fill:none;stroke-dasharray:10 9}.gate{stroke:#C6401E;stroke-width:8;fill:none}</style><rect width="1200" height="800" fill="#F0EBE1"/><path d="M64 58h1072M64 742h1072" stroke="#D6CCBA" stroke-width="2"/><path d="M64 58h68" stroke="#C6401E" stroke-width="5"/>
+    <path d="M152 587C170 236 412 97 603 310S894 682 1048 207" stroke="#1B1611" stroke-width="5" fill="none"/>
+    <circle cx="203" cy="404" r="65" fill="#E4DBC8" stroke="#1B1611" stroke-width="3"/>
+    <path d="M172 364v81m31-81v81m31-81v81" stroke="#1B1611" stroke-width="8"/>
+    <rect x="406" y="169" width="126" height="127" fill="#F0EBE1" stroke="#1B1611" stroke-width="3"/>
+    <path d="M428 199h83m-83 22h83m-83 22h50" class="stroke"/>
+    <rect x="714" y="438" width="129" height="130" rx="3" fill="#C6401E"/>
+    <path d="M739 463h79v80h-79z" fill="none" stroke="#F0EBE1" stroke-width="3"/>
+    <circle cx="1015" cy="351" r="49" fill="#F0EBE1" stroke="#1B1611" stroke-width="3"/>
+    <circle cx="1015" cy="351" r="17" fill="#C6401E"/>
+    <path d="M143 589l20 11 10-22M1031 211l20-17 11 23" class="stroke"/></svg>

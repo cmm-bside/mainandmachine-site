@@ -52,6 +52,7 @@ import {
 	orgJsonLd,
 } from "./lib/templates.mjs";
 import { structureArticle, renderToc, renderArticleBody } from "./lib/article.mjs";
+import { editorialImageFor, writeEditorialArtwork } from "./lib/editorial-art.mjs";
 
 // Scoped styles for the prev/next chronological nav (blog-only component —
 // kept out of styles.css so it needs no site-wide cache-buster bump).
@@ -149,11 +150,12 @@ async function main() {
 	fs.mkdirSync(BLOG_DIR, { recursive: true });
 	fs.mkdirSync(BLOG_DATA_DIR, { recursive: true });
 
-	// Keep the client JSON in sync with the module (covers the postinstall
-	// path, where fetch may not have run).
-	if (!fs.existsSync(BLOG_INDEX_JSON)) {
-		fs.writeFileSync(BLOG_INDEX_JSON, JSON.stringify({ meta, posts }));
-	}
+	// Visible covers have one source for static pages and client-side search.
+	// Keep source/social image metadata intact in the post module and RSS.
+	writeEditorialArtwork(posts, ROOT);
+	fs.writeFileSync(BLOG_INDEX_JSON, JSON.stringify({ meta, posts: posts.map(post => ({
+		...post, heroImage: editorialImageFor(post),
+	})) }));
 
 	writeFile(path.join(BLOG_DIR, "index.html"), renderHome(posts, { subscribeUrl, publicationUrl }));
 	writeFile(path.join(ARCHIVE_DIR, "index.html"), renderArchive(posts, { subscribeUrl, publicationUrl }));
@@ -223,7 +225,7 @@ function ogImageFor(post) {
 }
 
 function thumb(post, cls) {
-	const hi = post.heroImage;
+	const hi = editorialImageFor(post);
 	const img = hi && hi.assetUrl;
 	if (!img) return `<div class="${cls} is-empty"></div>`;
 	const dims = hi.width && hi.height ? ` width="${hi.width}" height="${hi.height}"` : "";
@@ -317,9 +319,9 @@ ${nav()}
     <div class="head-block" style="align-items:flex-end;">
       <div>
         <span class="kicker">Writing / ${esc(BLOG_NAME)}</span>
-        <h1 class="h-hero" style="font-size:clamp(var(--fs-39),6vw,var(--fs-78));">${esc(BLOG_NAME)}.</h1>
+        <h1 class="h-hero ampersand-title">${esc(BLOG_NAME)}.</h1>
       </div>
-      <p class="lead">A newsletter about building durable things in a noisy time. No hype, no countdown timers, no ten-step funnel. If you want to understand how we think before you ever talk to us, start here.</p>
+      <p class="lead">Plain-English essays on how AI works, where it helps a business, and the decisions a machine should never make. Written by Christopher Myers.</p>
     </div>
     ${searchBar("Search the essays…")}
   </div>
@@ -534,7 +536,7 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 
 	// Lead figure — framed, caption optional (caption left, source/credit right).
 	// Images stay natural (Main & Machine doesn't grayscale its art).
-	const hero = post.heroImage;
+	const hero = editorialImageFor(post);
 	const heroCap = hero && (hero.caption || hero.credit)
 		? `<figcaption class="essay__cap">${hero.caption ? `<span class="essay__cap-txt">${esc(hero.caption)}</span>` : "<span></span>"}${hero.credit ? `<span class="essay__cap-src">${esc(hero.credit)}</span>` : ""}</figcaption>`
 		: "";
@@ -558,8 +560,8 @@ function renderPost(post, bodyHtml, allPosts, { subscribeUrl, publicationUrl }) 
 	// point of an author signal. The role is stated for the same reason: a name
 	// alone is not a credential.
 	const authorCredit =
-		`<a href="/about/" rel="author">${esc(AUTHOR)}</a> &mdash; Founder, ${esc(BRAND)}`;
-	const metaRow = [authorCredit, esc(formatDate(post.publishedAt)), updatedStamp ? esc(updatedStamp) : "", `${minutes} min read`, topic ? esc(topic) : ""]
+		`<a href="/about/" rel="author" title="Founder, ${esc(BRAND)}">${esc(AUTHOR)}</a>`;
+	const metaRow = [authorCredit, esc(formatDate(post.publishedAt)), updatedStamp ? esc(updatedStamp) : "", `${minutes} min read`]
 		.filter(Boolean)
 		.map((part) => `<span>${part}</span>`)
 		.join("");
@@ -572,7 +574,7 @@ ${nav()}
   <div class="wrap essay${hasToc ? "" : " essay--solo"}">
     <a class="essay__back" href="/blog/">← ${esc(BLOG_NAME)}</a>
     <header class="essay__head">
-      <span class="kicker">${esc(BLOG_NAME)} · ${esc(formatDate(post.publishedAt))}</span>
+      <span class="kicker">${esc(BLOG_NAME)}</span>
       <h1 class="essay__title">${esc(post.title)}</h1>
       ${post.excerpt ? `<p class="essay__dek">${esc(post.excerpt)}</p>` : ""}
       <div class="essay__meta">${metaRow}</div>
@@ -621,13 +623,13 @@ ${readNext.length
 
 <section class="section paper">
   <div class="wrap">
-    <div class="essay__cta essay__cta--panel crop">
+    <div class="essay__cta essay__cta--quiet">
       <span class="kicker kicker--plain">Main &amp; Machine</span>
-      <h2 class="h2 mt-s">Like how we think? Put it to work.</h2>
-      <p class="lead">This is the kind of workflow the free assessment maps. Thirty minutes, no pitch.</p>
+      <h2 class="mt-s">Have a workflow in mind?</h2>
+      <p>Use a free assessment to explore one practical opportunity, or compare the published prices first.</p>
       <div class="essay__cta-actions">
-        <a class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
-        <a class="btn btn--secondary btn--lg" href="/pricing/">See what it costs</a>
+        <a class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
+        <a class="btn btn--secondary" href="/pricing/">See what it costs</a>
       </div>
     </div>
   </div>

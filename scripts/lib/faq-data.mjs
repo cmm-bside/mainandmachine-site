@@ -177,7 +177,7 @@ export const FAQ = {
 		label: "Sample audit FAQ",
 		heading: "About this sample document.",
 		items: [
-			{ q: "What is this page?", a: "Two pages of a representative sample, built to the template a real AI Readiness Audit ends in, so you can read the document instead of a description of it. A redacted page from real client work replaces it after the next engagement." },
+			{ q: "What is this page?", a: "Two pages showing the format of an AI Readiness Audit: a workflow map and ranked opportunities. The service business, workflow details, and priorities are fictional examples. They are not client findings or measured results." },
 			{ q: "What does the full audit cost?", a: "$3,500–$8,500, fixed in writing, over 2 to 4 weeks." },
 			{ q: "How do I get one with my workflows in it?", a: FREE },
 		],

@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=146" />
+<link rel="stylesheet" href="/styles.css?v=147" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -56,15 +56,13 @@
 .doc__body h2 { font-size: clamp(var(--fs-20), 2.2vw, var(--fs-25)); letter-spacing: -0.01em; margin: 6px 0 8px; }
 .doc__sub { font-family: var(--sans); font-size: var(--t-sm); letter-spacing: normal; color: var(--tx-mute); line-height: 1.6; margin-bottom: 24px; }
 
-/* redaction bars */
-.redact {
-  display: inline-block; background: var(--ink); color: transparent; user-select: none;
-  height: .95em; vertical-align: middle; min-width: 88px; border-radius: 1px;
-}
-.redact--sm { min-width: 54px; }
-.redact--lg { min-width: 130px; }
-
 /* workflow map table */
+.doc__body .map{font-size:15px}
+.doc__body .rank p{font-size:16px;line-height:1.6}
+.doc__body .rank h3{font-size:20px}
+.doc__sub{max-width:75ch}
+.doc__bar{background:var(--paper-tan)}
+@media print{.map{font-size:11px!important}.doc__body .rank p{font-size:12px}}
 .map { width: 100%; border-collapse: collapse; font-size: var(--fs-13); background: var(--surface-hi); }
 .map th {
   font-family: var(--mono); font-size: var(--fs-12); letter-spacing: .12em; text-transform: uppercase;
@@ -76,8 +74,8 @@
 .map-wrap { overflow-x: auto; }
 
 /* At phone widths the five-column map can't fit — restack each row into a
-   redacted-document block: step number as a mono label, then each column
-   as a label/value pair. Keeps every cell (and redaction bar) readable
+   document block: step number as a mono label, then each column
+   as a label/value pair. Keeps every cell readable
    without horizontal scrolling. */
 @media (max-width: 640px) {
   .map, .map tbody, .map tr, .map td { display: block; width: 100%; }
@@ -266,7 +264,7 @@
       "name": "What is this page?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Two pages of a representative sample, built to the template a real AI Readiness Audit ends in, so you can read the document instead of a description of it. A redacted page from real client work replaces it after the next engagement."
+        "text": "Two pages showing the format of an AI Readiness Audit: a workflow map and ranked opportunities. The service business, workflow details, and priorities are fictional examples. They are not client findings or measured results."
       }
     },
     {
@@ -338,7 +336,7 @@
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment (free call)" class="btn btn--primary" href="/book/"><span class="btn__full">Book a free assessment</span><span class="btn__short" aria-hidden="true">Free call</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -360,8 +358,8 @@
     <div class="pagehero__grid">
       <div>
         <span class="kicker">Sample audit</span>
-        <h1 class="h2 mt-s">This is the artifact <span class="accent-tx">you buy.</span></h1>
-        <p class="lead mt-s">Most firms describe their deliverable. We’d rather you read it. Below are two pages of a representative sample, built to the template a real AI Readiness Audit ends in. The workflow is composed, not a client’s — after the next engagement, a redacted page from real client work replaces it. What the audit is — and deliberately isn’t — is defined in <a href="/guides/what-is-an-ai-readiness-audit/">the audit guide</a>.</p>
+        <h1 class="h2 mt-s">See what your <span class="accent-tx">audit delivers.</span></h1>
+        <p class="lead mt-s">Read a workflow map and the opportunities it produces. This example follows a fictional service business from incoming request to scheduled job. It shows the format of an AI Readiness Audit; it does not represent a client engagement or measured results. <a href="/guides/what-is-an-ai-readiness-audit/">See what the full audit includes</a>.</p>
       </div>
       <div class="statrail crop" aria-label="Audit at a glance">
         <div class="statrail__bar"><span>The audit</span><span><b>Spec</b></span></div>
@@ -378,15 +376,15 @@
   <div class="wrap">
     <div class="docs">
 
-      <!-- ---- Page 1: redacted workflow map ---- -->
+      <!-- ---- Page 1: fictional workflow map ---- -->
       <article class="doc">
         <div class="doc__bar">
           <span><b>Page 1 / 2</b> · Sample workflow map</span>
-          <span>AI Readiness Audit · Sample</span>
+          <span>Fictional example · Not client work</span>
         </div>
         <div class="doc__body">
-          <h2>Workflow map: client intake</h2>
-          <p class="doc__sub">A representative intake workflow, built to the real deliverable template. The workflow is composed, not a client’s; the structure and the depth are what you’re buying. A redacted page from a real audit replaces this after the next engagement.</p>
+          <h2>Workflow map: service requests</h2>
+          <p class="doc__sub">Example business: a neighborhood repair company. The question: where does a new service request slow down before a job is scheduled? All roles, tools, and workflow details below are illustrative.</p>
           <div class="map-wrap">
             <table class="map">
               <thead>
@@ -395,38 +393,38 @@
               <tbody>
                 <tr>
                   <td>01</td>
-                  <td>Request arrives by email or web form from <span class="redact" aria-label="redacted"></span></td>
-                  <td><span class="redact redact--sm" aria-label="redacted"></span></td>
+                  <td>A customer requests a repair by email or web form</td>
+                  <td>Intake coordinator</td>
                   <td>Shared inbox</td>
-                  <td>Sits unread when <span class="redact redact--sm" aria-label="redacted"></span> is out</td>
+                  <td>Requests wait when the usual coordinator is away</td>
                 </tr>
                 <tr>
                   <td>02</td>
-                  <td>Details re-keyed by hand into <span class="redact" aria-label="redacted"></span></td>
+                  <td>Customer, address, and job details are copied into the job tracker</td>
                   <td>Office manager</td>
-                  <td><span class="redact redact--sm" aria-label="redacted"></span></td>
-                  <td>Typos and missing fields surface weeks later</td>
+                  <td>Job tracker</td>
+                  <td>Missing details are discovered after the record is created</td>
                 </tr>
                 <tr>
                   <td>03</td>
-                  <td>Missing information chased over <span class="redact redact--sm" aria-label="redacted"></span> and phone</td>
-                  <td><span class="redact redact--sm" aria-label="redacted"></span></td>
-                  <td>Email · phone</td>
-                  <td>No record of what was already asked</td>
+                  <td>The team asks for photos, access details, or a clearer description</td>
+                  <td>Intake coordinator</td>
+                  <td>Email and phone</td>
+                  <td>Colleagues cannot see which questions have already been asked</td>
                 </tr>
                 <tr>
                   <td>04</td>
-                  <td>Job routed to <span class="redact" aria-label="redacted"></span> by whoever is in the inbox</td>
-                  <td>Whole front office</td>
-                  <td>Forwarding</td>
-                  <td>Routing depends on who’s at their desk</td>
+                  <td>The job is assigned to the right service category and available crew</td>
+                  <td>Dispatch lead</td>
+                  <td>Job schedule</td>
+                  <td>Routing relies on one person knowing every exception</td>
                 </tr>
                 <tr>
                   <td>05</td>
-                  <td>Remaining steps follow the audited workflow: <span class="redact redact--lg" aria-label="redacted"></span></td>
-                  <td><span class="redact redact--sm" aria-label="redacted"></span></td>
-                  <td><span class="redact redact--sm" aria-label="redacted"></span></td>
-                  <td><span class="redact" aria-label="redacted"></span></td>
+                  <td>The customer receives the agreed next step and the job record is updated</td>
+                  <td>Office manager</td>
+                  <td>Email and job tracker</td>
+                  <td>Updates are typed twice; customers call to ask what happens next</td>
                 </tr>
               </tbody>
             </table>
@@ -438,34 +436,34 @@
       <article class="doc">
         <div class="doc__bar">
           <span><b>Page 2 / 2</b> · Where AI pays</span>
-          <span>AI Readiness Audit · Sample</span>
+          <span>Fictional example · Not client work</span>
         </div>
         <div class="doc__body">
           <h2>Where AI pays: ranked</h2>
-          <p class="doc__sub">The handful of places worth building, in order. Effort and payoff are stated as ranges. Never dollar promises. Representative, like page 1 — the ranking method is what a real audit hands you.</p>
+          <p class="doc__sub">An illustrative priority order for the same fictional business. Effort and potential payoff are judgment ranges, not measured outcomes. A real audit would validate volume, handling time, exceptions, and tool access before recommending a build.</p>
           <ol class="rank">
             <li>
               <span class="rank__no">01</span>
               <div>
                 <h3>Intake triage &amp; routing</h3>
-                <p>An agent reads each request, drafts the summary, and routes it. A person reviews every draft. Specifics for this client: redacted. <span class="redact redact--lg" aria-label="redacted"></span></p>
-                <div class="rank__tags"><span>Effort: <b>low–medium</b></span><span>Payoff: <b>medium–high</b></span><span>Build: <b>weeks, not months</b></span></div>
+                <p>Prepare a service-request summary, identify missing details, and suggest a routing category. The intake coordinator checks the draft; the dispatch lead owns assignment. Validate first: request volume and the rules behind routing exceptions.</p>
+                <div class="rank__tags"><span>Effort: <b>low–medium</b></span><span>Payoff: <b>medium–high</b></span><span>Decision: <b>validate before quoting</b></span></div>
               </div>
             </li>
             <li>
               <span class="rank__no">02</span>
               <div>
-                <h3>Invoice follow-up drafting</h3>
-                <p>Outstanding invoices tracked, reminders drafted in the firm’s voice, exceptions flagged for a human. Specifics for this client: redacted. <span class="redact redact--lg" aria-label="redacted"></span></p>
-                <div class="rank__tags"><span>Effort: <b>medium</b></span><span>Payoff: <b>medium–high</b></span><span>Build: <b>weeks, not months</b></span></div>
+                <h3>Missing-information follow-up</h3>
+                <p>Draft one clear request for the missing photos or job details, using the existing conversation. A person reviews it before sending. Validate first: which follow-ups repeat often enough to justify automation.</p>
+                <div class="rank__tags"><span>Effort: <b>medium</b></span><span>Payoff: <b>medium–high</b></span><span>Decision: <b>validate before quoting</b></span></div>
               </div>
             </li>
             <li>
               <span class="rank__no">03</span>
               <div>
-                <h3>Cross-system status sync</h3>
-                <p>CRM, billing, and project software showing the same job at the same status, without hand reconciliation. Specifics for this client: redacted. <span class="redact redact--lg" aria-label="redacted"></span></p>
-                <div class="rank__tags"><span>Effort: <b>medium–high</b></span><span>Payoff: <b>medium</b></span><span>Build: <b>scoped in writing first</b></span></div>
+                <h3>Confirmed-status updates</h3>
+                <p>Use an approved scheduling change to prepare a customer update and keep the job tracker aligned. Deterministic integration may be enough; a model is only useful where interpretation is needed. Validate first: available connections and the authoritative status field.</p>
+                <div class="rank__tags"><span>Effort: <b>medium–high</b></span><span>Payoff: <b>medium</b></span><span>Decision: <b>check tool access first</b></span></div>
               </div>
             </li>
           </ol>
@@ -475,8 +473,8 @@
     </div>
 
     <div class="doc-caption">
-      <span class="big">This is the artifact you buy.</span>
-      <p>Every audit ends in a document like this one, owned by you.</p>
+      <span class="big">See what your audit delivers.</span>
+      <p>Your audit uses your workflows, evidence, and priorities. The resulting document belongs to you, whether or not you commission the build.</p>
     </div>
 
     <div class="doc-actions">
@@ -501,7 +499,7 @@
       <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">What is this page?</span></summary>
-          <p>Two pages of a representative sample, built to the template a real AI Readiness Audit ends in, so you can read the document instead of a description of it. A redacted page from real client work replaces it after the next engagement.</p>
+          <p>Two pages showing the format of an AI Readiness Audit: a workflow map and ranked opportunities. The service business, workflow details, and priorities are fictional examples. They are not client findings or measured results.</p>
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">What does the full audit cost?</span></summary>
@@ -616,7 +614,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.doc,.doc-caption,.doc-actions,.final .wrap > *,.foot__top > *"></script>
 
-<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/nav.js?v=9"></script>
 <script defer src="/js/analytics.js?v=5"></script>
 </body>
 </html>

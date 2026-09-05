@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="760" viewBox="0 0 960 760" role="img" aria-labelledby="title desc">
+  <title id="title">MARCUS: preparation, model routing, and human approval</title>
+  <desc id="desc">Simplified architecture of the B:Side deployment, not a product screenshot. Requests and company records pass through a privacy filter before local processing or selected external reasoning on filtered text. Prepared work reaches a person for review. Consequential action follows approval; a reviewer can also send work back or escalate. Filtering is not a guarantee of perfect detection.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#1B1611" stroke-width="1.4"/></marker></defs>
+  <rect width="960" height="760" fill="#F0EBE1"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#1B1611">
+    <text x="40" y="48" font-size="24" font-weight="700">MARCUS / HOW THE WORK MOVES</text>
+    <rect x="32" y="90" width="590" height="414" rx="3" fill="none" stroke="#6E6455" stroke-width="1.5" stroke-dasharray="7 7"/>
+    <text x="52" y="124" font-size="21" fill="#6E6455">B:Side-controlled preparation</text>
+    <g stroke="#1B1611" stroke-width="2" fill="#E4DBC8">
+      <rect x="58" y="156" width="232" height="114"/>
+      <rect x="350" y="156" width="244" height="114"/>
+      <rect x="58" y="340" width="232" height="116"/>
+      <rect x="350" y="340" width="244" height="116"/>
+    </g>
+    <g text-anchor="middle" font-size="25" font-weight="700">
+      <text x="174" y="198">Requests &amp;</text><text x="174" y="230">company records</text>
+      <text x="472" y="198">Privacy filter</text>
+      <text x="174" y="383">Local model</text>
+      <text x="472" y="383">Prepared work</text>
+    </g>
+    <g text-anchor="middle" font-size="21" fill="#6E6455">
+      <text x="472" y="232">Before any model</text>
+      <text x="174" y="420">B:Side-owned server</text>
+      <text x="472" y="420">Sources &amp; exceptions</text>
+    </g>
+    <g fill="none" stroke="#1B1611" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M290 213H345"/>
+      <path d="M472 270V305H174V335"/>
+      <path d="M290 397H345"/>
+      <path d="M594 213H683"/>
+      <path d="M806 327V397H599"/>
+      <path d="M472 456V562"/>
+      <path d="M594 620H683"/>
+    </g>
+    <rect x="688" y="154" width="236" height="173" fill="none" stroke="#1B1611" stroke-width="2"/>
+    <g text-anchor="middle">
+      <text x="806" y="195" font-size="25" font-weight="700">External model</text>
+      <text x="806" y="235" font-size="21">Selected tasks</text>
+      <text x="806" y="266" font-size="21">Filtered text only</text>
+      <text x="806" y="300" font-size="19" fill="#6E6455">Chosen by B:Side</text>
+    </g>
+    <text x="655" y="432" font-size="19" fill="#6E6455">Model output returns</text>
+    <rect x="350" y="567" width="244" height="106" fill="#F0EBE1" stroke="#C6401E" stroke-width="4"/>
+    <rect x="688" y="567" width="236" height="106" fill="#1B1611"/>
+    <g text-anchor="middle" font-size="25" font-weight="700">
+      <text x="472" y="610">Human review</text>
+      <text x="806" y="610" fill="#F0EBE1">Approved action</text>
+    </g>
+    <text x="472" y="645" font-size="21" text-anchor="middle">A person decides</text>
+    <text x="806" y="645" font-size="21" text-anchor="middle" fill="#F0EBE1">Send · file · post · pay</text>
+    <path d="M40 568v105" stroke="#C6401E" stroke-width="4"/>
+    <text x="58" y="710" font-size="22">Review can also send work back or escalate. Silence is never approval.</text>
+    <text x="58" y="739" font-size="18" fill="#6E6455">Simplified architecture · Filtering does not guarantee perfect detection.</text>
+    <text x="58" y="595" font-size="21" fill="#6E6455">The decision</text>
+    <text x="58" y="626" font-size="21" fill="#6E6455">stays with</text>
+    <text x="58" y="657" font-size="21" fill="#6E6455">your people.</text>
+  </g>
+</svg>

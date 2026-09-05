@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="styles.css?v=146" />
+<link rel="stylesheet" href="styles.css?v=147" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
@@ -250,7 +250,7 @@
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment (free call)" class="btn btn--primary" href="/book/"><span class="btn__full">Book a free assessment</span><span class="btn__short" aria-hidden="true">Free call</span><span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -260,34 +260,33 @@
 <main id="main" tabindex="-1" class="home-upgrade">
 <section class="section paper home-hero" aria-labelledby="home-title">
   <div class="wrap home-hero__grid">
-    <div>
+    <div class="home-intro">
       <span class="kicker">AI implementation for small &amp; mid-size business</span>
-      <h1 id="home-title">AI systems that take repetitive work <span class="accent-tx">off your team.</span></h1>
-      <p class="lead">We build systems that handle repetitive intake, follow-up, reporting, and work between your tools. Get a clear scope, a written price, and a working system your team owns.</p>
+      <h1 id="home-title">AI systems that give your team <span class="accent-tx">time back.</span></h1>
+      <p class="lead">We build AI systems for intake, follow-up, reporting, and the work between your tools. Clear scope. Written price. Yours to own.</p>
       <div class="home-actions">
         <a data-cta="hero" class="btn btn--primary btn--lg" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
         <a class="home-text-link" href="/work/marcus/results/">See what we’ve built <span aria-hidden="true">&#8594;</span></a>
       </div>
-      <p class="home-note">30 minutes with a senior advisor. Bring one workflow that slows you down.</p>
-      <div class="home-assurance"><span>Fixed project price</span><span>You own the build</span><span>Humans stay in control</span></div>
+      <p class="home-note">Free · 30 minutes · One useful next step</p>
+      <div class="home-evidence"><span class="home-evidence__mark" aria-hidden="true">B:</span><p><strong>Built and used at B:Side Capital.</strong><br>A founder-affiliated deployment in a regulated lender. <a href="/work/marcus/results/">See the measured results&nbsp;→</a></p></div>
     </div>
-    <aside class="home-workflow" aria-label="Illustrative intake workflow">
-      <div class="home-workflow__header"><span class="kicker kicker--plain">What this looks like</span><span class="home-chip">Example workflow</span></div>
-      <h2>From inbox to action.</h2>
-      <p>Less copying, chasing, and checking. A clear handoff at every step.</p>
-      <ol class="home-flow">
-        <li><span class="home-flow__number">01</span><div><h3>A request comes in</h3><p>Email, a form, or a call starts the workflow.</p></div></li>
-        <li><span class="home-flow__number">02</span><div><h3>The system prepares the work</h3><p>Captures details, updates your tools, and drafts the next step.</p></div></li>
-        <li class="home-flow__human"><span class="home-flow__number">03</span><div><h3>Your team handles the judgment</h3><p>Approves consequential actions and resolves exceptions.</p></div></li>
-        <li><span class="home-flow__number">04</span><div><h3>The work keeps moving</h3><p>Approved follow-ups go out. Every action leaves a record.</p></div></li>
-      </ol>
-      <a href="/services/builds/">Explore systems we build <span aria-hidden="true">&#8594;</span></a>
-    </aside>
+    <figure class="workflow-artifact" aria-labelledby="workflow-caption">
+      <div class="workflow-artifact__top"><span>Intake → follow-up</span><span class="workflow-artifact__sample">Illustrative workflow</span></div>
+      <div class="workflow-artifact__stage">
+        <div class="workflow-artifact__input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/></svg><div><span class="workflow-artifact__label">01 · A request arrives</span><strong>Your existing inbox</strong></div></div>
+        <div class="workflow-artifact__connector" aria-hidden="true"></div>
+        <div class="workflow-artifact__work"><div class="workflow-artifact__work-head"><span class="workflow-artifact__label">02 · The system prepares</span><span class="workflow-artifact__symbol" aria-hidden="true">&amp;</span></div><h2>A clear next step.</h2><div class="workflow-artifact__outputs"><span><i aria-hidden="true">✓</i> Details captured</span><span><i aria-hidden="true">✓</i> Customer record updated</span><span><i aria-hidden="true">✓</i> Response drafted</span></div></div>
+        <div class="workflow-artifact__connector" aria-hidden="true"></div>
+        <div class="workflow-artifact__review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m1-10 2 2 4-5"/></svg><div><span class="workflow-artifact__label">03 · Your team decides</span><strong>Review. Approve. Send.</strong></div><span class="workflow-artifact__human">Human<br>judgment</span></div>
+      </div>
+      <figcaption id="workflow-caption">The repetitive work is prepared. The consequential decisions stay with you.</figcaption>
+    </figure>
   </div>
 </section>
 <section class="section ink home-proof" id="proof">
   <div class="wrap">
-    <div class="home-section-head"><div><span class="kicker">Built. Used. Measured.</span><h2>Working inside a regulated lender.</h2></div><p>MARCUS is a private AI system built for B:Side Capital. Its first 90 days of full-fleet operation returned these internally measured results.</p></div>
+    <div class="home-section-head"><div><span class="kicker">Built. Used. Measured.</span><h2>Real work. Reported results.</h2></div><p>MARCUS at B:Side Capital.<br>Internally measured over its first 90 days of full-fleet operation.</p></div>
     <!-- BUILD-LOG:MARCUS-HOME — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
           <div class="bstat">
             <div class="bstat__i" data-figure="hours-returned">
@@ -310,11 +309,17 @@
 <section class="section paper" id="work">
   <div class="wrap">
     <div class="home-section-head"><div><span class="kicker">Start with the work</span><h2>Where is your team losing time?</h2></div><p>You don’t need an AI strategy to start a conversation. You need a problem worth solving.</p></div>
-    <div class="home-cards">
-      <article class="home-card"><span class="kicker kicker--plain">Intake &amp; follow-up</span><h3>Get back to customers faster.</h3><p>Capture new inquiries, route requests, and keep follow-ups from falling through the cracks.</p><a href="/services/builds/instant-lead-response/">Explore lead response <span aria-hidden="true">&#8594;</span></a></article>
-      <article class="home-card"><span class="kicker kicker--plain">Knowledge &amp; reporting</span><h3>Find the answer. Skip the hunt.</h3><p>Help your team find company information and prepare routine work from approved sources.</p><a href="/services/builds/company-knowledge-base/">Explore a company knowledge base <span aria-hidden="true">&#8594;</span></a></article>
-      <article class="home-card"><span class="kicker kicker--plain">Connected operations</span><h3>Stop moving the same data twice.</h3><p>Connect the systems you already use so records, updates, and handoffs move together.</p><a href="/services/builds/business-system-connectors/">Explore system connections <span aria-hidden="true">&#8594;</span></a></article>
+    <div class="home-usecases">
+      <article class="home-usecase"><span class="home-usecase__number">01</span><div><span class="kicker kicker--plain">Intake &amp; follow-up</span><h3>Get back to customers faster.</h3></div><p>Capture inquiries, route requests, and prepare the next follow-up.</p><a href="/services/builds/instant-lead-response/" aria-label="Explore lead response">Explore <span aria-hidden="true">↗</span></a></article>
+      <article class="home-usecase"><span class="home-usecase__number">02</span><div><span class="kicker kicker--plain">Knowledge &amp; reporting</span><h3>Find the answer. Skip the hunt.</h3></div><p>Find company information and prepare routine work from approved sources.</p><a href="/services/builds/company-knowledge-base/" aria-label="Explore a company knowledge base">Explore <span aria-hidden="true">↗</span></a></article>
+      <article class="home-usecase"><span class="home-usecase__number">03</span><div><span class="kicker kicker--plain">Connected operations</span><h3>Stop moving the same data twice.</h3></div><p>Connect your existing tools so records, updates, and handoffs move together.</p><a href="/services/builds/business-system-connectors/" aria-label="Explore business system connections">Explore <span aria-hidden="true">↗</span></a></article>
     </div>
+  </div>
+</section>
+<section class="section paper home-case" aria-labelledby="home-case-title">
+  <div class="wrap home-case__grid">
+    <div class="home-case__copy"><span class="kicker">Inside the build · MARCUS</span><h2 id="home-case-title">See how the work fits together.</h2><p>Company knowledge, document preparation, and human review—connected inside an operating business.</p><p>MARCUS was built for B:Side Capital, the lender our founder leads. Explore the system, its reported results, and the limits of those measurements.</p><a class="home-text-link" href="/work/marcus/results/">Explore the case study <span aria-hidden="true">→</span></a></div>
+    <figure class="home-case__figure"><img src="/images/diagrams/marcus-workflow.svg" alt="Simplified MARCUS workflow: approved company sources feed a private system that prepares work for human review." width="960" height="760" loading="lazy" decoding="async"/><figcaption>Simplified system map · B:Side Capital deployment<br><a href="/images/diagrams/marcus-workflow.svg">Open the full system map ↗</a></figcaption></figure>
   </div>
 </section>
 <section class="section paper-2" id="pricing">
@@ -331,7 +336,7 @@
 <section class="section paper" id="about">
   <div class="wrap home-founder">
     <figure><picture><source type="image/webp" srcset="/images/christopher-myers-hedcut.webp?v=3" /><img src="/images/christopher-myers-hedcut.png?v=3" alt="Christopher Myers, founder of Main &amp; Machine" width="768" height="768" loading="lazy" decoding="async" /></picture><figcaption>Christopher Myers · Founder &amp; Chairman</figcaption></figure>
-    <div><span class="kicker">The machine belongs to Main Street.</span><h2>Built by people who know what it means to run a business.</h2><p class="lead">Christopher Myers leads Main &amp; Machine alongside a team of AI-native builders. He is CEO of B:Side Capital and Fund, a professor at ASU’s W. P. Carey School, and an author with 20 years serving small businesses.</p><p>We start with the work, define who stays accountable, and build around your team’s judgment.</p><div class="home-actions"><a class="home-text-link" href="/about/">Meet the team <span aria-hidden="true">&#8594;</span></a><a class="home-text-link" href="/security/">How we handle your data <span aria-hidden="true">&#8594;</span></a></div></div>
+    <div><span class="kicker">The machine belongs to Main Street.</span><h2>Built by people who know the weight of running a business.</h2><p class="lead">Christopher Myers leads Main &amp; Machine alongside a team of AI-native builders. He is CEO of B:Side Capital and Fund, a professor at ASU’s W. P. Carey School, and an author with 20 years serving small businesses.</p><p>We start with the work, define who stays accountable, and build around your team’s judgment.</p><div class="home-actions"><a class="home-text-link" href="/about/">Who builds your system <span aria-hidden="true">&#8594;</span></a><a class="home-text-link" href="/security/">How we handle your data <span aria-hidden="true">&#8594;</span></a></div></div>
   </div>
 </section>
 <!-- TESTIMONIALS: rendered by scripts/build-testimonials.mjs — do not hand-edit -->
@@ -420,7 +425,7 @@
      Hero keeps its own treatment (js/hero-machine.js). Disabled under reduced-motion. -->
 <script defer src="/js/reveal.js?v=53"></script>
 
-<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/nav.js?v=9"></script>
 <script defer src="/js/analytics.js?v=5"></script>
 </body>
 </html>

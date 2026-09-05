@@ -14,7 +14,7 @@ const REQUIRED = [
   "Is it really free?",
   "Fair questions.",
   "What happens · 30 minutes",
-  "Who you’ll talk to", // typographic apostrophe — page copy is educated (“ ” ‘ ’)
+  "Accountable for the work", // founder accountability; the call may be with a senior advisor
   "Christopher Myers",
   // Booking banner (delivery framing). Assert the structural hook, never the
   // quarter itself — a literal "Q4" here would need editing at every rollover

@@ -68,7 +68,7 @@ function check(name, ok, detail) {
 const { chromium } = await loadPlaywright();
 const server = await serve();
 const browser = await chromium.launch();
-const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
 
 // Every Calendly request — including the iframe the page mounts itself — is
 // answered locally. No network, and the frame's origin is https://calendly.com.
@@ -95,7 +95,21 @@ await page.goto(`http://127.0.0.1:${PORT}/book/?service=sprint&industry=retail&t
 
 // The page and request form must be usable before any calendar request.
 check("calendar waits for deliberate activation", calendarRequests.length === 0 && await page.locator("#calEmbed iframe").count() === 0, JSON.stringify(calendarRequests));
-check("request form available before activation", await page.locator("#assessForm").isVisible(), "request form hidden");
+const launcherBox = await page.locator("#calLaunch").boundingBox();
+check("mobile launcher is within the first screen", !!launcherBox && launcherBox.y >= 0 && launcherBox.y + launcherBox.height <= 844, JSON.stringify(launcherBox));
+check("request form is a visible, explicit alternative", await page.locator("#requestChoice > summary").isVisible() && !await page.locator("#assessForm").isVisible(), "initial alternative state");
+await page.locator("#requestChoice > summary").focus();
+await page.keyboard.press("Enter");
+check("keyboard opens the native request form", await page.locator("#assessForm").isVisible(), "request form did not open");
+await page.locator("#requestChoice > summary").focus();
+await page.keyboard.press("Enter");
+check("alternative can close without loading Calendly", !await page.locator("#assessForm").isVisible() && calendarRequests.length === 0, "alternative close/calendar state");
+await page.locator('.cal-fallback a[href="#book"]').click();
+check("form anchor opens the alternative", await page.locator("#assessForm").isVisible() && calendarRequests.length === 0, "form anchor did not open request details");
+await page.locator("#requestChoice > summary").click();
+await page.locator('.nav__right a[href="#request"]').click();
+const anchoredLauncher = await page.locator("#calLaunch").boundingBox();
+check("navigation booking anchor returns to the launcher", !!anchoredLauncher && anchoredLauncher.y >= 0 && anchoredLauncher.y + anchoredLauncher.height <= 844 && calendarRequests.length === 0, JSON.stringify(anchoredLauncher));
 check("direct calendar link available before activation", await page.locator(".cal-fallback a").first().isVisible(), "direct link hidden");
 check("launcher announces collapsed panel", await page.locator("#calLaunch").getAttribute("aria-expanded") === "false" && !await page.locator("#calPanel").isVisible(), "initial panel state");
 const initialContext = await page.locator("#cal-workflows").inputValue();
@@ -108,6 +122,8 @@ await page.waitForFunction(() => !!document.querySelector("#calEmbed iframe"), n
 let calFrame = page.frames().find((f) => f.url().startsWith("https://calendly.com/"));
 if (!calFrame) { console.error("FAIL: the Calendly iframe never mounted."); process.exit(1); }
 check("launcher expands and focuses its panel", await page.locator("#calLaunch").getAttribute("aria-expanded") === "true" && await page.locator("#calPanel").evaluate((el) => el === document.activeElement), "expanded/focus state");
+const calendarBox = await page.locator("#calEmbed").boundingBox();
+check("mobile calendar uses the available page width", !!calendarBox && calendarBox.width >= 346 && calendarBox.x >= 0 && calendarBox.x + calendarBox.width <= 390, JSON.stringify(calendarBox));
 const frameUrl = new URL(calFrame.url());
 check("first calendar carries the current context", frameUrl.searchParams.get("a1") === initialContext, frameUrl.toString());
 check("calendar URL and theme retained", frameUrl.pathname === "/cmyers-mainandmachine/30min" && frameUrl.searchParams.get("embed_type") === "Inline" && ["background_color", "text_color", "primary_color"].every((key) => /^[0-9a-f]{6}$/.test(frameUrl.searchParams.get(key))), frameUrl.toString());

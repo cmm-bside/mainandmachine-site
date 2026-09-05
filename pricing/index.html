@@ -27,26 +27,8 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=146" />
-<style>
-/* ── Pricing-page layout fixes (scoped to this page) ───────────────────── */
-/* 1. Price/range values never wrap. Stepped down one size so the widest range
-   ($18,000–$60,000) fits the 220px meta column on a single line. */
-.svc__price { white-space: nowrap; font-size: var(--fs-16); }
-/* 2. REMOVED 2026-08-09 — `@media (min-width:921px){ .svc { display:grid;
-   grid-auto-rows:1fr } }`, which forced the three price rows to a common
-   height. The rows are stacked full-width bands, not side-by-side cards, so
-   equal heights bought nothing visually and cost the tallest row's slack to
-   every other row: the dark "Most start here" audit card carried 148.6px of
-   empty panel below its last line, and Managed Services 126.9px, because the
-   Implementation Sprint row set the height for all three. Rows now size to
-   content. Do not reinstate without solving the dead panel. */
-/* 3. THE MATH: moved into styles.css with the .math-vs component — /services/
-   used the same markup and never had this correction, so the band was right on
-   one page and 25.5px out on the other. See the note there. */
-/* 4. FAQ heading/accordion gutter matches the page's section-head gutter (48px). */
-.faq { gap: var(--s-48); }
-</style>
+<link rel="stylesheet" href="/styles.css?v=147" />
+
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -382,8 +364,37 @@
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init({ endpoint: "/api/event", formSubmissions: false })
 </script>
+<style>
+.funnel-intro { max-width: 780px; }
+.funnel-intro .h2 { max-width: 24ch; }
+.funnel-intro .lead { max-width: 62ch; }
+.funnel-offers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.funnel-offer { min-width: 0; display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); background: var(--paper-card); }
+.funnel-offer--start { border-top: 3px solid var(--accent); padding-top: 26px; }
+.funnel-offer h2 { font: 700 27px/1.15 var(--sans); letter-spacing: -.025em; margin: 0 0 14px; }
+.funnel-offer .funnel-fit { font: 400 16px/1.6 var(--sans); color: var(--tx-mute); margin: 0 0 24px; }
+.funnel-offer .funnel-price { font: 750 27px/1.2 var(--sans); color: var(--tx); letter-spacing: -.025em; margin: 0 0 6px; }
+.funnel-offer .funnel-time { font: 400 14px/1.5 var(--sans); color: var(--tx-mute); margin: 0 0 24px; }
+.funnel-deliverables { list-style: none; padding: 20px 0 0; margin: 0 0 24px; border-top: 1px solid var(--line); }
+.funnel-deliverables li { position: relative; padding-left: 18px; font: 400 16px/1.5 var(--sans); margin: 0 0 10px; }
+.funnel-deliverables li::before { content: '+'; position: absolute; left: 0; color: var(--accent-text); }
+.funnel-offer > .funnel-offer-link { margin-top: auto; align-self: flex-start; }
+.funnel-offer .funnel-terms { border-top: 1px solid var(--line); margin: 20px 0 0; padding-top: 16px; font: 400 14px/1.65 var(--sans); color: var(--tx-mute); }
+.funnel-advanced { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; padding: 32px; border: 1px solid var(--line); background: var(--paper-card); }
+.funnel-advanced h2 { font-size: 30px; line-height: 1.15; margin: 12px 0; max-width: 24ch; }
+.funnel-advanced p { font-size: 16px; line-height: 1.65; color: var(--tx-mute); margin: 0 0 16px; }
+.funnel-advanced .funnel-price { font-size: 27px; font-weight: 750; color: var(--tx); }
+.funnel-evidence { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.funnel-evidence > article { min-width: 0; padding-top: 24px; border-top: 1px solid var(--line); }
+.funnel-evidence h3 { font-size: 25px; line-height: 1.2; margin: 12px 0; }
+.funnel-evidence p { font-size: 16px; line-height: 1.65; color: var(--tx-mute); margin-bottom: 20px; }
+.funnel-next { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-top: 32px; }
+.funnel-next p { max-width: 55ch; margin: 0; font-size: 16px; line-height: 1.6; color: var(--tx-mute); }
+@media (max-width: 900px) { .funnel-offers { grid-template-columns: 1fr; } .funnel-offer { padding: 24px; } .funnel-offer--start { padding-top: 22px; } .funnel-offer > .funnel-offer-link { margin-top: 0; } }
+@media (max-width: 700px) { .funnel-advanced, .funnel-evidence { grid-template-columns: 1fr; gap: 24px; } .funnel-advanced { padding: 24px; } .funnel-offer h2 { font-size: 26px; } .funnel-offer .funnel-fit { margin-bottom: 20px; } }
+</style>
 </head>
-<body>
+<body class="funnel-pricing">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ OPERATOR CHROME ============ -->
@@ -432,7 +443,7 @@
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a data-cta="nav" aria-label="Book a free assessment" class="btn btn--primary" href="/book/"><span class="btn__long">Book a </span>free assessment <span class="arr">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Book a free assessment (free call)" class="btn btn--primary" href="/book/"><span class="btn__full">Book a free assessment</span><span class="btn__short" aria-hidden="true">Free call</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -440,178 +451,40 @@
   </div>
 </header>
 <main id="main" tabindex="-1">
-
-<!-- ============ PAGE HERO ============ -->
-<section class="section paper pagehero">
-  <div class="wrap">
-    <nav class="crumb" aria-label="Breadcrumb">
-        <ol class="crumb__list">
-          <li><a href="/">Main &amp; Machine</a></li>
-          <li><span aria-current="page">Pricing</span></li>
-        </ol>
-      </nav>
-    <div class="pagehero__grid">
-      <div>
-        <span class="kicker">Pricing</span>
-        <h1 class="h2 mt-s">Clear prices. <span class="accent-tx">Choose the right&nbsp;scope.</span></h1>
-        <p class="lead mt-s">Start with a defined workflow or an audit to find one. These are our published service ranges; your scope and fixed price are agreed in writing before work begins.</p>
-      </div>
-      <dl class="statrail crop" aria-label="Pricing at a glance">
-        <div class="statrail__bar"><dt>Price list</dt><dd><b>Published</b></dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Audits</dt><dd class="statrail__v accent-tx" data-fact="price-audit">$3,500–$8,500</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Sprints</dt><dd class="statrail__v" data-fact="price-sprint">$18,000–$60,000</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Managed</dt><dd class="statrail__v">From $1,500/mo</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Lock-in</dt><dd class="statrail__v">None</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Quote</dt><dd class="statrail__v">Fixed, in writing</dd></div>
-        <div class="statrail__row"><dt class="statrail__k">Guarantee</dt><dd class="statrail__v accent-tx">Live in 90 days</dd></div>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<!-- ============ THE HIGH END ============ -->
-<section class="section paper-2" id="pricing">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">The price list</span>
-        <h2 class="h2 mt-s">The three ways <span class="accent-tx">most businesses start.</span></h2>
-      </div>
-      <p class="lead">Use the audit when you need to identify and price the opportunity. Choose a sprint when the workflow is defined. Add Managed Services if you want us to keep maintaining the delivered system.</p>
-    </div>
-    <div class="svc">
-      <div class="svc__item svc__item--feature">
-        <span class="svc__tab">Most start here</span>
-        <div class="svc__meta">
-          <div class="svc__no">01</div>
-          <span class="tick-lbl">Timeline</span>
-          <div class="svc__price" data-fact="timeline-audit">2 to 4 weeks</div>
-          <span class="tick-lbl" style="margin-top:14px;">Fixed price</span>
-          <div class="svc__price" data-fact="price-audit">$3,500–$8,500</div>
-          <p class="svc__note"><span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span></p>
-        </div>
-        <div class="svc__main">
-          <h3><a href="/services/ai-readiness-audit/">AI Readiness Audit</a></h3>
-          <div class="svc__tagline"><span data-fact="name-audit">The Blueprint</span> &mdash; most businesses start here. You leave holding it, whether or not we build it.</div>
-          <p>A costed workflow map, a shortlist of opportunities, and a phased plan you own. Use it with us, another builder, or your own team. The credit toward a later sprint is limited to the terms shown alongside the price.</p>
-        </div>
-        <div class="svc__list">
-          <span class="tick-lbl">What you leave with</span>
-          <ul>
-            <li>A workflow map of your real operations</li>
-            <li>The handful of places AI actually pays</li>
-            <li>A phased plan you own outright</li>
-            <li>A straight read on whether to build at all</li>
-          </ul>
-          <a class="svc__cta" href="/services/ai-readiness-audit/">Read the full spec&nbsp;<span class="arr">&#8594;</span></a>
-        </div>
-      </div>
-      <div class="svc__item">
-        <div class="svc__meta">
-          <div class="svc__no">02</div>
-          <span class="tick-lbl">Timeline</span>
-          <div class="svc__price" data-fact="timeline-sprint">4 to 12 weeks</div>
-          <span class="tick-lbl" style="margin-top:14px;">Fixed quote after scoping</span>
-          <div class="svc__price" data-fact="price-sprint">$18,000–$60,000</div>
-          <p class="svc__note">Exact price quoted in writing before work begins. It does not move after we start.</p>
-          <p class="svc__note accent-tx" data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</p>
-        </div>
-        <div class="svc__main">
-          <h3><a href="/services/ai-implementation/">AI Implementation Sprint</a></h3>
-          <div class="svc__tagline"><span data-fact="name-sprint">The 90-Day Build</span> &mdash; live in your operation in about 90 days, or we keep building free until it is.</div>
-          <p>Agents, automations, and integrations, all tested inside your real operation, with your team trained to run them.</p>
-        </div>
-        <div class="svc__list">
-          <span class="tick-lbl">What you leave with</span>
-          <ul>
-            <li>Working agents built to your workflow</li>
-            <li>Automations across your existing stack</li>
-            <li>Integrations into one source of truth</li>
-            <li>Your team trained to run all of it</li>
-          </ul>
-          <a class="svc__cta" href="/services/ai-implementation/">Read the full spec&nbsp;<span class="arr">&#8594;</span></a>
-        </div>
-      </div>
-      <div class="svc__item">
-        <div class="svc__meta">
-          <div class="svc__no">03</div>
-          <span class="tick-lbl">Timeline</span>
-          <div class="svc__price">Ongoing</div>
-          <span class="tick-lbl" style="margin-top:14px;">Retainer</span>
-          <div class="svc__price" data-fact="price-managed">From $1,500/month</div>
-          <p class="svc__note" data-fact="annual-managed">Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.</p>
-        </div>
-        <div class="svc__main">
-          <h3><a href="/services/managed-ai-services/">Managed Services</a></h3>
-          <div class="svc__tagline"><span data-fact="name-managed">The Service Contract</span> &mdash; machines need maintenance. No lock-in; annual is 12 months for the price of 10, unused months refunded.</div>
-          <p>We keep what we built healthy, watch what changes, and evolve the systems as your business does.</p>
-        </div>
-        <div class="svc__list">
-          <span class="tick-lbl">What you leave with</span>
-          <ul>
-            <li>Continuous testing on every deployed system</li>
-            <li>Patching as models and vendors shift</li>
-            <li>Tuning, plus a monthly build block</li>
-            <li>A one-page monthly report, plain numbers</li>
-            <li>No lock-in: leave whenever it stops paying</li>
-          </ul>
-          <a class="svc__cta" href="/services/managed-ai-services/">Read the full spec&nbsp;<span class="arr">&#8594;</span></a>
-        </div>
-      </div>
-    </div>
-    <p class="hero__note hero__note--wide">Begin with the <a data-cta="prose" href="/book/">free 30-minute assessment</a>. We discuss fit, constraints, and the next step. If you already know the workflow, ask about direct sprint scoping. For an early modeled estimate, <a href="/calculator/">use the calculator</a>.</p>
-  </div>
-</section>
-
-
-<section class="section paper" id="backoffice">
-  <div class="wrap">
-    <div class="head-block">
-      <div>
-        <span class="kicker">Multi-department work</span>
-        <h2 class="h2 mt-s">For a full back office. <span class="accent-tx">From $95,000.</span></h2>
-      </div>
-      <p class="lead">For a business connecting work across multiple departments. The Full Back Office is scoped separately from a standard sprint. MARCUS shows the architecture and depth of work in this class.</p>
-    </div>
-    <div class="svc">
-      <div class="svc__item svc__item--feature">
-        <span class="svc__tab">Four per year</span>
-        <div class="svc__meta">
-          <div class="svc__no">04</div>
-          <span class="tick-lbl">Timeline</span>
-          <div class="svc__price" data-fact="timeline-backoffice">One to two quarters</div>
-          <span class="tick-lbl" style="margin-top:14px;">Scoped individually</span>
-          <div class="svc__price" data-fact="price-backoffice">From $95,000</div>
-          <p class="svc__note">Quoted in writing after scoping, like everything else here. We take four of these a year, because one accountable operator runs every build.</p>
-        </div>
-        <div class="svc__main">
-          <h3><a href="/work/marcus/">The Full Back Office</a></h3>
-          <div class="svc__tagline">A MARCUS-class build.</div>
-          <p>Agents across every department that needs one, built from your own process documents, running on-prem or in a private deployment where the data demands it. The published reference is MARCUS: 14 agents across 7 departments for a regulated lender.</p>
-        </div>
-        <div class="svc__list">
-          <span class="tick-lbl">What you leave with</span>
-          <ul>
-            <li>Agents across the operation, one per real job</li>
-            <li>Private by design where the data demands it</li>
-            <li>An approval queue: people decide, always</li>
-            <li>Your team trained, everything owned by you</li>
-          </ul>
-          <a class="svc__cta" href="/work/marcus/">Read the MARCUS build&nbsp;<span class="arr">&#8594;</span></a>
-        </div>
-      </div>
-    </div>
-    <div class="faq-strip">
-      <div class="faq-strip__copy">
-        <h3>The guarantee, in one sentence.</h3>
-        <p data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</p>
-      </div>
-      <a data-cta="faq-strip" class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ THE PRICE LIST ============ -->
+<section class="section paper pagehero"><div class="wrap"><nav class="crumb" aria-label="Breadcrumb">
+    <ol class="crumb__list">
+      <li><a href="/">Main &amp; Machine</a></li>
+      <li><span aria-current="page">Pricing</span></li>
+    </ol>
+  </nav>
+<div class="funnel-intro"><span class="kicker">Pricing</span><h1 class="h2 mt-s">Clear prices. <span class="accent-tx">Choose the right scope.</span></h1><p class="lead mt-s">Start with a defined workflow or an audit to find one. Your scope and fixed price are agreed in writing before work begins.</p></div></div></section>
+<section class="section paper-2" id="pricing"><div class="wrap">
+<div class="funnel-offers">
+<article class="funnel-offer funnel-offer--start" id="audit">
+<h2>AI Readiness Audit</h2><p class="funnel-fit">You need to find and prioritize the right AI opportunity.</p>
+<p class="funnel-price" data-fact="price-audit">$3,500–$8,500</p><p class="funnel-time"><span data-fact="timeline-audit">2 to 4 weeks</span> · fixed scope</p>
+<ul class="funnel-deliverables"><li>A map of your current workflow</li><li>Ranked opportunities and costs</li><li>A phased plan you own</li></ul>
+<a class="funnel-offer-link" href="/services/ai-readiness-audit/">View audit scope <span class="arr">&#8594;</span></a>
+<p class="funnel-terms"><span data-fact="rollover">100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.</span></p></article>
+<article class="funnel-offer" id="sprint">
+<h2>AI Implementation Sprint</h2><p class="funnel-fit">You have a defined workflow ready to scope and build.</p>
+<p class="funnel-price" data-fact="price-sprint">$18,000–$60,000</p><p class="funnel-time"><span data-fact="timeline-sprint">4 to 12 weeks</span> · fixed scope</p>
+<ul class="funnel-deliverables"><li>A working system in your operation</li><li>Testing and human approval points</li><li>Training and ownership at handoff</li></ul>
+<a class="funnel-offer-link" href="/services/ai-implementation/">View implementation scope <span class="arr">&#8594;</span></a>
+<p class="funnel-terms">Fixed quote in writing before work begins. <span data-fact="guarantee">If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.</span></p></article>
+<article class="funnel-offer" id="managed">
+<h2>Managed Services</h2><p class="funnel-fit">You want ongoing care for a system we have built.</p>
+<p class="funnel-price" data-fact="price-managed">From $1,500/month</p><p class="funnel-time"><span data-fact="timeline-managed">Ongoing</span> · optional support</p>
+<ul class="funnel-deliverables"><li>Monitoring and maintenance</li><li>An agreed block of improvements</li><li>A plain-language monthly report</li></ul>
+<a class="funnel-offer-link" href="/services/managed-ai-services/">View ongoing support <span class="arr">&#8594;</span></a>
+<p class="funnel-terms">Optional, with no lock-in. <span data-fact="annual-managed">Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.</span></p></article>
+</div>
+<div class="funnel-next"><p>Not sure where to start? The free 30-minute assessment helps establish fit. A defined workflow can go directly to sprint scoping.</p><a data-cta="pricing-next-step" class="btn btn--primary" href="/book/">Book a free assessment <span class="arr">&#8594;</span></a></div>
+</div></section>
+<section class="section paper" id="backoffice"><div class="wrap"><div class="funnel-advanced">
+<div><span class="kicker">Multi-department work</span><h2>The Full Back Office</h2><p>For a business connecting work across several departments. Scoped separately from a standard sprint.</p><p class="funnel-price" data-fact="price-backoffice">From $95,000</p><p><span data-fact="timeline-backoffice">One to two quarters</span>. Four taken per year. Quoted in writing after scoping.</p></div>
+<div><p>MARCUS shows this class of work: 14 agents across 7 departments for B:Side Capital, where our founder is CEO. The related-company deployment is documented with its methods and limits.</p><p>Private deployment where the data demands it, human approvals, and a trained team that owns the delivered system.</p><a href="/work/marcus/">Read the MARCUS implementation <span class="arr">&#8594;</span></a></div>
+</div></div></section>
 <!-- ============ UNDERSTAND THE QUOTE ============ -->
 <section class="section ink">
   <div class="wrap">
@@ -763,7 +636,7 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.svc__item,.closer,.faq > *,.faq__list details,.foot__top > *"></script>
 
-<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/nav.js?v=9"></script>
 <script defer src="/js/analytics.js?v=5"></script>
 </body>
 </html>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="art-title art-desc"><title id="art-title">Two ways to access a machine: an open structure beside a closed, controlled enclosure.</title><desc id="art-desc">Original conceptual illustration for The Ampersand. It is not a product screen or a chart of measured results.</desc><style>.stroke{stroke:#1B1611;stroke-width:3;fill:none}.route{stroke:#1B1611;stroke-width:3;fill:none;stroke-dasharray:10 9}.gate{stroke:#C6401E;stroke-width:8;fill:none}</style><rect width="1200" height="800" fill="#F0EBE1"/><path d="M64 58h1072M64 742h1072" stroke="#D6CCBA" stroke-width="2"/><path d="M64 58h68" stroke="#C6401E" stroke-width="5"/>
+    <path d="M182 577V216h331v361M182 216l68-58h331v361l-68 58M513 216l68-58" fill="none" stroke="#1B1611" stroke-width="4"/>
+    <path d="M203 565h290V237H203Z" fill="#E4DBC8"/>
+    <path d="M228 378h239M347 259v278" stroke="#D6CCBA" stroke-width="3"/>
+    <circle cx="347" cy="378" r="57" fill="#C6401E"/>
+    <path d="M669 577V216h331v361Z" fill="#1B1611"/>
+    <path d="M669 216l68-58h331v361l-68 58V216Z" fill="#E4DBC8" stroke="#1B1611" stroke-width="4"/>
+    <path d="M765 378h145" stroke="#F0EBE1" stroke-width="5"/><circle cx="886" cy="378" r="18" fill="#C6401E"/>
+    <path d="M186 642h327M672 642h327" stroke="#D6CCBA" stroke-width="3"/></svg>

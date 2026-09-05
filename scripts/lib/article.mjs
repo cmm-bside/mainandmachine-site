@@ -84,11 +84,16 @@ export function structureArticle(bodyHtml) {
 		const end = i + 1 < marks.length ? marks[i + 1] : html.length;
 		const segment = html.slice(start, end);
 		const hm = segment.match(/<h2\b[^>]*>([\s\S]*?)<\/h2>/i);
-		const headingHtml = (hm ? hm[1] : "").trim();
-		const headingText = stripTags(headingHtml) || `Section ${i + 1}`;
+		const originalHeadingHtml = (hm ? hm[1] : "").trim();
+		const originalHeadingText = stripTags(originalHeadingHtml) || `Section ${i + 1}`;
+		// The layout supplies the chapter number; a numbered source heading
+		// must not repeat it in the TOC, chapter kicker, and visible heading.
+		// Only a leading list-style ordinal is removed, never substantive numbers.
+		const headingHtml = originalHeadingHtml.replace(/^(\s*(?:<(?:strong|b|em|i)\b[^>]*>\s*)*)\d{1,2}[.)](?:\s+|(?=<\/(?:strong|b|em|i)>))/, "$1").trim();
+		const headingText = stripTags(headingHtml) || originalHeadingText;
 		const body = (hm ? segment.slice(hm.index + hm[0].length) : segment).trim();
 		chapters.push({
-			id: uniqueSlug(headingText, used),
+			id: uniqueSlug(originalHeadingText, used),
 			num: String(i + 1).padStart(2, "0"),
 			kicker: kickerFrom(headingText),
 			headingHtml: headingHtml || esc(headingText),
@@ -129,7 +134,7 @@ export function renderArticleBody({ intro, chapters }) {
 	if (intro) out += `${intro}\n`;
 	for (const c of chapters) {
 		out += `<section class="essay__section" id="${c.id}" aria-labelledby="${c.id}-h">
-<div class="chap"><span class="chap__num">${c.num}</span><span class="chap__tick" aria-hidden="true"></span><span class="chap__kicker">${esc(c.kicker)}</span></div>
+<div class="chap"><span class="chap__num">${c.num}</span><span class="chap__tick" aria-hidden="true"></span><span class="chap__kicker">SECTION</span></div>
 <h2 class="essay__h2" id="${c.id}-h">${c.headingHtml}</h2>
 ${c.bodyHtml}
 </section>\n`;

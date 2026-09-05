@@ -46,6 +46,23 @@ const pages = [];
 // hint, not page text, and matching it would make this guard cry wolf.
 const CONTENT_ATTRS = /\b(?:alt|title|aria-label)=("([^"]*)"|'([^']*)')/gi;
 
+// These complete disclosures identify intentionally invented sample material.
+// Match exact phrases on their two published routes; an arbitrary fictional
+// claim, TODO, or fixture elsewhere on either page still fails the guard.
+const SAMPLE_DISCLOSURES = {
+  "services/sample-audit/index.html": [
+    "This example follows a fictional service business",
+    "Fictional example · Not client work",
+    "An illustrative priority order for the same fictional business.",
+    "The service business, workflow details, and priorities are fictional examples.",
+  ],
+  "guides/index.html": [
+    "A legible fictional example shows the workflow map",
+    "Read the fictional sample audit",
+    "Sample audit · Fictional example",
+  ],
+};
+
 const errors = [];
 for (const page of pages) {
   const raw = fs.readFileSync(page, "utf8");
@@ -64,8 +81,12 @@ for (const page of pages) {
     for (const p of PATTERNS) {
       // This published passage explains why invented training tasks are unhelpful.
       // Exempt only this phrase in this article; keep the marker check elsewhere.
-      const candidate = path.relative(ROOT, page) === "blog/ai-employee-training-program/index.html"
+      const route = path.relative(ROOT, page);
+      let candidate = route === "blog/ai-employee-training-program/index.html"
         ? line.replace(/practice drafting a fictional\b/i, "practice drafting an invented") : line;
+      for (const phrase of SAMPLE_DISCLOSURES[route] || []) {
+        candidate = candidate.replaceAll(phrase, phrase.replace(/fictional/i, "invented"));
+      }
       if (p.test(candidate)) {
         errors.push(`${path.relative(ROOT, page)}:${i + 1} — ${p} — ${line.trim().slice(0, 90)}`);
       }

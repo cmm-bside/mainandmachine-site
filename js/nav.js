@@ -16,6 +16,7 @@ var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]
     nav.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (!open) closeMenus(null);
   }
 
   toggle.addEventListener('click', function (e) {
@@ -69,9 +70,9 @@ var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]
       caret.setAttribute('aria-expanded', 'false');
       if (focusCaret) caret.focus();
     }
-    item.addEventListener('mouseenter', function () { open(false); });
-    item.addEventListener('mouseleave', function () { if (!item.contains(document.activeElement)) close(false); });
-    item.addEventListener('focusout', function (e) { if (!item.contains(e.relatedTarget)) close(false); });
+    item.addEventListener('mouseenter', function () { if (matchMedia('(min-width:1141px)').matches) open(false); });
+    item.addEventListener('mouseleave', function () { if (matchMedia('(min-width:1141px)').matches && !item.contains(document.activeElement)) close(false); });
+    item.addEventListener('focusout', function (e) { if (matchMedia('(min-width:1141px)').matches && !item.contains(e.relatedTarget)) close(false); });
     caret.addEventListener('click', function (e) {
       e.preventDefault(); e.stopPropagation();
       if (item.classList.contains('is-open')) close(false); else open(false);
@@ -159,7 +160,7 @@ var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]
 (function () {
   var d = document, S = 'mm:sticky-dismissed';
   if (!window.matchMedia || !matchMedia('(max-width:768px)').matches) return;
-  if (/^\/book(\/|$)/.test(location.pathname)) return;
+  if (/^\/(book|calculator)(\/|$)/.test(location.pathname)) return;
   try { if (sessionStorage.getItem(S)) return; } catch (e) { /* private mode: show it */ }
   // A page that cannot scroll past 1.5 viewport heights can never show the bar,
   // so injecting one only adds DOM and its text to a page nobody will see it

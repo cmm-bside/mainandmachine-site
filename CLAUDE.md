@@ -2277,3 +2277,8 @@ committed here (the blog is prerendered from beehiiv at deploy).
   `POST_TOPICS` in `scripts/lib/config.mjs`.
 - If a draft's facts contradict `src/data/site-facts.json`, the command stops on
   that draft and reports; canonical facts win until Chris says otherwise.
+
+
+## September 2026 visual system refresh
+
+The current visual system is the final `Visual system` block in `styles.css`, with page-scoped styles for the booking, pricing, services, calculator, proof, and editorial layouts. The user explicitly requested this redesign. Use the compact 72px desktop / 48px phone section rhythm, responsive headline scale, accordion mobile navigation, white primary-button text in every link state, and two-column phone footer. Earlier historical values and frozen hero/layout notes above describe previous releases; do not restore them over the current design. Workflow illustrations are labeled as illustrative; the MARCUS diagram represents the documented architecture, not a product screenshot. Preserve canonical pricing and generated evidence blocks.

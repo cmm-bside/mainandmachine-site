@@ -24,7 +24,7 @@
 <!-- The calendar is requested only after the visitor chooses to open it. -->
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=154" />
+<link rel="stylesheet" href="/styles.css?v=155" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -269,7 +269,7 @@
 <div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">start with a <a data-cta="ticker" class="ticker__link" href="/plan/">free workflow plan</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -348,7 +348,8 @@
           <div class="cal-panel" id="calPanel" role="region" aria-label="Choose an assessment time" tabindex="-1" hidden>
           <div class="field cal-q">
             <label for="cal-workflows">What is eating your team’s time? <span class="opt">(optional — rides along with your booking)</span></label>
-            <input class="input" type="text" id="cal-workflows" placeholder="Intake, billing, quoting…" />
+            <input class="input" type="text" id="cal-workflows" aria-describedby="cal-workflows-note" placeholder="Intake, billing, quoting…" />
+            <p id="cal-workflows-note" class="signup__note">When you open the calendar, this note (up to 500 characters) is shared with Calendly to prepare your booking. You can edit or clear it first.</p>
             <span class="field__hint">The advisor reads this before your call. One line is plenty.</span>
           </div>
           <p class="cal-status" id="calStatus" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -688,6 +689,19 @@
       if (sentence) calQ.value = sentence;
     }
   } catch (e) { /* query parsing is best-effort */ }
+
+  // A workflow shared with the public plan form carries into the optional
+  // call in this tab. No contact details or workflow text are put in the first-party page URL.
+  try {
+    var planContext = JSON.parse(sessionStorage.getItem('mm:workflow-plan:booking') || 'null');
+    if (planContext && typeof planContext.workflow === 'string' && Date.now() - planContext.at < 7 * 86400000) {
+      var planSentence = 'Workflow plan ' + planContext.requestId + '. ' + planContext.workflow.slice(0, 4000) + (planContext.tools ? '\nTools: ' + String(planContext.tools).slice(0, 600) : '');
+      var planCal = document.getElementById('cal-workflows');
+      if (planCal && !planCal.value.trim()) planCal.value = planSentence;
+      var planFallback = document.getElementById('workflows');
+      if (planFallback && !planFallback.value.trim()) planFallback.value = planSentence;
+    }
+  } catch (_) { /* optional same-tab context; manual booking stays available */ }
 
   var submitBtn = document.getElementById('submitBtn');
   var formError = document.getElementById('formError');
@@ -1150,8 +1164,8 @@
 <!-- ============ REVEAL ANIMATION ============ -->
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
-<script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=7"></script>
+<script defer src="/js/nav.js?v=10"></script>
+<script defer src="/js/analytics.js?v=8"></script>
 <script>
 // Old form anchors still reveal the chosen alternative, including without a
 // pointer. Native details remains usable when JavaScript is unavailable.

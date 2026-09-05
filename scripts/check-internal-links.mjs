@@ -79,6 +79,8 @@ const proxied = new Set(PROXIED_ROUTES);
 const BLOG_NON_POST = new Set(["/blog/", "/blog/archive/", "/blog/rss.xml"]);
 
 function resolvesOnDisk(urlPath) {
+	// A same-origin form action can be a real Pages Function rather than HTML.
+	if (/^\/api\/[a-z0-9-]+$/.test(urlPath) && fs.existsSync(path.join(ROOT, "functions", urlPath.slice(1) + ".js"))) return true;
 	if (urlPath === "/") return fs.existsSync(path.join(ROOT, "index.html"));
 	const rel = urlPath.replace(/^\//, "");
 	// Directory-style route → its index.html; file-style route → the file.

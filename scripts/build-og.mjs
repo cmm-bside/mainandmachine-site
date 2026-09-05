@@ -53,6 +53,18 @@ const price = (key) => COMPANY.services.find((s) => s.key === key).price;
  * time from the same source the pages use.
  */
 const EXPLICIT = {
+  "/plan/": {
+    kicker: "Free workflow recommendation",
+    title: COMPANY.workflowPlan.name,
+    subline: `One workflow · Reviewed by ${COMPANY.workflowPlan.reviewer}`,
+    footer: `No call or purchase required · ${COMPANY.domain}/plan`,
+  },
+  "/plan/sample/": {
+    kicker: "Illustrative sample",
+    title: "See a sample workflow plan",
+    subline: "A preliminary recommendation, with assumptions and next steps.",
+    footer: `Example only · ${COMPANY.domain}/plan/sample`,
+  },
   "/score/": {
     kicker: "Free assessment",
     title: "The AI-Ready Score",

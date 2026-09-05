@@ -79,7 +79,7 @@
     if ((a.getAttribute("href") || "").charAt(0) === "#") return;
     var u;
     try { u = new URL(a.href, location.href); } catch (_) { return; }
-    if (u.origin !== location.origin || !/^\/(book|score)(?:\/|$)/.test(u.pathname)) return;
+    if (u.origin !== location.origin || !/^\/(book|score|plan)(?:\/|$)/.test(u.pathname)) return;
     Object.keys(journey).forEach(function (key) {
       if (!u.searchParams.has(key)) u.searchParams.set(key, journey[key]);
     });
@@ -162,7 +162,11 @@
           ? "cta_score_click"
           : /^\/book(?:\/|$)/.test(href)
             ? "cta_book_click"
-            : null;
+            : /^\/plan\/?$/.test(href)
+              ? "cta_plan_click"
+              : /^\/plan\/sample\/?$/.test(href)
+                ? "workflow_plan_sample_view"
+                : null;
       if (!name) return;
       // data-cta wins; data-cta-placement is the retired spelling, kept because
       // the Score app's report door may still emit it; then region inference.

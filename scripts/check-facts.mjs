@@ -25,6 +25,9 @@ function read(file) {
 // Every committed static page.
 const ALL_PAGES = [
   "index.html",
+  "plan/index.html",
+  "plan/sample/index.html",
+  "plan/thanks/index.html",
   "book/index.html",
   "book/thanks/index.html",
   "pricing/index.html",

@@ -142,13 +142,13 @@ var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]
    out and fails the build once the stated quarter has ended. Forgetting is
    impossible; guessing is not permitted. See README.md → "Booking quarter". */
 
-/* Sticky mobile booking bar (<=768px).
+/* Sticky mobile offer bar (<=768px).
    Slides in after ~1.5 viewport heights of scroll; dismissible, and the
    dismissal persists for the session. Injected rather than added to 40 pages
    of markup: it is a pure enhancement, so no-JS loses nothing, and there is no
    chrome to keep in sync across hand-written and generated pages.
 
-   NOT shown on /book/ — the visitor is already on the booking page, and a
+   NOT shown on /book/ or /plan/ — the visitor is already on the booking page, and a
    fixed bar there would sit over the Calendly iframe's action area, which is
    exactly where the confirm button lives on a phone. Never shown while the nav
    drawer is open either; that is CSS (body:has(.nav.is-open)), so there is no
@@ -160,7 +160,7 @@ var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]
 (function () {
   var d = document, S = 'mm:sticky-dismissed';
   if (!window.matchMedia || !matchMedia('(max-width:768px)').matches) return;
-  if (/^\/(book|calculator)(\/|$)/.test(location.pathname)) return;
+  if (/^\/(book|calculator|plan)(\/|$)/.test(location.pathname)) return;
   try { if (sessionStorage.getItem(S)) return; } catch (e) { /* private mode: show it */ }
   // A page that cannot scroll past 1.5 viewport heights can never show the bar,
   // so injecting one only adds DOM and its text to a page nobody will see it
@@ -173,8 +173,8 @@ var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]
   bar.className = 'stickybook';
   // &nbsp; before the arrow, like every other mono CTA in the markup — this one
   // is built here rather than authored, so it has to opt in by hand.
-  bar.innerHTML = '<a class="stickybook__cta" data-cta="sticky-bar" href="/book/">Book a free assessment&nbsp;<span class="arr">&#8594;</span></a>'
-    + '<button class="stickybook__x" type="button" aria-label="Dismiss booking bar">&times;</button>';
+  bar.innerHTML = '<a class="stickybook__cta" data-cta="sticky-bar" href="/plan/">Get a free workflow plan&nbsp;<span class="arr">&#8594;</span></a>'
+    + '<button class="stickybook__x" type="button" aria-label="Dismiss offer bar">&times;</button>';
   d.body.appendChild(bar);
 
   bar.lastChild.onclick = function () {

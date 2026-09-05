@@ -277,3 +277,15 @@ private reports requires revisiting automatic-provider privacy before shipping.
 Accepted requests, confirmed calendar messages, delivered emails, CRM records
 and sales are separate facts. Local tests validate requests and mock delivery
 providers; they do not prove a live inbox receipt or closed sale.
+
+## Workflow-plan offer
+
+The website form is independent of Foundry. These events contain only the page path and, for clicks, the placement label. No workflow text, contact details, request IDs, tools, or email addresses are sent to analytics.
+
+- `cta_plan_click`: visitor clicks an intake link to `/plan/`.
+- `workflow_plan_sample_view`: visitor clicks a tagged sample link.
+- `workflow_plan_started`: first interaction with the intake per page load.
+- `workflow_plan_details`: advances to the contact step.
+- `workflow_plan_submitted`: the backend confirms that both transactional messages were accepted by the email provider. This is not a plan-delivery or sales event. The same accepted request also emits the existing Microsoft Ads `submit_lead_form` conversion with `event_label: workflow_plan`.
+
+Compare accepted plan requests and resulting qualified bookings/projects, not just button clicks. Booking events remain separate. A refreshed successful confirmation page does not emit another conversion.

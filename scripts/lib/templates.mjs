@@ -149,7 +149,7 @@ export function topbar() {
 	return `<div class="ticker" role="region" aria-label="Announcements">
   <div class="wrap ticker__inner">
     <span class="ticker__left">
-      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">every engagement starts with the <a data-cta="ticker" class="ticker__link" href="/book/">free assessment</a></span>
+      <span class="ticker__clause">Booking <span data-fact="booking-quarter">Q4</span> delivery</span><span class="ticker__clause ticker__clause--alt">start with a <a data-cta="ticker" class="ticker__link" href="/plan/">free workflow plan</a></span>
     </span>
     <span class="ticker__right">Denver &middot; Phoenix &middot; Remote</span>
   </div>
@@ -251,7 +251,7 @@ export function nav() {
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">
-      <a data-cta="nav" aria-label="Book a free assessment (free call)" class="btn btn--primary" href="/book/"><span class="btn__full">Book a free assessment</span><span class="btn__short" aria-hidden="true">Free call</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
+      <a data-cta="nav" aria-label="Get a free workflow plan (free plan)" class="btn btn--primary" href="/plan/"><span class="btn__full">Get a free workflow plan</span><span class="btn__short" aria-hidden="true">Free plan</span> <span class="arr" aria-hidden="true">&#8594;</span></a>
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav__toggle-box" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
       </button>
@@ -320,6 +320,7 @@ export function footer() {
       <div class="foot__col">
         <h2>Contact</h2>
         <ul>
+          <li><a data-cta="footer" href="/plan/">Get a free workflow plan</a></li>
           <li><a data-cta="footer" href="/book/">Book a free assessment</a></li>
           <li><a href="mailto:${attr(COMPANY.email)}">${esc(COMPANY.email)}</a></li>
           <li><a href="${attr(COMPANY.phoneHref)}">${esc(COMPANY.phone)}</a></li>
@@ -347,7 +348,7 @@ export function subscribeBand() {
 
 // Scripts shared by every blog page: mobile nav and search.
 export function pageScripts() {
-	return `<script defer src="/js/nav.js?v=9"></script>
-<script defer src="/js/analytics.js?v=7"></script>
+	return `<script defer src="/js/nav.js?v=10"></script>
+<script defer src="/js/analytics.js?v=8"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

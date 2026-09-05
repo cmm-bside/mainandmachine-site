@@ -44,6 +44,9 @@ export const CRUMB_LABELS = {
 	// Top-level pages and hubs
 	"/about/": "Who we are",
 	"/book/": "Book an assessment",
+	"/plan/": "Workflow plan",
+	"/plan/sample/": "Sample plan",
+	"/plan/thanks/": "Request received",
 	"/calculator/": "Calculator",
 	"/careers/": "Careers",
 	"/contact/": "Contact",

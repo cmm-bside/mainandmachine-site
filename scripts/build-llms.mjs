@@ -46,8 +46,11 @@ const out = `# ${COMPANY.name}
 > in ~90 days per workflow. Every scoped workflow is guaranteed live within
 > 90 days or we keep building at no charge. Hubs in Denver, CO and Phoenix, AZ; remote across
 > the US. Founded by ${COMPANY.founder.name}.
-> The free 30-minute assessment is the front door.
+> The ${COMPANY.workflowPlan.name} is the primary starting point.
 
+${COMPANY.workflowPlan.summary}
+${COMPANY.workflowPlan.paidAuditDistinction}
+Prefer to talk? [Book a free 30-minute assessment](/book/) directly.
 ${claimText("assessment")}
 ${claimText("advisor")}
 
@@ -135,6 +138,9 @@ before work begins.
 
 ## Free tools
 
+- [${COMPANY.workflowPlan.name}](${COMPANY.workflowPlan.path}) — ${COMPANY.workflowPlan.summary}
+  ${COMPANY.workflowPlan.paidAuditDistinction}
+  [See a sample plan](${COMPANY.workflowPlan.samplePath}).
 - [The AI-Ready Score](/score/) — free seven-minute self-assessment:
   fourteen questions across three phases (Map, Prove, Expand). You get a
   0–100 score and the one constraint to fix first. No sales call.
@@ -186,7 +192,8 @@ before work begins.
 ## Key pages
 
 - [Home](/) — what we build and why
-- [Free assessment](/book/) — 30 minutes, reply within 24 hours
+- [${COMPANY.workflowPlan.name}](${COMPANY.workflowPlan.path}) — the primary starting point; one workflow, reviewed within ${COMPANY.workflowPlan.reviewWithinHours} hours
+- [Free assessment](/book/) — book a 30-minute conversation directly if you prefer
 - [Who we are](/about/) — the founder, the AI-native build team, the name
 - [Denver](/denver/) · [Phoenix](/phoenix/) — the two hubs, in person
 - [Contact](/contact/) — email or call Main & Machine
@@ -201,6 +208,8 @@ before work begins.
 // ---------------------------------------------------------------------------
 const FULL_PAGES = [
   "/",
+  "/plan/",
+  "/plan/sample/",
   "/services/",
   "/services/ai-readiness-audit/",
   "/services/ai-implementation/",

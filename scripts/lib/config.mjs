@@ -83,6 +83,8 @@ export const SITEMAP_PATH = path.join(ROOT, "sitemap.xml");
 // Static routes that exist outside the blog pipeline (for the sitemap).
 export const STATIC_ROUTES = [
 	"/",
+	"/plan/",
+	"/plan/sample/",
 	"/book/",
 	"/pricing/",
 	"/method/",
@@ -154,7 +156,7 @@ export const PROXIED_LASTMOD = { "/score/": "2026-09-04" };
 // On-disk pages that are deliberately NOT sitemapped: post-conversion pages
 // that only exist as redirect targets (each must carry a robots noindex meta
 // — check-seo enforces both directions).
-export const NOINDEX_ROUTES = ["/book/thanks/"];
+export const NOINDEX_ROUTES = ["/book/thanks/", "/plan/thanks/"];
 
 // Post slugs to exclude from the build entirely (test/placeholder posts that
 // exist in beehiiv but should never be indexed, linked, or sitemapped).
@@ -213,4 +215,4 @@ export const POST_TOPICS = {
 export const POST_TOPIC_FALLBACK = { href: "/services/", label: "What we actually build" };
 
 // Cache-buster shared with index.html's <link>/<script> tags.
-export const ASSET_VERSION = "154";
+export const ASSET_VERSION = "155";

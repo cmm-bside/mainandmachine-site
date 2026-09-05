@@ -42,6 +42,12 @@ if (fs.readFileSync(modulePath, "utf8") !== MODULE) {
   console.log("[facts:render] src/data/company.mjs regenerated from site-facts.json");
 }
 
+// Regenerate the shared module during parallel page editing without touching HTML.
+if (process.argv.includes("--module-only")) {
+  console.log("[facts:render] Module only; HTML stamping skipped.");
+  process.exit(0);
+}
+
 // The vocabulary: every data-fact key a page may carry. Derived in
 // scripts/lib/fact-values.mjs so check-facts.mjs reads the same definition.
 export const FACT_VALUES = factValues(COMPANY);

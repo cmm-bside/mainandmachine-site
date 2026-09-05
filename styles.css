@@ -4402,10 +4402,10 @@ main :is(.phase, .svc-detail__card, .svc-detail__deliv) { --card-t3-size: 16px; 
 .home-usecase p { font-size: 16px; line-height: 1.6; color: var(--tx-mute); margin: 0; }
 .home-usecase > a { display: flex; align-items: center; gap: 16px; min-height: 44px; font-size: 14px; font-weight: 650; text-decoration: underline; text-underline-offset: 4px; }
 .home-usecase > a span { font-size: 22px; }
-/* A distinct stone chapter between the ivory service list and textured pricing.
+/* The case study uses the cream canvas before the textured pricing section.
    Preserve normal section spacing so the diagram never touches the boundary. */
 .section.home-case {
-  background-color: color-mix(in srgb, var(--paper-tan) 92%, var(--ink));
+  background-color: var(--cream);
   padding-block: var(--section-pad);
   --ink-muted: var(--muted-on-texture);
   --tx-mute: var(--muted-on-texture);
@@ -4723,3 +4723,39 @@ section.ink, .ink--grid {
   .sample-economics { font-size: 11px; }
   .sample-caution { font-size: 12px; }
 }
+
+/* Homepage refinements: secondary-text contrast, one content-link treatment,
+   and section spacing. Navigation, buttons, headings and accents keep their
+   existing styles; other pages do not inherit these overrides. */
+#main.home-upgrade > .ink,
+#main.home-upgrade + .foot {
+  --on-dark-muted: var(--panel-ink);
+  --dtx-mute: var(--on-dark-muted);
+  --dtx-faint: var(--on-dark-muted);
+  --mono-on-dark: var(--on-dark-muted);
+}
+#main.home-upgrade > .ink .kicker::before {
+  color: #B5AC9F; /* Preserve the existing decorative dash. */
+}
+#main.home-upgrade + .foot .kicker::before {
+  color: #A59C8E;
+}
+#main.home-upgrade a[href]:not(.btn),
+#main.home-upgrade a[href]:not(.btn):visited,
+#main.home-upgrade + .foot p a[href]:not(.btn),
+#main.home-upgrade + .foot p a[href]:not(.btn):visited {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+#main.home-upgrade a[href]:not(.btn):hover,
+#main.home-upgrade a[href]:not(.btn):focus-visible,
+#main.home-upgrade + .foot p a[href]:not(.btn):hover,
+#main.home-upgrade + .foot p a[href]:not(.btn):focus-visible {
+  color: var(--tx);
+  text-decoration-thickness: 2px;
+}
+#main.home-upgrade > .home-hero { padding-top: var(--section-pad); }
+#main.home-upgrade > .home-proof { padding-block: var(--section-pad); }

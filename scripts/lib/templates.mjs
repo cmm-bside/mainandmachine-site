@@ -248,6 +248,7 @@ export function nav() {
           <a href="/blog/">The Ampersand</a>
         </div>
       </span>
+      <a href="/blog/">Blog</a>
       <a href="/about/">About</a>
     </nav>
     <div class="nav__right">

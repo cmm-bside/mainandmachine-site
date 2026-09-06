@@ -1,3 +1,4 @@
+import { applyPostRevision } from './post-revisions.mjs';
 // Editorial summaries for existing essays whose feed descriptions were too
 // short or over the site's display budget. Feed content remains authoritative.
 export const POST_SEO_DESCRIPTIONS = {
@@ -24,5 +25,5 @@ POST_SEO_DESCRIPTIONS['ai-employee-training-program'] = 'Build an AI employee tr
 export function applyPostEditorialOverrides(post) {
   if (POST_SEO_DESCRIPTIONS[post.slug]) post.seoDescription = POST_SEO_DESCRIPTIONS[post.slug];
   if (POST_EXCERPTS[post.slug]) post.excerpt = POST_EXCERPTS[post.slug];
-  return post;
+  return applyPostRevision(post);
 }

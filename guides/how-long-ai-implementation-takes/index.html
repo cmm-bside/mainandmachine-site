@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=156" />
+<link rel="stylesheet" href="/styles.css?v=157" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -129,7 +129,7 @@
       "description": "Understand the scope, data, access, testing, and team decisions that shape an AI implementation timeline. Published sprint and audit timelines explained.",
       "url": "https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/",
       "datePublished": "2026-07-13",
-      "dateModified": "2026-09-04",
+      "dateModified": "2026-09-06",
       "author": {
         "@id": "https://www.mainandmachine.com/#person-cmyers"
       },
@@ -190,7 +190,7 @@
       "name": "How long does AI implementation take for a small business?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "About 90 days per workflow: roughly two weeks of discovery and mapping, weeks of building and integration inside the real operation, then handoff and training. An AI Readiness Audit of 2–4 weeks precedes the 4–12 week Implementation Sprint."
+        "text": "An Implementation Sprint runs 4–12 weeks after scope is agreed. About 90 days is the planning frame for a workflow through discovery, build, testing, and handoff. A separate 2–4 week AI Readiness Audit is needed only when substantial investigation is required; a defined workflow can go directly to sprint scoping."
       }
     },
     {
@@ -243,8 +243,10 @@
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main navigation">
       <a href="/services/">How we help</a>
+      <a href="/services/builds/">Builds</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
+      <a href="/guides/">Guides</a>
       <a href="/blog/">Blog</a>
     </nav>
     <div class="nav__right">
@@ -272,15 +274,15 @@
         <span class="kicker">The Field Guide / 07</span>
         <h1 class="h2 mt-s">How long does AI implementation <span class="accent-tx">actually take?</span></h1>
         <!-- BYLINE:auto -->
-        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated <time datetime="2026-09-04">September 2026</time></span></p>
+        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated <time datetime="2026-09-06">September 2026</time></span></p>
         <!-- /BYLINE:auto -->
-        <p class="lead mt-s">The market promises two weeks; the real answer is about 90 days per workflow. Here is the week-by-week why — and what the two-week version actually delivers.</p>
+        <p class="lead mt-s">Our Implementation Sprints run 4–12 weeks, with about 90 days as the planning frame for a workflow. See what happens during discovery, build, testing, and handoff.</p>
       </div>
       <div class="statrail crop" aria-label="Guide details">
         <div class="statrail__bar"><span>Field Guide</span><span><b>No. 07</b></span></div>
         <div class="statrail__row"><span class="statrail__k">Reading time</span><span class="statrail__v">8 min</span></div>
         <div class="statrail__row"><span class="statrail__k">Real answer</span><span class="statrail__v accent-tx">~90 days/workflow</span></div>
-        <div class="statrail__row"><span class="statrail__k">Audit first</span><span class="statrail__v">2–4 weeks</span></div>
+        <div class="statrail__row"><span class="statrail__k">Audit if needed</span><span class="statrail__v">2–4 weeks</span></div>
 
       </div>
     </div>
@@ -293,8 +295,8 @@
     <article class="prose">
 
       <h2>How long does AI implementation take for a small business?</h2>
-      <p>About 90 days per workflow, from the first mapping session to your team running the system without us. Before that build starts, an <a href="/services/ai-readiness-audit/">AI Readiness Audit</a> takes 2–4 weeks; the <a href="/services/ai-implementation/">Implementation Sprint</a> itself runs 4–12 weeks depending on the workflow’s complexity.</p>
-      <p>You will hear shorter numbers. “Live in two weeks” is a common pitch, and this guide takes it seriously enough to explain exactly what ships in two weeks and why almost nobody is using it by week six. The 90-day figure is not padding — every week in it does specific work, and cutting a week removes something you will pay for later. What follows is the arc broken into its three phases, a week-by-week table, the levers that genuinely make it faster or slower, and one sequencing lesson from our largest published build. The full version of how we work is on the <a href="/method/">method page</a>; this is the calendar view of it.</p>
+      <p>An <a href="/services/ai-implementation/">Implementation Sprint</a> runs 4–12 weeks after scope is agreed. About 90 days is our planning frame for taking a workflow through discovery, build, testing, and handoff. A separate <a href="/services/ai-readiness-audit/">AI Readiness Audit</a> takes 2–4 weeks only when substantial investigation is needed. A defined workflow can go directly to sprint scoping.</p>
+      <p>A short pilot and a production workflow can have different schedules. Compare the acceptance criteria, integrations, training, and support in each proposal. The timeline below is a planning example, not a requirement that every workflow takes thirteen weeks. What follows is the arc broken into its three phases, a week-by-week table, the levers that genuinely make it faster or slower, and one sequencing lesson from our largest published build. The full version of how we work is on the <a href="/method/">method page</a>; this is the calendar view of it.</p>
 
       <h2>What happens in weeks 1–2?</h2>
       <p>Discovery and mapping: we watch the workflow run inside your real operation and write down where the hours, files, and decisions actually go. Skipping this phase is where AI projects die.</p>
@@ -309,7 +311,7 @@
       <p>The deliverables are concrete — documentation written for the people who will use it, training sessions for the operators and the exception-handlers, and an escalation path for the day something odd appears. Training is not a webinar; it is your bookkeeper processing Thursday’s real invoices through the new system with us in the room, hitting a real exception, and handling it. People trust what they have personally seen recover from a mistake, and manufacturing that moment on purpose is what the last fortnight is for. The important part is the posture: we do not hold the keys. The system, the prompts, the integrations, and the documentation are yours at handoff, and if you never call us again it keeps working. If you would rather someone else watch it long-term, <a href="/services/managed-ai-services/">Managed Services</a> is a monthly retainer with no lock-in — but it is an option, not a tether. A vendor whose timeline has no training phase is planning to be permanent. Ask where handoff is on their calendar; if the answer is vague, so is your ownership.</p>
 
       <h2>What does the timeline look like, week by week?</h2>
-      <p>Three phases, thirteen weeks, and a column most timelines omit: what you should be doing while we work. The calendar has two owners or it slips.</p>
+      <p>This illustrative thirteen-week calendar shows the full process. It is not extra time added to every sprint. Your written scope sets the actual milestones; a separate paid audit is included only when needed.</p>
       <div class="gtable-wrap">
         <table class="gtable">
           <thead>
@@ -342,7 +344,7 @@
           </tbody>
         </table>
       </div>
-      <p class="gtable-note">The sprint band is 4–12 weeks — a single contained workflow lands near the short end; ~90 days is the typical full arc for one workflow.</p>
+      <p class="gtable-note">The sprint band is 4–12 weeks. About 90 days describes the planning frame, while the delivery guarantee covers the scoped workflow: if it is not live within 90 days, we keep building at no charge until it is. Confirm the start date and acceptance criteria in the written scope. For the decisions that commonly hold up a build, see <a href="/blog/how-long-does-ai-implementation-take/">what delays an AI implementation</a>.</p>
 
       <h2>What does a “two-week AI implementation” actually&nbsp;deliver?</h2>
       <p>Usually a chat wrapper: a general-purpose model with your logo on it, not connected to your systems, with no training and no edge-case testing. It is not fraud — it is just a different product wearing the word “implementation.”</p>
@@ -376,7 +378,7 @@
       <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">How long does AI implementation take for a small business?</span><span class="q-pm">+</span></summary>
-          <p>About 90 days per workflow: roughly two weeks of discovery and mapping, weeks of building and integration inside the real operation, then handoff and training. An AI Readiness Audit of 2–4 weeks precedes the 4–12 week Implementation Sprint.</p>
+          <p>An Implementation Sprint runs 4–12 weeks after scope is agreed. About 90 days is the planning frame for a workflow through discovery, build, testing, and handoff. A separate 2–4 week AI Readiness Audit is needed only when substantial investigation is required; a defined workflow can go directly to sprint scoping.</p>
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">Can AI really be implemented in two weeks?</span><span class="q-pm">+</span></summary>

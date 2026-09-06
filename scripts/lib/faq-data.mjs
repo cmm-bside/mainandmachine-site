@@ -98,7 +98,7 @@ export const FAQ = {
 		label: "Timeline FAQ",
 		heading: "How long it takes.",
 		items: [
-			{ q: "How long does AI implementation take for a small business?", a: "About 90 days per workflow: roughly two weeks of discovery and mapping, weeks of building and integration inside the real operation, then handoff and training. An AI Readiness Audit of 2–4 weeks precedes the 4–12 week Implementation Sprint." },
+			{ q: "How long does AI implementation take for a small business?", a: "An Implementation Sprint runs 4–12 weeks after scope is agreed. About 90 days is the planning frame for a workflow through discovery, build, testing, and handoff. A separate 2–4 week AI Readiness Audit is needed only when substantial investigation is required; a defined workflow can go directly to sprint scoping." },
 			{ q: "Can AI really be implemented in two weeks?", a: "A chat wrapper can — a general model with your logo, not wired to your systems, with no training. That can be a fair pilot; it is not an implementation, because it never touches your operation." },
 			{ q: "What takes the longest in an AI implementation?", a: "Integration, not the model. Getting the AI working takes an afternoon; wiring it into your systems, handling real files and edge cases, and testing until the exception rate is boring takes weeks." },
 			{ q: "What makes AI implementation go faster?", a: "Exportable data, one named owner who answers questions in hours, and one workflow instead of five. Approval bottlenecks and a missing system of record are what slow it down." },

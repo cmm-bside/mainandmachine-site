@@ -17,6 +17,8 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { SITE_ORIGIN, STATIC_ROUTES, PROXIED_ROUTES } from "./lib/config.mjs";
 
+import { POST_REVISIONS } from "./lib/post-revisions.mjs";
+
 const ROOT = process.cwd();
 const DRY = process.argv.includes("--dry-run");
 const ALL = process.argv.includes("--all");
@@ -53,6 +55,14 @@ if (ALL) {
   }
   routes = [...new Set(changed.filter((f) => f.endsWith(".html")).map(fileToRoute).filter(Boolean))]
     .filter((r) => STATIC_ROUTES.includes(r));
+}
+
+if (!ALL) {
+  const files = execFileSync("git", ["diff", "--name-only", "HEAD~1", "HEAD"], { cwd: ROOT, encoding: "utf8" }).split("\n");
+  for (const [slug, revision] of Object.entries(POST_REVISIONS)) {
+    if (files.includes(`content/editorial/${revision.file}`) || files.includes("scripts/lib/post-revisions.mjs")) routes.push(`/blog/${slug}/`);
+  }
+  routes = [...new Set(routes)];
 }
 
 if (!routes.length) { console.log("[indexnow] no changed indexable URLs — nothing to submit."); process.exit(0); }

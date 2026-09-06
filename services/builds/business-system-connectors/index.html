@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=156" />
+<link rel="stylesheet" href="/styles.css?v=157" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -329,8 +329,10 @@
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main navigation">
       <a href="/services/">How we help</a>
+      <a href="/services/builds/">Builds</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
+      <a href="/guides/">Guides</a>
       <a href="/blog/">Blog</a>
     </nav>
     <div class="nav__right">
@@ -415,6 +417,17 @@
          them would put fabricated arithmetic on a page that quotes fixed
          prices. Supply the three inputs and this section gets written. -->
     <!-- /BUILD-PAGE:WORKED-EXAMPLE -->
+  </div>
+</section>
+
+<section class="section paper-2" aria-labelledby="workflow-detail-title">
+  <div class="wrap">
+    <div class="head-block"><div><span class="kicker">Inside the workflow</span><h2 class="h2 mt-s" id="workflow-detail-title">What should move between your systems?</h2></div><p>Start with one handoff, such as a vendor invoice becoming a prepared accounting record. Confirm the systems, access, and permitted actions before committing to a connection.</p></div>
+    <div class="prose-2"><div><h3>An invoice-to-accounting example</h3><p>An invoice arrives in an approved inbox. The workflow extracts the supplier, invoice reference, dates, line items, and total; matches the supplier and existing records; then prepares a coding suggestion with the source attached. A reviewer resolves missing information and approves the next action. This is an illustrative scope, not a promise that every account supports the same connection.</p></div>
+<div><h3>Decide which record wins</h3><p>Name the source of truth for suppliers, customers, invoice status, and payment status. If accounting and CRM records disagree, the scope should specify whether to pause, flag the difference, or update an approved field. A repeated message should not create a second invoice or contact.</p></div>
+<div><h3>Define access and exceptions</h3><p>Review the QuickBooks edition or other accounting platform, available access, subscription requirements, and permission owner. Agree how duplicate documents, unknown suppliers, disputed amounts, unavailable systems, and failed updates reach a person. Posting or payment requires the approval boundary in the scope.</p></div>
+<div><h3>Check a completed handoff</h3><p>Test a routine record, a duplicate, a missing field, and a failed connection. The reviewer should be able to inspect the source, see the proposed change, and tell whether the destination accepted it. Measure total preparation and review effort rather than only extraction speed.</p></div></div>
+    <p class="section-action"><a href="/blog/automate-invoice-processing-with-ai/">Read the invoice-processing walkthrough</a> &middot; <a href="/work/marcus/results/">Inspect the MARCUS results</a> &middot; <a href="/services/ai-implementation/">See implementation scope</a></p>
   </div>
 </section>
 

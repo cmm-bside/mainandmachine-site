@@ -41,14 +41,17 @@ Start with one task
 ### Following up with leads.
 
 Prepare replies and follow-up reminders from the inquiries already reaching your inbox.
+[Explore lead response automation](/services/builds/instant-lead-response/)
 
 ### Chasing invoices and paperwork.
 
 Collect missing details, prepare routine documents, and flag invoices that need a person’s attention.
+[See how invoice automation works](/blog/automate-invoice-processing-with-ai/)
 
 ### Copying the same data twice.
 
 Move approved information between your systems, with checks for missing or conflicting records.
+[Connect your business systems](/services/builds/business-system-connectors/)
 
 Built. Used. Measured.
 
@@ -1546,6 +1549,8 @@ Sources and limits
 
 Use these figures to understand one deployment. A comparable result in your business needs its own baseline, scope, and measurement.
 
+[Download the public evidence brief](/work/marcus/results/evidence.txt) · [Build your own workflow measurement log](/blog/how-to-measure-ai-roi/)
+
 Period and publication : The first 90 days of full-fleet operation, published July 31, 2026. The server was commissioned in February 2026. Exact measurement start and end dates are not published here.
 
 Source and approval : B:Side reports the figures and reconciled them against its audit log. Christopher Myers signed off in his roles at both organizations; written approval is on file. This is not an independent audit.
@@ -2264,7 +2269,7 @@ Denver, Colorado
 
 # AI implementation in Denver, for businesses that build things.
 
-We work with Front Range businesses in person — at your shop in RiNo, your office in the Tech Center, your yard in Lakewood — and the build runs on hardware you own, not a data center in another state.
+We work with Front Range businesses in person — at your shop in RiNo, your office in the Tech Center, your yard in Lakewood — with the deployment chosen around your workflow and data requirements. Local processing and any external services are agreed in the scope.
 
 At a glance Denver
 
@@ -2424,7 +2429,7 @@ Front Range retail runs split between a storefront and a webstore that disagree 
 
 ### Healthcare & wellness in Denver
 
-Practices and clinics across the metro carry scheduling, intake, and coding preparation on busy teams. Start with one administrative handoff and review patient-data requirements before selecting local, cloud, or hybrid processing. Clinical decisions remain with the practice.
+Practices and clinics across the metro carry scheduling, intake and coding on staff who were hired to do something else. Specify where records, model inputs, logs, and backups may be processed. Local processing is an option; any external service needs its own review before it is included.
 
 [Healthcare & wellness → what we build →](/industries/healthcare/)
 
@@ -2514,7 +2519,7 @@ Phoenix, Arizona
 
 # AI implementation in Phoenix, at the speed the Valley is growing.
 
-We work with Valley businesses in person — your office in Tempe, your restaurant in Old Town, your job trailer in Chandler — and the build runs on hardware you own.
+We work with Valley businesses in person — your office in Tempe, your restaurant in Old Town, your job trailer in Chandler — with local or hybrid deployment agreed around your workflow and data requirements.
 
 At a glance Phoenix
 
@@ -2522,7 +2527,7 @@ Hub Phoenix, AZ
 
 Clusters Hospitality · construction · healthcare
 
-Regulated pattern On-prem, PHI stays put
+Regulated pattern Data routes agreed in scope
 
 Coverage Valley-wide in person, remote US-wide
 
@@ -2674,7 +2679,7 @@ Retail across Scottsdale, Tempe and Chandler runs a storefront and a webstore th
 
 ### Healthcare & wellness in Phoenix
 
-The Valley's population growth shows up first in medical and dental practices: new locations, new providers, and scheduling and intake that were sized for a smaller practice. The patient record stays in the practice — models run on hardware in your building.
+The Valley's population growth shows up first in medical and dental practices: new locations, new providers, and scheduling and intake that were sized for a smaller practice. Define the permitted routes for patient records before choosing a local or hybrid system. Filtering alone does not establish that information can be sent to an external service.
 
 [Healthcare & wellness → what we build →](/industries/healthcare/)
 
@@ -3222,8 +3227,8 @@ URL: https://www.mainandmachine.com/blog/
   AI workflow automation for operations cuts repetitive work, connects business systems, and keeps people accountable for the decisions that matter most.
 - [AI Employee Training Program That People Use](/blog/ai-employee-training-program/) — 2026-09-02
   An AI employee training program teaches real workflows, protects human judgment, and checks adoption before the business expands the rollout.
-- [How to Measure AI ROI Before You Spend More](/blog/how-to-measure-ai-roi/) — 2026-09-01
-  Learn how to measure AI ROI with a practical model for labor, revenue, risk, adoption, and costs before you fund another workflow or tool with confidence.
+- [How to Measure AI ROI: Build a Workflow Evidence Log](/blog/how-to-measure-ai-roi/) — 2026-09-01
+  Record a comparable baseline, preparation and review time, exceptions, costs, and the use of returned capacity before reporting an AI workflow result.
 - [Explainable AI for Business Decisions That Hold Up](/blog/explainable-ai-for-business-decisions/) — 2026-08-31
   Explainable AI for business decisions gives leaders clear reasons, practical controls, and audit trails before automation affects customers, cash, or staff
 - [Human in the Loop AI Systems That Keep Work Accountable](/blog/human-in-the-loop-ai-systems/) — 2026-08-30
@@ -3236,12 +3241,12 @@ URL: https://www.mainandmachine.com/blog/
   Learn how to automate invoice processing with AI while keeping approvals, exception handling, vendor data, and final payment decisions under clear control.
 - [AI Lead Response Automation That Holds Up](/blog/ai-lead-response-automation/) — 2026-08-26
   AI lead response automation cuts delays without handing customer decisions to a bot. Learn what to automate, what people should own, and how to measure it.
-- [How Long Does AI Implementation Take for SMBs?](/blog/how-long-does-ai-implementation-take/) — 2026-08-25
-  How long does AI implementation take? Most small and mid-size businesses can reach production in 30 to 90 days when scope, data, and ownership are clear.
+- [What Delays an AI Implementation? A Buyer Checklist](/blog/how-long-does-ai-implementation-take/) — 2026-08-25
+  Prevent avoidable AI project delays by resolving system access, workflow decisions, acceptance criteria, and operator handoff before they block the build.
 - [How Much Does AI Implementation Cost for SMBs?](/blog/how-much-does-ai-implementation-cost/) — 2026-08-24
   How much does AI implementation cost? See practical price ranges, the scope behind each number, and how to model a defensible business return before you buy
-- [What an AI Readiness Audit Should Actually Find](/blog/ai-readiness-audit/) — 2026-08-23
-  An AI readiness audit exposes costly workflows, weak data, security gaps, and adoption risks before you spend money building the wrong system at scale.
+- [AI Readiness Audit Handoff: What to Check](/blog/ai-readiness-audit/) — 2026-08-23
+  Use this handoff checklist to inspect an AI audit: traceable findings, complete costs, operating boundaries, and a next step another builder can price.
 - [AI Consulting for Small Business That Ships](/blog/ai-consulting-for-small-business-that-ships/) — 2026-08-23
   AI consulting for small business should fix costly workflows, not create slides. Learn what to buy, what it costs, and how to keep control of decisions.
 - [What a Construction Estimator Should Never Automate](/blog/what-a-construction-estimator-should-never-automate/) — 2026-08-18

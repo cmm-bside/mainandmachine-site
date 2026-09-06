@@ -92,3 +92,24 @@ try {
   assert.notEqual(editorialSignature(original), editorialSignature(original.replace('</head>', '<script type="application/ld+json">{"@type":"Offer","price":0}</script></head>')));
 } finally { fs.rmSync(dateRepo, { recursive: true, force: true }); }
 console.log('[test:editorial] OK — claim scope, byline dates, feed preservation, and content-based sitemap dates.');
+
+// Website revisions survive both cached builds and a fresh upstream edition.
+const { applyPostRevision } = await import('./lib/post-revisions.mjs');
+const { proofBrief } = await import('./lib/proof-brief.mjs');
+for (const slug of ['how-long-does-ai-implementation-take', 'ai-readiness-audit', 'how-to-measure-ai-roi']) {
+  const source = {slug, title:'Upstream title', bodyHtml:'<p>Upstream body.</p>', url:`/blog/${slug}/`, publishedAt:'2026-08-01T00:00:00Z', source:'soro', sourceId:slug, webUrl:'https://example.invalid/original'};
+  const revised=applyPostRevision({...source});
+  assert.notEqual(revised.bodyHtml,source.bodyHtml);
+  assert.ok(revised.bodyHtml.includes('/guides/'));
+  for (const field of ['url','publishedAt','source','sourceId','webUrl']) assert.equal(revised[field],source[field]);
+  assert.deepEqual(applyPostRevision({...revised}),revised,'repeated build is stable');
+  assert.deepEqual(applyPostRevision({...source,updatedAt:'2026-09-20'}),revised,'upstream refresh cannot overwrite the website edition or invent freshness');
+}
+const unknown={slug:'unrelated',title:'Keep',bodyHtml:'<p>Keep.</p>'};
+assert.deepEqual(applyPostRevision({...unknown}),unknown);
+const briefLog={marcus:{signed_off:true,measurement_window:'verified test window',approval:{approved_on:'2026-09-01'},scorecard:[{value:'321',unit:'hrs',desc:'Test figure.'}]}};
+assert.ok(proofBrief(briefLog).includes('321 hrs'));
+assert.ok(proofBrief(briefLog).includes('founder-affiliated'));
+assert.ok(!proofBrief({marcus:{...briefLog.marcus,signed_off:false}}).includes('321'));
+assert.ok(!proofBrief({}).includes('1,240'));
+console.log('[test:editorial] Website revision persistence and evidence withdrawal pass.');

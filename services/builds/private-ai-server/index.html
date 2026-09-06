@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=156" />
+<link rel="stylesheet" href="/styles.css?v=157" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -329,8 +329,10 @@
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main navigation">
       <a href="/services/">How we help</a>
+      <a href="/services/builds/">Builds</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
+      <a href="/guides/">Guides</a>
       <a href="/blog/">Blog</a>
     </nav>
     <div class="nav__right">
@@ -415,6 +417,17 @@
          them would put fabricated arithmetic on a page that quotes fixed
          prices. Supply the three inputs and this section gets written. -->
     <!-- /BUILD-PAGE:WORKED-EXAMPLE -->
+  </div>
+</section>
+
+<section class="section paper-2" aria-labelledby="workflow-detail-title">
+  <div class="wrap">
+    <div class="head-block"><div><span class="kicker">Inside the workflow</span><h2 class="h2 mt-s" id="workflow-detail-title">Choose the boundary before the hardware.</h2></div><p>A local server is one part of a private workflow. The scope also needs to cover connected services, access, backups, maintenance, and what happens when the model cannot complete a task.</p></div>
+    <div class="prose-2"><div><h3>List the permitted processing routes</h3><p>Identify the documents, model inputs, outputs, logs, and backups involved. For a local-only workflow, verify that connected components do not introduce an external processing route. For a hybrid workflow, define which tasks and information may use external services.</p></div>
+<div><h3>Test the intended work</h3><p>Use representative documents and expected outputs to assess quality, response time, and concurrent use on the proposed hardware. A hardware specification alone cannot establish that a model will meet your workflow requirements. Keep a path to a person when the approved system cannot answer.</p></div>
+<div><h3>Price ownership and operation together</h3><p>Include the hardware, configuration, integrations, backups, replacement planning, and the person responsible for updates. A hybrid arrangement also needs external usage and subscription costs. The written quote should distinguish included work from recurring expenses.</p></div>
+<div><h3>Plan maintenance and recovery</h3><p>Agree who applies updates, how changes are tested, how access is removed, and how a failed system is restored. A model change should be checked against the workflow’s acceptance examples before the team depends on it.</p></div></div>
+    <p class="section-action"><a href="/guides/private-ai-for-small-business/">Compare local and hybrid AI</a> &middot; <a href="/security/">Read the documented data controls</a> &middot; <a href="/guides/what-ai-automation-costs-to-run/">Review ongoing cost categories</a></p>
   </div>
 </section>
 

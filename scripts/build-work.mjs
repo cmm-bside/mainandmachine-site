@@ -15,9 +15,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/config.mjs";
 
+import { proofBrief } from "./lib/proof-brief.mjs";
+
 const DATA = path.join(ROOT, "data", "build-log.json");
 const log = JSON.parse(fs.readFileSync(DATA, "utf8"));
 const mk = log.marcus || {};
+fs.writeFileSync(path.join(ROOT, "work/marcus/results/evidence.txt"), proofBrief(log));
 const marcusReady = mk.signed_off === true;
 
 const esc = (s) =>

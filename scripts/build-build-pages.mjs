@@ -19,6 +19,8 @@ import { COMPANY, SITE_ORIGIN } from "./lib/config.mjs";
 import { BUILDS, INDUSTRY_NAMES, routeOf, tierOf } from "./lib/builds.mjs";
 import { ID, ref, breadcrumbList } from "./lib/jsonld.mjs";
 
+import { buildDetailHtml } from "./lib/build-details.mjs";
+
 const ROOT = process.cwd();
 const DONOR = path.join(ROOT, "services", "sample-audit", "index.html");
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -244,6 +246,8 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
     <!-- /BUILD-PAGE:WORKED-EXAMPLE -->
   </div>
 </section>
+
+${buildDetailHtml(b.slug, esc)}
 
 <!-- ============ HOW WE BUILD IT ============ -->
 <section class="section ink">

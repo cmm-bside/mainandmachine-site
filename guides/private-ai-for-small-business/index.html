@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=156" />
+<link rel="stylesheet" href="/styles.css?v=157" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -127,7 +127,7 @@
         "@id": "https://www.mainandmachine.com/#org"
       },
       "datePublished": "2026-08-09",
-      "dateModified": "2026-09-04",
+      "dateModified": "2026-09-06",
       "about": [
         "Private AI",
         "On-premise AI",
@@ -243,8 +243,10 @@
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main navigation">
       <a href="/services/">How we help</a>
+      <a href="/services/builds/">Builds</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
+      <a href="/guides/">Guides</a>
       <a href="/blog/">Blog</a>
     </nav>
     <div class="nav__right">
@@ -271,7 +273,7 @@
         <span class="kicker">The Field Guide / Pillar</span>
         <h1 class="h2 mt-s">Private AI for small business, <span class="accent-tx">explained by a live deployment.</span></h1>
         <!-- BYLINE:auto -->
-        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated <time datetime="2026-09-04">September 2026</time></span></p>
+        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated <time datetime="2026-09-06">September 2026</time></span></p>
         <!-- /BYLINE:auto -->
         <p class="lead mt-s">Private AI starts with control over where your data is processed and who can use it. Here is how to assess a local or hybrid system, what it costs, and what our published lender deployment can—and cannot—tell you.</p>
       </div>
@@ -305,6 +307,20 @@
     <p><strong>Healthcare practices and clinics.</strong> Assess patient-data handling, required agreements, and the administrative workflow before selecting a deployment. <a href="/industries/healthcare/">Our healthcare page</a> explains the boundary around clinical decisions.</p>
     <p><strong>Legal and professional services.</strong> Privileged client files carry an obligation that a vendor&rsquo;s terms of service does not discharge. See <a href="/industries/professional-services/">AI for professional services</a>.</p>
     <p>The test is not company size or revenue. It is whether you can name the document that cannot leave.</p>
+
+    <h2 class="h2">Local or hybrid: which arrangement fits the work?</h2>
+    <p>Choose the processing boundary first. Both arrangements need access controls, maintenance, and tests against the documents your team uses.</p>
+    <div class="gtable-wrap"><table class="gtable">
+      <caption>Questions to settle before selecting a deployment</caption>
+      <thead><tr><th scope="col">Decision</th><th scope="col">Local processing</th><th scope="col">Hybrid processing</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Model inputs</th><td>Run approved tasks on your hardware. Verify that connected tools, logs, and backups respect the same boundary.</td><td>Specify which tasks may use an external model and exactly what information can leave.</td></tr>
+        <tr><th scope="row">Operating costs</th><td>Include hardware, upkeep, power, backups, and the people responsible for maintenance.</td><td>Include local costs plus external usage, vendor subscriptions, and review of those dependencies.</td></tr>
+        <tr><th scope="row">Quality check</th><td>Test the local model on representative work and exceptions before accepting it.</td><td>Compare the permitted routes on the same work. More capable external reasoning may still be unsuitable for some information.</td></tr>
+        <tr><th scope="row">When a task fails</th><td>Route it to a person if the approved model cannot complete it.</td><td>Do not silently switch to an external model. Escalation must stay within the agreed data boundary.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Bring the intended documents and access requirements to scoping. See the <a href="/services/builds/private-ai-server/">private AI server build</a> and <a href="/guides/what-ai-automation-costs-to-run/">ongoing-cost guide</a> for the decisions behind the quote.</p>
 
     <h2 class="h2">What does a private AI system actually consist of?</h2>
     <p>Five controls to evaluate, drawn from <a href="/security/">the MARCUS architecture</a>. Your scope must establish which controls apply and how they will be tested.</p>

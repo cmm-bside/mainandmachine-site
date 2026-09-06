@@ -80,7 +80,7 @@ export const INDUSTRY_COPY = {
 		retail:
 			"Front Range retail runs split between a storefront and a webstore that disagree about stock by Tuesday. One count, every channel, every morning is the build — and it is the same build whether the second channel is a marketplace, a wholesale line or a second location in Boulder.",
 		healthcare:
-			"Practices and clinics across the metro carry scheduling, intake and coding on staff who were hired to do something else. The record never leaves the practice: models run on hardware in your building, which is the architecture Colorado operators ask about first.",
+			"Practices and clinics across the metro carry scheduling, intake and coding on staff who were hired to do something else. Specify where records, model inputs, logs, and backups may be processed. Local processing is an option; any external service needs its own review before it is included.",
 		construction:
 			"This is the most common first build we scope on the Front Range. Pay applications assembled on the cycle, lien waivers tracked across every tier of sub, and Colorado prevailing-wage and certified-payroll records built from the same source data rather than rebuilt by hand.",
 		hospitality:
@@ -92,7 +92,7 @@ export const INDUSTRY_COPY = {
 		retail:
 			"Retail across Scottsdale, Tempe and Chandler runs a storefront and a webstore that disagree about stock by mid-week, with seasonal swing on top of it. One count, every channel, every morning — the same build whether the second channel is a marketplace or a second location.",
 		healthcare:
-			"The Valley's population growth shows up first in medical and dental practices: new locations, new providers, and scheduling and intake that were sized for a smaller practice. The patient record stays in the practice — models run on hardware in your building.",
+			"The Valley's population growth shows up first in medical and dental practices: new locations, new providers, and scheduling and intake that were sized for a smaller practice. Define the permitted routes for patient records before choosing a local or hybrid system. Filtering alone does not establish that information can be sent to an external service.",
 		construction:
 			"Arizona's preliminary-notice window is twenty days, which is tighter than most states and is the reason contractors call. The twenty-day notice, pay applications, waivers per tier and certified payroll all assembled from one source, with a person signing everything.",
 		hospitality:

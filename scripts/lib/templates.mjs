@@ -223,8 +223,10 @@ export function nav() {
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main navigation">
       <a href="/services/">How we help</a>
+      <a href="/services/builds/">Builds</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
+      <a href="/guides/">Guides</a>
       <a href="/blog/">Blog</a>
     </nav>
     <div class="nav__right">

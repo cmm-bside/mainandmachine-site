@@ -7,6 +7,7 @@
 //   npm run smoke:test                       (defaults to the live site)
 //   BASE_URL=https://preview.example node scripts/smoke-test.mjs
 import { COMPANY } from "../src/data/company.mjs";
+import { ASSET_VERSION } from "./lib/config.mjs";
 
 const BASE = process.env.BASE_URL || COMPANY.origin;
 const errors = [];
@@ -17,6 +18,12 @@ const OLD_BUILD_MARKERS = ["limited slots", 'href="/#work"', "<title>Book an Ass
 // Every current non-blog page carries this banner; blog pages carry their own.
 const CURRENT_BANNER = 'class="ticker"';
 const BLOG_BANNER = "free essays, a few times a month";
+// These current conversion pages deliberately use a quieter header.
+const CONVERSION_MARKERS = {
+  "/": ['id="home-work-title"', 'href="/plan/"'],
+  "/plan/": ['id="workflow"', 'id="plan-faq-title"'],
+  "/plan/sample/": ['id="plan-title"', 'class="sample-plan'],
+};
 
 async function get(url) {
   const res = await fetch(url, { headers: { "cache-control": "no-cache" }, redirect: "manual" });
@@ -43,7 +50,14 @@ for (const url of urls) {
   }
   const isBlog = route.startsWith("/blog");
   const isLegal = ["/privacy/", "/terms/"].includes(route);
-  if (!isBlog && !isLegal && !body.includes(CURRENT_BANNER))
+  if (!body.includes(`/styles.css?v=${ASSET_VERSION}`))
+    fail(`${route}: missing current stylesheet version ${ASSET_VERSION} — possibly a stale copy`);
+  if (CONVERSION_MARKERS[route]) {
+    for (const marker of CONVERSION_MARKERS[route]) {
+      if (!body.includes(marker)) fail(`${route}: missing current conversion-page element ${marker}`);
+    }
+  }
+  if (!isBlog && !isLegal && !CONVERSION_MARKERS[route] && !body.includes(CURRENT_BANNER))
     fail(`${route}: missing current banner "${CURRENT_BANNER}" — possibly a stale copy`);
   if (isBlog && !route.includes(".xml") && !body.includes(BLOG_BANNER) && !body.includes(CURRENT_BANNER))
     fail(`${route}: missing expected topbar banner`);
@@ -59,7 +73,7 @@ if (BASE === COMPANY.origin) {
 
 // /book/ load-bearing elements (FAQ 01 regression + the named advisor).
 const book = await get(`${BASE}/book/`);
-for (const s of ["Is it really free?", "Fair questions.", "What happens · 30 minutes", "Who you’ll talk to", "Christopher Myers"]) {
+for (const s of ["Is it really free?", "Fair questions.", "What happens · 30 minutes", "Who actually shows up to the call?", "Christopher Myers", 'id="calEmbed"', 'id="assessForm"']) {
   if (!book.body.includes(s)) fail(`/book/: missing "${s}"`);
 }
 // Six FAQ items since 2026-07 — keep in lockstep with scripts/check-book.mjs.

@@ -7,7 +7,7 @@
 //   npm run smoke:test                       (defaults to the live site)
 //   BASE_URL=https://preview.example node scripts/smoke-test.mjs
 import { COMPANY } from "../src/data/company.mjs";
-import { ASSET_VERSION } from "./lib/config.mjs";
+import { ASSET_VERSION, PROXIED_ROUTES } from "./lib/config.mjs";
 
 const BASE = process.env.BASE_URL || COMPANY.origin;
 const errors = [];
@@ -50,7 +50,8 @@ for (const url of urls) {
   }
   const isBlog = route.startsWith("/blog");
   const isLegal = ["/privacy/", "/terms/"].includes(route);
-  if (!body.includes(`/styles.css?v=${ASSET_VERSION}`))
+  // The proxied score tool has its own deployment and asset versions.
+  if (!PROXIED_ROUTES.includes(route) && !body.includes(`/styles.css?v=${ASSET_VERSION}`))
     fail(`${route}: missing current stylesheet version ${ASSET_VERSION} — possibly a stale copy`);
   if (CONVERSION_MARKERS[route]) {
     for (const marker of CONVERSION_MARKERS[route]) {

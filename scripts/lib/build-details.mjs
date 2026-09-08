@@ -24,13 +24,13 @@ export const BUILD_DETAILS = {
     links: [['/work/marcus/results/', 'Read the published knowledge-work results'], ['/guides/private-ai-for-small-business/', 'Compare private AI arrangements'], ['/services/ai-implementation/', 'See implementation scope']],
   },
   'instant-lead-response': {
-    heading: 'From inquiry to a reviewed next step.',
-    intro: 'Agree what counts as a useful response, which channels are included, and when the workflow should hand the inquiry to a person. Faster preparation should make the next action clearer.',
+    heading: 'From inquiry to a controlled next step.',
+    intro: 'Agree what counts as a prepared draft and what counts as a sent response. Name the included channels, eligible automatic sends, and the requests that must wait for a person.',
     sections: [
       ['Capture the request once', 'An illustrative workflow starts with a web inquiry. It records the requested service and available contact details, checks for an existing customer record, and routes the inquiry to its owner. Incomplete or duplicate requests need an explicit handling rule.'],
       ['Prepare a reply from approved material', 'Use the service description, availability rules, and published information agreed in scope. The reply may ask for missing details or suggest the next step. It should not invent a quote, guarantee an appointment, or make a commitment outside its authority.'],
-      ['Choose draft-only or bounded sending', 'In draft-only mode, a person reviews and sends the response. If automatic sending is in scope, specify eligible requests, approved content, escalation conditions, and stop rules. Communication preferences and requests to stop must carry across the follow-up sequence.'],
-      ['Measure the whole response path', 'Track the time to a useful response, successful routing, reviewer effort, exceptions, and the resulting appointment or next action. Compare similar inquiries before and after launch. A quick acknowledgment alone does not demonstrate a recovered sale.'],
+      ['Choose draft-only or bounded sending', 'In draft-only mode, a person reviews and controls the send, so customer response time includes the wait for that reviewer. If automatic sending is in scope, limit it to eligible requests and approved content; specify escalation conditions, follow-up limits, and stop rules. Communication preferences and requests to stop must carry across the sequence. Neither mode carries a blanket one-minute response guarantee.'],
+      ['Measure the whole response path', 'Track draft preparation time separately from the time a useful response is sent. Include successful routing, reviewer effort, exceptions, and the resulting appointment or next action. Compare similar inquiries before and after launch. A prepared draft or quick acknowledgment alone does not demonstrate a recovered sale.'],
     ],
     links: [['/blog/ai-lead-response-automation/', 'Read about lead response automation'], ['/blog/how-to-measure-ai-roi/', 'Set up the measurement log'], ['/services/ai-implementation/', 'See implementation scope']],
   },

@@ -192,9 +192,10 @@ ${chrome.afterBody}<main id="main" tabindex="-1">
         <h1 class="h1">${esc(b.name)}</h1>
         <p class="lead">${esc(b.definition)}</p>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="/book/" data-cta="build-page-hero">Book a free assessment <span class="arr">&#8594;</span></a>
-          <a class="btn btn--secondary" href="/score/">Get your AI-Ready Score</a>
+          <a class="btn btn--primary" href="/plan/" data-cta="build-page-hero">Get my free plan <span class="arr" aria-hidden="true">&#8594;</span></a>
+          <a class="btn btn--secondary" href="/book/" data-cta="build-page-hero-book">Prefer to talk? Free assessment</a>
         </div>
+        <p class="mt-s">Start with a free written recommendation on one workflow, reviewed by Christopher Myers and emailed within 24 hours. No call or purchase required. Prefer a live discussion? The free assessment is a 30-minute conversation.</p>
       </div>
       <div class="statrail crop">
         <div class="statrail__bar"><span>The build</span><span><b>Spec</b></span></div>
@@ -260,7 +261,7 @@ ${buildDetailHtml(b.slug, esc)}
       <p>Define the operating boundary before choosing a model or a tool. Your written scope connects the workflow to the systems, decisions, and people it depends on.</p>
     </div>
     <div class="prose-2">
-      <p><strong>Discover.</strong> We review the workflow, its volume, the tools involved, and what happens when an exception arrives. Use an AI Readiness Audit when that needs investigation, or discuss direct sprint scoping if it is already defined.</p>
+      <p><strong>Discover.</strong> Start with a free workflow plan for an initial written recommendation based on what you share. Use an AI Readiness Audit when the workflow, tools, and exceptions need deeper investigation, or discuss direct sprint scoping if the work is already defined.</p>
       <p><strong>Build.</strong> Agree the scope and fixed quote before work begins. Define routine actions that may run automatically, decisions requiring human approval, and the tests the workflow must pass.</p>
       <p><strong>Evolve.</strong> Once it is live it needs watching: what it handles, what it escalates, what changed in your business since. That is Managed Services, and it is optional.</p>
       <p class="section-action"><a href="/method/">How we work <span class="arr">&#8594;</span></a></p>
@@ -306,12 +307,13 @@ ${faqHtml}
   <div class="wrap">
     <div>
       <span class="kicker">Next step</span>
-      <h2 class="h2 mt-s">30 minutes. A straight answer.</h2>
-      <p>Bring one workflow to the free assessment. We will discuss whether this build fits, what needs scoping, and when the better answer is not yet.</p>
+      <h2 class="h2 mt-s">One workflow. A written first step.</h2>
+      <p>Describe the task and the tools involved. Christopher Myers reviews your free workflow plan, emailed within 24 hours, with an initial recommendation on where to start and what needs scoping. No call or purchase required. The plan is not a paid audit or a fixed implementation quote.</p>
+      <p class="mt-s">Prefer to talk it through? Book a free 30-minute assessment for a live discussion of fit and next steps.</p>
     </div>
     <div class="hero__cta">
-      <a class="btn btn--primary" href="/book/" data-cta="build-page-final">Book a free assessment <span class="arr">&#8594;</span></a>
-      <a class="btn btn--secondary" href="/score/">Get your AI-Ready Score</a>
+      <a class="btn btn--primary" href="/plan/" data-cta="build-page-final">Get my free plan <span class="arr" aria-hidden="true">&#8594;</span></a>
+      <a class="btn btn--secondary" href="/book/" data-cta="build-page-final-book">Prefer to talk? Free assessment</a>
     </div>
   </div>
 </section>

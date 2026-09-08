@@ -4924,3 +4924,26 @@ section.ink, .ink--grid {
  .plan-footer small { display: block; margin-top: 12px; }
 }
 @media print { .plan-footer { display: none !important; } }
+
+/* Conversion clarity: a readable sample, buyer fit, and scope comparisons. */
+.home-fit { max-width: 54ch; margin: 18px 0 0; font-size: 15px; line-height: 1.6; color: var(--muted-on-light); }
+.home-simple .home-plan-card h2 { margin-bottom: 20px; }
+.home-sample-preview { border-block: 1px solid var(--rule-strong); padding-block: 20px; }
+.home-sample-preview__label { display: block; color: var(--muted-on-light); font: 11px/1.6 var(--mono); letter-spacing: .035em; }
+.home-sample-preview h3 { margin: 12px 0 10px; font-size: 22px; line-height: 1.3; letter-spacing: -.025em; }
+.home-sample-preview p, .home-sample-preview li { font-size: 15px; line-height: 1.6; }
+.home-sample-preview p { margin: 0; }
+.home-sample-preview ol { margin: 14px 0 0; padding-left: 20px; }
+.home-sample-preview li + li { margin-top: 6px; }
+.home-simple .home-plan-card > .home-sample-disclosure { font-size: 12px; line-height: 1.6; margin-top: 8px; }
+.scope-examples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; list-style: none; padding: 0; margin: 32px 0; }
+.scope-example { border-top: 1px solid var(--rule-strong); padding-top: 24px; }
+.scope-example h3 { font-size: 23px; line-height: 1.3; margin: 10px 0 16px; }
+.scope-example p, .scope-example li { font-size: 16px; line-height: 1.65; }
+.scope-example p { margin: 12px 0; }
+.scope-example ul { padding-left: 20px; }
+.scope-example li + li { margin-top: 8px; }
+.scope-examples-note { max-width: 76ch; font-size: 15px; line-height: 1.65; color: var(--muted-on-light); }
+.funnel-next .funnel-next-options { display: flex; align-items: flex-start; flex-direction: column; gap: 14px; }
+.funnel-next .funnel-next-options > a:not(.btn) { font-size: 15px; line-height: 1.6; }
+@media (max-width: 900px) { .scope-examples { grid-template-columns: 1fr; gap: 24px; } }

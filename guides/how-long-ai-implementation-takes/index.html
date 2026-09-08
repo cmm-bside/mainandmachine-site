@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=157" />
+<link rel="stylesheet" href="/styles.css?v=158" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -129,7 +129,7 @@
       "description": "Understand the scope, data, access, testing, and team decisions that shape an AI implementation timeline. Published sprint and audit timelines explained.",
       "url": "https://www.mainandmachine.com/guides/how-long-ai-implementation-takes/",
       "datePublished": "2026-07-13",
-      "dateModified": "2026-09-06",
+      "dateModified": "2026-09-07",
       "author": {
         "@id": "https://www.mainandmachine.com/#person-cmyers"
       },
@@ -198,7 +198,7 @@
       "name": "Can AI really be implemented in two weeks?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A chat wrapper can — a general model with your logo, not wired to your systems, with no training. That can be a fair pilot; it is not an implementation, because it never touches your operation."
+        "text": "Sometimes. A narrow workflow with ready data, existing integrations, clear acceptance criteria, and available reviewers may be delivered in two weeks. Other two-week offers are prototypes or pilots. Compare the actual scope, testing, training, and support rather than judging by the calendar alone. Our Implementation Sprint range remains 4–12 weeks after scope is agreed."
       }
     },
     {
@@ -206,7 +206,7 @@
       "name": "What takes the longest in an AI implementation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Integration, not the model. Getting the AI working takes an afternoon; wiring it into your systems, handling real files and edge cases, and testing until the exception rate is boring takes weeks."
+        "text": "Integration, data preparation, and testing often take more time than the initial model setup. The balance depends on the workflow: difficult reasoning tasks may also need substantial evaluation. Plan for permissions, real-file exceptions, human review, and handoff, not just a working demo."
       }
     },
     {
@@ -242,8 +242,8 @@
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main navigation">
-      <a href="/services/">How we help</a>
-      <a href="/services/builds/">Builds</a>
+      <a href="/services/">Services</a>
+      <a href="/services/builds/">Workflows</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
       <a href="/guides/">Guides</a>
@@ -274,7 +274,7 @@
         <span class="kicker">The Field Guide / 07</span>
         <h1 class="h2 mt-s">How long does AI implementation <span class="accent-tx">actually take?</span></h1>
         <!-- BYLINE:auto -->
-        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated <time datetime="2026-09-06">September 2026</time></span></p>
+        <p class="byline"><a href="/about/" rel="author">Christopher Myers</a> &mdash; Founder, Main & Machine <span class="byline__sep" aria-hidden="true">&middot;</span> <span class="byline__updated">Updated <time datetime="2026-09-07">September 2026</time></span></p>
         <!-- /BYLINE:auto -->
         <p class="lead mt-s">Our Implementation Sprints run 4–12 weeks, with about 90 days as the planning frame for a workflow. See what happens during discovery, build, testing, and handoff.</p>
       </div>
@@ -299,11 +299,11 @@
       <p>A short pilot and a production workflow can have different schedules. Compare the acceptance criteria, integrations, training, and support in each proposal. The timeline below is a planning example, not a requirement that every workflow takes thirteen weeks. What follows is the arc broken into its three phases, a week-by-week table, the levers that genuinely make it faster or slower, and one sequencing lesson from our largest published build. The full version of how we work is on the <a href="/method/">method page</a>; this is the calendar view of it.</p>
 
       <h2>What happens in weeks 1–2?</h2>
-      <p>Discovery and mapping: we watch the workflow run inside your real operation and write down where the hours, files, and decisions actually go. Skipping this phase is where AI projects die.</p>
-      <p>The work is unglamorous on purpose. We interview the people who do the task, watch them do it, inventory which systems hold the data and who can export it, list the edge cases everyone “just handles,” and pin down what done means — in numbers, agreed in writing. The reason this cannot be compressed is that every business runs two versions of every workflow: the one in the org chart and the one that actually happens. Build against the org chart’s version and you automate a process nobody performs; the system demos beautifully and dies in a month. Two weeks of mapping is the cheapest insurance in the whole project, and it is why our <a href="/method/">method</a> starts here rather than at the keyboard.</p>
+      <p>Discovery and mapping: we watch the workflow run inside your real operation and write down where the hours, files, and decisions actually go. Validate the work before automating it.</p>
+      <p>The work is unglamorous on purpose. We interview the people who do the task, watch them do it, inventory which systems hold the data and who can export it, list the edge cases everyone “just handles,” and pin down what done means — in numbers, agreed in writing. The documented process may differ from what people actually do. Mapping exposes that gap before it becomes software. The depth of discovery depends on what is already known: a well-defined workflow may need confirmation rather than a separate audit. Our <a href="/method/">method</a> starts with understanding the work, not with a mandatory discovery duration.</p>
 
       <h2>What happens in weeks 3–10?</h2>
-      <p>The build — inside your real operation, on your real files. The long pole is integration, not the model: getting the AI wired into your systems takes weeks; getting the AI to work takes an afternoon.</p>
+      <p>The build — inside your real operation, on your real files. Integration, data preparation, and testing often take more time than the initial model setup. A working demo is a starting point, not an acceptance test.</p>
       <p>This surprises most buyers, so it bears spelling out. Modern models are astonishingly capable out of the box; the hard part is everything around them. Data access and permissions to your system of record. Handling the invoice that arrives as a photo of a crumpled page. Teaching the system your terminology, your formats, your exceptions — the work the essay <a href="/blog/teaching-the-machine-your-business/">Teaching the Machine Your Business</a> describes. Then testing on real files, because real files are where demos go to be humbled: a <a href="/industries/healthcare/">healthcare practice</a> we would map, for instance, gets intake paperwork as faxes, phone photos, and handwriting, and the system has to route all three or staff will stop trusting it after the first miss. Weeks 3–10 are mostly this: plumbing, edge cases, and testing against reality until the exception rate is boring.</p>
 
       <h2>What happens in weeks 11–13?</h2>
@@ -347,17 +347,17 @@
       <p class="gtable-note">The sprint band is 4–12 weeks. About 90 days describes the planning frame, while the delivery guarantee covers the scoped workflow: if it is not live within 90 days, we keep building at no charge until it is. Confirm the start date and acceptance criteria in the written scope. For the decisions that commonly hold up a build, see <a href="/blog/how-long-does-ai-implementation-take/">what delays an AI implementation</a>.</p>
 
       <h2>What does a “two-week AI implementation” actually&nbsp;deliver?</h2>
-      <p>Usually a chat wrapper: a general-purpose model with your logo on it, not connected to your systems, with no training and no edge-case testing. It is not fraud — it is just a different product wearing the word “implementation.”</p>
-      <p>The pattern is predictable. Week one, the wrapper appears and everyone tries it. Week three, usage has fallen to the two people who like new things, because the tool cannot see the job files, the customer records, or the calendar — so every answer is generic and every task still ends in the old system. By week six it is a line item nobody defends. That said, there is a legitimate case for the fast version: as a pilot. If your team has never touched AI and you want to build familiarity cheaply before committing real money, a two-week wrapper is a reasonable experiment — as long as it is priced like an experiment and nobody calls it a transformation. What it cannot be is the thing that changes your operation, because it never touches your operation.</p>
+      <p>It depends on the scope. A narrow workflow with ready data, an existing integration, clear acceptance criteria, and available reviewers may be delivered in two weeks. Other offers use that window for a prototype, a configured chat tool, or a pilot. The calendar alone does not tell you which one you are buying.</p>
+      <p>Ask what will run in your actual operation at the end: which systems it connects to, which tasks it completes, which exceptions it handles, and who can operate it without the builder. Check whether testing, training, and support are included. A pilot is useful when it answers a defined question before a larger commitment; a production workflow needs acceptance criteria appropriate to its risks. Our published Implementation Sprint range is 4–12 weeks after scope is agreed. A shorter offer can be credible without being equivalent to that scope.</p>
 
       <h2>What makes implementation faster — or slower?</h2>
       <p>Faster: exportable data, one named owner, and one workflow instead of five. Slower: approval bottlenecks and no system of record.</p>
-      <p>The fast levers are all on your side of the table. If your data can be exported from real systems, weeks of archaeology disappear. If one person owns the project and can answer questions in hours, the build never idles — decision latency is the quietest schedule-killer there is, and a question that waits a week doubles the calendar all by itself. And scope discipline compounds: one workflow done in ~90 days beats five workflows half-done in a year, every time. The slow cases are the mirror image: a committee where an owner should be, or an operation running on paper and memory, where there is no system of record to integrate with and one must be stood up first. If you want to know which side of this ledger you are on before spending anything, the free <a href="/guides/ai-readiness-checklist/">20-point readiness checklist</a> will tell you in an afternoon — and being unready is a fixable condition, not a verdict.</p>
-      <p>One more calendar fact vendors soften: multiple workflows do not run in parallel on day one. The second workflow reuses the plumbing, the data access, and the trust the first one built, so it usually lands faster — but it starts after the first one works, not alongside it. A vendor promising five workflows in one quarter is describing five pilots, not five implementations. A <a href="/industries/professional-services/">professional-services firm</a> that automates intake first and proposals second will finish both sooner, and keep both, compared with one that launches everything at once and stabilizes nothing.</p>
+      <p>Both sides affect the schedule. Accessible data and a named owner who can make decisions reduce avoidable waiting; the builder must also confirm access early, surface dependencies, and bring testable work for review. A blocked approval can delay a milestone, especially when later work depends on it. Starting with one workflow keeps review and testing manageable. Paper records, missing permissions, or an unclear system of record may require preparation before the build can proceed. Use the free <a href="/guides/ai-readiness-checklist/">20-point readiness checklist</a> to identify those gaps before committing — being unready is a fixable condition, not a verdict.</p>
+      <p>Multiple workflows can run in parallel when dependencies are understood, access is ready, and each has enough delivery and review capacity. When they share untested connections or the same decision-makers, sequencing is often the safer choice. For example, a <a href="/industries/professional-services/">professional-services firm</a> might stabilize intake before adding proposals so the second workflow can reuse tested records and handoff rules. A proposal for several workflows in one quarter should show the staffing, dependencies, and acceptance criteria for each. It may describe production work or pilots; the number of workflows alone does not decide that.</p>
 
       <h2>When should the highest-stakes work get built?</h2>
       <p>Last. In the <a href="/work/marcus/">MARCUS</a> build at B:Side Capital — 14 agents across 7 departments — the highest-exposure work was deliberately sequenced last, after the low-stakes agents had run long enough to earn trust.</p>
-      <p>That ordering is the opposite of the demo instinct, which wants the most impressive thing first. But trust is the actual product of an implementation, and trust is built by boring reliability on low-stakes work — which is also why consequential actions in that system require human approval. Sequencing this way is a large part of why real timelines are measured in quarters rather than days: the calendar is not just building software, it is building your team’s justified confidence in it. Plan discovery if it is needed: an audit takes 2 to 4 weeks at $3,500–$8,500. A defined workflow can go directly to sprint scoping; the sprint is $18,000–$60,000, fixed in writing before work begins. Both prices are on <a href="/pricing/">one page</a>. If 90 days sounds long, note what it replaces: a two-week tool nobody uses, purchased three separate times.</p>
+      <p>That ordering is the opposite of the demo instinct, which wants the most impressive thing first. But trust is the actual product of an implementation, and trust is built by boring reliability on low-stakes work — which is also why consequential actions in that system require human approval. Sequencing a deployment of this breadth takes more than software build time: the calendar also includes testing and building your team’s justified confidence in it. Plan discovery if it is needed: an audit takes 2 to 4 weeks at $3,500–$8,500. A defined workflow can go directly to sprint scoping; the sprint is $18,000–$60,000, fixed in writing before work begins. Both prices are on <a href="/pricing/">one page</a>.</p>
 
     </article>
   </div>
@@ -382,11 +382,11 @@
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">Can AI really be implemented in two weeks?</span><span class="q-pm">+</span></summary>
-          <p>A chat wrapper can — a general model with your logo, not wired to your systems, with no training. That can be a fair pilot; it is not an implementation, because it never touches your operation.</p>
+          <p>Sometimes. A narrow workflow with ready data, existing integrations, clear acceptance criteria, and available reviewers may be delivered in two weeks. Other two-week offers are prototypes or pilots. Compare the actual scope, testing, training, and support rather than judging by the calendar alone. Our Implementation Sprint range remains 4–12 weeks after scope is agreed.</p>
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">What takes the longest in an AI implementation?</span><span class="q-pm">+</span></summary>
-          <p>Integration, not the model. Getting the AI working takes an afternoon; wiring it into your systems, handling real files and edge cases, and testing until the exception rate is boring takes weeks.</p>
+          <p>Integration, data preparation, and testing often take more time than the initial model setup. The balance depends on the workflow: difficult reasoning tasks may also need substantial evaluation. Plan for permissions, real-file exceptions, human review, and handoff, not just a working demo.</p>
         </details>
         <details>
           <summary><span class="q-no">04</span><span class="q-tx">What makes AI implementation go faster?</span><span class="q-pm">+</span></summary>
@@ -497,6 +497,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=11"></script>
-<script defer src="/js/analytics.js?v=8"></script>
+<script defer src="/js/analytics.js?v=9"></script>
 </body>
 </html>

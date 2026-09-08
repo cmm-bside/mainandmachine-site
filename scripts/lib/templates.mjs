@@ -222,8 +222,8 @@ export function nav() {
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main navigation">
-      <a href="/services/">How we help</a>
-      <a href="/services/builds/">Builds</a>
+      <a href="/services/">Services</a>
+      <a href="/services/builds/">Workflows</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
       <a href="/guides/">Guides</a>
@@ -328,6 +328,6 @@ export function subscribeBand() {
 // Scripts shared by every blog page: mobile nav and search.
 export function pageScripts() {
 	return `<script defer src="/js/nav.js?v=11"></script>
-<script defer src="/js/analytics.js?v=8"></script>
+<script defer src="/js/analytics.js?v=9"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

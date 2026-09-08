@@ -1,5 +1,7 @@
 {
   "/": "2026-09-06",
+  "/plan/": "2026-09-05",
+  "/plan/sample/": "2026-09-04",
   "/book/": "2026-09-04",
   "/pricing/": "2026-09-04",
   "/method/": "2026-09-04",
@@ -40,7 +42,7 @@
   "/guides/how-to-choose-an-ai-consultant/": "2026-09-04",
   "/guides/what-ai-automation-costs-to-run/": "2026-09-04",
   "/guides/ai-agents-vs-automations-vs-integrations/": "2026-09-04",
-  "/guides/how-long-ai-implementation-takes/": "2026-09-06",
+  "/guides/how-long-ai-implementation-takes/": "2026-09-07",
   "/guides/what-is-an-ai-readiness-audit/": "2026-09-06",
   "/guides/ai-data-cloud-vs-on-prem/": "2026-09-04",
   "/guides/chatgpt-vs-custom-ai/": "2026-09-04",
@@ -54,8 +56,5 @@
   "/contact/": "2026-09-04",
   "/careers/": "2026-09-04",
   "/privacy/": "2026-09-04",
-  "/terms/": "2026-09-04",
-  "/plan/": "2026-09-05",
-  "/plan/sample/": "2026-09-04",
-  "/plan/thanks/": "2026-09-04"
+  "/terms/": "2026-09-04"
 }

@@ -20,9 +20,9 @@ const CURRENT_BANNER = 'class="ticker"';
 const BLOG_BANNER = "free essays, a few times a month";
 // These current conversion pages deliberately use a quieter header.
 const CONVERSION_MARKERS = {
-  "/": ['id="home-work-title"', 'href="/plan/"'],
+  "/": ['id="home-work-title"', 'href="/plan/"', 'class="home-sample-preview"', 'data-cta="hero-sample"'],
   "/plan/": ['id="workflow"', 'id="plan-faq-title"'],
-  "/plan/sample/": ['id="plan-title"', 'class="sample-plan'],
+  "/plan/sample/": ['id="plan-title"', 'class="sample-plan', 'src="/js/pa"'],
 };
 
 async function get(url) {
@@ -65,6 +65,16 @@ for (const url of urls) {
 }
 
 // Apex must redirect to www — a stale copy can't hide on the bare domain.
+for (const [route, markers] of Object.entries({
+  "/pricing/": ['id="scope-examples"', 'data-cta="pricing-no-call"'],
+  "/services/": ['How is the free plan different from a paid audit?', 'data-cta="page-hero-book"'],
+  "/book/": ['id="calPrivacy"', 'aria-describedby="calPrivacy"'],
+  "/services/builds/instant-lead-response/": ['data-cta="build-page-hero-book"', 'href="/plan/"'],
+})) {
+  const result = await get(`${BASE}${route}`);
+  for (const marker of markers) if (!result.body.includes(marker)) fail(`${route}: missing release marker ${marker}`);
+}
+
 if (BASE === COMPANY.origin) {
   const apex = await fetch("https://mainandmachine.com/book/", { redirect: "manual" });
   const loc = apex.headers.get("location") || "";

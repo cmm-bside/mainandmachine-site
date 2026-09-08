@@ -1,6 +1,7 @@
 # Analytics events — the one contract
 
-Cookieless Plausible, served **first-party** so ad-blockers don't blind us:
+Cookieless Plausible, served **first-party**. Blocking, network failures and
+privacy settings can still prevent measurement:
 
 - `/js/pa` → `functions/js/pa.js` (Pages Functions strip the extension from
   the route) proxies the site's Plausible tracker
@@ -8,9 +9,9 @@ Cookieless Plausible, served **first-party** so ad-blockers don't blind us:
   outage degrades to a no-op script, never a broken page).
 - `/api/event` → `functions/api/event.js` proxies the beacon, forwarding the
   client IP (`X-Forwarded-For`) and User-Agent — that's all Plausible's
-  cookieless unique-visitor hashing needs. No cookie, no fingerprint, no
-  consent banner required.
-- Every page calls `plausible.init({ endpoint: "/api/event",
+  cookieless unique-visitor hashing needs. This is not a guarantee of legal
+  consent compliance or event delivery.
+- Funnel pages must call `plausible.init({ endpoint: "/api/event",
   formSubmissions: false })` — auto "Form: Submission" is off because every
   form below has a named event; auto outbound-link and file-download events
   stay on.
@@ -20,10 +21,12 @@ Cookieless Plausible, served **first-party** so ad-blockers don't blind us:
   GA4 stays as the app's full-granularity stream; Plausible gets the funnel
   events below (mapping: `lib/analytics.ts` → `toPlausible()`).
 
-**No-PII contract:** props carry only page paths, placement labels, slugs,
-industry keys, and coarse bands (score band, headcount band). Never a name,
+**No-PII custom-property contract:** props carry only page paths, authored
+placement labels, slugs, fixed diagnostic categories, industry keys, and
+coarse bands (score band, headcount band). Never a name,
 email, phone, free-text answer, raw score, or dollar output. Custom events
-change ONLY by editing `js/analytics.js` (static site) or
+change ONLY by editing `js/analytics.js` (static site),
+`js/workflow-plan.js` (workflow intake), or
 `lib/analytics.ts` (Score app) — no inline one-offs, except the /book/ page's
 booking events (`calendly_loaded`, `calendly_widget_viewed`,
 `calendly_time_selected`, `calendly_booked`, `booking_form_submitted`,
@@ -79,7 +82,6 @@ the pre-change `hero` bucket should be read as "hero + pre-footer + page hero".
 | engagement | `calculator_emailed` | `page`, `industry`, `team_band` | "Email me this estimate" submitted on /calculator/ or a guide worksheet. No email in the props. | `js/analytics.js` |
 | booked | `booking_details_added` | `page` | stage-2 prep details accepted on /book/thanks/ (post-booking enrichment) | `book/thanks/index.html` |
 | **booked** | `calendly_booked` | `page` (+ `band` from the app) | Calendly's `calendly.event_scheduled` postMessage — a real slot on the calendar | both |
-| audience | `newsletter_subscribed` | `page` | any beehiiv subscribe form submitted (closest observable moment; beehiiv confirms in its own tab) | `js/analytics.js` |
 
 Read rates as: `score_completed / score_started` (tool completion),
 `calendly_booked / calendly_widget_viewed` (scheduler completion), `calendly_booked / unique visitors` (the number that matters).
@@ -104,6 +106,7 @@ unchanged: labels are constant strings or page paths, never a payload field.
 | Submit lead form | `submit_lead_form` | `booking_form_submitted` (`book/index.html`) | the fallback form's `ok` response, not the submit attempt |
 | Submit lead form | `submit_lead_form` | `calculator_emailed` (`js/analytics.js`) | any `.estimate-form` submit (/calculator/ + guide worksheets) |
 | Submit lead form | `submit_lead_form` | `score_report_requested` (Score app, `lib/analytics.ts`) | report request accepted by the API; not email delivery |
+| Submit lead form | `submit_lead_form` | `workflow_plan_submitted` (`js/workflow-plan.js`) | matching successful API receipt with `emailStatus: "queued"`; label is the constant `workflow_plan`, not a request field |
 | Book appointment | `book_appointment` | `calendly_booked` (Score app) | validated Calendly success message, once |
 
 Deliberately NOT conversions: the beehiiv subscribe form (an audience, not a
@@ -112,13 +115,19 @@ enrichment of a conversion already counted). A document-wide form listener
 would have counted all three — that is why the pushes ride named events
 instead of a generic `submit` hook.
 
+The legacy `calculator_emailed` / UET estimate event measures a DOM submit,
+not a successful API receipt. Do not combine its counts with verified
+workflow-plan receipts as though they were equivalent leads. The workflow-plan
+attempt, sample, CTA, task-step and issue events do not push UET conversions.
+
 ## The booking funnel
 
     cta_book_click ──► calendly_widget_viewed ──► calendly_time_selected ──► calendly_booked
       intent            the scheduler rendered      a slot is picked          confirmed
 
-Four steps, each a strict subset of the one before it, so every adjacent pair is
-a rate you can act on:
+Four diagnostic stages, not guaranteed strict subsets: direct landings,
+repeat clicks, privacy settings and interrupted navigation change what is
+observed. Use comparable visitors/cohorts rather than dividing raw event totals:
 
 - **`cta_book_click` → `calendly_widget_viewed`** is the page, not the
   scheduler: people asked to book and did not arrive at a working calendar.
@@ -162,11 +171,16 @@ a once-only bottom would understate every rate above.
    `score_started`, `score_completed`, `calculator_interacted`,
    `guide_read`, `calendly_loaded`, **`calendly_widget_viewed`**,
    **`calendly_time_selected`**, `booking_form_submitted`,
-   `calendly_booked`, `newsletter_subscribed`, `calculator_emailed`,
+   `calendly_booked`, `calculator_emailed`,
    `booking_details_added`, `calendly_opened`, `booking_form_started`,
    `booking_form_failed`, `score_report_requested`,
    `score_report_request_failed`, `score_report_opened`. Mark `calendly_booked`
    as the appointment conversion; keep accepted requests separate.
+   For the plan offer, add `cta_plan_click`, `workflow_plan_sample_click`,
+   `workflow_plan_sample_view`, `workflow_plan_started`, `workflow_plan_details`,
+   `workflow_plan_submit_attempt`, `workflow_plan_submit_issue` and
+   `workflow_plan_submitted`. Only the last is a client-observed accepted
+   request; none is a qualified opportunity or sale.
 2. Funnels (if on a plan with funnels): the booking funnel is
    `cta_book_click` → `calendly_widget_viewed` → `calendly_time_selected` →
    `calendly_booked`. The wider acquisition funnel is visit →
@@ -220,8 +234,6 @@ Network filtered to `/api/event`, then:
       **no numeric score**.
 - [ ] /guides/ai-consultant-cost/: scroll to ~75% → one `guide_read`
       `{guide:"ai-consultant-cost"}`; keep scrolling → no repeat.
-- [ ] Any footer: submit the newsletter form → `newsletter_subscribed`;
-      confirm the POST body contains **no email**.
 - [ ] /book/: load the page → no calendar events. Activate **Choose a time**
       → `calendly_loaded` **and** `calendly_widget_viewed`
       (one each). Pick a date/time → exactly one `calendly_time_selected`; back
@@ -257,9 +269,11 @@ Network filtered to `/api/event`, then:
 ## Attribution and private report links
 
 The static site keeps first-touch `utm_source`, `utm_medium`, `utm_campaign`,
-and `utm_content` in session storage and appends them to public booking/Score
-links. Only bounded campaign identifiers are accepted; names, emails, arbitrary
-query text and report tokens are not persisted. A public Score phase may follow
+and `utm_content` in session storage and appends them to public booking/Score/plan
+links. Only bounded campaign identifiers are accepted; arbitrary query keys
+and report-token keys are not copied. This syntax filter is not a PII detector:
+campaign values must be public, non-identifying labels, never a person's name
+or phone number. A public Score phase may follow
 the journey so the request and calendar retain context. Calendar inline and
 direct links carry the same campaign identifiers. Existing destination values
 and same-page anchors are preserved.
@@ -270,7 +284,7 @@ and event/download props. GA and UET are not initialized for private report
 URLs or token-bearing referrers, and explicit events repeat that guard. The
 onscreen report remains on `/score/`; persistent reports are reached by ordinary
 full-document email links. No client router transition enters a report route.
-UET automatic SPA URL tracking is disabled; normal acquisition page loads and
+The Score app's UET automatic SPA URL tracking is disabled; normal acquisition page loads and
 explicit public funnel events remain enabled. Future use of a client router for
 private reports requires revisiting automatic-provider privacy before shipping.
 
@@ -280,13 +294,91 @@ providers; they do not prove a live inbox receipt or closed sale.
 
 ## Workflow-plan offer
 
-The website form is independent of Foundry. These events contain only the page path, the placement label for clicks, and a coarse category for submission issues. No workflow text, contact details, request IDs, tools, or email addresses are sent to analytics.
+The website intake is independent of Foundry. Its client events are emitted
+by `js/analytics.js` (navigation/sample) and `js/workflow-plan.js` (form).
+All props below include `page: location.pathname`, never the query or fragment.
+No entered task, tools, name, company, email, request UUID, provider message,
+or form payload is passed to these custom events or their UET label.
 
-- `cta_plan_click`: visitor clicks an intake link to `/plan/`.
-- `workflow_plan_sample_view`: visitor clicks a tagged sample link.
-- `workflow_plan_started`: first interaction with the intake per page load.
-- `workflow_plan_details`: advances to the contact step.
-- `workflow_plan_submitted`: the backend confirms that both transactional messages were accepted by the email provider. This is not a plan-delivery or sales event. The same accepted request also emits the existing Microsoft Ads `submit_lead_form` conversion with `event_label: workflow_plan`.
-- `workflow_plan_submit_issue`: a submit or step-advance attempt needs attention. Properties are only `page` and a fixed `reason`: `validation`, `expired`, `rejected`, or `unconfirmed`. `unconfirmed` includes lost responses and does not mean the request was rejected or that no email was sent. No field values, email addresses, request IDs, workflow text, or provider messages are included. This event is diagnostic, not a conversion; blocked or throwing analytics never changes the form state.
+| Client event | Additional props | Actual trigger / counting rule |
+|---|---|---|
+| `workflow_plan_sample_click` | `location` | Internal `/plan/sample/` link activation; one per click, not a view or a read. |
+| `workflow_plan_sample_view` | none | Sample document is visible, once per document load; a background tab waits until shown. Direct landings count. Does not establish that the sample was read. |
+| `cta_plan_click` | `location` | Internal `/plan/` link activation. Authored `data-cta` wins, then legacy placement/region inference, then `unlabelled`. Fragment-only controls are excluded. |
+| `workflow_plan_started` | none | First input in a real intake field, or first task-step advance attempt, once per load. Honeypot input is excluded; autofill plus Next still counts. |
+| `workflow_plan_details` | none | Task step passes client validation and opens contact details, once per load. Back/Next does not inflate completion. |
+| `workflow_plan_submit_attempt` | `attempt: initial \| retry` | Immediately before a validated/frozen request reaches `fetch`. Every actual POST is counted; blocked double-clicks, invalid fields, cooldowns and local expiry are not. `retry` reuses the frozen request; a corrected 422 rejection starts a new request. |
+| `workflow_plan_submit_issue` | `reason: validation \| expired \| rejected \| unconfirmed` | A step advance or send needs attention. Validation includes local and server field errors; expired/rejected require correction or manual help. `unconfirmed` includes timeout, network loss, malformed response and retryable server failure: it does **not** prove rejection or undelivered mail. |
+| `workflow_plan_submitted` | none | Client receives HTTP success, `ok: true`, matching request UUID, valid deadline and `emailStatus: queued`. Once per accepted interaction; no replay on receipt-page load/refresh or duplicate submit. Existing UET conversion uses the constant `workflow_plan`. |
 
-Compare accepted plan requests and resulting qualified bookings/projects, not just button clicks. Booking events remain separate. A refreshed successful confirmation page does not emit another conversion.
+**Definition change:** before this refresh, `workflow_plan_sample_view`
+actually measured tagged link clicks, and `workflow_plan_details` could fire
+on every Back/Next loop. Annotate the deployment date in reporting and do not
+merge old/new counts as if the definitions were unchanged.
+
+### Client observations are not server receipts or qualified leads
+
+`functions/api/workflow-plan.js` returns a receipt only after its email
+provider accepts the separate team notification and requester acknowledgment
+in a validated batch. It does not submit a server-side analytics conversion.
+Client events may be missing even when the provider accepted the request,
+and retry attempts may outnumber requests. The acceptance receipt is not
+inbox delivery, delivery of the reviewed plan, a booking, a CRM record, or a sale.
+Private tab storage supports same-request retries and confirmation; it is not
+a durable lead ledger or a cross-device identity.
+
+Use comparable visitors/cohorts for the observed funnel:
+`cta_plan_click` → `workflow_plan_started` → `workflow_plan_details` →
+`workflow_plan_submit_attempt` → `workflow_plan_submitted`. Direct plan
+landings and restored pending requests may skip earlier observed stages.
+Compare sample visibility and later plan intent separately; neither is a lead.
+Break attempts down by `attempt`, issues by `reason`, and CTAs by `location`;
+do not divide all retries/issues into a "unique lead conversion rate".
+
+Downstream qualification remains manual: reconcile team notifications by
+request reference in an access-controlled business record, review workflow
+fit and a useful next step, record plan delivery/follow-up, and separately
+record any actual booking, scoped opportunity or signed project. Do not
+export contact information or request references into analytics, assume a CRM
+integration exists, or infer revenue from a thank-you page. A plan request
+does not grant marketing-email consent.
+
+### Verification and release checks
+
+Run locally, without a browser, provider credentials or external requests:
+
+```sh
+node --test scripts/test-workflow-plan.mjs scripts/test-conversion*.mjs
+node scripts/test-book-endpoint.mjs
+node scripts/test-sample-audit.mjs
+```
+
+- `test-workflow-plan.mjs`: real API handler with a mocked email provider,
+  including strict batches, validation, retry/idempotency and safe failures.
+- `test-conversion.mjs`: real client scripts in a small mock DOM, including
+  navigation/visibility, task validation, Next/Back, double submits, frozen
+  retries, receipt matching, cooldown/timeout, storage/analytics failures
+  and exact no-PII custom props. No new test dependency.
+- `test-conversion-markup.mjs`: homepage and all plan pages must include the
+  first-party tracker, its queue/bootstrap, `formSubmissions: false`, and
+  their deferred client scripts. A script tag for `analytics.js` alone is
+  not enough; without `window.plausible`, events are intentionally no-ops.
+- Release owner must invoke these new tests explicitly (or add them to the
+  package/CI test command), update HTML/template cache versions for both
+  changed client scripts, and add the dashboard goals manually.
+
+These are local logic checks, not real-world verification. Before relying on
+counts, perform separate browser QA with all POSTs/providers intercepted:
+desktop/phone/keyboard flow, sample opened directly and in a background tab,
+one callback per action, Back/Next, errors, retry and confirmation refresh.
+Inspect custom props **and** the providers' automatic URL/referrer payloads.
+The event proxy forwards bodies unchanged; these tests do not establish
+full-stream URL redaction, provider ingestion or consent enforcement. Existing
+tracking/consent behavior is not expanded by the new attempt event; no new
+provider or marketing enrollment is introduced.
+
+Production Plausible ingestion/dashboard setup, advertising consent behavior,
+real API/provider acceptance, inbox delivery, reviewed-plan turnaround and
+manual qualification outcomes remain separate checks. A proxy 202 or an
+in-memory `plausible()` call alone proves none of them. Do not send live test
+requests, book appointments or email anyone without separate authorization.

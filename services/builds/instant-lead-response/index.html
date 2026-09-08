@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=157" />
+<link rel="stylesheet" href="/styles.css?v=158" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -217,7 +217,7 @@
       "@id": "https://www.mainandmachine.com/services/builds/instant-lead-response/#service",
       "name": "Instant Lead Response",
       "serviceType": "Instant Lead Response",
-      "description": "Instant lead response is a system that answers every inbound enquiry within a minute of it arriving — web form, email, or ad platform — with a real reply rather than an autoresponder, then keeps drafting follow-ups in your voice until the person answers or asks you to stop. Speed is the whole mechanism: the business that replies first usually wins the job, and most leads that arrive outside office hours are gone by Monday.",
+      "description": "Instant lead response prepares tailored replies and follow-ups using your approved service information. Start with drafts your team reviews before sending. Optional automatic sending covers only agreed enquiries, with escalation and stop rules. Timing depends on your systems and reviewers; there is no one-minute reply guarantee.",
       "url": "https://www.mainandmachine.com/services/builds/instant-lead-response/",
       "provider": {
         "@id": "https://www.mainandmachine.com/#org"
@@ -276,7 +276,7 @@
       "name": "Is this just an autoresponder?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. An autoresponder sends the same paragraph to everyone and tells the reader they have been filed. This drafts a reply to the actual enquiry, using what you publish about your services and prices, and it keeps a thread going rather than firing once."
+        "text": "The workflow prepares a reply to the actual enquiry using your approved service information, rather than only sending a receipt acknowledgment. Follow-up drafts use the same boundaries. Whether any message sends automatically or waits for a person is agreed in scope."
       }
     },
     {
@@ -284,7 +284,7 @@
       "name": "Does a person still see the leads?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Everything it sends is visible to you, and anything outside the scope it was given goes to a person instead of being answered. The point is that nobody waits until Monday, not that nobody reads their mail."
+        "text": "Yes. Your team can see the enquiries, prepared replies, sent messages, and handoffs. Anything outside the approved boundary goes to a person. If automatic sending is included, only eligible enquiries may receive approved content without individual review; the scope defines escalation conditions, follow-up limits, and stop rules."
       }
     },
     {
@@ -292,7 +292,7 @@
       "name": "What if we do not want it replying on its own?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Then it drafts and you send. Draft-and-approve is a normal scope choice, and it still removes most of the delay — the writing is done by the time you open the thread."
+        "text": "Choose draft-and-approve: the workflow prepares a reply, and your reviewer decides whether and when to send it. This can reduce writing effort, but the customer still waits for review. We measure draft preparation separately from time to a sent response; no one-minute response is promised."
       }
     },
     {
@@ -328,8 +328,8 @@
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main navigation">
-      <a href="/services/">How we help</a>
-      <a href="/services/builds/">Builds</a>
+      <a href="/services/">Services</a>
+      <a href="/services/builds/">Workflows</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
       <a href="/guides/">Guides</a>
@@ -360,11 +360,12 @@
       <div>
         <span class="kicker">Follow-up</span>
         <h1 class="h1">Instant Lead Response</h1>
-        <p class="lead">Instant lead response is a system that answers every inbound enquiry within a minute of it arriving — web form, email, or ad platform — with a real reply rather than an autoresponder, then keeps drafting follow-ups in your voice until the person answers or asks you to stop. Speed is the whole mechanism: the business that replies first usually wins the job, and most leads that arrive outside office hours are gone by Monday.</p>
+        <p class="lead">Instant lead response prepares tailored replies and follow-ups using your approved service information. Start with drafts your team reviews before sending. Optional automatic sending covers only agreed enquiries, with escalation and stop rules. Timing depends on your systems and reviewers; there is no one-minute reply guarantee.</p>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="/book/" data-cta="build-page-hero">Book a free assessment <span class="arr">&#8594;</span></a>
-          <a class="btn btn--secondary" href="/score/">Get your AI-Ready Score</a>
+          <a class="btn btn--primary" href="/plan/" data-cta="build-page-hero">Get my free plan <span class="arr" aria-hidden="true">&#8594;</span></a>
+          <a class="btn btn--secondary" href="/book/" data-cta="build-page-hero-book">Prefer to talk? Free assessment</a>
         </div>
+        <p class="mt-s">Start with a free written recommendation on one workflow, reviewed by Christopher Myers and emailed within 24 hours. No call or purchase required. Prefer a live discussion? The free assessment is a 30-minute conversation.</p>
       </div>
       <div class="statrail crop">
         <div class="statrail__bar"><span>The build</span><span><b>Spec</b></span></div>
@@ -422,11 +423,11 @@
 
 <section class="section paper-2" aria-labelledby="workflow-detail-title">
   <div class="wrap">
-    <div class="head-block"><div><span class="kicker">Inside the workflow</span><h2 class="h2 mt-s" id="workflow-detail-title">From inquiry to a reviewed next step.</h2></div><p>Agree what counts as a useful response, which channels are included, and when the workflow should hand the inquiry to a person. Faster preparation should make the next action clearer.</p></div>
+    <div class="head-block"><div><span class="kicker">Inside the workflow</span><h2 class="h2 mt-s" id="workflow-detail-title">From inquiry to a controlled next step.</h2></div><p>Agree what counts as a prepared draft and what counts as a sent response. Name the included channels, eligible automatic sends, and the requests that must wait for a person.</p></div>
     <div class="prose-2"><div><h3>Capture the request once</h3><p>An illustrative workflow starts with a web inquiry. It records the requested service and available contact details, checks for an existing customer record, and routes the inquiry to its owner. Incomplete or duplicate requests need an explicit handling rule.</p></div>
 <div><h3>Prepare a reply from approved material</h3><p>Use the service description, availability rules, and published information agreed in scope. The reply may ask for missing details or suggest the next step. It should not invent a quote, guarantee an appointment, or make a commitment outside its authority.</p></div>
-<div><h3>Choose draft-only or bounded sending</h3><p>In draft-only mode, a person reviews and sends the response. If automatic sending is in scope, specify eligible requests, approved content, escalation conditions, and stop rules. Communication preferences and requests to stop must carry across the follow-up sequence.</p></div>
-<div><h3>Measure the whole response path</h3><p>Track the time to a useful response, successful routing, reviewer effort, exceptions, and the resulting appointment or next action. Compare similar inquiries before and after launch. A quick acknowledgment alone does not demonstrate a recovered sale.</p></div></div>
+<div><h3>Choose draft-only or bounded sending</h3><p>In draft-only mode, a person reviews and controls the send, so customer response time includes the wait for that reviewer. If automatic sending is in scope, limit it to eligible requests and approved content; specify escalation conditions, follow-up limits, and stop rules. Communication preferences and requests to stop must carry across the sequence. Neither mode carries a blanket one-minute response guarantee.</p></div>
+<div><h3>Measure the whole response path</h3><p>Track draft preparation time separately from the time a useful response is sent. Include successful routing, reviewer effort, exceptions, and the resulting appointment or next action. Compare similar inquiries before and after launch. A prepared draft or quick acknowledgment alone does not demonstrate a recovered sale.</p></div></div>
     <p class="section-action"><a href="/blog/ai-lead-response-automation/">Read about lead response automation</a> &middot; <a href="/blog/how-to-measure-ai-roi/">Set up the measurement log</a> &middot; <a href="/services/ai-implementation/">See implementation scope</a></p>
   </div>
 </section>
@@ -442,7 +443,7 @@
       <p>Define the operating boundary before choosing a model or a tool. Your written scope connects the workflow to the systems, decisions, and people it depends on.</p>
     </div>
     <div class="prose-2">
-      <p><strong>Discover.</strong> We review the workflow, its volume, the tools involved, and what happens when an exception arrives. Use an AI Readiness Audit when that needs investigation, or discuss direct sprint scoping if it is already defined.</p>
+      <p><strong>Discover.</strong> Start with a free workflow plan for an initial written recommendation based on what you share. Use an AI Readiness Audit when the workflow, tools, and exceptions need deeper investigation, or discuss direct sprint scoping if the work is already defined.</p>
       <p><strong>Build.</strong> Agree the scope and fixed quote before work begins. Define routine actions that may run automatically, decisions requiring human approval, and the tests the workflow must pass.</p>
       <p><strong>Evolve.</strong> Once it is live it needs watching: what it handles, what it escalates, what changed in your business since. That is Managed Services, and it is optional.</p>
       <p class="section-action"><a href="/method/">How we work <span class="arr">&#8594;</span></a></p>
@@ -480,15 +481,15 @@
     <div class="faq__list">
         <details>
           <summary><span class="q-no">01</span><span class="q-tx">Is this just an autoresponder?</span></summary>
-          <p>No. An autoresponder sends the same paragraph to everyone and tells the reader they have been filed. This drafts a reply to the actual enquiry, using what you publish about your services and prices, and it keeps a thread going rather than firing once.</p>
+          <p>The workflow prepares a reply to the actual enquiry using your approved service information, rather than only sending a receipt acknowledgment. Follow-up drafts use the same boundaries. Whether any message sends automatically or waits for a person is agreed in scope.</p>
         </details>
         <details>
           <summary><span class="q-no">02</span><span class="q-tx">Does a person still see the leads?</span></summary>
-          <p>Yes. Everything it sends is visible to you, and anything outside the scope it was given goes to a person instead of being answered. The point is that nobody waits until Monday, not that nobody reads their mail.</p>
+          <p>Yes. Your team can see the enquiries, prepared replies, sent messages, and handoffs. Anything outside the approved boundary goes to a person. If automatic sending is included, only eligible enquiries may receive approved content without individual review; the scope defines escalation conditions, follow-up limits, and stop rules.</p>
         </details>
         <details>
           <summary><span class="q-no">03</span><span class="q-tx">What if we do not want it replying on its own?</span></summary>
-          <p>Then it drafts and you send. Draft-and-approve is a normal scope choice, and it still removes most of the delay — the writing is done by the time you open the thread.</p>
+          <p>Choose draft-and-approve: the workflow prepares a reply, and your reviewer decides whether and when to send it. This can reduce writing effort, but the customer still waits for review. We measure draft preparation separately from time to a sent response; no one-minute response is promised.</p>
         </details>
         <details>
           <summary><span class="q-no">04</span><span class="q-tx">What does it cost?</span></summary>
@@ -503,12 +504,13 @@
   <div class="wrap">
     <div>
       <span class="kicker">Next step</span>
-      <h2 class="h2 mt-s">30 minutes. A straight answer.</h2>
-      <p>Bring one workflow to the free assessment. We will discuss whether this build fits, what needs scoping, and when the better answer is not yet.</p>
+      <h2 class="h2 mt-s">One workflow. A written first step.</h2>
+      <p>Describe the task and the tools involved. Christopher Myers reviews your free workflow plan, emailed within 24 hours, with an initial recommendation on where to start and what needs scoping. No call or purchase required. The plan is not a paid audit or a fixed implementation quote.</p>
+      <p class="mt-s">Prefer to talk it through? Book a free 30-minute assessment for a live discussion of fit and next steps.</p>
     </div>
     <div class="hero__cta">
-      <a class="btn btn--primary" href="/book/" data-cta="build-page-final">Book a free assessment <span class="arr">&#8594;</span></a>
-      <a class="btn btn--secondary" href="/score/">Get your AI-Ready Score</a>
+      <a class="btn btn--primary" href="/plan/" data-cta="build-page-final">Get my free plan <span class="arr" aria-hidden="true">&#8594;</span></a>
+      <a class="btn btn--secondary" href="/book/" data-cta="build-page-final-book">Prefer to talk? Free assessment</a>
     </div>
   </div>
 </section>
@@ -592,6 +594,6 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.doc,.doc-caption,.doc-actions,.final .wrap > *,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=11"></script>
-<script defer src="/js/analytics.js?v=8"></script>
+<script defer src="/js/analytics.js?v=9"></script>
 </body>
 </html>

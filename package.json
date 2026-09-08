@@ -66,7 +66,8 @@
     "test:sample": "node scripts/test-sample-audit.mjs",
     "blog:sync": "node scripts/sync-blog-posts.mjs",
     "test:blog": "node --test scripts/test-blog-archive.mjs",
-    "test:workflow-plan": "node --test scripts/test-workflow-plan.mjs"
+    "test:workflow-plan": "node --test scripts/test-workflow-plan.mjs scripts/test-conversion*.mjs",
+    "test:conversion": "node --test scripts/test-conversion*.mjs"
   },
   "dependencies": {
     "esbuild": "0.25.12",

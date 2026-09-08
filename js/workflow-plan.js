@@ -26,13 +26,14 @@
   }
   var form = document.getElementById('workflowPlanForm');
   if (!form) return;
-  var startedAt = Date.now(), step = 1, sending = false, began = false, frozen = null, retryAt = 0, timer;
+  var startedAt = Date.now(), step = 1, sending = false, began = false, detailsReached = false, completed = false, frozen = null, retryAt = 0, timer;
   var status = document.getElementById('plan-status');
   var contact = document.getElementById('plan-error-contact');
   var submit = document.getElementById('plan-submit');
   var back = document.getElementById('plan-back');
   var next = document.getElementById('plan-next');
   var fields = ['workflow','tools','name','email','company'];
+  function begin() { if (!began) { began = true; track('workflow_plan_started'); } }
   function value(id) { var el = document.getElementById(id); return el && typeof el.value === 'string' ? el.value.trim() : ''; }
   function expandContext() { var details = document.getElementById('plan-context'); if (details) details.open = true; }
   function notice(message, focus) { status.textContent = message; status.hidden = false; if (focus) status.focus(); }
@@ -94,16 +95,24 @@
     remove(PENDING); notice('An earlier request is too old to retry safely. Check your acknowledgment email before submitting again, or contact us with your request reference: ' + String(pending.requestId || '').slice(0, 36), false); contact.hidden = false;
   }
   form.addEventListener('input', function (event) {
-    if (!began && event.target.id !== 'companyUrl') { began = true; track('workflow_plan_started'); }
+    if (fields.includes(event.target.id)) begin();
     if (event.target.id) fieldError(event.target.id, '');
   });
-  next.addEventListener('click', function () { if (!showErrors(errorsFor(1))) { go(2, true); track('workflow_plan_details'); } else { issue('validation'); } });
+  next.addEventListener('click', function () {
+    if (frozen || completed) return;
+    begin();
+    if (!showErrors(errorsFor(1))) {
+      go(2, true);
+      if (!detailsReached) { detailsReached = true; track('workflow_plan_details'); }
+    } else { issue('validation'); }
+  });
   back.addEventListener('click', function () { if (!frozen) go(1, true); });
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
-    if (sending || Date.now() < retryAt) return;
+    if (sending || completed || submit.disabled || Date.now() < retryAt) return;
     if (step === 1) { next.click(); return; }
     if (!frozen && showErrors(errorsFor('all'))) { issue('validation'); return; }
+    var attempt = frozen ? 'retry' : 'initial';
     if (!frozen) {
       var payload = { requestId: crypto.randomUUID(), submittedAt: new Date().toISOString(), startedAt: startedAt, workflowType: 'other', frequency: '', website: '', companyUrl: value('companyUrl') };
       fields.forEach(function (id) { payload[id] = value(id); });
@@ -118,21 +127,24 @@
     var controller = new AbortController();
     var timeout = setTimeout(function () { controller.abort(); }, 20000);
     try {
+      track('workflow_plan_submit_attempt', {page: location.pathname, attempt: attempt});
       var response = await fetch('/api/workflow-plan', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(frozen), signal:controller.signal});
       var data; try { data = await response.json(); } catch (_) { throw new Error('unconfirmed'); }
       if (response.ok && data.ok === true && data.requestId === frozen.requestId && Number.isFinite(Date.parse(data.deadlineAt)) && data.emailStatus === 'queued') {
+        completed = true;
         var confirmed = {requestId:data.requestId,deadlineAt:data.deadlineAt};
         save(RECEIPT, confirmed);
         save(CONTEXT, {workflow:frozen.workflow,tools:frozen.tools,requestId:frozen.requestId,at:Date.now()});
         remove(PENDING);
         track('workflow_plan_submitted');
         try { window.uetq = window.uetq || []; window.uetq.push('event','submit_lead_form',{event_category:'lead',event_label:'workflow_plan'}); } catch (_) { /* conversion tracking is optional */ }
-        // Storage-blocked browsers still see an honest success without relying on another page.
-        if (read(RECEIPT)?.requestId !== data.requestId) {
-          notice('Your request is confirmed. Your plan is due within 24 hours. Reference: ' + data.requestId + '. An acknowledgment email has been queued. You can book an optional call using the link above.', true);
-          submit.textContent = 'Request received'; return;
+        if (read(RECEIPT)?.requestId === data.requestId) {
+          try { window.location.assign('/plan/thanks/'); return; } catch (_) { /* show the confirmed receipt here instead */ }
         }
-        window.location.assign('/plan/thanks/'); return;
+        // Storage or navigation restrictions never turn an accepted receipt
+        // into an uncertain-send message, or permit a second conversion.
+        notice('Your request is confirmed. Your plan is due within 24 hours. Reference: ' + data.requestId + '. An acknowledgment email has been queued. You can book an optional call using the link above.', true);
+        submit.textContent = 'Request received'; return;
       }
       if (response.status === 422 && data.errors && typeof data.errors === 'object' && !Array.isArray(data.errors) && Object.keys(data.errors).length) {
         var missingField = Object.keys(data.errors).find(function (id) { return !fields.includes(id) || !document.getElementById(id); });

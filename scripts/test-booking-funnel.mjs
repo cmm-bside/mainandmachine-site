@@ -112,11 +112,15 @@ await page.locator('.nav__right a[href="#request"]').click();
 // that user-visible movement finishes, not the first animation frame.
 await page.waitForFunction(() => {
   const box = document.getElementById("calLaunch").getBoundingClientRect();
-  return box.y >= 0 && box.bottom <= innerHeight;
-}, null, { timeout: 3000 });
+  const last = window.__mmTestAnchorY;
+  window.__mmTestAnchorY = box.y;
+  window.__mmTestAnchorStable = Math.abs(box.y - last) < 0.1 ? (window.__mmTestAnchorStable || 0) + 1 : 0;
+  return box.y >= 0 && box.bottom <= innerHeight && window.__mmTestAnchorStable >= 3;
+}, null, { timeout: 3000, polling: "raf" });
 const anchoredLauncher = await page.locator("#calLaunch").boundingBox();
 check("navigation booking anchor returns to the launcher", !!anchoredLauncher && anchoredLauncher.y >= 0 && anchoredLauncher.y + anchoredLauncher.height <= 844 && calendarRequests.length === 0, JSON.stringify(anchoredLauncher));
-check("direct calendar link available before activation", await page.locator(".cal-fallback a").first().isVisible(), "direct link hidden");
+check("direct calendar link available before activation", await page.locator('.cal-fallback a[href^="https://calendly.com/"]').first().isVisible(), "direct link hidden");
+check("provider disclosure available before activation", await page.locator("#calPrivacy").isVisible() && await page.locator("#calLaunch").getAttribute("aria-describedby") === "calPrivacy", "provider disclosure is missing or not associated with launcher");
 check("launcher announces collapsed panel", await page.locator("#calLaunch").getAttribute("aria-expanded") === "false" && !await page.locator("#calPanel").isVisible(), "initial panel state");
 const initialContext = await page.locator("#cal-workflows").inputValue();
 check("tool context is prepared before activation", /retail/.test(initialContext) && /25/.test(initialContext), initialContext);

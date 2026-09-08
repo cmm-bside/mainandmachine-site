@@ -17,6 +17,8 @@ AI & automation for small businesses
 
 We connect your existing software and automate repetitive office tasks—from following up with customers to moving information between systems.
 
+Best fit: established teams of 5–100 people, with recurring admin work spread across multiple systems.
+
 [Get my free plan](/plan/)
 [Prefer to talk? Book a free call](/book/)
 
@@ -24,15 +26,22 @@ Reviewed by Christopher Myers · Emailed within 24 hours · No call required
 
 Your free plan
 
-## A useful answer before you spend.
+## See what useful looks like.
 
-- What to fix first
+From the invoice follow-up sample
 
-- One practical step you can use
+### Fix the status first.
 
-- What still needs checking
+Start with a reliable overdue-invoice list and the reminder features in your accounting system.
 
-Based on the task you describe. The answer may be a simpler process or a tool you already have.
+- Prepare: collect open invoices.
+
+- Review: check the balance before sending.
+
+- Record: log the reminder and any reply.
+
+[See the one-page sample](/plan/sample/)
+Illustrative example, not a client result. Your plan is based on the task you describe.
 
 Start with one task
 
@@ -105,7 +114,7 @@ Implementation Sprints build, connect, test, and launch an agreed workflow. A fi
 
 Paid audits are available when the scope needs deeper investigation. Ongoing support is optional.
 
-[See paid services and pricing](/pricing/)
+[See pricing and example scopes](/pricing/#scope-examples)
 
 Your next step
 
@@ -239,9 +248,9 @@ AI services for small business
 
 # Find the right project. Build it. Keep it working.
 
-Choose the engagement that fits your next decision. A free conversation checks fit before you commit to an audit, a build, or ongoing support.
-[Find the right next step →](/book/)[See what we build →](/services/builds/)
-Free 30-minute AI Opportunity Assessment. We reply within 24 hours.
+For established teams of 5–100 people with recurring work spread across multiple systems. Start with a free written first step, then decide whether you need an audit, a build, or ongoing support.
+[Get my free plan →](/plan/)[Prefer to talk? Book a free call →](/book/)
+Reviewed by Christopher Myers · Emailed within 24 hours · No call required
 
 ## AI Readiness Audit
 
@@ -319,21 +328,21 @@ Questions, answered
 
 ## Before you decide.
 
-Compare the [published prices](/pricing/) and bring your specific workflow to the call.
+Compare the [published prices](/pricing/) or [read the free-plan sample](/plan/sample/) before sharing your workflow.
 
-01 Is the free assessment a paid audit? No. The free 30-minute assessment helps establish fit and the next step. The paid audit is a separate 2 to 4 weeks engagement that produces a workflow map and phased plan.
-02 Can we skip the paid audit? Yes, when your workflow is already defined and can be scoped. Start with the same free assessment and ask to scope an Implementation Sprint directly.
+01 How is the free plan different from a paid audit? The free plan is a preliminary recommendation for one task, reviewed by Christopher Myers and emailed within 24 hours. It is not a system assessment or a fixed build quote. A free 30-minute call is an alternative if you prefer to talk. The paid audit is a separate 2 to 4 weeks engagement that produces a workflow map, ranked opportunities, and a phased plan.
+02 Can we skip the paid audit? Yes, when your workflow is already defined and can be scoped. Request a free plan or book a free call, and ask to scope an Implementation Sprint directly.
 03 What is the audit credit? 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
 04 Do we have to buy ongoing support? No. Managed Services is optional. You own what we build, and your team is trained to run it.
 
-Start with a conversation
+Start with one task
 
 ## Start with the work, not a tool.
 
-Bring a recurring bottleneck or a workflow you already want built. We will discuss the right engagement before you commit.
-[Book a free assessment →](/book/)
+Describe a recurring bottleneck. Get a written first step you can use yourself or discuss with us, before committing to paid work.
+[Get my free plan →](/plan/)[Prefer to talk? Book a free call →](/book/)
 
-30 minutes to discuss the work, your constraints, and the next step that makes sense.
+One task. A practical recommendation. Reviewed by Christopher Myers and emailed within 24 hours. No call required.
 Main & Machine
 
 ========================================================================
@@ -739,6 +748,8 @@ Pricing
 # Clear prices. Choose the right scope.
 
 Start with a defined workflow or an audit to find one. Your scope and fixed price are agreed in writing before work begins.
+Best fit: established 5–100-person teams with recurring operational work, existing business tools, and an owner ready to help scope and test a workflow.
+[See illustrative sprint scopes across the range](#scope-examples)
 
 ## AI Readiness Audit
 
@@ -788,8 +799,56 @@ Ongoing · optional support
 [View ongoing support →](/services/managed-ai-services/)
 Optional, with no lock-in. Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.
 
-Not sure where to start? The free 30-minute assessment helps establish fit. A defined workflow can go directly to sprint scoping.
-[Book a free assessment →](/book/)
+Ready to discuss your workflow? The free 30-minute assessment is a live conversation about fit and next steps. A defined workflow can go directly to sprint scoping.
+[Book a free assessment →](/book/)[No call? Get my free written workflow plan](/plan/)
+
+The free written plan is an initial recommendation on one task, reviewed by Christopher Myers and emailed within 24 hours. No call or purchase required; it is not a paid audit or a fixed implementation quote.
+
+Illustrative sprint scopes
+
+## What moves a sprint up the range?
+
+The published sprint range is $18,000–$60,000 . These are illustrative scopes, not packages, client results, or guaranteed quotes. Integrations, data condition, exceptions, and approval requirements determine the fixed price agreed in writing.
+
+Each example includes the scoped workflow, acceptance testing, an audit trail, operating documentation, team training, and ownership at handoff. Model usage, third-party subscriptions, and optional ongoing support are budgeted separately.
+
+-
+
+### Lower end
+
+Scope: Prepare and route lead replies from one inbound channel for one team.
+
+Includes: Approved service information, tailored drafts, a review queue, and handoff rules for incomplete or out-of-scope inquiries.
+
+Excludes: Automatic sending, additional channels, custom quoting, and a CRM migration. A reviewer controls when replies are sent.
+
+Assumes: Working access to the existing inbox, usable service information, a named reviewer, and representative inquiries for testing.
+
+-
+
+### Middle of range
+
+Scope: Prepare invoice records from an approved inbox for review in the existing accounting workflow.
+
+Includes: Document extraction, supplier matching, duplicate checks, coding suggestions with source documents, and an exception queue.
+
+Excludes: Unattended ledger posting, payments, historical bookkeeping cleanup, and replacement of the accounting system.
+
+Assumes: A supported connection, accessible supplier records, agreed coding rules, and a finance owner who reviews exceptions and approves the next action.
+
+-
+
+### Upper end
+
+Scope: Connect one intake-to-handoff workflow across a CRM, document store, and team review channel.
+
+Includes: Record matching, document checks, role-based review, approved status updates, and recovery paths for failed handoffs.
+
+Excludes: A multi-department back-office replacement, unrelated workflows, and rebuilding the underlying business systems.
+
+Assumes: Confirmed access and permissions, named process owners, agreed review boundaries, and enough real examples to test the connected workflow.
+
+Use these examples to compare scope, not as a quote. The written proposal confirms inclusions, exclusions, dependencies, milestones, and the delivery guarantee before paid work begins.
 
 Multi-department work
 
@@ -855,7 +914,9 @@ Your team is trained to run what we built, and you own all of it. If you want us
 
 ### Want exact numbers?
 
-The free assessment helps establish the right next step. A fixed implementation quote follows an agreed scope; complex work may need a paid audit first.
+The free assessment is a live discussion of your workflow and the right next step. A fixed implementation quote follows an agreed scope; complex work may need a paid audit first.
+
+Not ready for a call? [Request a free written workflow plan](/plan/) for an initial recommendation by email instead.
 
 [Book a free assessment →](/book/)
 
@@ -975,9 +1036,10 @@ The list on the left is what we sign up for. The list on the right is what no ho
 - That AI is right for you right now: sometimes the honest answer is “wait a quarter”
 
 Start here
-Every engagement starts with a free 30-minute AI Opportunity Assessment. We discuss one workflow, its constraints, and whether a build is a sensible next step. We reply within 24 hours.
+Start with one workflow, not a commitment. Get a free written recommendation by email within 24 hours, or book a free 30-minute call to discuss the work and its constraints.
 
-[Book a free assessment →](/book/)
+[Get my free plan →](/plan/)
+[Prefer to talk? Book a free call →](/book/)
 
 We reply within 24 hours. A fixed quote follows an agreed scope, before paid work begins.
 
@@ -1126,9 +1188,10 @@ The Machine is the other part. It is patient in a way people cannot be. It reads
 The ampersand is the whole company. The machine works for the person: it carries the load the person should not have to carry, and hands every judgment call back to them. The person stays in charge; the software stays in service. Build it in that order and you have built the right thing. That is the only thing we build.
 
 Start here
-Book a free 30-minute AI Opportunity Assessment. We will look at your business and tell you the truth, even when the truth is “wait a quarter” or “you do not need us for this.”
+Describe one task and get a free written first step, reviewed by Christopher Myers. The answer may be “wait a quarter” or “you do not need us for this.” Prefer to work through it together? Book a free 30-minute call.
 
-[Book a free assessment →](/book/)
+[Get my free plan →](/plan/)
+[Prefer to talk? Book a free call →](/book/)
 
 We reply within 24 hours. A fixed quote follows an agreed scope, before paid work begins.
 
@@ -1833,7 +1896,8 @@ The build catalog
 
 Choose the workflow first. These capabilities can answer inquiries, prepare work, connect your tools, or provide a private place to use AI. They are scoped within our published services, not sold at a separate price per item. Your quote states which capabilities and integrations are included.
 
-[Ask which parts your business needs →](/book/)
+[Get my free plan →](/plan/)
+[Prefer to talk? Book a free call →](/book/)
 
 Priced through Three services
 
@@ -2006,9 +2070,10 @@ If a scoped workflow is not live in your operation within 90 days, we keep build
 An AI system does not sit still: models change, vendors change, your business changes. Every month it gets tested, patched, corrected, and extended — with a one-page report of what ran and what it caught. From $1,500/month , no lock-in.
 
 Start here
-Start with one workflow and a free 30-minute assessment. We will discuss which catalog build fits, what needs scoping, and whether a simpler fix makes sense. We reply within 24 hours.
+Describe the work before choosing the build. Your free plan recommends a practical first step, what still needs checking, and whether a simpler fix makes sense. Emailed within 24 hours; no call required.
 
-[Book a free assessment →](/book/)
+[Get my free plan →](/plan/)
+[Prefer to talk? Book a free call →](/book/)
 
 We reply within 24 hours. A fixed quote follows an agreed scope, before paid work begins.
 
@@ -2174,6 +2239,8 @@ Accountable for the work
 Christopher Myers
 
 Founder & Chairman. Accountable for the scope and the build.
+
+Choosing a time loads Calendly, our scheduling provider. Any optional workflow note you add is shared with Calendly. Prefer not to use it? [Get a free plan by email instead](/plan/).
 
 Choose a time
 You can also [open the calendar in a new tab](https://calendly.com/cmyers-mainandmachine/30min), or [request a reply within 24 hours](#book).
@@ -3217,10 +3284,12 @@ URL: https://www.mainandmachine.com/guides/
   Assess private AI by its data flows, access, filter limits, and operating costs. Read the architecture and qualified results from our lender deployment.
 
 ========================================================================
-INDEX: The Ampersand — all 31 essays
+INDEX: The Ampersand — all 32 essays
 URL: https://www.mainandmachine.com/blog/
 ========================================================================
 
+- [AI Software Integration That Fixes Real Work](/blog/ai-software-integration/) — 2026-09-06
+  AI software integration connects the tools, data, and workflows your team already uses, cutting repeat work while keeping people accountable for decisions.
 - [AI Managed Services That Keep Work Moving](/blog/ai-managed-services/) — 2026-09-04
   AI managed services keep deployed workflows monitored, maintained, and accountable after implementation. Define the systems covered, who reviews exceptions, and what support costs.
 - [AI Workflow Automation for Operations That Works](/blog/ai-workflow-automation-for-operations/) — 2026-09-03

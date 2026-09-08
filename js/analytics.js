@@ -1,7 +1,8 @@
 /**
  * Site analytics — every Plausible custom event on the static site lives
- * HERE (the /book/ page adds its own booking trio inline; the Score app has
- * its own mapping in ai-ready-score/lib/analytics.ts). The full event
+ * HERE or next to the intake in js/workflow-plan.js (the /book/ pages add
+ * booking events inline; the Score app has its own mapping in
+ * ai-ready-score/lib/analytics.ts). The full event
  * contract, funnel mapping, and no-PII rule: analytics-events.md.
  *
  * Cookieless (Plausible), first-party (script + events proxied at /js/pa.js
@@ -21,7 +22,7 @@
  *
  *   calculator_interacted { page, industry, team_band, at } first-touch · cta-click
  *   guide_read            { page, guide }      75% scroll depth, once
- *   calculator_emailed    { page, industry, team_band }  estimate emailed to self
+ *   calculator_emailed    { page, industry, team_band }  legacy estimate submit intent
  *
  * Microsoft Ads UET (tag 343267453) also lives here — base loader at the foot
  * of this file, conversion pushes ride the SAME trigger points as the
@@ -36,9 +37,11 @@
  */
 (function () {
   function fire(name, props) {
-    if (typeof window.plausible === "function") {
-      window.plausible(name, { props: props });
-    }
+    try {
+      if (typeof window.plausible === "function") {
+        window.plausible(name, { props: props });
+      }
+    } catch (_) { /* optional analytics must not break a funnel control */ }
   }
   // Microsoft Ads conversion push. Safe before — or entirely without — the UET
   // base tag at the foot of this file: uetq is a plain array until bat.js
@@ -52,6 +55,21 @@
     });
   }
   var PAGE = location.pathname;
+
+  // A sample-link click is intent, not proof that the destination appeared.
+  // Count a visible sample document once, including direct landings. A tab
+  // opened in the background waits until it is shown; this is not "read".
+  if (/^\/plan\/sample\/?$/.test(PAGE)) {
+    var sampleViewed = false;
+    function sampleView() {
+      if (sampleViewed || document.visibilityState === "hidden") return;
+      sampleViewed = true;
+      document.removeEventListener("visibilitychange", sampleView);
+      fire("workflow_plan_sample_view", { page: PAGE });
+    }
+    document.addEventListener("visibilitychange", sampleView);
+    sampleView();
+  }
 
   // Keep first-touch campaign identifiers and the public Score phase through
   // internal browsing. Never persist arbitrary query text or contact details.
@@ -152,6 +170,7 @@
       var t = e.target;
       var a = t && t.closest ? t.closest("a[href]") : null;
       if (!a) return;
+      if ((a.getAttribute("href") || "").charAt(0) === "#") return;
       carryJourney(a);
       var destination;
       try { destination = new URL(a.href, location.href); } catch (_) { return; }
@@ -165,7 +184,7 @@
             : /^\/plan\/?$/.test(href)
               ? "cta_plan_click"
               : /^\/plan\/sample\/?$/.test(href)
-                ? "workflow_plan_sample_view"
+                ? "workflow_plan_sample_click"
                 : null;
       if (!name) return;
       // data-cta wins; data-cta-placement is the retired spelling, kept because
@@ -174,6 +193,9 @@
         a.getAttribute("data-cta") ||
         a.getAttribute("data-cta-placement") ||
         placementOf(a);
+      // Intake/sample links outside old booking regions must not disappear
+      // from the funnel (for example, the confirmation page's sample link).
+      if (!placement && (name === "cta_plan_click" || name === "workflow_plan_sample_click")) placement = "unlabelled";
       if (!placement) return;
       fire(name, { page: PAGE, location: placement });
     },
@@ -272,7 +294,7 @@
       industry: form.getAttribute("data-industry") || "",
       team_band: teamBand(form.getAttribute("data-team") || 0),
     });
-    // An emailed estimate is a captured lead — the UET goal fires with it.
+    // Legacy goal: this observes an attempt, not an API receipt or delivery.
     // Deliberately NOT a document-wide form listener: careers application forms are not leads and must not count.
     uet("submit_lead_form", PAGE);
   }, true);

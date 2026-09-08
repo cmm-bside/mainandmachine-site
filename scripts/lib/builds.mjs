@@ -80,17 +80,17 @@ export const BUILDS = [
 		description:
 			"Drafts timely lead replies and follow-ups in your voice, with review and escalation rules. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
 		definition:
-			"Instant lead response is a system that answers every inbound enquiry within a minute of it arriving — web form, email, or ad platform — with a real reply rather than an autoresponder, then keeps drafting follow-ups in your voice until the person answers or asks you to stop. Speed is the whole mechanism: the business that replies first usually wins the job, and most leads that arrive outside office hours are gone by Monday.",
+			"Instant lead response prepares tailored replies and follow-ups using your approved service information. Start with drafts your team reviews before sending. Optional automatic sending covers only agreed enquiries, with escalation and stop rules. Timing depends on your systems and reviewers; there is no one-minute reply guarantee.",
 		industries: ["construction", "professional-services", "retail", "hospitality"],
 		painHeading: "What a weekend in the inbox costs.",
 		tier: "sprint",
 		faq: [
 			["Is this just an autoresponder?",
-			 "No. An autoresponder sends the same paragraph to everyone and tells the reader they have been filed. This drafts a reply to the actual enquiry, using what you publish about your services and prices, and it keeps a thread going rather than firing once."],
+			 "The workflow prepares a reply to the actual enquiry using your approved service information, rather than only sending a receipt acknowledgment. Follow-up drafts use the same boundaries. Whether any message sends automatically or waits for a person is agreed in scope."],
 			["Does a person still see the leads?",
-			 "Yes. Everything it sends is visible to you, and anything outside the scope it was given goes to a person instead of being answered. The point is that nobody waits until Monday, not that nobody reads their mail."],
+			 "Yes. Your team can see the enquiries, prepared replies, sent messages, and handoffs. Anything outside the approved boundary goes to a person. If automatic sending is included, only eligible enquiries may receive approved content without individual review; the scope defines escalation conditions, follow-up limits, and stop rules."],
 			["What if we do not want it replying on its own?",
-			 "Then it drafts and you send. Draft-and-approve is a normal scope choice, and it still removes most of the delay — the writing is done by the time you open the thread."],
+			 "Choose draft-and-approve: the workflow prepares a reply, and your reviewer decides whether and when to send it. This can reduce writing effort, but the customer still waits for review. We measure draft preparation separately from time to a sent response; no one-minute response is promised."],
 			["What does it cost?",
 			 "It is delivered through an AI Implementation Sprint, quoted fixed in writing before work begins. If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is."],
 		],

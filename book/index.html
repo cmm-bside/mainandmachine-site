@@ -24,7 +24,7 @@
 <!-- The calendar is requested only after the visitor chooses to open it. -->
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=157" />
+<link rel="stylesheet" href="/styles.css?v=158" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 
@@ -283,8 +283,8 @@
       <span class="logo__word">Main <span class="amp">&amp;</span> Machine</span>
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main navigation">
-      <a href="/services/">How we help</a>
-      <a href="/services/builds/">Builds</a>
+      <a href="/services/">Services</a>
+      <a href="/services/builds/">Workflows</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
       <a href="/guides/">Guides</a>
@@ -322,7 +322,8 @@
 
         <div class="formcard__body">
 
-          <button class="btn btn--primary" type="button" id="calLaunch" aria-controls="calPanel" aria-expanded="false">Choose a time <span class="arr" aria-hidden="true">&#8594;</span></button>
+          <p id="calPrivacy" class="cal-fallback">Choosing a time loads Calendly, our scheduling provider. Any optional workflow note you add is shared with Calendly. Prefer not to use it? <a data-cta="booking-written-plan" href="/plan/">Get a free plan by email instead</a>.</p>
+          <button class="btn btn--primary" type="button" aria-describedby="calPrivacy" id="calLaunch" aria-controls="calPanel" aria-expanded="false">Choose a time <span class="arr" aria-hidden="true">&#8594;</span></button>
           <p class="cal-fallback">You can also <a href="https://calendly.com/cmyers-mainandmachine/30min" target="_blank" rel="noopener">open the calendar in a new tab</a>, or <a href="#book">request a reply within 24 hours</a>.</p>
           <div class="cal-panel" id="calPanel" role="region" aria-label="Choose an assessment time" tabindex="-1" hidden>
           <div class="field cal-q">
@@ -1144,7 +1145,7 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".bookhero__grid > *,.formcard,.rail > .panel,.faq > *,.faq__list details,.foot__top > *"></script>
 
 <script defer src="/js/nav.js?v=11"></script>
-<script defer src="/js/analytics.js?v=8"></script>
+<script defer src="/js/analytics.js?v=9"></script>
 <script>
 // Old form anchors still reveal the chosen alternative, including without a
 // pointer. Native details remains usable when JavaScript is unavailable.

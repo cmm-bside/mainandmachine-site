@@ -101,9 +101,13 @@ const routeOf = (f) => {
 /** Absolute og:image URL -> the file it must resolve to, or null if off-site. */
 function localFileFor(url) {
 	if (!url) return null;
-	if (url.startsWith(SITE_ORIGIN)) return path.join(ROOT, url.slice(SITE_ORIGIN.length));
-	if (url.startsWith("/")) return path.join(ROOT, url);
-	return null;
+	try {
+		const parsed = new URL(url, url.startsWith("/") ? SITE_ORIGIN : undefined);
+		// Cache versions and fragments belong to the URL, not the filename.
+		return parsed.origin === SITE_ORIGIN ? path.join(ROOT, decodeURIComponent(parsed.pathname)) : null;
+	} catch {
+		return null;
+	}
 }
 
 const rows = [];

@@ -2582,7 +2582,7 @@ Local proof
 
 One build, published with permission, with the numbers off the log.
 
-B:Side Capital is an SBA 504 and CDFI lender headquartered in Denver, where our founder is CEO. We built MARCUS across 7 departments with 14 AI agents. Borrower documents are processed locally; selected tasks can use external reasoning on filtered text, with human approval for consequential actions. [Read the architecture](/work/marcus/) and [the first 90 days of reported results](/work/marcus/results/), including the measurement limits. It is affiliated first-party evidence, not a forecast for another business.
+B:Side Capital is an SBA 504 and CDFI lender headquartered in Denver, where our founder is CEO. We built MARCUS across 7 departments with 14 AI agents. Borrower documents are processed locally; selected tasks can use external reasoning on filtered text, with human approval for consequential actions. [Read the architecture](/work/marcus/) and [the reported results and study-based estimates](/work/marcus/results/), including the measurement limits. It is affiliated first-party evidence, not a forecast for another business.
 
 Denver–Aurora–Lakewood
 
@@ -2606,7 +2606,7 @@ They are the same numbers as everywhere else, published in full — audits, spri
 Yes, and in person means at your place: your shop in RiNo, your office in the Tech Center, your yard in Lakewood, a job trailer if that is where the work is. We do not keep a storefront in Denver and will not pretend to. When distance wins we work remotely, at the same fixed prices.
 
 02 Have you built anything for a Denver company?
-Yes. MARCUS was built for B:Side Capital, an SBA 504 and CDFI lender headquartered in Denver: 14 AI agents across 7 departments. MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted. MARCUS results are reported by B:Side Capital for the first 90 days of full-fleet operation and reconciled against its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party operational results, not an independent audit or a promise of another client’s outcome.
+Yes. MARCUS was built for B:Side Capital, an SBA 504 and CDFI lender headquartered in Denver: 14 AI agents across 7 departments. MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted. MARCUS results are reported by B:Side Capital. Preparation hours are estimated from initial workflow studies; operational activity is reported from its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party results, not an independent audit or a promise of another client’s outcome.
 
 03 We do prevailing-wage and public work. Can the paperwork be handled?
 That is the most common first build we scope on the Front Range. Pay applications assembled on the cycle, lien waivers tracked across every tier of sub, certified payroll and prevailing-wage records built from the same source data rather than rebuilt by hand. A person signs everything; the machine does the assembly and the chasing.

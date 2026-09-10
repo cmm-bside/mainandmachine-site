@@ -142,10 +142,10 @@ ${(mk.boundary || [])
 function shortLabel(key) {
   return (
     {
-      "hours-returned": "Prep hours returned, 90 days",
-      "weekly-adoption": "Weekly use by week six",
-      "identifiers-out": "Identifiers sent outside",
-      "human-approved": "Actions human-approved",
+      "hours-returned": "Preparation hours returned in 90 days",
+      "weekly-adoption": "Staff using MARCUS weekly by week six",
+      "identifiers-out": "Borrower-identifier exposures reported",
+      "human-approved": "Consequential actions approved by a person",
     }[key] || key
   );
 }
@@ -236,6 +236,15 @@ for (const rel of PAGES) {
   if (!fs.existsSync(file)) continue;
   const before = fs.readFileSync(file, "utf8");
   let html = before;
+
+  // Revoking approval must also remove previously rendered static figures.
+  // The data/runtime mirrors already withhold them; apply the same rule here.
+  if (!marcusReady) {
+    html = html.replace(
+      /(<!-- BUILD-LOG:(MARCUS-[A-Z0-9-]+)\b[^>]*-->)[\s\S]*?(<!-- \/BUILD-LOG:\2 -->)/g,
+      (_match, open, _name, close) => `${open}${close}`
+    );
+  }
 
   for (const [name, inner] of Object.entries(REGIONS)) {
     const re = new RegExp(

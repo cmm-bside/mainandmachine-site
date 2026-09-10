@@ -15,7 +15,7 @@ AI & automation for small businesses
 
 # Less busywork. More time back.
 
-We connect your existing software and automate repetitive office tasks—from following up with customers to moving information between systems.
+We connect the software you already use, automate repetitive steps, and route exceptions to your team. One defined workflow, built, tested, and handed over.
 
 Best fit: established teams of 5–100 people, with recurring admin work spread across multiple systems.
 
@@ -24,21 +24,23 @@ Best fit: established teams of 5–100 people, with recurring admin work spread 
 
 Reviewed by Christopher Myers · Emailed within 24 hours · No call required
 
-Your free plan
+Your free workflow plan One page
 
-## See what useful looks like.
+## A clear first move.
 
-From the invoice follow-up sample
+The task
 
-### Fix the status first.
+### Invoice follow-up.
 
-Start with a reliable overdue-invoice list and the reminder features in your accounting system.
+The first move Fix the status first. Start with a reliable invoice list and your accounting system’s reminders.
 
-- Prepare: collect open invoices.
+- Prepare
 
-- Review: check the balance before sending.
+- Review
 
-- Record: log the reminder and any reply.
+- Record
+
+The first test Track checking time and incorrect reminders for one week.
 
 [See the one-page sample](/plan/sample/)
 Illustrative example, not a client result. Your plan is based on the task you describe.
@@ -55,31 +57,44 @@ Prepare replies and follow-up reminders from the inquiries already reaching your
 ### Chasing invoices and paperwork.
 
 Collect missing details, prepare routine documents, and flag invoices that need a person’s attention.
-[See how invoice automation works](/blog/automate-invoice-processing-with-ai/)
+[Explore invoice preparation](/services/builds/business-system-connectors/#workflow-detail-title)
 
 ### Copying the same data twice.
 
 Move approved information between your systems, with checks for missing or conflicting records.
 [Connect your business systems](/services/builds/business-system-connectors/)
 
-Built. Used. Measured.
+MARCUS at B:Side Capital
 
-## A working system at B:Side Capital.
+## The work gets prepared. People make the call.
 
-MARCUS at B:Side Capital.
-Internally measured over its first 90 days of full-fleet operation.
+At B:Side Capital, a regulated lender, MARCUS finds answers in company records, prepares documents, and stages accounting work inside the tools the team already uses.
+
+The team reviews the work, checks exceptions, and approves consequential actions. That is the system we built—and the operation behind these results.
+
+[See MARCUS at work](/work/marcus/results/)
+
+Inside the working system From invoice to reviewed entry.
+
+- Start with the records A vendor invoice and the existing accounting information.
+
+- MARCUS prepares the entry Proposed coding, with the source document attached.
+
+- A person reviews and approves Check the work and its exceptions. Nothing posts before approval.
+
+Simplified view of the documented B:Side workflow.
 
 1,240 hrs
-Prep hours returned, 90 days
+Preparation hours returned in 90 days
 
 93 %
-Weekly use by week six
+Staff using MARCUS weekly by week six
 
-0
-Identifiers sent outside
+100 %
+Consequential actions approved by a person
 
-Founder-affiliated deployment: Christopher Myers is CEO of B:Side Capital and Fund. Results are specific to this operation; see the measurement notes and limits.
-[See the results and methodology](/work/marcus/results/)
+B:Side’s first-party results from its first 90 days of full-fleet operation. Christopher Myers leads B:Side and Main & Machine. Hours returned represent operating capacity, not measured payroll savings.
+[Read the measurement notes](/work/marcus/results/#methodology)
 
 What happens next
 
@@ -106,15 +121,25 @@ Within 24 hours, receive a preliminary recommendation and a practical first step
 Christopher Myers
 Founder & Chairman · Your plan reviewer
 
-### Want us to build it?
+When a custom build makes sense
+
+### One workflow. Connected all the way through.
+
+Use your existing tools when they can do the job. Consider a custom build when work crosses systems, exceptions keep returning to your team, and the manual effort justifies the investment.
+
+[See pricing and example scopes](/pricing/#scope-examples)
 
 $18,000–$60,000
 
-Implementation Sprints build, connect, test, and launch an agreed workflow. A fixed quote follows an agreed scope, before paid work begins.
+Implementation Sprint · 4 to 12 weeks
 
-Paid audits are available when the scope needs deeper investigation. Ongoing support is optional.
+- The connections and exception handling
 
-[See pricing and example scopes](/pricing/#scope-examples)
+- Acceptance testing and human approval points
+
+- Operating instructions, training, and ownership
+
+A fixed quote follows an agreed scope. A paid audit can help define it; ongoing support is optional. Software and usage costs are separate.
 
 Your next step
 
@@ -266,7 +291,7 @@ $3,500–$8,500
 - A phased plan you own
 
 [View audit scope →](/services/ai-readiness-audit/)
-100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 ## AI Implementation Sprint
 
@@ -332,7 +357,7 @@ Compare the [published prices](/pricing/) or [read the free-plan sample](/plan/s
 
 01 How is the free plan different from a paid audit? The free plan is a preliminary recommendation for one task, reviewed by Christopher Myers and emailed within 24 hours. It is not a system assessment or a fixed build quote. A free 30-minute call is an alternative if you prefer to talk. The paid audit is a separate 2 to 4 weeks engagement that produces a workflow map, ranked opportunities, and a phased plan.
 02 Can we skip the paid audit? Yes, when your workflow is already defined and can be scoped. Request a free plan or book a free call, and ask to scope an Implementation Sprint directly.
-03 What is the audit credit? 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+03 What is the audit credit? Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 04 Do we have to buy ongoing support? No. Managed Services is optional. You own what we build, and your team is trained to run it.
 
 Start with one task
@@ -440,7 +465,7 @@ Read before buying
 
 The [sample audit](/services/sample-audit/) shows two representative pages: an intake workflow map and a ranked set of opportunities. It uses the real deliverable structure; its composed workflow is not a client result.
 The audit itself is $3,500–$8,500 , fixed in writing before work begins, over 2 to 4 weeks . It buys analysis and a plan. Software implementation is a separate engagement.
-100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 Choose your next step
 - Read the sample before the call
@@ -459,7 +484,7 @@ Compare the [published prices](/pricing/) and bring your specific workflow to th
 
 01 Is this the same as the free assessment? No. The free assessment is a 30-minute conversation about fit and possible next steps. The paid audit takes 2 to 4 weeks and produces a workflow map, ranked opportunities and a phased plan for your business.
 02 Do I have to hire you to build the plan? No. You own the audit and can use it with us, another firm, or your own team. The recommendation may be to wait or to use a simpler tool.
-03 How does the audit credit work? 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. The cap depends on the sprint price; the written quote makes the credit clear.
+03 How does the audit credit work? Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price. The cap depends on the sprint price; the written quote makes the credit clear.
 04 Can we go straight to implementation? Yes, when you already have a defined workflow and enough detail to scope it. Start with the free assessment, tell us what you want built, and we can quote a sprint without a paid audit.
 
 Start with a conversation
@@ -569,7 +594,7 @@ Investment and responsibility
 An AI Implementation Sprint is $18,000–$60,000 , quoted fixed before work begins. Typical delivery is 4 to 12 weeks , about 90 days per workflow.
 If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 Your workflow owner helps explain the process, make decisions and review the system in operation. Discuss tool access, data handling, third-party costs and what the agreed scope covers before starting.
-If discovery is needed first, the [AI Readiness Audit](/services/ai-readiness-audit/) creates the plan. 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+If discovery is needed first, the [AI Readiness Audit](/services/ai-readiness-audit/) creates the plan. Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 Evidence and limits
 - [Read the MARCUS implementation](/work/marcus/)
@@ -745,15 +770,17 @@ SUMMARY: Compare Main & Machine’s audit, implementation, and ongoing support. 
 
 Pricing
 
-# Clear prices. Choose the right scope.
+# Clear prices. A defined result.
 
-Start with a defined workflow or an audit to find one. Your scope and fixed price are agreed in writing before work begins.
-Best fit: established 5–100-person teams with recurring operational work, existing business tools, and an owner ready to help scope and test a workflow.
-[See illustrative sprint scopes across the range](#scope-examples)
+Build a workflow you can put to work. Use an audit when the scope needs investigation, then add ongoing support if you need it. Your scope and fixed price are agreed before work begins.
+
+[Investigate if needed $3,500–$8,500](#audit)[Build your workflow $18,000–$60,000](#sprint)[Add ongoing support From $1,500/month](#managed)
+
+01 / Investigate if needed
 
 ## AI Readiness Audit
 
-You need to find and prioritize the right AI opportunity.
+Find the right opportunity and define what is worth building.
 
 $3,500–$8,500
 2 to 4 weeks · fixed scope
@@ -765,11 +792,13 @@ $3,500–$8,500
 - A phased plan you own
 
 [View audit scope →](/services/ai-readiness-audit/)
-100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
+
+02 / Build a defined workflow
 
 ## AI Implementation Sprint
 
-You have a defined workflow ready to scope and build.
+Connect the systems, handle the exceptions, and put a tested workflow into operation.
 
 $18,000–$60,000
 4 to 12 weeks · fixed scope
@@ -783,9 +812,11 @@ $18,000–$60,000
 [View implementation scope →](/services/ai-implementation/)
 Fixed quote in writing before work begins. If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
+03 / Add optional support
+
 ## Managed Services
 
-You want ongoing care for a system we have built.
+Keep the delivered system maintained as your tools and business change.
 
 From $1,500/month
 Ongoing · optional support
@@ -901,7 +932,7 @@ The AI Readiness Audit runs $3,500–$8,500 and takes 2 to 4 weeks. An AI Implem
 Yes, on delivery: if a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is. The scope is fixed in writing before work begins, so the guarantee is against a spec both sides can read. We do not guarantee ROI numbers — nobody honestly can — but we do guarantee the thing you paid for shows up and runs.
 
 03 Does the audit fee count toward a build?
-Yes. 100% of your audit fee credits toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. The cap means some audit fees may remain uncredited. Your proposal shows the credit and the remaining amount. The credit is the smaller of your audit fee and one quarter of the sprint price.
+Yes. Your audit fee can be credited toward an Implementation Sprint signed within 60 days of the audit, up to 25% of the sprint price. The cap means some audit fees may remain uncredited. Your proposal shows the credit and the remaining amount. The credit is the smaller of your audit fee and one quarter of the sprint price.
 
 04 What does the AI Readiness Audit include?
 A workflow map of your real operations, the handful of places AI actually pays, a phased plan you own outright, and a straight read on whether to build at all. It takes 2 to 4 weeks.
@@ -1502,7 +1533,7 @@ MARCUS is what Main & Machine builds when the stakes are real: private, auditabl
 
 The guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
-The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+The credit: Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 [See the price list →](/pricing/)
 
@@ -1870,7 +1901,7 @@ Bring the workflow you want to improve. We’ll discuss the systems involved, da
 
 The guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
-The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+The credit: Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 [See the price list →](/pricing/)
 
@@ -1913,7 +1944,7 @@ Front of house
 
 ## The systems your customers meet.
 
-Revenue-side builds. Fast to ship, visible the first week, and countable in work that used to slip. Most businesses start with one of these.
+Customer-facing workflows for inquiries, booking, and follow-up. Scope the integrations, handoffs, and operating rules before choosing the build.
 
 Answering
 
@@ -1921,7 +1952,7 @@ Answering
 
 Before The phone rings while everyone is on a job. The caller gets voicemail, and most people won’t leave one.
 
-After Every call answered. The common questions handled, the appointment booked, the urgent ones routed to a person — and a transcript in your inbox by morning.
+After Routine calls are handled within the agreed service scope: common questions, available appointments, and handoffs to a person when the request needs one.
 
 [How it works →](/services/builds/ai-receptionist/)
 
@@ -1931,7 +1962,7 @@ Booking
 
 Before Your website answers nothing. A visitor with a question at 9pm leaves and forgets you by breakfast.
 
-After The agent answers the way your best employee would — trained on your services, prices, and policies — and books the visitor straight onto your calendar.
+After The agent answers supported questions using your approved services, prices, and policies, then offers available appointments within agreed booking rules.
 
 [How it works →](/services/builds/website-chat-booking-agent/)
 
@@ -1941,7 +1972,7 @@ Follow-up
 
 Before A lead lands Friday night and waits in the inbox until Monday. By then they’ve hired someone else.
 
-After Every lead gets a real reply in under a minute, then follow-ups drafted in your voice until they answer or ask you to stop.
+After Replies are prepared from approved business information. Your team reviews drafts; agreed routine inquiries can receive automatic responses, with escalation and stop rules.
 
 [How it works →](/services/builds/instant-lead-response/)
 
@@ -1951,7 +1982,7 @@ Recovery
 
 Before A call you couldn’t take is just gone. No name, no number worth chasing, no second chance.
 
-After The caller gets an immediate text: who you are, when you’ll call back, and a link to book. The smallest build here, and one of the most effective.
+After Eligible missed calls trigger an approved follow-up text, with a reply route and booking link. Timing, exclusions, and stop rules are agreed in scope.
 
 [How it works →](/services/builds/missed-call-text-back/)
 
@@ -2007,7 +2038,7 @@ The front door
 
 ### Slack & Teams integration
 
-The system lives where your team already works. No new app, no new login, no training deck. Finished work arrives in the channel, and a person approves it there.
+Prepared work and approvals arrive in the Slack or Teams channels your team already uses. Staff learn what to review, how to correct work, and when to escalate.
 
 [How it works →](/services/builds/slack-teams-integration/)
 
@@ -2183,7 +2214,7 @@ Have a security questionnaire? Send it, or bring your IT reviewer to the free 30
 
 The guarantee: If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
 
-The credit: 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+The credit: Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 [See the price list →](/pricing/)
 
@@ -2906,7 +2937,7 @@ The [full price list](/pricing/) explains the inclusions and terms. If a scoped 
 
 ## How much should you budget for the first year?
 
-At our prices, an audit plus one sprint totals $21,500–$68,500 before the audit credit and ongoing costs . If discovery is unnecessary, budget for the sprint alone. 100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.
+At our prices, an audit plus one sprint totals $21,500–$68,500 before the audit credit and ongoing costs . If discovery is unnecessary, budget for the sprint alone. Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 For example, an $8,500 audit followed by an $18,000 sprint receives a $4,500 credit because of the cap. The combined fees are $22,000 before ongoing costs. A $3,500 audit followed by the same sprint receives the full $3,500 credit if the sprint is signed within 60 days.
 
@@ -2930,7 +2961,7 @@ The full price list is published — audits, sprints, managed services, all on o
 An hourly rate alone does not establish the project cost. Ask for estimated hours, a spending cap, named deliverables, and the assumptions behind the estimate. Main & Machine quotes agreed audits and builds at a fixed price.
 
 02 How much should a small business budget for AI consulting? +
-Before audit credits and ongoing costs, the audit and build total $21,500–$68,500: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins — with 100% of the audit fee credited toward the sprint when it is signed within 60 days, up to 25% of the sprint price.
+Before audit credits and ongoing costs, the audit and build total $21,500–$68,500: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins. Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 03 How do I compare proposals? +
 Compare the same workflow and deliverables, including integration, testing, ownership, training, and ongoing costs. A proposal with a different scope is not a useful price comparison.
@@ -3284,10 +3315,14 @@ URL: https://www.mainandmachine.com/guides/
   Assess private AI by its data flows, access, filter limits, and operating costs. Read the architecture and qualified results from our lender deployment.
 
 ========================================================================
-INDEX: The Ampersand — all 32 essays
+INDEX: The Ampersand — all 34 essays
 URL: https://www.mainandmachine.com/blog/
 ========================================================================
 
+- [Small Business AI Roadmap That Produces Results](/blog/small-business-ai-roadmap/) — 2026-09-10
+  Build a small business AI roadmap around costly workflows, clean data, human approvals, and measurable returns - not vague AI experiments that often stall.
+- [Operational AI: Systems That Actually Run Work](/blog/operational-ai-systems-that-run-work/) — 2026-09-08
+  Operational AI turns repetitive business work into accountable systems that connect your tools, speed decisions, and keep people in control every day.
 - [AI Software Integration That Fixes Real Work](/blog/ai-software-integration/) — 2026-09-06
   AI software integration connects the tools, data, and workflows your team already uses, cutting repeat work while keeping people accountable for decisions.
 - [AI Managed Services That Keep Work Moving](/blog/ai-managed-services/) — 2026-09-04

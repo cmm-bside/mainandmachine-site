@@ -308,7 +308,7 @@
     "highlight_keys": [
       "hours-returned",
       "weekly-adoption",
-      "identifiers-out"
+      "human-approved"
     ],
     "inline": {
       "professional-services": "hours-returned",

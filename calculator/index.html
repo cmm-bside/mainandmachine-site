@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=158" />
+<link rel="stylesheet" href="/styles.css?v=159" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -669,74 +669,63 @@
 
 <script>
 /* Email-me-this-estimate — posts to the same Pages Function as the booking
-   form, with stage:"estimate". Never gates the numbers: a failure leaves the
-   page exactly as it was and says so. */
+   form, with stage:"estimate". Success means the email provider accepted the
+   send, not verified inbox delivery. A failure leaves the numbers available. */
 (function(){
   var form = document.getElementById('estimateForm');
   if(!form) return;
   var input = document.getElementById('estimateEmail');
   var btn   = document.getElementById('estimateBtn');
   var note  = document.getElementById('estimateNote');
+  var submitting = false;
   var txt = function(el){ el = document.getElementById(el); return el ? (el.textContent || '').trim() : ''; };
-  function sync(){
-    form.setAttribute('data-industry', txt('calcIndustry') || (document.getElementById('calcIndustry')||{}).value || '');
-    form.setAttribute('data-team', txt('calcCount'));
-  }
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    if(submitting) return;
     var email = (input.value || '').trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
       note.textContent = 'That email does not look right — check it and try again.';
       input.focus(); return;
     }
-    sync();
-    btn.disabled = true; note.textContent = 'Sending…';
     var sel = document.getElementById('calcIndustry');
+    var range = document.getElementById('calcRange');
+    var snapshot = { industry: sel ? sel.value : '', team: range ? range.value : '' };
+    submitting = true;
+    btn.disabled = true; note.textContent = 'Sending…';
     fetch('/api/book-assessment', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         stage: 'estimate',
         email: email,
         industry: sel ? (sel.options[sel.selectedIndex]||{}).text || sel.value : '',
-        team: txt('calcCount'),
+        team: snapshot.team,
         hours: txt('calcHours'),
         annual: txt('calcManual'),
         source: '/calculator/'
       })
-    }).then(function(r){ return r.json().catch(function(){ return {}; }); })
-      .then(function(r){
-        if(r && r.ok){ note.textContent = 'Sent. It is on its way to ' + email + '.'; form.reset(); }
-        else { note.textContent = (r && r.error) || 'That did not send. The numbers are still here.'; }
-      })
-      .catch(function(){ note.textContent = 'That did not send. The numbers are still here.'; })
-      .then(function(){ btn.disabled = false; });
+    }).then(function(response){
+      return response.json().then(function(body){
+        return { accepted: response.ok && !!body && body.ok === true, body: body };
+      });
+    }).then(function(result){
+      if(!result.accepted){
+        note.textContent = (result.body && result.body.error) || 'That did not send. The numbers are still here.';
+        return;
+      }
+      note.textContent = 'Sent. It is on its way to ' + email + '.';
+      form.reset();
+      form.dispatchEvent(new CustomEvent('mm:estimate-accepted', { bubbles: true, detail: snapshot }));
+    }).catch(function(){
+      note.textContent = 'That did not send. The numbers are still here.';
+    }).finally(function(){
+      submitting = false;
+      btn.disabled = false;
+    });
   });
 })();
 </script>
 <script defer src="/js/nav.js?v=11"></script>
-<script defer src="/js/analytics.js?v=9"></script>
-<script>
-/* Calculator engagement -> Plausible. Fires ONCE per session on the first real
-   interaction, not on every slider tick: a drag emits dozens of input events
-   and would inflate the metric into meaninglessness. No PII in the props —
-   industry and team size are the visitor's own selections, already in the URL
-   the /book/ hand-off carries. See analytics-events.md for the props contract. */
-(function(){
-  var fired=false;
-  function go(){
-    if(fired)return; fired=true;
-    var ind=document.querySelector('#industry'), team=document.querySelector('#team');
-    window.plausible && plausible('roi_calculated', { props: {
-      industry: ind ? ind.value : 'unset',
-      team: team ? String(team.value) : 'unset'
-    }});
-  }
-  ['change','input'].forEach(function(ev){
-    document.addEventListener(ev, function(e){
-      if(e.target.closest('.roi')) go();
-    }, true);
-  });
-})();
-</script>
+<script defer src="/js/analytics.js?v=10"></script>
+
 </body>
 </html>

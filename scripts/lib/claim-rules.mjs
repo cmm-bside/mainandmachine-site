@@ -2,6 +2,7 @@
 // automated truth detector. Qualified local-only options and fictional sample
 // economics are valid; they are deliberately not banned by generic keywords.
 export const RETIRED_CLAIMS = [
+  ['unqualified-lead-speed', /(?:every (?:inbound )?lead gets a real reply|replies to every inbound lead|answers every (?:enquiry|inquiry))[^.]{0,45}(?:under|within) (?:a|one) minute/i],
   ['borrower-boundary', /no borrower file (?:leaves|leaving) the building/i],
   ['perfect-filter', /(?:PII is stripped|identifiers are stripped|filter strips identifiers)[^.]{0,90}before any model reads/i],
   ['immutable-log-absolute', /entries can be added, never edited or deleted/i],

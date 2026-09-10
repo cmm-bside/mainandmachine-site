@@ -79,7 +79,7 @@ the pre-change `hero` bucket should be read as "hero + pre-footer + page hero".
 | intent | `calendly_widget_viewed` | `page` | Calendly's `calendly.event_type_viewed` — **its** booking UI actually rendered. Once per page load. | `book/index.html` |
 | intent | `calendly_time_selected` | `page` | Calendly's `calendly.date_and_time_selected` — a slot is picked but not confirmed. Once per page load. | `book/index.html` |
 | intent | `booking_form_submitted` | `page` | /book/ fallback form accepted — the `ok` response, not the submit event (fires before the redirect to /book/thanks/) | `book/index.html` |
-| engagement | `calculator_emailed` | `page`, `industry`, `team_band` | "Email me this estimate" submitted on /calculator/ or a guide worksheet. No email in the props. | `js/analytics.js` |
+| engagement | `calculator_emailed` | `page`, `industry`, `team_band` | Estimate API accepted the request: HTTP success and `ok: true`. Input dimensions are snapshotted at submission; the guide uses `not-specified`. No email in props. | `js/analytics.js` |
 | booked | `booking_details_added` | `page` | stage-2 prep details accepted on /book/thanks/ (post-booking enrichment) | `book/thanks/index.html` |
 | **booked** | `calendly_booked` | `page` (+ `band` from the app) | Calendly's `calendly.event_scheduled` postMessage — a real slot on the calendar | both |
 
@@ -104,7 +104,7 @@ unchanged: labels are constant strings or page paths, never a payload field.
 |---|---|---|---|
 | Book appointment | `book_appointment` | `calendly_booked` (`book/index.html`) | `calendly.event_scheduled`, inside the same origin check + once-latch |
 | Submit lead form | `submit_lead_form` | `booking_form_submitted` (`book/index.html`) | the fallback form's `ok` response, not the submit attempt |
-| Submit lead form | `submit_lead_form` | `calculator_emailed` (`js/analytics.js`) | any `.estimate-form` submit (/calculator/ + guide worksheets) |
+| Submit lead form | `submit_lead_form` | `calculator_emailed` (`js/analytics.js`) | `mm:estimate-accepted` after HTTP success and `ok: true` (/calculator/ + the ROI guide worksheet) |
 | Submit lead form | `submit_lead_form` | `score_report_requested` (Score app, `lib/analytics.ts`) | report request accepted by the API; not email delivery |
 | Submit lead form | `submit_lead_form` | `workflow_plan_submitted` (`js/workflow-plan.js`) | matching successful API receipt with `emailStatus: "queued"`; label is the constant `workflow_plan`, not a request field |
 | Book appointment | `book_appointment` | `calendly_booked` (Score app) | validated Calendly success message, once |
@@ -115,10 +115,20 @@ enrichment of a conversion already counted). A document-wide form listener
 would have counted all three — that is why the pushes ride named events
 instead of a generic `submit` hook.
 
-The legacy `calculator_emailed` / UET estimate event measures a DOM submit,
-not a successful API receipt. Do not combine its counts with verified
-workflow-plan receipts as though they were equivalent leads. The workflow-plan
-attempt, sample, CTA, task-step and issue events do not push UET conversions.
+`calculator_emailed` and its UET estimate conversion now measure an accepted
+API response, not a DOM submit. The estimate endpoint returns HTTP 200 and
+`{ok:true}` after the customer email provider accepts the send; the internal
+notification is best-effort. This is not verified inbox delivery or a booked
+meeting. The calculator sends the selected industry key and a coarse team band;
+the guide has no such inputs and sends `not-specified` for both. Email, raw
+headcount, and monetary outputs remain outside telemetry.
+
+Historical estimate counts before this change included DOM submit attempts,
+including validation and request failures. Segment reporting at this release;
+do not compare old and new counts as if they had the same definition. The
+maintained engagement event is `calculator_interacted`; the stale parallel
+`roi_calculated` handler has been retired. Workflow-plan attempt, sample, CTA,
+task-step and issue events do not push UET conversions.
 
 ## The booking funnel
 
@@ -256,8 +266,18 @@ Network filtered to `/api/event`, then:
       URI instead of a reference id — Calendly does not expose the invitee's name
       or email to the parent window, so the internal email says the booking must
       be matched by hand. Same event, same props: no new event for this path.
-- [ ] /calculator/: submit "Email me this estimate" → `calculator_emailed` with
-      industry + band; confirm the POST body contains **no email address**.
+- [ ] /calculator/ and /guides/ai-roi-math-small-business/: invalid email,
+      rejected response, malformed response, and network failure produce no
+      `calculator_emailed` or UET lead conversion. Only HTTP success plus
+      `ok: true` produces one of each. Check a pending request cannot overlap.
+- [ ] /calculator/: accepted estimate telemetry contains the submitted industry
+      key and coarse team band, even if controls change while awaiting the
+      response. The guide reports `not-specified`. Inspect analytics requests
+      for **no email address, raw headcount, or dollar outputs**; the separate
+      `/api/book-assessment` request legitimately contains the delivery email.
+- [ ] Run `node --test scripts/test-conversion-estimate.mjs`: production form
+      handlers and shared analytics, modeled capture/bubble order, mocked API
+      responses, and no provider/network access.
 - [ ] /score: land → pageview with `u` = the /score URL; start → `score_started`;
       finish → `score_completed` with `band` only (inspect the POST body —
       no answers, no email, no raw score).

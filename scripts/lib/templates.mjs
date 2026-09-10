@@ -328,6 +328,6 @@ export function subscribeBand() {
 // Scripts shared by every blog page: mobile nav and search.
 export function pageScripts() {
 	return `<script defer src="/js/nav.js?v=11"></script>
-<script defer src="/js/analytics.js?v=9"></script>
+<script defer src="/js/analytics.js?v=10"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

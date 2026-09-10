@@ -27,7 +27,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=158" />
+<link rel="stylesheet" href="/styles.css?v=159" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1511'/%3E%3Ctext x='50' y='70' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%23EFE8D9'%3EM%3Ctspan fill='%23C86953'%3E%26amp;%3C/tspan%3EM%3C/text%3E%3C/svg%3E" />
@@ -524,28 +524,44 @@
 <script defer src="/js/reveal.js?v=53" data-reveal-targets=".pagehero__grid > *,.head-block,.faq__list details,.final .hero__cta,.foot__top > *"></script>
 
 <script>
-/* Worksheet request — same endpoint and stage as the calculator's block. */
+/* Worksheet request — same accepted-response contract as the calculator. */
 (function(){
   var form = document.querySelector('.estimate-form');
   if(!form) return;
   var input = form.querySelector('input[type=email]');
   var btn = form.querySelector('button');
   var note = form.querySelector('[data-note]');
+  var submitting = false;
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    if(submitting) return;
     var email = (input.value||'').trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ note.textContent='That email does not look right — check it and try again.'; input.focus(); return; }
+    submitting = true;
     btn.disabled = true; note.textContent = 'Sending…';
     fetch('/api/book-assessment', { method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ stage:'estimate', email:email, source: form.getAttribute('data-source') }) })
-      .then(function(r){ return r.json().catch(function(){return {};}); })
-      .then(function(r){ note.textContent = (r && r.ok) ? 'Sent. Check your inbox.' : ((r && r.error) || 'That did not send. Try again in a moment.'); if(r&&r.ok) form.reset(); })
+      .then(function(response){
+        return response.json().then(function(body){
+          return { accepted: response.ok && !!body && body.ok === true, body: body };
+        });
+      })
+      .then(function(result){
+        if(!result.accepted){
+          note.textContent = (result.body && result.body.error) || 'That did not send. Try again in a moment.';
+          return;
+        }
+        note.textContent = 'Sent. Check your inbox.';
+        form.reset();
+        // This worksheet has no industry or team-size inputs to report.
+        form.dispatchEvent(new CustomEvent('mm:estimate-accepted', { bubbles: true, detail: {} }));
+      })
       .catch(function(){ note.textContent = 'That did not send. Try again in a moment.'; })
-      .then(function(){ btn.disabled = false; });
+      .finally(function(){ submitting = false; btn.disabled = false; });
   });
 })();
 </script>
 <script defer src="/js/nav.js?v=11"></script>
-<script defer src="/js/analytics.js?v=9"></script>
+<script defer src="/js/analytics.js?v=10"></script>
 </body>
 </html>

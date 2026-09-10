@@ -22,7 +22,7 @@
  *
  *   calculator_interacted { page, industry, team_band, at } first-touch · cta-click
  *   guide_read            { page, guide }      75% scroll depth, once
- *   calculator_emailed    { page, industry, team_band }  legacy estimate submit intent
+ *   calculator_emailed    { page, industry, team_band }  accepted estimate request
  *
  * Microsoft Ads UET (tag 343267453) also lives here — base loader at the foot
  * of this file, conversion pushes ride the SAME trigger points as the
@@ -30,7 +30,7 @@
  * disagree about what counts). Two goals:
  *   book_appointment  — /book/ inline block, on calendly.event_scheduled
  *   submit_lead_form  — /book/ inline block on the fallback form's `ok`
- *                       response; every .estimate-form submit (below); the
+ *                       response; an accepted .estimate-form request (below); the
  *                       Score app fires its own on an accepted report request
  * Unlike Plausible, UET sets cookies (Microsoft's MUID) — disclosed on
  * /privacy/, and the reason the CSP allows bat.bing.net (see _headers).
@@ -282,22 +282,25 @@
     );
   })();
 
-  /* ---------- calculator_emailed: "email me this estimate" -------------- */
-  // One handler for every .estimate-form on the site (the ROI calculator and
-  // the guide worksheets). Props carry the industry + coarse band only — never
-  // the address and never the dollar output, per the no-PII contract.
-  document.addEventListener("submit", function (e) {
-    var form = e.target.closest && e.target.closest(".estimate-form");
-    if (!form) return;
+  /* ---------- calculator_emailed: accepted estimate requests ----------- */
+  // The forms dispatch this only after HTTP success and body.ok === true.
+  // Submit attempts, validation errors, and failed requests are not leads.
+  // Snapshot inputs belong to the accepted request, even if the user changes
+  // the calculator while the response is pending. No email or output values.
+  document.addEventListener("mm:estimate-accepted", function (e) {
+    var form = e.target;
+    if (!form || !form.matches || !form.matches(".estimate-form")) return;
+    var detail = e.detail || {};
+    var industries = ["professional-services", "retail", "healthcare", "construction", "hospitality"];
+    var size = Number(detail.team);
     fire("calculator_emailed", {
       page: PAGE,
-      industry: form.getAttribute("data-industry") || "",
-      team_band: teamBand(form.getAttribute("data-team") || 0),
+      industry: industries.includes(detail.industry) ? detail.industry : "not-specified",
+      team_band: Number.isFinite(size) && size >= 1 && size <= 100 ? teamBand(size) : "not-specified",
     });
-    // Legacy goal: this observes an attempt, not an API receipt or delivery.
-    // Deliberately NOT a document-wide form listener: careers application forms are not leads and must not count.
-    uet("submit_lead_form", PAGE);
-  }, true);
+    // Optional advertising measurement cannot change an accepted form state.
+    try { uet("submit_lead_form", PAGE); } catch (_) {}
+  });
 
   /* ---------- guide_read: 75% scroll depth on a guide detail page -------- */
   (function () {

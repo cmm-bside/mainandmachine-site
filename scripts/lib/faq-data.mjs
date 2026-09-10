@@ -1,3 +1,4 @@
+import { COMPANY } from "../../src/data/company.mjs";
 import { claimText } from "../../src/data/approved-claims.mjs";
 
 // FAQ content for service / industry / overview pages, injected as BOTH
@@ -9,7 +10,7 @@ import { claimText } from "../../src/data/approved-claims.mjs";
 
 // Shared answer fragments — keep prices/locations consistent everywhere.
 const COST =
-	"The AI Readiness Audit runs $3,500–$8,500, and 100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. An AI Implementation Sprint runs $18,000–$60,000, quoted as a fixed price in writing before any work begins — and if a scoped workflow is not live within 90 days, we keep building at no charge until it is. Managed Services runs from $1,500 a month with no lock-in.";
+	`The AI Readiness Audit runs $3,500–$8,500. ${COMPANY.rollover} An AI Implementation Sprint runs $18,000–$60,000, quoted as a fixed price in writing before any work begins — and if a scoped workflow is not live within 90 days, we keep building at no charge until it is. Managed Services runs from $1,500 a month with no lock-in.`;
 const COST_SHORT =
 	"The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. If a scoped workflow is not live within 90 days, we keep building at no charge until it is.";
 // NOTE: there is deliberately no shared REMOTE / TIMELINE answer any more.
@@ -39,7 +40,7 @@ export const FAQ = {
 		heading: "What AI consulting costs.",
 		items: [
 			{ q: "How much does an AI consultant cost per hour?", a: "An hourly rate alone does not establish the project cost. Ask for estimated hours, a spending cap, named deliverables, and the assumptions behind the estimate. Main & Machine quotes agreed audits and builds at a fixed price." },
-			{ q: "How much should a small business budget for AI consulting?", a: "Before audit credits and ongoing costs, the audit and build total $21,500–$68,500: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins — with 100% of the audit fee credited toward the sprint when it is signed within 60 days, up to 25% of the sprint price." },
+			{ q: "How much should a small business budget for AI consulting?", a: `Before audit credits and ongoing costs, the audit and build total $21,500–$68,500: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins. ${COMPANY.rollover}` },
 			{ q: "How do I compare proposals?", a: "Compare the same workflow and deliverables, including integration, testing, ownership, training, and ongoing costs. A proposal with a different scope is not a useful price comparison." },
 			{ q: "Is fixed-price better than hourly for AI projects?", a: "For small and mid-size businesses, usually yes. AI work carries unusual scope uncertainty, and hourly billing hands all of it to the buyer. A fixed price forces the seller to scope before selling." },
 		],
@@ -108,7 +109,7 @@ export const FAQ = {
 		label: "Audit guide FAQ",
 		heading: "What an audit delivers.",
 		items: [
-			{ q: "What does an AI readiness audit cost?", a: "Ours costs $3,500–$8,500, fixed in writing before work begins, and takes 2–4 weeks. 100% of the fee credits toward a sprint signed within 60 days, up to 25% of the sprint price. The price is published in full on the pricing page — no discovery call required to learn it." },
+			{ q: "What does an AI readiness audit cost?", a: `Ours costs $3,500–$8,500, fixed in writing before work begins, and takes 2–4 weeks. ${COMPANY.rollover} The price is published in full on the pricing page — no discovery call required to learn it.` },
 			{ q: "What do you get at the end of an AI readiness audit?", a: "Four things in writing: a workflow map of your real operations with hours and costs on each step, a shortlist of where AI genuinely pays with rough dollar ranges, a phased implementation plan, and outright ownership of the document. It is vendor-neutral and usable with any builder, or alone." },
 			{ q: "Is an AI readiness audit the same as an AI strategy engagement?", a: "The names alone do not tell you what you will receive. Our audit maps workflows, records inputs and assumptions, ranks opportunities, and recommends phased next steps. Compare deliverables and decision criteria; an audit can recommend waiting rather than building." },
 			{ q: "Can you see a sample audit before buying one?", a: "Yes. Four illustrative pages at mainandmachine.com/services/sample-audit/ show a workflow map, ranked opportunities, an economic worksheet, and a phased recommendation. The business and figures are fictional, not client findings or a quote." },

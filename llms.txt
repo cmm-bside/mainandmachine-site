@@ -16,7 +16,7 @@ Prefer to talk? [Book a free 30-minute assessment](/book/) directly.
 Start with a free 30-minute assessment to discuss one workflow and the next step. If substantial discovery is needed, we scope a paid audit; a fixed build quote follows an agreed scope.
 An advisor from Main & Machine discusses your workflow and next step. Christopher Myers is accountable for scoping and sign-off; the build team implements agreed work. Your scheduling confirmation identifies the meeting host.
 
-Generated: 2026-09-08
+Generated: 2026-09-10
 
 Full page text for AI systems: [llms-full.txt](/llms-full.txt) — the complete
 visible copy of the most important pages, with page delimiters.
@@ -59,8 +59,7 @@ before work begins.
   stops paying. Pay annually and 12 months cost the price of 10.
 - The Full Back Office: from $95,000 — a MARCUS-class, multi-department
   build. Four taken per year.
-- Audit-to-sprint credit: 100% of the audit fee credits toward a sprint
-  signed within 60 days, up to 25% of the sprint price.
+- Audit-to-sprint credit: Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 - [Pricing](/pricing/) — published scope, timelines, price bands, and terms.
   Compare proposals on the same deliverables and total ownership cost.
 - [Build catalog](/services/builds/) — every system we build, priced:

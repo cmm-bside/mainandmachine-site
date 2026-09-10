@@ -209,7 +209,7 @@ for (const { key, name, note } of serviceNotes(COMPANY)) {
 // cannot see it. This is the guard for it: any sentence that credits a fee
 // toward a build must carry the window.
 const ROLLOVER_WINDOW = /signed\s+within\s+60\s+days/i;
-const CREDIT_CLAUSE = /100%[^.<]{0,140}?credits?\s+toward[^.<]{0,160}/gi;
+const CREDIT_CLAUSE = /(?:100%[^.<]{0,140}?credits?\s+toward|(?:your|the)\s+(?:audit\s+)?fee\s+(?:can\s+be\s+)?credit(?:s|ed)\s+toward)[^.<]{0,200}/gi;
 guardCountablePhrase(COMPANY.rollover.replace(/\.$/, ""), "rollover");
 for (const { page, html } of noteCorpus) {
   const visible = html.replace(/<script[\s\S]*?<\/script>/g, "");

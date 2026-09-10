@@ -28,7 +28,7 @@ export const BUILDS = [
 		// The quotable definition. Answer engines lift the first paragraph, so it
 		// has to stand alone with no pronouns pointing back at a headline.
 		definition:
-			"A 24/7 AI receptionist is a phone system that answers your business line in a natural voice, handles the questions your staff answer twenty times a day, books appointments straight into your calendar, and routes anything urgent to a person. It works the hours nobody is at the desk — nights, weekends, and the middle of a job — and it leaves a written transcript of every call.",
+			"An AI receptionist handles routine phone inquiries using approved business information and offers appointments through a supported scheduling connection. The scope defines coverage hours, booking rules, call records, and the route to a person when a request needs one.",
 		industries: ["construction", "healthcare", "hospitality", "professional-services"],
 		painHeading: "What a missed call actually costs.",
 		tier: "sprint",
@@ -60,7 +60,7 @@ export const BUILDS = [
 		tier: "sprint",
 		faq: [
 			["How is this different from a chatbot widget?",
-			 "A widget matches keywords against a script somebody wrote once. This reads your real documents — the price list, the service area, the intake policy — and answers from them. When you change the document, the answer changes."],
+			 "The agent uses approved business documents, such as your price list, service area, and intake policy. The scope defines how document changes are picked up and how your team checks that answers reflect the current version."],
 			["Will it make things up?",
 			 "We ground responses in your approved documents and test unsupported questions, conflicting information, and handoffs before launch. Errors remain possible, so the scope sets the permitted actions, review requirements, and escalation path."],
 			["Can it book, or only answer?",
@@ -104,15 +104,15 @@ export const BUILDS = [
 		kicker: "Recovery",
 		title: "Missed-Call Text-Back for Small Business | Main & Machine",
 		description:
-			"A missed call sends an immediate text with a booking link instead of vanishing. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
+			"Follow eligible missed calls with an approved text, a reply route, and a booking link. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
 		definition:
-			"Missed-call text-back is a system that sends an immediate text message to any caller you could not answer: who you are, when you will call back, and a link to book. It is the smallest build in the catalog and one of the most effective, because a missed call with no voicemail is otherwise a customer you will never know you had.",
+			"Missed-call text-back follows an eligible missed call with an approved message identifying your business and offering a reply route or booking link. The scope defines supported numbers, timing, exclusions, and stop rules.",
 		industries: ["construction", "healthcare", "hospitality", "retail"],
 		painHeading: "What an unanswered call is worth.",
 		tier: "sprint",
 		faq: [
 			["How fast does the text go out?",
-			 "Within seconds of the call ending. The value is entirely in the timing — a text that arrives an hour later reaches somebody who has already called the next business on the list."],
+			 "Timing depends on the phone integration and messaging provider. We test the missed-call trigger and delivery timing before launch."],
 			["Can the caller reply to it?",
 			 "Yes, and the reply goes somewhere a person reads. A one-way text that cannot be answered is a notification, not a recovery."],
 			["Will this work with our existing phone number?",
@@ -238,13 +238,13 @@ export const BUILDS = [
 		description:
 			"The system lives where your team already works — no new app, no new login. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
 		definition:
-			"A Slack and Teams integration puts the AI system where your team already works, so finished work arrives in the channel they already watch and a person approves it there. No new app, no new login, no training deck. It is the difference between a system people use and a system people were shown once.",
+			"A Slack and Teams integration brings prepared work and approvals into the channels your team already uses. The scope defines who can review each item and which actions need approval. Staff learn what to check, how to correct work, and when to escalate.",
 		industries: ["professional-services", "construction", "retail", "healthcare"],
 		painHeading: "What another login costs in adoption.",
 		tier: "sprint",
 		faq: [
 			["Does everyone need to learn something new?",
-			 "That is what this build exists to avoid. Work shows up in the channel they already read, and approving it is a click in a place they are already standing."],
+			 "The interface is familiar. Your team still needs an introduction to the workflow, its approval rules, and its exception paths."],
 			["Slack or Teams?",
 			 "Whichever you run. If you run both, both — the integration follows your business rather than asking it to standardise first."],
 			["Can people approve work from their phone?",

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
 import { marcusMeasuredSummary } from '../src/data/approved-claims.mjs';
 import { claimFindings } from './lib/claim-rules.mjs';
 import { applyBlogEditorialCache } from './lib/blog-editorial-cache.mjs';
@@ -24,6 +25,26 @@ assert.deepEqual(claimFindings('A Presidio-class filter strips identifiers befor
 assert.deepEqual(claimFindings('Identifiers are stripped before any model reads a document.'), ['perfect-filter']);
 assert.deepEqual(claimFindings('Log entries can be added, never edited or deleted.'), ['immutable-log-absolute']);
 assert.deepEqual(claimFindings('A fixed-scope build of the highest-payback workflow: agents and integrations.'), ['unvalidated-priority']);
+
+// Target only the retired blanket one-minute response promise. Layout and
+// metadata cannot hide it; qualified workflow descriptions remain allowed.
+for (const text of [
+  'Every inbound lead gets a real reply in under a minute.',
+  'Replies to every inbound lead within one minute.',
+  'Answers every enquiry within a minute.',
+  'Answers every inquiry within one minute.',
+  '<p>Every <strong>inbound lead</strong> gets a real reply within one minute.</p>',
+  '<meta name="description" content="Every lead gets a real reply in under a minute.">',
+  '<script type="application/ld+json">{"description":"Replies to every inbound lead within one minute."}</script>',
+]) assert.deepEqual(claimFindings(text), ['unqualified-lead-speed'], text);
+for (const text of [
+  'We prepare a reply for review. Your team decides when to send it.',
+  'In this illustrative workflow, an acknowledgement can be sent within a minute when the inbox and integrations are available.',
+  'We aim to draft a response within one minute; complex inquiries are routed to the team.',
+  'Every inbound lead gets a real reply. Review time depends on the request and the team.',
+  '<!-- Every inbound lead gets a real reply within one minute. --><p>Current qualified copy.</p>',
+  '<style>/* Replies to every inbound lead within one minute. */</style><p>Current qualified copy.</p>',
+]) assert.deepEqual(claimFindings(text), [], text);
 
 const evidence = { signedOff: true, figures: Object.fromEntries(['hours-returned', 'weekly-adoption', 'identifiers-out', 'human-approved'].map((key, i) => [key, { value: [1200, 91, 0, 100][i] }])) };
 assert.ok(marcusMeasuredSummary(evidence).includes('1200 staff hours'));
@@ -113,3 +134,120 @@ assert.ok(proofBrief(briefLog).includes('founder-affiliated'));
 assert.ok(!proofBrief({marcus:{...briefLog.marcus,signed_off:false}}).includes('321'));
 assert.ok(!proofBrief({}).includes('1,240'));
 console.log('[test:editorial] Website revision persistence and evidence withdrawal pass.');
+
+// Exercise the actual renderer across approval withdrawal and restoration.
+// Its ROOT is process.cwd(), so every generated file lands in this fixture;
+// the imported production script and its helpers are read from the checkout.
+const proofFixture = fs.mkdtempSync(path.join(os.tmpdir(), 'mm-proof-withdrawal-'));
+try {
+  const surfaces = {
+    'index.html': ['MARCUS-HOME', 'STATS', 'QUOTES'],
+    'work/index.html': ['MARCUS-SCORECARD-COMPACT'],
+    'work/marcus/index.html': ['MARCUS-SCORECARD-COMPACT', 'MARCUS-WINDOW'],
+    'work/marcus/results/index.html': [
+      'MARCUS-SCORECARD', 'MARCUS-WINDOW',
+      ...['01', '02', '03', '04', '05', '06', '07'].map(section => `MARCUS-FIGS-${section}`),
+      'MARCUS-BA', 'MARCUS-BOUNDARY',
+    ],
+    'industries/professional-services/index.html': ['MARCUS-INLINE-PROFESSIONAL-SERVICES'],
+    'security/index.html': ['MARCUS-INLINE-SECURITY'],
+    'services/index.html': ['MARCUS-HOME'],
+    'book/thanks/index.html': ['MARCUS-INLINE-BOOK-THANKS'],
+  };
+  const marker = (name, body = '') => `<!-- BUILD-LOG:${name} — fixture -->${body}<!-- /BUILD-LOG:${name} -->`;
+  const regionBody = (html, name) => {
+    const opening = html.indexOf(`<!-- BUILD-LOG:${name} `);
+    assert.notEqual(opening, -1, `retain ${name} opening marker for future builds`);
+    const start = html.indexOf('-->', opening) + 3;
+    const end = html.indexOf(`<!-- /BUILD-LOG:${name} -->`, start);
+    assert.ok(end >= start, `retain matching ${name} closing marker`);
+    return html.slice(start, end);
+  };
+  for (const [page, names] of Object.entries(surfaces)) {
+    const destination = path.join(proofFixture, page);
+    fs.mkdirSync(path.dirname(destination), { recursive: true });
+    fs.writeFileSync(destination, `<main><p>Keep surrounding editorial text.</p>\n${names.map(name => marker(name, 'STALE-UNVERIFIED')).join('\n')}\n${marker('UNRELATED-STAT', '<b>2026 unrelated figure</b>')}</main>`);
+  }
+  fs.mkdirSync(path.join(proofFixture, 'data'), { recursive: true });
+  fs.mkdirSync(path.join(proofFixture, 'src/data'), { recursive: true });
+  const fixtureLog = {
+    week_of: '2026-09-01', requests_handled: 12, drafts_overruled: 2, minutes_saved: 45,
+    quotes: [{ signed_off: true, text: 'Approved independent quote.', name: 'Fixture Reviewer' }],
+    marcus: {
+      signed_off: true, client: 'Fixture operation', measurement_window: 'fixture measurement period',
+      window_note: 'Fixture measurement note.', approval: { approved_on: '2026-09-01' },
+      scorecard: [
+        { key: 'hours-returned', value: '7319', unit: 'hrs', desc: 'Fixture preparation capacity.' },
+        { key: 'identifiers-out', value: '0', desc: 'Fixture reported identifier exposures.' },
+      ],
+      figures: ['01', '02', '03', '04', '05', '06', '07'].map((section, i) => ({
+        key: `section-${section}`, section, value: String(7301 + i), unit: 'units', desc: `Fixture section ${section}.`,
+      })),
+      highlight_keys: ['hours-returned', 'identifiers-out'],
+      before_after: [{ key: 'fixture-before-after', what: 'Fixture preparation', before: '92 hours', after: '4 hours', before_pct: 100, after_pct: 4 }],
+      boundary: [{ key: 'fixture-approved', label: 'Approve', value: '83', unit: '%', desc: 'Fixture human approval.' }],
+      inline: { 'professional-services': 'hours-returned', security: 'identifiers-out', 'book-thanks': 'hours-returned' },
+    },
+  };
+  const buildScript = new URL('build-work.mjs', import.meta.url).href;
+  const runProofBuild = () => {
+    fs.writeFileSync(path.join(proofFixture, 'data/build-log.json'), JSON.stringify(fixtureLog));
+    // Explicitly block fetch in the child, even if a future imported helper
+    // starts using it. Current production builder uses only local files.
+    return execFileSync(process.execPath, ['--input-type=module', '-e',
+      `globalThis.fetch = () => { throw new Error('Proof regression forbids network access'); }; await import(${JSON.stringify(buildScript)});`,
+    ], { cwd: proofFixture, encoding: 'utf8' });
+  };
+  const readPage = page => fs.readFileSync(path.join(proofFixture, page), 'utf8');
+  const readRuntime = async state => (await import(`${pathToFileURL(path.join(proofFixture, 'src/data/proof.mjs')).href}?state=${state}`)).MARCUS;
+  const readBrief = () => fs.readFileSync(path.join(proofFixture, 'work/marcus/results/evidence.txt'), 'utf8');
+  runProofBuild();
+  const approvedPages = Object.fromEntries(Object.keys(surfaces).map(page => [page, readPage(page)]));
+  const approvedRuntime = await readRuntime('approved');
+  const approvedBrief = readBrief();
+  assert.equal(approvedRuntime.signedOff, true);
+  assert.equal(approvedRuntime.figures['hours-returned'].value, '7319');
+  assert.equal(Object.keys(approvedRuntime.figures).length, 9);
+  assert.ok(approvedBrief.includes('7319 hrs'));
+  for (const [page, names] of Object.entries(surfaces)) {
+    assert.ok(!approvedPages[page].includes('STALE-UNVERIFIED'), `${page}: first build replaced stale material`);
+    for (const name of names) assert.ok(regionBody(approvedPages[page], name).trim(), `${page}: approved ${name} rendered`);
+  }
+  // A historical marker not in today's region builders must clear too. This
+  // catches implementations that blank only current REGIONS keys.
+  const retiredName = 'MARCUS-RETIRED-99';
+  fs.appendFileSync(path.join(proofFixture, 'work/marcus/results/index.html'), marker(retiredName, '<b>9827 retired figure</b>'));
+
+  fixtureLog.marcus.signed_off = false;
+  const withdrawnOutput = runProofBuild();
+  const withdrawnRuntime = await readRuntime('withdrawn');
+  assert.match(withdrawnOutput, /figures withheld/);
+  assert.equal(withdrawnRuntime.signedOff, false);
+  assert.deepEqual(withdrawnRuntime.figures, {});
+  assert.match(readBrief(), /withheld pending written approval/);
+  assert.ok(!readBrief().includes('7319'));
+  for (const [page, names] of Object.entries(surfaces)) {
+    const withdrawn = readPage(page);
+    for (const name of names.filter(name => name.startsWith('MARCUS-'))) {
+      assert.equal(regionBody(withdrawn, name), '', `${page}: approval withdrawal cleared ${name}`);
+    }
+    assert.ok(withdrawn.includes('Keep surrounding editorial text.'));
+    assert.equal(regionBody(withdrawn, 'UNRELATED-STAT'), '<b>2026 unrelated figure</b>');
+  }
+  assert.equal(regionBody(readPage('work/marcus/results/index.html'), retiredName), '');
+  assert.ok(!readPage('work/marcus/results/index.html').includes('9827'));
+  for (const name of ['STATS', 'QUOTES']) assert.equal(regionBody(readPage('index.html'), name), regionBody(approvedPages['index.html'], name), `MARCUS withdrawal preserves independent ${name}`);
+  const withdrawnPages = Object.fromEntries(Object.keys(surfaces).map(page => [page, readPage(page)]));
+  runProofBuild();
+  for (const page of Object.keys(surfaces)) assert.equal(readPage(page), withdrawnPages[page], 'repeated withdrawal is stable');
+
+  fixtureLog.marcus.signed_off = true;
+  runProofBuild();
+  assert.deepEqual(await readRuntime('restored'), approvedRuntime);
+  assert.equal(readBrief(), approvedBrief);
+  for (const [page, names] of Object.entries(surfaces)) {
+    for (const name of names) assert.equal(regionBody(readPage(page), name), regionBody(approvedPages[page], name), `${page}: renewed approval restores ${name} from current data`);
+  }
+  assert.equal(regionBody(readPage('work/marcus/results/index.html'), retiredName), '', 'unknown retired figure never reappears');
+} finally { fs.rmSync(proofFixture, { recursive: true, force: true }); }
+console.log('[test:editorial] Actual proof build withdraws static regions, runtime figures, and evidence; renewed approval restores approved data.');

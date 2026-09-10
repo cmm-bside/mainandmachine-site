@@ -28,7 +28,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-latin-400.woff2" crossorigin />
-<link rel="stylesheet" href="/styles.css?v=158" />
+<link rel="stylesheet" href="/styles.css?v=159" />
 <link rel="alternate" type="application/rss+xml" title="The Ampersand" href="https://www.mainandmachine.com/blog/rss.xml" />
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Plain-text facts for AI systems" />
 <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
@@ -253,7 +253,7 @@
     <div class="home-intro">
       <span class="kicker">AI &amp; automation for small businesses</span>
       <h1 id="home-title">Less busywork.<br><span class="accent-tx">More time back.</span></h1>
-      <p class="lead">We connect your existing software and automate repetitive office tasks—from following up with customers to moving information between systems.</p>
+      <p class="lead">We connect the software you already use, automate repetitive steps, and route exceptions to your team. One defined workflow, built, tested, and handed over.</p>
       <p class="home-fit">Best fit: established teams of 5–100 people, with recurring admin work spread across multiple systems.</p>
       <div class="home-actions">
         <a data-cta="hero" class="btn btn--primary btn--lg" href="/plan/">Get my free plan <span class="arr" aria-hidden="true">&#8594;</span></a>
@@ -262,60 +262,73 @@
       <p class="home-note">Reviewed by Christopher Myers · Emailed within 24 hours · No call required</p>
     </div>
     <aside class="home-plan-card" aria-labelledby="home-plan-card-title">
-      <span class="kicker kicker--plain">Your free plan</span>
-      <h2 id="home-plan-card-title">See what useful<br>looks like.</h2>
+      <div class="home-plan-card__masthead"><span class="kicker kicker--plain">Your free workflow plan</span><span class="home-plan-card__folio">One page</span></div>
+      <h2 id="home-plan-card-title">A clear first move.</h2>
       <div class="home-sample-preview">
-        <span class="home-sample-preview__label">From the invoice follow-up sample</span>
-        <h3>Fix the status first.</h3>
-        <p>Start with a reliable overdue-invoice list and the reminder features in your accounting system.</p>
-        <ol>
-          <li><strong>Prepare:</strong> collect open invoices.</li>
-          <li><strong>Review:</strong> check the balance before sending.</li>
-          <li><strong>Record:</strong> log the reminder and any reply.</li>
-        </ol>
+        <div class="home-plan-card__entry"><span class="home-sample-preview__label">The task</span><h3>Invoice follow-up.</h3></div>
+        <div class="home-plan-card__entry"><span class="home-sample-preview__label">The first move</span><p><strong>Fix the status first.</strong> Start with a reliable invoice list and your accounting system’s reminders.</p></div>
+        <ol class="home-plan-card__flow" aria-label="Proposed workflow"><li>Prepare</li><li>Review</li><li>Record</li></ol>
+        <div class="home-plan-card__entry home-plan-card__test"><span class="home-sample-preview__label">The first test</span><p>Track checking time and incorrect reminders for one week.</p></div>
       </div>
       <a class="home-text-link" data-cta="hero-sample" href="/plan/sample/">See the one-page sample <span aria-hidden="true">&#8594;</span></a>
       <p class="home-sample-disclosure">Illustrative example, not a client result. Your plan is based on the task you describe.</p>
     </aside>
   </div>
 </section>
-<section class="section paper-2" id="work" aria-labelledby="home-work-title">
+<section class="section paper-2 paper-texture home-work" id="work" aria-labelledby="home-work-title">
   <div class="wrap">
     <div class="home-section-head"><div><span class="kicker">Start with one task</span><h2 id="home-work-title">What keeps taking your time?</h2></div></div>
     <div class="home-task-grid">
       <article class="home-task"><span class="home-usecase__number" aria-hidden="true">01</span><h3>Following up with leads.</h3><p>Prepare replies and follow-up reminders from the inquiries already reaching your inbox.</p><a class="home-text-link" href="/services/builds/instant-lead-response/">Explore lead response automation <span aria-hidden="true">&#8594;</span></a></article>
-      <article class="home-task"><span class="home-usecase__number" aria-hidden="true">02</span><h3>Chasing invoices and paperwork.</h3><p>Collect missing details, prepare routine documents, and flag invoices that need a person’s attention.</p><a class="home-text-link" href="/blog/automate-invoice-processing-with-ai/">See how invoice automation works <span aria-hidden="true">&#8594;</span></a></article>
+      <article class="home-task"><span class="home-usecase__number" aria-hidden="true">02</span><h3>Chasing invoices and paperwork.</h3><p>Collect missing details, prepare routine documents, and flag invoices that need a person’s attention.</p><a class="home-text-link" href="/services/builds/business-system-connectors/#workflow-detail-title">Explore invoice preparation <span aria-hidden="true">&#8594;</span></a></article>
       <article class="home-task"><span class="home-usecase__number" aria-hidden="true">03</span><h3>Copying the same data twice.</h3><p>Move approved information between your systems, with checks for missing or conflicting records.</p><a class="home-text-link" href="/services/builds/business-system-connectors/">Connect your business systems <span aria-hidden="true">&#8594;</span></a></article>
     </div>
   </div>
 </section>
 <section class="section ink home-proof" id="proof" aria-labelledby="home-proof-title">
   <div class="wrap">
-    <div class="home-section-head"><div><span class="kicker">Built. Used. Measured.</span><h2 id="home-proof-title">A working system at B:Side Capital.</h2></div><p>MARCUS at B:Side Capital.<br>Internally measured over its first 90 days of full-fleet operation.</p></div>
+    <div class="home-marcus">
+      <div class="home-marcus__story">
+        <span class="kicker">MARCUS at B:Side Capital</span>
+        <h2 id="home-proof-title">The work gets prepared.<br><span class="accent-tx">People make the call.</span></h2>
+        <p>At B:Side Capital, a regulated lender, MARCUS finds answers in company records, prepares documents, and stages accounting work inside the tools the team already uses.</p>
+        <p>The team reviews the work, checks exceptions, and approves consequential actions. That is the system we built—and the operation behind these results.</p>
+        <a class="btn btn--primary" data-cta="home-marcus" href="/work/marcus/results/">See MARCUS at work <span class="arr" aria-hidden="true">&#8594;</span></a>
+      </div>
+      <figure class="home-marcus__workflow">
+        <figcaption><span class="home-marcus__eyebrow">Inside the working system</span><strong>From invoice to reviewed entry.</strong></figcaption>
+        <ol>
+          <li><span class="home-marcus__step" aria-hidden="true">01</span><div><strong>Start with the records</strong><p>A vendor invoice and the existing accounting information.</p></div></li>
+          <li><span class="home-marcus__step" aria-hidden="true">02</span><div><strong>MARCUS prepares the entry</strong><p>Proposed coding, with the source document attached.</p></div></li>
+          <li class="home-marcus__review"><span class="home-marcus__step" aria-hidden="true">03</span><div><strong>A person reviews and approves</strong><p>Check the work and its exceptions. Nothing posts before approval.</p></div></li>
+        </ol>
+        <p class="home-marcus__caption">Simplified view of the documented B:Side workflow.</p>
+      </figure>
+    </div>
     <!-- BUILD-LOG:MARCUS-HOME — rendered from data/build-log.json by scripts/build-work.mjs. Never hand-edit. -->
           <div class="bstat">
             <div class="bstat__i" data-figure="hours-returned">
               <span class="bstat__n tick-num">1,240<small>hrs</small></span>
-              <span class="tick-lbl">Prep hours returned, 90 days</span>
+              <span class="tick-lbl">Preparation hours returned in 90 days</span>
             </div>
             <div class="bstat__i" data-figure="weekly-adoption">
               <span class="bstat__n tick-num">93<small>%</small></span>
-              <span class="tick-lbl">Weekly use by week six</span>
+              <span class="tick-lbl">Staff using MARCUS weekly by week six</span>
             </div>
-            <div class="bstat__i" data-figure="identifiers-out">
-              <span class="bstat__n tick-num">0</span>
-              <span class="tick-lbl">Identifiers sent outside</span>
+            <div class="bstat__i" data-figure="human-approved">
+              <span class="bstat__n tick-num">100<small>%</small></span>
+              <span class="tick-lbl">Consequential actions approved by a person</span>
             </div>
           </div>
 <!-- /BUILD-LOG:MARCUS-HOME -->
-    <div class="home-proof__footer"><p>Founder-affiliated deployment: Christopher Myers is CEO of B:Side Capital and Fund. Results are specific to this operation; see the measurement notes and limits.</p><a href="/work/marcus/results/">See the results and methodology <span aria-hidden="true">&#8594;</span></a></div>
+    <div class="home-proof__footer"><p>B:Side’s first-party results from its first 90 days of full-fleet operation. Christopher Myers leads B:Side and Main &amp; Machine. Hours returned represent operating capacity, not measured payroll savings.</p><a href="/work/marcus/results/#methodology">Read the measurement notes <span aria-hidden="true">&#8594;</span></a></div>
   </div>
 </section>
 <section class="section paper" id="pricing" aria-labelledby="home-next-title">
   <div class="wrap">
     <div class="home-section-head"><div><span class="kicker">What happens next</span><h2 id="home-next-title">Start free. Decide from there.</h2></div></div>
     <div class="home-plan-overview">
-      <div>
+      <div class="home-plan-process">
         <ol class="home-plan-steps">
           <li><h3>Tell us about the work.</h3><p>Describe one repetitive task and where it gets stuck.</p></li>
           <li><h3>We review it.</h3><p>Christopher Myers reviews your request and the details you share.</p></li>
@@ -324,18 +337,25 @@
         <div class="home-reviewer" id="about"><img src="/images/christopher-myers-hedcut.webp?v=3" alt="" aria-hidden="true" width="64" height="64" loading="lazy" decoding="async"/><p><strong>Christopher Myers</strong><br>Founder &amp; Chairman · Your plan reviewer</p></div>
       </div>
       <aside class="home-build-note" aria-labelledby="home-build-title">
-        <h3 id="home-build-title">Want us to build it?</h3>
-        <p class="home-price"><span data-fact="price-sprint">$18,000–$60,000</span></p>
-        <p>Implementation Sprints build, connect, test, and launch an agreed workflow. A fixed quote follows an agreed scope, before paid work begins.</p>
-        <p>Paid audits are available when the scope needs deeper investigation. Ongoing support is optional.</p>
+        <div class="home-build-note__intro">
+        <span class="kicker">When a custom build makes sense</span>
+        <h3 id="home-build-title">One workflow.<br>Connected all the way through.</h3>
+        <p>Use your existing tools when they can do the job. Consider a custom build when work crosses systems, exceptions keep returning to your team, and the manual effort justifies the investment.</p>
         <a href="/pricing/#scope-examples">See pricing and example scopes <span aria-hidden="true">&#8594;</span></a>
+        </div>
+        <div class="home-build-note__scope">
+        <p class="home-price"><span data-fact="price-sprint">$18,000–$60,000</span></p>
+        <p class="home-build-note__time">Implementation Sprint · <span data-fact="timeline-sprint">4 to 12 weeks</span></p>
+        <ul class="home-build-note__deliverables"><li>The connections and exception handling</li><li>Acceptance testing and human approval points</li><li>Operating instructions, training, and ownership</li></ul>
+        <p class="home-build-note__terms">A fixed quote follows an agreed scope. A paid audit can help define it; ongoing support is optional. Software and usage costs are separate.</p>
+        </div>
       </aside>
     </div>
   </div>
 </section>
 <!-- TESTIMONIALS: rendered by scripts/build-testimonials.mjs — do not hand-edit -->
 <!-- /TESTIMONIALS -->
-<section class="section ink" id="paths" aria-labelledby="home-close-title">
+<section class="section ink home-final" id="paths" aria-labelledby="home-close-title">
   <div class="wrap home-simple-close">
     <span class="kicker">Your next step</span>
     <h2 id="home-close-title">Tell us what keeps piling up.</h2>
@@ -416,6 +436,6 @@
 <script defer src="/js/reveal.js?v=53"></script>
 
 <script defer src="/js/nav.js?v=11"></script>
-<script defer src="/js/analytics.js?v=9"></script>
+<script defer src="/js/analytics.js?v=10"></script>
 </body>
 </html>

@@ -68,7 +68,7 @@
     "managed": "The Service Contract"
   },
   "guarantee": "If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.",
-  "rollover": "100% of your audit fee credits toward a sprint signed within 60 days, up to 25% of the sprint price.",
+  "rollover": "Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.",
   "annualManaged": "Pay annually and the retainer runs 12 months for the price of 10; unused months are refunded if you leave.",
   "booking": {
     "quarter": "Q4 2026"

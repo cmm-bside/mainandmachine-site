@@ -1,6 +1,6 @@
 {
   "_schema": "Proof-shelf data. Every number rendered on /work/, /work/marcus/, /work/marcus/results/, / and the industry/security pages comes ONLY from here, stamped between BUILD-LOG markers by scripts/build-work.mjs. Never hand-edit a rendered figure. signed_off: true requires the client's written approval on file.",
-  "updated": "2026-07-31",
+  "updated": "2026-09-10",
   "week_of": null,
   "requests_handled": null,
   "drafts_overruled": null,
@@ -8,29 +8,30 @@
   "quotes": [],
   "marcus": {
     "client": "B:Side Capital",
-    "measurement_window": "first 90 days of full-fleet operation",
-    "window_note": "Results are reported by B:Side Capital and reconciled against its audit log, with written approval on file. Preparation time returned is operating capacity, not a claim of reduced payroll. Annualized equivalents are not measured annual savings.",
+    "measurement_window": "June–August 2026",
+    "window_note": "B:Side reports these results for the stated period. Preparation hours are estimates calculated from its initial workflow studies; operational activity is reported from its audit log. Returned capacity is not measured payroll savings. Annualized equivalents are not measured annual results.",
     "signed_off": true,
-    "source": "audit-log",
+    "source": "workflow-studies-and-operational-records",
     "approval": {
       "approved_by": "Christopher Myers, Founder",
       "client_sign_off": "B:Side Capital — written approval on file",
       "approved_on": "2026-07-31",
-      "basis": "Figures reconciled against the tamper-evident audit log for the measurement window."
+      "basis": "Figures reconciled against the tamper-evident audit log for the measurement window.",
+      "record_note": "Original publication approval. The measurement context was subsequently clarified; see methodology. This date is not the end date of the reporting period."
     },
     "scorecard": [
       {
         "key": "hours-returned",
         "value": "1,240",
         "unit": "hrs",
-        "desc": "Staff preparation hours returned during the reported 90-day window. This is operating capacity, not measured cash savings.",
-        "source": "audit-log"
+        "desc": "Estimated staff preparation hours returned during June–August 2026, calculated from B:Side’s initial workflow studies. This is operating capacity, not measured payroll savings.",
+        "source": "workflow-studies"
       },
       {
         "key": "weekly-adoption",
         "value": "93",
         "unit": "%",
-        "desc": "Of staff using MARCUS weekly by week six. The public summary does not include the staff denominator.",
+        "desc": "Reported weekly use by week six, across a staff of 45 employees. The percentage is rounded; an exact active-user count is not published.",
         "source": "audit-log"
       },
       {
@@ -62,7 +63,7 @@
         "section": "01",
         "value": "2.1M",
         "unit": "",
-        "desc": "Local model calls processed on B:Side’s hardware during the reported 90-day window. Selected external-model tasks are a separate processing route.",
+        "desc": "Local model calls processed on B:Side’s hardware during the reported period. Selected external-model tasks are a separate processing route.",
         "source": "audit-log"
       },
       {
@@ -198,7 +199,7 @@
         "section": "06",
         "value": "640",
         "unit": "",
-        "desc": "Vendor invoices staged in 90 days, each pre-coded with source attached — every one approved by a person before posting.",
+        "desc": "Vendor invoices staged during the reported period, each pre-coded with source attached — every one approved by a person before posting.",
         "source": "audit-log"
       },
       {
@@ -314,6 +315,14 @@
       "professional-services": "hours-returned",
       "security": "identifiers-out",
       "book-thanks": "hours-returned"
+    },
+    "methodology": {
+      "clarified_on": "2026-09-10",
+      "clarified_by": "Christopher Myers",
+      "provenance": "Measurement period, staff denominator, hours basis, and featured workflow supplied in the site review conversation on September 10, 2026.",
+      "staff_denominator": 45,
+      "hours_basis": "Initial workflow studies",
+      "limits": "The detailed calculation worksheet, sample sizes, and treatment of human review and corrections are not published in this summary."
     }
   }
 }

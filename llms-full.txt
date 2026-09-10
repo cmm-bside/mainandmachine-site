@@ -68,32 +68,37 @@ MARCUS at B:Side Capital
 
 ## The work gets prepared. People make the call.
 
-At B:Side Capital, a regulated lender, MARCUS finds answers in company records, prepares documents, and stages accounting work inside the tools the team already uses.
+At B:Side Capital, a regulated lender, MARCUS assembles SBA 504 loan packages for staff review. The preparation changes; the team keeps responsibility for the lending decision.
 
-The team reviews the work, checks exceptions, and approves consequential actions. That is the system we built—and the operation behind these results.
+Package assembly is one part of the system we built. MARCUS also finds answers in company records, prepares documents, and stages accounting work inside the tools the team already uses.
 
-[See MARCUS at work](/work/marcus/results/)
+[See MARCUS at work](/work/marcus/results/#package-504)
 
-Inside the working system From invoice to reviewed entry.
+SBA 504 package assembly A loan package, ready for review.
 
-- Start with the records A vendor invoice and the existing accounting information.
+Manual assembly ~6.5 hrs
 
-- MARCUS prepares the entry Proposed coding, with the source document attached.
+Human review with MARCUS ~40 min
 
-- A person reviews and approves Check the work and its exceptions. Nothing posts before approval.
+- Start with the loan records The source records and documents for the package.
 
-Simplified view of the documented B:Side workflow.
+- MARCUS assembles the package The preparation work is brought together for review.
+
+- The lender reviews and decides Staff check the prepared work. Lending decisions remain with people.
+
+Simplified view of B:Side’s reported workflow. Assembly time and human review time describe different stages, not total elapsed turnaround.
 
 1,240 hrs
-Preparation hours returned in 90 days
+Estimated preparation hours returned
 
 93 %
-Staff using MARCUS weekly by week six
+Weekly use by week six · 45 employees
 
 100 %
 Consequential actions approved by a person
 
-B:Side’s first-party results from its first 90 days of full-fleet operation. Christopher Myers leads B:Side and Main & Machine. Hours returned represent operating capacity, not measured payroll savings.
+B:Side’s first-party results for June–August 2026. Hours are estimated from initial workflow studies. Christopher Myers leads B:Side and Main & Machine. Returned capacity is not measured payroll savings.
+
 [Read the measurement notes](/work/marcus/results/#methodology)
 
 What happens next
@@ -1263,19 +1268,19 @@ The team : 14 AI agents
 
 Runs : Local + hybrid
 
-Updated : July 2026
+Updated : September 2026
 
-First 90 days, measured
+Reported operating results
 
-## What the first 90 days returned.
+## What changed for the team.
 
 1,240 hrs
 
-Staff preparation hours returned during the reported 90-day window. This is operating capacity, not measured cash savings.
+Estimated staff preparation hours returned during June–August 2026, calculated from B:Side’s initial workflow studies. This is operating capacity, not measured payroll savings.
 
 93 %
 
-Of staff using MARCUS weekly by week six. The public summary does not include the staff denominator.
+Reported weekly use by week six, across a staff of 45 employees. The percentage is rounded; an exact active-user count is not published.
 
 0
 
@@ -1285,9 +1290,9 @@ Borrower identifiers reported as sent to outside models during the measurement w
 
 Of consequential actions approved by a person during the reported window, before sending, filing, posting, or paying.
 
-Measurement window: the first 90 days of full-fleet operation. Results are reported by B:Side Capital and reconciled against its audit log, with written approval on file. Preparation time returned is operating capacity, not a claim of reduced payroll. Annualized equivalents are not measured annual savings.
+Reporting period: June–August 2026. B:Side reports these results for the stated period. Preparation hours are estimates calculated from its initial workflow studies; operational activity is reported from its audit log. Returned capacity is not measured payroll savings. Annualized equivalents are not measured annual results.
 
-[Read the measured results](/work/marcus/results/)
+[Read the reported results](/work/marcus/results/)
 
 Who we built it for
 
@@ -1553,12 +1558,12 @@ You’re reading it
 
 More client stories are clearing review as each client signs off on the numbers.
 
-Read next The architecture MARCUS runs on, control by control: [how we handle client data](/security/). The concept explained end to end, with these figures in context: [private AI for small business](/guides/private-ai-for-small-business/). The measured scorecard: [1,240 hours, 93% adoption, zero identifiers out](/work/marcus/results/).
+Read next The architecture MARCUS runs on, control by control: [how we handle client data](/security/). The concept explained end to end, with these figures in context: [private AI for small business](/guides/private-ai-for-small-business/). The reported scorecard: [Results, workflow studies, and operating evidence](/work/marcus/results/).
 
 ========================================================================
-PAGE: MARCUS: 1,240 Hours Returned in 90 Days | Main & Machine
+PAGE: MARCUS: Loan Package Assembly at B:Side | Main & Machine
 URL: https://www.mainandmachine.com/work/marcus/results/
-SUMMARY: MARCUS at B:Side Capital: internally measured results, measurement methods, founder affiliation, and limits from 90 days of full-fleet operation.
+SUMMARY: MARCUS at B:Side Capital: SBA 504 package assembly, estimated preparation capacity, staff adoption, and reporting methods for June–August 2026.
 ========================================================================
 
 - [Main & Machine](/)
@@ -1567,11 +1572,11 @@ SUMMARY: MARCUS at B:Side Capital: internally measured results, measurement meth
 
 - [MARCUS](/work/marcus/)
 
-- Measured results
+- Reported results
 
-Client results · B:Side Capital · First 90 days
+Client results · B:Side Capital
 
-# MARCUS at work. The first 90 days.
+# MARCUS at work. Prepared for review.
 
 MARCUS prepares documents, finds answers in company records, and stages work for human review at B:Side Capital, an SBA 504 and CDFI lender.
 
@@ -1580,19 +1585,19 @@ These are B:Side’s reported results from a founder-affiliated deployment: Chri
 [Build something like MARCUS →](/book/)
 [Read how it was built](/work/marcus/)
 
-Results file : MARCUS · first 90 days
+Results file : MARCUS · operating evidence
 
 Client : B:Side Capital
 
-Window : First 90 days of full-fleet operation
+Period : June–August 2026
 
-Published : 31 July 2026
+Updated : 2026-09-10
 
-Evidence source : Audit log
+Evidence : Workflow studies + audit log
 
 Method : [Sources, definitions, and limits ↓](#methodology)
 
-[Reported results](#scorecard)[How the system works](#architecture)[Measurement notes](#methodology)[Explore build details](#build-details)
+[SBA 504 example](#package-504)[Reported results](#scorecard)[How the system works](#architecture)[Measurement notes](#methodology)[Explore build details](#build-details)
 
 01 / The headline scorecard
 
@@ -1600,11 +1605,11 @@ Method : [Sources, definitions, and limits ↓](#methodology)
 
 1,240 hrs
 
-Staff preparation hours returned during the reported 90-day window. This is operating capacity, not measured cash savings.
+Estimated staff preparation hours returned during June–August 2026, calculated from B:Side’s initial workflow studies. This is operating capacity, not measured payroll savings.
 
 93 %
 
-Of staff using MARCUS weekly by week six. The public summary does not include the staff denominator.
+Reported weekly use by week six, across a staff of 45 employees. The percentage is rounded; an exact active-user count is not published.
 
 0
 
@@ -1614,9 +1619,33 @@ Borrower identifiers reported as sent to outside models during the measurement w
 
 Of consequential actions approved by a person during the reported window, before sending, filing, posting, or paying.
 
-Measurement window: the first 90 days of full-fleet operation. Results are reported by B:Side Capital and reconciled against its audit log, with written approval on file. Preparation time returned is operating capacity, not a claim of reduced payroll. Annualized equivalents are not measured annual savings.
+Reporting period: June–August 2026. B:Side reports these results for the stated period. Preparation hours are estimates calculated from its initial workflow studies; operational activity is reported from its audit log. Returned capacity is not measured payroll savings. Annualized equivalents are not measured annual results.
 
-Founder-affiliated, first-party reporting. [Read the measurement definitions, missing context, and approval details](#methodology)
+Founder-affiliated, first-party reporting. [Read the measurement definitions, sources, and limits](#methodology)
+
+The work in practice
+
+## Less assembly. More room for judgment.
+
+SBA 504 loan package assembly is the clearest example of the change at B:Side. MARCUS prepares the package; the lender reviews it and retains responsibility for the decision.
+
+The comparison describes the shift from manual assembly to reviewing prepared work. It does not claim that a loan is approved or funded in the review time shown.
+
+[Read the measurement notes](#methodology)
+
+SBA 504 package assembly A loan package, ready for review.
+
+Manual assembly ~6.5 hrs
+
+Human review with MARCUS ~40 min
+
+- Start with the loan records The source records and documents for the package.
+
+- MARCUS assembles the package The preparation work is brought together for review.
+
+- The lender reviews and decides Staff check the prepared work. Lending decisions remain with people.
+
+Simplified view of B:Side’s reported workflow. Assembly time and human review time describe different stages, not total elapsed turnaround.
 
 The operating design
 
@@ -1645,13 +1674,13 @@ Use these figures to understand one deployment. A comparable result in your busi
 
 [Download the public evidence brief](/work/marcus/results/evidence.txt) · [Build your own workflow measurement log](/blog/how-to-measure-ai-roi/)
 
-Period and publication : The first 90 days of full-fleet operation, published July 31, 2026. The server was commissioned in February 2026. Exact measurement start and end dates are not published here.
+Reporting period : June–August 2026. Measurement context clarified by Christopher Myers on 2026-09-10. The period is identified by month; exact day boundaries are not specified.
 
-Source and approval : B:Side reports the figures and reconciled them against its audit log. Christopher Myers signed off in his roles at both organizations; written approval is on file. This is not an independent audit.
+Source and attribution : B:Side reports these results. The preparation-hours estimate comes from its initial workflow studies; operational activity is reported from its audit log. Christopher Myers leads both organizations. This is first-party reporting, not an independent audit.
 
-Preparation time : The preparation-time figure measures returned capacity during the stated window. Annualizing it assumes a similar workload and rate of time returned throughout the year. That would be an estimate, not measured annual savings or a claim of reduced payroll.
+Preparation time : The hours figure estimates returned preparation capacity. The detailed calculation worksheet, sample sizes, and treatment of human review and corrections are not published in this summary. It should not be treated as measured net labor savings, reduced payroll, or an observed annual result.
 
-Adoption and review : Weekly adoption measures staff use by week six. Human approval covers consequential actions during the reported window. The staff denominator and underlying time-study baseline are not included in this public summary.
+Adoption and review : Weekly adoption measures use by week six across 45 employees. The percentage is rounded; an exact active-user count is not published. Human approval covers consequential actions during the reported period.
 
 Data handling : Source documents are processed locally. Selected tasks can use external reasoning on filtered text. The external-identifier figure describes reported exposure during this window; a mandatory filter does not guarantee perfect detection. [Read the deployment controls and limitations](/security/).
 
@@ -1680,7 +1709,7 @@ Uptime since commissioning in February 2026 — one planned maintenance window, 
 
 2.1M
 
-Local model calls processed on B:Side’s hardware during the reported 90-day window. Selected external-model tasks are a separate processing route.
+Local model calls processed on B:Side’s hardware during the reported period. Selected external-model tasks are a separate processing route.
 
 $0
 
@@ -1823,11 +1852,11 @@ before · ~6.5 hrs
 
 after · ~40-min review
 
-Bar lengths are proportional to time. “After” figures are human review time — the preparation itself happens before anyone sits down.
+Reported before-and-after comparisons. The review-time figures describe the human review step, not total elapsed turnaround or a measured percentage reduction.
 
 640
 
-Vendor invoices staged in 90 days, each pre-coded with source attached — every one approved by a person before posting.
+Vendor invoices staged during the reported period, each pre-coded with source attached — every one approved by a person before posting.
 
 41
 

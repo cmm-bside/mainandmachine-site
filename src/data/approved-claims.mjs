@@ -30,7 +30,7 @@ export const APPROVED_CLAIMS = {
     sources: ['/security/', '/work/marcus/results/'],
   },
   evidenceLimits: {
-    text: 'MARCUS results are reported by B:Side Capital for the first 90 days of full-fleet operation and reconciled against its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party operational results, not an independent audit or a promise of another client’s outcome.',
+    text: 'MARCUS results are reported by B:Side Capital. Preparation hours are estimated from initial workflow studies; operational activity is reported from its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party results, not an independent audit or a promise of another client’s outcome.',
     sources: ['/work/marcus/results/', '/about/'],
   },
   timeValue: {
@@ -47,5 +47,5 @@ export function marcusMeasuredSummary(proof) {
   const keys = ['hours-returned', 'weekly-adoption', 'identifiers-out', 'human-approved'];
   if (!proof?.signedOff || !keys.every(key => proof.figures?.[key]?.value !== undefined))
     return 'Operational figures are withheld until the case data has written approval.';
-  return `The first 90-day scorecard reports ${proof.figures['hours-returned'].value} staff hours of preparation returned, ${proof.figures['weekly-adoption'].value}% weekly staff adoption by week six, ${proof.figures['identifiers-out'].value} borrower identifiers sent to an outside model in that window, and ${proof.figures['human-approved'].value}% of consequential actions approved by a person first.`;
+  return `For ${proof.measurementWindow || 'the reported period'}, B:Side reports an estimated ${proof.figures['hours-returned'].value} staff hours of preparation capacity returned, calculated from initial workflow studies; ${proof.figures['weekly-adoption'].value}% weekly staff adoption by week six${proof.staffDenominator ? ` across ${proof.staffDenominator} employees` : ''}; ${proof.figures['identifiers-out'].value} borrower identifiers reported as sent to outside models; and ${proof.figures['human-approved'].value}% of consequential actions approved by a person first. Returned capacity is not measured payroll savings.`;
 }

@@ -112,7 +112,7 @@ before work begins.
   ${MARCUS.client}, an ${MARCUS.sector}: ${MARCUS.agents} AI agents across
   ${MARCUS.departments} departments, built from ${MARCUS.sourceDocs} source documents.
   ${claimText("marcusArchitecture")}
-- [MARCUS measured results](/work/marcus/results/) — ${measuredSummary}
+- [MARCUS reported results](/work/marcus/results/) — ${measuredSummary}
   ${claimText("evidenceLimits")}
   ${claimText("timeValue")}
 - [Proof](/work/) — published operational evidence and its measurement limits.

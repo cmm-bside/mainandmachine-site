@@ -3,6 +3,13 @@ import fs from 'node:fs';
 // Reviewed website editions live outside the upstream archive so a scheduled
 // feed sync cannot overwrite them. Keep original URLs and publication dates.
 export const POST_REVISIONS = {
+  'will-this-replace-my-office-manager': {
+    title: 'Will This Replace My Office Manager?',
+    excerpt: 'The honest answer is no. Sometimes the honest answer is you should not buy this.',
+    seoDescription: 'What AI can take off an office manager’s plate, what still needs a person, and how to think about automation without losing human judgment.',
+    file: 'office-manager-marcus-clarification.json',
+    updatedAt: '2026-09-10T00:00:00Z',
+  },
   'how-long-does-ai-implementation-take': {
     title: 'What Delays an AI Implementation? A Buyer Checklist',
     excerpt: 'Prevent avoidable AI project delays by resolving system access, workflow decisions, acceptance criteria, and operator handoff before they block the build.',
@@ -31,7 +38,7 @@ export function applyPostRevision(post) {
     excerpt: revision.excerpt, seoDescription: revision.seoDescription,
     bodyHtml, searchText: bodyHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').toLowerCase().trim(),
     // This date describes this website edition, not later upstream metadata.
-    updatedAt: '2026-09-06T00:00:00Z',
+    updatedAt: revision.updatedAt || '2026-09-06T00:00:00Z',
   });
   return post;
 }

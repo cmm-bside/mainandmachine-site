@@ -5072,3 +5072,11 @@ section.ink.home-final { background-color: var(--ink); background-image: none; p
   .pricing-jump span { max-width: 18ch; }
   .funnel-pricing #pricing { padding-block: 28px 44px; }
 }
+
+/* The loan-package comparison keeps preparation and review distinct. */
+.marcus-comparison { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; padding-block: 20px; border-bottom: 1px solid var(--rule-strong); }
+.marcus-comparison > div { display: grid; grid-template-rows: 1fr auto; gap: 10px; }
+.marcus-comparison span { color: var(--muted-on-light); font-size: 13px; line-height: 1.5; }
+.marcus-comparison strong { font-size: clamp(24px,2.4vw,32px); line-height: 1.2; letter-spacing: -.025em; white-space: nowrap; }
+.marcus-package .head-block { align-items: center; }
+.marcus-package .head-block > div > p:not(.lead) { font-size: 16px; line-height: 1.65; color: var(--muted-on-light); max-width: 48ch; }

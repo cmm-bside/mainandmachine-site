@@ -117,11 +117,11 @@ console.log('[test:editorial] OK — claim scope, byline dates, feed preservatio
 // Website revisions survive both cached builds and a fresh upstream edition.
 const { applyPostRevision } = await import('./lib/post-revisions.mjs');
 const { proofBrief } = await import('./lib/proof-brief.mjs');
-for (const slug of ['how-long-does-ai-implementation-take', 'ai-readiness-audit', 'how-to-measure-ai-roi']) {
+for (const slug of ['how-long-does-ai-implementation-take', 'ai-readiness-audit', 'how-to-measure-ai-roi', 'will-this-replace-my-office-manager']) {
   const source = {slug, title:'Upstream title', bodyHtml:'<p>Upstream body.</p>', url:`/blog/${slug}/`, publishedAt:'2026-08-01T00:00:00Z', source:'soro', sourceId:slug, webUrl:'https://example.invalid/original'};
   const revised=applyPostRevision({...source});
   assert.notEqual(revised.bodyHtml,source.bodyHtml);
-  assert.ok(revised.bodyHtml.includes('/guides/'));
+  assert.match(revised.bodyHtml, /\/(?:guides|work)\//);
   for (const field of ['url','publishedAt','source','sourceId','webUrl']) assert.equal(revised[field],source[field]);
   assert.deepEqual(applyPostRevision({...revised}),revised,'repeated build is stable');
   assert.deepEqual(applyPostRevision({...source,updatedAt:'2026-09-20'}),revised,'upstream refresh cannot overwrite the website edition or invent freshness');
@@ -141,11 +141,11 @@ console.log('[test:editorial] Website revision persistence and evidence withdraw
 const proofFixture = fs.mkdtempSync(path.join(os.tmpdir(), 'mm-proof-withdrawal-'));
 try {
   const surfaces = {
-    'index.html': ['MARCUS-HOME', 'STATS', 'QUOTES'],
+    'index.html': ['MARCUS-HOME', 'MARCUS-HOME-NOTE', 'MARCUS-504-COMPARISON', 'STATS', 'QUOTES'],
     'work/index.html': ['MARCUS-SCORECARD-COMPACT'],
     'work/marcus/index.html': ['MARCUS-SCORECARD-COMPACT', 'MARCUS-WINDOW'],
     'work/marcus/results/index.html': [
-      'MARCUS-SCORECARD', 'MARCUS-WINDOW',
+      'MARCUS-SCORECARD', 'MARCUS-WINDOW', 'MARCUS-RESULTS-CONTEXT', 'MARCUS-MEASUREMENT-DETAILS', 'MARCUS-504-COMPARISON',
       ...['01', '02', '03', '04', '05', '06', '07'].map(section => `MARCUS-FIGS-${section}`),
       'MARCUS-BA', 'MARCUS-BOUNDARY',
     ],
@@ -153,6 +153,7 @@ try {
     'security/index.html': ['MARCUS-INLINE-SECURITY'],
     'services/index.html': ['MARCUS-HOME'],
     'book/thanks/index.html': ['MARCUS-INLINE-BOOK-THANKS'],
+    'guides/private-ai-for-small-business/index.html': ['MARCUS-GUIDE-SUMMARY'],
   };
   const marker = (name, body = '') => `<!-- BUILD-LOG:${name} — fixture -->${body}<!-- /BUILD-LOG:${name} -->`;
   const regionBody = (html, name) => {
@@ -175,16 +176,18 @@ try {
     quotes: [{ signed_off: true, text: 'Approved independent quote.', name: 'Fixture Reviewer' }],
     marcus: {
       signed_off: true, client: 'Fixture operation', measurement_window: 'fixture measurement period',
-      window_note: 'Fixture measurement note.', approval: { approved_on: '2026-09-01' },
+      window_note: 'Fixture measurement note.', methodology: {staff_denominator: 37, clarified_on: '2026-09-10', limits: 'Fixture method limits.'}, approval: { approved_on: '2026-09-01' },
       scorecard: [
         { key: 'hours-returned', value: '7319', unit: 'hrs', desc: 'Fixture preparation capacity.' },
         { key: 'identifiers-out', value: '0', desc: 'Fixture reported identifier exposures.' },
+        { key: 'weekly-adoption', value: '81', unit: '%', desc: 'Fixture weekly use.' },
+        { key: 'human-approved', value: '100', unit: '%', desc: 'Fixture approval.' },
       ],
       figures: ['01', '02', '03', '04', '05', '06', '07'].map((section, i) => ({
         key: `section-${section}`, section, value: String(7301 + i), unit: 'units', desc: `Fixture section ${section}.`,
       })),
       highlight_keys: ['hours-returned', 'identifiers-out'],
-      before_after: [{ key: 'fixture-before-after', what: 'Fixture preparation', before: '92 hours', after: '4 hours', before_pct: 100, after_pct: 4 }],
+      before_after: [{ key: 'package-504', what: 'Fixture preparation', before: '92 hours', after: '4 hours', before_pct: 100, after_pct: 4 }],
       boundary: [{ key: 'fixture-approved', label: 'Approve', value: '83', unit: '%', desc: 'Fixture human approval.' }],
       inline: { 'professional-services': 'hours-returned', security: 'identifiers-out', 'book-thanks': 'hours-returned' },
     },
@@ -207,7 +210,7 @@ try {
   const approvedBrief = readBrief();
   assert.equal(approvedRuntime.signedOff, true);
   assert.equal(approvedRuntime.figures['hours-returned'].value, '7319');
-  assert.equal(Object.keys(approvedRuntime.figures).length, 9);
+  assert.equal(Object.keys(approvedRuntime.figures).length, 11);
   assert.ok(approvedBrief.includes('7319 hrs'));
   for (const [page, names] of Object.entries(surfaces)) {
     assert.ok(!approvedPages[page].includes('STALE-UNVERIFIED'), `${page}: first build replaced stale material`);
@@ -224,6 +227,7 @@ try {
   assert.match(withdrawnOutput, /figures withheld/);
   assert.equal(withdrawnRuntime.signedOff, false);
   assert.deepEqual(withdrawnRuntime.figures, {});
+  assert.equal(withdrawnRuntime.staffDenominator, null);
   assert.match(readBrief(), /withheld pending written approval/);
   assert.ok(!readBrief().includes('7319'));
   for (const [page, names] of Object.entries(surfaces)) {

@@ -8,17 +8,18 @@
 export const MARCUS = {
   "signedOff": true,
   "client": "B:Side Capital",
-  "measurementWindow": "first 90 days of full-fleet operation",
+  "measurementWindow": "June–August 2026",
+  "staffDenominator": 45,
   "figures": {
     "hours-returned": {
       "value": "1,240",
       "unit": "hrs",
-      "desc": "Staff preparation hours returned during the reported 90-day window. This is operating capacity, not measured cash savings."
+      "desc": "Estimated staff preparation hours returned during June–August 2026, calculated from B:Side’s initial workflow studies. This is operating capacity, not measured payroll savings."
     },
     "weekly-adoption": {
       "value": "93",
       "unit": "%",
-      "desc": "Of staff using MARCUS weekly by week six. The public summary does not include the staff denominator."
+      "desc": "Reported weekly use by week six, across a staff of 45 employees. The percentage is rounded; an exact active-user count is not published."
     },
     "identifiers-out": {
       "value": "0",
@@ -38,7 +39,7 @@ export const MARCUS = {
     "model-calls": {
       "value": "2.1M",
       "unit": "",
-      "desc": "Local model calls processed on B:Side’s hardware during the reported 90-day window. Selected external-model tasks are a separate processing route."
+      "desc": "Local model calls processed on B:Side’s hardware during the reported period. Selected external-model tasks are a separate processing route."
     },
     "hardware-markup": {
       "value": "$0",
@@ -123,7 +124,7 @@ export const MARCUS = {
     "invoices-staged": {
       "value": "640",
       "unit": "",
-      "desc": "Vendor invoices staged in 90 days, each pre-coded with source attached — every one approved by a person before posting."
+      "desc": "Vendor invoices staged during the reported period, each pre-coded with source attached — every one approved by a person before posting."
     },
     "recon-mismatches": {
       "value": "41",

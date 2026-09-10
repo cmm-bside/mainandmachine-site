@@ -46,7 +46,7 @@ export function schedulerUrl(data) {
   return qs ? `${CALENDLY_URL}?${qs}` : CALENDLY_URL;
 }
 
-// One measured line, straight off the audit log. If the build log is not signed
+// One reported line: estimated capacity and logged activity. If the build log is not signed
 // off, MARCUS.figures is empty and the proof line is omitted entirely — an
 // unapproved number never ships, in an email least of all.
 export function proofSentence() {
@@ -58,9 +58,9 @@ export function proofSentence() {
   // Still bound to the data — a non-zero value would print as the number.
   const ident = ids.value === "0" ? "zero" : ids.value;
   return (
-    `MARCUS, the AI back office we built for ${MARCUS.client}, returned ${hrs} of staff ` +
-    `preparation in its ${MARCUS.measurementWindow}, with ${ident} borrower identifiers ` +
-    `sent to an outside model.`
+    `MARCUS, the AI back office we built for ${MARCUS.client}, reported an estimated ${hrs} of staff ` +
+    `preparation capacity returned during ${MARCUS.measurementWindow}, calculated from initial workflow studies. ` +
+    `B:Side reported ${ident} borrower identifiers sent to an outside model during that period.`
   );
 }
 
@@ -168,7 +168,7 @@ ${
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${CARD}; border:1px solid ${LINE};">
                 <tr><td style="padding:20px 24px;">
                   <div style="font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:${MUTE};">What we build</div>
-                  <p style="margin:10px 0 0; font-family:Georgia,serif; font-size:15px; line-height:1.6; color:${BODY};">${escapeHtml(proof)} <a href="${SITE_ORIGIN}/work/marcus/results/" style="color:${RUST}; text-decoration:none;">Read the measured results &rarr;</a></p>
+                  <p style="margin:10px 0 0; font-family:Georgia,serif; font-size:15px; line-height:1.6; color:${BODY};">${escapeHtml(proof)} <a href="${SITE_ORIGIN}/work/marcus/results/" style="color:${RUST}; text-decoration:none;">Read the reported results &rarr;</a></p>
                 </td></tr>
               </table>
             </td>
@@ -264,7 +264,7 @@ export function renderAutoresponderText(data) {
     lines.push(
       "WHAT WE BUILD",
       proof,
-      `Read the measured results: ${SITE_ORIGIN}/work/marcus/results/`,
+      `Read the reported results: ${SITE_ORIGIN}/work/marcus/results/`,
       ""
     );
   }

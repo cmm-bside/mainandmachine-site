@@ -72,8 +72,8 @@ before work begins.
   B:Side Capital, an SBA 504 / CDFI lender: 14 AI agents across
   7 departments, built from ~840 source documents.
   MARCUS processes borrower documents locally on B:Side-owned hardware. Selected tasks can use external models on filtered text. The agreed data boundary determines which processing routes are permitted.
-- [MARCUS measured results](/work/marcus/results/) — The first 90-day scorecard reports 1,240 staff hours of preparation returned, 93% weekly staff adoption by week six, 0 borrower identifiers sent to an outside model in that window, and 100% of consequential actions approved by a person first.
-  MARCUS results are reported by B:Side Capital for the first 90 days of full-fleet operation and reconciled against its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party operational results, not an independent audit or a promise of another client’s outcome.
+- [MARCUS reported results](/work/marcus/results/) — For June–August 2026, B:Side reports an estimated 1,240 staff hours of preparation capacity returned, calculated from initial workflow studies; 93% weekly staff adoption by week six across 45 employees; 0 borrower identifiers reported as sent to outside models; and 100% of consequential actions approved by a person first. Returned capacity is not measured payroll savings.
+  MARCUS results are reported by B:Side Capital. Preparation hours are estimated from initial workflow studies; operational activity is reported from its audit log. Christopher Myers holds leadership roles at both organizations. These are first-party results, not an independent audit or a promise of another client’s outcome.
   Preparation time returned is operating capacity, not automatically reduced payroll or cash savings. Annualized equivalents and calculator scenarios are estimates, not measured annual results or guarantees.
 - [Proof](/work/) — published operational evidence and its measurement limits.
   Case figures render from data/build-log.json; client quotes require written

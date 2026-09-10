@@ -16,6 +16,7 @@ import path from "node:path";
 import { ROOT } from "./lib/config.mjs";
 
 import { proofBrief } from "./lib/proof-brief.mjs";
+import { marcusMeasuredSummary } from "../src/data/approved-claims.mjs";
 
 const DATA = path.join(ROOT, "data", "build-log.json");
 const log = JSON.parse(fs.readFileSync(DATA, "utf8"));
@@ -128,7 +129,22 @@ ${(mk.boundary || [])
         </div>`;
 
   // Measurement-window disclosure — the differentiation, so it is data too.
-  REGIONS["MARCUS-WINDOW"] = `        <p class="window-note">Measurement window: the ${esc(mk.measurement_window)}. ${esc(mk.window_note)}</p>`;
+  REGIONS["MARCUS-WINDOW"] = `        <p class="window-note">Reporting period: ${esc(mk.measurement_window)}. ${esc(mk.window_note)}</p>`;
+
+  const context = mk.methodology || {};
+  REGIONS["MARCUS-HOME-NOTE"] = `<p>B:Side’s first-party results for ${esc(mk.measurement_window)}. Hours are estimated from initial workflow studies. Christopher Myers leads B:Side and Main &amp; Machine. Returned capacity is not measured payroll savings.</p>`;
+  REGIONS["MARCUS-RESULTS-CONTEXT"] = `<div class="statrail__row"><dt class="statrail__k">Period</dt><dd class="statrail__v statrail__v--sm">${esc(mk.measurement_window)}</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Updated</dt><dd class="statrail__v statrail__v--sm">${esc(context.clarified_on || log.updated)}</dd></div>
+        <div class="statrail__row"><dt class="statrail__k">Evidence</dt><dd class="statrail__v statrail__v--sm">Workflow studies + audit log</dd></div>`;
+  REGIONS["MARCUS-MEASUREMENT-DETAILS"] = `<div><dt>Reporting period</dt><dd>${esc(mk.measurement_window)}. Measurement context clarified by Christopher Myers on ${esc(context.clarified_on || log.updated)}. The period is identified by month; exact day boundaries are not specified.</dd></div>
+      <div><dt>Source and attribution</dt><dd>B:Side reports these results. The preparation-hours estimate comes from its initial workflow studies; operational activity is reported from its audit log. Christopher Myers leads both organizations. This is first-party reporting, not an independent audit.</dd></div>
+      <div><dt>Preparation time</dt><dd>The hours figure estimates returned preparation capacity. ${esc(context.limits || '')} It should not be treated as measured net labor savings, reduced payroll, or an observed annual result.</dd></div>
+      <div><dt>Adoption and review</dt><dd>Weekly adoption measures use by week six across ${esc(context.staff_denominator || 'the reported number of')} employees. The percentage is rounded; an exact active-user count is not published. Human approval covers consequential actions during the reported period.</dd></div>`;
+  const loanPackage = (mk.before_after || []).find(row => row.key === 'package-504');
+  REGIONS["MARCUS-504-COMPARISON"] = loanPackage ? `<div class="marcus-comparison" data-figure="package-504">
+        <div><span>Manual assembly</span><strong>${esc(loanPackage.before)}</strong></div>
+        <div><span>Human review with MARCUS</span><strong>${esc(loanPackage.after.replace('-min review', ' min'))}</strong></div>
+      </div>` : '';
 
   // One-line inline references on the industry and security pages.
   for (const [slug, key] of Object.entries(mk.inline || {})) {
@@ -142,8 +158,8 @@ ${(mk.boundary || [])
 function shortLabel(key) {
   return (
     {
-      "hours-returned": "Preparation hours returned in 90 days",
-      "weekly-adoption": "Staff using MARCUS weekly by week six",
+      "hours-returned": "Estimated preparation hours returned",
+      "weekly-adoption": `Weekly use by week six · ${mk.methodology?.staff_denominator || 'reported'} employees`,
       "identifiers-out": "Borrower-identifier exposures reported",
       "human-approved": "Consequential actions approved by a person",
     }[key] || key
@@ -193,6 +209,7 @@ const proof = {
   signedOff: marcusReady,
   client: mk.client || "",
   measurementWindow: mk.measurement_window || "",
+  staffDenominator: marcusReady ? mk.methodology?.staff_denominator || null : null,
   figures: marcusReady
     ? Object.fromEntries(
         [...scorecard, ...(mk.figures || [])].map((f) => [
@@ -214,6 +231,7 @@ export const MARCUS = ${JSON.stringify(proof, null, 2)};
 const proofChanged =
   !fs.existsSync(PROOF_MODULE) || fs.readFileSync(PROOF_MODULE, "utf8") !== proofSource;
 if (proofChanged) fs.writeFileSync(PROOF_MODULE, proofSource);
+if (marcusReady) REGIONS['MARCUS-GUIDE-SUMMARY'] = `<p>${esc(marcusMeasuredSummary(proof))}</p>`;
 
 // --- stamp every page -------------------------------------------------------
 const PAGES = [
@@ -225,6 +243,7 @@ const PAGES = [
   "security/index.html",
   "services/index.html",
   "book/thanks/index.html",
+  "guides/private-ai-for-small-business/index.html",
 ];
 
 let stamped = 0;

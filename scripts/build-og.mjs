@@ -14,7 +14,10 @@
 // Output is committed: a deploy must never depend on a browser being present.
 import fs from "node:fs";
 import path from "node:path";
+import os from "node:os";
+import { pathToFileURL } from "node:url";
 import { ROOT, STATIC_ROUTES, COMPANY } from "./lib/config.mjs";
+import { MARCUS } from "../src/data/proof.mjs";
 
 const OUT_DIR = path.join(ROOT, "images", "og");
 const FORCE = process.argv.includes("--force");
@@ -53,6 +56,20 @@ const price = (key) => COMPANY.services.find((s) => s.key === key).price;
  * time from the same source the pages use.
  */
 const EXPLICIT = {
+  "/work/marcus/": {
+    kicker: "Client story · B:Side Capital",
+    title: "An AI back office. Built for a lender.",
+    subline: "SBA 504 packages prepared for human review.",
+    footer: `MARCUS at B:Side Capital · ${COMPANY.domain}`,
+  },
+  "/work/marcus/results/": {
+    kicker: "MARCUS · B:Side Capital",
+    title: "SBA 504 packages. Prepared for review.",
+    subline: "Assembly, adoption, and the evidence behind MARCUS.",
+    footer: MARCUS.signedOff
+      ? `Reported period: ${MARCUS.measurementWindow} · ${COMPANY.domain}`
+      : `Workflow and methodology · ${COMPANY.domain}`,
+  },
   "/plan/": {
     kicker: "Free workflow recommendation",
     title: COMPANY.workflowPlan.name,
@@ -207,11 +224,24 @@ catch { browser = await chromium.launch(); }
 fs.mkdirSync(OUT_DIR, { recursive: true });
 const ctx = await browser.newContext({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
-for (const t of targets) {
-  await page.setContent(cardHtml(t), { waitUntil: "load" });
-  await page.evaluate(() => document.fonts.ready);
-  await page.screenshot({ path: t.out, type: "png" });
-  console.log(`[og:build] ${path.relative(ROOT, t.out)}  ←  ${t.route}`);
+// A local document can load the local brand fonts; about:blank setContent
+// blocks file:// fonts and silently produces fallback typography.
+const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "mainandmachine-og-"));
+const documentPath = path.join(tempDir, "card.html");
+try {
+  for (const t of targets) {
+    fs.writeFileSync(documentPath, cardHtml(t));
+    await page.goto(pathToFileURL(documentPath).href, { waitUntil: "load" });
+    const fontsReady = await page.evaluate(async () => {
+      await document.fonts.ready;
+      return document.fonts.check('900 76px Archivo') && document.fonts.check('400 26px "Space Mono"');
+    });
+    if (!fontsReady) throw new Error(`Brand fonts failed to load for ${t.route}`);
+    await page.screenshot({ path: t.out, type: "png" });
+    console.log(`[og:build] ${path.relative(ROOT, t.out)}  ←  ${t.route}`);
+  }
+} finally {
+  fs.rmSync(tempDir, { recursive: true, force: true });
+  await browser.close();
 }
-await browser.close();
 console.log(`[og:build] rendered ${targets.length} card(s).`);

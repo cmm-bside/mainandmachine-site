@@ -58,8 +58,8 @@ export function proofSentence() {
   // Still bound to the data — a non-zero value would print as the number.
   const ident = ids.value === "0" ? "zero" : ids.value;
   return (
-    `MARCUS, the AI back office we built for ${MARCUS.client}, reported an estimated ${hrs} of staff ` +
-    `preparation capacity returned during ${MARCUS.measurementWindow}, calculated from initial workflow studies. ` +
+    `${MARCUS.client} reports an estimated ${hrs} of staff preparation capacity returned through MARCUS ` +
+    `during ${MARCUS.measurementWindow}, calculated from initial workflow studies. ` +
     `B:Side reported ${ident} borrower identifiers sent to an outside model during that period.`
   );
 }

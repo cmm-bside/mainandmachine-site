@@ -4,6 +4,20 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const P = { paper:'#F0EBE1', tan:'#E4DBC8', ink:'#1B1611', rust:'#C6401E', muted:'#6E6455', rule:'#D6CCBA' };
+const customArtBySlug = {
+ 'ai-agent-deployment-guide': {
+  alt:'A folded operating map connects five checkpoints from workflow selection to measured results.',
+ },
+ 'how-to-deploy-ai-agents-without-losing-control': {
+  alt:'A bounded control station routes connected workflows through an approval lever and stop control.',
+ },
+ 'why-do-automation-projects-fail': {
+  alt:'A broken conveyor junction diverts work packets into a repeating rework loop.',
+ },
+ 'small-business-ai-roadmap': {
+  alt:'A route connects three Main Street businesses through preparation, human review, and measured results.',
+ },
+};
 const art = {
   maintenance: { alt:'A working document surrounded by an ongoing cycle of review and maintenance.', draw: () => `
     <path d="M273 559C128 279 392 51 715 130C988 197 1104 507 840 668" fill="none" stroke="${P.ink}" stroke-width="5"/>
@@ -125,6 +139,19 @@ const motifBySlug = {
 };
 
 export function editorialImageFor(post){
+ const custom=customArtBySlug[post.slug];
+ if(custom){
+  const base=`/images/editorial/${post.slug}`;
+  return {
+   assetUrl:`${base}-1200.webp`,
+   srcset:`${base}-320.webp 320w, ${base}-640.webp 640w, ${base}-1200.webp 1200w`,
+   width:1200,
+   height:800,
+   alt:custom.alt,
+   credit:'Original editorial illustration',
+   motif:'custom',
+  };
+ }
  const motif=motifBySlug[post.slug] || 'readiness';
  return { assetUrl:`/images/editorial/${post.slug}.svg`, width:1200,height:800,alt:art[motif].alt,credit:'Original editorial illustration',motif };
 }
@@ -132,6 +159,7 @@ export function writeEditorialArtwork(posts,root){
  const dir=path.join(root,'images','editorial');fs.mkdirSync(dir,{recursive:true});
  for(const post of posts){
   if(!/^[a-z0-9-]+$/.test(post.slug))throw new Error(`Unsafe editorial slug: ${post.slug}`);
+  if(customArtBySlug[post.slug])continue;
   const {motif}=editorialImageFor(post),spec=art[motif];
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="art-title art-desc"><title id="art-title">${spec.alt}</title><desc id="art-desc">Original conceptual illustration for The Ampersand. It is not a product screen or a chart of measured results.</desc><style>.stroke{stroke:${P.ink};stroke-width:3;fill:none}.route{stroke:${P.ink};stroke-width:3;fill:none;stroke-dasharray:10 9}.gate{stroke:${P.rust};stroke-width:8;fill:none}</style><rect width="1200" height="800" fill="${P.paper}"/><path d="M64 58h1072M64 742h1072" stroke="${P.rule}" stroke-width="2"/><path d="M64 58h68" stroke="${P.rust}" stroke-width="5"/>${spec.draw()}</svg>\n`;
   const file=path.join(dir,`${post.slug}.svg`);

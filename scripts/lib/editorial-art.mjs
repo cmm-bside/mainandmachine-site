@@ -17,6 +17,81 @@ const customArtBySlug = {
  'small-business-ai-roadmap': {
   alt:'A route connects three Main Street businesses through preparation, human review, and measured results.',
  },
+ 'operational-ai-systems-that-run-work': {
+  alt:'Three operating stations route routine work through a coordination board while one exception reaches a human reviewer.',
+ },
+ 'ai-software-integration': {
+  alt:'Two different record systems exchange clean information through a fitted adapter that catches mismatches.',
+ },
+ 'ai-managed-services': {
+  alt:'A working flywheel continues turning while maintenance tools inspect and service its operating modules.',
+ },
+ 'ai-workflow-automation-for-operations': {
+  alt:'Documents move through preparation stations and pause at a human review gate before completion.',
+ },
+ 'ai-employee-training-program': {
+  alt:'Three role-specific workbenches connect a shared training rig to a live operating station.',
+ },
+ 'how-to-measure-ai-roi': {
+  alt:'An evidence ledger compares baseline time, costs, exceptions, review effort, and returned capacity.',
+ },
+ 'explainable-ai-for-business-decisions': {
+  alt:'A transparent decision mechanism exposes its source cards, rule gates, reasoning path, and approval latch.',
+ },
+ 'human-in-the-loop-ai-systems': {
+  alt:'An uncertain work packet rises from an automated line to an elevated human review booth.',
+ },
+ 'single-source-of-truth-business-data': {
+  alt:'Several record streams reconcile inside one authoritative vault before clean copies reach business tools.',
+ },
+ 'integrate-crm-with-ai-automation': {
+  alt:'A customer-record carousel synchronizes approved information across email, calendar, and service systems.',
+ },
+ 'automate-invoice-processing-with-ai': {
+  alt:'Invoices pass through capture, extraction, matching, exception review, and a human-approved payment gate.',
+ },
+ 'ai-lead-response-automation': {
+  alt:'Incoming inquiries pass through a timed switchboard and reach a human responder, with uncertain leads held for review.',
+ },
+ 'how-long-does-ai-implementation-take': {
+  alt:'Four implementation modules wait to connect while one missing coupling blocks the finished operating system.',
+ },
+ 'how-much-does-ai-implementation-cost': {
+  alt:'Workflow, integration, control, training, and support modules form a bounded implementation scope.',
+ },
+ 'ai-readiness-audit': {
+  alt:'A traceable audit dossier crosses a handoff bridge from an evidence table to a builder’s estimating bench.',
+ },
+ 'ai-consulting-for-small-business-that-ships': {
+  alt:'A practical plan becomes a connected working system and receives a commissioning tag before operation.',
+ },
+ 'what-a-construction-estimator-should-never-automate': {
+  alt:'A machine counts construction materials, but the final estimate stops at a human judgment boundary.',
+ },
+ 'will-this-replace-my-office-manager': {
+  alt:'An office manager coordinates people and exceptions while connected tools prepare schedules, calls, and paperwork.',
+ },
+ 'seventy-years-of-overnight-success': {
+  alt:'Five generations of computing machinery pass one continuous signal from early relays to a modern system.',
+ },
+ 'what-the-machine-cannot-do': {
+  alt:'A machine sorts records while a person weighs context and responsibility beyond a clear decision boundary.',
+ },
+ 'where-your-data-goes': {
+  alt:'A data path passes through filtering, processing, and storage while a sensitive packet is held inside the boundary.',
+ },
+ 'open-models-closed-models': {
+  alt:'An open component workshop and a sealed service enclosure illustrate two ways to access a machine.',
+ },
+ 'teaching-the-machine-your-business': {
+  alt:'An experienced employee tunes a machine with business records, process maps, and correction cards.',
+ },
+ 'what-an-agent-actually-is': {
+  alt:'A central reasoning machine reaches business tools through permission gates and a human approval lever.',
+ },
+ 'how-to-talk-to-the-machine': {
+  alt:'A vague bundle and a structured request enter the same machine and produce very different results.',
+ },
 };
 const art = {
   maintenance: { alt:'A working document surrounded by an ongoing cycle of review and maintenance.', draw: () => `

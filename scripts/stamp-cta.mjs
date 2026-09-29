@@ -117,7 +117,7 @@ const routeToFile = (r) => path.join(ROOT, r.endsWith("/") ? path.join(r, "index
  * reports matches source order because nothing on the site injects a booking
  * link at runtime (verified: js/nav.js only rewrites the quarter span).
  */
-const OPEN_TAG = /<a\b[^>]*\bhref="\/book[^"]*"[^>]*>/gi;
+const OPEN_TAG = /<a\b[^>]*\bhref="\/book(?=[/?#"])[^"]*"[^>]*>/gi;
 
 const { chromium } = await loadPlaywright();
 const server = await serve();
@@ -135,7 +135,7 @@ for (const route of ROUTES) {
 	const placements = await page.evaluate((rulesSrc) => {
 		const rules = JSON.parse(rulesSrc);
 		return [...document.querySelectorAll("a[href]")]
-			.filter((a) => (a.getAttribute("href") || "").startsWith("/book"))
+			.filter((a) => /^\/book(?:[/?#]|$)/.test(a.getAttribute("href") || ""))
 			.map((a) => {
 				if (a.hasAttribute("data-cta")) return { has: a.getAttribute("data-cta") };
 				for (const [sel, name] of rules) if (a.closest(sel)) return { name };

@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 const root = new URL('../', import.meta.url);
-for (const route of ['index.html', 'plan/index.html', 'plan/sample/index.html', 'plan/thanks/index.html']) {
+for (const route of ['index.html', 'books/index.html', 'plan/index.html', 'plan/sample/index.html', 'plan/thanks/index.html']) {
   test(`${route}: custom events have the first-party tracker bootstrap and deferred scripts`, () => {
     const html = readFileSync(new URL(route, root), 'utf8');
     assert.ok(/<script\b[^>]*\bsrc="\/js\/pa"[^>]*>/.test(html), 'Missing first-party Plausible loader; custom events otherwise do nothing');

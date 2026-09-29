@@ -1,5 +1,5 @@
 # Main & Machine — llms-full.txt
-# The complete visible text of the 20 most important pages on
+# The complete visible text of the 21 most important pages on
 # https://www.mainandmachine.com/ , concatenated with page delimiters.
 # The condensed fact sheet lives at https://www.mainandmachine.com/llms.txt
 # Canonical business facts: AI consulting & implementation for small and mid-size business (5–100 employees, $1M–$50M revenue).
@@ -145,6 +145,13 @@ Implementation Sprint · 4 to 12 weeks
 - Operating instructions, training, and ownership
 
 A fixed quote follows an agreed scope. A paid audit can help define it; ongoing support is optional. Software and usage costs are separate.
+
+Books by Christopher Myers
+
+## Put AI to work. Keep people at the center.
+
+One book for leading AI into your business. One for the human questions that come with it.
+[Explore the books](/books/)
 
 Your next step
 
@@ -3308,6 +3315,132 @@ We reply within 24 hours. A fixed quote follows an agreed scope, before paid wor
 — Christopher Myers, Founder
 
 ========================================================================
+PAGE: Books by Christopher Myers | Main & Machine
+URL: https://www.mainandmachine.com/books/
+SUMMARY: Two books on leading AI and staying human. Explore The AI-Ready Owner and What the Machine Cannot Do by Christopher Myers, and choose your next read.
+========================================================================
+
+- [Main & Machine](/)
+
+- Books
+
+Books by Christopher Myers
+
+# Put AI to work. Keep people at the center.
+
+What should you hand to a machine? What should you never give away? Two books for finding your own answers.
+
+[Find your book](#choose)
+Practical action. Human judgment. A place to start.
+
+01 / Lead the work [Buy on Amazon](https://www.amazon.com/dp/B0HL7V32R1)
+
+02 / Keep the human [Buy on Amazon](https://www.amazon.com/dp/B0HL7R2BZF)
+
+Choose your starting point
+
+## One is about the work. The other is about us.
+
+01 / The practical playbook
+
+### The AI-Ready Owner
+
+Lead AI Into Your Company
+One Workflow at a Time
+
+For owners ready to move from AI experiments to work that actually gets done.
+
+Start with a real task in your business. Use Map, Prove, Expand to decide where AI belongs, test it against the work, and grow from evidence.
+
+- Choose a first workflow worth improving.
+
+- Set human review points and acceptance tests.
+
+- Work through costs, worksheets, and examples.
+
+148 pages in paperback · Also on Kindle
+
+[Buy on Amazon](https://www.amazon.com/dp/B0HL7V32R1)
+Choose your format and see current pricing on Amazon.
+
+02 / The human question
+
+### What the Machine Cannot Do
+
+The Irreplaceable Value of Being Human
+in an Age of AI
+
+For anyone asking what makes a life meaningful as machines become more capable.
+
+Look beyond productivity to the things that make us human. Philosophy, history, and personal stories open a deeper conversation about living with technology.
+
+- Think more deeply about attention and judgment.
+
+- Explore creativity, belonging, and responsibility.
+
+- Reconsider what progress should be for.
+
+242 pages in paperback · Also on Kindle & hardcover
+
+[Buy on Amazon](https://www.amazon.com/dp/B0HL7R2BZF)
+Choose your format and see current pricing on Amazon.
+
+Running a business? Start with [The AI-Ready Owner](#ai-ready-owner). Read [What the Machine Cannot Do](#what-the-machine-cannot-do) for the larger human question. Each stands on its own.
+
+From the page to your business
+
+## Make your next move a practical one.
+
+You don’t have to figure out the first workflow alone. Tell us about one task that keeps piling up. Christopher Myers will review it and send you a free, one-page workflow plan.
+
+[Get my free workflow plan](/plan/)
+[See a sample plan](/plan/sample/)
+
+Emailed within 24 hours · No call or purchase required
+
+Your first move, on one page
+
+- 01
+
+### What to fix first
+
+A preliminary recommendation for the task you describe.
+
+- 02
+
+### A practical next step
+
+A starting point you can use yourself or ask us to help implement.
+
+- 03
+
+### What still needs checking
+
+The assumptions to verify before you invest in a build.
+
+The author
+
+## Christopher Myers
+
+Christopher Myers is the founder and chairman of Main & Machine and CEO of B:Side Capital. His work brings the questions in these books into the day-to-day reality of leading a business.
+
+At Main & Machine, that means connecting the tools a team already uses, preparing the work, and keeping people responsible for the decisions.
+
+[Meet Christopher](/about/)[See the work at B:Side Capital](/work/marcus/results/#package-504)
+
+Before you choose
+
+## A few useful answers.
+
+Which book should I read first? If you’re deciding how to introduce AI into your company, start with [The AI-Ready Owner](#ai-ready-owner). If your question is about identity, meaning, and human value in an age of AI, start with [What the Machine Cannot Do](#what-the-machine-cannot-do). You don’t need to read one to understand the other.
+
+Where can I buy the books? Both books are available on Amazon in Kindle and paperback editions. What the Machine Cannot Do also has a hardcover edition. Use either book’s “Buy on Amazon” button to check current prices and availability in your region.
+
+Do I need to buy a book to get a workflow plan? No. The [free workflow plan](/plan/) is available whether or not you buy either book. Tell us about one repetitive task, and we’ll help you identify a first move. No call is required.
+
+Can Main & Machine help with implementation? Yes. We scope, build, test, and hand over AI and automation workflows for small and mid-size businesses. Start with a [free workflow plan](/plan/), or [explore our services](/services/) to see how an engagement works.
+
+========================================================================
 INDEX: The Field Guide — all 15 entries
 URL: https://www.mainandmachine.com/guides/
 ========================================================================
@@ -3344,10 +3477,28 @@ URL: https://www.mainandmachine.com/guides/
   Assess private AI by its data flows, access, filter limits, and operating costs. Read the architecture and qualified results from our lender deployment.
 
 ========================================================================
-INDEX: The Ampersand — all 34 essays
+INDEX: The Ampersand — all 43 essays
 URL: https://www.mainandmachine.com/blog/
 ========================================================================
 
+- [AI Guardrails That Keep Decisions Accountable](/blog/ai-guardrails-accountable-decisions/) — 2026-09-28
+  AI guardrails keep business automation useful, secure, and accountable. Learn where to set limits, require review, and measure real operating value daily.
+- [What Fixed Price AI Should Include in Your Business](/blog/what-fixed-price-ai-should-include/) — 2026-09-26
+  Fixed price AI gives business leaders a defined scope, cost, timeline, and accountable outcome. Learn what a real implementation contract should cover well.
+- [When Automation Consultants Are Worth Hiring](/blog/when-automation-consultants-are-worth-hiring/) — 2026-09-24
+  Automation consultants help businesses fix costly workflows, connect systems, and deploy AI with clear scope, controls, and measurable results quickly.
+- [How to Automate Client Intake Without Losing Control](/blog/how-to-automate-client-intake/) — 2026-09-22
+  Learn how to automate client intake with practical workflows that cut response time, protect client data, and keep your team accountable at every step.
+- [How to Reduce Manual Data Entry Without Chaos](/blog/how-to-reduce-manual-data-entry/) — 2026-09-20
+  Learn how to reduce manual data entry by fixing handoffs, connecting systems, and adding human control that protect accuracy and accountability at scale.
+- [Business Process Mapping That Finds Real Cost](/blog/business-process-mapping-real-cost/) — 2026-09-18
+  Business process mapping exposes handoffs, rework, and delays so you can prioritize AI automation that delivers measurable operating results fast.
+- [AI Agent Deployment Guide for Real Operations](/blog/ai-agent-deployment-guide/) — 2026-09-16
+  This AI agent deployment guide shows SMB leaders how to select workflows, protect data, test controls, train teams, and measure operating value safely.
+- [How to Deploy AI Agents Without Losing Control](/blog/how-to-deploy-ai-agents-without-losing-control/) — 2026-09-14
+  Learn how to deploy AI agents in real business workflows with clear scope, secure data controls, human review, and measurable operating results fast.
+- [Why Do Automation Projects Fail So Often?](/blog/why-do-automation-projects-fail/) — 2026-09-12
+  Why do automation projects fail? Learn the operational causes behind stalled builds, poor adoption, and missed ROI - and how to prevent them up front.
 - [Small Business AI Roadmap That Produces Results](/blog/small-business-ai-roadmap/) — 2026-09-10
   Build a small business AI roadmap around costly workflows, clean data, human approvals, and measurable returns - not vague AI experiments that often stall.
 - [Operational AI: Systems That Actually Run Work](/blog/operational-ai-systems-that-run-work/) — 2026-09-08

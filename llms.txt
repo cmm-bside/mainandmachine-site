@@ -16,7 +16,7 @@ Prefer to talk? [Book a free 30-minute assessment](/book/) directly.
 Start with a free 30-minute assessment to discuss one workflow and the next step. If substantial discovery is needed, we scope a paid audit; a fixed build quote follows an agreed scope.
 An advisor from Main & Machine discusses your workflow and next step. Christopher Myers is accountable for scoping and sign-off; the build team implements agreed work. Your scheduling confirmation identifies the meeting host.
 
-Generated: 2026-09-10
+Generated: 2026-09-29
 
 Full page text for AI systems: [llms-full.txt](/llms-full.txt) — the complete
 visible copy of the most important pages, with page delimiters.
@@ -108,6 +108,13 @@ before work begins.
 - [ROI calculator](/calculator/) — editable opportunity capture, running costs,
   and investment assumptions; shows first-year net and modeled recovery time.
   Preparation time returned is operating capacity, not automatically reduced payroll or cash savings. Annualized equivalents and calculator scenarios are estimates, not measured annual results or guarantees.
+
+## Books by Christopher Myers
+
+- [Books](/books/) — The AI-Ready Owner: Lead AI Into Your Company One Workflow
+  at a Time, and What the Machine Cannot Do: The Irreplaceable Value of Being
+  Human in an Age of AI. Book details and Amazon purchasing links. The free
+  workflow plan is available without buying a book.
 
 ## Guides
 

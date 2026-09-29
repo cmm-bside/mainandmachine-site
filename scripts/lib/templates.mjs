@@ -226,6 +226,7 @@ export function nav() {
       <a href="/services/builds/">Workflows</a>
       <a href="/work/">Results</a>
       <a href="/pricing/">Pricing</a>
+      <a href="/books/">Books</a>
       <a href="/guides/">Guides</a>
       <a href="/blog/">Blog</a>
     </nav>
@@ -291,6 +292,7 @@ export function footer() {
           <li><a href="/score/">AI-Ready Score</a></li>
           <li><a href="/industries/">Who this is for</a></li>
           <li><a href="/calculator/">ROI calculator</a></li>
+          <li><a href="/books/">Books</a></li>
           <li><a href="/guides/">The Field Guide</a></li>
           <li><a href="/blog/archive/">Archive</a></li>
           <li><a href="/#paths">Where are you?</a></li>
@@ -328,6 +330,6 @@ export function subscribeBand() {
 // Scripts shared by every blog page: mobile nav and search.
 export function pageScripts() {
 	return `<script defer src="/js/nav.js?v=11"></script>
-<script defer src="/js/analytics.js?v=10"></script>
+<script defer src="/js/analytics.js?v=11"></script>
 <script src="/blog.js?v=${ASSET_VERSION}"></script>`;
 }

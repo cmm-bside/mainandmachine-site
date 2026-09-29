@@ -41,7 +41,7 @@ const pages = [];
 	}
 })(ROOT);
 
-const OPEN_TAG = /<a\b[^>]*\bhref="\/book[^"]*"[^>]*>/gi;
+const OPEN_TAG = /<a\b[^>]*\bhref="\/book(?=[/?#"])[^"]*"[^>]*>/gi;
 let stamped = 0;
 const seen = new Set();
 

@@ -212,6 +212,7 @@ function privateAnalyticsCheck(h) {
     const keys = Object.keys(event.props).sort();
     const expected = event.name === 'workflow_plan_submit_attempt' ? ['attempt', 'page'] :
       event.name === 'workflow_plan_submit_issue' ? ['page', 'reason'] :
+        event.name === 'book_amazon_click' ? ['book', 'location', 'page'] :
         /_click$/.test(event.name) ? ['location', 'page'] : ['page'];
     assert.deepEqual(keys, expected, `Unexpected props on ${event.name}`);
   }
@@ -260,6 +261,82 @@ test('CTA routing excludes other origins, lookalike paths, receipt pages and fra
   await h.clickLink('/score/?score=PRIVATE_QUERY', 'nav').click();
   assert.deepEqual(h.names(), ['cta_book_click', 'cta_score_click']);
   privateAnalyticsCheck(h);
+});
+
+test('Amazon book links record exact book and placement without claiming a purchase or leaking query text', async () => {
+  const h = harness({ script: analytics, page: 'none', path: '/books/?email=PRIVATE_QUERY&utm_source=book-launch#PRIVATE_QUERY' });
+  h.load();
+  const books = [
+    ['ai-ready-owner', 'B0HL7V32R1'],
+    ['what-the-machine-cannot-do', 'B0HL7R2BZF'],
+  ];
+  for (const [book, asin] of books) {
+    for (const placement of ['hero', 'book-detail']) {
+      const href = `https://www.amazon.com/dp/${asin}${placement === 'hero' ? '/' : ''}?email=PRIVATE_QUERY#PRIVATE_QUERY`;
+      const cta = h.clickLink(href);
+      cta.link.setAttribute('data-book', book);
+      cta.link.setAttribute('data-book-placement', placement);
+      await cta.click();
+      assert.equal(cta.link.href, href, 'Outbound navigation must be preserved without adding campaign parameters');
+    }
+  }
+  assert.deepEqual(h.events, books.flatMap(([book]) => ['hero', 'book-detail'].map((location) => ({
+    name: 'book_amazon_click', props: { page: '/books/', book, location },
+  }))));
+  assert.deepEqual(h.uet, [], 'Retailer interest must not be pushed as an ad conversion');
+  assert.deepEqual(h.requests, []);
+  privateAnalyticsCheck(h);
+});
+
+test('Amazon book tracking rejects unrelated hosts, paths, ASINs, mismatched labels and unrecognized placements', async () => {
+  const h = harness({ script: analytics, page: 'none', path: '/books/' });
+  h.load();
+  const known = 'https://www.amazon.com/dp/B0HL7V32R1';
+  const invalid = [
+    ['https://external.example/dp/B0HL7V32R1'],
+    ['https://www.amazon.com.evil.example/dp/B0HL7V32R1'],
+    ['https://www.amazon.com@external.example/dp/B0HL7V32R1'],
+    ['https://someone@www.amazon.com/dp/B0HL7V32R1'],
+    ['http://www.amazon.com/dp/B0HL7V32R1'],
+    ['https://amazon.com/dp/B0HL7V32R1'],
+    ['https://www.amazon.com:8443/dp/B0HL7V32R1'],
+    ['https://www.amazon.com/dp/B0HL7V32R1-extra'],
+    ['https://www.amazon.com/dp/B0HL7V32R1/another-product'],
+    ['https://www.amazon.com/dp/B0HL7R2BZF'],
+    ['https://www.amazon.com/stores/author/B01LBGCKWM/about'],
+    ['https://www.amazon.com/gp/product/B0HL7V32R1'],
+    ['/books/'], ['#ai-ready-owner'],
+    [known, 'what-the-machine-cannot-do'],
+    [known, 'unknown'], [known, 'toString'], [known, ''],
+    [known, 'ai-ready-owner', 'PRIVATE_QUERY'],
+    [known, 'ai-ready-owner', ''],
+  ];
+  for (const [href, book = 'ai-ready-owner', placement = 'book-detail'] of invalid) {
+    const cta = h.clickLink(href);
+    if (book) cta.link.setAttribute('data-book', book);
+    if (placement) cta.link.setAttribute('data-book-placement', placement);
+    await cta.click();
+  }
+  assert.deepEqual(h.events, []);
+  assert.deepEqual(h.uet, []);
+  await h.clickLink('/plan/', 'books-final').click();
+  assert.deepEqual(h.events, [{ name: 'cta_plan_click', props: { page: '/books/', location: 'books-final' } }]);
+  privateAnalyticsCheck(h);
+});
+
+test('absent or blocked analytics cannot break an Amazon book link', async () => {
+  for (const plausible of ['absent', 'throws']) {
+    const h = harness({ script: analytics, page: 'none', path: '/books/', plausible, storageBlocked: true });
+    h.load();
+    const href = 'https://www.amazon.com/dp/B0HL7V32R1';
+    const cta = h.clickLink(href);
+    cta.link.setAttribute('data-book', 'ai-ready-owner');
+    cta.link.setAttribute('data-book-placement', 'book-detail');
+    await assert.doesNotReject(cta.click());
+    assert.equal(cta.link.href, href);
+    assert.deepEqual(h.events, []);
+    assert.deepEqual(h.uet, []);
+  }
 });
 
 test('current and legacy placement attributes win over region inference; known campaigns still carry', async () => {

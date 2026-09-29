@@ -12,6 +12,7 @@
  *
  *   cta_book_click        { page, location }   booking intent
  *   cta_score_click       { page, location }   tool engagement intent
+ *   book_amazon_click     { page, book, location } outbound book interest
  *
  * `location` on cta_book_click comes from the link's own `data-cta` attribute,
  * which every booking CTA carries (16 distinct placements — ticker, nav,
@@ -164,6 +165,11 @@
     return null;
   }
 
+  var bookAmazonPaths = {
+    "ai-ready-owner": "/dp/B0HL7V32R1",
+    "what-the-machine-cannot-do": "/dp/B0HL7R2BZF"
+  };
+
   document.addEventListener(
     "click",
     function (e) {
@@ -174,6 +180,19 @@
       carryJourney(a);
       var destination;
       try { destination = new URL(a.href, location.href); } catch (_) { return; }
+      // Explicit book/destination pairs keep unrelated outbound links out of
+      // this event. A retailer click records interest, never a purchase or an
+      // ad conversion; destination URLs and query text do not enter props.
+      var book = a.getAttribute("data-book");
+      var bookPlacement = a.getAttribute("data-book-placement");
+      var bookPath = bookAmazonPaths[book];
+      if (typeof bookPath === "string" &&
+          (bookPlacement === "hero" || bookPlacement === "book-detail") &&
+          destination.origin === "https://www.amazon.com" &&
+          !destination.username && !destination.password &&
+          (destination.pathname === bookPath || destination.pathname === bookPath + "/")) {
+        fire("book_amazon_click", { page: PAGE, book: book, location: bookPlacement });
+      }
       if (destination.origin !== location.origin) return;
       var href = destination.pathname;
       var name =

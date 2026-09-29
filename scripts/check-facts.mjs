@@ -29,6 +29,7 @@ const ALL_PAGES = [
   "plan/sample/index.html",
   "plan/thanks/index.html",
   "book/index.html",
+  "books/index.html",
   "book/thanks/index.html",
   "pricing/index.html",
   "method/index.html",

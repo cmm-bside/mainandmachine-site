@@ -24,6 +24,7 @@ const FORCE = process.argv.includes("--force");
 
 // Routes that already ship a hand-made card; never overwrite those.
 const HAND_MADE = new Set([
+  "/books/", // Composed with verified book covers.
   "/", "/about/", "/book/", "/pricing/", "/method/", "/services/", "/blog/",
   "/calculator/", "/denver/", "/phoenix/", "/work/", "/industries/",
   "/industries/professional-services/", "/industries/retail/",

@@ -149,6 +149,13 @@ before work begins.
   and investment assumptions; shows first-year net and modeled recovery time.
   ${claimText("timeValue")}
 
+## Books by Christopher Myers
+
+- [Books](/books/) — The AI-Ready Owner: Lead AI Into Your Company One Workflow
+  at a Time, and What the Machine Cannot Do: The Irreplaceable Value of Being
+  Human in an Age of AI. Book details and Amazon purchasing links. The free
+  workflow plan is available without buying a book.
+
 ## Guides
 
 - [The Field Guide](/guides/) — practical answers to AI buying questions,
@@ -235,6 +242,7 @@ const FULL_PAGES = [
   "/guides/ai-consultant-cost/",
   "/guides/ai-readiness-checklist/",
   "/guides/how-to-choose-an-ai-consultant/",
+  "/books/",
 ];
 
 const ENTITIES = {

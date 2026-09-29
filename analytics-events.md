@@ -71,6 +71,7 @@ the pre-change `hero` bucket should be read as "hero + pre-footer + page hero".
 | recovery | `score_report_request_failed` | `page` | report request failed and can be retried | Score app |
 | engagement | `calculator_interacted` | `page`, `industry`, `team_band` (1–10 · 11–25 · 26–50 · 51–100), `at` (`first-touch` · `cta-click`) | either ROI calculator. `first-touch` once per page load, debounced 400ms so a slider drag reports the SETTLED value; `cta-click` once more if they then click the calculator's own booking CTA, carrying the state they acted on. An untouched calculator fires neither. | `js/analytics.js` |
 | engagement | `guide_read` | `page`, `guide` (slug) | 75% scroll depth on a `/guides/<slug>/` page, once | `js/analytics.js` |
+| interest | `book_amazon_click` | `page`, `book`, `location` (`hero` or `book-detail`) | A tagged link to the matching verified Amazon book URL is activated. One event per click; no purchase or ad conversion is inferred. | `js/analytics.js` |
 | intent | `cta_book_click` | `page`, `location` (the link's own `data-cta`; + `score-results` or `score-report` from the app) | any `/book` link clicked, anywhere | both |
 | intent | `calendly_opened` | `page` | visitor deliberately activates the calendar, once | `js/analytics.js` |
 | intent | `booking_form_started` | `page` | first non-honeypot form input, once | `js/analytics.js` |
@@ -85,6 +86,28 @@ the pre-change `hero` bucket should be read as "hero + pre-footer + page hero".
 
 Read rates as: `score_completed / score_started` (tool completion),
 `calendly_booked / calendly_widget_viewed` (scheduler completion), `calendly_booked / unique visitors` (the number that matters).
+
+### Book interest
+
+`book_amazon_click` uses `data-book` and `data-book-placement` on the link.
+Only these pairs are eligible, on the exact HTTPS origin `https://www.amazon.com`:
+
+| `book` | Amazon path |
+|---|---|
+| `ai-ready-owner` | `/dp/B0HL7V32R1` |
+| `what-the-machine-cannot-do` | `/dp/B0HL7R2BZF` |
+
+A trailing slash is accepted. Author-page links, other ASINs, mismatched
+book labels, lookalike hosts, and unknown placements are excluded. `page`
+is `location.pathname`; no destination URL, query, fragment, or customer
+information enters the custom props. Link navigation stays unchanged if
+analytics is unavailable. The event measures outbound interest and makes no
+claim that a purchase occurred; it does not send a Microsoft Ads conversion.
+The free workflow-plan CTA continues to emit `cta_plan_click` separately.
+
+The existing `test-conversion.mjs` mock-DOM suite covers both books and
+placements, destination rejection, exact props, preservation of links,
+unchanged plan events, and absent/throwing analytics.
 
 ## Microsoft Ads UET (tag 343267453, added 2026-08-23)
 

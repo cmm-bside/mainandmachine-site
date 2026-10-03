@@ -8,173 +8,154 @@
 ========================================================================
 PAGE: AI Implementation for Small Business | Main & Machine
 URL: https://www.mainandmachine.com/
-SUMMARY: AI and automation for small businesses: connect existing software, reduce repetitive office work, and start with a free plan reviewed within 24 hours.
+SUMMARY: AI and automation built into your existing business tools. Prepare paperwork, draft replies, and keep people in control. Start with a free plan.
 ========================================================================
 
 AI & automation for small businesses
 
-# Less busywork. More time back.
+# We automate the admin work your team keeps repeating.
 
-We connect the software you already use, automate repetitive steps, and route exceptions to your team. One defined workflow, built, tested, and handed over.
+We connect your existing software to prepare paperwork, draft customer replies, and update approved records. Your team reviews the work and stays in control.
 
-Best fit: established teams of 5–100 people, with recurring admin work spread across multiple systems.
+For established teams of 5–100 where recurring paperwork and manual handoffs keep work waiting.
+
+Implementation Sprint · One defined workflow $18,000–$60,000 4 to 12 weeks [See scope & pricing](/pricing/)
 
 [Get my free plan](/plan/)
-[Prefer to talk? Book a free call](/book/)
+[See a sample plan](/plan/sample/)
 
-Reviewed by Christopher Myers · Emailed within 24 hours · No call required
+A free initial recommendation for one task, reviewed by Christopher Myers and emailed within 24 hours. No call or purchase required.
 
-Your free workflow plan One page
+Illustrative connected workflow Example data
 
-## A clear first move.
+Client file · Review required
 
-The task
+## A client file, checked and routed.
 
-### Invoice follow-up.
+CRM record : Matched to the incoming request
 
-The first move Fix the status first. Start with a reliable invoice list and your accounting system’s reminders.
+Document store : Checked against the agreed document checklist
 
-- Prepare
+Review channel : Routed to the assigned reviewer
 
-- Review
+Proposed CRM update : Waiting for approval
 
-- Record
+Needs attention: one required document is missing The reviewer checks the file and decides what happens next.
 
-The first test Track checking time and incorrect reminders for one week.
+One prepared item from an illustrative intake-to-handoff workflow. Connections, checks, and review rules depend on the agreed scope. Not a live product or client result.
 
-[See the one-page sample](/plan/sample/)
-Illustrative example, not a client result. Your plan is based on the task you describe.
+Sound familiar?
+
+## The cost is what gets held up.
+
+Customers wait. Paperwork piles up. Experienced people stop their own work to hold the process together.
+
+### Every reply starts from scratch.
+
+Your team searches for the same information before answering the next customer.
+
+### The invoice needs another check.
+
+Someone opens the attachment, finds the supplier, and re-enters the details.
+
+### You are the connection between tools.
+
+When records disagree or a handoff stalls, the work comes back to you.
+
+What we build for you
+
+## One recurring job. A system your team can run.
+
+Christopher Myers scopes the work and signs off. Our build team implements it against the acceptance criteria agreed in writing.
+
+-
+
+### Working connections. Useful output.
+
+We connect your tools to produce the agreed result: a prepared record, a sourced answer, or a draft ready to check.
+
+-
+
+### Exceptions handled. People in control.
+
+We test missing information, conflicting records, and failed connections. Approval rules make clear when a person takes over.
+
+-
+
+### Trained people. A system you own.
+
+Your team gets operating instructions and training. We agree who handles failures and maintenance. Ongoing support is optional.
+
+You bring examples, access, and a person to help test. [See how delivery works](/services/ai-implementation/)
+
+Built and operating at B:Side Capital
+
+## Loan paperwork prepared. Lending decisions stay human.
+
+We built MARCUS for B:Side Capital, a regulated lender led by our founder. It assembles SBA 504 loan packages from source records for staff review.
+The transferable idea: bring scattered information into work a person can check and use.
+[Walk through the deployment](/work/marcus/)
+
+Delivered : Document preparation inside an operating lender
+
+Human responsibility : Staff review the package and make lending decisions
+
+Evidence : [Published workflow studies and operating notes](/work/marcus/results/)
+
+First-party reporting from B:Side Capital, not an independent audit. Christopher Myers leads both organizations. MARCUS is a larger deployment; its scope and results are not a standard sprint or a forecast for your business.
+
+When the investment fits
+
+## Repeated work. A meaningful cost.
+
+A build makes sense when recurring preparation, delays, or rework cost enough to justify it—and your current tools cannot solve the problem.
+Compare the full cost with the whole job, including checking and corrections. Recovered time creates capacity; cash savings require an expense to change.
+Existing capture features, routing rules, or reminders may be enough. If so, we’ll recommend the simpler fix.
+[Check the scope, costs, and fit](/pricing/#worth-building)
+
+Implementation Sprint $18,000–$60,000
+One agreed workflow · 4 to 12 weeks
+Fixed quote before work. Budget separately for your team’s time, software, usage, and optional support. A paid audit is optional when discovery is needed.
+
+### Our delivery commitment
+
+If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
+Against the scope agreed in writing; a delivery commitment, not an ROI guarantee.
 
 Start with one task
 
-## What keeps taking your time?
+## Tell us what your team keeps doing by hand.
 
-### Following up with leads.
-
-Prepare replies and follow-up reminders from the inquiries already reaching your inbox.
-[Explore lead response automation](/services/builds/instant-lead-response/)
-
-### Chasing invoices and paperwork.
-
-Collect missing details, prepare routine documents, and flag invoices that need a person’s attention.
-[Explore invoice preparation](/services/builds/business-system-connectors/#workflow-detail-title)
-
-### Copying the same data twice.
-
-Move approved information between your systems, with checks for missing or conflicting records.
-[Connect your business systems](/services/builds/business-system-connectors/)
-
-MARCUS at B:Side Capital
-
-## The work gets prepared. People make the call.
-
-At B:Side Capital, a regulated lender, MARCUS assembles SBA 504 loan packages for staff review. The preparation changes; the team keeps responsibility for the lending decision.
-
-Package assembly is one part of the system we built. MARCUS also finds answers in company records, prepares documents, and stages accounting work inside the tools the team already uses.
-
-[See MARCUS at work](/work/marcus/results/#package-504)
-
-SBA 504 package assembly A loan package, ready for review.
-
-Manual assembly ~6.5 hrs
-
-Human review with MARCUS ~40 min
-
-- Start with the loan records The source records and documents for the package.
-
-- MARCUS assembles the package The preparation work is brought together for review.
-
-- The lender reviews and decides Staff check the prepared work. Lending decisions remain with people.
-
-Simplified view of B:Side’s reported workflow. Assembly time and human review time describe different stages, not total elapsed turnaround.
-
-1,240 hrs
-Estimated preparation hours returned
-
-93 %
-Weekly use by week six · 45 employees
-
-100 %
-Consequential actions approved by a person
-
-B:Side’s first-party results for June–August 2026. Hours are estimated from initial workflow studies. Christopher Myers leads B:Side and Main & Machine. Returned capacity is not measured payroll savings.
-
-[Read the measurement notes](/work/marcus/results/#methodology)
-
-What happens next
-
-## Start free. Decide from there.
-
--
-
-### Tell us about the work.
-
-Describe one repetitive task and where it gets stuck.
-
--
-
-### We review it.
-
-Christopher Myers reviews your request and the details you share.
-
--
-
-### Get your plan.
-
-Within 24 hours, receive a preliminary recommendation and a practical first step. Use it yourself or ask us to help.
-
+Describe the task and the tools involved. Christopher Myers will review it and email a practical first step within 24 hours, with the facts to check before spending more.
+[Get my free plan](/plan/)[Read a sample plan](/plan/sample/)
+Free. No call or purchase required. An initial recommendation, not a system assessment or fixed quote.
 Christopher Myers
 Founder & Chairman · Your plan reviewer
-
-When a custom build makes sense
-
-### One workflow. Connected all the way through.
-
-Use your existing tools when they can do the job. Consider a custom build when work crosses systems, exceptions keep returning to your team, and the manual effort justifies the investment.
-
-[See pricing and example scopes](/pricing/#scope-examples)
-
-$18,000–$60,000
-
-Implementation Sprint · 4 to 12 weeks
-
-- The connections and exception handling
-
-- Acceptance testing and human approval points
-
-- Operating instructions, training, and ownership
-
-A fixed quote follows an agreed scope. A paid audit can help define it; ongoing support is optional. Software and usage costs are separate.
-
-Books by Christopher Myers
-
-## Put AI to work. Keep people at the center.
-
-One book for leading AI into your business. One for the human questions that come with it.
-[Explore the books](/books/)
-
-Your next step
-
-## Tell us what keeps piling up.
-
-You don’t need to know whether it needs AI. Describe the work. We’ll help you find the first move.
-
-[Get my free plan](/plan/)
 [Prefer to talk? Book a free call](/book/)
 
-Free · Emailed within 24 hours · No call required
+From the sample plan 01
+
+## Invoice follow-up
+
+Recommendation : Don’t commission a build yet.
+
+First step : Start with a reliable invoice list and your accounting system’s reminders.
+
+Before spending more : Track checking time and incorrect reminders for one week.
+
+Illustrative advice, not a client result. Your plan addresses the task you describe.
 
 ========================================================================
 PAGE: Free Workflow Plan in 24 Hours | Main & Machine
 URL: https://www.mainandmachine.com/plan/
-SUMMARY: Tell us about one repetitive task. Christopher Myers reviews your free workflow plan, emailed within 24 hours. No call or purchase required.
+SUMMARY: Tell us where work gets stuck. Get a free recommendation reviewed by Christopher Myers and emailed within 24 hours. No call or purchase required.
 ========================================================================
 
 Free workflow plan
 
 # What does your team keep doing by hand?
 
-Describe one repetitive task. Get a practical plan by email within 24 hours.
+Describe one recurring task and the tools involved. We’ll email a practical first step within 24 hours, with the facts to check before spending more.
 
 Free. Reviewed by Christopher Myers.
 No call or purchase required.
@@ -185,7 +166,7 @@ What happens next
 
 ## A useful first step. Yours to keep.
 
-Use the plan yourself, share it with your team, or ask us to help.
+The recommendation may be to change the process, use a feature you already pay for, or investigate a custom workflow. Use it yourself or ask us to help.
 [Christopher Myers](/about/)
 Founder, Main & Machine
 
@@ -202,7 +183,7 @@ How is this different from a paid audit? The free plan is an initial recommendat
 ========================================================================
 PAGE: Sample Workflow Plan: Invoice Follow-Up | Main & Machine
 URL: https://www.mainandmachine.com/plan/sample/
-SUMMARY: See a one-page example workflow plan for invoice follow-up: what to fix first, a reminder you can use, human approval, and the questions before a build.
+SUMMARY: An illustrative invoice follow-up plan: use existing tools first, test the whole job, and see what could justify custom work. No client results claimed.
 ========================================================================
 
 - [Main & Machine](/)
@@ -221,7 +202,7 @@ Illustrative example. Not a client result.
 
 Example situation: a small commercial maintenance business follows up on overdue invoices manually. Payment updates and customer replies live in different places, so each reminder needs another check.
 
-## The recommendation Fix the status first.
+## The recommendation Don’t commission a build yet.
 
 Start with a reliable overdue-invoice list and your accounting system’s reminder features. AI may help draft unusual replies; it should not decide what a customer owes. The accounting ledger remains the source of truth.
 
@@ -248,21 +229,21 @@ Replace the brackets and verify the details before sending.
 
 ## A small test Check whether it helps.
 
-For one week, record time spent per reminder, records needing correction, and reminders sent in error. Compare with the current process before widening the test.
+For one week, count reminders and log all preparation, checking, correction, and exception time. Record incorrect reminders. Compare with the current process before widening the test.
 
 Success means: less checking time without more incorrect reminders. Stop if payment status cannot be verified reliably. No savings estimate is justified yet.
 
-## Before a build Answer three questions.
+## What could change the decision? Measure what still gets stuck.
 
-Can your accounting system already support this flow? Who owns approval and exceptions? How will payments and replies update the list?
+If standard reminders resolve the problem, stop there. Consider custom work only if recurring volume and unresolved payment or reply checks create enough cost to justify it.
 
-This proposal assumes usable invoice records, access to current payment status, and an accountable reviewer. Check those assumptions first.
+First confirm usable records, supported connections, and a named reviewer. Compare the remaining burden with build, running, and staff costs. Faster collection is not extra revenue.
 
 ## Budget context Standard features first.
 
 This example is not a project quote. If custom work is justified, our paid audit is $3,500–$8,500 ; implementation sprints are $18,000–$60,000 . A fixed quote follows an agreed scope.
 
-Ongoing care is optional. Managed Services: From $1,500/month . Software and usage costs are separate and need checking.
+Ongoing care is optional. Managed Services: From $1,500/month . Include software, usage, internal setup, review, and maintenance time in the decision.
 
 Your next step: bring one workflow you want to improve. We’ll help identify a useful first move. Request a free workflow plan at mainandmachine.com/plan/ , or book a conversation if you prefer.
 
@@ -274,7 +255,7 @@ Illustrative scenario and proposed steps only. No client data or measured result
 ========================================================================
 PAGE: AI Services for Small Business | Main & Machine
 URL: https://www.mainandmachine.com/services/
-SUMMARY: Compare AI audits, implementation and ongoing support for small business. Published prices, clear deliverables and a free assessment to find the right fit.
+SUMMARY: Find the right-sized fix for recurring paperwork and handoffs. Compare audits, implementation, and optional support. Start with a free workflow plan.
 ========================================================================
 
 - [Main & Machine](/)
@@ -283,15 +264,15 @@ SUMMARY: Compare AI audits, implementation and ongoing support for small busines
 
 AI services for small business
 
-# Find the right project. Build it. Keep it working.
+# Fix the handoff that keeps holding you up.
 
-For established teams of 5–100 people with recurring work spread across multiple systems. Start with a free written first step, then decide whether you need an audit, a build, or ongoing support.
+We build AI and automation into the tools your team already uses: prepared invoice records, customer reply drafts, and approved updates between systems. Christopher Myers scopes the work and signs off; our build team implements, tests, and hands it over.
 [Get my free plan →](/plan/)[Prefer to talk? Book a free call →](/book/)
 Reviewed by Christopher Myers · Emailed within 24 hours · No call required
 
 ## AI Readiness Audit
 
-You need to find and prioritize the right AI opportunity.
+You need to establish where the work stalls and whether fixing it is worth the cost.
 
 $3,500–$8,500
 2 to 4 weeks · fixed scope
@@ -307,7 +288,7 @@ Your audit fee can be credited toward a sprint signed within 60 days, up to 25% 
 
 ## AI Implementation Sprint
 
-You have a defined workflow ready to scope and build.
+Turn one recurring task into a working system, with prepared output, tested exceptions, and training for the people who run it.
 
 $18,000–$60,000
 4 to 12 weeks · fixed scope
@@ -356,7 +337,7 @@ Documented implementation
 
 ### Inside the MARCUS build.
 
-14 agents across 7 departments at B:Side Capital, where our founder is CEO. Read the architecture, methods and limits of this related-company deployment.
+See how loan records become a prepared package for staff review at B:Side Capital, where our founder is CEO. This is first-party evidence from a larger deployment, with published methods and limits.
 [Read the case →](/work/marcus/)
 
 [Explore the systems we build →](/services/builds/)
@@ -512,7 +493,7 @@ Main & Machine
 ========================================================================
 PAGE: AI Implementation Services | Main & Machine
 URL: https://www.mainandmachine.com/services/ai-implementation/
-SUMMARY: Turn a defined workflow into a working AI system. Fixed $18,000–$60,000, testing and team handoff included. See scope and delivery.
+SUMMARY: Put one recurring workflow into operation. Agreed connections, exception handling, tests, training, and ownership. Fixed $18,000–$60,000 after scoping.
 ========================================================================
 
 - [Main & Machine](/)
@@ -523,9 +504,9 @@ SUMMARY: Turn a defined workflow into a working AI system. Fixed $18,000–$60,0
 
 AI Implementation
 
-# Put a defined AI workflow to work.
+# Get one recurring workflow moving.
 
-The AI Implementation Sprint turns an agreed operational problem into a working system: custom agents, automations, or integrations tested in your business and handed to a team trained to run them.
+We build one recurring task into your existing tools: a prepared invoice record, a customer reply draft, or an approved update between systems. Christopher Myers scopes the work and signs off. Our build team connects, tests, and trains your people to run it.
 [Scope an implementation →](/book/?service=sprint)[Explore the build catalog →](/services/builds/)
 Free 30-minute AI Opportunity Assessment. We reply within 24 hours.
 
@@ -541,15 +522,15 @@ Scope before software
 
 ### Choose a defined workflow
 
-Start with a recurring operational job and a clear owner. Scope the inputs, expected outputs, systems involved and exceptions before work begins. The written quote fixes the scope and price.
+First check whether an existing feature or a process change can do the job. Custom work needs enough recurring volume, delay, or rework to justify the full cost, plus a named owner. Then define the inputs, outputs, systems, and exceptions. The written quote fixes scope and price.
 
 ### Test inside the real operation
 
-We build against your actual process and test how the system handles ordinary work and the cases that need review. Your team sees the workflow run and learns how to operate it.
+Use representative work, including missing information, conflicting records, and failed connections. Compare all staff effort before and after: preparation, checking, corrections, and exceptions. A draft that takes longer to fix has not solved the problem.
 
 ### Make the handoff part of the build
 
-A finished sprint includes the working system, its integrations and team training. You own what we build. Ongoing monitoring and maintenance are available separately.
+A finished sprint includes the scoped system, integrations, operating instructions, and team training. Agree who handles exceptions, how staff continue if a connection fails, and who maintains it after launch. You own what we build; ongoing support is optional.
 
 From scope to handoff
 
@@ -578,18 +559,18 @@ Picture the work
 
 ### An inquiry becomes prepared work
 
-A lead response workflow collects the information your team needs, routes it and prepares the next step. Any automatic replies or actions need explicit boundaries agreed for that build.
+Instead of checking several places to assemble each reply, your team receives a prepared draft and the information behind it. A person still reviews and sends in draft-only mode. Faster preparation does not mean an instant customer response; automatic sending requires its own agreed boundaries.
 
-### Records move between the right tools
+### A supplier invoice is ready to check
 
-A system connector reduces manual re-entry between the tools you already use. The scope identifies the source of truth, the data that moves, and how exceptions are handled.
+The invoice is extracted from an approved inbox, matched to a supplier record, and prepared with coding suggestions and source documents. Missing details and possible duplicates go to review. Your finance owner approves the next action; unattended ledger posting and payments are outside this illustrative scope.
 
 ### Company knowledge becomes usable
 
 A knowledge base helps people find answers in approved business material. The useful output includes sources a person can check, not simply a fluent answer.
 
 Examples from the catalog
-- [Instant Lead Response](/services/builds/instant-lead-response/)
+- [Lead Response & Follow-up](/services/builds/instant-lead-response/)
 
 - [Business System Connectors](/services/builds/business-system-connectors/)
 
@@ -605,7 +586,7 @@ Investment and responsibility
 
 An AI Implementation Sprint is $18,000–$60,000 , quoted fixed before work begins. Typical delivery is 4 to 12 weeks , about 90 days per workflow.
 If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is.
-Your workflow owner helps explain the process, make decisions and review the system in operation. Discuss tool access, data handling, third-party costs and what the agreed scope covers before starting.
+Your workflow owner supplies representative examples, explains the process, arranges access, resolves open decisions, and reviews test work. Allow for that staff time alongside software, model usage, and maintenance costs. The proposal names your responsibilities before work starts.
 If discovery is needed first, the [AI Readiness Audit](/services/ai-readiness-audit/) creates the plan. Your audit fee can be credited toward a sprint signed within 60 days, up to 25% of the sprint price.
 
 Evidence and limits
@@ -773,7 +754,7 @@ Main & Machine
 ========================================================================
 PAGE: AI Consulting Pricing: Published Ranges, Fixed Scope
 URL: https://www.mainandmachine.com/pricing/
-SUMMARY: Compare Main & Machine’s audit, implementation, and ongoing support. Published prices, complete audit-credit terms, and scope and operating-cost guidance.
+SUMMARY: Compare AI implementation pricing and scope. Check when custom work earns its cost, what your team contributes, and what to budget after launch.
 ========================================================================
 
 - [Main & Machine](/)
@@ -782,11 +763,27 @@ SUMMARY: Compare Main & Machine’s audit, implementation, and ongoing support. 
 
 Pricing
 
-# Clear prices. A defined result.
+# Know what you’re paying to fix.
 
-Build a workflow you can put to work. Use an audit when the scope needs investigation, then add ongoing support if you need it. Your scope and fixed price are agreed before work begins.
+A sprint delivers one working system inside your existing tools, with testing, documentation, training, and ownership. Compare the scopes below, then check the full cost against the recurring work it would fix. Scope and fixed price are agreed before paid work begins.
 
 [Investigate if needed $3,500–$8,500](#audit)[Build your workflow $18,000–$60,000](#sprint)[Add ongoing support From $1,500/month](#managed)
+
+Before you buy a build
+
+## The problem has to be big enough.
+
+Several systems and a frustrating task are not enough on their own. The question is whether a tested workflow can return enough useful capacity or reduce enough recurring cost to justify building and running it.
+
+### Use what you already have when…
+
+A template, reminder, standard integration, or clearer handoff solves the problem. Start there for occasional paperwork or straightforward follow-up. A custom sprint is rarely the right price for a small convenience.
+
+### Consider custom work when…
+
+The same bottleneck repeatedly holds up customer responses, billing, or delivery; existing features leave substantial work unresolved; and a named owner can supply examples, review the build, and run the process.
+
+If the value is still unclear, start with the [free written plan](/plan/). It can recommend a simpler fix or identify what to investigate before spending money.
 
 01 / Investigate if needed
 
@@ -810,7 +807,7 @@ Your audit fee can be credited toward a sprint signed within 60 days, up to 25% 
 
 ## AI Implementation Sprint
 
-Connect the systems, handle the exceptions, and put a tested workflow into operation.
+One recurring task implemented in your existing tools, with useful output, tested exceptions, and a trained team.
 
 $18,000–$60,000
 4 to 12 weeks · fixed scope
@@ -866,6 +863,7 @@ Includes: Approved service information, tailored drafts, a review queue, and han
 Excludes: Automatic sending, additional channels, custom quoting, and a CRM migration. A reviewer controls when replies are sent.
 
 Assumes: Working access to the existing inbox, usable service information, a named reviewer, and representative inquiries for testing.
+Worth considering only if: Your current inbox or CRM cannot handle the preparation and routing rules, and the volume and exceptions justify a custom build. Draft-only work still waits for the reviewer; basic templates and reminders should be tried first.
 
 -
 
@@ -917,7 +915,7 @@ A lower project price is only useful if it covers the work you need. Compare sco
 
 - Inputs, exceptions, human approvals, and acceptance criteria
 
-- Your team’s access, review time, and decisions needed
+- Your team’s setup, testing, review time, and decisions needed
 
 - The fixed price and how a requested scope change is handled
 
@@ -930,6 +928,12 @@ A lower project price is only useful if it covers the work you need. Compare sco
 - Training, operating instructions, and maintenance responsibilities
 
 - Optional Managed Services, with coverage agreed in writing
+
+### Make the case with your numbers.
+
+Count how often the work happens and the time spent preparing, checking, correcting, and chasing it. Then estimate what would remain after the change. Include discovery, the build, your team’s participation, subscriptions, usage, and maintenance.
+Returned hours are capacity. Cash savings require an expense that actually goes away; additional revenue needs demand and delivery capacity, and should be valued at gross profit. Avoid counting the same hours twice. If a conservative case does not justify the full cost, don’t build yet.
+[Test the cost assumptions](/calculator/)
 
 [Understand ongoing costs →](/guides/what-ai-automation-costs-to-run/)
 
@@ -1224,7 +1228,7 @@ Main Street is the human part. The owner who knows which customer always pays la
 
 Machine the tireless part
 
-The Machine is the other part. It is patient in a way people cannot be. It reads every invoice, watches every queue, drafts the first version at three in the morning, and never gets tired or bored or careless on a Friday afternoon.
+The Machine is the other part. It can take on repetitive preparation. It reads documents, checks queues, and drafts a first version, with sources and exceptions for people to review. Your team still checks the work and makes the decisions.
 
 & the whole company
 
@@ -1948,7 +1952,7 @@ A fixed price, quoted in writing before we start, and a straight answer within 2
 ========================================================================
 PAGE: AI Build Catalog: Receptionists, Agents & Automations
 URL: https://www.mainandmachine.com/services/builds/
-SUMMARY: Explore AI receptionists, workflow agents, private AI, and integrations. See which capabilities can be included in a scoped Main & Machine engagement.
+SUMMARY: Explore workflows for waiting inquiries, scattered paperwork, and repeated data entry. Start with existing tools, then scope only the custom work you need.
 ========================================================================
 
 - [Main & Machine](/)
@@ -1959,9 +1963,9 @@ SUMMARY: Explore AI receptionists, workflow agents, private AI, and integrations
 
 The build catalog
 
-# What we build.
+# Start where the work gets stuck.
 
-Choose the workflow first. These capabilities can answer inquiries, prepare work, connect your tools, or provide a private place to use AI. They are scoped within our published services, not sold at a separate price per item. Your quote states which capabilities and integrations are included.
+A waiting inquiry, a missing document, or the same record entered twice: start with a recurring problem your team can describe. These are capabilities to use within an agreed workflow. They are not separate products or a shopping list of things every business needs.
 
 [Get my free plan →](/plan/)
 [Prefer to talk? Book a free call →](/book/)
@@ -1976,11 +1980,11 @@ Managed From $1,500/month
 
 Delivery ~90 days
 
-Front of house
+Customer inquiries and follow-up
 
 ## The systems your customers meet.
 
-Customer-facing workflows for inquiries, booking, and follow-up. Scope the integrations, handoffs, and operating rules before choosing the build.
+Try the reply, scheduling, and reminder features in your current tools first. Custom work is worth considering when those features cannot handle the handoffs and exceptions, and the recurring burden justifies the investment.
 
 Answering
 
@@ -2004,9 +2008,9 @@ After The agent answers supported questions using your approved services, prices
 
 Follow-up
 
-### Instant lead response
+### Lead response and follow-up
 
-Before A lead lands Friday night and waits in the inbox until Monday. By then they’ve hired someone else.
+Before An inquiry waits while staff find the details, decide who owns it, and prepare a reply. The customer is still waiting even if a draft is ready.
 
 After Replies are prepared from approved business information. Your team reviews drafts; agreed routine inquiries can receive automatic responses, with escalation and stop rules.
 
@@ -2036,7 +2040,7 @@ And so on
 
 ### If it runs on a phone, a form, an inbox, or a calendar…
 
-…it can be built this way. These five are what most businesses ask for first, not the edge of the list. The [audit](/services/ai-readiness-audit/) finds yours.
+…first check whether your current software can handle it. A simple reminder or booking link rarely needs a custom build. The [audit](/services/ai-readiness-audit/) can investigate the cases that need more work.
 
 Illustrative builds, not client claims. What we’d actually build is whatever your [free assessment](/book/) shows is worth building first.
 
@@ -2044,7 +2048,7 @@ Back of house
 
 ## The machinery behind it.
 
-The private systems the front of house runs on — built once, owned by you. This is the MARCUS class of work sold in parts: most businesses need two or three of these, not all seven. Want the whole thing carried? That is [The Full Back Office](/pricing/#backoffice) — From $95,000 , four taken per year.
+Choose only the components your workflow needs. Existing software may already cover part or all of the job; private infrastructure needs its own justification. A multi-department system is scoped separately as [The Full Back Office](/pricing/#backoffice) — From $95,000 , four taken per year.
 
 The hardware
 
@@ -2287,7 +2291,7 @@ Read next A plain-English walkthrough of this architecture, with the production 
 ========================================================================
 PAGE: Book a Free 30-Minute AI Assessment | Main & Machine
 URL: https://www.mainandmachine.com/book/
-SUMMARY: Bring one workflow to a free 30-minute AI assessment. Discuss fit, constraints, and the next step. Book a time or request a reply within 24 hours.
+SUMMARY: Discuss one recurring bottleneck in a free 30-minute call. Compare a simpler fix with custom work, understand the scope, and decide on a useful next step.
 ========================================================================
 
 - [Main & Machine](/)
@@ -2296,9 +2300,9 @@ SUMMARY: Bring one workflow to a free 30-minute AI assessment. Discuss fit, cons
 
 The AI Opportunity Assessment
 
-# Find your next useful AI project.
+# Is this workflow worth fixing?
 
-Bring one repetitive workflow. We’ll discuss the opportunity, the constraints, and a sensible next step.
+Bring one recurring bottleneck. We’ll discuss what it holds up, what you’ve already tried, and whether a simpler fix or a custom build makes sense.
 Free 30 minutes Remote call
 
 Accountable for the work
@@ -2322,11 +2326,11 @@ Choose a slot to book. Calendly sends your invite and confirmation.
 
 ## Bring one workflow.
 
-Describe where work piles up, the tools involved, and who reviews it. A short description is enough; leave sensitive records out of the form.
+Describe where work piles up, how often it happens, and who has to chase it. Bring a rough sense of the time or delay involved; no polished brief or sensitive records needed.
 
 ## Discuss the decision.
 
-We review the opportunity, practical constraints, and whether a build, a paid audit, or waiting makes sense.
+Compare an existing feature or process change with a build, a paid audit, or waiting. Work crossing systems is only a starting point; the value still has to justify the cost.
 
 ## Leave with a next step.
 
@@ -3331,7 +3335,6 @@ Books by Christopher Myers
 What should you hand to a machine? What should you never give away? Two books for finding your own answers.
 
 [Find your book](#choose)
-Practical action. Human judgment. A place to start.
 
 01 / Lead the work [Buy on Amazon](https://www.amazon.com/dp/B0HL7V32R1)
 
@@ -3477,10 +3480,14 @@ URL: https://www.mainandmachine.com/guides/
   Assess private AI by its data flows, access, filter limits, and operating costs. Read the architecture and qualified results from our lender deployment.
 
 ========================================================================
-INDEX: The Ampersand — all 43 essays
+INDEX: The Ampersand — all 45 essays
 URL: https://www.mainandmachine.com/blog/
 ========================================================================
 
+- [How to Monitor Agent Accuracy Without Guesswork](/blog/how-to-monitor-agent-accuracy/) — 2026-10-02
+  Learn how to monitor agent accuracy with clear test sets, risk-based review, drift alerts, and human controls that protect customers and operations daily.
+- [Secure AI Data Architecture That Holds Up](/blog/secure-ai-data-architecture/) — 2026-09-30
+  Build a secure AI data architecture that connects your systems, limits exposure, preserves oversight, and puts useful automation into production safely.
 - [AI Guardrails That Keep Decisions Accountable](/blog/ai-guardrails-accountable-decisions/) — 2026-09-28
   AI guardrails keep business automation useful, secure, and accountable. Learn where to set limits, require review, and measure real operating value daily.
 - [What Fixed Price AI Should Include in Your Business](/blog/what-fixed-price-ai-should-include/) — 2026-09-26

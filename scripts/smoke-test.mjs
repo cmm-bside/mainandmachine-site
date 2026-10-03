@@ -20,7 +20,7 @@ const CURRENT_BANNER = 'class="ticker"';
 const BLOG_BANNER = "free essays, a few times a month";
 // These current conversion pages deliberately use a quieter header.
 const CONVERSION_MARKERS = {
-  "/": ['id="home-work-title"', 'href="/plan/"', 'class="home-sample-preview"', 'data-cta="hero-sample"'],
+  "/": ['id="home-work-title"', 'href="/plan/"', 'class="prepared-record"', 'data-cta="hero-sample"'],
   "/plan/": ['id="workflow"', 'id="plan-faq-title"'],
   "/plan/sample/": ['id="plan-title"', 'class="sample-plan', 'src="/js/pa"'],
 };

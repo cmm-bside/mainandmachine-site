@@ -132,7 +132,7 @@ ${(mk.boundary || [])
   REGIONS["MARCUS-WINDOW"] = `        <p class="window-note">Reporting period: ${esc(mk.measurement_window)}. ${esc(mk.window_note)}</p>`;
 
   const context = mk.methodology || {};
-  REGIONS["MARCUS-HOME-NOTE"] = `<p>B:Side’s first-party results for ${esc(mk.measurement_window)}. Hours are estimated from initial workflow studies. Christopher Myers leads B:Side and Main &amp; Machine. Returned capacity is not measured payroll savings.</p>`;
+  REGIONS["MARCUS-HOME-NOTE"] = `<p>First-party reporting from B:Side Capital, not an independent audit. Christopher Myers leads both organizations. MARCUS is a larger deployment; its scope and results are not a standard sprint or a forecast for your business.</p>`;
   REGIONS["MARCUS-RESULTS-CONTEXT"] = `<div class="statrail__row"><dt class="statrail__k">Period</dt><dd class="statrail__v statrail__v--sm">${esc(mk.measurement_window)}</dd></div>
         <div class="statrail__row"><dt class="statrail__k">Updated</dt><dd class="statrail__v statrail__v--sm">${esc(context.clarified_on || log.updated)}</dd></div>
         <div class="statrail__row"><dt class="statrail__k">Evidence</dt><dd class="statrail__v statrail__v--sm">Workflow studies + audit log</dd></div>`;

@@ -57,6 +57,60 @@ const price = (key) => COMPANY.services.find((s) => s.key === key).price;
  * time from the same source the pages use.
  */
 const EXPLICIT = {
+  "/": {
+    kicker: "AI & automation for small businesses",
+    title: "We automate the admin work your team keeps repeating.",
+    subline: "Built into your existing tools. Your team stays in control.",
+    footer: `Start with a free workflow plan · ${COMPANY.domain}`,
+  },
+  "/pricing/": {
+    kicker: "Scope & investment",
+    title: "Know what you’re paying to fix.",
+    subline: "The right-sized fix. A defined scope. The full cost.",
+    footer: `Sprints ${price("sprint")} · ${COMPANY.domain}/pricing`,
+  },
+  "/book/": {
+    kicker: "Free 30-minute assessment",
+    title: "Is this workflow worth fixing?",
+    subline: "Bring one recurring bottleneck. Find a useful next step.",
+    footer: `No payment or commitment required · ${COMPANY.domain}/book`,
+  },
+  "/services/": {
+    kicker: "AI services for small business",
+    title: "Fix the handoff that keeps holding you up.",
+    subline: "Find the right-sized fix. Build it. Keep it working.",
+    footer: `Start with a free workflow plan · ${COMPANY.domain}`,
+  },
+  "/services/ai-implementation/": {
+    kicker: "AI implementation",
+    title: "Get one recurring workflow moving.",
+    subline: "Agreed connections. Tested handoffs. A team trained to run it.",
+    footer: `Sprints ${price("sprint")} · ${COMPANY.domain}`,
+  },
+  "/services/builds/": {
+    kicker: "Workflow examples",
+    title: "Start where the work gets stuck.",
+    subline: "Waiting inquiries. Scattered paperwork. Repeated data entry.",
+    footer: `Explore the right-sized fix · ${COMPANY.domain}`,
+  },
+  "/services/builds/instant-lead-response/": {
+    kicker: "Customer follow-up",
+    title: "Lead response & follow-up.",
+    subline: "Prepared replies. Clear handoffs. Sending rules agreed in scope.",
+    footer: `One defined workflow · ${COMPANY.domain}`,
+  },
+  "/work/": {
+    kicker: "MARCUS at B:Side Capital",
+    title: "Prepare the paperwork. Keep the judgment.",
+    subline: "A documented workflow, with first-party evidence and limits.",
+    footer: `Read the operating evidence · ${COMPANY.domain}/work`,
+  },
+  "/calculator/": {
+    kicker: "A model, not a promise",
+    title: "Test the assumptions. See the full cost.",
+    subline: "Build cost. Running cost. Capacity and cash kept distinct.",
+    footer: `Challenge the investment · ${COMPANY.domain}/calculator`,
+  },
   "/work/marcus/": {
     kicker: "Client story · B:Side Capital",
     title: "An AI back office. Built for a lender.",
@@ -73,14 +127,14 @@ const EXPLICIT = {
   },
   "/plan/": {
     kicker: "Free workflow recommendation",
-    title: COMPANY.workflowPlan.name,
+    title: "What does your team keep doing by hand?",
     subline: `One workflow · Reviewed by ${COMPANY.workflowPlan.reviewer}`,
     footer: `No call or purchase required · ${COMPANY.domain}/plan`,
   },
   "/plan/sample/": {
     kicker: "Illustrative sample",
     title: "See a sample workflow plan",
-    subline: "A preliminary recommendation, with assumptions and next steps.",
+    subline: "An invoice follow-up example that starts with existing tools.",
     footer: `Example only · ${COMPANY.domain}/plan/sample`,
   },
   "/score/": {

@@ -74,13 +74,13 @@ export const BUILDS = [
 		countThis: "qualified leads receiving a faster reply &times; the incremental conversion rate &times; gross profit per job",
 		cardId: "lead-response",
 		group: "front",
-		name: "Instant Lead Response",
+		name: "Lead Response & Follow-up",
 		kicker: "Follow-up",
-		title: "Instant Lead Response for Small Business | Main & Machine",
+		title: "Lead Response & Follow-up | Main & Machine",
 		description:
-			"Drafts timely lead replies and follow-ups in your voice, with review and escalation rules. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
+			"Prepare lead replies with review and handoff rules. Compare existing inbox features with a custom workflow. Sending depends on the agreed scope.",
 		definition:
-			"Instant lead response prepares tailored replies and follow-ups using your approved service information. Start with drafts your team reviews before sending. Optional automatic sending covers only agreed enquiries, with escalation and stop rules. Timing depends on your systems and reviewers; there is no one-minute reply guarantee.",
+			"Lead response and follow-up prepares tailored replies and follow-ups using your approved service information. Start with drafts your team reviews before sending. Optional automatic sending covers only agreed enquiries, with escalation and stop rules. Timing depends on your systems and reviewers; there is no one-minute reply guarantee.",
 		industries: ["construction", "professional-services", "retail", "hospitality"],
 		painHeading: "What a weekend in the inbox costs.",
 		tier: "sprint",

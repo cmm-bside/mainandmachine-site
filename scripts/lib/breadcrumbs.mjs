@@ -92,7 +92,7 @@ export const CRUMB_LABELS = {
 	"/services/ai-implementation/": "AI Implementation",
 	"/services/managed-ai-services/": "Managed AI Services",
 	"/services/builds/": "The Build Catalog",
-	"/services/builds/instant-lead-response/": "Instant Lead Response",
+	"/services/builds/instant-lead-response/": "Lead Response & Follow-up",
 	"/services/builds/missed-call-text-back/": "Missed-Call Text-Back",
 	"/services/builds/review-reputation-agent/": "Review & Reputation Agent",
 	"/services/builds/private-ai-server/": "Private AI Server",

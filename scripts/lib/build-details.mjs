@@ -25,7 +25,7 @@ export const BUILD_DETAILS = {
   },
   'instant-lead-response': {
     heading: 'From inquiry to a controlled next step.',
-    intro: 'Agree what counts as a prepared draft and what counts as a sent response. Name the included channels, eligible automatic sends, and the requests that must wait for a person.',
+    intro: 'Start with your inbox or CRM’s existing templates, routing, and reminders. A custom build needs enough recurring volume and unresolved exceptions to justify its cost. A prepared draft is not a sent reply; name the reviewer and the requests that must wait.',
     sections: [
       ['Capture the request once', 'An illustrative workflow starts with a web inquiry. It records the requested service and available contact details, checks for an existing customer record, and routes the inquiry to its owner. Incomplete or duplicate requests need an explicit handling rule.'],
       ['Prepare a reply from approved material', 'Use the service description, availability rules, and published information agreed in scope. The reply may ask for missing details or suggest the next step. It should not invent a quote, guarantee an appointment, or make a commitment outside its authority.'],

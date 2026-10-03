@@ -4834,7 +4834,7 @@ section.ink, .ink--grid {
 .plan-nav__call { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 14px; color: var(--ink); text-underline-offset: 4px; white-space: nowrap; }
 .plan-entry__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 88px); align-items: start; }
 .plan-entry__intro h1 { margin: 20px 0 24px; max-width: 14ch; }
-.plan-entry__intro .accent-tx { white-space: nowrap; }
+.plan-entry__intro .accent-tx { white-space: normal; }
 .plan-entry__promise { font-size: 15px; margin-top: 24px; color: var(--muted-on-light); }
 .plan-entry__sample { margin: 24px 0 0; }
 .plan-entry__sample a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 15px; }
@@ -5084,3 +5084,122 @@ section.ink.home-final { background-color: var(--ink); background-image: none; p
 /* Books discovery: shared homepage and Field Guide entry point. */
 .book-discovery__grid{display:grid;grid-template-columns:1.2fr 1fr;gap:72px;align-items:center}.book-discovery h2{font-size:clamp(30px,3.4vw,42px);line-height:1.1;letter-spacing:-.03em;margin:18px 0}.book-discovery p{font-size:18px;line-height:1.65;color:var(--ink-muted);max-width:40ch;margin-bottom:24px}.book-discovery__covers{display:flex;gap:24px;align-items:center;justify-content:center;max-width:400px;justify-self:end}.book-discovery__covers img{width:calc(50% - 12px);height:auto;box-shadow:4px 8px 16px color-mix(in srgb,var(--ink) 18%,transparent)}.book-discovery__covers img:last-child{margin-top:32px}
 @media(max-width:700px){.book-discovery__grid{grid-template-columns:1fr;gap:32px}.book-discovery__covers{justify-self:start;max-width:320px}.book-discovery p{font-size:17px}}
+
+/* Buyer narrative: keep the existing type, paper, rules, and responsive rhythm. */
+.home-simple .home-hero h1 { max-width: 16ch; font-size: clamp(44px, 4.4vw, 62px); }
+.home-simple .home-hero .lead { max-width: 52ch; }
+.home-simple .home-section-head h2 { max-width: 23ch; }
+.home-simple .home-section-head > p { max-width: 43ch; }
+.home-simple .home-build-note h2 { margin: 16px 0 22px; font-size: clamp(29px, 3.1vw, 40px); line-height: 1.1; }
+.home-simple .home-proof__footer { border-top: 1px solid var(--dline); padding-top: 24px; margin-top: 32px; }
+.home-plan-close__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+.home-plan-close h2 { margin: 18px 0 24px; max-width: 20ch; font-size: clamp(32px, 3.4vw, 44px); line-height: 1.1; }
+.home-plan-close__grid > div > p:not(.lead):not(.home-note) { font-size: 17px; line-height: 1.65; color: var(--muted-on-light); }
+.home-plan-close .home-note { font-size: 13px; line-height: 1.6; margin-top: 12px; }
+.home-plan-close .home-reviewer { margin-top: 26px; }
+.buyer-decision-note { max-width: 66ch; margin-top: 22px; padding-left: 18px; border-left: 2px solid var(--accent); font-size: 16px; line-height: 1.65; color: var(--muted-on-light); }
+.buyer-value-note { max-width: 80ch; border-top: 1px solid var(--dline); margin-top: 36px; padding-top: 28px; }
+.buyer-value-note h3 { font-size: 24px; margin-bottom: 16px; }
+.buyer-value-note p { font-size: 17px; line-height: 1.65; margin: 14px 0; }
+.buyer-value-note > a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
+@media (max-width: 900px) {
+  .home-simple .home-hero h1 { max-width: 18ch; }
+  .home-plan-close__grid { grid-template-columns: 1fr; gap: 32px; }
+  .home-plan-close__grid > .home-plan-card { max-width: 640px; }
+}
+@media (max-width: 700px) {
+  .home-simple .home-hero h1 { max-width: 16ch; font-size: clamp(34px, 9.5vw, 52px); }
+  .home-simple .home-proof__footer { margin-top: 24px; }
+}
+
+/* A concrete work product and a shorter path from problem to decision. */
+.home-buyer .home-hero__grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 4vw, 58px); align-items: center; }
+.home-buyer .home-hero h1 { max-width: 17ch; font-size: clamp(42px, 4.25vw, 61px); line-height: 1.04; margin-block: 20px 24px; }
+.home-buyer .home-hero .lead { font-size: 20px; line-height: 1.55; max-width: 47ch; }
+.home-buyer .home-fit { margin-top: 14px; }
+.home-offer { border-top: 1px solid var(--rule-strong); padding-top: 17px; margin: 24px 0 0; }
+.home-offer > span { display: block; font: 11px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 5px; }
+.home-offer > strong { display: block; font-size: 17px; line-height: 1.5; font-weight: 600; }
+.home-offer > strong > [aria-hidden] { margin-inline: 5px; }
+.home-offer > a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 13px; margin-top: 3px; }
+.home-buyer .home-offer + .home-actions { margin-top: 12px; }
+.home-buyer .home-hero .home-actions { margin-top: 24px; }
+.home-buyer .home-hero .home-note { max-width: 53ch; font-size: 13px; line-height: 1.55; margin-top: 14px; }
+.prepared-record { margin: 0; background: var(--paper-card); border: 1px solid var(--rule-strong); box-shadow: 8px 8px 0 var(--paper-tan); }
+.prepared-record figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 12px 24px; background: var(--ink); color: var(--paper); font: 10px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .035em; }
+.prepared-record__heading { padding: 24px 24px 18px; }
+.prepared-record__heading .kicker { font-size: 10px; line-height: 1.5; letter-spacing: .035em; }
+.prepared-record h2 { font-size: clamp(23px, 2.2vw, 29px); line-height: 1.15; letter-spacing: -.025em; margin: 12px 0 0; }
+.prepared-record__facts { margin: 0 24px; }
+.prepared-record__facts > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 15px; padding-block: 13px; border-top: 1px solid var(--rule-strong); }
+.prepared-record dt { font: 11px/1.6 var(--mono); color: var(--muted-on-light); }
+.prepared-record dd { margin: 0; font-size: 15px; line-height: 1.4; font-weight: 600; }
+.prepared-record dd span { display: block; margin-top: 3px; font-size: 12px; line-height: 1.5; color: var(--muted-on-light); font-weight: 400; }
+.prepared-record__exception { margin: 6px 24px 0; padding: 14px 16px; border-left: 3px solid var(--accent); background: var(--paper-tan); }
+.prepared-record__exception strong { display: block; font-size: 13px; line-height: 1.5; }
+.prepared-record__exception p { font-size: 13px; line-height: 1.55; margin: 6px 0 0; }
+.prepared-record__foot { margin: 16px 24px 22px; color: var(--muted-on-light); font-size: 11px; line-height: 1.6; }
+.home-buyer .home-task p { margin-bottom: 0; }
+.buyer-deliverables { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
+.buyer-deliverables li { padding-top: 20px; border-top: 2px solid var(--accent); }
+.buyer-deliverables li > span { font: 11px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .035em; color: var(--muted-on-light); }
+.buyer-deliverables h3 { margin: 20px 0 14px; font-size: 24px; line-height: 1.2; letter-spacing: -.025em; }
+.buyer-deliverables p { color: var(--muted-on-light); font-size: 16px; line-height: 1.65; margin: 0; }
+.buyer-part { margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--rule-strong); color: var(--muted-on-light); font-size: 14px; line-height: 1.65; }
+.buyer-part a { display: inline-block; padding-block: 12px; margin-left: 12px; }
+.buyer-proof { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(40px, 6vw, 80px); align-items: center; }
+.home-buyer .buyer-proof h2 { font-size: clamp(31px, 3.3vw, 44px); line-height: 1.1; max-width: 24ch; margin-block: 20px 24px; }
+.buyer-proof > div > p { font-size: 17px; line-height: 1.65; max-width: 52ch; margin-block: 16px; color: var(--dtx-mute); }
+.buyer-proof__record { padding: 28px; border: 1px solid var(--rule-strong); background: var(--paper-card); color: var(--ink); }
+.buyer-proof__record img { display: block; max-width: 180px; height: auto; margin-bottom: 24px; }
+.buyer-proof__record dl { margin: 0; }
+.buyer-proof__record dl > div { padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--rule-strong); }
+.buyer-proof__record dt { font: 11px/1.5 var(--mono); text-transform: uppercase; color: var(--muted-on-light); margin-bottom: 7px; }
+.buyer-proof__record dd { margin: 0; font-size: 16px; line-height: 1.55; }
+#main.home-buyer .buyer-proof__record a[href]:not(.btn),
+#main.home-buyer .buyer-proof__record a[href]:not(.btn):visited { color: var(--ink); display: inline-block; text-decoration-color: var(--accent); }
+#main.home-buyer .buyer-proof__record a:focus-visible { outline-color: var(--ink); }
+.home-buyer .home-proof__footer { margin-top: 28px; padding-top: 20px; }
+.home-buyer .home-proof__footer p { max-width: 105ch; }
+.home-buyer .home-build-note__intro > p { font-size: 16px; line-height: 1.65; }
+.home-buyer .home-build-note__intro .buyer-simple { padding-left: 14px; border-left: 2px solid var(--accent); }
+.home-buyer .home-build-note__scope > .kicker { font-size: 11px; margin-bottom: 12px; }
+.home-buyer .home-build-note .home-price { font-size: clamp(27px, 2.6vw, 34px); }
+.buyer-commitment { border-top: 1px solid var(--rule-strong); margin-top: 24px; padding-top: 20px; }
+.home-buyer .home-build-note .buyer-commitment h3 { font-size: 18px; line-height: 1.3; margin: 0 0 10px; }
+.home-buyer .buyer-commitment p { font-size: 16px; line-height: 1.6; margin: 0; }
+.home-buyer .buyer-commitment .buyer-commitment__limit { font-size: 12px; line-height: 1.6; margin-top: 12px; color: var(--muted-on-light); }
+.buyer-plan-preview dl { margin: 0; }
+.buyer-plan-preview dl > div { padding-block: 16px; border-top: 1px solid var(--rule-strong); }
+.buyer-plan-preview dt { font: 11px/1.6 var(--mono); color: var(--muted-on-light); margin-bottom: 7px; text-transform: uppercase; }
+.buyer-plan-preview dd { margin: 0; font-size: 17px; line-height: 1.6; }
+.home-buyer .home-plan-close .home-reviewer { align-items: flex-start; }
+.home-buyer .home-reviewer a { display: inline-block; padding-top: 12px; min-height: 44px; }
+@media (max-width: 900px) {
+  .home-buyer .home-hero__grid, .buyer-proof { grid-template-columns: 1fr; }
+  .home-buyer .home-hero h1 { max-width: 20ch; }
+  .prepared-record { max-width: 580px; }
+  .buyer-proof__record { max-width: 580px; }
+  .buyer-deliverables { gap: 24px; }
+}
+@media (max-width: 700px) {
+  .home-buyer .home-hero h1 { font-size: clamp(35px, 9.5vw, 52px); max-width: 18ch; margin-block: 16px 20px; }
+  .home-buyer .home-hero .lead { font-size: 18px; }
+  .home-buyer .home-fit { font-size: 14px; }
+  .home-offer { margin-top: 20px; padding-top: 14px; }
+  .home-offer > strong { font-size: 15px; }
+  .home-offer > strong > [aria-hidden] { margin-inline: 2px; }
+  .prepared-record figcaption { padding-inline: 18px; }
+  .prepared-record__heading { padding: 22px 18px 18px; }
+  .prepared-record__facts { margin-inline: 18px; }
+  .prepared-record__facts > div { grid-template-columns: 90px minmax(0, 1fr); gap: 12px; }
+  .prepared-record__exception { margin-inline: 18px; padding-inline: 12px; }
+  .prepared-record__foot { margin-inline: 18px; }
+  .buyer-deliverables { grid-template-columns: 1fr; gap: 28px; }
+  .buyer-deliverables h3 { margin-top: 14px; font-size: 23px; }
+  .buyer-deliverables h3 br { display: none; }
+  .buyer-part a { display: block; margin: 4px 0 0; }
+  .buyer-proof { gap: 28px; }
+  .buyer-proof__record { padding: 24px; }
+  .home-buyer .home-proof__footer p { font-size: 12px; }
+}

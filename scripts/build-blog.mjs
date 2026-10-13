@@ -587,6 +587,8 @@ ${nav()}
       <div class="essay__col">
         <div class="prose">
 ${proseInner}
+${post.slug === "what-the-machine-cannot-do" ? `<p>This essay is adapted from my book What the Machine Cannot Do: The Irreplaceable Value of Being Human in an Age of AI. Kindle $6.99 · Paperback $19.99 · Hardcover $29.99.</p>
+<p><a href="https://www.amazon.com/dp/B0HL422KB7" target="_blank" rel="noopener noreferrer">Get the book on Amazon</a></p>` : ""}
         </div>
         <p class="essay__seealso"><span class="tick-lbl">Where this shows up</span><a href="${attr(seeAlso.href)}">${esc(seeAlso.label)} <span class="arr">&#8594;</span></a></p>
         <div class="essay__share">

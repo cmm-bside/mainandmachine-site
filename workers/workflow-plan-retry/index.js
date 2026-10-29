@@ -13,7 +13,8 @@ export async function runRecovery(env, fetchImpl = fetch) {
     method: "POST",
     headers: { authorization: `Bearer ${env.WORKFLOW_RETRY_SECRET}` },
     signal: AbortSignal.timeout(120000),
-    redirect: "error",
+    // Workers supports manual redirects; response.ok below rejects any 3xx.
+    redirect: "manual",
   });
   const result = await response.json().catch(() => null);
   if (!response.ok || result?.ok !== true) throw new Error(`Workflow recovery failed (${response.status})`);

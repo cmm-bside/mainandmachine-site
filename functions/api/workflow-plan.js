@@ -1,10 +1,9 @@
 // Independent website intake; fulfillment is manual. No Foundry calls or state.
-// Uses the existing RESEND_API_KEY, MAIL_FROM and LEAD_NOTIFY_TO bindings.
-// Optional RATE_LIMIT KV is best-effort abuse protection, not durable lead storage.
-import { WORKFLOW_TYPES, buildWorkflowPlanEmails, workflowPlanDeadline } from "../../emails/workflow-plan.js";
+// WORKFLOW_INTAKE D1 stores an intake before notifications are attempted.
+// RATE_LIMIT KV remains best-effort abuse protection, separate from intake data.
+import { WORKFLOW_TYPES } from "../../emails/workflow-plan.js";
+import { findIntake, saveIntake, dispatchIntake, intakeReceipt, logIssue } from "../_lib/workflow-intake.js";
 
-const DEFAULT_FROM = "Main & Machine <hello@mainandmachine.com>";
-const DEFAULT_NOTIFY = "cmyers@mainandmachine.com";
 const MAX_BODY_BYTES = 32 * 1024;
 const MIN_FILL_MS = 3000;
 const RETRY_WINDOW_MS = 23 * 60 * 60 * 1000; // Below Resend's 24-hour dedupe retention.
@@ -14,7 +13,7 @@ const EMAIL = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:
 const FIELD_RULES = {
   workflow: [20, 4000, true], tools: [0, 600, true], frequency: [0, 160, false],
   name: [2, 120, false], email: [1, 254, false], company: [2, 160, false],
-  website: [0, 300, false], companyUrl: [0, 300, false],
+  website: [0, 300, false],
 };
 
 function json(body, status = 200, headers = {}) {
@@ -23,6 +22,7 @@ function json(body, status = 200, headers = {}) {
     headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", "x-content-type-options": "nosniff", ...headers },
   });
 }
+
 
 function validation(body, now) {
   const errors = {};
@@ -102,7 +102,7 @@ async function readBody(request) {
   }
 }
 
-async function rateAllowed(request, env) {
+async function rateAllowed(request, env, requestId) {
   if (!env.RATE_LIMIT) return true;
   const ip = request.headers.get("CF-Connecting-IP");
   if (!ip) return true;
@@ -116,83 +116,60 @@ async function rateAllowed(request, env) {
     await env.RATE_LIMIT.put(key, String(count + 1), { expirationTtl: 3600 });
   } catch {
     // KV isn't transactional; this mitigates abuse but is not an exact quota.
-    console.error("[workflow-plan] optional rate limit unavailable");
+    logIssue(requestId, "rate_limit_unavailable");
   }
   return true;
 }
 
-async function sendBatch(apiKey, requestId, batch) {
-  const payload = JSON.stringify(batch);
-  // Bounded automatic retries cover timeouts, provider throttling and transient
-  // 5xx/concurrency errors. Every attempt uses identical bytes and the same key.
-  for (let attempt = 0; attempt < 2; attempt += 1) {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 8000);
-    let retryable = true;
-    let result = { ok: false, retryable: true, code: "email_unavailable", retryAfter: 5 };
-    let pauseMs = 500;
-    try {
-      const response = await fetch("https://api.resend.com/emails/batch", {
-        method: "POST", signal: controller.signal,
-        headers: { authorization: `Bearer ${apiKey}`, "content-type": "application/json", "x-batch-validation": "strict", "Idempotency-Key": `website-workflow-plan/${requestId}` },
-        body: payload,
-      });
-      const value = await response.json().catch(() => null);
-      const completeBatch = Array.isArray(value?.data) && value.data.length === 2
-        && value.data.every((email) => typeof email?.id === "string" && email.id.trim().length > 0)
-        && new Set(value.data.map((email) => email.id)).size === 2;
-      const noErrors = !value?.error && (!value?.errors || (Array.isArray(value.errors) && value.errors.length === 0));
-      if (response.ok && completeBatch && noErrors) return { ok: true };
-      if (response.status === 409 && value?.name === "invalid_idempotent_request") return { ok: false, retryable: false, code: "request_conflict" };
-      retryable = response.ok || response.status === 408 || response.status === 429 || response.status >= 500 || (response.status === 409 && value?.name === "concurrent_idempotent_requests");
-      const retryHeader = response.headers.get("retry-after");
-      const retrySeconds = /^\d+$/.test(retryHeader || "") ? Number(retryHeader) : Math.ceil((Date.parse(retryHeader) - Date.now()) / 1000);
-      const retryAfter = Number.isFinite(retrySeconds) && retrySeconds > 0 ? Math.min(retrySeconds, 3600) : 5;
-      result = { ok: false, retryable, code: "email_unavailable", retryAfter };
-      if (retrySeconds > 0) pauseMs = retrySeconds * 1000;
-      // Log status only. Provider error messages may echo submitted addresses.
-      console.error(`[workflow-plan] email provider status ${response.status}`);
-    } catch {
-      console.error("[workflow-plan] email provider request interrupted");
-    } finally {
-      clearTimeout(timer);
-    }
-    if (!retryable || attempt === 1 || pauseMs > 2000) return result;
-    await new Promise((resolve) => setTimeout(resolve, pauseMs));
-  }
-}
 
 async function handlePost({ request, env }) {
   // A JSON POST from the same-origin form sends Origin. Do not allow other
   // origins or emit Access-Control-Allow-Origin, including on errors.
-  if (request.headers.get("origin") !== new URL(request.url).origin || ["cross-site", "same-site"].includes(request.headers.get("sec-fetch-site"))) {
-    return json({ ok: false, error: "Please submit this form from our website." }, 403);
+  const requestOrigin = new URL(request.url).origin;
+  const productionOrigins = ["https://mainandmachine.com", "https://www.mainandmachine.com"];
+  const allowedOrigins = productionOrigins.includes(requestOrigin) ? productionOrigins : [requestOrigin];
+  if (!allowedOrigins.includes(request.headers.get("origin")) || request.headers.get("sec-fetch-site") === "cross-site") {
+    logIssue(null, "origin_rejected");
+    return json({ ok: false, code: "origin_rejected", error: "Please submit this form from our website." }, 403);
   }
   if (!/^application\/json(?:\s*;|\s*$)/i.test(request.headers.get("content-type") || "")) return json({ ok: false, error: "Send this request as JSON." }, 415);
   const parsed = await readBody(request);
   if (parsed.status) return json({ ok: false, error: parsed.status === 413 ? "This request is too large." : "Invalid request." }, parsed.status);
   const { data, errors, ok } = validation(parsed.body, Date.now());
-  if (!ok) return json({ ok: false, error: "Please check the highlighted fields.", errors }, 422);
-  if (data.companyUrl) {
-    // Keep the trap opaque but do not return a false acceptance receipt.
-    return json({ ok: false, error: "We couldn’t accept that request. Please email us directly." }, 422);
+  if (!ok) {
+    logIssue(data.requestId, "validation_rejected");
+    return json({ ok: false, error: "Please check the highlighted fields.", errors }, 422);
   }
-  if (Math.max(Date.parse(data.submittedAt), Date.now()) - data.startedAt < MIN_FILL_MS) return json({ ok: false, retryable: true, error: "Take a moment to check the workflow, then try again." }, 429, { "retry-after": "3" });
-  if (!await rateAllowed(request, env)) return json({ ok: false, retryable: true, error: "Too many attempts. Please wait an hour or email us directly." }, 429, { "retry-after": "3600" });
-  const notifyTo = (env.LEAD_NOTIFY_TO || DEFAULT_NOTIFY).split(",").map((email) => email.trim()).filter(Boolean);
-  const from = env.MAIL_FROM || DEFAULT_FROM;
-  if (!env.RESEND_API_KEY || !notifyTo.length || notifyTo.length > 50 || notifyTo.some((email) => !EMAIL.test(email)) || /[\r\n]/.test(from)) {
-    console.error("[workflow-plan] mail configuration unavailable");
-    return json({ ok: false, retryable: false, error: "We couldn’t accept your request just now. Please email cmyers@mainandmachine.com." }, 503);
+  // The retired companyUrl honeypot could be populated by legitimate browser
+  // autofill. Ignore it in legacy payloads; schema, origin, timing and rate checks remain.
+  if (Math.max(Date.parse(data.submittedAt), Date.now()) - data.startedAt < MIN_FILL_MS) {
+    logIssue(data.requestId, "fill_time_rejected");
+    return json({ ok: false, retryable: true, error: "Take a moment to check the workflow, then try again." }, 429, { "retry-after": "3" });
   }
-  const result = await sendBatch(env.RESEND_API_KEY, data.requestId, buildWorkflowPlanEmails(data, { from, notifyTo }));
-  if (!result.ok) {
-    if (result.code === "request_conflict") return json({ ok: false, retryable: false, code: result.code, error: "This request ID was already used with different details. Email us with your request ID so we can check it." }, 409);
-    return json({ ok: false, retryable: result.retryable, error: "We couldn’t confirm your request. Retry the same request or email cmyers@mainandmachine.com with your request ID." }, 502, result.retryable ? { "retry-after": String(result.retryAfter || 5) } : {});
+  try {
+    // Existing references are checked before the new-request quota so uncertain
+    // network retries do not consume the visitor's ability to recover a receipt.
+    const previous = await findIntake(env, data.requestId);
+    if (!previous && !await rateAllowed(request, env, data.requestId)) {
+      logIssue(data.requestId, "rate_limit_rejected");
+      return json({ ok: false, retryable: true, error: "Too many attempts. Please wait an hour or email us directly." }, 429, { "retry-after": "3600" });
+    }
+    const saved = await saveIntake(env, data);
+    if (saved.conflict) {
+      logIssue(data.requestId, "request_conflict");
+      return json({ ok: false, retryable: false, code: "request_conflict", error: "This request ID was already used with different details. Email us with your request ID so we can check it." }, 409);
+    }
+    let row = saved.row;
+    try { row = await dispatchIntake(env, data.requestId) || row; }
+    catch { logIssue(data.requestId, "notification_processing_failed"); }
+    // Saved intake and email acceptance are deliberately separate. A provider
+    // outage cannot erase a request or ask a visitor to create a duplicate.
+    return json(intakeReceipt(row));
+  } catch {
+    logIssue(data.requestId, "intake_storage_unavailable");
+    return json({ ok: false, accepted: false, code: "intake_storage_unavailable", retryable: true,
+      error: "We couldn’t save your request yet. Retry the same request; your details are still in this tab." }, 503, { "retry-after": "5" });
   }
-  // Provider acceptance is not proof of inbox delivery or completed fulfillment.
-  // Do not log names, email addresses, workflow text or provider response bodies.
-  return json({ ok: true, requestId: data.requestId, deadlineAt: workflowPlanDeadline(data.submittedAt), emailStatus: "queued" });
 }
 
 export function onRequest(context) {

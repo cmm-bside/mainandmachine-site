@@ -219,9 +219,9 @@
 
     <div class="legal__spec" aria-label="Document details">
       <div><span class="k">Document</span><span class="v">Privacy Policy</span></div>
-      <div><span class="k">Version</span><span class="v">1.2</span></div>
-      <div><span class="k">Last updated</span><span class="v">September 4, 2026</span></div>
-      <div><span class="k">Change</span><span class="v">Workflow plan requests and replies</span></div>
+      <div><span class="k">Version</span><span class="v">1.3</span></div>
+      <div><span class="k">Last updated</span><span class="v">October 28, 2026</span></div>
+      <div><span class="k">Change</span><span class="v">Saved workflow requests and email recovery</span></div>
     </div>
 
     <h2 class="h4">The short version</h2>
@@ -232,7 +232,7 @@
 
     <h3>When you request a workflow plan</h3>
     <p>The form at <a href="/plan/">/plan/</a> collects the contact, business, and workflow information you choose to submit. We use it to assess that workflow, prepare a preliminary recommendation reviewed by Christopher Myers, and reply to your request. Please do not include patient records, borrower files, account credentials, or other sensitive records.</p>
-    <p>Cloudflare processes the website request and Resend carries the submission to our team and sends the transactional confirmation. Our team uses your contact details to deliver the recommendation and handle questions or clarification about that request. Requesting a workflow plan does not subscribe you to marketing emails, and no call or purchase is required.</p>
+    <p>We save your request in a private Cloudflare database before sending email, so we can recover it if delivery is interrupted. This recovery copy includes your submitted details, reference number, and notification status and is retained for up to 90 days. Resend carries the submission to our team and sends the transactional confirmation; delayed notifications are retried automatically. Our team uses your contact details to deliver the recommendation and handle questions or clarification about that request. Requesting a workflow plan does not subscribe you to marketing emails, and no call or purchase is required.</p>
 
     <h3>When you book a free assessment</h3>
     <p>The form at <a data-cta="legal" href="/book/">/book/</a> asks for your name, work email, company, preferred contact method, and optional phone and workflow details. If you book in the embedded calendar, Calendly also processes the details needed to schedule your meeting. You can add context to help the advisor prepare.</p>
@@ -273,6 +273,7 @@
     <h2 class="h4">How long we keep it</h2>
     <ul>
       <li><strong>Workflow plan, assessment, and contact requests:</strong> for as long as we have an active or prospective relationship with you, then as long as tax and business records require. Ask and we delete sooner.</li>
+      <li><strong>Workflow request recovery copies:</strong> up to 90 days in our private Cloudflare database, including the notification copy and delivery status; deleted sooner on request.</li>
       <li><strong>Score submissions:</strong> for as long as the Score runs, so your report link keeps working. Deleted on request.</li>
       <li><strong>Job applications and r&eacute;sum&eacute;s:</strong> up to one year after the search closes, in case a fit opens later. Deleted sooner on request. If we hire you, your application becomes part of your employment records.</li>
       <li><strong>Former subscriber records:</strong> retained as contact and preference records; deleted on request.</li>
@@ -282,7 +283,7 @@
     <h2 class="h4">Service providers</h2>
     <p>A small, named set of companies helps us run things. Each one processes your data only to provide its service to us, under its own terms and privacy policy.</p>
     <ul>
-      <li><strong>Cloudflare</strong> &mdash; hosts and serves this site. Handles server logs, form traffic in transit, and spam rate-limiting.</li>
+      <li><strong>Cloudflare</strong> &mdash; hosts and serves this site. Handles server logs, form traffic, spam rate-limiting, and private workflow-request recovery storage.</li>
       <li><strong>Vercel</strong> &mdash; hosts the AI-Ready Score application and its database. Holds Score answers, emails, and reports.</li>
       <li><strong>Resend</strong> &mdash; sends our transactional email. Carries workflow requests, transactional replies, form submissions, confirmations, and Score reports in transit, and stores former subscriber contact records and preferences.</li>
       <li><strong>Formspree</strong> &mdash; relays careers applications, including r&eacute;sum&eacute;s, to our inbox.</li>

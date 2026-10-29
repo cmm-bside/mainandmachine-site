@@ -374,8 +374,7 @@ test('blocked analytics/storage do not break links; preview hosts never load the
 test('task validation, start, contact-step completion, Back and autofill are bounded and preserve values', async () => {
   const h = harness();
   h.load();
-  await h.input('companyUrl');
-  assert.deepEqual(h.events, [], 'The trap is not a form start');
+  assert.equal(h.document.getElementById('companyUrl'), null, 'There is no autofill-prone trap');
   await h.next();
   assert.equal(h.el('plan-step-2').hidden, true);
   assert.equal(h.document.activeElement, h.el('workflow'));
@@ -467,7 +466,7 @@ test('unconfirmed send preserves exact bytes for a retry, without an early succe
 });
 
 test('restoring a pending request does not invent a new start or task completion and preserves legacy fields', async () => {
-  const pending = pendingPayload({ frequency: 'PRIVATE_LEGACY_FIELD', website: 'https://example.com/' });
+  const pending = pendingPayload({ frequency: 'PRIVATE_LEGACY_FIELD', website: 'https://example.com/', companyUrl: 'https://autofilled.example/' });
   const h = harness({ stored: { [PENDING]: pending } });
   h.load();
   assert.equal(h.el('plan-step-1').hidden, true);
@@ -519,6 +518,11 @@ test('malformed, mismatched or incomplete success responses cannot emit a receip
     () => receiptResponse({ requestId: OTHER_ID }),
     () => receiptResponse({ deadlineAt: 'invalid' }),
     () => receiptResponse({ emailStatus: 'delivered' }),
+    () => receiptResponse({ emailStatus: 'pending' }),
+    () => receiptResponse({ emailStatus: 'pending', accepted: true }),
+    () => receiptResponse({ emailStatus: 'pending', storageStatus: 'saved' }),
+    () => receiptResponse({ emailStatus: 'pending', accepted: true, storageStatus: 'failed' }),
+    () => receiptResponse({ emailStatus: 'queued', accepted: false, storageStatus: 'saved' }),
     () => receiptResponse({ ok: 'true' }),
     () => receiptResponse({}, 502),
   ];
@@ -531,6 +535,30 @@ test('malformed, mismatched or incomplete success responses cannot emit a receip
     assert.deepEqual(h.uet, []);
     privateAnalyticsCheck(h);
   }
+});
+
+test('storage failure preserves the same retry and never claims server acceptance', async () => {
+  const h = harness({ provider: () => receiptResponse({ ok: false, accepted: false, code: 'intake_storage_unavailable', retryable: true }, 503) });
+  h.load(); h.fill(); await h.next(); await h.submit();
+  assert.match(h.el('plan-status').textContent, /couldn’t save your request yet/);
+  assert.equal(h.saved(RECEIPT), null);
+  assert.equal(h.saved(PENDING).requestId, ID);
+  assert.deepEqual(h.uet, []);
+  h.setProvider(() => receiptResponse({ accepted: true, storageStatus: 'saved', emailStatus: 'pending' }, 202));
+  await h.submit();
+  assert.equal(h.requests[0].body, h.requests[1].body);
+  assert.equal(h.names().filter((name) => name === 'workflow_plan_submitted').length, 1);
+  privateAnalyticsCheck(h);
+});
+
+test('origin rejection never suggests reloading away the only copy when browser storage is blocked', async () => {
+  const h = harness({ storageBlocked: true, provider: () => receiptResponse({ ok: false, code: 'origin_rejected' }, 403) });
+  h.load(); h.fill(); await h.next(); await h.submit();
+  assert.match(h.el('plan-status').textContent, /Keep this page open/);
+  assert.doesNotMatch(h.el('plan-status').textContent, /Reload|saved in this tab/);
+  for (const [id, value] of Object.entries(privateFields)) assert.equal(h.el(id).value, value);
+  assert.deepEqual(h.uet, []);
+  privateAnalyticsCheck(h);
 });
 
 test('Retry-After blocks early attempts and a timed-out send remains a retry, not a failed-delivery claim', async () => {
@@ -568,6 +596,21 @@ test('a pending request that expires in an open tab cannot reach the API or an a
   privateAnalyticsCheck(h);
 });
 
+test('reopening an expired pending request preserves its details and reference for recovery', async () => {
+  const pending = pendingPayload({ submittedAt: new Date(NOW - 24 * 3600000).toISOString() });
+  const h = harness({ stored: { [PENDING]: pending } });
+  h.load();
+  assert.deepEqual(h.saved(PENDING), pending);
+  for (const [id, value] of Object.entries(privateFields)) assert.equal(h.el(id).value, value);
+  assert.equal(h.el('plan-submit').disabled, true);
+  assert.equal(h.el('plan-error-contact').hidden, false);
+  assert.match(h.el('plan-status').textContent, new RegExp(ID));
+  await h.submit();
+  assert.equal(h.requests.length, 0);
+  assert.deepEqual(h.events, []);
+  privateAnalyticsCheck(h);
+});
+
 test('blocked storage, navigation or analytics never turn a confirmed request into an error or a duplicate', async () => {
   for (const options of [
     { storageBlocked: true }, { navigateBlocked: true },
@@ -583,6 +626,51 @@ test('blocked storage, navigation or analytics never turn a confirmed request in
       assert.equal(h.el('plan-submit').textContent, 'Request received');
     } else assert.deepEqual(h.navigation, ['/plan/thanks/']);
     privateAnalyticsCheck(h);
+  }
+});
+
+test('a durable receipt confirms a pending email once without losing the reference or creating another send', async () => {
+  const h = harness({ provider: () => receiptResponse({ accepted: true, storageStatus: 'saved', emailStatus: 'pending' }, 202) });
+  h.load(); h.fill(); await h.next(); await h.submit(); await h.submit();
+  assert.equal(h.requests.length, 1);
+  assert.equal('companyUrl' in h.requests[0].payload, false, 'New payloads omit the retired hidden field');
+  assert.equal(h.saved(PENDING), null);
+  assert.deepEqual(h.saved(RECEIPT), { requestId: ID, deadlineAt: new Date(NOW + 86400000).toISOString(), emailStatus: 'pending' });
+  assert.deepEqual(h.navigation, ['/plan/thanks/']);
+  assert.equal(h.names().filter((name) => name === 'workflow_plan_submitted').length, 1);
+  assert.equal(h.uet.length, 3);
+  privateAnalyticsCheck(h);
+});
+
+test('a saved request with delayed email stays confirmed when browser storage or navigation is blocked', async () => {
+  for (const options of [{ storageBlocked: true }, { navigateBlocked: true }]) {
+    const h = harness({ ...options, provider: () => receiptResponse({ accepted: true, storageStatus: 'saved', emailStatus: 'pending' }, 202) });
+    h.load(); h.fill(); await h.next(); await h.submit(); await h.submit();
+    assert.equal(h.requests.length, 1);
+    assert.match(h.el('plan-status').textContent, /Your request is confirmed/);
+    assert.match(h.el('plan-status').textContent, /acknowledgment email is delayed/);
+    assert.doesNotMatch(h.el('plan-status').textContent, /email.*queued|couldn’t confirm/);
+    assert.equal(h.el('plan-submit').textContent, 'Request received');
+    assert.ok(!h.names().includes('workflow_plan_submit_issue'));
+    privateAnalyticsCheck(h);
+  }
+});
+
+test('confirmation page distinguishes delayed emails from queued and legacy receipts without another conversion', () => {
+  for (const emailStatus of ['pending', 'queued', undefined]) {
+    const receipt = { requestId: ID, deadlineAt: new Date(NOW + 86400000).toISOString(), ...(emailStatus ? { emailStatus } : {}) };
+    const h = harness({ page: 'thanks', path: '/plan/thanks/', stored: { [RECEIPT]: receipt } });
+    h.load(); h.load();
+    assert.equal(h.el('plan-receipt').hidden, false);
+    assert.equal(h.el('plan-status-title').textContent, 'Your request is received.');
+    assert.equal(h.el('plan-reference').textContent, ID);
+    if (emailStatus === 'pending') {
+      assert.match(h.el('plan-email-status').textContent, /saved.*email is delayed/);
+      assert.doesNotMatch(h.el('plan-email-status').textContent, /queued/);
+    } else assert.match(h.el('plan-email-status').textContent, /queued/);
+    assert.deepEqual(h.events, []);
+    assert.deepEqual(h.uet, []);
+    assert.equal(h.requests.length, 0);
   }
 });
 
@@ -612,6 +700,7 @@ test('production form retains native task/details controls, error hooks, private
   assert.equal(h.el('plan-submit').getAttribute('type'), 'submit');
   assert.equal(h.el('plan-step-2').hidden, true);
   assert.equal(h.el('plan-status').getAttribute('aria-live'), 'polite');
-  assert.equal(h.el('companyUrl').getAttribute('tabindex'), '-1');
+  assert.equal(h.document.getElementById('companyUrl'), null);
+  assert.doesNotMatch(intakeHtml, /name="companyUrl"|class="plan-trap"/);
   assert.match(intakeHtml, /No marketing signup/);
 });

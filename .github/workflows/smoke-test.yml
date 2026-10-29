@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       # On push, give Cloudflare Pages time to build and deploy, then retry
       # until the new commit's content is live (or time out loudly).

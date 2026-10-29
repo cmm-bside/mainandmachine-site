@@ -272,7 +272,6 @@
   <noscript><p class="plan-notice">This form needs JavaScript to send. Email your task to <a href="mailto:cmyers@mainandmachine.com">cmyers@mainandmachine.com</a> for the same free plan.</p></noscript>
   <form id="workflowPlanForm" action="/api/workflow-plan" method="post" novalidate>
    <ol class="plan-progress" aria-label="Request steps"><li id="plan-progress-1" aria-current="step"><span>1</span>Your task</li><li id="plan-progress-2"><span>2</span>Your details</li></ol>
-   <div class="plan-trap" aria-hidden="true"><label for="companyUrl">Leave this field empty</label><input id="companyUrl" name="companyUrl" type="text" tabindex="-1" autocomplete="off"/></div>
    <div id="plan-step-1">
     <h2 id="plan-step-title-1" class="plan-visually-hidden" tabindex="-1">Your task</h2>
     <div class="plan-field"><label for="workflow">What happens, where does it get stuck, and what does it hold up?</label><textarea id="workflow" name="workflow" rows="4" required minlength="20" maxlength="4000" aria-describedby="workflow-hint workflow-error"></textarea><p class="plan-hint" id="workflow-hint">Example: “Our office manager opens supplier invoices, checks the records, and copies the details into accounting every week. Missing information holds up approval.”</p><p class="plan-error" id="workflow-error" hidden></p></div>
@@ -310,6 +309,6 @@
 
 <script defer src="/js/nav.js?v=11"></script>
 <script defer src="/js/analytics.js?v=11"></script>
-<script defer src="/js/workflow-plan.js?v=3"></script>
+<script defer src="/js/workflow-plan.js?v=4"></script>
 </body>
 </html>

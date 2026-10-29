@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "mainandmachine-workflow-retry",
+  "main": "index.js",
+  "account_id": "56c1dfe83392e6e5c9b1b3cc7395376d",
+  "compatibility_date": "2026-10-28",
+  "workers_dev": false,
+  "preview_urls": false,
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "observability": { "enabled": true }
+}

@@ -1,6 +1,6 @@
 /* Public website intake. Independent of the internal Foundry application.
- * Contact/workflow details stay out of URLs and analytics. A submitted payload
- * lives only in this tab's session storage while an uncertain send is retried.
+ * Contact/workflow details stay out of URLs and analytics. This tab keeps a
+ * retry copy until the server confirms that the request has been accepted.
  */
 (function () {
   'use strict';
@@ -13,14 +13,19 @@
   function remove(key) { try { sessionStorage.removeItem(key); } catch (_) {} }
   function track(name, props) { try { if (typeof window.plausible === 'function') window.plausible(name, { props: props || {page: location.pathname} }); } catch (_) { /* analytics must never change submission state */ } }
   function issue(reason) { track('workflow_plan_submit_issue', {page: location.pathname, reason: reason}); }
+  function emailNotice(emailStatus) {
+    return emailStatus === 'pending' ? 'Your request is saved. The acknowledgment email is delayed; you do not need to submit again.' : 'We’ve queued an acknowledgment email with your request summary.';
+  }
   var receipt = read(RECEIPT);
   if (document.getElementById('plan-receipt')) {
     if (receipt && UUID.test(receipt.requestId || '') && Number.isFinite(Date.parse(receipt.deadlineAt))) {
-      document.getElementById('plan-status-title').textContent = 'Your next step is on its way.';
+      document.getElementById('plan-status-title').textContent = 'Your request is received.';
       document.getElementById('plan-receipt').hidden = false;
       document.getElementById('plan-no-receipt').hidden = true;
       document.getElementById('plan-deadline').textContent = new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short' }).format(new Date(receipt.deadlineAt));
       document.getElementById('plan-reference').textContent = receipt.requestId;
+      var emailStatus = document.getElementById('plan-email-status');
+      if (emailStatus) emailStatus.textContent = emailNotice(receipt.emailStatus);
     }
     return;
   }
@@ -92,7 +97,10 @@
   var pending = read(PENDING);
   if (pending && UUID.test(pending.requestId || '') && Date.now() - Date.parse(pending.submittedAt) < 23 * 3600000) restore(pending);
   else if (pending) {
-    remove(PENDING); notice('An earlier request is too old to retry safely. Check your acknowledgment email before submitting again, or contact us with your request reference: ' + String(pending.requestId || '').slice(0, 36), false); contact.hidden = false;
+    // Preserve the only browser copy after the automatic-retry window closes.
+    // A prior attempt may already have been accepted, so do not invent a new ID.
+    restore(pending); submit.disabled = true; submit.textContent = 'Please contact us';
+    notice('An earlier request can no longer be retried automatically. Your details are preserved in the form. Check your acknowledgment email or contact us with reference ' + String(pending.requestId || '').slice(0, 36) + ' so we can recover its status.', false); contact.hidden = false;
   }
   form.addEventListener('input', function (event) {
     if (fields.includes(event.target.id)) begin();
@@ -114,7 +122,7 @@
     if (!frozen && showErrors(errorsFor('all'))) { issue('validation'); return; }
     var attempt = frozen ? 'retry' : 'initial';
     if (!frozen) {
-      var payload = { requestId: crypto.randomUUID(), submittedAt: new Date().toISOString(), startedAt: startedAt, workflowType: 'other', frequency: '', website: '', companyUrl: value('companyUrl') };
+      var payload = { requestId: crypto.randomUUID(), submittedAt: new Date().toISOString(), startedAt: startedAt, workflowType: 'other', frequency: '', website: '' };
       fields.forEach(function (id) { payload[id] = value(id); });
       frozen = Object.freeze(payload); save(PENDING, frozen);
     }
@@ -126,13 +134,18 @@
     contact.hidden = true; notice('Sending your request. Please keep this page open.', false);
     var controller = new AbortController();
     var timeout = setTimeout(function () { controller.abort(); }, 20000);
+    var retryMessage = 'We couldn’t confirm the send. Your original request is still here. Retry the same request; you won’t need to re-enter your details.';
     try {
       track('workflow_plan_submit_attempt', {page: location.pathname, attempt: attempt});
       var response = await fetch('/api/workflow-plan', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(frozen), signal:controller.signal});
       var data; try { data = await response.json(); } catch (_) { throw new Error('unconfirmed'); }
-      if (response.ok && data.ok === true && data.requestId === frozen.requestId && Number.isFinite(Date.parse(data.deadlineAt)) && data.emailStatus === 'queued') {
+      // A saved intake is confirmed even when its email is waiting for retry.
+      // Keep old queued receipts compatible during deployment/cache turnover.
+      var savedReceipt = data && data.accepted === true && data.storageStatus === 'saved' && ['queued', 'pending'].includes(data.emailStatus);
+      var legacyReceipt = data && data.accepted === undefined && data.storageStatus === undefined && data.emailStatus === 'queued';
+      if (response.ok && data && data.ok === true && data.requestId === frozen.requestId && Number.isFinite(Date.parse(data.deadlineAt)) && (savedReceipt || legacyReceipt)) {
         completed = true;
-        var confirmed = {requestId:data.requestId,deadlineAt:data.deadlineAt};
+        var confirmed = {requestId:data.requestId,deadlineAt:data.deadlineAt,emailStatus:data.emailStatus};
         save(RECEIPT, confirmed);
         save(CONTEXT, {workflow:frozen.workflow,tools:frozen.tools,requestId:frozen.requestId,at:Date.now()});
         remove(PENDING);
@@ -143,7 +156,7 @@
         }
         // Storage or navigation restrictions never turn an accepted receipt
         // into an uncertain-send message, or permit a second conversion.
-        notice('Your request is confirmed. Your plan is due within 24 hours. Reference: ' + data.requestId + '. An acknowledgment email has been queued. You can book an optional call using the link above.', true);
+        notice('Your request is confirmed. Your plan is due within 24 hours. Reference: ' + data.requestId + '. ' + emailNotice(data.emailStatus) + ' You can book an optional call using the link above.', true);
         submit.textContent = 'Request received'; return;
       }
       if (response.status === 422 && data.errors && typeof data.errors === 'object' && !Array.isArray(data.errors) && Object.keys(data.errors).length) {
@@ -164,15 +177,20 @@
       }
       if (data.retryable === false || [403,409,413,415,422].includes(response.status)) {
         issue('rejected');
-        notice('We couldn’t confirm this request. Please contact us with reference ' + frozen.requestId + '. Your details are still here; don’t send a new request until we’ve checked it.', true);
+        var savedForReload = read(PENDING)?.requestId === frozen.requestId;
+        var explanation = response.status === 403 ? (savedForReload ? 'This browser could not verify the submission. Reload this page and retry the saved request, or contact us' : 'This browser could not verify the submission. Keep this page open and contact us') :
+          response.status === 409 ? 'This reference is already associated with different details. Please contact us' :
+          'We couldn’t confirm this request. Please contact us';
+        notice(explanation + ' with reference ' + frozen.requestId + '. Your details are still in the form.', true);
         contact.hidden = false; submit.textContent = 'Please contact us'; submit.disabled = true; return;
       }
+      if (data.code === 'intake_storage_unavailable') retryMessage = 'We couldn’t save your request yet. Keep this page open and retry the same request; your details are still in the form.';
       var seconds = Number(response.headers.get('Retry-After')) || 0;
       retryAt = Date.now() + Math.min(Math.max(seconds, 0), 3600) * 1000;
       throw new Error('unconfirmed');
     } catch (_) {
       issue('unconfirmed');
-      notice('We couldn’t confirm the send. Your original request is saved in this tab. Retry the same request; you won’t need to re-enter your details.', true);
+      notice(retryMessage, true);
       contact.hidden = false;
       function retryButton() {
         var remaining = Math.ceil((retryAt - Date.now()) / 1000);

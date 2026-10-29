@@ -212,8 +212,8 @@ export async function retryPendingIntakes(env, { limit = 10 } = {}) {
   const boundedLimit = Math.min(Math.max(Number.isInteger(limit) ? limit : 10, 1), 25);
   await db.prepare("DELETE FROM workflow_intakes WHERE expires_at <= ?").bind(now).run();
   // One shared bounded send budget, with half reserved for operator alerts.
-  // An email failure is visible within 30 minutes instead of waiting until the
-  // customer's 24-hour fulfillment deadline is almost over.
+  // Escalate persistent email failures after 30 minutes rather than waiting
+  // until the customer's 24-hour fulfillment deadline is almost over.
   const review = await db.prepare(`SELECT request_id FROM workflow_intakes
     WHERE email_status IN ('pending', 'needs_review') AND review_status = 'pending'
       AND (email_status = 'needs_review' OR created_at <= ?) AND review_next_attempt_at <= ?

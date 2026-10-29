@@ -551,7 +551,7 @@ test("scheduled cleanup removes private intake details after the stated retentio
   } finally { Date.now = originalNow; }
 });
 
-test("persistent pending mail alerts the team within thirty minutes using corrected operator settings", async () => {
+test("persistent pending mail alerts the team after thirty minutes using corrected operator settings", async () => {
   const now = Date.now();
   const data = input();
   provider = () => response({ name: "invalid_api_key" }, 401);

@@ -23,11 +23,20 @@ test("scheduled recovery authenticates only to the production endpoint and retur
   const counts = await runRecovery({ WORKFLOW_RETRY_SECRET: secret }, async (url, options) => {
     assert.equal(url, "https://www.mainandmachine.com/api/internal/workflow-plan-retry");
     assert.equal(options.headers.authorization, `Bearer ${secret}`);
-    assert.equal(options.redirect, "error");
+    assert.equal(options.redirect, "manual");
     return Response.json({ ok: true, attempted: 1, queued: 1, pending: 0, needs_review: 0, privateData: "never logged" });
   });
   assert.deepEqual(counts, { attempted: 1, pending: 0, queued: 1, needs_review: 0 });
 });
 test("failed recovery is reported as an error without returning provider response details", async () => {
   await assert.rejects(runRecovery({ WORKFLOW_RETRY_SECRET: secret }, async () => Response.json({ error: secret }, { status: 503 })), /^Error: Workflow recovery failed \(503\)$/);
+});
+test("scheduled recovery rejects redirects without forwarding its secret", async () => {
+  let calls = 0;
+  await assert.rejects(runRecovery({ WORKFLOW_RETRY_SECRET: secret }, async (_url, options) => {
+    calls++;
+    assert.equal(options.redirect, "manual");
+    return new Response(null, { status: 302, headers: { location: "https://example.test" } });
+  }), /^Error: Workflow recovery failed \(302\)$/);
+  assert.equal(calls, 1);
 });

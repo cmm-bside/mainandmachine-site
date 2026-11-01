@@ -92,14 +92,14 @@ surface, and no surface may state the same phrase with a different number.
 - Founder & Chairman: Christopher Myers (also CEO of B:Side Capital + Fund;
   professor of entrepreneurship at ASU W.P. Carey; author)
 - Services + prices: AI Readiness Audit $3,500–$8,500 (2–4 weeks) ·
-  AI Implementation Sprint $18,000–$60,000 fixed quote (4–12 weeks) ·
+  AI Implementation Sprint $12,000–$45,000 fixed quote (4–12 weeks) ·
   Managed Services from $1,500/month, no lock-in (annual = 12 months for
   the price of 10, unused months refunded) ·
   The Full Back Office (MARCUS-class, multi-department) from $95,000,
   four per year
 - Guarantee (delivery, never ROI): if a scoped workflow is not live in the
   client's operation within 90 days, we keep building at no charge until it
-  is. The retired sprint band $12,000–$45,000 is a FORBIDDEN token
+  is. The retired sprint band $18,000–$60,000 is a FORBIDDEN token
   (check-facts fails on it).
 - Rollover: 100% of the audit fee credits toward a sprint signed within
   60 days, up to 25% of the sprint price

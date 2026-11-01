@@ -73,7 +73,7 @@
     var manual = emp * r.manual;
     var revenue = emp * r.revenue;
     var total = manual + revenue;                 /* modeled annual drag */
-    var defaultImplementation = Math.min(60000, Math.max(18000, 720 * emp));
+    var defaultImplementation = Math.min(45000, Math.max(12000, 720 * emp));
     var implementation = numberOr(options.implementation, defaultImplementation, 0, 100000000);
     var runCost = Math.round(numberOr(options.monthlyRunCost, runCostYear(emp) / 12, 0, 1000000) * 12);
     var capturePercent = numberOr(options.capturePercent, STRESS_CAPTURE * 100, 0, 100);

@@ -95,9 +95,9 @@ const CONTACT_PAGES = ALL_PAGES.filter((p) => !["404.html"].includes(p)).concat(
 // The short homepage introduces the build band; the pricing page and fact
 // sheet retain the full commercial range. data-fact validation remains global.
 const PRICING_PAGES = {
-  "index.html": ["$18,000", "$60,000"],
-  "pricing/index.html": ["$3,500", "$8,500", "$18,000", "$60,000", "$95,000", "$1,500"],
-  "llms.txt": ["$3,500", "$8,500", "$18,000", "$60,000", "$95,000", "$1,500"],
+  "index.html": ["$12,000", "$45,000"],
+  "pricing/index.html": ["$3,500", "$8,500", "$12,000", "$45,000", "$95,000", "$1,500"],
+  "llms.txt": ["$3,500", "$8,500", "$12,000", "$45,000", "$95,000", "$1,500"],
 };
 
 // Known-bad variants that must never appear anywhere.
@@ -107,7 +107,7 @@ const FORBIDDEN = [
   /480[-.\s]?805[-.\s]?9983/, // retired phone number (replaced 2026-09-02) — canonical is 928-363-6639
   /Denvor|Pheonix/, // spelling drift
   /Featured in/, // press credit is always attributed to the founder
-  /\$12,000–\$45,000/, // retired sprint band (pre-2026-07 repricing) — canonical is $18,000–$60,000
+  /\$18,000–\$60,000/, // retired sprint band — canonical is $12,000–$45,000
 ];
 
 for (const page of CONTACT_PAGES) {

@@ -25,7 +25,7 @@
 //   4. NEAR-MISS ranges, everywhere — a range pairing a canonical endpoint with
 //      a non-canonical one ("$18,000–$45,000"). That is the half-updated-price
 //      failure mode, and it is what a repricing actually leaves behind.
-//   5. RETIRED tokens, everywhere — the $12,000–$45,000 band.
+//   5. RETIRED tokens, everywhere — the $18,000–$60,000 band.
 //
 // Prose prices outside those contexts are counted and REPORTED, never failed,
 // so the scope is visible rather than silent.
@@ -70,7 +70,7 @@ const PHONE_FORMS = new Set([
 
 // Tokens that must never appear again, with the reason shown on failure.
 const RETIRED = [
-	{ pattern: /\$12,000\s*[–—-]\s*\$45,000/g, why: "retired sprint band (pre-2026-07 repricing) — canonical is " + svc("sprint").price },
+	{ pattern: /\$18,000\s*[–—-]\s*\$60,000/g, why: "retired sprint band (replaced 2026-11-01) — canonical is " + svc("sprint").price },
 ];
 
 // --- patterns ---------------------------------------------------------------

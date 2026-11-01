@@ -10,9 +10,9 @@ import { claimText } from "../../src/data/approved-claims.mjs";
 
 // Shared answer fragments — keep prices/locations consistent everywhere.
 const COST =
-	`The AI Readiness Audit runs $3,500–$8,500. ${COMPANY.rollover} An AI Implementation Sprint runs $18,000–$60,000, quoted as a fixed price in writing before any work begins — and if a scoped workflow is not live within 90 days, we keep building at no charge until it is. Managed Services runs from $1,500 a month with no lock-in.`;
+	`The AI Readiness Audit runs $3,500–$8,500. ${COMPANY.rollover} An AI Implementation Sprint runs $12,000–$45,000, quoted as a fixed price in writing before any work begins — and if a scoped workflow is not live within 90 days, we keep building at no charge until it is. Managed Services runs from $1,500 a month with no lock-in.`;
 const COST_SHORT =
-	"The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $18,000–$60,000, quoted fixed in writing before work begins. If a scoped workflow is not live within 90 days, we keep building at no charge until it is.";
+	"The AI Readiness Audit runs $3,500–$8,500; an AI Implementation Sprint runs $12,000–$45,000, quoted fixed in writing before work begins. If a scoped workflow is not live within 90 days, we keep building at no charge until it is.";
 // NOTE: there is deliberately no shared REMOTE / TIMELINE answer any more.
 // One constant reused across six pages produced six byte-identical answers,
 // which is duplicate content in the eyes of both a crawler and a reader. The
@@ -32,7 +32,7 @@ export const FAQ = {
 		items: [
 			{ q: "What is the Field Guide?", a: "Practical guides to the buying questions around AI consulting — what it costs, whether you are ready, hiring versus engaging, and how to vet a firm — written with our real published prices as the spine." },
 			{ q: "How is the Field Guide different from The Ampersand?", a: "The Ampersand is essays on how the machine works and what it means, a few times a month. The Field Guide answers commercial questions with numbers. Read the essays to understand; read the guides to decide." },
-			{ q: "Are the prices in these guides real?", a: "Our audit and implementation prices are published offers: audits $3,500–$8,500 and sprints $18,000–$60,000, with a fixed quote before work begins. Worked examples are labeled assumptions, not competitor quotes or promised outcomes." },
+			{ q: "Are the prices in these guides real?", a: "Our audit and implementation prices are published offers: audits $3,500–$8,500 and sprints $12,000–$45,000, with a fixed quote before work begins. Worked examples are labeled assumptions, not competitor quotes or promised outcomes." },
 		],
 	},
 	"guides/ai-consultant-cost/index.html": {
@@ -40,7 +40,7 @@ export const FAQ = {
 		heading: "What AI consulting costs.",
 		items: [
 			{ q: "How much does an AI consultant cost per hour?", a: "An hourly rate alone does not establish the project cost. Ask for estimated hours, a spending cap, named deliverables, and the assumptions behind the estimate. Main & Machine quotes agreed audits and builds at a fixed price." },
-			{ q: "How much should a small business budget for AI consulting?", a: `Before audit credits and ongoing costs, the audit and build total $21,500–$68,500: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $18,000–$60,000, fixed in writing before work begins. ${COMPANY.rollover}` },
+			{ q: "How much should a small business budget for AI consulting?", a: `Before audit credits and ongoing costs, the audit and build total $15,500–$53,500: an AI Readiness Audit at $3,500–$8,500 plus an Implementation Sprint at $12,000–$45,000, fixed in writing before work begins. ${COMPANY.rollover}` },
 			{ q: "How do I compare proposals?", a: "Compare the same workflow and deliverables, including integration, testing, ownership, training, and ongoing costs. A proposal with a different scope is not a useful price comparison." },
 			{ q: "Is fixed-price better than hourly for AI projects?", a: "For small and mid-size businesses, usually yes. AI work carries unusual scope uncertainty, and hourly billing hands all of it to the buyer. A fixed price forces the seller to scope before selling." },
 		],
@@ -92,7 +92,7 @@ export const FAQ = {
 			{ q: "What is the difference between an AI agent and an automation?", a: "An automation is a fixed rule that runs every time — if X, then Y, deterministic. An agent reads context and drafts judgment-shaped work for a person to approve; it interprets rather than follows a rule." },
 			{ q: "What is an integration?", a: "Two systems finally talking to each other: data moves automatically between them and no judgment is involved. It is usually the cheapest of the three, and sometimes free with a native connector." },
 			{ q: "Do most small businesses need an AI agent?", a: "Usually not. Most businesses that ask for an agent need an automation — cheaper to build, more reliable in production, and finished sooner. Agents earn their cost only where the work genuinely requires reading and judgment." },
-			{ q: "Are AI agents more expensive to build than automations?", a: "Yes. Within our AI Implementation Sprint band of $18,000–$60,000, fixed in writing before work begins, integration-and-automation work sits toward the bottom and agent work toward the top." },
+			{ q: "Are AI agents more expensive to build than automations?", a: "Yes. Within our AI Implementation Sprint band of $12,000–$45,000, fixed in writing before work begins, integration-and-automation work sits toward the bottom and agent work toward the top." },
 		],
 	},
 	"guides/how-long-ai-implementation-takes/index.html": {
@@ -130,7 +130,7 @@ export const FAQ = {
 		heading: "Seats versus systems.",
 		items: [
 			{ q: "Is a ChatGPT subscription enough for a small business?", a: "It may be enough for individual drafting, research, and brainstorming. Test a defined workflow with approved data before buying a custom build. Repeatable work spanning several systems may need integrations, review controls, and monitoring." },
-			{ q: "What does custom AI cost compared to ChatGPT seats?", a: "Compare the provider’s current seat price times users and billing period with the full custom workflow cost. Our Implementation Sprints cost $18,000–$60,000, plus running costs and any optional support; the two options deliver different scope." },
+			{ q: "What does custom AI cost compared to ChatGPT seats?", a: "Compare the provider’s current seat price times users and billing period with the full custom workflow cost. Our Implementation Sprints cost $12,000–$45,000, plus running costs and any optional support; the two options deliver different scope." },
 			{ q: "Why do ChatGPT rollouts fail in small businesses?", a: "Because seats get bought without any workflow being redesigned around them, so adoption fades within weeks and the licenses become shelfware. That outcome is evidence a change was never planned, not evidence AI failed." },
 			{ q: "Should you try ChatGPT before hiring an AI consultant?", a: "A limited trial can reveal whether a subscription solves the workflow. Assign an owner, define approved data, and measure usage and output quality. Low adoption is a reason to investigate the workflow and training before investing further." },
 		],
@@ -151,7 +151,7 @@ export const FAQ = {
 		items: [
 			{ q: "What should an AI project scope include?", a: "One workflow named end-to-end, its current annual cost in hours times loaded rate, acceptance criteria written in operations language, an explicit out-of-scope list, ownership of everything at handoff, the vendor's stated monthly run cost, and a fixed price in writing before work begins." },
 			{ q: "How do vendors inflate AI project scopes?", a: "Four patterns recur: discovery phases that never end, \"phase 1\" pricing that hides unpriced later phases, proprietary-platform lock-in presented as architecture, and change-order pipelines that reprice every ambiguity after you are committed." },
-			{ q: "Should an AI project be priced hourly or fixed?", a: "Fixed, in writing, before work begins — that single clause moves scope risk to the vendor. Our AI Readiness Audits run $3,500–$8,500 and Implementation Sprints $18,000–$60,000 on exactly those terms." },
+			{ q: "Should an AI project be priced hourly or fixed?", a: "Fixed, in writing, before work begins — that single clause moves scope risk to the vendor. Our AI Readiness Audits run $3,500–$8,500 and Implementation Sprints $12,000–$45,000 on exactly those terms." },
 			{ q: "How long should an AI implementation take?", a: "About 90 days per workflow is a fair yardstick. Our Implementation Sprints run 4–12 weeks; a project with no end date is an inflation pattern, not a plan." },
 		],
 	},
@@ -160,7 +160,7 @@ export const FAQ = {
 		heading: "The model, published.",
 		items: [
 			{ q: "How do you calculate AI ROI for a small business?", a: "Apply a capture percentage to the modeled annual opportunity, subtract twelve months of running costs, then subtract the one-time investment for first-year net. The calculator starts with industry assumptions and lets you edit capture and costs. No result is guaranteed." },
-			{ q: "What does AI implementation cost for a 25-person firm?", a: "The default planning estimate is $18,000, using $720 × 25 employees. It is not a quote. Actual Implementation Sprints cost $18,000–$60,000, with scope and price agreed in writing before work begins." },
+			{ q: "What does AI implementation cost for a 25-person firm?", a: "The default planning estimate is $18,000, using $720 × 25 employees. It is not a quote. Actual Implementation Sprints cost $12,000–$45,000, with scope and price agreed in writing before work begins." },
 			{ q: "Is the ROI of AI guaranteed?", a: "No, and anyone guaranteeing it is selling. The math breaks when the workflows are not truly repetitive, when adoption fails, or when the estimate counts work you would never have staffed anyway." },
 			{ q: "Where do the per-employee ROI numbers come from?", a: "They are our published model assumptions — the same rates behind our online ROI calculator — stated as team-wide averages. An AI Readiness Audit ($3,500–$8,500, 2–4 weeks) replaces them with your measured numbers." },
 		],

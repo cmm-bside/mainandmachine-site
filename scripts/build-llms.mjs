@@ -89,7 +89,7 @@ before work begins.
 - [${audit.name}](/services/ai-readiness-audit/)${named("audit")}: $3,500–$8,500, 2–4 weeks.
   A workflow map of your operations, ranked opportunities with assumptions
   and costs, and a phased plan you own outright — whether or not you build with us.
-- [${sprint.name}](/services/ai-implementation/)${named("sprint")}: $18,000–$60,000 fixed quote,
+- [${sprint.name}](/services/ai-implementation/)${named("sprint")}: ${sprint.price} fixed quote,
   4–12 weeks. Working agents, automations, and integrations built inside
   your real operation, with your team trained to run them. About 90 days
   per workflow. Guarantee: if a scoped workflow is not live within 90 days,

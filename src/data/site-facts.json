@@ -36,9 +36,9 @@
     {
       "key": "sprint",
       "name": "AI Implementation Sprint",
-      "price": "$18,000–$60,000",
-      "priceLow": 18000,
-      "priceHigh": 60000,
+      "price": "$12,000–$45,000",
+      "priceLow": 12000,
+      "priceHigh": 45000,
       "timeline": "4 to 12 weeks",
       "note": "Fixed quote in writing before work begins",
       "guarantee": "If a scoped workflow is not live in your operation within 90 days, we keep building at no charge until it is."

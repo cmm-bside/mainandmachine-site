@@ -54,12 +54,11 @@ for (const s of MUST_CONTAIN) {
 // Whitelist: canonical facts + deliberate market-context figures used for
 // comparison. Anything else is presumed stale/drifted and fails.
 const MARKET_CONTEXT = [
-  "$60,000",   // "largest standard sprint" framing (sprint priceHigh)
   "$3,500",    // audit floor used standalone
   "$1M",       // audience revenue band halves ($1M–$50M renders as tokens)
   "$50M",
   "$50–$500",  // published running-cost band
-  "$18,000",   // sprint floor standalone (implementation model)
+  "$18,000",   // illustrative 25-person implementation model
   "$95,000",   // Full Back Office floor
   "$1,500",    // Managed Services floor
 ];

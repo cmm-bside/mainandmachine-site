@@ -24,7 +24,7 @@ export const BUILDS = [
 		kicker: "Answering",
 		title: "24/7 AI Receptionist for Small Business | Main & Machine",
 		description:
-			"An AI receptionist for routine calls, questions, and appointment requests, with escalation rules. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
+			"An AI receptionist for routine calls, questions, and appointment requests, with escalation rules. Delivered in a Sprint, $12,000–$45,000 fixed in writing.",
 		// The quotable definition. Answer engines lift the first paragraph, so it
 		// has to stand alone with no pronouns pointing back at a headline.
 		definition:
@@ -52,7 +52,7 @@ export const BUILDS = [
 		kicker: "Booking",
 		title: "Website Chat & Booking Agent | Main & Machine",
 		description:
-			"A website chat agent that answers from your own documents and books the appointment. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
+			"A website chat agent that answers from your own documents and books the appointment. Delivered in a Sprint, $12,000–$45,000 fixed in writing.",
 		definition:
 			"A website chat and booking agent is a chat window on your site that answers questions using your own pricing, policies, and service documents, then books the appointment while the visitor is still reading. It is not a decision-tree widget with five canned buttons: it reads what you actually publish, answers in sentences, and hands to a person when the question is outside what it has been given.",
 		industries: ["professional-services", "retail", "healthcare", "hospitality"],
@@ -104,7 +104,7 @@ export const BUILDS = [
 		kicker: "Recovery",
 		title: "Missed-Call Text-Back for Small Business | Main & Machine",
 		description:
-			"Follow eligible missed calls with an approved text, a reply route, and a booking link. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
+			"Follow eligible missed calls with an approved text, a reply route, and a booking link. Delivered in a Sprint, $12,000–$45,000 fixed in writing.",
 		definition:
 			"Missed-call text-back follows an eligible missed call with an approved message identifying your business and offering a reply route or booking link. The scope defines supported numbers, timing, exclusions, and stop rules.",
 		industries: ["construction", "healthcare", "hospitality", "retail"],
@@ -130,7 +130,7 @@ export const BUILDS = [
 		kicker: "Reputation",
 		title: "Review & Reputation Agent for Business | Main & Machine",
 		description:
-			"Requests honest customer reviews and drafts responses, with service issues handled separately. Delivered in a Sprint, $18,000–$60,000 fixed.",
+			"Requests honest customer reviews and drafts responses, with service issues handled separately. Delivered in a Sprint, $12,000–$45,000 fixed.",
 		definition:
 			"A review and reputation agent invites customers to leave an honest review after completed work and drafts responses for your approval. Customers receive the same review opportunity regardless of satisfaction. Service issues go to your team separately, without blocking or delaying a public review.",
 		industries: ["hospitality", "healthcare", "retail", "construction"],
@@ -158,7 +158,7 @@ export const BUILDS = [
 		kicker: "The hardware",
 		title: "Private AI Server for Your Business | Main & Machine",
 		description:
-			"A machine in your building, bought in your name, running open-source AI locally. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
+			"A machine in your building, bought in your name, running open-source AI locally. Delivered in a Sprint, $12,000–$45,000 fixed in writing.",
 		definition:
 			"A private AI server is hardware you own, configured to run open-source models locally. It provides a local processing environment for documents and workflows. Any connected external service or commercial-model routing is a separate data-handling choice to review in the scope.",
 		industries: ["healthcare", "professional-services", "construction", "retail"],
@@ -184,7 +184,7 @@ export const BUILDS = [
 		kicker: "The gatekeeper",
 		title: "AI Data Privacy Filter for Business | Main & Machine",
 		description:
-			"Detects and removes supported identifiers before model processing, with testing and routing controls. Delivered in a Sprint, $18,000–$60,000 fixed.",
+			"Detects and removes supported identifiers before model processing, with testing and routing controls. Delivered in a Sprint, $12,000–$45,000 fixed.",
 		definition:
 			"A data privacy filter detects supported personal identifiers in prompts and documents and removes them before model processing. The scope defines whether filtered text stays local or may use an external model. Detection can miss information, so filtering works alongside routing limits, access controls, and tests; it is not a guarantee that regulated data is safe to transmit.",
 		industries: ["healthcare", "professional-services", "construction", "retail"],
@@ -210,7 +210,7 @@ export const BUILDS = [
 		kicker: "The memory",
 		title: "AI Company Knowledge Base | Main & Machine",
 		description:
-			"Your records, emails, notes, and policies joined so one question can cross all of them. Delivered in a Sprint, $18,000–$60,000 fixed.",
+			"Your records, emails, notes, and policies joined so one question can cross all of them. Delivered in a Sprint, $12,000–$45,000 fixed.",
 		definition:
 			"A company knowledge base is everything your business knows, put into a form AI can actually use: the structured records in your systems and the unstructured material around them — emails, notes, policies, job files — joined so a single question can cross both. It is the component that lets the rest of the catalog answer from your business rather than from the internet.",
 		industries: ["professional-services", "healthcare", "construction", "retail"],
@@ -236,7 +236,7 @@ export const BUILDS = [
 		kicker: "The front door",
 		title: "AI in Slack & Teams for Small Business | Main & Machine",
 		description:
-			"The system lives where your team already works — no new app, no new login. Delivered in a Sprint, $18,000–$60,000 fixed in writing.",
+			"The system lives where your team already works — no new app, no new login. Delivered in a Sprint, $12,000–$45,000 fixed in writing.",
 		definition:
 			"A Slack and Teams integration brings prepared work and approvals into the channels your team already uses. The scope defines who can review each item and which actions need approval. Staff learn what to check, how to correct work, and when to escalate.",
 		industries: ["professional-services", "construction", "retail", "healthcare"],
@@ -262,7 +262,7 @@ export const BUILDS = [
 		kicker: "The workspace",
 		title: "Private Company AI Chat | Main & Machine",
 		description:
-			"Your own chat interface, on your server, behind your filter, connected to your records. Delivered in a Sprint, $18,000–$60,000 fixed.",
+			"Your own chat interface, on your server, behind your filter, connected to your records. Delivered in a Sprint, $12,000–$45,000 fixed.",
 		definition:
 			"Private company chat connects a company-controlled interface to your models and approved knowledge sources. It gives staff a defined place to ask questions, draft, and summarize, with filtering and access boundaries. Local and external model use are described in the scope, including the relevant provider terms.",
 		industries: ["professional-services", "healthcare", "construction", "retail"],
@@ -288,7 +288,7 @@ export const BUILDS = [
 		kicker: "The plumbing",
 		title: "Business System Connectors for AI | Main & Machine",
 		description:
-			"QuickBooks first: reconciliation prepared, invoices chased, nothing posted without approval. Delivered in a Sprint, $18,000–$60,000 fixed.",
+			"QuickBooks first: reconciliation prepared, invoices chased, nothing posted without approval. Delivered in a Sprint, $12,000–$45,000 fixed.",
 		definition:
 			"Business system connectors join the AI system to the software you already run, starting with QuickBooks because that is where Main Street keeps its books. Reconciliation is prepared, invoices are chased, reports are drafted — and nothing posts until a person approves it. The connector is what turns a system that can read into a system that can finish the work.",
 		industries: ["professional-services", "construction", "retail", "hospitality"],

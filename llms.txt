@@ -16,7 +16,7 @@ Prefer to talk? [Book a free 30-minute assessment](/book/) directly.
 Start with a free 30-minute assessment to discuss one workflow and the next step. If substantial discovery is needed, we scope a paid audit; a fixed build quote follows an agreed scope.
 An advisor from Main & Machine discusses your workflow and next step. Christopher Myers is accountable for scoping and sign-off; the build team implements agreed work. Your scheduling confirmation identifies the meeting host.
 
-Generated: 2026-10-03
+Generated: 2026-11-01
 
 Full page text for AI systems: [llms-full.txt](/llms-full.txt) — the complete
 visible copy of the most important pages, with page delimiters.
@@ -49,7 +49,7 @@ before work begins.
 - [AI Readiness Audit](/services/ai-readiness-audit/) ("The Blueprint"): $3,500–$8,500, 2–4 weeks.
   A workflow map of your operations, ranked opportunities with assumptions
   and costs, and a phased plan you own outright — whether or not you build with us.
-- [AI Implementation Sprint](/services/ai-implementation/) ("The 90-Day Build"): $18,000–$60,000 fixed quote,
+- [AI Implementation Sprint](/services/ai-implementation/) ("The 90-Day Build"): $12,000–$45,000 fixed quote,
   4–12 weeks. Working agents, automations, and integrations built inside
   your real operation, with your team trained to run them. About 90 days
   per workflow. Guarantee: if a scoped workflow is not live within 90 days,

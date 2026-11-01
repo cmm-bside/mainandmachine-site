@@ -19,7 +19,9 @@ assert.equal(baseline.firstYearHigh, 130263);
 const construction = M.compute('construction', 10);
 assert.equal(construction.runCost, 884);
 assert.equal(construction.annualNet, 5116);
-assert.equal(construction.firstYearNet, -12884);
+assert.equal(construction.implementation, 12000);
+assert.equal(construction.firstYearNet, -6884);
+assert.equal(M.compute('professional-services', 100).implementation, 45000);
 
 // Independent editable costs/capture, including a true loss and zero capture.
 const custom = M.compute('professional-services', 25, { capturePercent: 20, monthlyRunCost: 500, implementation: 30000 });
